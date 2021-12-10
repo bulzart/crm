@@ -421,7 +421,7 @@
                     <div class="d-inline">
 
                     <select name="countryCode" >
-                        <option data-countryCode="GB" value="44" Selected>UK (+44)</option>
+                        <option data-countryCode="GB" value="44" selected>UK (+44)</option>
                         <option data-countryCode="US" value="1">USA (+1)</option>
                         <optgroup label="Other countries">
                             <option data-countryCode="DZ" value="213">Algeria (+213)</option>
