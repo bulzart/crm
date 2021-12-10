@@ -14,5 +14,8 @@ class TasksController extends Controller
 	 public function documentform(Request $req){
 
     }
+    public function niti(Request $req){
+        
+    }
   
 }
