@@ -52,5 +52,15 @@ use Illuminate\Support\Facades\Route;
     route::post('documentform',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
     route::get('makenotificationsdone',[TasksController::class,'dnotifications']);
     route::get('returnnot',[TasksController::class,'returnnot']);
-    route::get('costumers/{date}/{name}',[TasksController::class,'costumers']);
+
+
     
+
+    route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
+    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
+
+    route::get('costumersview',function (){
+        $data = \App\Models\appointment::all();
+       return view('costumers',compact('data'));
+    });
+
