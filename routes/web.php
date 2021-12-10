@@ -31,8 +31,6 @@ use Illuminate\Support\Facades\Route;
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
-    route::get('costumers',[UserController::class,'costumers'])->name('costumers');
-    route::post('filtercostumers',[UserController::class,'filtercostumers'])->name('filtercostumers');
     route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dates',[UserController::class,'dates'])->name('dates');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');

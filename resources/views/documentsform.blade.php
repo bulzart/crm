@@ -6,7 +6,7 @@
         <a class="btn btn-info" onclick="openCar()">A</a>
         <a class="btn btn-info" onclick="openFinance()">S</a>
         <a class="btn btn-info" onclick="openMore()">S</a>
-        <form method="POST" action="{{route('documentform')}}">
+        <form method="POST" action="{{route('documentform')}}" enctype="multipart/form-data">
             @csrf
             <div style="display: none" id="health">
                 <div>
@@ -736,7 +736,7 @@
                     <h4>Counteroffer</h4>
                     <div>
                         <label>Upload Police</label>
-                        <input type="file" name="uploadpolice" class="form-control">
+                        <input type="file" name="uploadpolice2" class="form-control">
 {{--                        Vergleischart--}}
                         <label>Comment At Police: </label>
                         <input type="text" name="commentatpolice">
