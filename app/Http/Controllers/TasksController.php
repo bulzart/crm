@@ -14,6 +14,9 @@ class TasksController extends Controller
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
+    public function costumers($date = null,$name = null){
+        
+    }
 	 public function documentform(Request $req){
         $data = $req->all();
         $data = json_encode($data);
