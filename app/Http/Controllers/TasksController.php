@@ -12,6 +12,9 @@ class TasksController extends Controller
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
 	 public function documentform(Request $req){
-        
+
+    }
+    public function test(){
+        return 'test';
     }
 }
