@@ -52,3 +52,5 @@ use Illuminate\Support\Facades\Route;
     route::post('documentform',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
     route::get('makenotificationsdone',[TasksController::class,'dnotifications']);
     route::get('returnnot',[TasksController::class,'returnnot']);
+    route::get('costumers/{date}/{name}',[TasksController::class,'costumers']);
+    
