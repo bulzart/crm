@@ -15,6 +15,6 @@ class TasksController extends Controller
 
     }
     public function test(){
-        return 'test';
+        return 'testtest';
     }
 }
