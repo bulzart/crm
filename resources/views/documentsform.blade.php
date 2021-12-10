@@ -135,14 +135,18 @@
                         <div>
                             <label>Insurance</label>
                             <select name="insurance">
-                                <option>Example1</option>
-                                <option>Example2</option>
-                                <option>Example3</option>
+                                <option>300</option>
+                                <option>500</option>
+                                <option>1000 (drivers under 25 years)</option>
                             </select>
                         </div>
                     <div>
                         <label>Deduction Part: </label>
-                        <input class="form-control" type="text" name="deductionpart">
+                        <select name="deductionpart">
+                            @for($i = 1000;$i<=20000;$i+=1000)
+                            <option>{{$i}}</option>
+                            @endfor
+                        </select>
                     </div>
                     <div>
                         <label>Things Carried: </label>
@@ -682,6 +686,15 @@
                     </div>
                     <div>
                         <label>Share Guarantee/Fund</label>
+                        <select>
+                            @php
+                            $j = 100;
+                            @endphp
+                            @for($i = 1;$i<=100;$i++)
+                                <option>{{$i."/".--$j}}</option>
+                            @endfor
+
+                        </select>
 
                     </div>
                     <div>
