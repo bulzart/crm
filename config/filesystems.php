@@ -34,11 +34,11 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-        'images' => [
+        'img' => [
             'driver' => 'local',
             'root' => storage_path('app/img'),
             'url' => env('APP_URL').'/img',
-            'visibility' => 'public',
+            'visibility' => 'public'
         ],
         'public' => [
             'driver' => 'local',
@@ -73,6 +73,7 @@ return [
     */
 
     'links' => [
+        public_path('storage') => storage_path('app/public'),
         public_path('img') => storage_path('app/img')
     ],
 

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class appointment extends Model
 {
     use HasFactory;
+    protected $table = 'csapp';
 }
