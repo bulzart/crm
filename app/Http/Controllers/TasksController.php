@@ -14,7 +14,14 @@ class TasksController extends Controller
 	 public function documentform(Request $req){
 
     }
-    public function test(){
+
+    public function test()
+    {
         return 'testtest';
     }
+    public function niti(Request $req){
+
+
+    }
+
 }
