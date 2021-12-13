@@ -149,33 +149,14 @@ class UserController extends Controller
         return redirect()->route('leads')->with('deleted','Lead was deleted successfully!');
     }
 
-    public function joinconversation($id){
-       $chat = chat::find('costumer_id',$id);
-       dd($chat);
-    }
-  public function costumers(){
+  
 
-      $costumers = Costumer::where('id',Auth::guard('admins')->user()->id)->get();
-if(Auth::guard('admins')->user()->role == 'admin'){
-    $appointments = lead::where('assigned',1)->get();
-}
-else{
-    $appointments = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1);
-}
-      return view('costumers',compact('costumers','appointments'));
-  }
 
   public function insertappointment(){
       $admins = Admins::all();
       return view('insterappointment',compact('admins'));
   }
-  public function filtercostumers(Request $request){
-    $from = date('Y-m-d', strtotime($request->input('from')));
-    $n = date('Y-m-d', strtotime($request->input('now')));
-    $now = date('Y-m-d',strtotime($n . "+1 days"));
-    $costumers = Costumer::whereBetween('created_at',[$from,$now])->paginate(8);
-    return view('costumers',compact('costumers'));
-  }
+
 
     public function leads($page = 1){
         if(Auth::guard('admins')->check() && Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance'){
@@ -201,20 +182,12 @@ else{
         ]);
           $lead = lead::find($id);
           $lead->admin_id = (int) $req->input('admin');
+          $lead->assigned = 1;
+          $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
           $lead->save();
           return redirect()->route('leads');
     }
-    public function appointlead(Request $req,$id){
-        $req->validate([
-            'appointmentdate' => 'required',
-        ]);
-        $lead = lead::find($id);
-        $lead->appointmentdate = filter_var($req->input('data'),FILTER_SANITIZE_STRING);
-        $lead->assigned = 1;
-        $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
-        $lead->save();
-        return redirect()->route('leads');
-    }
+
     public function appointbyadmin($id){
         $lead = lead::find($id);
         return view('appointadmin',compact('lead'));

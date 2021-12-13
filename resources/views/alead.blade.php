@@ -19,6 +19,8 @@
   <br>
   <input type="date" class="col-12 text-center" name="appointmentdate">
 </br>
+<label>Time</label>
+<input type="time" name="apptime" class="text-center col-12">
   <label>Asign to:</label>
   <div class="justify-content-end d-flex">
   <i class="fas fa-filter" style="cursor: pointer;" title="Filter" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
@@ -29,6 +31,7 @@
       <option value="{{$admin->id}}">{{$admin->name}}</option>
       @endforeach
   </select>
+
 
   <input type="submit" class="btn btn-primary mt-2" value="Assign">
 </form>
@@ -41,7 +44,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form action="{{route('filtercostumers')}}" method="post" class="form-control">
+ 
     @csrf
     <label>Name like</label>
 <input type="text" name="name" class="form-control">
@@ -53,6 +56,9 @@
 <input type="date" name="now" class="form-control">
 </div>
 
+
+
+<br>
 
       </div>
       <div class="modal-footer">
