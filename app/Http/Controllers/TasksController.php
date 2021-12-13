@@ -84,6 +84,10 @@ class TasksController extends Controller
   if($req->file('preinsurer') != null){
 
       $file = $req->file('preinsurer');
+
+      $filename = str_replace($file->guessClientExtension(),'.',$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
+      $path = $file->storeAs('img',$filename);
+=======
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
      $path = $file->storeAs('img',$filename);
     $data['preinsurer'] = $path;
@@ -129,6 +133,7 @@ class TasksController extends Controller
      unset($data['countryCode'],$data['phonenumber']);
      dd($data);
      
+
 
         $csapp->save();
     }

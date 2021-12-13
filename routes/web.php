@@ -58,8 +58,12 @@ use Illuminate\Support\Facades\Route;
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
 
     route::get('costumersview',function (){
-        $data = \App\Models\appointment::all();
-       return view('costumers',compact('data'));
-    });
+
+    $data = \App\Models\appointment::all();
+    return view('costumers',compact('data'));
+});
+
+
+
 
 
