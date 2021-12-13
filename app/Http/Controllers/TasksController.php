@@ -45,7 +45,7 @@ class TasksController extends Controller
 
       $file = $req->file('preinsurer');
       $filename = str_replace($file->guessClientExtension(),'.',$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
-     $path = $file->storeAs('img',$filename);
+      $path = $file->storeAs('img',$filename);
 
         $csapp->save();
     }

@@ -3,7 +3,7 @@
 <style>
 * {
     font-family: 'Poppins';font-size: 17px;
-    
+
 }
 :root {
     --header-height: 3rem;
@@ -161,7 +161,7 @@ a {
     }
 
     .header {
-        
+
         height: 0px;
         padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
     }
@@ -190,7 +190,7 @@ a {
     .body-pd {
         padding-left: calc(var(--nav-width))
     }
-  
+
     .card {
     width: 350px;
     padding: 10px;
@@ -232,7 +232,7 @@ body {
 #nav-bar{
     min-width: 200px;
 }
-  
+
 }
 a:link{
     text-decoration: none;
@@ -269,9 +269,9 @@ a:link{
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-            <div> 
-                <div class="nav_list"> 
-                    <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Home</span> </a> 
+            <div>
+                <div class="nav_list">
+                    <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Home</span> </a>
                     @if(Auth::guard('admins')->check())<a style="text-decoration: none;" href="" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Costumers</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'fieldservice' || Auth::guard('admins')->user()->role == 'admin')<a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task' ></i> <span class="nav_name">Tasks</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'backoffice' ||  Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bxs-check-square'></i> <span class="nav_name">Status</span> </a>@endif
@@ -284,19 +284,19 @@ a:link{
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie"></i><span class="nav_name">Statistics</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'finance')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie"></i><span class="nav_name">Statistics</span> </a>@endif
 
-
-                    </div> <a href="{{route('logout')}}" style="text-decoration: none;"class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">LogOut</span> </a> 
+                    <a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie"></i><span class="nav_name">Requests</span> </a>
+                    </div> <a href="{{route('logout')}}" style="text-decoration: none;"class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">LogOut</span> </a>
                 </div>
-            
+
         </nav>
     </div>
     <!--Container Main start-->
-   
+
 </div>
-       
+
 
 <div class="container-fluid col-md-10 col-lg-10 col-xs-10 col-sm-10 mt-4" id="cont">
-@yield('content')    
+@yield('content')
 <div class="form-group container text-center pt-4">
 </div>
 </div>
