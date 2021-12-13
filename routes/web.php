@@ -35,8 +35,6 @@ use Illuminate\Support\Facades\Route;
     route::get('dates',[UserController::class,'dates'])->name('dates');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
-    route::post('appointlead/{id}',[UserController::class,'appointlead'])->name('appointlead');
-    route::get('appointbyadmin/{id}',[UserController::class,'appointbyadmin'])->name('appointbyadmin'); // admini e pranon lead dhe e ban appointment
     route::get('reject/{id}',[UserController::class,'reject'])->name('reject'); //refuzon appointment admini
     route::post('importexcel',[UserController::class,'importexcel'])->name('importexcel');
     route::post('filterbydateapp',[UserController::class,'filterbydateapp'])->name('fbydate');
@@ -51,6 +49,16 @@ use Illuminate\Support\Facades\Route;
     });
     route::post('documentform',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
     route::get('makenotificationsdone',[TasksController::class,'dnotifications']);
-    route::get('returnnot',[TasksController::class,'returnnot']);
-    route::get('costumers/{date}/{name}',[TasksController::class,'costumers']);
+
+
     
+
+    route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
+    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
+
+    route::get('costumersview',function (){
+        $data = \App\Models\appointment::all();
+       return view('costumers',compact('data'));
+    });
+   route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
+

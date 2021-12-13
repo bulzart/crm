@@ -14,9 +14,57 @@ class TasksController extends Controller
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
-    public function costumers($date = null,$name = null){
-        
+    public function searchword(){
+        $data =  appointment::orderBy('name','asc')->get();
+        return view('costumers',compact('data'));
     }
+    public function costumers(Request $request){
+        $searchname = $request->searchname;
+        $date1 = date('Y-m-d', strtotime($request->searchdate1));
+        $n = date('Y-m-d', strtotime($request->searchdate2));
+        $date2 = date('Y-m-d',strtotime($n . "+1 days"));
+        if(!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
+            $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+                ->orWhere('name', 'like', '%' . $searchname . '%')->get();
+        }elseif(isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)){
+            $data = appointment::whereBetween('created_at',[$date1,$date2])->get();
+        }
+        else{
+           $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+           ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
+        }
+            return view('costumers', compact('data'));
+
+    }
+
+    public function tasks(){
+      $cnt = 0;
+   $taskscount = appointment::where('completed',0)->get()->count();
+   $tasks = appointment::where('completed',0)->get();
+   $costumers = appointment::all();
+   $todaydate = Carbon::now()->format('m-d');
+  
+   $birthdays = [];
+   foreach($costumers as $cos){
+      if(substr($cos->birthday,5) == $todaydate)
+      {
+          $birthdays[$cnt]['birthday'] = $cos->birthday;
+          $now = (int) Carbon::now()->format('Y');
+          $birth = (int) substr($cos->birthday,-10,-6);
+          $birthdays[$cnt]['age'] = $now - $birth;
+          $birthdays[$cnt]['id'] = $cos->id;
+          $birthdays[$cnt]['name'] = ucfirst($cos->name);
+          $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
+          $cnt++;
+      }
+
+   }
+  
+   return view('tasks',compact('taskscount','tasks','birthdays'));
+  }
+  
+
+  
 	 public function documentform(Request $req){
         $data = $req->all();
      
@@ -27,7 +75,9 @@ class TasksController extends Controller
         $csapp->birthday = "1974-12-09";
        
 
+
   if($req->file('preinsurer') != null){
+
       $file = $req->file('preinsurer');
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
      $path = $file->storeAs('img',$filename);
@@ -78,14 +128,19 @@ class TasksController extends Controller
         $csapp->save();
     }
 
-    public function test()
-    {
-        return 'testtest';
-    }
-    public function niti(Request $req){
 
 
+      
+    public function eee(){
+
     }
+    public function ispending($object):bool{
+      if($object['job'] != null && $object['email'] != null) return true;
+      if($object['email'] != null) return true;
+      if($object['kanton'] != null && $object['kanton'] != '') return true;
+      if($object['lenker'] != null && $object['lenker'] != '') return true;
+      if($object['comment'] != null && $object['comment'] != '') return true;
+   }
 
 }
 
