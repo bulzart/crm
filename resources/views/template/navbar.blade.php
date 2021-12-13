@@ -269,11 +269,19 @@ a:link{
     </header>
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
+
             <div>
                 <div class="nav_list">
                     <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Home</span> </a>
                     @if(Auth::guard('admins')->check())<a style="text-decoration: none;" href="" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Costumers</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'fieldservice' || Auth::guard('admins')->user()->role == 'admin')<a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task' ></i> <span class="nav_name">Tasks</span> </a>@endif
+=======
+            <div> 
+                <div class="nav_list"> 
+                    <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Home</span> </a> 
+                    @if(Auth::guard('admins')->check())<a style="text-decoration: none;" href="{{route('costumers')}}" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Costumers</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'fieldservice' || Auth::guard('admins')->user()->role == 'admin')<a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task' ></i> <span class="nav_name">Tasks</span> </a>@endif
+
                     @if(Auth::guard('admins')->user()->role == 'backoffice' ||  Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bxs-check-square'></i> <span class="nav_name">Status</span> </a>@endif
                     @if(Auth::guard('admins')->check())<a href="#" style="text-decoration: none;" class="nav_link"><i class='bx bx-money'></i><span class="nav_name">Finance</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'backoffice' ||  Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close"></i><span class="nav_name">Deposit</span> </a> @endif
