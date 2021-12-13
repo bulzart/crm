@@ -49,11 +49,7 @@ use Illuminate\Support\Facades\Route;
     });
     route::post('documentform',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
     route::get('makenotificationsdone',[TasksController::class,'dnotifications']);
-
-
-
-    
-
+    route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
 
