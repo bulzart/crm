@@ -14,6 +14,7 @@ class TasksController extends Controller
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
+
     public function searchword(){
         $data =  appointment::orderBy('name','asc')->get();
         return view('costumers',compact('data'));
@@ -35,7 +36,8 @@ class TasksController extends Controller
         }
             return view('costumers', compact('data'));
 
-    }
+
+
 
     public function tasks(){
       $cnt = 0;
@@ -75,6 +77,9 @@ class TasksController extends Controller
         $csapp->birthday = "1974-12-09";
        
 
+
+
+  if($req->file('preinsurer') != null){
 
   if($req->file('preinsurer') != null){
 
@@ -130,10 +135,9 @@ class TasksController extends Controller
 
 
 
-      
-    public function eee(){
 
-    }
+      
+
     public function ispending($object):bool{
       if($object['job'] != null && $object['email'] != null) return true;
       if($object['email'] != null) return true;

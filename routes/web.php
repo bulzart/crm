@@ -51,6 +51,7 @@ use Illuminate\Support\Facades\Route;
     route::get('makenotificationsdone',[TasksController::class,'dnotifications']);
 
 
+
     
 
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
@@ -60,5 +61,5 @@ use Illuminate\Support\Facades\Route;
         $data = \App\Models\appointment::all();
        return view('costumers',compact('data'));
     });
-   route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
+
 
