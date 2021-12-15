@@ -65,7 +65,154 @@
                 </div>
                 <br>
 
+
+                    <h4>Vahicle Information</h4>
+                        <div>
+                            <span>Purchase Year</span>
+                            <select name="yearpurchase">
+                                @for($i = \Carbon\Carbon::now()->format('Y');$i>=1950;$i--)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div>
+                            <label>First Commissioning</label>
+                            <input type="date" class="form-control" name="firstcommissioning">
+                        </div>
+                        <div>
+                            <label>Start Insurance</label>
+                            <input type="date" class="form-control" name="startinsurance">
+                        </div>
+                        <div>
+                            <label>Kanton:</label>
+                            <select name="kanton">
+                                <option>Zürich</option>
+                                <option>Bern / Berne</option>
+                                <option>Luzern</option>
+                                <option>Uri</option>
+                                <option>Schwyz</option>
+                                <option>Unterwalden</option>
+                                <option>Glarus</option>
+                                <option>Zug</option>
+                                <option>Freiburg / Fribourg</option>
+                                <option>Solothurn</option>
+                                <option>Basel</option>
+                                <option>Schaffhausen</option>
+                                <option>Appenzell</option>
+                                <option>Sankt Gallen</option>
+                                <option>Graubünden</option>
+                                <option>Aargau</option>
+                                <option>Thurgau</option>
+                                <option>Ticino</option>
+                                <option>Vaud</option>
+                                <option>Valais / Wallis</option>
+                                <option>Neuchâtel</option>
+                                <option>Genève</option>
+                                <option>Jura</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>KM-Stand</label>
+                            <input class="form-control" type="number" name="kmstand">
+                        </div>
+
+                    <hr>
+
+                    <h4>Driver Information</h4>
+                        <div>
+                            <label>Date of issue of driver's license</label>
+                            <input class="form-control" type="date" name="dateofissueofdriverslicense">
+                        </div>
+                        <div>
+                            <label>Nationality: </label>
+                            <input class="form-control" type="text" name="nationality">
+                        </div>
+                        <div>
+                            <label>Lenker? </label>
+                            <select name="lenker">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                    <hr>
+                    <h4>Desired Coverage</h4>
+                        <div>
+                            <label>Insurance</label>
+                            <select name="insurance">
+                                <option>300</option>
+                                <option>500</option>
+                                <option>1000 (drivers under 25 years)</option>
+                            </select>
+                        </div>
+                    <div>
+                        <label>Deduction Part: </label>
+                        <select name="deductionpart">
+                            @for($i = 1000;$i<=20000;$i+=1000)
+                            <option>{{$i}}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div>
+                        <label>Things Carried: </label>
+                        <input type="text" class="form-control" name="thingscarried">
+                    </div>
+                    <div>
+                        <label>Repair Shop: </label><br>
+                        <input type="radio" name="partnergarage" value="Parter Garage">
+                        <label for="partnergarage">Partener Garage</label>
+                        <input type="radio" name="partnergarage" value="Free Choice">
+                        <label for="partnergarage">Free Choice</label>
+                    </div>
+                    <div>
+                        <label>Accident Coverage: </label><br>
+                        <input type="radio" name="accidentcoverage" value="Yes">
+                        <label for="accidentcoverage">Yes</label>
+                        <input type="radio" name="accidentcoverage" value="No">
+                        <label for="accidentcoverage">No</label>
+                    </div>
+                    <div>
+                        <label>Traffic Rights Protection: </label><br>
+                        <input type="radio" name="trafficrightsprotection" value="Yes">
+                        <label for="trafficrightsprotection">Yes</label>
+                        <input type="radio" name="trafficrightsprotection" value="No">
+                        <label for="trafficrightsprotection">No</label>
+                    </div>
+                    <div>
+                        <label>Gross Negligence Protection: </label><br>
+                        <input type="radio" name="grossnegligenceprotection" value="Yes">
+                        <label for="grossnegligenceprotection">Yes</label>
+                        <input type="radio" name="grossnegligenceprotection" value="No">
+                        <label for="grossnegligenceprotection">No</label>
+                    </div>
+                    <div>
+                        <label>Glass Protection: </label><br>
+                        <input type="radio" name="glassprotection" value="Yes">
+                        <label for="glassprotection">Yes</label>
+                        <input type="radio" name="glassprotection" value="No">
+                        <label for="glassprotection">No</label>
+                    </div>
+                    <div>
+                        <label>Parking Damage: </label><br>
+                        <input type="radio" name="parkingdamage" value="Yes">
+                        <label for="parkingdamage">Yes</label>
+                        <input type="radio" name="parkingdamage" value="No">
+                        <label for="parkingdamage">No</label>
+                    </div>
+                    <div>
+                        <label>24H Roadside Assistance: </label><br>
+                        <input type="radio" name="roadsideassistance" value="Yes">
+                        <label for="roadsideassistance">Yes</label>
+                        <input type="radio" name="roadsideassistance" value="No">
+                        <label for="roadsideassistance">No</label>
+                    </div>
+                    <div>
+                        <label>Car Comment</label>
+                        <input type="text" class="form-control" name="carcomment">
+                    </div>
+
                 <hr>
+
 
                 <h4>Vahicle Information</h4>
                 <div>
