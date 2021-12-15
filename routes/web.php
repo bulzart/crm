@@ -64,8 +64,16 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
 
     route::get('costumersview',function (){
+
         $data = \App\Models\appointment::all();
        return view('costumers',compact('data'));
     });
 route::get('ispending',[TasksController::class,'itis']);
+
+
+    $data = \App\Models\appointment::all();
+    return view('costumers',compact('data'));
+});
+
+
 

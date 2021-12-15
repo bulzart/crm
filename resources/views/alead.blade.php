@@ -44,7 +44,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
+      <form method="post" class="form-control">
+=======
  
+
     @csrf
     <label>Name like</label>
 <input type="text" name="name" class="form-control">

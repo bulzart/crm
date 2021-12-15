@@ -95,6 +95,7 @@ class TasksController extends Controller
   if(null !== $req->file('preinsurer')){
       $data1 = $data['preinsurer'];
       $file = $req->file('preinsurer');
+
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
       $path = $file->storeAs('img',$filename);
       $data['preinsurer'] = filter_var($path,FILTER_SANITIZE_STRING);
@@ -103,6 +104,14 @@ class TasksController extends Controller
      $preins = (array) json_decode($csapp->data);
       $data['preinsurer'] = $preins['preinsurer'];
     
+
+
+      $filename = str_replace($file->guessClientExtension(),'.',$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
+      $path = $file->storeAs('img',$filename);
+
+      $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
+     $path = $file->storeAs('img',$filename);
+    $data['preinsurer'] = $path;
     }
      if($req->file('idnecessary') != null){
         $file = $req->file('idnecessary');
@@ -144,7 +153,11 @@ class TasksController extends Controller
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
 
+
      $csapp->data = json_encode($data);
+
+        $csapp->save();
+    }
 
         $csapp->save();
     
