@@ -37,6 +37,139 @@ class TasksController extends Controller
             return view('costumers', compact('data'));
 
       }
+      
+      public function adddata($req,$object)
+      {
+        $cnt = 0;
+        if(isset($req['job'])){
+        if($req['job'] != null && $req['job'] != ''){
+          $object['job'] = $req['job'];
+        }}
+        if(isset($req['email'])){
+        if($req['email'] != null && $req['email'] != ''){
+          $object['email'] = $req['email'];
+        }}
+        if(isset($req['phone'])){
+        if($req['phone'] != null && $req['phone'] != ''){
+          $object['phone'] = $req['phone'];
+        }}
+        if(isset($req['kanton'])){
+        if($req['kanton'] != null && $req['kanton'] != ''){
+          $object['kanton'] = $req['kanton'];
+        }}
+        if(isset($req['lenker'])){
+        if($req['lenker'] != null && $req['lenker'] != ''){
+          $object['lenker'] = $req['lenker'];
+        }}
+        if(isset($req['comment'])){
+        if($req['comment'] != null && $req['comment'] != ''){
+          $object['comment'] = $req['comment'];
+        }}
+        if(isset($req['preinsurer'])){
+        if($req['preinsurer'] != null && $req['preinsurer'] != ''){
+          $object['preinsurer'] = $req['preinsurer'];
+        }}
+        if(isset($req['leasingname'])){
+        if($req['leasingname'] != null && $req['leasingname'] != ''){
+          $object['leasingname'] = $req['leasingname'];
+          }}
+          if(isset($req['nationality'])){
+        if($req['nationality'] != null && $req['nationality'] != ''){
+          $object['nationality'] = $req['nationality'];
+        }}
+        if(isset($req['yearpurchase'])){
+        if($req['yearpurchase'] != null && $req['yearpurchase'] != ''){
+          $object['yearpurchase'] = $req['yearpurchase'];
+        }}
+        if(isset($req['deductionpart'])){
+        if($req['deductionpart'] != null && $req['deductionpart'] != ''){
+          $object['deductionpart'] = $req['deductionpart'];
+        }}
+        if(isset($req['martialstatus'])){
+        if($req['martialstatus'] != null && $req['martialstatus'] != ''){
+          $object['martialstatus'] = $req['martialstatus'];
+        }}
+        if(isset($req['numberofrooms'])){
+        if($req['numberofrooms'] != null && $req['numberofrooms'] != ''){
+          $object['numberofrooms'] = $req['numberofrooms'];
+        }}
+        if(isset($req['paymentrhythm'])){
+        if($req['paymentrhythm'] != null && $req['paymentrhythm'] != ''){
+          $object['paymentrhythm'] = $req['paymentrhythm'];
+        }}
+        if(isset($req['thingscarried'])){
+        if($req['thingscarried'] != null && $req['thingscarried'] != '' ){
+          $object['thingscarried'] = $req['thingscarried'];
+        }}
+        if(isset($req['amountpermonth'])){
+        if($req['amountpermonth'] != null && $req['amountpermonth'] != ''){
+          $object['amountpermonth'] = $req['amountpermonth'];
+        }}
+        if(isset($req['numberofpeople'])){
+        if($req['numberofpeople'] != null && $req['numberofpeople'] != ''){
+          $object['numberofpeople'] = $req['numberofpeople'];
+        }}
+        if(isset($req['startinsurance'])){
+        if($req['startinsurance'] != null && $req['startinsurance'] != '' ){
+          $object['startinsurance'] = $req['startinsurance'];
+        }}
+        if(isset($req['commentatpolice'])){
+        if($req['commentatpolice'] != null && $req['commentatpolice'] != ''){
+          $object['commentatpolice'] = $req['commentatpolice'];
+        }}
+        if(isset($req['insuranceamount'])){
+        if($req['insuranceamount'] != null && $req['insuranceamount'] != ''){
+          $object['insuranceamount'] = $req['insuranceamount'];
+        }}
+        if(isset($req['residencepermit'])){
+        if($req['residencepermit'] != null && $req['residencepermit'] != ''){
+          $object['residencepermit'] = $req['residencepermit'];
+        }}
+      
+        if(isset($req['contractstartdate'])){
+        if($req['contractstartdate'] != null && $req['contractstartdate'] != ''){
+          $object['contractstartdate'] = $req['contractstartdate'];
+        }}
+        if(isset($req['firstcommissioning'])){
+        if($req['firstcommissioning'] != null && $req['firstcommissioning'] != ''){
+          $object['firstcommissioning'] = $req['firstcommissioning'];
+        }}
+        if(isset($req['nationalityfinance'])){
+        if($req['nationalityfinance'] != null && $req['nationalityfinance'] != ''){
+          $object['nationalityfinance'] = $req['nationalityfinance'];
+        }}
+        if(isset($req['employmentrelationship'])){
+        if($req['employmentrelationship'] != null && $req['employmentrelationship'] != '' ){
+          $object['employmentrelationship'] = $req['employmentrelationship'];
+        }}
+        if(isset($req['wishedadditionalthings'])){
+        if($req['wishedadditionalthings'] != null && $req['wishedadditionalthings'] != ''){
+          $object['wishedadditionalthings'] = $req['wishedadditionalthings'];
+        }}
+        if(isset($req['numberofpeopleinsurance'])){
+        if($req['numberofpeopleinsurance'] != null && $req['numberofpeopleinsurance'] != ''){
+          $object['numberofpeopleinsurance'] = $req['numberofpeopleinsurance'];
+        }}
+        if(isset($req['dateofissueofdriverslicense'])){
+        if($req['dateofissueofdriverslicense'] != null && $req['dateofissueofdriverslicense'] != ''){
+          $object['dateofissueofdriverslicense'] = $req['dateofissueofdriverslicense'];
+        }}
+        if(isset($req['whichcompaniesshouldmakeanoffer'])){
+        if($req['whichcompaniesshouldmakeanoffer'] != null && $req['whichcompaniesshouldmakeanoffer'] != '' ){
+          $object['whichcompaniesshouldmakeanoffer'] = $req['whichcompaniesshouldmakeanoffer'];
+        }}
+return $object;
+
+
+        
+  
+      
+          
+        
+     
+     
+
+      }
 
 
     public function tasks(){
@@ -90,19 +223,21 @@ class TasksController extends Controller
          $req->validate([
            'id' => 'exists:csapp,id'
          ]);
-        $data = $req->all();
+
+        $data = (array) $req->all();
+       
+
         $csapp = appointment::find($id);
-  if(null !== $req->file('preinsurer')){
+        $data2 = (array) json_decode($csapp->data);
+       
+        
+
+  if($req->file('preinsurer') != null){
       $data1 = $data['preinsurer'];
       $file = $req->file('preinsurer');
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
       $path = $file->storeAs('img',$filename);
       $data['preinsurer'] = filter_var($path,FILTER_SANITIZE_STRING);
-    }else{
-     //return (array) json_decode($csapp->data);
-     $preins = (array) json_decode($csapp->data);
-      $data['preinsurer'] = $preins['preinsurer'];
-    
     }
      if($req->file('idnecessary') != null){
         $file = $req->file('idnecessary');
@@ -143,8 +278,8 @@ class TasksController extends Controller
 
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
-
-     $csapp->data = json_encode($data);
+    $datas = $this->adddata($data,$data2);
+     $csapp->data = json_encode($datas);
 
         $csapp->save();
     

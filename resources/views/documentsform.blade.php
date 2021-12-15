@@ -20,12 +20,21 @@
                 @endif
             </div>
             <div>
+   
                 <label>Id necessary</label>
+                @if(isset($data->idnecessary))
+                <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
+                @else
                 <input class="form-control" type="file" name="idnecessary">
+                @endif
             </div>
             <div>
                 <label>Notice By</label>
+                @if(isset($data->noticeby))
+                <input class="form-control" type="file" value="{{$data->noticeby}}" name="noticeby">
+                @else
                 <input class="form-control" type="file" name="noticeby">
+                @endif
             </div>
             <div>
                 <label>Power of attorney</label>
