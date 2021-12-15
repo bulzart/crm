@@ -19,22 +19,23 @@ class TasksController extends Controller
         $data =  appointment::orderBy('name','asc')->get();
         return view('costumers',compact('data'));
     }
-    public function costumers(Request $request){
+    public function costumers(Request $request)
+    {
         $searchname = $request->searchname;
         $date1 = date('Y-m-d', strtotime($request->searchdate1));
         $n = date('Y-m-d', strtotime($request->searchdate2));
-        $date2 = date('Y-m-d',strtotime($n . "+1 days"));
-        if(!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
+        $date2 = date('Y-m-d', strtotime($n . "+1 days"));
+        if (!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
             $data = appointment::where('lname', 'like', '%' . $searchname . '%')
                 ->orWhere('name', 'like', '%' . $searchname . '%')->get();
-        }elseif(isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)){
-            $data = appointment::whereBetween('created_at',[$date1,$date2])->get();
+        } elseif (isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)) {
+            $data = appointment::whereBetween('created_at', [$date1, $date2])->get();
+        } else {
+            $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+                ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at', [$date1, $date2])->get();
         }
-        else{
-           $data = appointment::where('lname', 'like', '%' . $searchname . '%')
-           ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
-        }
-            return view('costumers', compact('data'));
+        return view('costumers', compact('data'));
+    }
 
 
 
@@ -45,7 +46,7 @@ class TasksController extends Controller
    $tasks = appointment::where('completed',0)->get();
    $costumers = appointment::all();
    $todaydate = Carbon::now()->format('m-d');
-  
+
    $birthdays = [];
    foreach($costumers as $cos){
       if(substr($cos->birthday,5) == $todaydate)
@@ -61,21 +62,21 @@ class TasksController extends Controller
       }
 
    }
-  
+
    return view('tasks',compact('taskscount','tasks','birthdays'));
   }
-  
 
-  
+
+
 	 public function documentform(Request $req){
         $data = $req->all();
-     
+
         $csapp = new appointment();
         $csapp->name = "aslkqlwe";
         $csapp->lead_id = 1;
         $csapp->lname = "qweqwe";
         $csapp->birthday = "1974-12-09";
-       
+
 
 
 
@@ -87,7 +88,7 @@ class TasksController extends Controller
 
       $filename = str_replace($file->guessClientExtension(),'.',$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
       $path = $file->storeAs('img',$filename);
-=======
+
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
      $path = $file->storeAs('img',$filename);
     $data['preinsurer'] = $path;
@@ -132,16 +133,16 @@ class TasksController extends Controller
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
      dd($data);
-     
+
 
 
         $csapp->save();
-    }
+    }}
 
 
 
 
-      
+
 
     public function ispending($object):bool{
       if($object['job'] != null && $object['email'] != null) return true;

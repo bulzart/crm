@@ -67,7 +67,7 @@
                             <select name="yearpurchase">
                                 @for($i = \Carbon\Carbon::now()->format('Y');$i>=1950;$i--)
                                     <option value="{{$i}}">{{$i}}</option>
-                            @endfor
+                                @endfor
                             </select>
                         </div>
                         <div>
