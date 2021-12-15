@@ -50,8 +50,8 @@ use Illuminate\Support\Facades\Route;
             if(appointment::find($id)->completed == 0){
                 $data = appointment::find($id);
                 $data = json_decode($data->data);
-                
-              
+
+
        return view('documentsform',compact('id','data'));}}
        else{
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
@@ -71,9 +71,6 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
 route::get('ispending',[TasksController::class,'itis']);
 
 
-    $data = \App\Models\appointment::all();
-    return view('costumers',compact('data'));
-});
 
 
 
