@@ -37,7 +37,7 @@ class TasksController extends Controller
             return view('costumers', compact('data'));
 
       }
-      
+
       public function adddata($req,$object)
       {
         $cnt = 0;
@@ -126,7 +126,7 @@ class TasksController extends Controller
         if($req['residencepermit'] != null && $req['residencepermit'] != ''){
           $object['residencepermit'] = $req['residencepermit'];
         }}
-      
+
         if(isset($req['contractstartdate'])){
         if($req['contractstartdate'] != null && $req['contractstartdate'] != ''){
           $object['contractstartdate'] = $req['contractstartdate'];
@@ -174,13 +174,13 @@ class TasksController extends Controller
 return $object;
 
 
-        
-  
-      
-          
-        
-     
-     
+
+
+
+
+
+
+
 
       }
 
@@ -210,7 +210,7 @@ return $object;
    $cnt = 0;
    $costumers = appointment::all();
    $todaydate = Carbon::now()->format('m-d');
-  
+
    $birthdays = [];
    foreach($costumers as $cos){
       if(substr($cos->birthday,5) == $todaydate)
@@ -226,12 +226,12 @@ return $object;
       }
 
    }
-  
+
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
   }
-  
 
-  
+
+
 	 public function documentform(Request $req,$id){
          $req->validate([
            'id' => 'exists:csapp,id'
@@ -241,8 +241,8 @@ return $object;
 
         $csapp = appointment::find($id);
         $data2 = (array) json_decode($csapp->data);
-       
-        
+
+
 
   if($req->file('preinsurer') != null){
       $file = $req->file('preinsurer');
@@ -294,12 +294,12 @@ return $object;
      $csapp->data = json_encode($datas);
 
         $csapp->save();
-    
+
 
   }
 
 
-      
+
 
     public function isdone($object):bool{
 

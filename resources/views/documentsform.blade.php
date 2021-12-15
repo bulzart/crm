@@ -12,20 +12,19 @@
             <div>
                 <label for="">Pre-insurer</label>
 
-                @if(isset($data->preinsurer))
-                <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
-                <input class="form-control" type="file" id="image" value="{{$data->preinsurer}}" name="preinsurer">
-                @else
-                <input class="form-control" type="file" id="image" value="{{$data->preinsurer}}" name="preinsurer" >
-                @endif
+
+                <input class="form-control" type="file" id="image" name="preinsurer" >
+
             </div>
             <div>
 
                 <label>Id necessary</label>
                 @if(isset($data->idnecessary))
-                <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
+                    <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}" target="_blank">{{$data->preinsurer}}</a>
+
+                    <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
                 @else
-                <input class="form-control" type="file" name="idnecessary" value="{{$data->idnecessary}}">
+                <input class="form-control" type="file" name="idnecessary">
                 @endif
             </div>
             <div>
@@ -33,12 +32,17 @@
                 @if(isset($data->noticeby))
                 <input class="form-control" type="file" value="{{$data->noticeby}}" name="noticeby">
                 @else
-                <input class="form-control" type="file" name="noticeby" value="{{$data->noticeby}}">
+                <input class="form-control" type="file" name="noticeby">
                 @endif
             </div>
             <div>
                 <label>Power of attorney</label>
+                @if(isset($data->powerofattorney))
                 <input class="form-control" type="file" name="powerofattorney" value="{{$data->powerofattorney}}">
+                @else
+                    <input class="form-control" type="file" name="powerofattorney">
+                    @endif
+
             </div>
         </div>
 
@@ -50,14 +54,23 @@
 
 
             <div class="hide" id="counteroffer">
+                @if(isset($data->uploadpolice))
                 <input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}">
-                <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}">
+                @else
+                    <input class="form-control" type="file" name="uploadpolice">
+                @endif
+
+                    <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}">
             </div>
 
             <div class="hide" id="newVehicle">
                 <div>
                     <label>Upload vehicle ID</label>
+                    @if(isset($data->uploadvehicleid))
                     <input class="form-control" type="file" name="uploadvehicleid" value="{{$data->uploadvehicleid}}">
+                    @else
+                        <input class="form-control" type="file" name="uploadvehicleid">
+                        @endif
                 </div>
                 <div>
                     <h6>Lesing</h6>
@@ -141,7 +154,7 @@
                 <div>
                     <label>Lenker? </label>
                     <select name="lenker">
-                        <option selected value="{{$data->lenker}}">{{$data->lanker}}</option>
+                        <option selected value="{{$data->lenker}}">{{$data->lenker}}</option>
                         <option>Yes</option>
                         <option>No</option>
                     </select>
@@ -512,7 +525,7 @@
                 <div class="d-inline">
 
                     <select name="countryCode">
-                        <option selected value="{{$data->countryCode}}">{{$data->countryCode}}</option>
+
                         <option data-countryCode="GB" value="44" selected>UK (+44)</option>
                         <option data-countryCode="US" value="1">USA (+1)</option>
                         <optgroup label="Other countries">
@@ -732,7 +745,7 @@
                             <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
                         </optgroup>
                     </select>
-                    <input type="number" name="phonenumber" value="{{$data->phonenumber}}">
+                    <input type="number" name="phonenumber" value="{{$data->phone}}">
                 </div>
                 <div>
                     <label>Email: </label>
@@ -786,7 +799,7 @@
                         $j = 100;
                         @endphp
                         @for($i = 1;$i<=100;$i++)
-                            <option selected value="{{$data->shareguaranteefund}}">{{$data->shareguaranteefund}}</option>
+{{--                           <option selected value="{{$data->shareguaranteefund}}">{{$data->shareguaranteefund}}</option>--}}
                             <option>{{$i."/".--$j}}</option>
                             @endfor
 
@@ -886,8 +899,12 @@
                 <h4>Counteroffer</h4>
                 <div>
                     <label>Upload Police</label>
+                    @if(isset($data->uploadpolice2))
                     <input type="file" name="uploadpolice2" class="form-control" value="{{$data->uploadpolice2}}">
-                    {{-- Vergleischart--}}
+                    @else
+                        <input type="file" name="uploadpolice2" class="form-control">
+                    @endif
+                        {{-- Vergleischart--}}
                     <label>Comment At Police: </label>
                     <input type="text" name="commentatpolice" value="{{$data->commentatpolice}}">
                 </div>
