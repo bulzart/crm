@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 @extends('template.navbar')
 @section('content')
-<div class="form-group">
+<div class="form-group ">
     <a class="btn btn-info" onclick="openHealth()">KK</a>
     <a class="btn btn-info" onclick="openCar()">A</a>
     <a class="btn btn-info" onclick="openFinance()">S</a>
@@ -11,7 +11,7 @@
         <div style="display: none" id="health">
             <div>
                 <label for="">Pre-insurer</label>
-                
+
                 @if(isset($data->preinsurer))
                 <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
                 <input class="form-control" type="file" id="image" value="{{$data->preinsurer}}" name="preinsurer">
