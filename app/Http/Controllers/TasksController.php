@@ -19,23 +19,22 @@ class TasksController extends Controller
         $data =  appointment::orderBy('name','asc')->get();
         return view('costumers',compact('data'));
     }
-    public function costumers(Request $request)
-    {
+    public function costumers(Request $request){
         $searchname = $request->searchname;
         $date1 = date('Y-m-d', strtotime($request->searchdate1));
         $n = date('Y-m-d', strtotime($request->searchdate2));
-        $date2 = date('Y-m-d', strtotime($n . "+1 days"));
-        if (!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
+        $date2 = date('Y-m-d',strtotime($n . "+1 days"));
+        if(!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
             $data = appointment::where('lname', 'like', '%' . $searchname . '%')
                 ->orWhere('name', 'like', '%' . $searchname . '%')->get();
-        } elseif (isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)) {
-            $data = appointment::whereBetween('created_at', [$date1, $date2])->get();
-        } else {
-            $data = appointment::where('lname', 'like', '%' . $searchname . '%')
-                ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at', [$date1, $date2])->get();
+        }elseif(isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)){
+            $data = appointment::whereBetween('created_at',[$date1,$date2])->get();
         }
-        return view('costumers', compact('data'));
-    }
+        else{
+           $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+           ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
+        }
+            return view('costumers', compact('data'));
 
       }
 
@@ -65,7 +64,7 @@ class TasksController extends Controller
    $cnt = 0;
    $costumers = appointment::all();
    $todaydate = Carbon::now()->format('m-d');
-
+  
    $birthdays = [];
    foreach($costumers as $cos){
       if(substr($cos->birthday,5) == $todaydate)
@@ -81,29 +80,11 @@ class TasksController extends Controller
       }
 
    }
-
-
-   return view('tasks',compact('taskscount','tasks','birthdays'));
-
   
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
+  }
+  
 
-
-
-	 public function documentform(Request $req){
-        $data = $req->all();
-
-        $csapp = new appointment();
-        $csapp->name = "aslkqlwe";
-        $csapp->lead_id = 1;
-        $csapp->lname = "qweqwe";
-        $csapp->birthday = "1974-12-09";
-
-
-
-
-  if($req->file('preinsurer') != null){
-=======
   
 	 public function documentform(Request $req,$id){
          $req->validate([
@@ -114,8 +95,6 @@ class TasksController extends Controller
   if(null !== $req->file('preinsurer')){
       $data1 = $data['preinsurer'];
       $file = $req->file('preinsurer');
-
-
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
       $path = $file->storeAs('img',$filename);
       $data['preinsurer'] = filter_var($path,FILTER_SANITIZE_STRING);
@@ -124,14 +103,6 @@ class TasksController extends Controller
      $preins = (array) json_decode($csapp->data);
       $data['preinsurer'] = $preins['preinsurer'];
     
-
-
-      $filename = str_replace($file->guessClientExtension(),'.',$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
-      $path = $file->storeAs('img',$filename);
-
-      $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . '.' . $file->getClientOriginalExtension();
-     $path = $file->storeAs('img',$filename);
-    $data['preinsurer'] = $path;
     }
      if($req->file('idnecessary') != null){
         $file = $req->file('idnecessary');
@@ -173,17 +144,7 @@ class TasksController extends Controller
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
 
-     dd($data);
-
-
-
-
-
      $csapp->data = json_encode($data);
-
-        $csapp->save();
-    }}
-
 
         $csapp->save();
     
@@ -191,6 +152,7 @@ class TasksController extends Controller
   }
 
 
+      
 
     public function isdone($object):bool{
 
