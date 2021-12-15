@@ -231,7 +231,7 @@
             <div>
                 <label>Nationality</label>
                 <select name="nationalityfinance">
-                    <option value="">-- select one --</option>
+                     <option value="{{$data->nationalityfinance}}" selected>{{$data->nationalityfinance}}</option>
                     <option value="afghan">Afghan</option>
                     <option value="albanian">Albanian</option>
                     <option value="algerian">Algerian</option>

@@ -283,6 +283,42 @@ class UserController extends Controller
                  $family->addmember(filter_var($req->input('fname'.$i),FILTER_SANITIZE_STRING),filter_var($req->input('lname'.$i),FILTER_SANITIZE_STRING),filter_var($req->input('birthday'.$i),FILTER_SANITIZE_STRING));
          }
          $app->family = json_encode($family->members);
+         $app->data = '{
+            "job": null,
+            "email": null,
+            "kanton": "Zürich",
+            "lenker": "Yes",
+            "comment": null,
+            "kmstand": null,
+            "society": null,
+            "insurance": "Example1",
+            "carcomment": null,
+            "preinsurer": {},
+            "countryCode": "44",
+            "leasingname": null,
+            "nationality": null,
+            "phonenumber": null,
+            "yearpurchase": "2021",
+            "deductionpart": null,
+            "martialstatus": "Married",
+            "numberofrooms": "1",
+            "paymentrhythm": "Weekly",
+            "thingscarried": null,
+            "amountpermonth": null,
+            "numberofpeople": "1",
+            "startinsurance": null,
+            "commentatpolice": null,
+            "insuranceamount": null,
+            "residencepermit": null,
+            "contractstartdate": null,
+            "firstcommissioning": null,
+            "nationalityfinance": null,
+            "employmentrelationship": "Coworkers",
+            "wishedadditionalthings": null,
+            "numberofpeopleinsurance": "1",
+            "dateofissueofdriverslicense": null,
+            "whichcompaniesshouldmakeanoffer": null
+        }';
 
          $app->save();
 
