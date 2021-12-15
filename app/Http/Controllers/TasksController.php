@@ -45,7 +45,6 @@ class TasksController extends Controller
         if($req['job'] != null && $req['job'] != ''){
           $object['job'] = $req['job'];
         }}
-
         if(isset($req['email'])){
         if($req['email'] != null && $req['email'] != ''){
           $object['email'] = $req['email'];
@@ -171,7 +170,19 @@ class TasksController extends Controller
               if($req['powerofattorney'] != null && $req['powerofattorney'] != '' ){
                 $object['powerofattorney'] = $req['powerofattorney'];
               }}
-return $object;
+              if(isset($req['uploadpolice'])){
+                if($req['uploadpolice'] != null && $req['uploadpolice'] != '' ){
+                  $object['uploadpolice'] = $req['uploadpolice'];
+                }}
+                if(isset($req['uploadpolice2'])){
+                  if($req['uploadpolice2'] != null && $req['uploadpolice2'] != '' ){
+                    $object['uploadpolice2'] = $req['uploadpolice2'];
+                  }}
+                  if(isset($req['uploadhevicleid'])){
+                    if($req['uploadhevicleid'] != null && $req['uploadhevicleid'] != '' ){
+                      $object['uploadhevicleid'] = $req['uploadhevicleid'];
+                    }}
+                 return $object;
 
 
         
