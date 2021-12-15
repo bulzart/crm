@@ -45,6 +45,7 @@ class TasksController extends Controller
         if($req['job'] != null && $req['job'] != ''){
           $object['job'] = $req['job'];
         }}
+
         if(isset($req['email'])){
         if($req['email'] != null && $req['email'] != ''){
           $object['email'] = $req['email'];
@@ -158,6 +159,18 @@ class TasksController extends Controller
         if($req['whichcompaniesshouldmakeanoffer'] != null && $req['whichcompaniesshouldmakeanoffer'] != '' ){
           $object['whichcompaniesshouldmakeanoffer'] = $req['whichcompaniesshouldmakeanoffer'];
         }}
+        if(isset($req['idnecessary'])){
+          if($req['idnecessary'] != null && $req['idnecessary'] != '' ){
+            $object['idnecessary'] = $req['idnecessary'];
+          }}
+          if(isset($req['noticeby'])){
+            if($req['noticeby'] != null && $req['noticeby'] != '' ){
+              $object['noticeby'] = $req['noticeby'];
+            }}
+            if(isset($req['powerofattorney'])){
+              if($req['powerofattorney'] != null && $req['powerofattorney'] != '' ){
+                $object['powerofattorney'] = $req['powerofattorney'];
+              }}
 return $object;
 
 
@@ -224,8 +237,7 @@ return $object;
            'id' => 'exists:csapp,id'
          ]);
 
-        $data = (array) $req->all();
-       
+        $data = $req->all();
 
         $csapp = appointment::find($id);
         $data2 = (array) json_decode($csapp->data);
@@ -233,7 +245,6 @@ return $object;
         
 
   if($req->file('preinsurer') != null){
-      $data1 = $data['preinsurer'];
       $file = $req->file('preinsurer');
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
       $path = $file->storeAs('img',$filename);
@@ -279,6 +290,7 @@ return $object;
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
     $datas = $this->adddata($data,$data2);
+    dd($datas);
      $csapp->data = json_encode($datas);
 
         $csapp->save();
