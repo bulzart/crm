@@ -58,7 +58,7 @@
 
 
             <div class="" id="counteroffer">
-                
+
             </div>
 
             <div  id="newVehicle">
@@ -727,7 +727,7 @@
                             @for($i = 1;$i<=30;$i++)
                                 <option selected value="{{$data->numberofpeopleinsurance}}">{{$data->numberofpeopleinsurance}}</option>
                                 <option>{{$i}}</option>
-                                @endfor
+                            @endfor
                         </select>
                     </div>
                 </div>
@@ -770,11 +770,19 @@
     }
 
     function openCounterOffer() {
+
+
+        if(cnt % 2 == 1)
+        document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))<input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}"> @else <input class="form-control" type="file" name="uploadpolice">   @endif <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}">';
+        else
+        document.getElementById('counteroffer').innerHTML = "";
+
  
         if(cnt % 2 == 1){
         document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))<input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}"> @else <input class="form-control" type="file" name="uploadpolice">   @endif <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}">';}
         else{
         document.getElementById('counteroffer').innerHTML = "";}
+
         cnt++;
         vehcnt = 1;
         document.getElementById('newVehicle').innerHTML = "";
