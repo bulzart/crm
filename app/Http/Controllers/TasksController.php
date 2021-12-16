@@ -199,23 +199,24 @@ class TasksController extends Controller
     public function tasks(){
       $cnt = 0;
       $cnt1 = 0;
-   $tasks = appointment::where('completed',0)->get();
- $realopen = [];
- $pending = [];
- $opencnt = 0;
- $pendingcnt = 0;
-   foreach($tasks as $task){
-   if(!$this->isdone($task)){
-     $pending[$cnt] = $task;
-     $cnt++;
-     $pendingcnt++;
+      $tasks = appointment::where('completed',0)->get();
+      $realopen = [];
+      $pending = [];
+      $opencnt = 0;
+      $pendingcnt = 0;
+
+       foreach($tasks as $task){
+       if(!$this->isdone($task)){
+         $pending[$cnt] = $task;
+         $cnt++;
+         $pendingcnt++;
    }
-   if($task->data == null){
-     $realopen[$cnt1] = $task;
-     $cnt1++;
-     $opencnt++;
-   }
-  }
+       if($task->data == null){
+         $realopen[$cnt1] = $task;
+         $cnt1++;
+         $opencnt++;
+        }
+       }
 
 
    $cnt = 0;
