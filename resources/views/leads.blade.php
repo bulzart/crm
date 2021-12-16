@@ -1,6 +1,13 @@
 @if(Auth::guard('admins')->user()->role == 'salesmenager' || Auth::guard('admins')->user()->role == 'admin')
 @extends('template.navbar')
 @section('content')
+    @if(\Session::has('success'))
+        <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+
+            {!! \Session::get('success') !!}
+        </div>
+    @endif
+
 
 <div class="row">
 <div class="col-md-8 col-lg-8 col-sm-12 col-xs-8 col-12">

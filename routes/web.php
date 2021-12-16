@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
     route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dates',[UserController::class,'dates'])->name('dates');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
+    route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
     route::get('reject/{id}',[UserController::class,'reject'])->name('reject'); //refuzon appointment admini
     route::post('importexcel',[UserController::class,'importexcel'])->name('importexcel');
@@ -67,6 +68,7 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
        return view('costumers',compact('data'));
     });
 route::get('ispending',[TasksController::class,'itis']);
+
 
 
 
