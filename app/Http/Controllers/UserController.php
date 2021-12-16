@@ -184,6 +184,7 @@ class UserController extends Controller
           $lead->admin_id = (int) $req->input('admin');
           $lead->assigned = 1;
           $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
+          $lead->appointmentdate = filter_var($req->input('appointmentdate'),FILTER_SANITIZE_STRING);
           $lead->save();
           return redirect()->route('leads');
     }
@@ -333,6 +334,7 @@ public function timenow(){
          ]);
 
          $appointments = lead::where('appointmentdate',date('Y-m-d', strtotime($req->input('fbydate'))))->where('admin_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->get();
+
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
 
@@ -394,6 +396,7 @@ public function timenow(){
         else{
 
             $appointments = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+
         }
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
