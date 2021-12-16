@@ -10,17 +10,20 @@
         @csrf
         <div style="display: none" id="health">
             <div>
-                <label for="">Pre-insurer</label>
+            <label>Preinsurer</label>
+                @if(isset($data->preinsurer))
+                    <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
 
-
-                <input class="form-control" type="file" id="image" name="preinsurer" >
-
+                    <input class="form-control" type="file" value="{{$data->preinsurer}}" name="preinsurer">
+                @else
+                <input class="form-control" type="file" name="idnecessary">
+                @endif
             </div>
             <div>
 
                 <label>Id necessary</label>
                 @if(isset($data->idnecessary))
-                    <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}" target="_blank">{{$data->preinsurer}}</a>
+                    <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}" target="_blank">{{$data->idnecessary}}</a>
 
                     <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
                 @else
@@ -47,20 +50,15 @@
         </div>
 
         <br>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <div style="display: none" id="car">
             <input onclick="openCounterOffer()" class="btn btn-primary" type="button" value="Counter">
             <input onclick="openNewVehicle()" class="btn btn-secondary" type="button" value="New Vehicle">
             <hr>
 
 
-            <div class="hide" id="counteroffer">
-                @if(isset($data->uploadpolice))
-                <input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}">
-                @else
-                    <input class="form-control" type="file" name="uploadpolice">
-                @endif
-
-                    <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}">
+            <div class="" id="counteroffer">
+                
             </div>
 
             <div class="hide" id="newVehicle">
@@ -982,6 +980,7 @@
     </form>
 </div>
 <script>
+    cnt = 1;
     function openHealth() {
         document.getElementById("health").style.display = "block";
         document.getElementById("car").style.display = "none";
@@ -1012,9 +1011,12 @@
     }
 
     function openCounterOffer() {
-        document.getElementById('counteroffer').classList.toggle("hide");
-
-
+ 
+        if(cnt % 2 == 1)
+        document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))<input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}"> @else <input class="form-control" type="file" name="uploadpolice">   @endif <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}">';
+        else
+        document.getElementById('counteroffer').innerHTML = "";
+        cnt++;
     }
 
     function openNewVehicle() {
