@@ -37,7 +37,7 @@ class TasksController extends Controller
             return view('costumers', compact('data'));
 
       }
-
+      
       public function adddata($req,$object)
       {
         $cnt = 0;
@@ -69,6 +69,9 @@ class TasksController extends Controller
         if($req['preinsurer'] != null && $req['preinsurer'] != ''){
           $object['preinsurer'] = $req['preinsurer'];
         }}
+        else{
+          $object['preinsurer'] = $req['preinsurert'];
+        }
         if(isset($req['leasingname'])){
         if($req['leasingname'] != null && $req['leasingname'] != ''){
           $object['leasingname'] = $req['leasingname'];
@@ -125,7 +128,7 @@ class TasksController extends Controller
         if($req['residencepermit'] != null && $req['residencepermit'] != ''){
           $object['residencepermit'] = $req['residencepermit'];
         }}
-
+      
         if(isset($req['contractstartdate'])){
         if($req['contractstartdate'] != null && $req['contractstartdate'] != ''){
           $object['contractstartdate'] = $req['contractstartdate'];
@@ -158,40 +161,60 @@ class TasksController extends Controller
         if($req['whichcompaniesshouldmakeanoffer'] != null && $req['whichcompaniesshouldmakeanoffer'] != '' ){
           $object['whichcompaniesshouldmakeanoffer'] = $req['whichcompaniesshouldmakeanoffer'];
         }}
+    
         if(isset($req['idnecessary'])){
           if($req['idnecessary'] != null && $req['idnecessary'] != '' ){
             $object['idnecessary'] = $req['idnecessary'];
           }}
+          else{
+            $object['idnecessary'] = "";
+          }
           if(isset($req['noticeby'])){
             if($req['noticeby'] != null && $req['noticeby'] != '' ){
               $object['noticeby'] = $req['noticeby'];
             }}
+    
+            else{
+              $object['noticeby'] = "";
+            }
             if(isset($req['powerofattorney'])){
               if($req['powerofattorney'] != null && $req['powerofattorney'] != '' ){
                 $object['powerofattorney'] = $req['powerofattorney'];
               }}
+              {
+                $object['powerofattorney'] = "";
+              }
               if(isset($req['uploadpolice'])){
                 if($req['uploadpolice'] != null && $req['uploadpolice'] != '' ){
                   $object['uploadpolice'] = $req['uploadpolice'];
                 }}
+                else{
+                  $object['uploadpolice'] = "";
+                }
                 if(isset($req['uploadpolice2'])){
                   if($req['uploadpolice2'] != null && $req['uploadpolice2'] != '' ){
                     $object['uploadpolice2'] = $req['uploadpolice2'];
                   }}
+                  else{
+                    $object['uploadpolice2'] = "";
+                  }
                   if(isset($req['uploadhevicleid'])){
                     if($req['uploadhevicleid'] != null && $req['uploadhevicleid'] != '' ){
                       $object['uploadhevicleid'] = $req['uploadhevicleid'];
                     }}
+                    else{
+                      $object['uploadhevicleid'] = "";
+                    }
                  return $object;
 
 
-
-
-
-
-
-
-
+        
+  
+      
+          
+        
+     
+     
 
       }
 
@@ -221,7 +244,7 @@ class TasksController extends Controller
    $cnt = 0;
    $costumers = appointment::all();
    $todaydate = Carbon::now()->format('m-d');
-
+  
    $birthdays = [];
    foreach($costumers as $cos){
       if(substr($cos->birthday,5) == $todaydate)
@@ -237,23 +260,24 @@ class TasksController extends Controller
       }
 
    }
-
+  
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
   }
+  
 
-
-
+  
 	 public function documentform(Request $req,$id){
          $req->validate([
            'id' => 'exists:csapp,id'
          ]);
 
         $data = $req->all();
+     
 
         $csapp = appointment::find($id);
         $data2 = (array) json_decode($csapp->data);
-
-
+       
+        
 
   if($req->file('preinsurer') != null){
       $file = $req->file('preinsurer');
@@ -301,16 +325,15 @@ class TasksController extends Controller
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
     $datas = $this->adddata($data,$data2);
-    dd($datas);
+ 
      $csapp->data = json_encode($datas);
-
         $csapp->save();
-
+    
 
   }
 
 
-
+      
 
     public function isdone($object):bool{
 
