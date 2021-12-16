@@ -1,7 +1,7 @@
 @extends('template.navbar')
 @section('content')
 <div>
-    Open tasks<br>
+<h5 class="h5 mt-2">Open tasks<h5>
 <h4 class="text-danger">{{$opencnt}}</h4>
 @foreach($realopen as $task)
 {{$task->name}}
@@ -12,7 +12,7 @@ Status:{{$task->status}}
 @endforeach
 </div>
 <div>
-    Pending<br>
+    <h5 class="h5 mt-2">Pending<h5>
     <h4 class="text-danger">{{$pendingcnt}}</h4>
 @foreach($pending as $task)
 {{$task->name}}
@@ -27,8 +27,9 @@ Status:{{$task->status}}
 Costumer birthdays today:
 <br>
 @foreach($birthdays as $birth)
-{{$birth['name']}} {{$birth['lname']}}<br>
+{{$birth['name']}} {{$birth['lname']}}
 {{$birth['birthday']}} ({{$birth['age']}} years old)
+<br>
 @endforeach
 </div>
 @endsection

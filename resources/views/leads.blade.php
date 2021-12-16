@@ -4,6 +4,9 @@
 
 <div class="row">
 <div class="col-md-8 col-lg-8 col-sm-12 col-xs-8 col-12">
+<div class="text-center">
+    <h5 class="h5">Open leads</h5>
+</div>
 <table>
     <tr>
         <th colspan="2">ID</th>
@@ -21,8 +24,8 @@
         <td>@if($l->campaign != null){{$l->campaign->name}}@else Registered @endif</td>
 
 
-       <td><a href="{{route('alead',$l->id)}}" class="btn text-light" style="background-color: #4D3FD3;">Assign</a><td>
-       <td><a href="{{route('dlead',$l->id)}}" class="btn text-light" style="background-color: #4D3FD3;">Delete</a><td>
+       <td><a href="{{route('alead',$l->id)}}" class="btn btn-primary text-light">Appointment</a><td>
+       <td><a href="{{route('dlead',$l->id)}}" class="btn btn-primary text-light">Delete</a><td>
 
 </tr>
 @endforeach
