@@ -237,7 +237,7 @@ class UserController extends Controller
             // Nexmo::message()->send([
             // 'to' => '38345626643',
             // 'from' => '38345917726',
-            // 'text' => '1234']);
+            // 'text' => '12345']);
             $user->save();
             \Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
             return redirect()->route('dashboard');
