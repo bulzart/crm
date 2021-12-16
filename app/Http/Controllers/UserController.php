@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\LeadsImport;
 use App\Models\Admins;
+use App\Models\Deletedlead;
 use App\Models\rejectedlead;
 use App\Models\User;
 use App\Mail\confirmcode;
@@ -145,11 +146,29 @@ class UserController extends Controller
     }
 
     public function dlead($id){
-        lead::where('id',$id)->delete();
-        return redirect()->route('leads')->with('deleted','Lead was deleted successfully!');
+     //   lead::where('id',$id)->delete();
+        $leads = lead::find($id);
+        return view('deletedlead',compact('leads'));
+    }
+    public function deletedlead(Request $request,$id){
+        $leads = lead::find($id);
+        $deletedlead = new Deletedlead();
+
+        $deletedlead->name = $leads->name;
+        $deletedlead->count = $leads->count;
+        $deletedlead->date = $leads->created_at;
+        $deletedlead->reason = $request->reason;
+        $deletedlead->comment = $request->comment;
+        $deletedlead->address = $leads->address;
+
+        $deletedlead->save();
+
+        $leads->delete();
+        return redirect()->route('leads')->with('success','Lead Deleted Successfuly');
+
     }
 
-  
+
 
 
   public function insertappointment(){
