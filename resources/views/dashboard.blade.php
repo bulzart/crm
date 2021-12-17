@@ -1,21 +1,5 @@
 
-@if(Auth::guard('admins')->user()->confirmed == 0)
-<head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body style="background: #f8f8f8;">
-<div class="d-flex justify-content-center align-items-center container">
-    <form action="{{route('confirmcode')}}" method="post">
-        @csrf
-    <div class="card py-5 px-3">
-        <h5 class="m-0">Email verification</h5><span class="mobile-text">Enter the code we just send on your email <b class="text-danger">{{Auth::guard('admins')->user()->email}}</b></span>
-        <div class="d-flex flex-row mt-5"><input type="text" name="c1" class="form-control" autofocus=""><input type="text" name="c2" class="form-control"><input type="text" name="c3" class="form-control"><input type="text" name="c4" class="form-control"></div>
-<input type="submit" class="btn btn-success mt-2" value="Weiter">
-    </div>
-</div>
-</form>
-</body>
-@else
+
 <head>
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <style>
@@ -262,7 +246,23 @@ a:link{
 <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-
+@if(Auth::guard('admins')->user()->confirmed == 0)
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body style="background: #f8f8f8;">
+<div class="d-flex justify-content-center align-items-center container">
+    <form action="{{route('confirmcode')}}" method="post">
+        @csrf
+    <div class="card py-5 px-3">
+        <h5 class="m-0">Email verification</h5><span class="mobile-text">Enter the code we just send on your email <b class="text-danger">{{Auth::guard('admins')->user()->email}}</b></span>
+        <div class="d-flex flex-row mt-5"><input type="text" name="c1" class="form-control" autofocus="" style="outline: none; border:none; border-width:1px; border-bottom: 2px solid gray; border-radius: 0"><input type="text" style="outline: none; border:none; border-width:1px; border-bottom: 2px solid gray; border-radius: 0" name="c2" class="form-control"><input type="text" style="outline: none; border:none; border-width:1px; border-bottom: 2px solid gray; border-radius: 0" name="c3" class="form-control"><input type="text" name="c4" style="outline: none; border:none; border-width:2px; border-bottom: 2px solid gray; border-radius: 0" class="form-control"></div>
+<button type="submit" class="btn mt-2" style="background: #00FF7F">Weiter <i class="fas fa-arrow-right"></i></button>
+    </div>
+</div>
+</form>
+</body>
+@else
 
         <body id="body-pd">
 <div class="row">
@@ -306,10 +306,12 @@ a:link{
       </div>
     <div class="col-12">
     <h3>Overview</h3>
-    <div class="col-12">
+    <div class="row">
+    <div class="col-3 col-md-3">
 Completed
-    <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 75%">75%</div>
+    <div class="pro1" style="background: #BDC1CC 0% 0% no-repeat padding-box; min-width: 120px; min-height: 60px; opacity: 1;">
+   
+</div>
 </div>
 Done cases
 <div class="progress">
@@ -477,6 +479,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
 // Your code to run since DOM is loaded and ready
 });
+
 </script>
 
 
