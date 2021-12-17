@@ -23,12 +23,15 @@
 
             <div class="form-outline mb-4">
             <label class="form-label" for="typeEmailX-2">Email</label>
+            <div class="d-inline d-flex">
+            <i class="far fa-envelope mt-2" style="font-size: 26px; color:#CC7722; margin-right: 7px;"></i>
               <input type="email" id="typeEmailX-2" name="email" class="form-control text-center form-control-lg" />
             </div>
-
-            <div class="form-outline mb-4">
+</div>
+            <div class="form-outline" style="margin-bottom: 45px;">
             <label class="form-label" for="typePasswordX-2">Passwort</label>
             <div class="d-inline d-flex">
+            <i class="fas fa-lock mt-2" style="font-size: 26px; color:#CC7722; margin-right: 7px;"></i>
               <input type="password" id="typePasswordX-2" name="password" class="form-control text-center form-control-lg" />
               <i onclick="showpw();return false;"class="far fa-eye mt-3 mx-1" style="cursor:pointer;" id="show"></i></div>
             </div>
@@ -36,7 +39,7 @@
             <!-- Checkbox -->
 
 
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Anmelden <i class="fas fa-arrow-right"></i></button>
+            <button class="btn btn-success btn-lg btn-block col-12" type="submit">Anmelden <i class="fas fa-arrow-right"></i></button>
 
 
 
