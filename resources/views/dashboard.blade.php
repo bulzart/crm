@@ -1,5 +1,4 @@
 
-
 <head>
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <style>
@@ -310,7 +309,7 @@ a:link{
     <div class="col-3 col-md-3">
 Completed
     <div class="pro1" style="background: #BDC1CC 0% 0% no-repeat padding-box; min-width: 120px; min-height: 60px; opacity: 1;">
-   
+
 </div>
 </div>
 Done cases
