@@ -69,6 +69,10 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
     });
 route::get('ispending',[TasksController::class,'itis']);
 
+route::get('test',function (){
+   return view('confirm_sms');
+});
+
 
 
 
