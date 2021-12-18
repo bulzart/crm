@@ -69,9 +69,15 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
 
         $data = \App\Models\appointment::all();
        return view('costumers',compact('data'));
-    });
+    })->middleware(\App\Http\Middleware\Firsttime::class);
 route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
+
+route::get('smsconfirm',function (){
+    return view('confirm_sms');
+});
+
+route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
 
 
 
