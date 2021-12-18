@@ -1,13 +1,6 @@
 @extends('template.navbar')
 @section('content')
 
-
-    <div class="form-group">
-
-        <label>Termin Stattgefunden</label><br>
-        <input type="text" name="reason" placeholder="Reason">
-
-    </div>
     <br>
     <div class="form-group">
         @if(Session::has('success'))
