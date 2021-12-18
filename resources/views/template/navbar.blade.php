@@ -8,7 +8,7 @@
 :root {
     --header-height: 3rem;
     --nav-width: 68px;
-    --first-color: #4723D9;
+    --first-color: #fff;
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
     --body-font: 'Nunito', sans-serif;
@@ -287,7 +287,7 @@ a:link{
                     @if(Auth::guard('admins')->user()->role == 'backoffice' ||  Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close"></i><span class="nav_name">Deposit</span> </a> @endif
                     @if(Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance' && Auth::guard('admins')->check())<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper"></i><span class="nav_name">Leads</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt"></i><span class="nav_name">Dates</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt"></i><span class="nav_name">Employees</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name">Employees</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h"></i><span class="nav_name">Prov.system</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie"></i><span class="nav_name">Statistics</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'finance')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie"></i><span class="nav_name">Statistics</span> </a>@endif

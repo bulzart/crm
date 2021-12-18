@@ -24,7 +24,7 @@
             <div class="form-outline mb-4">
             <label class="form-label" for="typeEmailX-2">Email</label>
             <div class="d-inline d-flex">
-            <i class="far fa-envelope mt-2" style="font-size: 26px; color:#CC7722; margin-right: 7px;"></i>
+            <i class="far fa-envelope mt-2" style="font-size: 26px; color:#CC7722; margin-right: 5px;"></i>
               <input type="email" id="typeEmailX-2" name="email" class="form-control text-center form-control-lg" />
             </div>
 </div>
@@ -39,7 +39,7 @@
             <!-- Checkbox -->
 
 
-            <button class="btn btn-success btn-lg btn-block col-12" type="submit">Anmelden <i class="fas fa-arrow-right"></i></button>
+            <button class="btn btn-success btn-lg btn-block col-12" style="background: #3CD598 0% 0%; border:none;" type="submit">Anmelden <i class="fas fa-arrow-right"></i></button>
 
 
 
