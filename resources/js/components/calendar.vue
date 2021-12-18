@@ -3,34 +3,13 @@
 <span class="fs-5">Termin</span>     
    <section class="show-mobile" id="week-cal" style="display: block;">
         <div class="weekly-calendarr">
-            <div class="row text-center mx-3" >
-                  <div class="owl-carousel owl-theme">
-      <div v-for="item in 11" class="item">
-  
-            <div class="col g-0">
-                    <div class=" this-month">
-                 
-                        <span class="this-month text-black"></span> <br>
-                   
-                        <span class="dot eventt">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6">
-                                <circle id="Ellipse_55" data-name="Ellipse 55" cx="3" cy="3" r="3" fill="#a3dda7" />
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-       
+            <div class="text-center mx-3" >
+    <div id="owl-demo" class="owl-carousel owl-theme">
+ 
+  <div v-for="item in list" class="item text-black">{{item.day}}</div>
 
-      </div>
-
-
-
-
-    </div>
-              
-   
-  
-       
+ 
+</div>
             </div>
             <div class="mt-4">
             <div v-for="tod in today" class="col-12 col-md-12  mb-2 text-white" style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: point;" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
@@ -68,38 +47,18 @@
 
     var a = new Date();
     this.sod = a.getDay();
-
-this.date_function(),
-this.rritedaten();
+ 
+       
+        
+this.date_function();
+  axios.get('vuedate').then(
+        (response) => { this.list = response.data;}
+      );
   axios.get('todayappointments').then(
         (response) => { this.today = response.data;}
       );
         },
-        computed:{
-rritedaten:function(){
 
-          for(var i = 0; i<= 365; i++){
-          if(this.day < 31){
-             this.day++;
-         }
-         else if(this.day == 31){
-             this.day = 0; this.month++;
-         }
-         if(this.month > 10){
-             if(this.day == 31){
-                 this.month = 0;
-                 this.year++;
-                 this.day = 0;
-             }
-         }
-list[i][0] = this.day;
-list[i][1] = this.month;
-list[i][2] = this.year;
-            }
-return list;
-        }
-       
-        },
         data(){
             return{
                 today: null,
@@ -108,13 +67,14 @@ return list;
                 day: null,
                 year: null,
                 todayd: null,
-                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'],
                 sot: null,
                 sod: null,
-                list: []
+                list: null
 
             }
         },
+   
         methods:{
   date_function: function () {
    

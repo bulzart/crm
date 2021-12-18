@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Name\FullyQualified;
 
 class TasksController extends Controller
 {
@@ -23,6 +24,38 @@ class TasksController extends Controller
       else{
         return $data = lead::where('completed',0)->where('appointmentdate',$req->date)->get();
       }
+    }
+
+    public function vuedate(){
+      $day = Carbon::now()->format('d');
+      $month = Carbon::now()->format('m');
+      $year = Carbon::now()->format('Y');
+      $fullcalendar = [];
+      $br = 1;
+$dayofweek = 6;
+$months = $long = array(
+  'January', 
+  'February', 
+  'March', 
+  'April', 
+  'May', 
+  'June', 
+  'July', 
+  'August', 
+  'September', 
+  'October', 
+  'November', 
+  'December'
+);
+
+      for($i = 0; $i <= 365; $i++){
+        $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y/m/d');
+        $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
+        $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
+        $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
+      }
+     return $fullcalendar;
+     
     }
 
     public function searchword(){
