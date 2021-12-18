@@ -5,12 +5,13 @@
         <div class="weekly-calendarr">
             <div class="row text-center mx-3" >
                   <div class="owl-carousel owl-theme">
-      <div v-for="item in darray" class="item">
-          {{returnplus()}}
+      <div v-for="item in 11" class="item">
+  
             <div class="col g-0">
                     <div class=" this-month">
-
+                 
                         <span class="this-month text-black"></span> <br>
+                   
                         <span class="dot eventt">
                             <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6">
                                 <circle id="Ellipse_55" data-name="Ellipse 55" cx="3" cy="3" r="3" fill="#a3dda7" />
@@ -18,6 +19,8 @@
                         </span>
                     </div>
                 </div>
+       
+
       </div>
 
 
@@ -62,17 +65,41 @@
     export default {
         
         mounted() {
-  
-            
+
+    var a = new Date();
+    this.sod = a.getDay();
+
 this.date_function(),
+this.rritedaten();
   axios.get('todayappointments').then(
         (response) => { this.today = response.data;}
       );
+        },
+        computed:{
+rritedaten:function(){
 
-
-    
+          for(var i = 0; i<= 365; i++){
+          if(this.day < 31){
+             this.day++;
+         }
+         else if(this.day == 31){
+             this.day = 0; this.month++;
+         }
+         if(this.month > 10){
+             if(this.day == 31){
+                 this.month = 0;
+                 this.year++;
+                 this.day = 0;
+             }
+         }
+list[i][0] = this.day;
+list[i][1] = this.month;
+list[i][2] = this.year;
+            }
+return list;
         }
-        ,
+       
+        },
         data(){
             return{
                 today: null,
@@ -81,7 +108,11 @@ this.date_function(),
                 day: null,
                 year: null,
                 todayd: null,
-                darray: [1,2,3,4,56,7,8,9]
+                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                sot: null,
+                sod: null,
+                list: []
+
             }
         },
         methods:{
@@ -98,21 +129,12 @@ this.date_function(),
      
         },
 
-        returnplus(){
-         if(this.day != 31){
-             this.day++;
-         }
-         else{
-             this.day = 0; this.month++;
-         }
-         if(this.month > 10){
-             if(this.day == 31){
-                 this.month = 0;
-                 this.year++;
-                 this.day = 0;
-             }
-         }
-            console.log(this.day,this.month,this.year);       
+
+        handleClick(click){
+          this.sot = click.target.value;
+           axios.get('todayappointments?date='+ sot).then(
+        (response) => { this.today = response.data;}
+      );
         }
         }
     }

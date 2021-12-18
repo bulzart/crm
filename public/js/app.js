@@ -5302,13 +5302,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
 
-    this.date_function(), axios.get('todayappointments').then(function (response) {
+    var a = new Date();
+    this.sod = a.getDay();
+    this.date_function(), this.rritedaten();
+    axios.get('todayappointments').then(function (response) {
       _this.today = response.data;
     });
+  },
+  computed: {
+    rritedaten: function rritedaten() {
+      for (var i = 0; i <= 365; i++) {
+        if (this.day < 31) {
+          this.day++;
+        } else if (this.day == 31) {
+          this.day = 0;
+          this.month++;
+        }
+
+        if (this.month > 10) {
+          if (this.day == 31) {
+            this.month = 0;
+            this.year++;
+            this.day = 0;
+          }
+        }
+
+        list[i][0] = this.day;
+        list[i][1] = this.month;
+        list[i][2] = this.year;
+      }
+
+      return list;
+    }
   },
   data: function data() {
     return {
@@ -5318,7 +5350,10 @@ __webpack_require__.r(__webpack_exports__);
       day: null,
       year: null,
       todayd: null,
-      darray: [1, 2, 3, 4, 56, 7, 8, 9]
+      days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      sot: null,
+      sod: null,
+      list: []
     };
   },
   methods: {
@@ -5330,23 +5365,13 @@ __webpack_require__.r(__webpack_exports__);
       this.month = parseInt(formatted_date.slice(5, 7));
       this.day = parseInt(formatted_date.slice(8, 10));
     },
-    returnplus: function returnplus() {
-      if (this.day != 31) {
-        this.day++;
-      } else {
-        this.day = 0;
-        this.month++;
-      }
+    handleClick: function handleClick(click) {
+      var _this2 = this;
 
-      if (this.month > 10) {
-        if (this.day == 31) {
-          this.month = 0;
-          this.year++;
-          this.day = 0;
-        }
-      }
-
-      console.log(this.day, this.month, this.year);
+      this.sot = click.target.value;
+      axios.get('todayappointments?date=' + sot).then(function (response) {
+        _this2.today = response.data;
+      });
     }
   }
 });
@@ -28122,11 +28147,8 @@ var render = function () {
             _c(
               "div",
               { staticClass: "owl-carousel owl-theme" },
-              _vm._l(_vm.darray, function (item) {
+              _vm._l(11, function (item) {
                 return _c("div", { staticClass: "item" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(_vm.returnplus()) + "\n            "
-                  ),
                   _c("div", { staticClass: "col g-0" }, [
                     _c("div", { staticClass: " this-month" }, [
                       _c("span", { staticClass: "this-month text-black" }),
