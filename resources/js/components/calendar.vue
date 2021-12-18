@@ -6,7 +6,7 @@
             <div class="text-center mx-3" >
     <div id="owl-demo" class="owl-carousel owl-theme">
  
-  <div v-for="item in list" class="item text-black">{{item.day}}</div>
+  <div v-for="item in 366" class="item text-black">{{list[366]}}</div>
 
  
 </div>
