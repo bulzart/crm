@@ -19,6 +19,8 @@ class Firsttime
     {
         if (Auth::guard('admins')->user()->firsttime == 1){
             return redirect('smsconfirm');
+        }elseif (Auth::guard('admins')->user()->confirmed == 0){
+            return redirect()->route('confirmsmscode');
         }
         else{
         return $next($request);
