@@ -257,7 +257,7 @@ class UserController extends Controller
         if($pin === $user->pin){
             $user->confirmed = 1;
             $user->save();
-            return redirect()->back();
+            return redirect()->route('dashboard');
         }
         else{
             return redirect()->back()->with('notauth','PIN war falsch');
