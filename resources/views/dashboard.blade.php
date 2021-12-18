@@ -1,5 +1,4 @@
-
-<head>
+<head xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
@@ -303,7 +302,6 @@
 
 <body id="body-pd">
     <div class="row">
-    
         <div class="col-md-1 col-lg-1 col-xs-2 col-sm-2">
             <header class="header" id="header">
                 <div class="header_toggle" id="qele"><i class='bx bx-menu' id="header-toggle"></i> </div>
@@ -331,60 +329,6 @@
                     </div>
 
                 </nav>
-
-    <div class="col-3 col-md-3">
-Completed
-    <div class="pro1" style="background: #BDC1CC 0% 0% no-repeat padding-box; min-width: 120px; min-height: 60px; opacity: 1;">
-
-</div>
-</div>
-Done cases
-<div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 45%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">45%</div>
-</div>
-Open cases
-<div class="progress">
-  <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 97%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"> 97%</div>
-</div>
-    </div>
-    </div>
-
-    <div class="mt-2 col-12">
-        <div class="justify-content-end d-flex">
-    <form action="{{route('fbydate')}}" method="post">
-        @csrf
-
-      <input type="date" name="fbydate" class="">
-      <input type="submit" class="btn btn-primary" value="Filter">
-
-        </form>
-</div>
-    <h3>Today appointments</h3>
-    @foreach($appointments as $app)
-    <button type="button" class="btn btn-primary mb-1" data-bs-toggle="modal" data-bs-target="#{{$app->slug}}">
-  Go
-</button>
-<div class="modal fade" id="{{$app->slug}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content bg-light">
-        <div class="d-flex justify-content-end">
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
-      <div class="modal-body">
-      <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q={{$app->address}},%20{{$app->location}}&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><style>.mapouter{position:relative;text-align:right;height:auto;width:auto;}</style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width: auto;}</style></div></div>
-        <div class="text-center">
-        <h3>{{$app->name}} {{$app->lname}}</h3>
-
-        <i class="fas fa-map-marker-alt"></i>
-      <h5 class="text-secondary">{{$app->address}},{{$app->location}}</h5>
-
-        <div class="row mt-5">
-            <div class="col-md-6 col-6">
-            <i class="fas fa-users" style="font-size:38px;"></i>
-            <br>
-            <span>{{$app->count}}<span>
-            People
-
             </div>
             <!--Container Main start-->
 
@@ -414,7 +358,7 @@ Open cases
                         </div>
                         <div class="col-4 col-md-4">
                             Pending cases
-                          
+
                             <div id="pro1">
                             <div class="justify-content-end text-end">
                                     <div class="icon-div">
@@ -430,7 +374,7 @@ Open cases
                         <div class="col-4 col-md-4">
                             Done cases
                             <div id="done1">
-                                
+
                             <div class="justify-content-end text-end">
                                     <div class="icon-div">
                                     <a href="{{route('tasks')}}"><i class="bi bi-three-dots-vertical the-wrap2 mt-2 text-white" style="font-size: 22px;"></i></a>
@@ -445,7 +389,7 @@ Open cases
                     </div>
                 </div>
 
-            
+
             </div>
 
 
@@ -453,6 +397,7 @@ Open cases
        <div class="col-md-6 col-sm-6 col-12">
           <calendar></calendar>
     </div>
+
             <div class="col-md-6 col-sm-6 col-12 row">
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                 <div class="text-center text-white p-2" style="background: #792765; border-radius: 12px;">
@@ -485,6 +430,11 @@ Open cases
                     </div>
                 </div>
     </div>
+                <div class="btninsertapp">
+                    <a href="{{route('insertappointment')}}">
+                        <button type="submit">+</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -542,9 +492,9 @@ $(document).ready(function() {
             loop: false,
             center: false,
             nav: false,
-        
+
             infinite: false,
-            
+
             navText: [
                 "<i class='bi bi-chevron-left'></i>",
                 "<i class='bi bi-chevron-right'></i>"
