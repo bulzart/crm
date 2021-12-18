@@ -1,0 +1,48 @@
+#pro1{
+background: #BDC1CC 0% 0% no-repeat padding-box;min-height: 145px; opacity: 1;
+border-radius: 10px;
+border-top-right-radius: 15px;
+}
+#done1{
+    background: #00c78c 0% 0% no-repeat padding-box; min-height: 145px; opacity: 1;
+    border-radius: 10px;
+border-top-right-radius: 15px;
+}
+.text-black{
+    font-color: #000;
+}
+#app{
+    border-left: 1px solid black;
+
+
+}
+#open1{
+background: #ffbe6a 0% 0% no-repeat padding-box;min-height: 145px; opacity: 1;
+border-radius: 10px;
+border-top-right-radius: 15px;
+}
+.the-wrap {
+    background-color: #ff8c00;
+    padding-left: 25px;
+    padding-bottom: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 75px;
+}
+.the-wrap1{
+    background-color: #87889c;
+    padding-left: 25px;
+    padding-bottom: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 75px;
+}
+.the-wrap2{
+    background-color: #00ab66;
+    padding-left: 25px;
+    padding-bottom: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 75px;
+}
+#todapp{
+    border-radius: 10px;
+    background: #00ab66;
+}

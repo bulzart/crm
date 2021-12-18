@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admins;
 use App\Models\appointment;
+use App\Models\lead;
 use App\Models\notification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,6 +15,14 @@ class TasksController extends Controller
 {
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
+    }
+    public function today(Request $req){
+      if(!isset($req->date)){
+      $today = Carbon::now()->format("Y-m-d");
+      return $data = lead::where('completed',0)->where('appointmentdate',$today)->get();}
+      else{
+        return $data = lead::where('completed',0)->where('appointmentdate',$req->date)->get();
+      }
     }
 
     public function searchword(){

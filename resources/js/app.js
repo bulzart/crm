@@ -4,16 +4,17 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
 
-window.Vue = require('vue').default;
 
 Vue.component('notifications', require('./components/notifications.vue').default);
+Vue.component('calendar', require('./components/calendar.vue').default);
+
 require('./bootstrap');
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 window.Vue = require('vue').default;
+
 
 const app = new Vue({
     el: '#app',

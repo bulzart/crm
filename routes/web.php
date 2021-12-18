@@ -10,6 +10,8 @@ use App\Http\Controllers\TasksController;
 use App\Models\appointment;
 use Illuminate\Support\Facades\Route;
 
+use function GuzzleHttp\Promise\task;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +53,7 @@ use Illuminate\Support\Facades\Route;
             if(appointment::find($id)->completed == 0){
                 $data = appointment::find($id);
                 $data = json_decode($data->data);
+           
        return view('documentsform',compact('id','data'));}}
        else{
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
@@ -68,6 +71,7 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
        return view('costumers',compact('data'));
     })->middleware(\App\Http\Middleware\Firsttime::class);
 route::get('ispending',[TasksController::class,'itis']);
+route::get('todayappointments',[TasksController::class,'today']);
 
 route::get('smsconfirm',function (){
     return view('confirm_sms');

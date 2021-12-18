@@ -288,6 +288,12 @@ class UserController extends Controller
          $user->save();
 
      }
+     public function isdone($object):bool{
+
+        if($object['job'] != null && $object['email'] != null && $object['lenker'] != null && $object['lenker'] != '' && $object['comment'] != null && $object['comment'] != '' && $object['kmstand'] != null && $object['kmstand'] != "" && $object['society'] != null && $object['socity'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['insurance'] != null && $object['insurance'] != '' && $object['carcomment'] != null && $object['carcomment'] != '' && $object['preinsurer'] != null && $object['preinsurer'] != '' && $object['idnecessary'] != null && $object['idnecessary'] != '' && $object['leasingname'] != null && $object['leasingname'] != '' && $object['nationality'] != null && $object['nationality'] != '' && $object['nationality'] != '' && $object['nationality'] != null && $object['uploadpolice'] != null && $object['uploadpolice'] != '' && $object['yearpurchase'] != null && $object['yearpurchase'] != '' && $object['thingscarried'] != null && $object['thingscarried'] != '' && $object['startinsurance'] != null && $object['startinsurance'] != '' && $object['commentatpolice'] != null && $object['commentatpolice'] != '' && $object['powerofattorney'] != null && $object['powerofattorney'] != '' && $object['insuranceamount'] != null && $object['insuranceamount'] != '' && $object['residencepermit'] != null && $object['residencepermit'] != '' && $object['uploadvehicleid'] != null && $object['uploadvehicleid'] != '' && $object['contractstartdate'] != null && $object['contractstartdate'] != '' && $object['firstcommissioning'] != null && $object['firstcommissioning'] != '' &&  $object['nationalityfinance'] != null && $object['nationalityfinance'] != '' && $object['wishedadditionalthings'] != null && $object['wishedadditionalthings'] != '' && $object['dateofissueofdriverslicense'] != null && $object['dateofissueofdriverslicense'] != '' && $object['whichcompaniesshouldmakeanoffer'] != null && $object['whichcompaniesshouldmakeanoffer'] != '') { return true;}
+        return false;
+  
+     }
      public function completeapp(Request $req,$id){
 
          $lead = lead::find($id);
@@ -303,42 +309,7 @@ class UserController extends Controller
                  $family->addmember(filter_var($req->input('fname'.$i),FILTER_SANITIZE_STRING),filter_var($req->input('lname'.$i),FILTER_SANITIZE_STRING),filter_var($req->input('birthday'.$i),FILTER_SANITIZE_STRING));
          }
          $app->family = json_encode($family->members);
-         $app->data = '{
-            "job": null,
-            "email": null,
-            "kanton": "Zürich",
-            "lenker": "Yes",
-            "comment": null,
-            "kmstand": null,
-            "society": null,
-            "insurance": "Example1",
-            "carcomment": null,
-            "preinsurer": {},
-            "countryCode": "44",
-            "leasingname": null,
-            "nationality": null,
-            "phonenumber": null,
-            "yearpurchase": "2021",
-            "deductionpart": null,
-            "martialstatus": "Married",
-            "numberofrooms": "1",
-            "paymentrhythm": "Weekly",
-            "thingscarried": null,
-            "amountpermonth": null,
-            "numberofpeople": "1",
-            "startinsurance": null,
-            "commentatpolice": null,
-            "insuranceamount": null,
-            "residencepermit": null,
-            "contractstartdate": null,
-            "firstcommissioning": null,
-            "nationalityfinance": null,
-            "employmentrelationship": "Coworkers",
-            "wishedadditionalthings": null,
-            "numberofpeopleinsurance": "1",
-            "dateofissueofdriverslicense": null,
-            "whichcompaniesshouldmakeanoffer": null
-        }';
+
 
          $app->save();
 
@@ -417,9 +388,31 @@ public function timenow(){
             $appointments = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
 
         }
+        $pendingcnt = 0;
+        $opencnt = 0;
+        $done = 0;
+        $tasks = appointment::all();
+        $taskcnt = appointment::count();
+        foreach($tasks as $task){
+            if(!$this->isdone($task)){
+
+              $pendingcnt++;
+        }
+            if($task->data == null){
+              $opencnt++;
+             }
+             if($task->completed == 1)
+             {
+ $done++;
+             }
+
+            }
+
+           $percnt = (100 / $taskcnt) * $done;
+     
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
 
-         return view('dashboard',compact('appointments', 'leadscount','todayAppointCount'));
+         return view('dashboard',compact('appointments', 'leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
      }
 }
