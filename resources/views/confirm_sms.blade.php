@@ -16,7 +16,7 @@
     </div>
 </section>
 <div class="test">
-    <form action="{{route('confirmcode')}}" method="post">
+    <form action="{{route('confirmsms')}}" method="post">
         @csrf
         <div class="tel my-5">
             <div class="my-3 lh-1">
@@ -24,7 +24,7 @@
             <span class="spn2">Heinterlegen um zu starten<b class="text-danger"></b></span>
             </div>
             <div class="c1 py-2">
-                <select name="country" class="select">
+                <select name="cc" class="select">
 
                     <option data-countryCode="GB" value="44" selected><i class="flag flag-united-states"></i>+44</option>
                     <option data-countryCode="US" value="1">USA (+1)</option>
@@ -243,7 +243,7 @@
                         <option data-countryCode="ZM" value="260">Zambia (+260)</option>
                         <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
                 </select>
-            <input type="text" name="c1"  >
+            <input type="text" name="numberphone"  >
             </div>
             <div class="mt-3">
             <button type="button" class="previewbtn"><i class="bi bi-arrow-left"></i></button>

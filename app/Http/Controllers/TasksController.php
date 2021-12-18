@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admins;
 use App\Models\appointment;
 use App\Models\notification;
 use Carbon\Carbon;
@@ -37,7 +38,7 @@ class TasksController extends Controller
             return view('costumers', compact('data'));
 
       }
-      
+
       public function adddata($req,$object)
       {
         $cnt = 0;
@@ -128,7 +129,7 @@ class TasksController extends Controller
         if($req['residencepermit'] != null && $req['residencepermit'] != ''){
           $object['residencepermit'] = $req['residencepermit'];
         }}
-      
+
         if(isset($req['contractstartdate'])){
         if($req['contractstartdate'] != null && $req['contractstartdate'] != ''){
           $object['contractstartdate'] = $req['contractstartdate'];
@@ -161,7 +162,7 @@ class TasksController extends Controller
         if($req['whichcompaniesshouldmakeanoffer'] != null && $req['whichcompaniesshouldmakeanoffer'] != '' ){
           $object['whichcompaniesshouldmakeanoffer'] = $req['whichcompaniesshouldmakeanoffer'];
         }}
-    
+
         if(isset($req['idnecessary'])){
           if($req['idnecessary'] != null && $req['idnecessary'] != '' ){
             $object['idnecessary'] = $req['idnecessary'];
@@ -173,7 +174,7 @@ class TasksController extends Controller
             if($req['noticeby'] != null && $req['noticeby'] != '' ){
               $object['noticeby'] = $req['noticeby'];
             }}
-    
+
             else{
               $object['noticeby'] = "";
             }
@@ -208,13 +209,13 @@ class TasksController extends Controller
                  return $object;
 
 
-        
-  
-      
-          
-        
-     
-     
+
+
+
+
+
+
+
 
       }
 
@@ -245,7 +246,7 @@ class TasksController extends Controller
    $cnt = 0;
    $costumers = appointment::all();
    $todaydate = Carbon::now()->format('m-d');
-  
+
    $birthdays = [];
    foreach($costumers as $cos){
       if(substr($cos->birthday,5) == $todaydate)
@@ -261,24 +262,24 @@ class TasksController extends Controller
       }
 
    }
-  
+
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
   }
-  
 
-  
+
+
 	 public function documentform(Request $req,$id){
          $req->validate([
            'id' => 'exists:csapp,id'
          ]);
 
         $data = $req->all();
-     
+
 
         $csapp = appointment::find($id);
         $data2 = (array) json_decode($csapp->data);
-       
-        
+
+
 
   if($req->file('preinsurer') != null){
       $file = $req->file('preinsurer');
@@ -326,20 +327,34 @@ class TasksController extends Controller
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
     $datas = $this->adddata($data,$data2);
- 
+
      $csapp->data = json_encode($datas);
         $csapp->save();
-    
+
 
   }
 
 
-      
+
 
     public function isdone($object):bool{
 
       if($object['job'] != null && $object['email'] != null && $object['lenker'] != null && $object['lenker'] != '' && $object['comment'] != null && $object['comment'] != '' && $object['kmstand'] != null && $object['kmstand'] != "" && $object['society'] != null && $object['socity'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['insurance'] != null && $object['insurance'] != '' && $object['carcomment'] != null && $object['carcomment'] != '' && $object['preinsurer'] != null && $object['preinsurer'] != '' && $object['idnecessary'] != null && $object['idnecessary'] != '' && $object['leasingname'] != null && $object['leasingname'] != '' && $object['nationality'] != null && $object['nationality'] != '' && $object['nationality'] != '' && $object['nationality'] != null && $object['uploadpolice'] != null && $object['uploadpolice'] != '' && $object['yearpurchase'] != null && $object['yearpurchase'] != '' && $object['thingscarried'] != null && $object['thingscarried'] != '' && $object['startinsurance'] != null && $object['startinsurance'] != '' && $object['commentatpolice'] != null && $object['commentatpolice'] != '' && $object['powerofattorney'] != null && $object['powerofattorney'] != '' && $object['insuranceamount'] != null && $object['insuranceamount'] != '' && $object['residencepermit'] != null && $object['residencepermit'] != '' && $object['uploadvehicleid'] != null && $object['uploadvehicleid'] != '' && $object['contractstartdate'] != null && $object['contractstartdate'] != '' && $object['firstcommissioning'] != null && $object['firstcommissioning'] != '' &&  $object['nationalityfinance'] != null && $object['nationalityfinance'] != '' && $object['wishedadditionalthings'] != null && $object['wishedadditionalthings'] != '' && $object['dateofissueofdriverslicense'] != null && $object['dateofissueofdriverslicense'] != '' && $object['whichcompaniesshouldmakeanoffer'] != null && $object['whichcompaniesshouldmakeanoffer'] != '') { return true;}
       return false;
+
+   }
+   public function confirmsms(Request $request){
+        $user_id = Auth::guard('admins')->user()->id;
+        $cc = $request->cc;
+        $number = $request->numberphone;
+        $phonenumber = $cc . $number;
+        if(Admins::where('id',$user_id)->update(['phonenumber'=> $phonenumber,'firsttime'=>0])){
+           echo 'baba';
+       }
+
+       // return redirect('/');
+
+
 
    }
 
