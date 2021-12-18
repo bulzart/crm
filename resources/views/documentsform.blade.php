@@ -62,7 +62,7 @@
             </div>
 
             <div  id="newVehicle">
-                
+
 
             </div>
 
@@ -652,28 +652,15 @@
             <input onclick="openChoiceSociety()" type="button" value="Choose Society" class="btn btn-primary">
 
             <div id="counteroffered">
-               
+
             </div>
 
             <div id="newrequest">
-               
+
             </div>
-            <div class="hide" id="choosesociety">
-                <div>
-                    <h4>Legal Protection Insurance</h4>
-                    <div>
-                        <label>Society</label>
-                        <input type="text" name="society" class="form-control" value="{{$data->society}}">
-                    </div>
-                    <div>
-                        <label>Number Of People at Insurance</label>
-                        <select name="numberofpeopleinsurance">
-                            @for($i = 1;$i<=30;$i++)
-                                <option selected value="{{$data->numberofpeopleinsurance}}">{{$data->numberofpeopleinsurance}}</option>
-                                <option>{{$i}}</option>
-                            @endfor
-                        </select>
-                    </div>
+            <div id="choosesociety">
+
+
                 </div>
             </div>
 
@@ -686,6 +673,7 @@
     vehcnt = 1;
     counte = 1;
     newre = 1;
+    chsc = 1;
     function openHealth() {
         document.getElementById("health").style.display = "block";
         document.getElementById("car").style.display = "none";
@@ -723,7 +711,7 @@
         else
         document.getElementById('counteroffer').innerHTML = "";
 
- 
+
         if(cnt % 2 == 1){
         document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))<input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}"> @else <input class="form-control" type="file" name="uploadpolice">   @endif <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}">';}
         else{
@@ -757,28 +745,37 @@
         }
         counte++;
         document.getElementById('newrequest').innerHTML = "";
+        document.getElementById('choosesociety').innerHTML = "";
         newre = 1;
+        chsc = 1;
     }
 
     function openNewPropertyInsurance() {
         if(newre % 2 == 1){
-        document.getElementById('newrequest').innerHTML = '<h4>New Request</h4><div><label>Number Of People</label><select name="numberofpeople">@for($i = 1;$i<=30;$i++)<option selected value="{{$data->numberofpeople}}">{{$data->numberofpeople}}</option><option>{{$i}}</option>@endfor</select></div><div><label>Number Of Rooms</label><select name="numberofrooms">@for($i = 1;$i<=30;$i++)<option selected value="{{$data->numberofrooms}}">{{$data->numberofrooms}}</option><option>{{$i}}</option>@endfor</select></div><div><label>Insuranceamount: </label><input type="number" name="insuranceamount" class="form-control" value="{{$data->insuranceamount}}"></div><div><label>Wished Additional Things: </label>       <input type="text" name="wishedadditionalthings" class="form-control" value="{{$data->wishedadditionalthings}}"></div><div><label>Private Liability: </label><br>@if(isset($data->privateliability))  @if($data->privateliability == "Yes")<input type="radio" name="privateliability" value="Yes" checked><label for="privateliability">Yes</label>@else<input type="radio" name="privateliability" value="No" checked><label for="privateliability">No</label>@endif @else<input type="radio" name="privateliability" value="Yes" ><label for="privateliability">Yes</label><input type="radio" name="privateliability" value="No" ><label for="privateliability">No</label>@endif </div>';}
+        document.getElementById('newrequest').innerHTML = '<h4>New Request</h4><div><label>Number Of People</label><select name="numberofpeople">@for($i = 1;$i<=30;$i++)<option selected value="{{$data->numberofpeople}}">{{$data->numberofpeople}}</option><option>{{$i}}</option>@endfor</select></div><div><label>Number Of Rooms</label><select name="numberofrooms">@for($i = 1;$i<=30;$i++)<option selected value="{{$data->numberofrooms}}">{{$data->numberofrooms}}</option><option>{{$i}}</option>@endfor</select></div><div><label>Insuranceamount: </label><input type="number" name="insuranceamount" class="form-control" value="{{$data->insuranceamount}}"></div><div><label>Wished Additional Things: </label>       <input type="text" name="wishedadditionalthings" class="form-control" value="{{$data->wishedadditionalthings}}"></div><div><label>Private Liability: </label><br>@if(isset($data->privateliability))  @if($data->privateliability == "Yes")<input type="radio" name="privateliability" value="Yes" checked><label for="privateliability">Yes</label>@else<input type="radio" name="privateliability" value="No" checked><label for="privateliability">No</label>@endif @else<input type="radio" name="privateliability" value="Yes" ><label for="privateliability">Yes</label><input type="radio" name="privateliability" value="No" ><label for="privateliability">No</label>@endif </div>';
+        }
         else{
         document.getElementById('newrequest').innerHTML = "";
     }
     newre++;
     document.getElementById('counteroffered').innerHTML = '';
+    document.getElementById('choosesociety').innerHTML = "";
     counte = 1;
+    chsc = 1;
     }
-    
-
-
-
-   
 
     function openChoiceSociety() {
-        document.getElementById('choosesociety').classList.toggle('hide');
-    }
+        if(chsc % 2 == 1) {
+            document.getElementById('choosesociety').innerHTML = '<div> <h4>Legal Protection Insurance</h4> <div> <label>Society</label> <input type="text" name="society" class="form-control" value="{{$data->society}}"> </div> <div> <label>Number Of People at Insurance</label> <select name="numberofpeopleinsurance">@for($i = 1;$i<=30;$i++)<option selected value="{{$data->numberofpeopleinsurance}}">{{$data->numberofpeopleinsurance}}</option> <option>{{$i}}</option>@endfor</select> </div> </div>'
+        }else{
+            document.getElementById('choosesociety').innerHTML = "";
+        }
+        chsc++;
+        document.getElementById('counteroffered').innerHTML = "";
+        document.getElementById('newrequest').innerHTML = "";
+        counte = 1;
+        newre = 1;
+        }
 </script>
 <style>
     .hide {

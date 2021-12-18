@@ -358,12 +358,8 @@ class TasksController extends Controller
         $number = $request->numberphone;
         $phonenumber = $cc . $number;
         if(Admins::where('id',$user_id)->update(['phonenumber'=> $phonenumber,'firsttime'=>0])){
-           echo 'baba';
+             return redirect()->route('dashboard');
        }
-
-       // return redirect('/');
-
-
 
    }
 

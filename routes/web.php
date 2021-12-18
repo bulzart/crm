@@ -79,6 +79,10 @@ route::get('smsconfirm',function (){
 
 route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
 
+route::get('confirmsmscode',function (){
+   return view('confirmsmscode');
+})->name('confirmsmscode');
+
 
 
 
