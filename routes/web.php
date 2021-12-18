@@ -72,8 +72,7 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
     });
 route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
-
-
+route::get('vuedate',[TasksController::class,'vuedate']);
 
 
 

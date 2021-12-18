@@ -5284,63 +5284,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
 
     var a = new Date();
     this.sod = a.getDay();
-    this.date_function(), this.rritedaten();
+    this.date_function();
+    axios.get('vuedate').then(function (response) {
+      _this.list = response.data;
+    });
     axios.get('todayappointments').then(function (response) {
       _this.today = response.data;
     });
-  },
-  computed: {
-    rritedaten: function rritedaten() {
-      for (var i = 0; i <= 365; i++) {
-        if (this.day < 31) {
-          this.day++;
-        } else if (this.day == 31) {
-          this.day = 0;
-          this.month++;
-        }
-
-        if (this.month > 10) {
-          if (this.day == 31) {
-            this.month = 0;
-            this.year++;
-            this.day = 0;
-          }
-        }
-
-        list[i][0] = this.day;
-        list[i][1] = this.month;
-        list[i][2] = this.year;
-      }
-
-      return list;
-    }
   },
   data: function data() {
     return {
@@ -5353,7 +5309,7 @@ __webpack_require__.r(__webpack_exports__);
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       sot: null,
       sod: null,
-      list: []
+      list: null
     };
   },
   methods: {
@@ -28143,45 +28099,16 @@ var render = function () {
       },
       [
         _c("div", { staticClass: "weekly-calendarr" }, [
-          _c("div", { staticClass: "row text-center mx-3" }, [
+          _c("div", { staticClass: "text-center mx-3" }, [
             _c(
               "div",
-              { staticClass: "owl-carousel owl-theme" },
-              _vm._l(11, function (item) {
-                return _c("div", { staticClass: "item" }, [
-                  _c("div", { staticClass: "col g-0" }, [
-                    _c("div", { staticClass: " this-month" }, [
-                      _c("span", { staticClass: "this-month text-black" }),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "dot eventt" }, [
-                        _c(
-                          "svg",
-                          {
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "6",
-                              height: "6",
-                              viewBox: "0 0 6 6",
-                            },
-                          },
-                          [
-                            _c("circle", {
-                              attrs: {
-                                id: "Ellipse_55",
-                                "data-name": "Ellipse 55",
-                                cx: "3",
-                                cy: "3",
-                                r: "3",
-                                fill: "#a3dda7",
-                              },
-                            }),
-                          ]
-                        ),
-                      ]),
-                    ]),
-                  ]),
+              {
+                staticClass: "owl-carousel owl-theme",
+                attrs: { id: "owl-demo" },
+              },
+              _vm._l(_vm.list, function (item) {
+                return _c("div", { staticClass: "item text-black" }, [
+                  _vm._v(_vm._s(item.day)),
                 ])
               }),
               0
