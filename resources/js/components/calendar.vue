@@ -1,7 +1,7 @@
 <template>
 <div>
  <div class="mt-2 mb-2">
-<span class="fs-5">Termin</span>     
+<span class="fs-5">Termin</span>
   <div class="row text-center mx-3" >
 
                            <div class="g-0 col-md-3 col-3">
@@ -48,9 +48,9 @@
                         </span>
                     </div>
                 </div>
-              
-  
-       
+
+
+
             </div>
             <div class="col-12 row text-center">
                <div class="col-6 col-md-6">
@@ -60,9 +60,9 @@
   <i class="fas fa-caret-right text-dark" style="font-size: 23px; cursor:pointer;" @click="searchfor2()"></i>
                 </div>
               </div>
-    
+
             <div class="mt-4">
-            <div v-for="tod in today" class="col-12 col-md-12  mb-2 text-white" style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: point;" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
+            <div v-for="tod in today" class="col-12 col-md-12  mb-2 text-white" style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: pointer;" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
                 <div class="modal fade" :id="tod.slug" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -113,11 +113,11 @@
     </div>
   </div>
 </div>
-      
-  
+
+
                 <span style="margin-left: 9px; font-size: 20px;" class="d-flex">{{tod.name}} {{tod.lname}}</span>
                 <i style="margin-left: 9px; font-size: 14px;" class="fas fa-map-marker-alt"></i> {{tod.address}}
-                
+
 
 
 
@@ -133,7 +133,7 @@
       <div class="mapouter"><div class="gmap_canvas"><iframe width="900" height="900" id="gmap_canvas" :src="'https://maps.google.com/maps?q='+ tod.address+',%20' +tod.location+ '&t=&z=14&ie=UTF8&iwloc=&output=embed'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div></div>
              <div class="text-center">
       </div>
- 
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Undertood</button>
@@ -155,23 +155,23 @@
 <script>
 
     export default {
-        
+
         mounted() {
 
     var a = new Date();
     this.sod = a.getDay();
 
- 
-       
-        
+
+
+
 this.date_function();
   axios.get('vuedate?page=' + this.lpage).then(
         (response) => { this.lista = response.data;}
       );
 
 
-    
-    
+
+
   axios.get('todayappointments').then(
         (response) => { this.today = response.data;}
       );
@@ -195,19 +195,19 @@ this.date_function();
 
             }
         },
-   
+
         methods:{
   date_function: function () {
-   
+
             var currentDate = new Date();
-  
+
             var formatted_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
             this.todayd = formatted_date;
               this.year = parseInt(formatted_date.slice(0,4));
       this.month = parseInt(formatted_date.slice(5,7));
       this.day = parseInt(formatted_date.slice(8,10));
 
-     
+
         },
 
 
