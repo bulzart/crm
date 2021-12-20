@@ -36,6 +36,21 @@ $page = $req->page;
       $br = 1;
 $dayofweek = 6;
 
+$months = $long = array(
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+);
+
 
       for($i = 0; $i <= 365; $i++){
         $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
@@ -43,12 +58,17 @@ $dayofweek = 6;
         $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
         $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
       }
+
       $calendar = [];
       $calendar[0] = $fullcalendar[$page -3];
       $calendar[1] = $fullcalendar[$page - 2];
       $calendar[2] = $fullcalendar[$page -1];
       return $calendar;
      
+
+     return $fullcalendar;
+
+
     }
 
     public function searchword(){
