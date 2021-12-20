@@ -5559,11 +5559,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
   el: '#app'
 });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    carousel: carousel
-  }
-});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
 
@@ -28583,7 +28579,7 @@ var render = function () {
                 background: "#00c78c",
                 "border-radius": "9px",
                 "min-height": "60px",
-                cursor: "point",
+                cursor: "pointer",
               },
               attrs: {
                 "data-bs-toggle": "modal",
@@ -28683,7 +28679,7 @@ var render = function () {
                               _c("br"),
                               _vm._v(" "),
                               _c("span", [_vm._v(_vm._s(tod.count))]),
-                              _vm._v("\r\n            People\r\n            "),
+                              _vm._v("\n            People\n            "),
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-6 col-6" }, [
@@ -28754,9 +28750,7 @@ var render = function () {
                 staticStyle: { "margin-left": "9px", "font-size": "14px" },
               }),
               _vm._v(
-                " " +
-                  _vm._s(tod.address) +
-                  "\r\n                \r\n\r\n\r\n\r\n\r\n                    "
+                " " + _vm._s(tod.address) + "\n\n\n\n\n\n                    "
               ),
               _c(
                 "div",
