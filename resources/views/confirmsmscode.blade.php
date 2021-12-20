@@ -1,10 +1,8 @@
-
 <head>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <style>
         * {
             font-family: 'Poppins';font-size: 17px;
-
         }
         :root {
             --header-height: 3rem;
@@ -16,13 +14,11 @@
             --normal-font-size: 1rem;
             --z-fixed: 100
         }
-
         *,
         ::before,
         ::after {
             box-sizing: border-box
         }
-
         body {
             position: relative;
             margin: var(--header-height) 0 0 0;
@@ -31,11 +27,9 @@
             font-size: var(--normal-font-size);
             transition: .5s
         }
-
         a {
             text-decoration: none
         }
-
         .header {
             width: 100%;
             height: 0px;
@@ -50,13 +44,11 @@
             z-index: var(--z-fixed);
             transition: .5s
         }
-
         .header_toggle {
             color: var(--first-color);
             font-size: 1.5rem;
             cursor: pointer
         }
-
         .header_img {
             width: 35px;
             height: 35px;
@@ -65,11 +57,9 @@
             border-radius: 50%;
             overflow: hidden
         }
-
         .header_img img {
             width: 40px
         }
-
         .l-navbar {
             position: fixed;
             top: 0;
@@ -81,7 +71,6 @@
             transition: .7s;
             z-index: var(--z-fixed)
         }
-
         .nav {
             height: 100%;
             display: flex;
@@ -89,7 +78,6 @@
             justify-content: space-between;
             overflow: hidden
         }
-
         .nav_logo,
         .nav_link {
             display: grid;
@@ -98,48 +86,38 @@
             column-gap: 1rem;
             padding: .5rem 0 .5rem 1.5rem
         }
-
         .nav_logo {
             margin-bottom: 2rem
         }
-
         .nav_logo-icon {
             font-size: 1.25rem;
             color: var(--white-color)
         }
-
         .nav_logo-name {
             color: var(--white-color);
             font-weight: 700
         }
-
         .nav_link {
             position: relative;
             color: var(--first-color-light);
             margin-bottom: 1.5rem;
             transition: .3s
         }
-
         .nav_link:hover {
             color: var(--white-color)
         }
-
         .nav_icon {
             font-size: 1.25rem
         }
-
         .show {
             left: 0
         }
-
         .body-pd {
             padding-left: 0;
         }
-
         .active {
             color: var(--white-color)
         }
-
         .active::before {
             content: '';
             position: absolute;
@@ -148,7 +126,6 @@
             height: 32px;
             background-color: var(--white-color)
         }
-
         .height-100 {
             height: 100vh
         }
@@ -160,38 +137,30 @@
                 margin: calc(var(--header-height) + 1rem) 0 0 0;
                 padding-left: calc(var(--nav-width) + 2rem)
             }
-
             .header {
-
                 height: 0px;
                 padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
             }
-
             .header_img {
                 width: 40px;
                 height: 40px
             }
-
             .header_img img {
                 width: 45px
             }
-
             .l-navbar {
                 left: 0;
                 padding: 1rem 1rem 0 0
             }
-
             .show {
                 width: calc(var(--nav-width) - 30px)
             }
             nav_link{
                 text-decoration: none;
             }
-
             .body-pd {
                 padding-left: calc(var(--nav-width))
             }
-
             .card {
                 width: 350px;
                 padding: 10px;
@@ -201,24 +170,19 @@
                 height: 350px;
                 position: relative
             }
-
             .container {
                 height: 100vh
             }
-
             body {
                 background: #eee
             }
-
             .mobile-text {
                 color: #989696b8;
                 font-size: 15px
             }
-
             .form-control {
                 margin-right: 12px
             }
-
             .form-control:focus {
                 color: #495057;
                 background-color: #fff;
@@ -226,14 +190,12 @@
                 outline: 0;
                 box-shadow: none
             }
-
             .cursor {
                 cursor: pointer
             }
             #nav-bar{
                 min-width: 200px;
             }
-
         }
         a:link{
             text-decoration: none;
