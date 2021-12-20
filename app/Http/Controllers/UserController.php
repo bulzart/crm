@@ -333,7 +333,7 @@ public function timenow(){
 
      public function dealclosed($id){
          $app = lead::where('id',$id)->first();
-         if($app->admin_id != 0 && $app->admin_id == Auth::guard('admins')->user()->id || Auth::guard('user')->user()->role == 'admin'){
+         if($app->admin_id != 0 && $app->admin_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->role == 'admin'){
          return view('completelead',compact('app'));}
          else{
              return redirect()->back();

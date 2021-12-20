@@ -1,35 +1,48 @@
 @extends('template.navbar')
 @section('content')
-<div>
-<h5 class="h5 mt-2">Open tasks<h5>
-<h4 class="text-danger">{{$opencnt}}</h4>
+<div class="row justify-content-center">
+<div class="col-md-4 col-12" style="background: #f7f7f7; border-radius: 25px;">
+<span class="mt-2">Offene Aufgaben</span>
+<span class="text-danger">{{$opencnt}}</span><br>
+
 @foreach($realopen as $task)
-{{$task->name}}
-{{$task->lname}}
+<div class="p-1" style="background: white; border-radius: 12px;">
 
-Status:{{$task->status}}
+
+<h5 class="m-1">{{ucfirst($task->name)}} {{ucfirst($task->lname)}}</h5>
+<span class="m-1">Kommentar: {{$task->status}}</span>
+
+
+</div>
 <br>
 @endforeach
 </div>
-<div>
-    <h5 class="h5 mt-2">Pending<h5>
-    <h4 class="text-danger">{{$pendingcnt}}</h4>
+<div class="col-md-4 col-12" style="background: #ffebe5; border-radius: 25px;">
+    <span class="mt-2">Pending</span>
+    <span class="text-danger">{{$pendingcnt}}</span>
 @foreach($pending as $task)
-{{$task->name}}
-{{$task->lname}}
-Status:{{$task->status}}
+<div class="p-1" style="background: white; border-radius: 12px;">
+<h5 class="m-1">{{ucfirst($task->name)}} {{ucfirst($task->lname)}}</h5>
+
+<span class="m-1">Kommentar: {{$task->status}}</span>
+</div>
 <br>
 @endforeach
 </div>
 
 <br>
-<div>
-Costumer birthdays today:
+<div class="col-md-4 col-12" style="border-radius: 25px;">
+<p class="text-center">Costumer birthdays today:</p>
 <br>
 @foreach($birthdays as $birth)
-{{$birth['name']}} {{$birth['lname']}}
-{{$birth['birthday']}} ({{$birth['age']}} years old)
+<div class="p-1" style="background: #f7f7f7; border-radius: 12px;">
+<i class="fas fa-birthday-cake" style="font-size: 33px;"></i>
+<span class="h5">{{$birth['name']}} {{$birth['lname']}}</span>
+<br>
+{{$birth['birthday']}} ({{$birth['age']}} Jahre)
+</div>
 <br>
 @endforeach
+</div>
 </div>
 @endsection
