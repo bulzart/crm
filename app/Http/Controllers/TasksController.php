@@ -18,21 +18,24 @@ class TasksController extends Controller
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
     public function today(Request $req){
-      if(!isset($req->date)){
       $today = Carbon::now()->format("Y-m-d");
-      return $data = lead::where('completed',0)->where('appointmentdate',$today)->get();}
+      if($req->date != null){
+      $data = lead::where('appointmentdate',$req->date)->get();
+      return $data;    }
       else{
-        return $data = lead::where('completed',0)->where('appointmentdate',$req->date)->get();
+        return $data = lead::where('appointmentdate',$today)->get();
       }
     }
 
-    public function vuedate(){
+    public function vuedate(Request $req){
+$page = $req->page;
       $day = Carbon::now()->format('d');
       $month = Carbon::now()->format('m');
       $year = Carbon::now()->format('Y');
       $fullcalendar = [];
       $br = 1;
 $dayofweek = 6;
+
 $months = $long = array(
   'January',
   'February',
@@ -48,13 +51,23 @@ $months = $long = array(
   'December'
 );
 
+
       for($i = 0; $i <= 365; $i++){
-        $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y/m/d');
+        $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
         $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
         $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
         $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
       }
+
+      $calendar = [];
+      $calendar[0] = $fullcalendar[$page -3];
+      $calendar[1] = $fullcalendar[$page - 2];
+      $calendar[2] = $fullcalendar[$page -1];
+      return $calendar;
+     
+
      return $fullcalendar;
+
 
     }
 
