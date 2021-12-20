@@ -11,7 +11,6 @@ Vue.component('calendar', require('./components/calendar.vue').default);
 
 require('./bootstrap');
 import Vue from 'vue'
-import carousel from 'vue-owl-carousel'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 window.Vue = require('vue').default;
