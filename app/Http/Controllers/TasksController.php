@@ -18,10 +18,47 @@ class TasksController extends Controller
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
     public function today(Request $req){
+      $some_date = Carbon::now()->format('H:i');
+        $now = (int) str_replace(':','',$some_date);
+
+         
+      $admin = Auth::guard('admins')->user();
       $today = Carbon::now()->format("Y-m-d");
         $some_date = Carbon::now()->format('H:i');
         $now = (int) str_replace(':','',$some_date);
       if($req->date != null){
+
+    if($admin->role == 'admin'){
+      
+    
+        $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+    }
+    elseif($admin->role == 'fs'){
+      $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+    }
+    
+      }
+      else{
+        if($admin->role == 'admin'){
+          if($now > 2300){
+            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+        else{
+
+            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+
+        }
+      }
+      if($admin->role == 'fs'){
+        if($now > 2300){
+          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+      else{
+
+          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+
+      }
+    }
+
+
 
           if (Auth::guard('admins')->user()->role == 'admin') {
 
@@ -51,6 +88,7 @@ class TasksController extends Controller
                   $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('appointmentdate',Carbon::now()->toDateString())->get();
               }
           }
+
       }
       return $data;
     }
