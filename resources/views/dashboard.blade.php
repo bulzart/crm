@@ -460,6 +460,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
 
 
     <div class="modal fade" id="{{$app->slug}}1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -481,6 +482,7 @@
     </div>
   </div>
 </div>
+
 
 
 </body>
