@@ -18,79 +18,46 @@ class TasksController extends Controller
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
     public function today(Request $req){
-      $some_date = Carbon::now()->format('H:i');
-        $now = (int) str_replace(':','',$some_date);
-
-         
-      $admin = Auth::guard('admins')->user();
-      $today = Carbon::now()->format("Y-m-d");
         $some_date = Carbon::now()->format('H:i');
         $now = (int) str_replace(':','',$some_date);
-      if($req->date != null){
 
-    if($admin->role == 'admin'){
-      
-    
-        $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
-    }
-    elseif($admin->role == 'fs'){
-      $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
-    }
-    
-      }
-      else{
-        if($admin->role == 'admin'){
-          if($now > 2300){
-            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
-        else{
 
-            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+        $admin = Auth::guard('admins')->user();
+        $today = Carbon::now()->format("Y-m-d");
+        if($req->date != null){
+            if($admin->role == 'admin'){
+
+
+                $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+            }
+            elseif($admin->role == 'fs'){
+                $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+            }
 
         }
-      }
-      if($admin->role == 'fs'){
-        if($now > 2300){
-          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
-      else{
+        else{
+            if($admin->role == 'admin'){
+                if($now > 2300){
+                    $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+                else{
 
-          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+                    $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
 
-      }
-    }
+                }
+            }
+            if($admin->role == 'fs'){
+                if($now > 2300){
+                    $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+                else{
 
+                    $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
 
-
-          if (Auth::guard('admins')->user()->role == 'admin') {
-
-                  $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate', $req->date)->get();
-
-          }
-          if (Auth::guard('admins')->user()->role == 'fs'){
-              $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate', $req->date)->where('admin_id',Auth::guard('admins')->user()->id)->get();
-
-          }
+                }
+            }
 
 
-    }else{
-          if (Auth::guard('admins')->user()->role == 'admin'){
-              if ($now > 2300) {
-                  $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate', Carbon::now()->addDays()->toDateString())->get();
-              }else{
-                  $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate',Carbon::now()->toDateString())->get();
-              }
-          }
-
-          if (Auth::guard('admins')->user()->role == 'fs'){
-              if ($now > 2300) {
-                  $data = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('assigned', 1)->where('appointmentdate', Carbon::now()->addDays()->toDateString())->get();
-              }
-              else{
-                  $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('appointmentdate',Carbon::now()->toDateString())->get();
-              }
-          }
-
-      }
-      return $data;
+        }
+        return $data;
     }
 
     public function vuedate(Request $req){
