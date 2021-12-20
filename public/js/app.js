@@ -28764,7 +28764,7 @@ var render = function () {
               _c(
                 "div",
                 {
-                  staticClass: "modal fade",
+                  staticClass: "modal fade text-center justify-content-center",
                   attrs: {
                     id: tod.slug + "1",
                     tabindex: "-1",
@@ -28802,7 +28802,7 @@ var render = function () {
                                       tod.address +
                                       ",%20" +
                                       tod.location +
-                                      "&t=&z=15&ie=UTF8&iwloc=&output=embed",
+                                      "&t=&z=14&ie=UTF8&iwloc=&output=embed",
                                     frameborder: "0",
                                     scrolling: "no",
                                     marginheight: "0",
