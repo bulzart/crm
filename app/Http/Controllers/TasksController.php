@@ -88,12 +88,14 @@ $months = $long = array(
         $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
         $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
         $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
+        $fullcalendar[$i]['year'] = Carbon::now()->addDays($i)->format('Y');
       }
 
       $calendar = [];
-      $calendar[0] = $fullcalendar[$page -3];
-      $calendar[1] = $fullcalendar[$page - 2];
-      $calendar[2] = $fullcalendar[$page -1];
+      $calendar[0] = $fullcalendar[$page -4];
+      $calendar[1] = $fullcalendar[$page - 3];
+      $calendar[2] = $fullcalendar[$page -2];
+      $calendar[3] = $fullcalendar[$page -1];
       return $calendar;
 
 
