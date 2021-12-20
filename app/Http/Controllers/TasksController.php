@@ -24,7 +24,10 @@ class TasksController extends Controller
          
       $admin = Auth::guard('admins')->user();
       $today = Carbon::now()->format("Y-m-d");
+        $some_date = Carbon::now()->format('H:i');
+        $now = (int) str_replace(':','',$some_date);
       if($req->date != null){
+
     if($admin->role == 'admin'){
       
     
@@ -55,6 +58,36 @@ class TasksController extends Controller
       }
     }
 
+
+
+          if (Auth::guard('admins')->user()->role == 'admin') {
+
+                  $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate', $req->date)->get();
+
+          }
+          if (Auth::guard('admins')->user()->role == 'fs'){
+              $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate', $req->date)->where('admin_id',Auth::guard('admins')->user()->id)->get();
+
+          }
+
+
+    }else{
+          if (Auth::guard('admins')->user()->role == 'admin'){
+              if ($now > 2300) {
+                  $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate', Carbon::now()->addDays()->toDateString())->get();
+              }else{
+                  $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate',Carbon::now()->toDateString())->get();
+              }
+          }
+
+          if (Auth::guard('admins')->user()->role == 'fs'){
+              if ($now > 2300) {
+                  $data = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('assigned', 1)->where('appointmentdate', Carbon::now()->addDays()->toDateString())->get();
+              }
+              else{
+                  $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('appointmentdate',Carbon::now()->toDateString())->get();
+              }
+          }
 
       }
       return $data;
@@ -99,7 +132,7 @@ $months = $long = array(
       $calendar[2] = $fullcalendar[$page -2];
       $calendar[3] = $fullcalendar[$page -1];
       return $calendar;
-     
+
 
      return $fullcalendar;
 
