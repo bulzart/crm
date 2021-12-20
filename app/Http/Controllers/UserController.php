@@ -376,6 +376,24 @@ public function timenow(){
     }
 
      public function dashboard(){
+
+        $day = Carbon::now()->format('d');
+        $month = Carbon::now()->format('m');
+        $year = Carbon::now()->format('Y');
+        $fullcalendar = [];
+        $br = 1;
+  $dayofweek = 6;
+  
+  
+        for($i = 0; $i <= 365; $i++){
+          $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
+          $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
+          $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
+          $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
+        }
+
+
+
         date_default_timezone_set('Europe/Berlin');
 
         $some_date = Carbon::now()->format('H:i');
@@ -412,7 +430,6 @@ public function timenow(){
      
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
-
-         return view('dashboard',compact('appointments', 'leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
+         return view('dashboard',compact('appointments', 'leadscount','todayAppointCount','opencnt','pendingcnt','percnt','fullcalendar'));
      }
 }
