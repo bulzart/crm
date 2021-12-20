@@ -88,7 +88,7 @@ route::get('confirmsmscode',function (){
    return view('confirmsmscode');
 })->name('confirmsmscode');
 
-
+route::get('calendar',[UserController::class,'calendar'])->name('calendar');
 
 
 
