@@ -62,7 +62,7 @@
               </div>
     
             <div class="mt-4">
-            <div v-for="tod in today" class="col-12 col-md-12  mb-2 text-white" style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: point;" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
+            <div v-for="tod in today" class="col-12 col-md-12  mb-2 text-white" style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: pointer;" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
                 <div class="modal fade" :id="tod.slug" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -75,7 +75,7 @@
              <div class="text-center">
                <button class="btn btn-primary mt-2" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug + '1'">Open in large</button>
         <h3>{{tod.name}} {{tod.lname}}</h3>
-
+<div v-if="tod.assigned == 1">
         <i class="fas fa-map-marker-alt" style="font-color: black;"></i>
       <h5 class="text-secondary">{{tod.address}},{{tod.location}}</h5>
 
@@ -93,7 +93,7 @@
            <br>
             </div>
         </div>
-      </div>
+   
       <div class="row text-center mt-5">
       <div class="col-md-6 col-6">
           <a :href="'dealnotclosed/' + tod.id">
@@ -104,6 +104,15 @@
           <i style="font-size: 77px;" class="fas fa-check-square text-success"></i>
       </a>
           </div>
+             </div>
+      </div>
+      <div v-if="tod.assigned == 0">
+           <div class="text-center">
+              <a :href="'acceptapp/' + tod.id">
+          <i style="font-size: 77px;" class="fas fa-check-square text-success"></i>
+      </a>
+          </div>
+        </div>
       </div>
       </div>
       <div class="modal-footer">

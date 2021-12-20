@@ -46,7 +46,7 @@
       <div class="modal-body">
 
       <form method="post" class="form-control">
-=======
+
  
 
     @csrf

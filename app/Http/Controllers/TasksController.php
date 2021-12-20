@@ -28,29 +28,29 @@ class TasksController extends Controller
     if($admin->role == 'admin'){
       
     
-        $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+        $data = lead::where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
     elseif($admin->role == 'fs'){
-      $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+      $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
     
       }
       else{
         if($admin->role == 'admin'){
           if($now > 2300){
-            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+            $data = lead::where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
         else{
 
-            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+            $data = lead::where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
 
         }
       }
       if($admin->role == 'fs'){
         if($now > 2300){
-          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+          $data = lead::where('admin_id',$admin->id)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
       else{
 
-          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+          $data = lead::where('admin_id',$admin->id)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
 
       }
     }
