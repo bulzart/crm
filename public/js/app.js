@@ -5370,6 +5370,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -28729,16 +28756,133 @@ var render = function () {
                 staticClass: "fas fa-map-marker-alt",
                 staticStyle: { "margin-left": "9px", "font-size": "14px" },
               }),
-              _vm._v(" " + _vm._s(tod.address) + "\r\n                "),
+              _vm._v(
+                " " +
+                  _vm._s(tod.address) +
+                  "\r\n                \r\n\r\n\r\n\r\n\r\n                    "
+              ),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: {
+                    id: tod.slug + "1",
+                    tabindex: "-1",
+                    "aria-labelledby": "exampleModalLabel",
+                    "aria-hidden": "true",
+                  },
+                },
+                [
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-content",
+                        staticStyle: { width: "900px", height: "600px" },
+                      },
+                      [
+                        _vm._m(2, true),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "modal-body",
+                            staticStyle: { width: "900px", height: "600px" },
+                          },
+                          [
+                            _c("div", { staticClass: "mapouter" }, [
+                              _c("div", { staticClass: "gmap_canvas" }, [
+                                _c("iframe", {
+                                  attrs: {
+                                    width: "900",
+                                    height: "900",
+                                    id: "gmap_canvas",
+                                    src:
+                                      "https://maps.google.com/maps?q=" +
+                                      tod.address +
+                                      ",%20" +
+                                      tod.location +
+                                      "&t=&z=15&ie=UTF8&iwloc=&output=embed",
+                                    frameborder: "0",
+                                    scrolling: "no",
+                                    marginheight: "0",
+                                    marginwidth: "0",
+                                  },
+                                }),
+                                _c("a", {
+                                  attrs: {
+                                    href: "https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/",
+                                  },
+                                }),
+                                _c("br"),
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href: "https://www.embedgooglemap.net",
+                                    },
+                                  },
+                                  [_vm._v("embedgooglemap.net")]
+                                ),
+                              ]),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "text-center" }),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(3, true),
+                      ]
+                    ),
+                  ]),
+                ]
+              ),
             ]
           )
         }),
         0
       ),
+      _vm._v(" "),
+      _c("div"),
     ]),
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", {
+        staticClass: "modal-title text-center",
+        attrs: { id: "exampleModalLabel" },
+      }),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("Undertood")]
+      ),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
