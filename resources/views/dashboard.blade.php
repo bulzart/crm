@@ -423,7 +423,7 @@
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                 <div class="text-center text-white p-2" style="background: #792765; border-radius: 12px;">
                         <div class="col-12"><i style="font-size: 42px;" class='bx bx-user'></i></div>
-                        {{$leadscount}}<br>New Leads
+                        {{$leadscount}}<br>New Leads 
                     </div>
                 </div>
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
