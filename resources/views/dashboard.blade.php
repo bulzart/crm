@@ -461,6 +461,7 @@
     </div>
 
 
+
     <div class="modal fade" id="{{$app->slug}}1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" style="width: 900px; height: 600px;">
@@ -509,20 +510,7 @@
 
             }
         }
-        $('.ui').on("click",function(){
-            alert(this.id);
-            let date = this.id;
-            $.ajax({
-                url:"functions/asd.php",
-                method:"GET",
-                data:{
-                    date:date
-                }
-                success:function(data){
-                    console.log(data);
-                }
-            })
-        });
+
 
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
