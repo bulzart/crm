@@ -1,14 +1,13 @@
 <template>
 <div>
  <div class="mt-2 mb-2">
-<<<<<<< HEAD
 <span class="fs-5">Termin</span>     
   <div class="row text-center mx-3" >
 
-                           <div class="g-0 col-md-4 col-4">
+                           <div class="g-0 col-md-3 col-3">
                     <div class="dayy this-month" @click="searchapp(lista[0].date)" style="cursor: pointer">
-                        <span class="monthh p-0">{{lista[0].dayn}},{{lista[0].month}}</span> <br>
-                        <span class="not-this-month  text-black">{{lista[0].day}}</span> <br>
+ <span @click="searchapp(lista[0].date)" class="monthh p-0">{{lista[0].dayn}},{{lista[0].month}},{{lista[0].year}}</span> <br>
+                        <span @click="searchapp(lista[0].date)" class="not-this-month text-black">{{lista[0].day}} {{lista[0].month}}</span> <br>
                         <span class="dot no-event">
                             <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6">
                                 <circle id="Ellipse_55" data-name="Ellipse 55" cx="3" cy="3" r="3" fill="#a3dda7" />
@@ -16,10 +15,10 @@
                         </span>
                     </div>
                 </div>
-                         <div class="g-0 col-md-4 col-4">
+                         <div class="g-0 col-md-3 col-3">
                     <div class="dayy this-month" @click="searchapp(lista[1].date)" style="cursor: pointer">
-                        <span class="monthh p-0">{{lista[1].dayn}},{{lista[1].month}}</span> <br>
-                        <span class="not-this-month  text-black">{{lista[1].day}}</span> <br>
+                     <span @click="searchapp(lista[1].date)" class="monthh p-0">{{lista[1].dayn}},{{lista[1].year}}</span> <br>
+                        <span @click="searchapp(lista[1].date)" class="not-this-month text-black">{{lista[1].day}} {{lista[1].month}}</span> <br>
                         <span class="dot no-event">
                             <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6">
                                 <circle id="Ellipse_55" data-name="Ellipse 55" cx="3" cy="3" r="3" fill="#a3dda7" />
@@ -27,10 +26,10 @@
                         </span>
                     </div>
                 </div>
-                      <div class="g-0 col-md-4 col-4">
+                      <div class="g-0 col-md-3 col-3">
                     <div class="dayy this-month" style="cursor: pointer">
-                        <span @click="searchapp(lista[2].date)" class="monthh p-0">{{lista[2].dayn}},{{lista[2].month}}</span> <br>
-                        <span @click="searchapp(lista[2].date)" class="not-this-month text-black">{{lista[2].day}}</span> <br>
+                        <span @click="searchapp(lista[2].date)" class="monthh p-0">{{lista[2].dayn}},{{lista[2].year}}</span> <br>
+                        <span @click="searchapp(lista[2].date)" class="not-this-month text-black">{{lista[2].day}} {{lista[2].month}}</span> <br>
                         <span class="dot no-event">
                             <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6">
                                 <circle id="Ellipse_55" data-name="Ellipse 55" cx="3" cy="3" r="3" fill="#a3dda7" />
@@ -38,28 +37,27 @@
                         </span>
                     </div>
                 </div>
-
+<div class="g-0 col-md-3 col-3">
+                    <div class="dayy this-month" style="cursor: pointer">
+                        <span @click="searchapp(lista[3].date)" class="monthh p-0">{{lista[3].dayn}},{{lista[3].year}}</span> <br>
+                        <span @click="searchapp(lista[3].date)" class="not-this-month text-black">{{lista[3].day}} {{lista[3].month}}</span> <br>
+                        <span class="dot no-event">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6">
+                                <circle id="Ellipse_55" data-name="Ellipse 55" cx="3" cy="3" r="3" fill="#a3dda7" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
               
-   
   
        
-=======
-<span class="fs-5">Termin</span>
-   <section class="show-mobile" id="week-cal" style="display: block;">
-        <div class="weekly-calendarr">
-            <div class="text-center mx-3" >
-    <div id="owl-demo" class="owl-carousel owl-theme">
-
-  <div v-for="item in list" class="item text-black">{{item.day}}</div>
-</div>
->>>>>>> 29412092e75c6d6aac799a2af9516ca8c6fc29a6
             </div>
             <div class="col-12 row text-center">
                <div class="col-6 col-md-6">
-                <i @click="searchfor()" class="fas fa-caret-left text-dark" style="font-size: 23px;"></i>
+                <i @click="searchfor()" class="fas fa-caret-left text-dark" style="font-size: 23px; cursor:pointer;"></i>
                 </div>
               <div class="col-6 col-md-6">
-  <i class="fas fa-caret-right text-dark" style="font-size: 23px;" @click="searchfor2()"></i>
+  <i class="fas fa-caret-right text-dark" style="font-size: 23px; cursor:pointer;" @click="searchfor2()"></i>
                 </div>
               </div>
     
@@ -130,20 +128,15 @@
 <script>
 
     export default {
-
+        
         mounted() {
 
     var a = new Date();
     this.sod = a.getDay();
 
-<<<<<<< HEAD
  
        
         
-=======
-
-
->>>>>>> 29412092e75c6d6aac799a2af9516ca8c6fc29a6
 this.date_function();
   axios.get('vuedate?page=' + this.lpage).then(
         (response) => { this.lista = response.data;}
@@ -171,41 +164,41 @@ this.date_function();
                 sod: null,
                 lista: null,
                 cnt: 1,
-                lpage: 3,
+                lpage: 4,
 
             }
         },
-
+   
         methods:{
   date_function: function () {
-
+   
             var currentDate = new Date();
-
+  
             var formatted_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
             this.todayd = formatted_date;
               this.year = parseInt(formatted_date.slice(0,4));
       this.month = parseInt(formatted_date.slice(5,7));
       this.day = parseInt(formatted_date.slice(8,10));
 
-
+     
         },
 
 
         searchfor2(){
-      this.lpage += 3;
+      this.lpage += 4;
         axios.get('vuedate?page=' + this.lpage).then(
         (response) => { this.lista = response.data;}
       );
         },
          searchfor(){
-      this.lpage -= 3;
+      this.lpage -= 4;
         axios.get('vuedate?page=' + this.lpage).then(
         (response) => { this.lista = response.data;}
       );
         },
         searchapp(vall){
           axios.get('todayappointments?date=' + vall).then(
-        (response) => { this.lista = response.data;}
+        (response) => { this.today = response.data;}
       );
         }
         }
