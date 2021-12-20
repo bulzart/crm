@@ -403,18 +403,18 @@
            <div class="col-md-12 col-12">
            <div class="weekly-calendarr">
             <div class="row text-center mx-3" >
-              
-              
-   
-  
-       
+
+
+
+
+
             </div>
 			</div>
     </div>
                <div class="col-md-12 col-12">
           <calendar></calendar>
 
-          
+
     </div>
     </div>
     </div>
@@ -460,6 +460,31 @@
         </div>
     </div>
 
+<<<<<<< HEAD
+
+
+    <div class="modal fade" id="{{$app->slug}}1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 900px; height: 600px;">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="width: 900px; height: 600px;;">
+      <div class="mapouter"><div class="gmap_canvas"><iframe width="900" height="900" id="gmap_canvas" src="https://maps.google.com/maps?q={{$app->address}},%20{{$app->location}}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><style>.mapouter{text-align:right;height:auto;width:auto;}</style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width: auto;}</style></div></div>
+             <div class="text-center">
+      </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Undertood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </body>
 
 <script type="text/javascript">
@@ -487,7 +512,7 @@
 
             }
         }
-       
+
 
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
@@ -519,7 +544,7 @@ $(document).ready(function() {
             dots: false,
             infinite: false,
             nav: false,
-    
+
             responsive: {
                 0: {
                     items: 1

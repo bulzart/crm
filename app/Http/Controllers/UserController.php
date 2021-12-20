@@ -292,7 +292,7 @@ class UserController extends Controller
 
         if($object['job'] != null && $object['email'] != null && $object['lenker'] != null && $object['lenker'] != '' && $object['comment'] != null && $object['comment'] != '' && $object['kmstand'] != null && $object['kmstand'] != "" && $object['society'] != null && $object['socity'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['insurance'] != null && $object['insurance'] != '' && $object['carcomment'] != null && $object['carcomment'] != '' && $object['preinsurer'] != null && $object['preinsurer'] != '' && $object['idnecessary'] != null && $object['idnecessary'] != '' && $object['leasingname'] != null && $object['leasingname'] != '' && $object['nationality'] != null && $object['nationality'] != '' && $object['nationality'] != '' && $object['nationality'] != null && $object['uploadpolice'] != null && $object['uploadpolice'] != '' && $object['yearpurchase'] != null && $object['yearpurchase'] != '' && $object['thingscarried'] != null && $object['thingscarried'] != '' && $object['startinsurance'] != null && $object['startinsurance'] != '' && $object['commentatpolice'] != null && $object['commentatpolice'] != '' && $object['powerofattorney'] != null && $object['powerofattorney'] != '' && $object['insuranceamount'] != null && $object['insuranceamount'] != '' && $object['residencepermit'] != null && $object['residencepermit'] != '' && $object['uploadvehicleid'] != null && $object['uploadvehicleid'] != '' && $object['contractstartdate'] != null && $object['contractstartdate'] != '' && $object['firstcommissioning'] != null && $object['firstcommissioning'] != '' &&  $object['nationalityfinance'] != null && $object['nationalityfinance'] != '' && $object['wishedadditionalthings'] != null && $object['wishedadditionalthings'] != '' && $object['dateofissueofdriverslicense'] != null && $object['dateofissueofdriverslicense'] != '' && $object['whichcompaniesshouldmakeanoffer'] != null && $object['whichcompaniesshouldmakeanoffer'] != '') { return true;}
         return false;
-  
+
      }
      public function completeapp(Request $req,$id){
 
@@ -383,8 +383,8 @@ public function timenow(){
         $fullcalendar = [];
         $br = 1;
   $dayofweek = 6;
-  
-  
+
+
         for($i = 0; $i <= 365; $i++){
           $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
           $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
@@ -396,16 +396,8 @@ public function timenow(){
 
         date_default_timezone_set('Europe/Berlin');
 
-        $some_date = Carbon::now()->format('H:i');
-        $now = (int) str_replace(':','',$some_date);
 
-          if($now > 2300){
-            $appointments = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
-        else{
 
-            $appointments = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
-
-        }
         $pendingcnt = 0;
         $opencnt = 0;
         $done = 0;
@@ -427,9 +419,10 @@ public function timenow(){
             }
 
            $percnt = (100 / $taskcnt) * $done;
-     
+
+
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
-         return view('dashboard',compact('appointments', 'leadscount','todayAppointCount','opencnt','pendingcnt','percnt','fullcalendar'));
+         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt','fullcalendar'));
      }
 }

@@ -99,7 +99,7 @@ $months = $long = array(
       $calendar[2] = $fullcalendar[$page -2];
       $calendar[3] = $fullcalendar[$page -1];
       return $calendar;
-     
+
 
      return $fullcalendar;
 
