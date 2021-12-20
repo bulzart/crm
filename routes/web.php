@@ -53,7 +53,7 @@ use function GuzzleHttp\Promise\task;
             if(appointment::find($id)->completed == 0){
                 $data = appointment::find($id);
                 $data = json_decode($data->data);
-           
+
        return view('documentsform',compact('id','data'));}}
        else{
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
@@ -72,9 +72,9 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
     })->middleware(\App\Http\Middleware\Firsttime::class);
 route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
-<<<<<<< HEAD
+
 route::get('vuedate',[TasksController::class,'vuedate']);
-=======
+
 
 route::get('smsconfirm',function (){
     return view('confirm_sms');
@@ -87,7 +87,7 @@ route::get('confirmsmscode',function (){
 })->name('confirmsmscode');
 
 
->>>>>>> 602ed89da8825f6469c605fc74e5d58085135785
+
 
 
 

@@ -1,14 +1,12 @@
 <template>
  <div class="mt-2 mb-2">
-<span class="fs-5">Termin</span>     
+<span class="fs-5">Termin</span>
    <section class="show-mobile" id="week-cal" style="display: block;">
         <div class="weekly-calendarr">
             <div class="text-center mx-3" >
     <div id="owl-demo" class="owl-carousel owl-theme">
- 
-  <div v-for="item in list" class="item text-black">{{item.day}}</div>
 
- 
+  <div v-for="item in list" class="item text-black">{{item.day}}</div>
 </div>
             </div>
             <div class="mt-4">
@@ -42,14 +40,14 @@
 <script>
 
     export default {
-        
+
         mounted() {
 
     var a = new Date();
     this.sod = a.getDay();
- 
-       
-        
+
+
+
 this.date_function();
   axios.get('vuedate').then(
         (response) => { this.list = response.data;}
@@ -74,19 +72,19 @@ this.date_function();
 
             }
         },
-   
+
         methods:{
   date_function: function () {
-   
+
             var currentDate = new Date();
-  
+
             var formatted_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
             this.todayd = formatted_date;
               this.year = parseInt(formatted_date.slice(0,4));
       this.month = parseInt(formatted_date.slice(5,7));
       this.day = parseInt(formatted_date.slice(8,10));
 
-     
+
         },
 
 

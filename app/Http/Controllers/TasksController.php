@@ -34,17 +34,17 @@ class TasksController extends Controller
       $br = 1;
 $dayofweek = 6;
 $months = $long = array(
-  'January', 
-  'February', 
-  'March', 
-  'April', 
-  'May', 
-  'June', 
-  'July', 
-  'August', 
-  'September', 
-  'October', 
-  'November', 
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
   'December'
 );
 
@@ -55,7 +55,7 @@ $months = $long = array(
         $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
       }
      return $fullcalendar;
-     
+
     }
 
     public function searchword(){
