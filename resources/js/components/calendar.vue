@@ -5,7 +5,7 @@
   <div class="row text-center mx-3" >
 
                            <div class="g-0 col-md-4 col-4">
-                    <div class="dayy this-month" @click.prevent="searchapp(lista[0].date)" style="cursor: pointer">
+                    <div class="dayy this-month" @click="searchapp(lista[0].date)" style="cursor: pointer">
                         <span class="monthh p-0">{{lista[0].dayn}},{{lista[0].month}}</span> <br>
                         <span class="not-this-month  text-black">{{lista[0].day}}</span> <br>
                         <span class="dot no-event">
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                          <div class="g-0 col-md-4 col-4">
-                    <div class="dayy this-month" @click.prevent="searchapp(lista[1].date)" style="cursor: pointer">
+                    <div class="dayy this-month" @click="searchapp(lista[1].date)" style="cursor: pointer">
                         <span class="monthh p-0">{{lista[1].dayn}},{{lista[1].month}}</span> <br>
                         <span class="not-this-month  text-black">{{lista[1].day}}</span> <br>
                         <span class="dot no-event">
@@ -187,8 +187,8 @@ this.date_function();
         (response) => { this.lista = response.data;}
       );
         },
-        searchapp(val){
-          axios.get('todayappointments?date=' + val).then(
+        searchapp(vall){
+          axios.get('todayappointments?date=' + vall).then(
         (response) => { this.lista = response.data;}
       );
         }

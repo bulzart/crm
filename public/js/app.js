@@ -5416,10 +5416,10 @@ __webpack_require__.r(__webpack_exports__);
         _this3.lista = response.data;
       });
     },
-    searchapp: function searchapp(val) {
+    searchapp: function searchapp(vall) {
       var _this4 = this;
 
-      axios.get('todayappointments?date=' + val).then(function (response) {
+      axios.get('todayappointments?date=' + vall).then(function (response) {
         _this4.lista = response.data;
       });
     }
@@ -28205,7 +28205,6 @@ var render = function () {
               staticStyle: { cursor: "pointer" },
               on: {
                 click: function ($event) {
-                  $event.preventDefault()
                   return _vm.searchapp(_vm.lista[0].date)
                 },
               },
@@ -28262,7 +28261,6 @@ var render = function () {
               staticStyle: { cursor: "pointer" },
               on: {
                 click: function ($event) {
-                  $event.preventDefault()
                   return _vm.searchapp(_vm.lista[1].date)
                 },
               },
