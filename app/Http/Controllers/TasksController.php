@@ -23,9 +23,6 @@ class TasksController extends Controller
         $now = (int) str_replace(':','',$some_date);
       if($req->date != null){
 
-          $some_date = Carbon::now()->format('H:i');
-          $now = (int) str_replace(':','',$some_date);
-
           if (Auth::guard('admins')->user()->role == 'admin') {
 
                   $data = lead::whereNotNull('appointmentdate')->where('assigned', 1)->where('appointmentdate', $req->date)->get();
