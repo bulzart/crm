@@ -80,16 +80,15 @@
       <h5 class="text-secondary">{{tod.address}},{{tod.location}}</h5>
 
         <div class="row mt-5">
-            <div class="col-md-6 col-6">
-            <i class="fas fa-users" style="font-size:38px;"></i>
+            <div class="col-md-6 col-6 text-center">
+            <i class="fas fa-users text-black" style="font-size:38px;"></i>
             <br>
-            <span>{{tod.count}}</span>
-            People
+            <span class="text-black">{{tod.count}} People</span>
             </div>
             <div class="col-md-6 col-6">
-            <i class="far fa-calendar-alt" style="font-color: black; font-size:38px;"></i>
+            <i class="far fa-calendar-alt text-black" style="font-color: black; font-size:38px;"></i>
             <br>
-           <span>{{tod.time}}</span>
+           <span class="text-black">{{tod.time}}</span>
            <br>
             </div>
         </div>
@@ -144,8 +143,8 @@
         <h5 class="modal-title text-center" id="exampleModalLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" style="width: 900px; height: 600px;;">
-      <div class="mapouter"><div class="gmap_canvas"><iframe width="900" height="900" id="gmap_canvas" :src="'https://maps.google.com/maps?q='+ tod.address+',%20' +tod.location+ '&t=k&z=15&ie=UTF8&iwloc=&output=embed'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div></div>
+      <div class="modal-body" style="width: 100%; height: auto;">
+      <div class="mapouter"><div class="gmap_canvas"><iframe style="height: 500px; width: 100%;" id="gmap_canvas" :src="'https://maps.google.com/maps?q='+ tod.address+',%20' +tod.location+ '&t=k&z=15&ie=UTF8&iwloc=&output=embed'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div></div>
              <div class="text-center">
       </div>
 
