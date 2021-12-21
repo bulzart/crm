@@ -5411,7 +5411,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -28756,23 +28755,31 @@ var render = function () {
                                 ]),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "row mt-5" }, [
-                                  _c("div", { staticClass: "col-md-6 col-6" }, [
-                                    _c("i", {
-                                      staticClass: "fas fa-users",
-                                      staticStyle: { "font-size": "38px" },
-                                    }),
-                                    _vm._v(" "),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _c("span", [_vm._v(_vm._s(tod.count))]),
-                                    _vm._v(
-                                      "\r\n            People\r\n            "
-                                    ),
-                                  ]),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "col-md-6 col-6 text-center",
+                                    },
+                                    [
+                                      _c("i", {
+                                        staticClass: "fas fa-users text-black",
+                                        staticStyle: { "font-size": "38px" },
+                                      }),
+                                      _vm._v(" "),
+                                      _c("br"),
+                                      _vm._v(" "),
+                                      _c(
+                                        "span",
+                                        { staticClass: "text-black" },
+                                        [_vm._v(_vm._s(tod.count) + " People")]
+                                      ),
+                                    ]
+                                  ),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "col-md-6 col-6" }, [
                                     _c("i", {
-                                      staticClass: "far fa-calendar-alt",
+                                      staticClass:
+                                        "far fa-calendar-alt text-black",
                                       staticStyle: {
                                         "font-color": "black",
                                         "font-size": "38px",
@@ -28781,7 +28788,9 @@ var render = function () {
                                     _vm._v(" "),
                                     _c("br"),
                                     _vm._v(" "),
-                                    _c("span", [_vm._v(_vm._s(tod.time))]),
+                                    _c("span", { staticClass: "text-black" }, [
+                                      _vm._v(_vm._s(tod.time)),
+                                    ]),
                                     _vm._v(" "),
                                     _c("br"),
                                   ]),

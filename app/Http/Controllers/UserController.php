@@ -225,7 +225,7 @@ class UserController extends Controller
         return redirect()->route('');
     }
     public function alead($id){
-        if(lead::find($id)->assigned == 1 || lead::find($id)->admin_id != null){
+        if(lead::find($id)->assigned == 1 && lead::find($id)->admin_id != null){
             return redirect()->back();
         }
         else{
@@ -389,17 +389,7 @@ public function timenow(){
         $day = Carbon::now()->format('d');
         $month = Carbon::now()->format('m');
         $year = Carbon::now()->format('Y');
-        $fullcalendar = [];
-        $br = 1;
-  $dayofweek = 6;
-
-
-        for($i = 0; $i <= 365; $i++){
-          $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
-          $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
-          $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
-          $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
-        }
+    
 
 
 
@@ -432,6 +422,6 @@ public function timenow(){
 
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
-         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt','fullcalendar'));
+         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
      }
 }

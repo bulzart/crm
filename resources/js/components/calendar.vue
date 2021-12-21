@@ -80,16 +80,15 @@
       <h5 class="text-secondary">{{tod.address}},{{tod.location}}</h5>
 
         <div class="row mt-5">
-            <div class="col-md-6 col-6">
-            <i class="fas fa-users" style="font-size:38px;"></i>
+            <div class="col-md-6 col-6 text-center">
+            <i class="fas fa-users text-black" style="font-size:38px;"></i>
             <br>
-            <span>{{tod.count}}</span>
-            People
+            <span class="text-black">{{tod.count}} People</span>
             </div>
             <div class="col-md-6 col-6">
-            <i class="far fa-calendar-alt" style="font-color: black; font-size:38px;"></i>
+            <i class="far fa-calendar-alt text-black" style="font-color: black; font-size:38px;"></i>
             <br>
-           <span>{{tod.time}}</span>
+           <span class="text-black">{{tod.time}}</span>
            <br>
             </div>
         </div>
