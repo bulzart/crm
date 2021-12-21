@@ -378,8 +378,8 @@ $months = $long = array(
 
         $csapp = appointment::find($id);
         $data2 = (array) json_decode($csapp->data);
-
-
+        $count = (int) $req->input('count');
+  
 
   if($req->file('preinsurer') != null){
       $file = $req->file('preinsurer');

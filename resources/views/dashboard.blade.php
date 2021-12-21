@@ -461,6 +461,12 @@
             <div class="col-md-6 col-12">
                 <todo></todo>
             </div>
+            <div class="col-md-6 col-12">
+             @foreach($morethan30 as $more)
+           <a href="{{route('document',$more->id)}}"><h5 class="h5">{{$more->name}} {{$more->lname}}</h5></a>
+          
+             @endforeach
+            </div>
         </div>
     </div>
 

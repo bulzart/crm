@@ -15,4 +15,21 @@ class TodoController extends Controller
       $todo->save();
       return redirect()->route('dashboard');
     }
+    public function todos(){
+        if(Auth::guard('admins')->check()){
+         return $todos = todo::where('admin_id',Auth::guard('admins')->user()->id)->orderBy('created_at','desc')->get();
+        }
+    }
+    public function deletetodo(Request $req){
+        if(Auth::guard('admins')->check()){
+            $id = (int) $req->id;
+            todo::find($id)->delete();
+        }
+    }
+    public function donetodo(Request $req){
+        if(Auth::guard('admins')->check()){
+            $id = (int) $req->id;
+            todo::where('id',$id)->update(['done' => 1]);
+        }
+    }
 }
