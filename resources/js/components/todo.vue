@@ -26,7 +26,7 @@
                                     </div>
                                 </li>
                                 <div class="d-inline d-flex">
-                              <input class="form-control" name="todo" type="text"><button class="btn btn-primary">Add</button></div>
+                              <input class="form-control" name="todo" id="todo" type="text"><button @click.prevent="addtodo" class="btn btn-primary">Add</button></div>
                               
                                
                                
@@ -40,3 +40,18 @@
         </div>
 </div>
 </template>
+<script>
+export default {
+  data(){
+      return{
+
+      }
+  },
+  methods:{
+      addtodo:function(){
+          val = document.getElementById('todo').value;
+          alert(val);
+      }
+  }
+}
+</script>
