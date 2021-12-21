@@ -426,7 +426,7 @@
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                 <div class="text-center text-white p-2" style="background: #fe86c6; border-radius: 12px;">
                         <div class="col-12"><i style="font-size: 42px;" class='bx bxs-bell'></i></div>
-                        0<br><span>Open tasks</span>
+                        {{$opencnt}}<br><span>Open tasks</span>
                     </div>
                 </div>
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2" id="pend">
