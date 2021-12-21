@@ -77,9 +77,12 @@ route::get('confirmsmscode',function (){
 route::get('chat',[ChatController::class,'chat']);
 route::get('calendar',[UserController::class,'calendar'])->name('calendar');
 route::get('time',function(){
-   return Carbon::now()->format('Y-m-d');
+   return Carbon::now()->format('Y-m-d H:m:i');
 });
 route::get('addtodo',[TodoController::class,'addtodo']);
+route::get('todos',[TodoController::class,'todos']);
+route::get('deletetodo',[TodoController::class,'deletetodo']);
+route::get('donetodo',[TodoController::class,'donetodo']);
 
 
 

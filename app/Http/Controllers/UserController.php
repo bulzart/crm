@@ -407,7 +407,11 @@ public function timenow(){
          $pendingcnt = 0;
          $opencnt = 0;
          $done = 0;
-        if (Auth::guard('admins')->user()->role == 'fs'){
+         if(Auth::guard('admins')->user()->role == 'backoffice'){
+            $morethan30 = appointment::where('created_at','<',Carbon::now()->subDays(30)->format('Y-m-d'))->where('completed',0)->get();
+            return view('dashboard',compact('morethan30'));
+         }
+        elseif (Auth::guard('admins')->user()->role == 'fs'){
             $task = appointment::all();
             $tasks = [];
             $cnt = 0;
@@ -440,7 +444,7 @@ public function timenow(){
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
          return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
         }
-        if (Auth::guard('admins')->user()->role == 'admin') {
+        elseif (Auth::guard('admins')->user()->role == 'admin') {
             $tasks = appointment::all();
             $taskcnt = appointment::count();
             foreach($tasks as $task){
