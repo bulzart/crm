@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
 use App\Models\lead;
@@ -28,29 +29,29 @@ class TasksController extends Controller
     if($admin->role == 'admin'){
       
     
-        $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+        $data = lead::where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
     elseif($admin->role == 'fs'){
-      $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
+      $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
     
       }
       else{
         if($admin->role == 'admin'){
           if($now > 2300){
-            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+            $data = lead::where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
         else{
 
-            $data = lead::where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+            $data = lead::where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
 
         }
       }
       if($admin->role == 'fs'){
         if($now > 2300){
-          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
+          $data = lead::where('admin_id',$admin->id)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->addDays()->toDateString())->get();}
       else{
 
-          $data = lead::where('admin_id',$admin->id)->where('assigned',1)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
+          $data = lead::where('admin_id',$admin->id)->where('wantsonline',0)->where('appointmentdate',Carbon::now()->toDateString())->get();
 
       }
     }
@@ -112,6 +113,7 @@ $months = $long = array(
     }
     public function costumers(Request $request){
         $searchname = $request->searchname;
+        $cnt = 0;
         $date1 = date('Y-m-d', strtotime($request->searchdate1));
         $n = date('Y-m-d', strtotime($request->searchdate2));
         $date2 = date('Y-m-d',strtotime($n . "+1 days"));
@@ -125,7 +127,15 @@ $months = $long = array(
            $data = appointment::where('lname', 'like', '%' . $searchname . '%')
            ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
         }
-            return view('costumers', compact('data'));
+        $contracts = [];
+        foreach($data as $dat){
+          if($dat->contracts != null){
+          $contracts[$dat->id] = json_decode($dat->contracts);
+      } 
+        }
+
+            return view('costumers', compact('data','contracts'));
+         
 
       }
 

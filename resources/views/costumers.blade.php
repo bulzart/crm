@@ -1,7 +1,7 @@
 <html>
 @extends('template.navbar')
 @section('content')
-<div class="col-12 text-center">
+<div class="col-12 text-center" style="background: #f7f7f7;">
 
     <form action="{{route('costumers')}}">
         <input class="form-control" type="text" name="searchname" placeholder="Search...">
@@ -14,7 +14,14 @@
 </div>
 
     @foreach($data as $dat)
-        <p style="font-size: 23px;">{{$dat->name}}</p>
+    <div class="p-4" style="border-radius: 25px;margin-bottom: 10px; background: #fff;">
+        <p style="font-size: 23px;">{{ucfirst($dat->name)}} ({{$dat->birthday}})</p>
+      @if($dat->contracts != null) {{$contracts[$dat->id]->con1; }} <br> {{$contracts[$dat->id]->con2; }} @endif
+        
+
+    
+
+</div>
     @endforeach
 </div>
 @endsection

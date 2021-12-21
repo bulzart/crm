@@ -294,8 +294,6 @@
 
     </style>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
@@ -322,7 +320,6 @@
                             @if(Auth::guard('admins')->check())<a href="#" style="text-decoration: none;" class="nav_link"><i class='bx bx-money text-black'></i><span class="nav_name text-black">Finance</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close text-black"></i><span class="nav_name text-black">Deposit</span> </a> @endif
                             @if(Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance' && Auth::guard('admins')->check())<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper text-black"></i><span class="nav_name text-black">Leads</span> </a>@endif
-                            @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Dates</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Employees</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h text-black"></i><span class="nav_name text-black">Prov.system</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
@@ -403,18 +400,18 @@
            <div class="col-md-12 col-12">
            <div class="weekly-calendarr">
             <div class="row text-center mx-3" >
-
-
-
-
-
+              
+              
+   
+  
+       
             </div>
 			</div>
     </div>
                <div class="col-md-12 col-12">
           <calendar></calendar>
 
-
+          
     </div>
     </div>
     </div>
@@ -423,31 +420,31 @@
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                 <div class="text-center text-white p-2" style="background: #792765; border-radius: 12px;">
                         <div class="col-12"><i style="font-size: 42px;" class='bx bx-user'></i></div>
-                        {{$leadscount}}<br>New Leads
+                        {{$leadscount}}<br><span>New Leads </span>
                     </div>
                 </div>
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                 <div class="text-center text-white p-2" style="background: #fe86c6; border-radius: 12px;">
                         <div class="col-12"><i style="font-size: 42px;" class='bx bxs-bell'></i></div>
-                        0<br>Open tasks
+                        0<br><span>Open tasks</span>
                     </div>
                 </div>
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2" id="pend">
                     <div class="text-center text-white p-2" style="background: #8a8bff; border-radius: 12px;">
                         <div class="col-12"><i style="font-size: 42px;" class="fas fa-exclamation-circle"></i></div>
-                        {{$pendingcnt}}<br>Pendencies
+                        {{$pendingcnt}}<br><span>Pendencies</span>
                     </div>
                 </div>
                 <div class="rounded col-4 col-sm-6 col-xs-6 col-md-4 col-lg-4 mb-2">
                     <div class="text-center text-white p-2" style="background: #ffbe6a; border-radius: 12px;">
                         <div class="col-12"><i style="font-size: 42px;" class="fas fa-calendar-alt"></i></div>
-                        {{$todayAppointCount}}<br>Today appointments
+                        {{$todayAppointCount}}<br><span>Today appointments</span>
                     </div>
                 </div>
                 <div class="col-4 col-sm-6 col-xs-6 col-md-4 col-lg-4 mb-2">
                     <div class="text-center text-white p-2" style="background: #00c78c; border-radius: 12px;">
                         <div class="col-12"><i style="font-size: 42px;" class="fas fa-comment"></i></div>
-                        0<br>HR communications
+                        0<br><span>HR communications</span>
                     </div>
                 </div>
     </div>
@@ -459,10 +456,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
 </body>
 
@@ -491,7 +484,7 @@
 
             }
         }
-
+       
 
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
@@ -523,7 +516,7 @@ $(document).ready(function() {
             dots: false,
             infinite: false,
             nav: false,
-
+    
             responsive: {
                 0: {
                     items: 1

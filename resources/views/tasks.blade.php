@@ -6,14 +6,14 @@
 <span class="text-danger">{{$opencnt}}</span><br>
 
 @foreach($realopen as $task)
-<div class="p-1" style="background: white; border-radius: 12px;">
+<a style="underline: none"href="{{route('document',$task->id)}}"><div class="p-1" style="background: white; border-radius: 12px;">
 
 
 <h5 class="m-1">{{ucfirst($task->name)}} {{ucfirst($task->lname)}}</h5>
 <span class="m-1">Kommentar: {{$task->status}}</span>
 
 
-</div>
+</div></a>
 <br>
 @endforeach
 </div>
@@ -21,11 +21,11 @@
     <span class="mt-2">Pending</span>
     <span class="text-danger">{{$pendingcnt}}</span>
 @foreach($pending as $task)
-<div class="p-1" style="background: white; border-radius: 12px;">
+<a href="{{route('document',$task->id)}}"><div class="p-1" style="background: white; border-radius: 12px;">
 <h5 class="m-1">{{ucfirst($task->name)}} {{ucfirst($task->lname)}}</h5>
 
 <span class="m-1">Kommentar: {{$task->status}}</span>
-</div>
+</div></a>
 <br>
 @endforeach
 </div>

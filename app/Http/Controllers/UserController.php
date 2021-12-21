@@ -14,6 +14,7 @@ use App\Models\chat;
 use App\Models\Costumer;
 use App\Models\family;
 use App\Models\lead;
+use App\Models\notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,12 +28,31 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+    public function closenots(){
+       notification::where('receiver_id',Auth::guard('admins')->user()->id)->update(['done' => 1]);
+       return 'null';
+    }
+    public function acceptapp($id){
+        $lead = lead::find($id);
+        if($lead->admin_id == Auth::guard('admins')->user()->id){
+            $lead->assigned = 1;
+            $lead->save();
+            return redirect()->back();
+        }
+        else{
+            return redirect()->back();
+        }
+    }
     public function rnlogin(){
         if(!Auth::guard('admins')->check()){
         return view('login');}
         else{
             return redirect()->route('dashboard');
         }
+    }
+    public function notifications(){
+        $not = notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->get();
+   return $not;
     }
 
     public function getlead($campaign){
@@ -129,21 +149,7 @@ class UserController extends Controller
 
     }
 
-    public function dates($page = 1){
-        if(Auth::guard('admins')->check()){
-            if(Auth::guard('admins')->user()->role == 'salesmenager' || Auth::guard('admins')->user()->role == 'admin'){
-                $datesforconversation = lead::where('completed',0)->where('wantsonline',0)->where('assigned',1)->get();
-            }
 
-            elseif (Auth::guard('admins')->user()->role == 'digital'){
-            $datesforconversation = lead::where('wantsonline',1)->where('completed',0)->paginate(7);
-            }
-            return view('dates',compact('datesforconversation'));
-        }
-        else{
-            return abort(403);
-        }
-    }
 
     public function dlead($id){
      //   lead::where('id',$id)->delete();
@@ -205,7 +211,6 @@ class UserController extends Controller
         ]);
           $lead = lead::find($id);
           $lead->admin_id = (int) $req->input('admin');
-          $lead->assigned = 1;
           $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
           $lead->appointmentdate = filter_var($req->input('appointmentdate'),FILTER_SANITIZE_STRING);
           $lead->save();
@@ -224,10 +229,14 @@ class UserController extends Controller
         return redirect()->route('');
     }
     public function alead($id){
+        if(lead::find($id)->assigned == 1 || lead::find($id)->admin_id != null){
+            return redirect()->back();
+        }
+        else{
         $admins = Admins::all();
         $lead = lead::find($id);
 
-        return view('alead',compact('admins','lead'));
+        return view('alead',compact('admins','lead'));}
     }
 
     public function trylogin(Request $req){

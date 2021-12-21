@@ -8,6 +8,7 @@
 
 Vue.component('notifications', require('./components/notifications.vue').default);
 Vue.component('calendar', require('./components/calendar.vue').default);
+Vue.component('chat', require('./components/chat.vue').default);
 
 require('./bootstrap');
 import Vue from 'vue'
