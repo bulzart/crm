@@ -186,8 +186,12 @@ class UserController extends Controller
                  $leads = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('completed','0')->where('wantsonline',1)->paginate(7);
 
             }
+            $insta = lead::where('campaign_id',1)->get()->count();
+            $facebook = lead::where('campaign_id',2)->get()->count();
+            $google = lead::where('campaign_id',5)->get()->count();
+            $total = array('instagram' => $insta,'facebook' => $facebook,'google'=>$google);
 
-            return view('leads',compact('leads'));
+            return view('leads',compact('leads','total'));
         }
         else{
             return abort('403');
