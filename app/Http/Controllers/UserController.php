@@ -384,7 +384,10 @@ public function timenow(){
         return redirect()->back()->with('success','U ruajt me sukses');
     }
 
-     public function dashboard(){
+     public function dashboard(Request $req){
+
+        $getmonth = $req->getmonth ?? null;
+        
 
         $day = Carbon::now()->format('d');
         $month = Carbon::now()->format('m');
@@ -400,6 +403,11 @@ public function timenow(){
         $pendingcnt = 0;
         $opencnt = 0;
         $done = 0;
+        if(Auth::guard('admins')->user()->role == 'fs'){
+            $tasks = appointment::where();
+        $taskcnt = appointment::count();
+        }
+
         $tasks = appointment::all();
         $taskcnt = appointment::count();
         foreach($tasks as $task){
