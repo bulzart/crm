@@ -80,7 +80,13 @@
 </div>
 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-4 col-12 text-center">
 Statistics
+    <div>
+        <span>Instagram: {{$total['instagram']}}</span><br>
+        <span>Facebook: {{$total['facebook']}}</span><br>
+        <span>Google: {{$total['google']}}</span>
+    </div>
 </div>
+
 </div>
 @endsection
 @endif
