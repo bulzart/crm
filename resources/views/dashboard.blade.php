@@ -290,6 +290,7 @@
         .modal-backdrop{
             display: none;
         }
+        
 
 
     </style>
@@ -341,6 +342,7 @@
                 <div class="justify-content-end d-flex mb-3">
                     <notifications></notifications>
                 </div>
+                @if(Auth::guard('admins')->user()->role != 'backoffice')
                 <div class="col-12">
                     <h3>Overview</h3>
                     <div class="row">
@@ -416,6 +418,7 @@
     </div>
     </div>
 
+
             <div class="col-md-6 col-sm-6 col-12 row">
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                 <div class="text-center text-white p-2" style="background: #792765; border-radius: 12px;">
@@ -453,6 +456,10 @@
                         <button type="submit">+</button>
                     </a>
                 </div>
+            </div>
+            @endif
+            <div class="col-md-6 col-12">
+                <todo></todo>
             </div>
         </div>
     </div>

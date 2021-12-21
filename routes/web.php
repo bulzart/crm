@@ -75,6 +75,9 @@ route::get('confirmsmscode',function (){
 })->name('confirmsmscode');
 route::get('chat',[ChatController::class,'chat']);
 route::get('calendar',[UserController::class,'calendar'])->name('calendar');
+route::get('time',function(){
+   return Carbon::now()->format('Y-m-d');
+});
 
 
 
