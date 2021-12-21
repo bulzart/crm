@@ -391,6 +391,7 @@ public function timenow(){
         return redirect()->back()->with('success','U ruajt me sukses');
     }
 
+
      public function dashboard(){
          date_default_timezone_set('Europe/Berlin');
          $pendingcnt = 0;
@@ -401,41 +402,62 @@ public function timenow(){
             $tasks = [];
             $cnt = 0;
             foreach ($task as $t){
-
                 if ($t->lead->admin_id == Auth::guard('admins')->user()->id){
 
                     $tasks[$cnt] = $t;
                     $cnt++;
                 }
             }
-
             $taskcnt = $cnt;
 
+            foreach($tasks as $task){
+                if(!$this->isdone($task)){
+    
+                  $pendingcnt++;
+            }
+                if($task->data == null){
+                  $opencnt++;
+                 }
+                 if($task->completed == 1)
+                 {
+                     $done++;
+                 }
+    
+                }
+
+                       $percnt = (100 / $taskcnt) * $done;
+         $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
+         $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
+         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
         }
         if (Auth::guard('admins')->user()->role == 'admin') {
             $tasks = appointment::all();
             $taskcnt = appointment::count();
-        }
-        foreach($tasks as $task){
-            if(!$this->isdone($task)){
-
-              $pendingcnt++;
-        }
-            if($task->data == null){
-              $opencnt++;
-             }
-             if($task->completed == 1)
-             {
-                 $done++;
-             }
-
+            foreach($tasks as $task){
+                if(!$this->isdone($task)){
+    
+                  $pendingcnt++;
             }
+                if($task->data == null){
+                  $opencnt++;
+                 }
+                 if($task->completed == 1)
+                 {
+                     $done++;
+                 }
+    
+                }
 
-           $percnt = (100 / $taskcnt) * $done;
-
-
+                       $percnt = (100 / $taskcnt) * $done;
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
          return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
+        }
+         return view('dashboard');
+       
+
+    
+
+
      }
 }
