@@ -229,7 +229,7 @@ class UserController extends Controller
         return redirect()->route('');
     }
     public function alead($id){
-        if(lead::find($id)->assigned == 1 || lead::find($id)->admin_id != null){
+        if(lead::find($id)->assigned == 1 && lead::find($id)->admin_id != null){
             return redirect()->back();
         }
         else{
@@ -390,32 +390,31 @@ public function timenow(){
 
      public function dashboard(){
 
-        $day = Carbon::now()->format('d');
-        $month = Carbon::now()->format('m');
-        $year = Carbon::now()->format('Y');
-        $fullcalendar = [];
-        $br = 1;
-  $dayofweek = 6;
-
-
-        for($i = 0; $i <= 365; $i++){
-          $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
-          $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
-          $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
-          $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
-        }
-
-
-
         date_default_timezone_set('Europe/Berlin');
 
+         $pendingcnt = 0;
+         $opencnt = 0;
+         $done = 0;
+        if (Auth::guard('admins')->user()->role == 'fs'){
+            $task = appointment::all();
+            $tasks = [];
+            $cnt = 0;
+            foreach ($task as $t){
 
+                if ($t->lead->admin_id == Auth::guard('admins')->user()->id){
 
-        $pendingcnt = 0;
-        $opencnt = 0;
-        $done = 0;
-        $tasks = appointment::all();
-        $taskcnt = appointment::count();
+                    $tasks[$cnt] = $t;
+                    $cnt++;
+                }
+            }
+            dd($tasks);
+            $taskcnt = $cnt;
+
+        }
+        if (Auth::guard('admins')->user()->role == 'admin') {
+            $tasks = appointment::all();
+            $taskcnt = appointment::count();
+        }
         foreach($tasks as $task){
             if(!$this->isdone($task)){
 
@@ -426,7 +425,7 @@ public function timenow(){
              }
              if($task->completed == 1)
              {
- $done++;
+                 $done++;
              }
 
             }
@@ -436,6 +435,6 @@ public function timenow(){
 
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
-         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt','fullcalendar'));
+         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
      }
 }
