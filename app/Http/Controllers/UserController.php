@@ -36,6 +36,7 @@ class UserController extends Controller
         $lead = lead::find($id);
         if($lead->admin_id == Auth::guard('admins')->user()->id){
             $lead->assigned = 1;
+            $lead->assign_date = Carbon::now()->format('Y-m-d');
             $lead->save();
             return redirect()->back();
         }
@@ -192,6 +193,8 @@ class UserController extends Controller
                  $leads = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('completed','0')->where('wantsonline',1)->paginate(7);
 
             }
+
+
             $insta = lead::where('campaign_id',1)->get()->count();
             $facebook = lead::where('campaign_id',2)->get()->count();
             $google = lead::where('campaign_id',5)->get()->count();
@@ -388,22 +391,9 @@ public function timenow(){
         return redirect()->back()->with('success','U ruajt me sukses');
     }
 
-     public function dashboard(Request $req){
 
-        $getmonth = $req->getmonth ?? null;
-        
-
-
-        $day = Carbon::now()->format('d');
-        $month = Carbon::now()->format('m');
-        $year = Carbon::now()->format('Y');
-    
-
-
-
-        date_default_timezone_set('Europe/Berlin');
-
-    
+     public function dashboard(){
+         date_default_timezone_set('Europe/Berlin');
          $pendingcnt = 0;
          $opencnt = 0;
          $done = 0;

@@ -1,5 +1,4 @@
 
-
 <html>
 @extends('template.navbar')
 @section('content')
