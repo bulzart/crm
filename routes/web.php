@@ -11,6 +11,7 @@ use App\Models\appointment;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\TodoController;
 
 use function GuzzleHttp\Promise\task;
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
@@ -78,6 +79,7 @@ route::get('calendar',[UserController::class,'calendar'])->name('calendar');
 route::get('time',function(){
    return Carbon::now()->format('Y-m-d');
 });
+route::get('addtodo',[TodoController::class,'addtodo']);
 
 
 
