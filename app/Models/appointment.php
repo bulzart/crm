@@ -9,4 +9,8 @@ class appointment extends Model
 {
     use HasFactory;
     protected $table = 'csapp';
+
+    function lead(){
+        return $this->belongsTo(lead::class);
+    }
 }

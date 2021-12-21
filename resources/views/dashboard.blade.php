@@ -400,18 +400,18 @@
            <div class="col-md-12 col-12">
            <div class="weekly-calendarr">
             <div class="row text-center mx-3" >
-              
-              
-   
-  
-       
+
+
+
+
+
             </div>
 			</div>
     </div>
                <div class="col-md-12 col-12">
           <calendar></calendar>
 
-          
+
     </div>
     </div>
     </div>
@@ -463,7 +463,6 @@
 
 
     document.addEventListener("DOMContentLoaded", function(event) {
-
         const showNavbar = (toggleId, navId, bodyId, headerId) => {
             const toggle = document.getElementById(toggleId),
                 nav = document.getElementById(navId),
@@ -484,7 +483,7 @@
 
             }
         }
-       
+
 
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
@@ -516,7 +515,7 @@ $(document).ready(function() {
             dots: false,
             infinite: false,
             nav: false,
-    
+
             responsive: {
                 0: {
                     items: 1
