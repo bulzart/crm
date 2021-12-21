@@ -579,7 +579,7 @@ input[type="radio"]:checked+label:after {
         </div>
 </form>
 Or insert by file
-<form action="{{route('importexcel')}}" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
     @csrf
 <input type="file" class="form-control" name="file">
 </form>

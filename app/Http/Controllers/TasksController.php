@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
 use App\Models\lead;
@@ -112,6 +113,7 @@ $months = $long = array(
     }
     public function costumers(Request $request){
         $searchname = $request->searchname;
+        $cnt = 0;
         $date1 = date('Y-m-d', strtotime($request->searchdate1));
         $n = date('Y-m-d', strtotime($request->searchdate2));
         $date2 = date('Y-m-d',strtotime($n . "+1 days"));
@@ -125,7 +127,15 @@ $months = $long = array(
            $data = appointment::where('lname', 'like', '%' . $searchname . '%')
            ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
         }
-            return view('costumers', compact('data'));
+        $contracts = [];
+        foreach($data as $dat){
+          if($dat->contracts != null){
+          $contracts[$dat->id] = json_decode($dat->contracts);
+      } 
+        }
+
+            return view('costumers', compact('data','contracts'));
+         
 
       }
 

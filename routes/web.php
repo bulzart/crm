@@ -10,6 +10,7 @@ use App\Http\Controllers\TasksController;
 use App\Models\appointment;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 
 use function GuzzleHttp\Promise\task;
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
@@ -46,7 +47,7 @@ use function GuzzleHttp\Promise\task;
        else{
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
        }
-    });
+    })->name('document');
     route::post('documentform/{id}',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
@@ -72,8 +73,9 @@ route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsm
 route::get('confirmsmscode',function (){
    return view('confirmsmscode');
 })->name('confirmsmscode');
-
+route::get('chat',[ChatController::class,'chat']);
 route::get('calendar',[UserController::class,'calendar'])->name('calendar');
+
 
 
 
