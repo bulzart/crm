@@ -102,10 +102,6 @@
             outline: none;
         }
 
-
-
-
-
 </style>
 @extends('template.navbar')
 @section('content')

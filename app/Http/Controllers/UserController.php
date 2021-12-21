@@ -192,8 +192,12 @@ class UserController extends Controller
                  $leads = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('completed','0')->where('wantsonline',1)->paginate(7);
 
             }
+            $insta = lead::where('campaign_id',1)->get()->count();
+            $facebook = lead::where('campaign_id',2)->get()->count();
+            $google = lead::where('campaign_id',5)->get()->count();
+            $total = array('instagram' => $insta,'facebook' => $facebook,'google'=>$google);
 
-            return view('leads',compact('leads'));
+            return view('leads',compact('leads','total'));
         }
         else{
             return abort('403');
@@ -389,6 +393,7 @@ public function timenow(){
         $getmonth = $req->getmonth ?? null;
         
 
+
         $day = Carbon::now()->format('d');
         $month = Carbon::now()->format('m');
         $year = Carbon::now()->format('Y');
@@ -398,38 +403,71 @@ public function timenow(){
 
         date_default_timezone_set('Europe/Berlin');
 
+    
+         $pendingcnt = 0;
+         $opencnt = 0;
+         $done = 0;
+        if (Auth::guard('admins')->user()->role == 'fs'){
+            $task = appointment::all();
+            $tasks = [];
+            $cnt = 0;
+            foreach ($task as $t){
+                if ($t->lead->admin_id == Auth::guard('admins')->user()->id){
 
-
-        $pendingcnt = 0;
-        $opencnt = 0;
-        $done = 0;
-        if(Auth::guard('admins')->user()->role == 'fs'){
-            $tasks = appointment::where();
-        $taskcnt = appointment::count();
-        }
-
-        $tasks = appointment::all();
-        $taskcnt = appointment::count();
-        foreach($tasks as $task){
-            if(!$this->isdone($task)){
-
-              $pendingcnt++;
-        }
-            if($task->data == null){
-              $opencnt++;
-             }
-             if($task->completed == 1)
-             {
- $done++;
-             }
-
+                    $tasks[$cnt] = $t;
+                    $cnt++;
+                }
             }
+            $taskcnt = $cnt;
 
-           $percnt = (100 / $taskcnt) * $done;
+            foreach($tasks as $task){
+                if(!$this->isdone($task)){
+    
+                  $pendingcnt++;
+            }
+                if($task->data == null){
+                  $opencnt++;
+                 }
+                 if($task->completed == 1)
+                 {
+                     $done++;
+                 }
+    
+                }
 
-
+                       $percnt = (100 / $taskcnt) * $done;
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
          return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
+        }
+        if (Auth::guard('admins')->user()->role == 'admin') {
+            $tasks = appointment::all();
+            $taskcnt = appointment::count();
+            foreach($tasks as $task){
+                if(!$this->isdone($task)){
+    
+                  $pendingcnt++;
+            }
+                if($task->data == null){
+                  $opencnt++;
+                 }
+                 if($task->completed == 1)
+                 {
+                     $done++;
+                 }
+    
+                }
+
+                       $percnt = (100 / $taskcnt) * $done;
+         $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
+         $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
+         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
+        }
+         return view('dashboard');
+       
+
+    
+
+
      }
 }

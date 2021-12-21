@@ -290,6 +290,7 @@
         .modal-backdrop{
             display: none;
         }
+        
 
 
     </style>
@@ -341,6 +342,7 @@
                 <div class="justify-content-end d-flex mb-3">
                     <notifications></notifications>
                 </div>
+                @if(Auth::guard('admins')->user()->role != 'backoffice')
                 <div class="col-12">
                     <h3>Overview</h3>
                     <div class="row">
@@ -400,21 +402,22 @@
            <div class="col-md-12 col-12">
            <div class="weekly-calendarr">
             <div class="row text-center mx-3" >
-              
-              
-   
-  
-       
+
+
+
+
+
             </div>
 			</div>
     </div>
                <div class="col-md-12 col-12">
           <calendar></calendar>
 
-          
+
     </div>
     </div>
     </div>
+
 
             <div class="col-md-6 col-sm-6 col-12 row">
                 <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
@@ -454,6 +457,10 @@
                     </a>
                 </div>
             </div>
+            @endif
+            <div class="col-md-6 col-12">
+                <todo></todo>
+            </div>
         </div>
     </div>
 
@@ -463,7 +470,6 @@
 
 
     document.addEventListener("DOMContentLoaded", function(event) {
-
         const showNavbar = (toggleId, navId, bodyId, headerId) => {
             const toggle = document.getElementById(toggleId),
                 nav = document.getElementById(navId),
@@ -484,7 +490,7 @@
 
             }
         }
-       
+
 
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
@@ -516,7 +522,7 @@ $(document).ready(function() {
             dots: false,
             infinite: false,
             nav: false,
-    
+
             responsive: {
                 0: {
                     items: 1

@@ -143,8 +143,8 @@
         <h5 class="modal-title text-center" id="exampleModalLabel"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" style="width: 900px; height: 600px;;">
-      <div class="mapouter"><div class="gmap_canvas"><iframe width="900" height="900" id="gmap_canvas" :src="'https://maps.google.com/maps?q='+ tod.address+',%20' +tod.location+ '&t=k&z=15&ie=UTF8&iwloc=&output=embed'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div></div>
+      <div class="modal-body" style="width: 100%; height: auto;">
+      <div class="mapouter"><div class="gmap_canvas"><iframe style="height: 500px; width: 100%;" id="gmap_canvas" :src="'https://maps.google.com/maps?q='+ tod.address+',%20' +tod.location+ '&t=k&z=15&ie=UTF8&iwloc=&output=embed'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><a href="https://www.embedgooglemap.net">embedgooglemap.net</a></div></div>
              <div class="text-center">
       </div>
 
