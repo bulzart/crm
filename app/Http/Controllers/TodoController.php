@@ -8,6 +8,25 @@ use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
+    public function numbers(){
+        return todo::where('number',1)->where('admin_id',Auth::guard('admins')->user()->id)->get();
+    }
+
+    public function addnumber(Request $req){
+        $todo = new todo();
+        $todo->text = filter_var($req->number,FILTER_SANITIZE_STRING);
+        $todo->admin_id = Auth::guard('admins')->user()->id;
+        $todo->number = 1;
+        $todo->save();
+      }
+
+      public function deletenumber(Request $req){
+        if(Auth::guard('admins')->check()){
+            $id = (int) $req->id;
+            todo::find($id)->delete();
+        }
+    }
+
     public function addtodo(Request $req){
       $todo = new todo();
       $todo->text = filter_var($req->todo,FILTER_SANITIZE_STRING);
@@ -17,7 +36,7 @@ class TodoController extends Controller
     }
     public function todos(){
         if(Auth::guard('admins')->check()){
-         return $todos = todo::where('admin_id',Auth::guard('admins')->user()->id)->orderBy('created_at','desc')->get();
+         return $todos = todo::where('admin_id',Auth::guard('admins')->user()->id)->where('number',0)->orderBy('created_at','desc')->get();
         }
     }
     public function deletetodo(Request $req){

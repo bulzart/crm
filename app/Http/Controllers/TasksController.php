@@ -167,12 +167,14 @@ $months = $long = array(
           $object['comment'] = $req['comment'];
         }}
         if(isset($req['preinsurer'])){
-        if($req['preinsurer'] != null && $req['preinsurer'] != ''){
-          $object['preinsurer'] = $req['preinsurer'];
-        }}
-        else{
-          $object['preinsurer'] = $req['preinsurert'];
-        }
+          if($req['preinsurer'] != null && $req['preinsurer'] != '' ){
+            $object['preinsurer'] = $req['preinsurer'];
+          }}
+
+          else{
+            if(!isset($object['preinsurer'])){
+            $object['preinsurer'] = "";}
+          }
         if(isset($req['leasingname'])){
         if($req['leasingname'] != null && $req['leasingname'] != ''){
           $object['leasingname'] = $req['leasingname'];
@@ -267,44 +269,55 @@ $months = $long = array(
           if($req['idnecessary'] != null && $req['idnecessary'] != '' ){
             $object['idnecessary'] = $req['idnecessary'];
           }}
+
           else{
-            $object['idnecessary'] = "";
+            if(!isset($object['idnecessary'])){
+            $object['idnecessary'] = "";}
           }
           if(isset($req['noticeby'])){
             if($req['noticeby'] != null && $req['noticeby'] != '' ){
               $object['noticeby'] = $req['noticeby'];
             }}
-
+  
             else{
-              $object['noticeby'] = "";
+              if(!isset($object['noticeby'])){
+              $object['noticeby'] = "";}
             }
             if(isset($req['powerofattorney'])){
               if($req['powerofattorney'] != null && $req['powerofattorney'] != '' ){
                 $object['powerofattorney'] = $req['powerofattorney'];
               }}
-              {
-                $object['powerofattorney'] = "";
+    
+              else{
+                if(!isset($object['powerofattorney'])){
+                $object['powerofattorney'] = "";}
               }
               if(isset($req['uploadpolice'])){
                 if($req['uploadpolice'] != null && $req['uploadpolice'] != '' ){
                   $object['uploadpolice'] = $req['uploadpolice'];
                 }}
+      
                 else{
-                  $object['uploadpolice'] = "";
+                  if(!isset($object['uploadpolice'])){
+                  $object['uploadpolice'] = "";}
                 }
                 if(isset($req['uploadpolice2'])){
                   if($req['uploadpolice2'] != null && $req['uploadpolice2'] != '' ){
                     $object['uploadpolice2'] = $req['uploadpolice2'];
                   }}
+        
                   else{
-                    $object['uploadpolice2'] = "";
+                    if(!isset($object['uploadpolice2'])){
+                    $object['uploadpolice2'] = "";}
                   }
                   if(isset($req['uploadhevicleid'])){
                     if($req['uploadhevicleid'] != null && $req['uploadhevicleid'] != '' ){
                       $object['uploadhevicleid'] = $req['uploadhevicleid'];
                     }}
+          
                     else{
-                      $object['uploadhevicleid'] = "";
+                      if(!isset($object['uploadhevicleid'])){
+                      $object['uploadhevicleid'] = "";}
                     }
                  return $object;
 
@@ -379,7 +392,19 @@ $months = $long = array(
         $csapp = appointment::find($id);
         $data2 = (array) json_decode($csapp->data);
         $count = (int) $req->input('count');
-  
+        for($i = 0;$i <= $count;$i++){
+     
+   
+           if($req->file('uploadvehicleid'.$i) != null){
+              $file = $req->file('uploadvehicleid'.$i);
+              $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
+             $path = $file->storeAs('img',$filename);
+             $data['uploadpolice'.$i] = filter_var($path,FILTER_SANITIZE_STRING);
+           }
+
+        }
+
+
 
   if($req->file('preinsurer') != null){
       $file = $req->file('preinsurer');
@@ -427,8 +452,10 @@ $months = $long = array(
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
     $datas = $this->adddata($data,$data2);
+    $datas['admin_id'] = Auth::guard('admins')->user()->id;
+    
 
-     $csapp->data = json_encode($datas);
+     $csapp->unsigned_data = json_encode($datas);
         $csapp->save();
 
 

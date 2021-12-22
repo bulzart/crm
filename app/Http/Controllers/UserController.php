@@ -88,6 +88,24 @@ class UserController extends Controller
         else{
             $lead->wantsonline = 0;
         }
+            $address = [];
+           
+        $address = filter_var($req->input('address'),FILTER_SANITIZE_STRING);
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=AIzaSyDscxZzYju_pJGNA2zu1lXOqJuubCdPu0o';
+                 $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                 $responseJson = curl_exec($ch);
+                 curl_close($ch);
+                 $response = json_decode($responseJson);
+                 if ($response->status == 'OK') {
+                     $latitude = $response->results[0]->geometry->location->lat;
+                     $longitude = $response->results[0]->geometry->location->lng;
+                 } 
+                 $lead->lati = $latitude;
+                 $lead->longi = $longitude;
+             
+                 
 
         if($lead->save()){
             $lead->slug = Str::slug($req->input('fname')).'-'.$lead->id;
@@ -388,6 +406,7 @@ public function timenow(){
         return redirect()->back()->with('success','U ruajt me sukses');
     }
 
+
      public function dashboard(Request $req){
 
         $getmonth = $req->getmonth ?? null;
@@ -403,13 +422,16 @@ public function timenow(){
 
         date_default_timezone_set('Europe/Berlin');
 
-    
+    $maps = Auth::guard('admins')->user()->role == 'admin' ? lead::where('appointmentdate',Carbon::now()->format('Y-m-d'))->get() : lead::where('admin_id',auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->format('Y-m-d'))->get();
+   
          $pendingcnt = 0;
          $opencnt = 0;
          $done = 0;
          if(Auth::guard('admins')->user()->role == 'backoffice'){
             $morethan30 = appointment::where('created_at','<',Carbon::now()->subDays(30)->format('Y-m-d'))->where('completed',0)->get();
-            return view('dashboard',compact('morethan30'));
+            $unsigned = appointment::whereNotNull('unsigned_data')->get();
+            $appointments = appointment::where('admin_id',);
+            return view('dashboard',compact('morethan30','unsigned','maps'));
          }
         elseif (Auth::guard('admins')->user()->role == 'fs'){
             $task = appointment::all();
@@ -459,7 +481,7 @@ public function timenow(){
                  {
                      $done++;
                  }
-    
+                 
                 }
 
                        $percnt = (100 / $taskcnt) * $done;
@@ -468,10 +490,6 @@ public function timenow(){
          return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
         }
          return view('dashboard');
-       
-
-    
-
 
      }
 }

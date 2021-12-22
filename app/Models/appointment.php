@@ -13,4 +13,5 @@ class appointment extends Model
     function lead(){
         return $this->belongsTo(lead::class);
     }
+    
 }
