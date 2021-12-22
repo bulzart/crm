@@ -290,7 +290,7 @@
         .modal-backdrop{
             display: none;
         }
-        
+
 
 
     </style>
@@ -299,8 +299,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-  <title>Google Maps Multiple Markers</title> 
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Google Maps Multiple Markers</title>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-HHCaYZ4N-VoJTrQObXqU4zRs73hMsmM"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -464,22 +464,26 @@
             @endif
 @if(Auth::guard('admins')->user()->role == 'backoffice')
             <div class="col-md-12 col-12">
-                
+
                 <todo></todo>
             </div>
             <div class="col-md-6 col-12 mt-5">
-             
+
     </div>
-    <div class="col-md-6 col-12 mt-5">
-             @foreach($morethan30 as $more)
+
+            <div class="col-md-6 col-12 mt-5">
+             @if(isset($morethan30))
+                    @foreach($morethan30 as $more)
+
            <a href="{{route('document',$more->id)}}"><h5 class="h5">{{$more->name}} {{$more->lname}}</h5></a>
              @endforeach
+                 @endif
             </div>
         </div>
         @endif
 
     </div>
- 
+
 
 
 
