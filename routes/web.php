@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\confirmcode;
 use App\Http\Middleware\confirmedadmin;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TodoController;
+use App\Models\todo;
 
 use function GuzzleHttp\Promise\task;
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
@@ -75,15 +77,17 @@ route::get('confirmsmscode',function (){
    return view('confirmsmscode');
 })->name('confirmsmscode');
 route::get('chat',[ChatController::class,'chat']);
-route::get('calendar',[UserController::class,'calendar'])->name('calendar');
 route::get('time',function(){
-   return Carbon::now()->format('Y-m-d H:m:i');
+   return Carbon::now()->format('Y-m-d');
 });
 route::get('addtodo',[TodoController::class,'addtodo']);
 route::get('todos',[TodoController::class,'todos']);
 route::get('deletetodo',[TodoController::class,'deletetodo']);
 route::get('donetodo',[TodoController::class,'donetodo']);
-
+route::get('addnumber',[TodoController::class,'addnumber']);
+route::get('deletenumber',[TodoController::class,'deletenumber']);
+route::get('numbers',[TodoController::class,'numbers']);
+route::get('calendar',[CalendarController::class,'calendar'])->name('calendar');
 
 
 
