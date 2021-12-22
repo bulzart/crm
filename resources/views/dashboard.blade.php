@@ -462,6 +462,7 @@
                 </div>
             </div>
             @endif
+@if(Auth::guard('admins')->user()->role == 'backoffice')
             <div class="col-md-12 col-12">
 
                 <todo></todo>
@@ -469,14 +470,20 @@
             <div class="col-md-6 col-12 mt-5">
 
     </div>
+<<<<<<< HEAD
             <div class="col-md-6 col-12 mt-5">
              @if(isset($morethan30))
                     @foreach($morethan30 as $more)
+=======
+    <div class="col-md-6 col-12 mt-5">
+             @foreach($morethan30 as $more)
+>>>>>>> 6c843206685b7c02276771aa6fdbb737d1627751
            <a href="{{route('document',$more->id)}}"><h5 class="h5">{{$more->name}} {{$more->lname}}</h5></a>
              @endforeach
                  @endif
             </div>
         </div>
+        @endif
 
     </div>
 
