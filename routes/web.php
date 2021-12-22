@@ -84,10 +84,18 @@ route::get('addtodo',[TodoController::class,'addtodo']);
 route::get('todos',[TodoController::class,'todos']);
 route::get('deletetodo',[TodoController::class,'deletetodo']);
 route::get('donetodo',[TodoController::class,'donetodo']);
+
 route::get('addnumber',[TodoController::class,'addnumber']);
 route::get('deletenumber',[TodoController::class,'deletenumber']);
 route::get('numbers',[TodoController::class,'numbers']);
 route::get('calendar',[CalendarController::class,'calendar'])->name('calendar');
+
+
+route::get('calendar',function (){
+    return view('calendar');
+});
+
+
 
 
 
