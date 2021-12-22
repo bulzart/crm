@@ -84,6 +84,10 @@ route::get('todos',[TodoController::class,'todos']);
 route::get('deletetodo',[TodoController::class,'deletetodo']);
 route::get('donetodo',[TodoController::class,'donetodo']);
 
+route::get('calendar',function (){
+    return view('calendar');
+});
+
 
 
 
