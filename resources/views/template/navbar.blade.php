@@ -355,7 +355,7 @@ body {
 </div>
 
 
-<div class="container-fluid col-md-10 col-lg-10 col-xs-10 col-sm-10 mt-4" id="cont">
+<div class="container-fluid col-md-10 col-lg-10 col-xs-10 col-sm-10 mt-4" id="app">
 @yield('content')
 
 <div class="form-group container text-center pt-4">

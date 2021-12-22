@@ -422,7 +422,7 @@ public function timenow(){
 
         date_default_timezone_set('Europe/Berlin');
 
-    $maps = Auth::guard('admins')->user()->role == 'admin' ? lead::where('appointmentdate',Carbon::now()->format('Y-m-d'))->get() : lead::where('admin_id',auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->format('Y-m-d'))->get();
+    
    
          $pendingcnt = 0;
          $opencnt = 0;
