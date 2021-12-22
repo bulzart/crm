@@ -5411,6 +5411,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -28447,7 +28449,7 @@ var render = function () {
       _c("span", { staticClass: "fs-5" }, [_vm._v("Termin")]),
       _vm._v(" "),
       _c("div", { staticClass: "row text-center mx-3" }, [
-        _c("div", { staticClass: "g-0 col-md-3 col-3" }, [
+        _c("div", { staticClass: "g-0 col-md-3 col-3 calendarspan" }, [
           _c(
             "div",
             {
@@ -28531,7 +28533,7 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "g-0 col-md-3 col-3" }, [
+        _c("div", { staticClass: "g-0 col-md-3 col-3 calendarspan" }, [
           _c(
             "div",
             {
@@ -28611,7 +28613,7 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "g-0 col-md-3 col-3" }, [
+        _c("div", { staticClass: "g-0 col-md-3 col-3 calendarspan" }, [
           _c(
             "div",
             {
@@ -28686,7 +28688,7 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "g-0 col-md-3 col-3" }, [
+        _c("div", { staticClass: "g-0 col-md-3 col-3 calendarspan" }, [
           _c(
             "div",
             {
@@ -29020,7 +29022,7 @@ var render = function () {
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-md-1 col-6 col-xs-2 mt-3" }, [
-                  _vm._v("\r\n    " + _vm._s(tod.time) + "\r\n    "),
+                  _vm._v("\n    " + _vm._s(tod.time) + "\n    "),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-md-11 col-6 col-xs-10" }, [
@@ -29040,7 +29042,7 @@ var render = function () {
                     staticClass: "fas fa-map-marker-alt",
                     staticStyle: { "margin-left": "9px", "font-size": "14px" },
                   }),
-                  _vm._v(" " + _vm._s(tod.address) + "\r\n                "),
+                  _vm._v(" " + _vm._s(tod.address) + "\n                "),
                 ]),
               ]),
               _vm._v(" "),

@@ -4,7 +4,7 @@
 <span class="fs-5">Termin</span>
   <div class="row text-center mx-3" >
 
-                           <div class="g-0 col-md-3 col-3">
+                           <div class="g-0 col-md-3 col-3 calendarspan">
                     <div class="dayy this-month" @click="searchapp(lista[0].date)" style="cursor: pointer">
  <span @click="searchapp(lista[0].date)" class="monthh p-0">{{lista[0].dayn}},{{lista[0].month}},{{lista[0].year}}</span> <br>
                         <span @click="searchapp(lista[0].date)" class="not-this-month text-black">{{lista[0].day}} {{lista[0].month}}</span> <br>
@@ -15,7 +15,7 @@
                         </span>
                     </div>
                 </div>
-                         <div class="g-0 col-md-3 col-3">
+                         <div class="g-0 col-md-3 col-3 calendarspan">
                     <div class="dayy this-month" @click="searchapp(lista[1].date)" style="cursor: pointer">
                      <span @click="searchapp(lista[1].date)" class="monthh p-0">{{lista[1].dayn}},{{lista[1].year}}</span> <br>
                         <span @click="searchapp(lista[1].date)" class="not-this-month text-black">{{lista[1].day}} {{lista[1].month}}</span> <br>
@@ -26,7 +26,7 @@
                         </span>
                     </div>
                 </div>
-                      <div class="g-0 col-md-3 col-3">
+                      <div class="g-0 col-md-3 col-3 calendarspan">
                     <div class="dayy this-month" style="cursor: pointer">
                         <span @click="searchapp(lista[2].date)" class="monthh p-0">{{lista[2].dayn}},{{lista[2].year}}</span> <br>
                         <span @click="searchapp(lista[2].date)" class="not-this-month text-black">{{lista[2].day}} {{lista[2].month}}</span> <br>
@@ -37,10 +37,12 @@
                         </span>
                     </div>
                 </div>
-<div class="g-0 col-md-3 col-3">
+<div class="g-0 col-md-3 col-3 calendarspan">
                     <div class="dayy this-month" style="cursor: pointer">
-                        <span @click="searchapp(lista[3].date)" class="monthh p-0">{{lista[3].dayn}},{{lista[3].year}}</span> <br>
-                        <span @click="searchapp(lista[3].date)" class="not-this-month text-black">{{lista[3].day}} {{lista[3].month}}</span> <br>
+
+                        <span  @click="searchapp(lista[3].date)" class="monthh p-0">{{lista[3].dayn}},{{lista[3].year}}</span> <br>
+
+                            <span @click="searchapp(lista[3].date)" class="not-this-month text-black">{{lista[3].day}} {{lista[3].month}}</span> <br>
                         <span class="dot no-event">
                             <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6">
                                 <circle id="Ellipse_55" data-name="Ellipse 55" cx="3" cy="3" r="3" fill="#a3dda7" />
@@ -92,7 +94,7 @@
            <br>
             </div>
         </div>
-   
+
       <div class="row text-center mt-5">
       <div class="col-md-6 col-6">
           <a :href="'dealnotclosed/' + tod.id">

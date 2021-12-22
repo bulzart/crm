@@ -81,6 +81,10 @@ route::get('time',function(){
 });
 route::get('addtodo',[TodoController::class,'addtodo']);
 
+route::get('calendar',function (){
+    return view('calendar');
+});
+
 
 
 
