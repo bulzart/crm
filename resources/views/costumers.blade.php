@@ -17,9 +17,9 @@
     <div class="p-4" style="border-radius: 25px;margin-bottom: 10px; background: #fff;">
         <p style="font-size: 23px;">{{ucfirst($dat->name)}} ({{$dat->birthday}})</p>
       @if($dat->contracts != null) {{$contracts[$dat->id]->con1; }} <br> {{$contracts[$dat->id]->con2; }} @endif
-        
 
-    
+
+
 
 </div>
     @endforeach
