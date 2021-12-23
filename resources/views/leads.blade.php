@@ -1,4 +1,4 @@
-@if(Auth::guard('admins')->user()->role == 'salesmenager' || Auth::guard('admins')->user()->role == 'admin')
+
 @extends('template.navbar')
 @section('content')
     @if(\Session::has('success'))
@@ -90,4 +90,4 @@ Statistics
 
 </div>
 @endsection
-@endif
+

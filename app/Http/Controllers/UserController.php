@@ -89,7 +89,7 @@ class UserController extends Controller
             $lead->wantsonline = 0;
         }
             $address = [];
-           
+
         $address = filter_var($req->input('address'),FILTER_SANITIZE_STRING);
         $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=AIzaSyDscxZzYju_pJGNA2zu1lXOqJuubCdPu0o';
                  $ch = curl_init();
@@ -101,11 +101,11 @@ class UserController extends Controller
                  if ($response->status == 'OK') {
                      $latitude = $response->results[0]->geometry->location->lat;
                      $longitude = $response->results[0]->geometry->location->lng;
-                 } 
+                 }
                  $lead->lati = $latitude;
                  $lead->longi = $longitude;
-             
-                 
+
+
 
         if($lead->save()){
             $lead->slug = Str::slug($req->input('fname')).'-'.$lead->id;
@@ -201,25 +201,26 @@ class UserController extends Controller
   }
 
 
-    public function leads($page = 1){
-        if(Auth::guard('admins')->check() && Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance'){
-            if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmenager' || Auth::guard('admins')->user()->role == 'menagment'){
-                $leads = lead::where('completed','0')->where('assigned',0)->paginate(8);
-            }
-            elseif(Auth::guard('admins')->user()->role == 'digital'){
-                 $leads = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('completed','0')->where('wantsonline',1)->paginate(7);
+    public function leads($page = 1)
+    {
 
-            }
-            $insta = lead::where('campaign_id',1)->get()->count();
-            $facebook = lead::where('campaign_id',2)->get()->count();
-            $google = lead::where('campaign_id',5)->get()->count();
-            $total = array('instagram' => $insta,'facebook' => $facebook,'google'=>$google);
-
-            return view('leads',compact('leads','total'));
+        if (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmenager' || Auth::guard('admins')->user()->role == 'menagment') {
+            $leads = lead::where('completed', '0')->where('assigned', 0)->paginate(8);
+        } elseif (Auth::guard('admins')->user()->role == 'digital') {
+            $leads = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
+        } elseif (Auth::guard('admins')->user()->role == 'fs') {
+            $leads = lead::whereNotNull('admin_id')->where('assigned', 1)->paginate(7);
         }
-        else{
+
+        $insta = lead::where('campaign_id', 1)->get()->count();
+        $facebook = lead::where('campaign_id', 2)->get()->count();
+        $google = lead::where('campaign_id', 5)->get()->count();
+        $total = array('instagram' => $insta, 'facebook' => $facebook, 'google' => $google);
+
+        if(!Auth::guard('admins')->check()){
             return abort('403');
         }
+        return view('leads', compact('leads', 'total'));
     }
 
     public function asignlead(Request $req,$id){
@@ -410,20 +411,15 @@ public function timenow(){
      public function dashboard(Request $req){
 
         $getmonth = $req->getmonth ?? null;
-        
+
 
 
         $day = Carbon::now()->format('d');
         $month = Carbon::now()->format('m');
         $year = Carbon::now()->format('Y');
-    
-
-
 
         date_default_timezone_set('Europe/Berlin');
 
-    
-   
          $pendingcnt = 0;
          $opencnt = 0;
          $done = 0;
@@ -448,7 +444,7 @@ public function timenow(){
 
             foreach($tasks as $task){
                 if(!$this->isdone($task)){
-    
+
                   $pendingcnt++;
             }
                 if($task->data == null){
@@ -458,7 +454,7 @@ public function timenow(){
                  {
                      $done++;
                  }
-    
+
                 }
 
                        $percnt = (100 / $taskcnt) * $done;
@@ -471,7 +467,7 @@ public function timenow(){
             $taskcnt = appointment::count();
             foreach($tasks as $task){
                 if(!$this->isdone($task)){
-    
+
                   $pendingcnt++;
             }
                 if($task->data == null){
@@ -481,7 +477,7 @@ public function timenow(){
                  {
                      $done++;
                  }
-                 
+
                 }
 
                        $percnt = (100 / $taskcnt) * $done;
