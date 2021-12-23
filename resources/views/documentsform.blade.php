@@ -12,7 +12,7 @@
         <div style="display: none" id="health">
             <div>
             <label>Preinsurer</label>
-             
+
             </div>
             <div>
 
@@ -663,10 +663,11 @@
                 </div>
             </div>
 
-        </div>
+
         <input type="submit" class="mt-3 btn btn-primary" value="Save">
     </form>
-</div>
+    </div>
+
 <script>
     cnt = 1;
     vehcnt = 1;
