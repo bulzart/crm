@@ -9,7 +9,9 @@
 
 
                 <div class="gmap_canvas">
-                   <iframe style="width: 100%; height:80vh; border-radius: 5px;" id="gmap_canvas" src="https://maps.google.com/maps?q=&t=&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+                   <iframe style="width: 100%; height:80vh; border-radius: 5px;" id="gmap_canvas" src="https://maps.google.com/maps?q=kosovo&t=&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
                     <style>
                         .mapouter {
                             position: relative;
@@ -25,15 +27,23 @@
         </div>
     </div>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-HHCaYZ4N-VoJTrQObXqU4zRs73hMsmM"></script>
 
     <script type="text/javascript">
-        var locations = [
-            <?php
-            foreach($maps as $row3){
-                echo '["'.$row3['name'].'", '.$row3['lati'].', '.$row3['longi'].'],';
-            }
-            ?>
-        ];
+       var locations = [
+                                            <?php 
+                                                foreach($maps as $row3){ 
+                                                    echo '["'.$row3['name'].'", '.$row3['lati'].', '.$row3['longi'].'],'; 
+                                                } 
+                                            ?>
+                                        ];
+
+        // ['Bondi Beach', -33.890542, 151.274856],
+        // ['Coogee Beach', -33.923036, 151.259052],
+        // ['Cronulla Beach', -34.028249, 151.157507],
+        // ['Manly Beach', -33.80010128657071, 151.28747820854187],
+        // ['Maroubra Beach', -33.950198, 151.259302]
+
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 8,
@@ -61,4 +71,6 @@
     </script>
 
 
+
 @endsection
+

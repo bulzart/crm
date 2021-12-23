@@ -13,11 +13,21 @@
             <div>
             <label>Preinsurer</label>
 
+            @if(isset($data->preinsurer))
+       
+                    <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
+
+                    <input class="form-control" type="file" value="{{$data->idnecessary}}" name="preinsurer">
+                @else
+                <input class="form-control" type="file" name="preinsurer">
+                @endif
+
             </div>
             <div>
 
                 <label>Id necessary</label>
                 @if(isset($data->idnecessary))
+     
                     <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}" target="_blank">{{$data->idnecessary}}</a>
 
                     <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
@@ -75,8 +85,7 @@
                 <label>Nationality</label>
                 <select name="nationalityfinance">
 
-                     <option value="{{$data->nationalityfinance}}" selected>{{$data->nationalityfinance}}</option>
-
+                     @if(isset($data->nationalityfinance))<option value="{{$data->nationalityfinance}}" selected>{{$data->nationalityfinance}}</option>@endif
                     <option value="afghan">Afghan</option>
                     <option value="albanian">Albanian</option>
                     <option value="algerian">Algerian</option>
@@ -500,16 +509,26 @@
                             <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
                         </optgroup>
                     </select>
+                    @if(isset($data->phone))
                     <input type="number" name="phonenumber" value="{{$data->phone}}">
+                    @else
+                    <input type="number" name="phonenumber">
+                    @endif
                 </div>
                 <div>
                     <label>Email: </label>
+                    @if(isset($data->email))
                     <input type="email" name="email" class="form-contorl" value="{{$data->email}}">
+                    @else
+                    <input type="email" name="email" class="form-contorl">
+                    @endif
                 </div>
                 <div>
                     <label>Marital Status</label>
                     <select name="martialstatus">
+                        @if(isset($data->martialstatus))
                         <option selected value="{{$data->martialstatus}}">{{$data->martialstatus}}</option>
+                        @endif
                         <option>Married</option>
                         <option>Widowed</option>
                         <option>Separated</option>
@@ -664,9 +683,13 @@
             </div>
 
 
+      
         <input type="submit" class="mt-3 btn btn-primary" value="Save">
     </form>
     </div>
+</div>
+
+
 
 <script>
     cnt = 1;
