@@ -22,19 +22,19 @@ class TasksController extends Controller
       $some_date = Carbon::now()->format('H:i');
         $now = (int) str_replace(':','',$some_date);
 
-         
+
       $admin = Auth::guard('admins')->user();
       $today = Carbon::now()->format("Y-m-d");
       if($req->date != null){
     if($admin->role == 'admin'){
-      
-    
+
+
         $data = lead::where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
     elseif($admin->role == 'fs'){
       $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
-    
+
       }
       else{
         if($admin->role == 'admin'){
@@ -131,11 +131,11 @@ $months = $long = array(
         foreach($data as $dat){
           if($dat->contracts != null){
           $contracts[$dat->id] = json_decode($dat->contracts);
-      } 
+      }
         }
 
             return view('costumers', compact('data','contracts'));
-         
+
 
       }
 
@@ -278,7 +278,7 @@ $months = $long = array(
             if($req['noticeby'] != null && $req['noticeby'] != '' ){
               $object['noticeby'] = $req['noticeby'];
             }}
-  
+
             else{
               if(!isset($object['noticeby'])){
               $object['noticeby'] = "";}
@@ -287,7 +287,7 @@ $months = $long = array(
               if($req['powerofattorney'] != null && $req['powerofattorney'] != '' ){
                 $object['powerofattorney'] = $req['powerofattorney'];
               }}
-    
+
               else{
                 if(!isset($object['powerofattorney'])){
                 $object['powerofattorney'] = "";}
@@ -296,7 +296,7 @@ $months = $long = array(
                 if($req['uploadpolice'] != null && $req['uploadpolice'] != '' ){
                   $object['uploadpolice'] = $req['uploadpolice'];
                 }}
-      
+
                 else{
                   if(!isset($object['uploadpolice'])){
                   $object['uploadpolice'] = "";}
@@ -305,7 +305,7 @@ $months = $long = array(
                   if($req['uploadpolice2'] != null && $req['uploadpolice2'] != '' ){
                     $object['uploadpolice2'] = $req['uploadpolice2'];
                   }}
-        
+
                   else{
                     if(!isset($object['uploadpolice2'])){
                     $object['uploadpolice2'] = "";}
@@ -314,7 +314,7 @@ $months = $long = array(
                     if($req['uploadhevicleid'] != null && $req['uploadhevicleid'] != '' ){
                       $object['uploadhevicleid'] = $req['uploadhevicleid'];
                     }}
-          
+
                     else{
                       if(!isset($object['uploadhevicleid'])){
                       $object['uploadhevicleid'] = "";}
@@ -336,13 +336,27 @@ $months = $long = array(
     public function tasks(){
       $cnt = 0;
       $cnt1 = 0;
-      $tasks = appointment::where('completed',0)->get();
+      if (Auth::guard('admins')->user()->role == 'admin'){
+          $tasks2 = appointment::where('completed',0)->get();
+      }
+      if (Auth::guard('admins')->user()->role == 'fs'){
+          $tasks = appointment::where('completed',0)->get();
+          $tasks2 = [];
+          $cntt= 0;
+          for ($i = 0; $i< count($tasks);$i++){
+          if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
+              $tasks2[$cntt] = $tasks[$i];
+              $cntt++;
+          }
+          }
+      }
+
       $realopen = [];
       $pending = [];
       $opencnt = 0;
       $pendingcnt = 0;
 
-       foreach($tasks as $task){
+       foreach($tasks2 as $task){
        if(!$this->isdone($task)){
          $pending[$cnt] = $task;
          $cnt++;
@@ -393,8 +407,8 @@ $months = $long = array(
         $data2 = (array) json_decode($csapp->data);
         $count = (int) $req->input('count');
         for($i = 0;$i <= $count;$i++){
-     
-   
+
+
            if($req->file('uploadvehicleid'.$i) != null){
               $file = $req->file('uploadvehicleid'.$i);
               $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
@@ -453,7 +467,7 @@ $months = $long = array(
      unset($data['countryCode'],$data['phonenumber']);
     $datas = $this->adddata($data,$data2);
     $datas['admin_id'] = Auth::guard('admins')->user()->id;
-    
+
 
      $csapp->unsigned_data = json_encode($datas);
         $csapp->save();
