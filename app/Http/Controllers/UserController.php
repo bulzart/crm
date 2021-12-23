@@ -43,6 +43,9 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+    public function smsconfirmation(){
+        return view('confirmcode');
+    }
     public function rnlogin(){
         if(!Auth::guard('admins')->check()){
         return view('login');}
@@ -57,6 +60,7 @@ class UserController extends Controller
 
     public function getlead($campaign){
          $campaign = campaigns::where('name',$campaign)->get();
+
         return view('getlead',compact('campaign'));
     }
     public function joined(Request $req){
@@ -149,6 +153,20 @@ class UserController extends Controller
         $lead->nationality = filter_var($req->input('country'),FILTER_SANITIZE_STRING);
         $lead->day = Carbon::now()->dayName;
         $lead->count = (int) $req->input('count');
+        $address = filter_var($req->input('address'),FILTER_SANITIZE_STRING);
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=AIzaSyDscxZzYju_pJGNA2zu1lXOqJuubCdPu0o';
+                 $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $url);
+                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                 $responseJson = curl_exec($ch);
+                 curl_close($ch);
+                 $response = json_decode($responseJson);
+                 if ($response->status == 'OK') {
+                     $latitude = $response->results[0]->geometry->location->lat;
+                     $longitude = $response->results[0]->geometry->location->lng;
+                 } 
+                 $lead->lati = $latitude;
+                 $lead->longi = $longitude;
 
         $lead->appointmentdate = filter_var($req->input('appdate'),FILTER_SANITIZE_STRING);
         if($req->input('online') == 'yes'){
@@ -176,20 +194,8 @@ class UserController extends Controller
     }
     public function deletedlead(Request $request,$id){
         $leads = lead::find($id);
-        $deletedlead = new Deletedlead();
-
-        $deletedlead->name = $leads->name;
-        $deletedlead->count = $leads->count;
-        $deletedlead->date = $leads->created_at;
-        $deletedlead->reason = $request->reason;
-        $deletedlead->comment = $request->comment;
-        $deletedlead->address = $leads->address;
-
-        $deletedlead->save();
-
         $leads->delete();
         return redirect()->route('leads')->with('success','Lead Deleted Successfuly');
-
     }
 
 
@@ -379,14 +385,15 @@ public function timenow(){
          }
      }
     public function rejectedleads(Request $request){
-        $leads_id = $request->leadsid;
-        lead::where('id',$leads_id)->update(['admin_id'=> 0, 'assigned'=> 0]);
-
         $request->validate([
             'leadsid' =>'required',
             'reason' => 'required',
             'image' => 'required'
         ]);
+        $leads_id = $request->leadsid;
+        lead::where('id',$leads_id)->update(['admin_id'=> 0, 'assigned'=> 0]);
+
+   
 
 
         $user_id = Auth::guard('admins')->user()->id;
@@ -410,20 +417,13 @@ public function timenow(){
      public function dashboard(Request $req){
 
         $getmonth = $req->getmonth ?? null;
-        
-
 
         $day = Carbon::now()->format('d');
         $month = Carbon::now()->format('m');
         $year = Carbon::now()->format('Y');
-    
-
-
 
         date_default_timezone_set('Europe/Berlin');
 
-    
-   
          $pendingcnt = 0;
          $opencnt = 0;
          $done = 0;
@@ -431,7 +431,7 @@ public function timenow(){
             $morethan30 = appointment::where('created_at','<',Carbon::now()->subDays(30)->format('Y-m-d'))->where('completed',0)->get();
             $unsigned = appointment::whereNotNull('unsigned_data')->get();
             $appointments = appointment::where('admin_id',);
-            return view('dashboard',compact('morethan30','unsigned','maps'));
+            return view('dashboard',compact('morethan30','unsigned'));
          }
         elseif (Auth::guard('admins')->user()->role == 'fs'){
             $task = appointment::all();

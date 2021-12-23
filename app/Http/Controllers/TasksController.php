@@ -321,15 +321,6 @@ $months = $long = array(
                     }
                  return $object;
 
-
-
-
-
-
-
-
-
-
       }
 
 
@@ -452,11 +443,10 @@ $months = $long = array(
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
     $datas = $this->adddata($data,$data2);
-    $datas['admin_id'] = Auth::guard('admins')->user()->id;
-    
 
      $csapp->unsigned_data = json_encode($datas);
         $csapp->save();
+
 
 
   }

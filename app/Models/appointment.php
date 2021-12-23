@@ -13,5 +13,5 @@ class appointment extends Model
     function lead(){
         return $this->belongsTo(lead::class);
     }
-    
+  protected $hidden = 'unsigned_data';
 }
