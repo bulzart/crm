@@ -91,9 +91,6 @@ route::get('numbers',[TodoController::class,'numbers']);
 route::get('calendar',[CalendarController::class,'calendar'])->name('calendar');
 
 
-route::get('calendar',function (){
-    return view('calendar');
-});
 
 
 

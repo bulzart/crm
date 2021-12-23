@@ -1,33 +1,29 @@
-
-<html>
 @extends('template.navbar')
 @section('content')
     <div class="row">
         <div class="col-12 col-md-6">
-<calendar></calendar>
-    </div>
-    </div>
-    <div class="mapouter mb-4">
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFBE1cuoGyzaiyvog5Zi6-tBvRwyXHiz8"></script>
+            <calendar></calendar>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="mapouter mb-4">
 
-        <div class="gmap_canvas">
-            <div id="map" style="width: 100%; height:90vh; border-radius: 5px;"></div>
 
-            <!-- <iframe style="width: 100%; height:80vh; border-radius: 5px;" id="gmap_canvas" src="https://maps.google.com/maps?q=switzerland&t=&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->
-            <style>
-                .mapouter {
-                    position: relative;
-                }
-            </style>
-            <style>
-                .gmap_canvas {
-                    overflow: hidden;
-                    background: none !important;
-                }
-            </style>
+                <div class="gmap_canvas">
+                   <iframe style="width: 100%; height:80vh; border-radius: 5px;" id="gmap_canvas" src="https://maps.google.com/maps?q=&t=&z=7&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <style>
+                        .mapouter {
+                            position: relative;
+                        }
+                    </style>
+                    <style>
+                        .gmap_canvas {
+                            overflow: hidden;
+                            background: none !important;
+                        }
+                    </style>
+            </div>
         </div>
     </div>
-
 
 
     <script type="text/javascript">
@@ -36,14 +32,12 @@
             foreach($maps as $row3){
                 echo '["'.$row3['name'].'", '.$row3['lati'].', '.$row3['longi'].'],';
             }
-
             ?>
-
         ];
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: new google.maps.LatLng(53.0000, 9.0000),
+            zoom: 8,
+            center: new google.maps.LatLng(42.6026,20.9030),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
@@ -65,7 +59,6 @@
             })(marker, i));
         }
     </script>
+
+
 @endsection
-</html>
-
-
