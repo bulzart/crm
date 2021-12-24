@@ -148,9 +148,11 @@ $months = $long = array(
       public function adddata($req = null,$object = null,$count = null)
       {
 
-        $data = null;
+
+
             $arr1 =  json_decode($req,true);
             $arr2 =  json_decode($object,true);
+            if(count($arr1) >= count($arr2)){
             foreach($arr1 as $id=>$text){
               if($arr2[$id] != null && $arr2[$id] != ""){
                 $data[$id] = $arr2[$id];
@@ -158,8 +160,26 @@ $months = $long = array(
               elseif($arr1[$id] != null && $arr1[$id] != "" && $arr2[$id] == '' || $arr2[$id] == null){
                  $data[$id] = $arr1[$id];
               }
+              else{
+                $data[$id] = null;
+              }
             }
-            return $data;
+          }
+          else{
+            foreach($arr2 as $id=>$text){
+              if($arr2[$id] != null && $arr2[$id] != ""){
+                $data[$id] = $arr2[$id];
+              }
+              elseif($arr1[$id] != null && $arr1[$id] != "" && $arr2[$id] == '' || $arr2[$id] == null){
+                 $data[$id] = $arr1[$id];
+              }
+              else{
+                $data[$id] = null;
+              }
+            }
+          }
+
+            return json_encode($data);
           
       }
 
