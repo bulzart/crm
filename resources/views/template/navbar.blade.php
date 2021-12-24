@@ -410,3 +410,16 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 </script>
 </body>
 @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
