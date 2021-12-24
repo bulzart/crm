@@ -160,7 +160,7 @@ $months = $long = array(
               }
             }
             return $data;
-          
+
       }
 
 
@@ -304,13 +304,12 @@ dd($data);
 
 
      $csapp->unsigned_data = json_encode($datas);
-        $csapp->save();
-
-
-
+        if($csapp->save()){
+            return redirect()->route('documentform',$id)->with('success','Action has Success');
+        }else{
+            return redirect()->route('documentform',$id)->with('fail','Action was Fail');
+        }
   }
-
-
 
 
     public function isdone($object):bool{
@@ -328,6 +327,12 @@ dd($data);
              return redirect()->route('dashboard');
        }
 
+   }
+   public function dates(){
+      if (Auth::guard('admins')->user()->role == 'salesmanager' ||Auth::guard('admins')->user()->role == 'admin'){
+
+      }
+      return view('dates2');
    }
 
 

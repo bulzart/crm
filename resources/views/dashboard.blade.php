@@ -329,7 +329,7 @@
                             @if(Auth::guard('admins')->check())<a href="#" style="text-decoration: none;" class="nav_link"><i class='bx bx-money text-black'></i><span class="nav_name text-black">Finance</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close text-black"></i><span class="nav_name text-black">Deposit</span> </a> @endif
                             @if(Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance' && Auth::guard('admins')->check())<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper text-black"></i><span class="nav_name text-black">Leads</span> </a>@endif
-                            @if(Auth::guard('admins')->user()->role == 'salesmanager' ||Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class='bi bi-calendar-date text-black'></i><span class="nav_name text-black">Dates</span> </a>@endif
+                            @if(Auth::guard('admins')->user()->role == 'salesmanager' ||Auth::guard('admins')->user()->role == 'menagment')<a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link"><i class='bi bi-calendar-date text-black'></i><span class="nav_name text-black">Dates</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Employees</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmanager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h text-black"></i><span class="nav_name text-black">Prov.system</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmanager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
@@ -472,11 +472,11 @@
             </div>
             <div class="col-md-6 col-12 mt-5">
 
-             @foreach($realunsigned as $unsigned) 
+             @foreach($realunsigned as $unsigned)
              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kk-{{$unsigned['csapp']}}">
              An task is to be opened that was requested from {{App\Models\Admins::find($unsigned['admin_id'])->name}}
 </button>
-            
+
             <div class="modal fade text-center justify-content-center" id="kk-{{$unsigned['csapp']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" style="width: 900px; height: 600px;">
@@ -485,19 +485,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="width: 100%; height: 200px; overflow-y: scroll;">
-             
+
              <div class="text-center">
                  <?php
-                   
+
                     foreach($unsigned as $id=>$text){
                       echo $id . ": ";
                       echo $text. "<br>";
                     }
-                 
+
 
                     ?>
-                   
-                
+
+
       </div>
 
       </div>

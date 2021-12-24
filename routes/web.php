@@ -75,6 +75,7 @@ route::get('deletenumber',[TodoController::class,'deletenumber']);
 route::get('numbers',[TodoController::class,'numbers']);
 route::get('calendar',[CalendarController::class,'calendar'])->name('calendar');
 route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
+route::get('dates',[TasksController::class,'dates'])->name('dates');
 
 });
 
@@ -87,7 +88,6 @@ route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsm
 route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
 route::get('add',[TasksController::class,'adddata']);
-
 
 
 

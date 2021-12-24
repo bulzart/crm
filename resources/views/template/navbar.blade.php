@@ -351,7 +351,7 @@ body {
                     @if(Auth::guard('admins')->check())<a href="#" style="text-decoration: none;" class="nav_link"><i class='bx bx-money text-black'></i><span class="nav_name text-black">Finance</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close text-black"></i><span class="nav_name text-black">Deposit</span> </a> @endif
                     @if(Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance' && Auth::guard('admins')->check())<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper text-black"></i><span class="nav_name text-black">Leads</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'salesmanager' ||Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class='bi bi-calendar-date text-black'></i><span class="nav_name text-black">Dates</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->role == 'salesmanager' ||Auth::guard('admins')->user()->role == 'menagment')<a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link"><i class='bi bi-calendar-date text-black'></i><span class="nav_name text-black">Dates</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Employees</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmanager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h text-black"></i><span class="nav_name text-black">Prov.system</span> </a>@endif
                     @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmanager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
@@ -367,6 +367,16 @@ body {
 
 
 <div class="container-fluid col-md-10 col-lg-10 col-xs-10 col-sm-10 mt-4" id="app">
+    @if(\Session::has('success'))
+        <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+            {!! \Session::get('success') !!}
+        </div>
+    @endif
+        @if(\Session::has('fail'))
+            <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                {!! \Session::get('fail') !!}
+            </div>
+        @endif
 @yield('content')
 
 <div class="form-group container text-center pt-4">
