@@ -14,7 +14,7 @@
             <label>Preinsurer</label>
 
             @if(isset($data->preinsurer))
-       
+
                     <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
 
                     <input class="form-control" type="file" value="{{$data->idnecessary}}" name="preinsurer">
@@ -27,7 +27,7 @@
 
                 <label>Id necessary</label>
                 @if(isset($data->idnecessary))
-     
+
                     <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}" target="_blank">{{$data->idnecessary}}</a>
 
                     <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
@@ -282,14 +282,18 @@
             </div>
             <div>
                 <label>Residence Permit</label>
-                <input type="text" class="form-control" name="residencepermit" value="{{$data->residencepermit }}">
+                @if(isset($data->residencepermit))
+                <input type="text" class="form-control" name="residencepermit" value="{{$data->residencepermit}}">
+                @else
+                    <input type="text" class="form-control" name="residencepermit">
+                @endif
             </div>
             <div>
                 <label>Phone Number: </label>
                 <div class="d-inline">
 
                     <select name="countryCode">
-
+                        @if(isset($data->countryCode))<option value="{{$data->countryCode}}" selected>{{$data->countryCode}}</option>@endif
                         <option data-countryCode="GB" value="44" selected>UK (+44)</option>
                         <option data-countryCode="US" value="1">USA (+1)</option>
                         <optgroup label="Other countries">
@@ -539,7 +543,9 @@
                 <div>
                     <label>Employment Relationship: </label>
                     <select name="employmentrelationship">
+                        @if(isset($data->employmentrelationship))
                         <option selected value="{{$data->employmentrelationship}}">{{$data->employmentrelationship}}</option>
+                        @endif
                         <option>Coworkers</option>
                         <option>Team Members</option>
                         <option>Work Friends</option>
@@ -551,25 +557,38 @@
                 </div>
                 <div>
                     <label>Job: </label>
+                    @if(isset($data->job))
                     <input type="text" name="job" class="form-control" value="{{$data->job}}">
+                    @else
+                        <input type="text" name="job" class="form-control">
+                    @endif
                 </div>
                 <div>
                     <label>Payment Rhythm</label>
                     <select name="paymentrhythm">
+                        @if(isset($data->paymentrhythm))
                         <option selected value="{{$data->paymentrhythm}}">{{$data->paymentrhythm}}</option>
-                        <option>Weekly</option>
+                        @endif
+                            <option>Weekly</option>
                         <option>Mounth</option>
                         <option>Year</option>
                     </select>
                 </div>
                 <div>
                     <label>Amount Per Month</label>
+                    @if(isset($data->amountpermonth))
                     <input type="number" name="amountpermonth" class="form-control" value="{{$data->amountpermonth}}">
+                    @else
+                        <input type="number" name="amountpermonth" class="form-control">
+                        @endif
                 </div>
                 <div>
                     <label>Share Guarantee/Fund</label>
                     <select name="shareguaranteefund">
-                        @php
+                        @if(isset($data->shareguaranteefund))
+                            <option selected value="{{$data->shareguaranteefund}}">{{$data->shareguaranteefund}}</option>
+                        @endif
+                            @php
                         $j = 100;
                         @endphp
                         @for($i = 1;$i<=100;$i++)
@@ -582,7 +601,10 @@
                 </div>
                 <div>
                     <label>Contract Start Date: </label>
+                    @if(isset($data->contractstartdate))
                     <input type="date" name="contractstartdate" class="form-control" value="{{$data->contractstartdate}}">
+                    @else
+                    <input type="date" name="contractstartdate" class="form-control">
                 </div>
                 <div>
                     @if(isset($data->premiumwaiver))
@@ -655,7 +677,10 @@
                 </div>
                 <div>
                     <label>Which Companies Should Make An Offer</label>
+                    @if(isset($data->whichcompaniesshouldmakeanoffer))
                     <input type="text" name="whichcompaniesshouldmakeanoffer" class="form-control" value="{{$data->whichcompaniesshouldmakeanoffer}}">
+                    @else
+                        <input type="text" name="whichcompaniesshouldmakeanoffer" class="form-control">
                 </div>
 
             </div>
@@ -683,7 +708,7 @@
             </div>
 
 
-      
+
         <input type="submit" class="mt-3 btn btn-primary" value="Save">
     </form>
     </div>
@@ -809,7 +834,7 @@
         function openAnotherNewVehicle(){
 
             document.getElementById('anotherNewVehicle').innerHTML += '<div id="counter' + count +'"></div>';
-                document.getElementById('counter'+ count).innerHTML +=    ' <label>Upload vehicle ID</label> @if(isset($data->uploadvehicleid)) <input class="form-control" type="file" name="uploadvehicleid'+ count+ '" value="{{$data->uploadvehicleid}}"> @else <input class="form-control" type="file" name="uploadvehicleid'+ count+ '"> @endif </div> <div> <h6>Lesing</h6> <input onclick="openYesCheckBox()" type="radio" name="leasing'+ count+ '" id="yes" value="Yes"> <label for="yes">Yes</label> <div class="hide" id="leasingname"> <input type="text" name="leasingname'+ count+ '" placeholder="Lesaing Name"> </div> <input type="radio" name="leasing'+ count+ '" id="no" value="No"> <label for="no">No</label> </div> <br> <hr> <h4>Vahicle Information</h4> <div> <span>Purchase Year</span> <select name="yearpurchase'+ count+ '"> @for($i = \Carbon\Carbon::now()->format("Y");$i>=1950;$i--) <option value="{{$i}}">{{$i}}</option> @endfor </select> </div> <div> <label>First Commissioning</label> <input type="date" class="form-control" name="firstcommissioning'+ count+ '" value="{{$data->firstcommissioning}}"> </div> <div> <label>Start Insurance</label> <input type="date" class="form-control" name="startinsurance'+ count+ '" value="{{$data->startinsurance}}"> </div> <div> <label>Kanton:</label> <select name="kanton"> <option selected value="{{$data->kanton}}">{{$data->kanton}}</option> <option>Zürich</option> <option>Bern / Berne</option> <option>Luzern</option> <option>Uri</option> <option>Schwyz</option> <option>Unterwalden</option> <option>Glarus</option> <option>Zug</option> <option>Freiburg / Fribourg</option> <option>Solothurn</option> <option>Basel</option> <option>Schaffhausen</option> <option>Appenzell</option> <option>Sankt Gallen</option> <option>Graubünden</option> <option>Aargau</option> <option>Thurgau</option> <option>Ticino</option> <option>Vaud</option> <option>Valais / Wallis</option> <option>Neuchâtel</option> <option>Genève</option> <option>Jura</option> </select> </div> <div> <label>KM-Stand</label> <input class="form-control" type="number" name="kmstand'+ count+ '" value="{{$data->kmstand}}"> </div> <hr> <h4>Driver Information</h4> <div> <label>Date of issue of drivers license</label> <input class="form-control" type="date" name="dateofissueofdriverslicense'+ count+ '" value="{{$data->dateofissueofdriverslicense}}"> </div> <div> <label>Nationality: </label> <input class="form-control" type="text" name="nationality'+ count+ '" value="{{$data->nationality}}"> </div> <div> <label>Lenker? </label> <select name="lenker'+ count+ '"> <option selected value="{{$data->lenker}}">{{$data->lenker}}</option> <option>Yes</option> <option>No</option> </select> </div> <hr> <h4>Desired Coverage</h4> <div> <label>Insurance</label> <select name="insurance'+ count+ '"> <option selected value="{{$data->insurance}}">{{$data->insurance}}</option> <option>300</option> <option>500</option> <option>1000 (drivers under 25 years)</option> </select> </div> <div> <label>Deduction Part: </label> <select name="deductionpart'+ count+ '"> @for($i = 1000;$i<=20000;$i+=1000) <option selected value="{{$data->deductionpart}}">{{$data->deductionpart}}</option> <option>{{$i}}</option> @endfor </select> </div> <div> <label>Things Carried: </label> <input type="text" class="form-control" name="thingscarried'+ count+ '" value="{{$data->thingscarried}}"> </div> <div> @if(isset($data->partnergarage)) @if($data->partnergarage == "Parter Garage") <label>Repair Shop: </label><br> <input type="radio" name="partnergarage'+ count+ '" value="Parter Garage" checked> <label for="partnergarage">Partener Garage</label> @else <input type="radio" name="partnergarage'+ count+ '" value="Free Choice" checked> <label for="partnergarage">Free Choice</label> @endif <label>Repair Shop: </label><br> <input type="radio" name="partnergarage'+ count+ '" value="Parter Garage"> <label for="partnergarage">Partener Garage</label> <input type="radio" name="partnergarage'+ count+ '" value="Free Choice"> <label for="partnergarage">Free Choice</label> @endif </div> <div> @if(isset($data->accidentcoverage)) @if($data->accidentcoverage == "Yes") <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage'+ count+ '" value="Yes" checked> <label for="accidentcoverage">Yes</label> @else <input type="radio" name="accidentcoverage'+ count+ '" value="No" checked> <label for="accidentcoverage">No</label> @endif <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage'+ count+ '" value="Yes"> <label for="accidentcoverage">Yes</label> <input type="radio" name="accidentcoverage'+ count+ '" value="No"> <label for="accidentcoverage">No</label> @endif </div> <div> @if(isset($data->trafficrightsprotection)) @if($data->trafficrightsprotection == "Yes") <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection'+ count+ '" value="Yes" checked> <label for="trafficrightsprotection">Yes</label> @else <input type="radio" name="trafficrightsprotection'+ count+ '" value="No" checked> <label for="trafficrightsprotection">No</label> @endif <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection'+ count+ '" value="Yes"> <label for="trafficrightsprotection">Yes</label> <input type="radio" name="trafficrightsprotection'+ count+ '" value="No"> <label for="trafficrightsprotection">No</label> @endif </div> <div> @if(isset($data->grossnegligenceprotection)) @if($data->grossnegligenceprotection == "Yes") <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection'+ count+ '" value="Yes" checked> <label for="grossnegligenceprotection">Yes</label> @else <input type="radio" name="grossnegligenceprotection'+ count+ '" value="No" checked> <label for="grossnegligenceprotection">No</label> @endif <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection'+ count+ '" value="Yes"> <label for="grossnegligenceprotection">Yes</label> <input type="radio" name="grossnegligenceprotection'+ count+ '" value="No"> <label for="grossnegligenceprotection">No</label> @endif </div> <div> @if(isset($data->glassprotection)) @if($data->glassprotection == "Yes") <label>Glass Protection: </label><br> <input type="radio" name="glassprotection'+ count+ '" value="Yes" checked> <label for="glassprotection">Yes</label> @else <input type="radio" name="glassprotection'+ count+ '" value="No" checked> <label for="glassprotection">No</label> @endif <label>Glass Protection: </label><br> <input type="radio" name="glassprotection'+ count+ '" value="Yes"> <label for="glassprotection">Yes</label> <input type="radio" name="glassprotection'+ count+ '" value="No"> <label for="glassprotection">No</label> @endif </div> <div> @if(isset($data->parkingdamage)) @if($data->parkingdamage == "Yes") <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage'+ count+ '" value="Yes" checked> <label for="parkingdamage">Yes</label> @else <input type="radio" name="parkingdamage'+ count+ '" value="No" checked> <label for="parkingdamage">No</label> @endif <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage'+ count+ '" value="Yes"> <label for="parkingdamage">Yes</label> <input type="radio" name="parkingdamage'+ count+ '" value="No"> <label for="parkingdamage">No</label> @endif </div> <div> @if(isset($data->roadsideassistance)) @if($data->roadsideassistance == "Yes") <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance'+ count+ '" value="Yes" checked> <label for="roadsideassistance">Yes</label> @else <input type="radio" name="roadsideassistance'+ count+ '" value="No" checked> <label for="roadsideassistance">No</label> @endif <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance'+ count+ '" value="Yes" > <label for="roadsideassistance">Yes</label> <input type="radio" name="roadsideassistance'+ count+ '" value="No" > <label for="roadsideassistance">No</label> @endif </div> <div> <label>Car Comment</label> <input type="text" class="form-control" name="carcomment'+ count+ '" value="{{$data->carcomment}}"> <br> <input type="button" class="btn btn-info" onClick="openAnotherNewVehicle()" value="Add Another One"><input type="button" class="btn btn-danger" onClick="deleteAnotherNewVehicle()" value="Delete">';
+            document.getElementById('counter'+ count).innerHTML +=    ' <label>Upload vehicle ID</label> @if(isset($data->uploadvehicleid)) <input class="form-control" type="file" name="uploadvehicleid'+ count+ '" value="{{$data->uploadvehicleid}}"> @else <input class="form-control" type="file" name="uploadvehicleid'+ count+ '"> @endif </div> <div> <h6>Lesing</h6> <input onclick="openYesCheckBox()" type="radio" name="leasing'+ count+ '" id="yes" value="Yes"> <label for="yes">Yes</label> <div class="hide" id="leasingname"> <input type="text" name="leasingname'+ count+ '" placeholder="Lesaing Name"> </div> <input type="radio" name="leasing'+ count+ '" id="no" value="No"> <label for="no">No</label> </div> <br> <hr> <h4>Vahicle Information</h4> <div> <span>Purchase Year</span> <select name="yearpurchase'+ count+ '"> @for($i = \Carbon\Carbon::now()->format("Y");$i>=1950;$i--) <option value="{{$i}}">{{$i}}</option> @endfor </select> </div> <div> <label>First Commissioning</label> <input type="date" class="form-control" name="firstcommissioning'+ count+ '" value="{{$data->firstcommissioning}}"> </div> <div> <label>Start Insurance</label> <input type="date" class="form-control" name="startinsurance'+ count+ '" value="{{$data->startinsurance}}"> </div> <div> <label>Kanton:</label> <select name="kanton"> <option selected value="{{$data->kanton}}">{{$data->kanton}}</option> <option>Zürich</option> <option>Bern / Berne</option> <option>Luzern</option> <option>Uri</option> <option>Schwyz</option> <option>Unterwalden</option> <option>Glarus</option> <option>Zug</option> <option>Freiburg / Fribourg</option> <option>Solothurn</option> <option>Basel</option> <option>Schaffhausen</option> <option>Appenzell</option> <option>Sankt Gallen</option> <option>Graubünden</option> <option>Aargau</option> <option>Thurgau</option> <option>Ticino</option> <option>Vaud</option> <option>Valais / Wallis</option> <option>Neuchâtel</option> <option>Genève</option> <option>Jura</option> </select> </div> <div> <label>KM-Stand</label> <input class="form-control" type="number" name="kmstand'+ count+ '" value="{{$data->kmstand}}"> </div> <hr> <h4>Driver Information</h4> <div> <label>Date of issue of drivers license</label> <input class="form-control" type="date" name="dateofissueofdriverslicense'+ count+ '" value="{{$data->dateofissueofdriverslicense}}"> </div> <div> <label>Nationality: </label> <input class="form-control" type="text" name="nationality'+ count+ '" value="{{$data->nationality}}"> </div> <div> <label>Lenker? </label> <select name="lenker'+ count+ '"> <option selected value="{{$data->lenker}}">{{$data->lenker}}</option> <option>Yes</option> <option>No</option> </select> </div> <hr> <h4>Desired Coverage</h4> <div> <label>Insurance</label> <select name="insurance'+ count+ '"> <option selected value="{{$data->insurance}}">{{$data->insurance}}</option> <option>300</option> <option>500</option> <option>1000 (drivers under 25 years)</option> </select> </div> <div> <label>Deduction Part: </label> <select name="deductionpart'+ count+ '"> @for($i = 1000;$i<=20000;$i+=1000) <option selected value="{{$data->deductionpart}}">{{$data->deductionpart}}</option> <option>{{$i}}</option> @endfor </select> </div> <div> <label>Things Carried: </label> <input type="text" class="form-control" name="thingscarried'+ count+ '" value="{{$data->thingscarried}}"> </div> <div> @if(isset($data->partnergarage)) @if($data->partnergarage == "Parter Garage") <label>Repair Shop: </label><br> <input type="radio" name="partnergarage'+ count+ '" value="Parter Garage" checked> <label for="partnergarage">Partener Garage</label> @else <input type="radio" name="partnergarage'+ count+ '" value="Free Choice" checked> <label for="partnergarage">Free Choice</label> @endif <label>Repair Shop: </label><br> <input type="radio" name="partnergarage'+ count+ '" value="Parter Garage"> <label for="partnergarage">Partener Garage</label> <input type="radio" name="partnergarage'+ count+ '" value="Free Choice"> <label for="partnergarage">Free Choice</label> @endif </div> <div> @if(isset($data->accidentcoverage)) @if($data->accidentcoverage == "Yes") <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage'+ count+ '" value="Yes" checked> <label for="accidentcoverage">Yes</label> @else <input type="radio" name="accidentcoverage'+ count+ '" value="No" checked> <label for="accidentcoverage">No</label> @endif <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage'+ count+ '" value="Yes"> <label for="accidentcoverage">Yes</label> <input type="radio" name="accidentcoverage'+ count+ '" value="No"> <label for="accidentcoverage">No</label> @endif </div> <div> @if(isset($data->trafficrightsprotection)) @if($data->trafficrightsprotection == "Yes") <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection'+ count+ '" value="Yes" checked> <label for="trafficrightsprotection">Yes</label> @else <input type="radio" name="trafficrightsprotection'+ count+ '" value="No" checked> <label for="trafficrightsprotection">No</label> @endif <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection'+ count+ '" value="Yes"> <label for="trafficrightsprotection">Yes</label> <input type="radio" name="trafficrightsprotection'+ count+ '" value="No"> <label for="trafficrightsprotection">No</label> @endif </div> <div> @if(isset($data->grossnegligenceprotection)) @if($data->grossnegligenceprotection == "Yes") <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection'+ count+ '" value="Yes" checked> <label for="grossnegligenceprotection">Yes</label> @else <input type="radio" name="grossnegligenceprotection'+ count+ '" value="No" checked> <label for="grossnegligenceprotection">No</label> @endif <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection'+ count+ '" value="Yes"> <label for="grossnegligenceprotection">Yes</label> <input type="radio" name="grossnegligenceprotection'+ count+ '" value="No"> <label for="grossnegligenceprotection">No</label> @endif </div> <div> @if(isset($data->glassprotection)) @if($data->glassprotection == "Yes") <label>Glass Protection: </label><br> <input type="radio" name="glassprotection'+ count+ '" value="Yes" checked> <label for="glassprotection">Yes</label> @else <input type="radio" name="glassprotection'+ count+ '" value="No" checked> <label for="glassprotection">No</label> @endif <label>Glass Protection: </label><br> <input type="radio" name="glassprotection'+ count+ '" value="Yes"> <label for="glassprotection">Yes</label> <input type="radio" name="glassprotection'+ count+ '" value="No"> <label for="glassprotection">No</label> @endif </div> <div> @if(isset($data->parkingdamage)) @if($data->parkingdamage == "Yes") <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage'+ count+ '" value="Yes" checked> <label for="parkingdamage">Yes</label> @else <input type="radio" name="parkingdamage'+ count+ '" value="No" checked> <label for="parkingdamage">No</label> @endif <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage'+ count+ '" value="Yes"> <label for="parkingdamage">Yes</label> <input type="radio" name="parkingdamage'+ count+ '" value="No"> <label for="parkingdamage">No</label> @endif </div> <div> @if(isset($data->roadsideassistance)) @if($data->roadsideassistance == "Yes") <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance'+ count+ '" value="Yes" checked> <label for="roadsideassistance">Yes</label> @else <input type="radio" name="roadsideassistance'+ count+ '" value="No" checked> <label for="roadsideassistance">No</label> @endif <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance'+ count+ '" value="Yes" > <label for="roadsideassistance">Yes</label> <input type="radio" name="roadsideassistance'+ count+ '" value="No" > <label for="roadsideassistance">No</label> @endif </div> <div> <label>Car Comment</label> <input type="text" class="form-control" name="carcomment'+ count+ '" value="{{$data->carcomment}}"> <br> <input type="button" class="btn btn-info" onClick="openAnotherNewVehicle()" value="Add Another One"><input type="button" class="btn btn-danger" onClick="deleteAnotherNewVehicle()" value="Delete">';
             count++;
             document.getElementById('count').value = count;
         }
