@@ -164,7 +164,7 @@ class UserController extends Controller
                  if ($response->status == 'OK') {
                      $latitude = $response->results[0]->geometry->location->lat;
                      $longitude = $response->results[0]->geometry->location->lng;
-                 } 
+                 }
                  $lead->lati = $latitude;
                  $lead->longi = $longitude;
 
@@ -395,7 +395,7 @@ public function timenow(){
         $leads_id = $request->leadsid;
         lead::where('id',$leads_id)->update(['admin_id'=> 0, 'assigned'=> 0]);
 
-   
+
 
 
         $user_id = Auth::guard('admins')->user()->id;
@@ -475,7 +475,7 @@ public function timenow(){
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
          return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
         }
-        elseif (Auth::guard('admins')->user()->role == 'admin') {
+        elseif (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager') {
             $tasks = appointment::all();
             $taskcnt = appointment::count();
             foreach($tasks as $task){
@@ -492,12 +492,12 @@ public function timenow(){
                  }
 
                 }
+                    $percnt = (100 / $taskcnt) * $done;
+                    $leadscount = lead::where('admin_id', null)->where('assigned', 0)->get()->count();
+                    $todayAppointCount = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('appointmentdate', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+                    return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
 
-                       $percnt = (100 / $taskcnt) * $done;
-         $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
-         $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
-         return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
-        }
+            }
          return view('dashboard');
 
      }
