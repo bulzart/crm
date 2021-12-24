@@ -432,8 +432,15 @@ public function timenow(){
          if(Auth::guard('admins')->user()->role == 'backoffice'){
             $morethan30 = appointment::where('created_at','<',Carbon::now()->subDays(30)->format('Y-m-d'))->where('completed',0)->get();
             $unsigned = appointment::whereNotNull('unsigned_data')->get();
-            $appointments = appointment::where('admin_id',);
-            return view('dashboard',compact('morethan30','unsigned'));
+            $realunsigned = [];
+            $uncnt = 0;
+            foreach($unsigned as $un){
+                $realunsigned[$uncnt] = (array) json_decode($un->unsigned_data);
+                $uncnt++;
+            }
+          
+         
+            return view('dashboard',compact('morethan30','realunsigned'));
          }
         elseif (Auth::guard('admins')->user()->role == 'fs'){
             $task = appointment::all();
