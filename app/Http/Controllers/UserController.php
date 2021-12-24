@@ -113,9 +113,12 @@ class UserController extends Controller
 
         if($lead->save()){
             $lead->slug = Str::slug($req->input('fname')).'-'.$lead->id;
-            if($lead->save())
-            return redirect()->route('getlead',$campaign[0]->name)->with('','You joined successfully, our team will try to contact you as soon as possible!');
-          
+
+            $lead->save();
+            return redirect()->route('getlead',$campaign[0]->name)->with('joined','You joined successfully, our team will try to contact you as soon as possible!');
+        }else{
+            return redirect()->route('getlead',$campaign[0]->name)->with('fail','Your joined fail');
+
         }
 
 
@@ -182,6 +185,8 @@ class UserController extends Controller
             $lead->slug = Str::slug($req->input('fname')).'-'.$lead->id;
             $lead->save();
             return redirect()->route('insertappointment')->with('joined','Appointment was made successfully!');
+        }else{
+            return redirect()->route('insertappointment')->with('fail','Appointment was Fail!');
         }
 
     }
@@ -195,8 +200,11 @@ class UserController extends Controller
     }
     public function deletedlead(Request $request,$id){
         $leads = lead::find($id);
-        $leads->delete();
-        return redirect()->route('leads')->with('success','Lead Deleted Successfuly');
+        if($leads->delete()) {
+            return redirect()->route('leads')->with('success', 'Lead Deleted Successfuly');
+        }else{
+            return redirect()->route('leads')->with('fail', 'Lead Deleted Fail');
+        }
     }
 
 
@@ -211,13 +219,12 @@ class UserController extends Controller
     public function leads($page = 1)
     {
 
-        if (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmenager' || Auth::guard('admins')->user()->role == 'menagment') {
+        if (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager' || Auth::guard('admins')->user()->role == 'menagment') {
             $leads = lead::where('completed', '0')->where('assigned', 0)->paginate(8);
         } elseif (Auth::guard('admins')->user()->role == 'digital') {
             $leads = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
         } elseif (Auth::guard('admins')->user()->role == 'fs') {
             $leads = lead::whereNotNull('admin_id')->where('assigned', 1)->paginate(7);
-
         }
 
         $insta = lead::where('campaign_id', 1)->get()->count();
@@ -240,8 +247,11 @@ class UserController extends Controller
           $lead->admin_id = (int) $req->input('admin');
           $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
           $lead->appointmentdate = filter_var($req->input('appointmentdate'),FILTER_SANITIZE_STRING);
-          $lead->save();
-          return redirect()->route('leads');
+          if($lead->save()) {
+              return redirect()->route('leads')->with('success', 'You action has been done successfuly');
+          }else{
+              return redirect()->route('leads')->with('fail', 'You action has been fail');
+          }
     }
 
     public function appointbyadmin($id){
@@ -350,10 +360,11 @@ class UserController extends Controller
          }
          $app->family = json_encode($family->members);
 
-
-         $app->save();
-
-
+         if($app->save()){
+             return redirect()->route('dashboard')->with('success','Action was Success');
+         }else{
+             return redirect()->route('dashboard')->with('fail','Action was Fail');
+         }
      }
 public function timenow(){
     return Carbon::now()->format('H:i:s');
@@ -408,14 +419,14 @@ public function timenow(){
         $rejectedlead->reason = $request->reason;
         $rejectedlead->image = 'img/'. $request->file('image')->getClientOriginalName();
 
-        $rejectedlead->save();
-
-        $img = Image::make($request->file('image'));
-        $img->save('img/'.$request->file('image')->getClientOriginalName());
-
-        return redirect()->back()->with('success','U ruajt me sukses');
+        if($rejectedlead->save()) {
+            $img = Image::make($request->file('image'));
+            $img->save('img/' . $request->file('image')->getClientOriginalName());
+            return redirect()->back()->with('success', 'Action has Success');
+        }else{
+            return redirect()->back()->with('fail', 'Action was Fail');
+        }
     }
-
 
      public function dashboard(Request $req){
 
@@ -439,8 +450,7 @@ public function timenow(){
                 $realunsigned[$uncnt] = (array) json_decode($un->unsigned_data);
                 $uncnt++;
             }
-          
-         
+
             return view('dashboard',compact('morethan30','realunsigned'));
          }
         elseif (Auth::guard('admins')->user()->role == 'fs'){
