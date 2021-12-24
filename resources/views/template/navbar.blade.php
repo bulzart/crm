@@ -307,7 +307,10 @@ body {
 <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="{{ asset('js/app.js') }}" defer></script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-HHCaYZ4N-VoJTrQObXqU4zRs73hMsmM"></script>
+
+
 </head>
 @if(Auth::guard('admins')->user()->confirmed == 0)
 

@@ -12,6 +12,7 @@
         <div style="display: none" id="health">
             <div>
             <label>Preinsurer</label>
+
             @if(isset($data->preinsurer))
        
                     <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
@@ -20,6 +21,7 @@
                 @else
                 <input class="form-control" type="file" name="preinsurer">
                 @endif
+
             </div>
             <div>
 
@@ -684,11 +686,15 @@
                 </div>
             </div>
 
+
       
         <input type="submit" class="mt-3 btn btn-primary" value="Save">
     </form>
     </div>
 </div>
+
+
+
 <script>
     cnt = 1;
     vehcnt = 1;

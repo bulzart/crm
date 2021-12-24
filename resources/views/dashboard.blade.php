@@ -291,7 +291,7 @@
         .modal-backdrop{
             display: none;
         }
-        
+
 
 
     </style>
@@ -300,9 +300,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
-  <title>Google Maps Multiple Markers</title> 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-HHCaYZ4N-VoJTrQObXqU4zRs73hMsmM"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Google Maps Multiple Markers</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -320,17 +319,19 @@
                     <div>
                         <div class="nav_list">
                             <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon text-black'></i> <span class="nav_name text-black">Home</span> </a>
+                            @if(Auth::guard('admins')->user()->role == 'fs' || Auth::guard('admins')->user()->role == 'salesmenager' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'admin' )<a style="text-decoration: none;" href="{{route('calendar')}}" class="nav_link"> <i class='bi bi-calendar nav_icon text-black'></i> <span class="nav_name text-black">Calendar</span> </a>@endif
                             @if(Auth::guard('admins')->check())<a style="text-decoration: none;" href="{{route('costumers')}}" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Costumers</span> </a>@endif
-                            @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'fieldservice' || Auth::guard('admins')->user()->role == 'admin')<a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task text-black'></i> <span class="nav_name text-black">Tasks</span> </a>@endif
+                            @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin')<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Cancellations</span> </a>@endif
+                            @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'fs' || Auth::guard('admins')->user()->role == 'admin')<a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task text-black'></i> <span class="nav_name text-black">Tasks</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bxs-check-square text-black'></i> <span class="nav_name text-black">Status</span> </a>@endif
+                            @if(Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'finance' ||Auth::guard('admins')->user()->role == 'admin' )<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Trust</span> </a>@endif
+                            @if(Auth::guard('admins')->user()->role == 'finance' || Auth::guard('admins')->user()->role == 'admin')<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Commisions</span> </a>@endif
                             @if(Auth::guard('admins')->check())<a href="#" style="text-decoration: none;" class="nav_link"><i class='bx bx-money text-black'></i><span class="nav_name text-black">Finance</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close text-black"></i><span class="nav_name text-black">Deposit</span> </a> @endif
                             @if(Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance' && Auth::guard('admins')->check())<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper text-black"></i><span class="nav_name text-black">Leads</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Employees</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h text-black"></i><span class="nav_name text-black">Prov.system</span> </a>@endif
                             @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmenager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
-                            @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'finance')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
-
 
                         </div> <a href="{{route('logout')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name text-black">LogOut</span> </a>
                     </div>
@@ -465,10 +466,11 @@
             @endif
 @if(Auth::guard('admins')->user()->role == 'backoffice')
             <div class="col-md-12 col-12">
-                
+
                 <todo></todo>
             </div>
             <div class="col-md-6 col-12 mt-5">
+
              @foreach($realunsigned as $unsigned) 
              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kk-{{$unsigned['csapp']}}">
              An task is to be opened that was requested from {{App\Models\Admins::find($unsigned['admin_id'])->name}}
@@ -505,18 +507,21 @@
   </div>
 </div>
              @endforeach
+
     </div>
-    <div class="col-md-6 col-12 mt-5">
-             @foreach($morethan30 as $more)
+            <div class="col-md-6 col-12 mt-5">
+             @if(isset($morethan30))
+                    @foreach($morethan30 as $more)
            <a href="{{route('document',$more->id)}}"><h5 class="h5">{{$more->name}} {{$more->lname}}</h5></a>
              @endforeach
+                 @endif
             </div>
 
         </div>
         @endif
 
     </div>
- 
+
 
 
 

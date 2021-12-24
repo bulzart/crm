@@ -28,19 +28,19 @@ class TasksController extends Controller
       $some_date = Carbon::now()->format('H:i');
         $now = (int) str_replace(':','',$some_date);
 
-         
+
       $admin = Auth::guard('admins')->user();
       $today = Carbon::now()->format("Y-m-d");
       if($req->date != null){
     if($admin->role == 'admin'){
-      
-    
+
+
         $data = lead::where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
     elseif($admin->role == 'fs'){
       $data = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->where('appointmentdate',$req->date)->get();
     }
-    
+
       }
       else{
         if($admin->role == 'admin'){
@@ -137,16 +137,17 @@ $months = $long = array(
         foreach($data as $dat){
           if($dat->contracts != null){
           $contracts[$dat->id] = json_decode($dat->contracts);
-      } 
+      }
         }
 
             return view('costumers', compact('data','contracts'));
-         
+
 
       }
 
       public function adddata($req = null,$object = null,$count = null)
       {
+
         $data = null;
             $arr1 =  json_decode($req,true);
             $arr2 =  json_decode($object,true);
@@ -157,7 +158,6 @@ $months = $long = array(
               elseif($arr1[$id] != null && $arr1[$id] != "" && $arr2[$id] == '' || $arr2[$id] == null){
                  $data[$id] = $arr1[$id];
               }
-
             }
             return $data;
           
@@ -167,13 +167,27 @@ $months = $long = array(
     public function tasks(){
       $cnt = 0;
       $cnt1 = 0;
-      $tasks = appointment::where('completed',0)->get();
+      if (Auth::guard('admins')->user()->role == 'admin'){
+          $tasks2 = appointment::where('completed',0)->get();
+      }
+      if (Auth::guard('admins')->user()->role == 'fs'){
+          $tasks = appointment::where('completed',0)->get();
+          $tasks2 = [];
+          $cntt= 0;
+          for ($i = 0; $i< count($tasks);$i++){
+          if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
+              $tasks2[$cntt] = $tasks[$i];
+              $cntt++;
+          }
+          }
+      }
+
       $realopen = [];
       $pending = [];
       $opencnt = 0;
       $pendingcnt = 0;
 
-       foreach($tasks as $task){
+       foreach($tasks2 as $task){
        if(!$this->isdone($task)){
          $pending[$cnt] = $task;
          $cnt++;
@@ -224,8 +238,8 @@ dd($data);
         $data2 = (array) json_decode($csapp->data);
         $count = (int) $req->input('count');
         for($i = 0;$i <= $count;$i++){
-     
-   
+
+
            if($req->file('uploadvehicleid'.$i) != null){
               $file = $req->file('uploadvehicleid'.$i);
               $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
@@ -285,6 +299,9 @@ dd($data);
     $datas = $this->adddata($data,$data2);
     $datas['admin_id'] = Auth::guard('admins')->user()->id;
     $datas['csapp'] = $csapp->id;
+
+    $datas['admin_id'] = Auth::guard('admins')->user()->id;
+
 
      $csapp->unsigned_data = json_encode($datas);
         $csapp->save();
