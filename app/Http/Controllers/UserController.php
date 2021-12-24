@@ -113,6 +113,7 @@ class UserController extends Controller
 
         if($lead->save()){
             $lead->slug = Str::slug($req->input('fname')).'-'.$lead->id;
+
             $lead->save();
             return redirect()->route('getlead',$campaign[0]->name)->with('joined','You joined successfully, our team will try to contact you as soon as possible!');
         }else{
