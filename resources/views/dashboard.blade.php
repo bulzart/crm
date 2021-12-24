@@ -1,6 +1,7 @@
 <head xmlns="http://www.w3.org/1999/html">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title></title>
     <style>
         * {
             font-family: 'Poppins';
@@ -468,13 +469,49 @@
                 <todo></todo>
             </div>
             <div class="col-md-6 col-12 mt-5">
+             @foreach($realunsigned as $unsigned) 
+             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kk-{{$unsigned['csapp']}}">
+             An task is to be opened that was requested from {{App\Models\Admins::find($unsigned['admin_id'])->name}}
+</button>
+            
+            <div class="modal fade text-center justify-content-center" id="kk-{{$unsigned['csapp']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 900px; height: 600px;">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="width: 100%; height: 200px; overflow-y: scroll;">
              
+             <div class="text-center">
+                 <?php
+                   
+                    foreach($unsigned as $id=>$text){
+                      echo $id . ": ";
+                      echo $text. "<br>";
+                    }
+                 
+
+                    ?>
+                   
+                
+      </div>
+
+      </div>
+      <div class="modal-footer">
+        <a href="{{route('accepttask',$unsigned['csapp'])}}">Accept</a>
+      </div>
+    </div>
+  </div>
+</div>
+             @endforeach
     </div>
     <div class="col-md-6 col-12 mt-5">
              @foreach($morethan30 as $more)
            <a href="{{route('document',$more->id)}}"><h5 class="h5">{{$more->name}} {{$more->lname}}</h5></a>
              @endforeach
             </div>
+
         </div>
         @endif
 

@@ -15,6 +15,12 @@ use PhpParser\Node\Name\FullyQualified;
 
 class TasksController extends Controller
 {
+
+  public function accepttask($id){
+  $app = appointment::find($id);
+    appointment::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
+    return redirect()->back();
+  }
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
@@ -139,188 +145,22 @@ $months = $long = array(
 
       }
 
-      public function adddata($req,$object)
+      public function adddata($req = null,$object = null,$count = null)
       {
-        $cnt = 0;
-        if(isset($req['job'])){
-        if($req['job'] != null && $req['job'] != ''){
-          $object['job'] = $req['job'];
-        }}
-        if(isset($req['email'])){
-        if($req['email'] != null && $req['email'] != ''){
-          $object['email'] = $req['email'];
-        }}
-        if(isset($req['phone'])){
-        if($req['phone'] != null && $req['phone'] != ''){
-          $object['phone'] = $req['phone'];
-        }}
-        if(isset($req['kanton'])){
-        if($req['kanton'] != null && $req['kanton'] != ''){
-          $object['kanton'] = $req['kanton'];
-        }}
-        if(isset($req['lenker'])){
-        if($req['lenker'] != null && $req['lenker'] != ''){
-          $object['lenker'] = $req['lenker'];
-        }}
-        if(isset($req['comment'])){
-        if($req['comment'] != null && $req['comment'] != ''){
-          $object['comment'] = $req['comment'];
-        }}
-        if(isset($req['preinsurer'])){
-          if($req['preinsurer'] != null && $req['preinsurer'] != '' ){
-            $object['preinsurer'] = $req['preinsurer'];
-          }}
-
-          else{
-            if(!isset($object['preinsurer'])){
-            $object['preinsurer'] = "";}
-          }
-        if(isset($req['leasingname'])){
-        if($req['leasingname'] != null && $req['leasingname'] != ''){
-          $object['leasingname'] = $req['leasingname'];
-          }}
-          if(isset($req['nationality'])){
-        if($req['nationality'] != null && $req['nationality'] != ''){
-          $object['nationality'] = $req['nationality'];
-        }}
-        if(isset($req['yearpurchase'])){
-        if($req['yearpurchase'] != null && $req['yearpurchase'] != ''){
-          $object['yearpurchase'] = $req['yearpurchase'];
-        }}
-        if(isset($req['deductionpart'])){
-        if($req['deductionpart'] != null && $req['deductionpart'] != ''){
-          $object['deductionpart'] = $req['deductionpart'];
-        }}
-        if(isset($req['martialstatus'])){
-        if($req['martialstatus'] != null && $req['martialstatus'] != ''){
-          $object['martialstatus'] = $req['martialstatus'];
-        }}
-        if(isset($req['numberofrooms'])){
-        if($req['numberofrooms'] != null && $req['numberofrooms'] != ''){
-          $object['numberofrooms'] = $req['numberofrooms'];
-        }}
-        if(isset($req['paymentrhythm'])){
-        if($req['paymentrhythm'] != null && $req['paymentrhythm'] != ''){
-          $object['paymentrhythm'] = $req['paymentrhythm'];
-        }}
-        if(isset($req['thingscarried'])){
-        if($req['thingscarried'] != null && $req['thingscarried'] != '' ){
-          $object['thingscarried'] = $req['thingscarried'];
-        }}
-        if(isset($req['amountpermonth'])){
-        if($req['amountpermonth'] != null && $req['amountpermonth'] != ''){
-          $object['amountpermonth'] = $req['amountpermonth'];
-        }}
-        if(isset($req['numberofpeople'])){
-        if($req['numberofpeople'] != null && $req['numberofpeople'] != ''){
-          $object['numberofpeople'] = $req['numberofpeople'];
-        }}
-        if(isset($req['startinsurance'])){
-        if($req['startinsurance'] != null && $req['startinsurance'] != '' ){
-          $object['startinsurance'] = $req['startinsurance'];
-        }}
-        if(isset($req['commentatpolice'])){
-        if($req['commentatpolice'] != null && $req['commentatpolice'] != ''){
-          $object['commentatpolice'] = $req['commentatpolice'];
-        }}
-        if(isset($req['insuranceamount'])){
-        if($req['insuranceamount'] != null && $req['insuranceamount'] != ''){
-          $object['insuranceamount'] = $req['insuranceamount'];
-        }}
-        if(isset($req['residencepermit'])){
-        if($req['residencepermit'] != null && $req['residencepermit'] != ''){
-          $object['residencepermit'] = $req['residencepermit'];
-        }}
-
-        if(isset($req['contractstartdate'])){
-        if($req['contractstartdate'] != null && $req['contractstartdate'] != ''){
-          $object['contractstartdate'] = $req['contractstartdate'];
-        }}
-        if(isset($req['firstcommissioning'])){
-        if($req['firstcommissioning'] != null && $req['firstcommissioning'] != ''){
-          $object['firstcommissioning'] = $req['firstcommissioning'];
-        }}
-        if(isset($req['nationalityfinance'])){
-        if($req['nationalityfinance'] != null && $req['nationalityfinance'] != ''){
-          $object['nationalityfinance'] = $req['nationalityfinance'];
-        }}
-        if(isset($req['employmentrelationship'])){
-        if($req['employmentrelationship'] != null && $req['employmentrelationship'] != '' ){
-          $object['employmentrelationship'] = $req['employmentrelationship'];
-        }}
-        if(isset($req['wishedadditionalthings'])){
-        if($req['wishedadditionalthings'] != null && $req['wishedadditionalthings'] != ''){
-          $object['wishedadditionalthings'] = $req['wishedadditionalthings'];
-        }}
-        if(isset($req['numberofpeopleinsurance'])){
-        if($req['numberofpeopleinsurance'] != null && $req['numberofpeopleinsurance'] != ''){
-          $object['numberofpeopleinsurance'] = $req['numberofpeopleinsurance'];
-        }}
-        if(isset($req['dateofissueofdriverslicense'])){
-        if($req['dateofissueofdriverslicense'] != null && $req['dateofissueofdriverslicense'] != ''){
-          $object['dateofissueofdriverslicense'] = $req['dateofissueofdriverslicense'];
-        }}
-        if(isset($req['whichcompaniesshouldmakeanoffer'])){
-        if($req['whichcompaniesshouldmakeanoffer'] != null && $req['whichcompaniesshouldmakeanoffer'] != '' ){
-          $object['whichcompaniesshouldmakeanoffer'] = $req['whichcompaniesshouldmakeanoffer'];
-        }}
-
-        if(isset($req['idnecessary'])){
-          if($req['idnecessary'] != null && $req['idnecessary'] != '' ){
-            $object['idnecessary'] = $req['idnecessary'];
-          }}
-
-          else{
-            if(!isset($object['idnecessary'])){
-            $object['idnecessary'] = "";}
-          }
-          if(isset($req['noticeby'])){
-            if($req['noticeby'] != null && $req['noticeby'] != '' ){
-              $object['noticeby'] = $req['noticeby'];
-            }}
-  
-            else{
-              if(!isset($object['noticeby'])){
-              $object['noticeby'] = "";}
-            }
-            if(isset($req['powerofattorney'])){
-              if($req['powerofattorney'] != null && $req['powerofattorney'] != '' ){
-                $object['powerofattorney'] = $req['powerofattorney'];
-              }}
-    
-              else{
-                if(!isset($object['powerofattorney'])){
-                $object['powerofattorney'] = "";}
+        $data = null;
+            $arr1 =  json_decode($req,true);
+            $arr2 =  json_decode($object,true);
+            foreach($arr1 as $id=>$text){
+              if($arr2[$id] != null && $arr2[$id] != ""){
+                $data[$id] = $arr2[$id];
               }
-              if(isset($req['uploadpolice'])){
-                if($req['uploadpolice'] != null && $req['uploadpolice'] != '' ){
-                  $object['uploadpolice'] = $req['uploadpolice'];
-                }}
-      
-                else{
-                  if(!isset($object['uploadpolice'])){
-                  $object['uploadpolice'] = "";}
-                }
-                if(isset($req['uploadpolice2'])){
-                  if($req['uploadpolice2'] != null && $req['uploadpolice2'] != '' ){
-                    $object['uploadpolice2'] = $req['uploadpolice2'];
-                  }}
-        
-                  else{
-                    if(!isset($object['uploadpolice2'])){
-                    $object['uploadpolice2'] = "";}
-                  }
-                  if(isset($req['uploadhevicleid'])){
-                    if($req['uploadhevicleid'] != null && $req['uploadhevicleid'] != '' ){
-                      $object['uploadhevicleid'] = $req['uploadhevicleid'];
-                    }}
-          
-                    else{
-                      if(!isset($object['uploadhevicleid'])){
-                      $object['uploadhevicleid'] = "";}
-                    }
-                 return $object;
+              elseif($arr1[$id] != null && $arr1[$id] != "" && $arr2[$id] == '' || $arr2[$id] == null){
+                 $data[$id] = $arr1[$id];
+              }
 
+            }
+            return $data;
+          
       }
 
 
@@ -379,7 +219,7 @@ $months = $long = array(
 
         $data = $req->all();
 
-
+dd($data);
         $csapp = appointment::find($id);
         $data2 = (array) json_decode($csapp->data);
         $count = (int) $req->input('count');
@@ -443,6 +283,8 @@ $months = $long = array(
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
     $datas = $this->adddata($data,$data2);
+    $datas['admin_id'] = Auth::guard('admins')->user()->id;
+    $datas['csapp'] = $csapp->id;
 
      $csapp->unsigned_data = json_encode($datas);
         $csapp->save();

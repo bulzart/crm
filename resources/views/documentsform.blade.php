@@ -16,7 +16,7 @@
        
                     <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
 
-                    <input class="form-control" type="file" value="{{$data->idnecessary}}" name="preinsurer">
+                    <input class="form-control" type="file" value="{{$data->preinsurer}}" name="preinsurer">
                 @else
                 <input class="form-control" type="file" name="preinsurer">
                 @endif
@@ -280,7 +280,11 @@
             </div>
             <div>
                 <label>Residence Permit</label>
+                @if(isset($data->residencepermit))
                 <input type="text" class="form-control" name="residencepermit" value="{{$data->residencepermit }}">
+                @else
+                <input type="text" class="form-control" name="residencepermit" >
+                @endif
             </div>
             <div>
                 <label>Phone Number: </label>
