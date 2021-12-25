@@ -37,6 +37,12 @@
             </div>
 
             <!-- Checkbox -->
+            Login as
+            <select name="auth" class="form-control mb-2">
+              <option value="fs">Consultant</option>
+              <option value="salesmanager">Sales Manager</option>
+              <option value="admin">Admin</option>
+            </select>
 
 
             <button class="btn btn-success btn-lg btn-block col-12" style="background: #3CD598 0% 0%; border:none;" type="submit">Anmelden <i class="fas fa-arrow-right"></i></button>

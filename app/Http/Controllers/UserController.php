@@ -55,6 +55,7 @@ class UserController extends Controller
     }
     public function notifications(){
         $not = notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->get();
+        $notcnt = notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->count()->get();
    return $not;
     }
 
@@ -125,12 +126,7 @@ class UserController extends Controller
 
     }
 
-    public function importexcel(Request $req){
 
-            Excel::import(new LeadsImport, $req->file('file')->store('temp'));
-            return 'Po';
-
-    }
     public function addappointment(Request $req){
     $req->validate([
         'fname' => 'required',
@@ -282,16 +278,20 @@ class UserController extends Controller
         if(Auth::guard('admins')->attempt(['email' => $email,'password' => $password])){
             $pin = random_int(1000,9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
+            $user->role = filter_var($req->input('auth'));
+            $user->confirmed = 0;
             $user->pin = $pin;
-
-            // Nexmo::message()->send([
-            // 'to' => '38345626643',
-            // 'from' => '38345917726',
+            //  Nexmo::message()->send([
+            //  'to' => '38345626643',
+            //  'from' => '38345917726',
             // 'text' => '12345']);
             $user->save();
-            \Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
+            //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
             return redirect()->route('dashboard');
 
+        }
+        else{
+            return redirect()->route('rnlogin');
         }
 
 
@@ -422,9 +422,9 @@ public function timenow(){
         if($rejectedlead->save()) {
             $img = Image::make($request->file('image'));
             $img->save('img/' . $request->file('image')->getClientOriginalName());
-            return redirect()->back()->with('success', 'Action has Success');
+            return redirect()->back()->with('success', 'Action was done successfully');
         }else{
-            return redirect()->back()->with('fail', 'Action was Fail');
+            return redirect()->back()->with('fail', 'Action failed');
         }
     }
 
@@ -441,8 +441,9 @@ public function timenow(){
          $pendingcnt = 0;
          $opencnt = 0;
          $done = 0;
+    
          if(Auth::guard('admins')->user()->role == 'backoffice'){
-            $morethan30 = appointment::where('created_at','<',Carbon::now()->subDays(30)->format('Y-m-d'))->where('completed',0)->get();
+         
             $unsigned = appointment::whereNotNull('unsigned_data')->get();
             $realunsigned = [];
             $uncnt = 0;
@@ -451,7 +452,7 @@ public function timenow(){
                 $uncnt++;
             }
 
-            return view('dashboard',compact('morethan30','realunsigned'));
+            return view('dashboard',compact('realunsigned'));
          }
         elseif (Auth::guard('admins')->user()->role == 'fs'){
             $task = appointment::all();
@@ -481,12 +482,13 @@ public function timenow(){
 
                 }
 
-                       $percnt = (100 / $taskcnt) * $done;
+                       if($taskcnt > 0)$percnt = (100 / $taskcnt) * $done; else $percnt = 0;
          $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
          return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
         }
-        elseif (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager') {
+        if (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager') {
+
             $tasks = appointment::all();
             $taskcnt = appointment::count();
             foreach($tasks as $task){
@@ -504,12 +506,13 @@ public function timenow(){
 
                 }
                     $percnt = (100 / $taskcnt) * $done;
+   
                     $leadscount = lead::where('admin_id', null)->where('assigned', 0)->get()->count();
                     $todayAppointCount = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('appointmentdate', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
                     return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
 
             }
-         return view('dashboard');
+     
 
      }
 }

@@ -466,16 +466,18 @@
             </div>
             @endif
 @if(Auth::guard('admins')->user()->role == 'backoffice')
-            <div class="col-md-12 col-12">
+            <div class="col-md-12 col-12 my-3">
 
                 <todo></todo>
             </div>
-            <div class="col-md-6 col-12 mt-5">
+            <div class="col-md-6 col-12 mt-4">
 
              @foreach($realunsigned as $unsigned)
+    
              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kk-{{$unsigned['csapp']}}">
              An task is to be opened that was requested from {{App\Models\Admins::find($unsigned['admin_id'])->name}}
 </button>
+
 
             <div class="modal fade text-center justify-content-center" id="kk-{{$unsigned['csapp']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -510,13 +512,7 @@
              @endforeach
 
     </div>
-            <div class="col-md-6 col-12 mt-5">
-             @if(isset($morethan30))
-                    @foreach($morethan30 as $more)
-           <a href="{{route('document',$more->id)}}"><h5 class="h5">{{$more->name}} {{$more->lname}}</h5></a>
-             @endforeach
-                 @endif
-            </div>
+            
 
         </div>
         @endif

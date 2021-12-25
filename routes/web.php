@@ -17,7 +17,7 @@ use App\Models\todo;
 
 use function GuzzleHttp\Promise\task;
 
-route::prefix('')->middleware(confirmedcode::class)->group(function(){
+route::prefix('')->group(function(){
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
@@ -49,7 +49,7 @@ route::prefix('')->middleware(confirmedcode::class)->group(function(){
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
        }
     })->name('document');
-    route::post('documentform/{id}',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
+    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
@@ -58,7 +58,7 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
 
         $data = \App\Models\appointment::all();
        return view('costumers',compact('data'));
-    })->middleware(\App\Http\Middleware\Firsttime::class);
+    });
 route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
 route::get('vuedate',[TasksController::class,'vuedate']);
