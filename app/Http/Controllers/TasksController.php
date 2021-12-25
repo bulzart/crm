@@ -331,9 +331,9 @@ $months = $long = array(
 
      $csapp->unsigned_data = json_encode($data);
         if($csapp->save()){
-            return redirect()->route('documentform',$id)->with('success','Action has Success');
+            return redirect()->route('documentform',$id)->with('success','Action was done successfully');
         }else{
-            return redirect()->route('documentform',$id)->with('fail','Action was Fail');
+            return redirect()->route('documentform',$id)->with('fail','Action failed');
         }
   }
 

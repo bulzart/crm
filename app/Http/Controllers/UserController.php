@@ -422,9 +422,9 @@ public function timenow(){
         if($rejectedlead->save()) {
             $img = Image::make($request->file('image'));
             $img->save('img/' . $request->file('image')->getClientOriginalName());
-            return redirect()->back()->with('success', 'Action has Success');
+            return redirect()->back()->with('success', 'Action was done successfully');
         }else{
-            return redirect()->back()->with('fail', 'Action was Fail');
+            return redirect()->back()->with('fail', 'Action failed');
         }
     }
 
