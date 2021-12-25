@@ -261,6 +261,7 @@ $months = $long = array(
          ]);
 
         $data = $req->all();
+
         $csapp = appointment::find($id);
         $count = (int) $req->input('count');
         for($i = 0;$i <= $count;$i++){
@@ -321,7 +322,6 @@ $months = $long = array(
      }
 
 
-    $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
 
 
@@ -331,9 +331,9 @@ $months = $long = array(
 
      $csapp->unsigned_data = json_encode($data);
         if($csapp->save()){
-            return redirect()->route('documentform',$id)->with('success','Action was done successfully');
+            return redirect()->route('document',$id)->with('success','Action was done successfully');
         }else{
-            return redirect()->route('documentform',$id)->with('fail','Action failed');
+            return redirect()->route('document',$id)->with('fail','Action failed');
         }
   }
 

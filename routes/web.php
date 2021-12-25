@@ -18,6 +18,7 @@ use App\Models\todo;
 use function GuzzleHttp\Promise\task;
 
 route::prefix('')->group(function(){
+   Route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
@@ -49,7 +50,6 @@ route::prefix('')->group(function(){
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
        }
     })->name('document');
-    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
