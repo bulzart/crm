@@ -6,7 +6,7 @@
     <a class="btn btn-info" onclick="openCar()">A</a>
     <a class="btn btn-info" onclick="openFinance()">S</a>
     <a class="btn btn-info" onclick="openMore()">S</a>
-    <form method="POST" action="{{route('documentform',$id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('documentform',$id)}}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="count" id="count">
         <div style="display: none" id="health">

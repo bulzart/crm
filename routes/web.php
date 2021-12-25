@@ -49,7 +49,7 @@ route::prefix('')->group(function(){
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
        }
     })->name('document');
-    route::post('documentform/{id}',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
+    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');

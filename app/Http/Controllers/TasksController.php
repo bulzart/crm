@@ -329,7 +329,7 @@ $months = $long = array(
 
     if(!isset($data['admin_id'])){$data['admin_id'] = Auth::guard('admins')->user()->id;}
 
-     $csapp->unsigned_data = json_encode($datas);
+     $csapp->unsigned_data = json_encode($data);
         if($csapp->save()){
             return redirect()->route('documentform',$id)->with('success','Action has Success');
         }else{
