@@ -17,7 +17,7 @@ use App\Models\todo;
 
 use function GuzzleHttp\Promise\task;
 
-route::prefix('')->middleware(confirmedcode::class)->group(function(){
+route::prefix('')->group(function(){
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
@@ -58,7 +58,7 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
 
         $data = \App\Models\appointment::all();
        return view('costumers',compact('data'));
-    })->middleware(\App\Http\Middleware\Firsttime::class);
+    });
 route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
 route::get('vuedate',[TasksController::class,'vuedate']);

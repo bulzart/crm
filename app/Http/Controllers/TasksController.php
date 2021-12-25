@@ -19,7 +19,7 @@ class TasksController extends Controller
   public function accepttask($id){
   $app = appointment::find($id);
     appointment::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
-    return redirect()->back();
+    return redirect()->back()->with(['successs','Your action was done successfully!']);
   }
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
@@ -134,11 +134,18 @@ $months = $long = array(
            ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
         }
         $contracts = [];
+        $datcnt = 0;
         foreach($data as $dat){
+          if(Auth::guard('admins')->user()->role == 'fs' && $dat->lead->admin_id != Auth::guard('admins')->user()->id){
+            unset($data[$datcnt]);
+            $datcnt++;
+      }
+     
           if($dat->contracts != null){
           $contracts[$dat->id] = json_decode($dat->contracts);
       }
-        }
+    ;
+        } 
 
             return view('costumers', compact('data','contracts'));
 
@@ -186,6 +193,9 @@ $months = $long = array(
     public function tasks(){
       $cnt = 0;
       $cnt1 = 0;
+      if(Auth::guard('admins')->user()->role == 'backoffice'){
+        return redirect()->route('dashboard')->with('success','Not available for now');
+      }
       if (Auth::guard('admins')->user()->role == 'admin'){
           $tasks2 = appointment::where('completed',0)->get();
       }
@@ -251,10 +261,7 @@ $months = $long = array(
          ]);
 
         $data = $req->all();
-
-dd($data);
         $csapp = appointment::find($id);
-        $data2 = (array) json_decode($csapp->data);
         $count = (int) $req->input('count');
         for($i = 0;$i <= $count;$i++){
 
@@ -313,14 +320,14 @@ dd($data);
        $data['uploadpolice2'] = filter_var($path,FILTER_SANITIZE_STRING);
      }
 
+
     $data['phone'] = $data['countryCode'] . $data['phonenumber'];
      unset($data['countryCode'],$data['phonenumber']);
-    $datas = $this->adddata($data,$data2);
-    $datas['admin_id'] = Auth::guard('admins')->user()->id;
-    $datas['csapp'] = $csapp->id;
 
-    $datas['admin_id'] = Auth::guard('admins')->user()->id;
 
+    $data['csapp'] = $csapp->id;
+
+    if(!isset($data['admin_id'])){$data['admin_id'] = Auth::guard('admins')->user()->id;}
 
      $csapp->unsigned_data = json_encode($datas);
         if($csapp->save()){
