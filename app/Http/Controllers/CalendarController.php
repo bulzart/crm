@@ -28,7 +28,6 @@ class CalendarController extends Controller
 {
     public function calendar(){
         $maps = Auth::guard('admins')->user()->role == 'admin' ? lead::where('appointmentdate',Carbon::now()->format('Y-m-d'))->get() : lead::where('admin_id',auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->format('Y-m-d'))->get();
-
         return view('calendar',compact('maps'));
     }
 }
