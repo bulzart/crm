@@ -15,8 +15,10 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->integer('lead_id'); // soon to be foreign key
             $table->string('name')->nullable();
-            $table->integer('lead_id');
+            $table->string('lname')->nullable();
+            $table->string('birthday')->nullable();
             $table->json('family')->nullable();
             $table->timestamps();
         });

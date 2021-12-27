@@ -16,13 +16,12 @@ class Deletedlead extends Migration
         Schema::create('deletedlead',function (Blueprint $table){
            $table->id();
            $table->string('name');
+           $table->string('address')->nullable();
            $table->integer('count');
            $table->date('date');
            $table->string('reason');
            $table->string('comment');
            $table->timestamps();
-
-
         });
     }
 

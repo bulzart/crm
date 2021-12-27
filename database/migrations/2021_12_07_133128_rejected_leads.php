@@ -15,8 +15,8 @@ class RejectedLeads extends Migration
     {
         Schema::create('rejectedleads', function (Blueprint $table) {
             $table->id();
-            $table->integer('leads_id');
-            $table->integer('admin_id');
+            $table->integer('leads_id'); // soon to be foreign key
+            $table->integer('admin_id'); // soon to be foreign key
             $table->string('reason');
             $table->string('image');
             $table->timestamps();

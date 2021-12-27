@@ -16,7 +16,7 @@ class AddTableTrainings extends Migration
         Schema::create('trainings',function (Blueprint $table){
            $table->id();
            $table->string('text')->nullable();
-           $table->integer('admin_id')->nullable();
+           $table->integer('admin_id')->nullable(); // soon to be foreign key
            $table->string('role')->nullable();
         });
     }
