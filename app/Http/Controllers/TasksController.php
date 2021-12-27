@@ -154,9 +154,6 @@ $months = $long = array(
 
       public function adddata($req = null,$object = null,$count = null)
       {
-
-
-
             $arr1 =  json_decode($req,true);
             $arr2 =  json_decode($object,true);
             if(count($arr1) >= count($arr2)){
@@ -193,12 +190,8 @@ $months = $long = array(
     public function tasks(){
       $cnt = 0;
       $cnt1 = 0;
-      if(Auth::guard('admins')->user()->role == 'backoffice'){
-        return redirect()->route('dashboard')->with('success','Not available for now');
-      }
-      if (Auth::guard('admins')->user()->role == 'admin'){
-          $tasks2 = appointment::where('completed',0)->get();
-      }
+    
+
       if (Auth::guard('admins')->user()->role == 'fs'){
           $tasks = appointment::where('completed',0)->get();
           $tasks2 = [];

@@ -23,15 +23,15 @@ class LeadFactory extends Factory
             'name' => $this->faker->name(),
             'count' => random_int(1,7),
              'campaign_id' => random_int(1,2),
-             'admin_id' => random_int(4,9),
+             'admin_id' => random_int(1,9),
              'assigned' => random_int(0,1),
              'completed' => random_int(0,1),
              'address' => $this->faker->address(),
              'telprivat' => $this->faker->phoneNumber(),
-             'appointmentdate' => Carbon::now()->addDays(random_int(0,5))->format('Y-m-d'),
+             'appointmentdate' => Carbon::now()->addDays(random_int(0,28))->format('Y-m-d'),
              'lname' => $this->faker->lastName(),
              'time' => $this->faker->time('H:i'),
-             'slug' => str::slug('client'.random_int(0,999999999)),
+             'slug' => str::slug('client'.random_int(0,9999999999)),
              'lati' => $this->faker->latitude(),
              'longi' => $this->faker->longitude()
 

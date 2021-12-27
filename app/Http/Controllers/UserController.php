@@ -55,7 +55,7 @@ class UserController extends Controller
     }
     public function notifications(){
         $not = notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->get();
-        $notcnt = notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->count()->get();
+        $notcnt = notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->get()->count();
    return $not;
     }
 
@@ -347,24 +347,18 @@ class UserController extends Controller
      public function completeapp(Request $req,$id){
 
          $lead = lead::find($id);
-         $app = new appointment();
-         $app->name = filter_var($req->input('fname1'),FILTER_SANITIZE_STRING);
-         $app->lname = filter_var($req->input('lname1'),FILTER_SANITIZE_STRING);
-         $app->lead_id = $id;
-         $app->birthday = filter_var($req->input('birthday1'),FILTER_SANITIZE_STRING);
+ 
         $cnt = $lead->count;
-        $family = new family();
-         for($i = 2; $i <= $cnt; $i++){
-
-                 $family->addmember(filter_var($req->input('fname'.$i),FILTER_SANITIZE_STRING),filter_var($req->input('lname'.$i),FILTER_SANITIZE_STRING),filter_var($req->input('birthday'.$i),FILTER_SANITIZE_STRING));
+         for($i = 1; $i <= $cnt; $i++){
+              $family = new familypersons();
+              $family->first_name = filter_var($req->input('fname'.$i));
+              $family->birthdate = filter_var($req->input('birthday'.$i));
+              $family->last_name = filter_var($req->input('lname'.$i));
+              $family->lead_id = (int) $id;
+              $family->save();
          }
-         $app->family = json_encode($family->members);
-
-         if($app->save()){
-             return redirect()->route('dashboard')->with('success','Action was Success');
-         }else{
-             return redirect()->route('dashboard')->with('fail','Action was Fail');
-         }
+         $lead->status = "open";
+         $lead->save(); 
      }
 public function timenow(){
     return Carbon::now()->format('H:i:s');
@@ -428,7 +422,7 @@ public function timenow(){
         }
     }
 
-     public function dashboard(Request $req){
+    public function dashboard(Request $req){
 
         $getmonth = $req->getmonth ?? null;
 
