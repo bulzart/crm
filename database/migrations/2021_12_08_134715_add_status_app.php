@@ -13,9 +13,7 @@ class AddStatusApp extends Migration
      */
     public function up()
     {
-        Schema::table('csapp', function (Blueprint $table) {
-            $table->string('status')->default('in progress');
-        });
+        
     }
 
     /**

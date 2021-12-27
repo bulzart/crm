@@ -13,10 +13,10 @@ class AddActionsCostumer extends Migration
      */
     public function up()
     {
-        Schema::table('costumers',function(Blueprint $table){
-            $table->json('actions');
+        // Schema::table('costumers',function(Blueprint $table){
+        //     $table->json('actions');
             
-        });
+        // });
     }
 
     /**

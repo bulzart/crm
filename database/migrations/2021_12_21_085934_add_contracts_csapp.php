@@ -13,9 +13,7 @@ class AddContractsCsapp extends Migration
      */
     public function up()
     {
-        Schema::table('csapp', function (Blueprint $table) {
-            $table->json('contracts')->nullable();
-        });
+        
     }
 
     /**
