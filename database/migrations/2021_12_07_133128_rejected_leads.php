@@ -18,7 +18,7 @@ class RejectedLeads extends Migration
             $table->integer('leads_id'); // soon to be foreign key
             $table->integer('admin_id'); // soon to be foreign key
             $table->string('reason');
-            $table->string('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }
