@@ -20,7 +20,7 @@ use Spatie\Permission\Models\Permission;
 
 use function GuzzleHttp\Promise\task;
 
-route::prefix('')->group(function(){
+route::prefix('')->middleware(['role:admin,admins'])->group(function(){
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
@@ -64,12 +64,7 @@ route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
 route::get('vuedate',[TasksController::class,'vuedate']);
 route::get('chat',[ChatController::class,'chat']);
-route::get('time',function(){
 
-return Carbon::now();
-
-
-});
 route::get('addtodo',[TodoController::class,'addtodo']);
 route::get('todos',[TodoController::class,'todos']);
 route::get('deletetodo',[TodoController::class,'deletetodo']);
@@ -92,6 +87,7 @@ route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsm
 route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
 route::get('add',[TasksController::class,'adddata']);
+
 
 
 

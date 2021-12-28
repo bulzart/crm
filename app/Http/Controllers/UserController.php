@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Nexmo;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 
 
@@ -347,18 +349,21 @@ class UserController extends Controller
      public function completeapp(Request $req,$id){
 
          $lead = lead::find($id);
- 
-        $cnt = $lead->count;
+
+        $cnt = $lead->number_of_persons;
          for($i = 1; $i <= $cnt; $i++){
-              $family = new familypersons();
-              $family->first_name = filter_var($req->input('fname'.$i));
+              $family = new family();
+              if($req->input('fname'.$i) != null){
+              $family->first_name = filter_var($req->input('fname'.$i));}
               $family->birthdate = filter_var($req->input('birthday'.$i));
               $family->last_name = filter_var($req->input('lname'.$i));
-              $family->lead_id = (int) $id;
+              $family->leads_id = (int) $id;
               $family->save();
          }
-         $lead->status = "open";
+         $lead->status_task = "open";
          $lead->save(); 
+         
+         return redirect()->back()->with('success','Action was successfull');
      }
 public function timenow(){
     return Carbon::now()->format('H:i:s');
@@ -378,7 +383,7 @@ public function timenow(){
 
      public function dealclosed($id){
          $app = lead::where('id',$id)->first();
-         if($app->admin_id != 0 && $app->admin_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->role == 'admin'){
+         if($app->assign_to_id != null && $app->admin_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')){
          return view('completelead',compact('app'));}
          else{
              return redirect()->back();
@@ -424,7 +429,8 @@ public function timenow(){
 
     public function dashboard(Request $req){
 
-        $getmonth = $req->getmonth ?? null;
+        $getmonth = isset($req->getmonth) ? $req->getmonth : null;
+       
 
         $day = Carbon::now()->format('d');
         $month = Carbon::now()->format('m');
@@ -436,7 +442,7 @@ public function timenow(){
          $opencnt = 0;
          $done = 0;
     
-         if(Auth::guard('admins')->user()->role == 'backoffice'){
+         if(Auth::guard('admins')->user()->hasRole('backoffice')){
          
             $unsigned = appointment::whereNotNull('unsigned_data')->get();
             $realunsigned = [];
@@ -462,41 +468,29 @@ public function timenow(){
             $taskcnt = $cnt;
 
             foreach($tasks as $task){
-                if(!$this->isdone($task)){
-
-                  $pendingcnt++;
-            }
-                if($task->data == null){
-                  $opencnt++;
-                 }
-                 if($task->completed == 1)
-                 {
-                     $done++;
-                 }
+          
 
                 }
 
                        if($taskcnt > 0)$percnt = (100 / $taskcnt) * $done; else $percnt = 0;
-         $leadscount = lead::where('admin_id', null)->where('assigned',0)->get()->count();
+         $leadscount = lead::where('admin_id', null)->get()->count();
          $todayAppointCount = lead::where('admin_id',Auth::guard('admins')->user()->id)->where('appointmentdate',Carbon::now()->toDateString())->where('wantsonline',0)->where('assigned',1)->get()->count();
          return view('dashboard',compact('leadscount','todayAppointCount','opencnt','pendingcnt','percnt'));
         }
-        if (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager') {
+        if (Auth::guard('admins')->user()->hasRole('admin')) {
 
-            $tasks = appointment::all();
-            $taskcnt = appointment::count();
-            foreach($tasks as $task){
-                if(!$this->isdone($task)){
-
-                  $pendingcnt++;
+            $tasks = lead::all();
+            $taskcnt = 0;
+         
+            for($i = 0; $i <= count($tasks); $i++){
+                if($tasks[$i]->status_task == 'Open'){
+                    $taskcnt++;
+                }
+                if($tasks[$i]->status_task == 'Submited'){
+                    
+                }
             }
-                if($task->data == null){
-                  $opencnt++;
-                 }
-                 if($task->completed == 1)
-                 {
-                     $done++;
-                 }
+                
 
                 }
                     $percnt = (100 / $taskcnt) * $done;
@@ -509,4 +503,4 @@ public function timenow(){
      
 
      }
-}
+
