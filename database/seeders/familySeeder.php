@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\lead;
+use App\Models\family;
+use Database\Factories\FamilyFactory;
 use Illuminate\Database\Seeder;
 
-class LeadSeeder extends Seeder
+class familySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class LeadSeeder extends Seeder
      */
     public function run()
     {
-        lead::factory()->count(300)->create();
+        family::factory()->count(70)->create();
     }
 }

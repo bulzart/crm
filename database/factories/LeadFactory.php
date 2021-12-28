@@ -11,6 +11,21 @@ class LeadFactory extends Factory
      *
      * @return array
      */
+   
+    public function randomm():string{
+        $num = random_int(1,50);
+        $status = "";
+        if($num > 42) $status = "Done";
+       elseif($num%2 == 0){
+           $status = "Open";
+       }
+       else{
+$status = "Submited";
+       }
+      
+    
+    return $status;
+    }
     public function definition()
     {
         return [
@@ -23,12 +38,14 @@ class LeadFactory extends Factory
             'postal_code' => random_int(5000,10000),
             'latitude' => $this->faker->latitude(),
             'longitude' => $this->faker->longitude(),
-            'number_of_persons' => random_int(0,5),
+            'number_of_persons' => random_int(1,7),
             'nationality' => $this->faker->country(),
             'slug' => $this->faker->slug(),
             'completed' => random_int(0,1),
             'campaign_id' => random_int(1,3),
-            'appointment_date' => Carbon::now()->addDay(random_int(0,21))->format('Y-m-d'),
+            'appointment_date' => Carbon::now()->addDay(random_int(0,7))->format('Y-m-d'),
+            'assign_to_id' => random_int(1,7),
+            'status_task' => $this->randomm()
         ];
     }
 }
