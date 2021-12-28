@@ -66,7 +66,10 @@ class UserController extends Controller
 
         return view('getlead',compact('campaign'));
     }
-    public function joined(Request $req){
+   
+
+
+    public function addappointment(Request $req){
         $req->validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -74,7 +77,9 @@ class UserController extends Controller
             'address' => 'required',
             'postal' => 'required',
             'location' => 'required',
-            'campaign' => 'exists:campaigns,id'
+            'campaign' => 'exists:campaigns,id',
+            'count' => 'min:1',
+            'time' => 'required'
         ]);
         $lead = new lead();
         $lead->first_name = filter_var($req->input('fname'),FILTER_SANITIZE_STRING);
@@ -84,13 +89,12 @@ class UserController extends Controller
         $lead->postal_code = filter_var($req->input('postal'),FILTER_SANITIZE_STRING);
         $lead->city = filter_var($req->input('location'),FILTER_SANITIZE_STRING);
         $lead->nationality = filter_var($req->input('country'),FILTER_SANITIZE_STRING);
-        $lead->day = Carbon::now()->dayName;
         $lead->number_of_persons = (int) $req->input('count');
         $lead->campaign_id = (int) $req->input('campaign');
         $campaign = campaigns::where('id',$req->input('campaign'))->get();
+        $lead->time = filter_var($req->input('time'),FILTER_SANITIZE_STRING);
         if($req->input('online') == 'yes'){
             $lead->wantsonline = 1;
-            $lead->assigned = 1;
         }
         else{
             $lead->wantsonline = 0;
@@ -124,75 +128,12 @@ class UserController extends Controller
 
         }
 
-
-
-    }
-
-
-    public function addappointment(Request $req){
-    $req->validate([
-        'fname' => 'required',
-        'lname' => 'required',
-        'phone' => 'required',
-        'address' => 'required',
-        'postal' => 'required',
-        'location' => 'required',
-        'country' => 'required',
-        'count' => 'required',
-        'admin' => 'exists:admins,id',
-        'appdate' => 'required'
-
-    ]);
-
-        $lead = new lead();
-
-        $lead->name = filter_var($req->input('fname'),FILTER_SANITIZE_STRING);
-        $lead->lname = filter_var($req->input('lname'),FILTER_SANITIZE_STRING);
-        $lead->telprivat = filter_var($req->input('phone'),FILTER_SANITIZE_STRING);
-        $lead->address = filter_var($req->input('address'),FILTER_SANITIZE_STRING);
-        $lead->postcode = (int) $req->input('postal');
-        $lead->location = filter_var($req->input('location'),FILTER_SANITIZE_STRING);
-        $lead->nationality = filter_var($req->input('country'),FILTER_SANITIZE_STRING);
-        $lead->day = Carbon::now()->dayName;
-        $lead->count = (int) $req->input('count');
-        $address = filter_var($req->input('address'),FILTER_SANITIZE_STRING);
-        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=AIzaSyDscxZzYju_pJGNA2zu1lXOqJuubCdPu0o';
-                 $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $url);
-                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                 $responseJson = curl_exec($ch);
-                 curl_close($ch);
-                 $response = json_decode($responseJson);
-                 if ($response->status == 'OK') {
-                     $latitude = $response->results[0]->geometry->location->lat;
-                     $longitude = $response->results[0]->geometry->location->lng;
-                 }
-                 $lead->lati = $latitude;
-                 $lead->longi = $longitude;
-
-        $lead->appointmentdate = filter_var($req->input('appdate'),FILTER_SANITIZE_STRING);
-        if($req->input('online') == 'yes'){
-            $lead->wantsonline = 1;
-            $lead->assigned = 1;
-        }
-        else{
-            $lead->admin_id = (int) $req->input('admin');
-            $lead->wantsonline = 0;
-        }
-        if($lead->save()){
-            $lead->slug = Str::slug($req->input('fname')).'-'.$lead->id;
-            $lead->save();
-            return redirect()->route('insertappointment')->with('joined','Appointment was made successfully!');
-        }else{
-            return redirect()->route('insertappointment')->with('fail','Appointment was Fail!');
-        }
-
     }
 
 
 
     public function dlead($id){
-     //   lead::where('id',$id)->delete();
+
         $leads = lead::find($id);
         return view('deletedlead',compact('leads'));
     }
@@ -217,18 +158,18 @@ class UserController extends Controller
     public function leads($page = 1)
     {
 
-        if (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager' || Auth::guard('admins')->user()->role == 'menagment') {
-            $leads = lead::where('completed', '0')->where('assigned', 0)->paginate(8);
-        } elseif (Auth::guard('admins')->user()->role == 'digital') {
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->role == 'menagment') {
+            $leads = lead::where('completed', '0')->where('assigned', 0)->where('assigned_to_id',null)->paginate(8);
+        }elseif (Auth::guard('admins')->user()->hasRole('digital')) {
             $leads = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
-        } elseif (Auth::guard('admins')->user()->role == 'fs') {
+        }elseif (Auth::guard('admins')->user()->hasRole('fs')) {
             $leads = lead::whereNotNull('admin_id')->where('assigned', 1)->paginate(7);
         }
 
         $insta = lead::where('campaign_id', 1)->get()->count();
         $facebook = lead::where('campaign_id', 2)->get()->count();
-        $google = lead::where('campaign_id', 5)->get()->count();
-        $total = array('instagram' => $insta, 'facebook' => $facebook, 'google' => $google);
+        $sana = lead::where('campaign_id', 3)->get()->count();
+        $total = array($insta,$facebook,$sana);
 
         if(!Auth::guard('admins')->check()){
             return abort('403');
@@ -239,13 +180,12 @@ class UserController extends Controller
     public function asignlead(Request $req,$id){
         $req->validate([
             'admin' => "required|exists:admins,id",
-
         ]);
           $lead = lead::find($id);
-          $lead->admin_id = (int) $req->input('admin');
+          $lead->assign_to_id = (int) $req->input('admin');
           $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
           $lead->appointmentdate = filter_var($req->input('appointmentdate'),FILTER_SANITIZE_STRING);
-          if($lead->save()) {
+          if($lead->save()){
               return redirect()->route('leads')->with('success', 'You action has been done successfuly');
           }else{
               return redirect()->route('leads')->with('fail', 'You action has been fail');
@@ -280,7 +220,6 @@ class UserController extends Controller
         if(Auth::guard('admins')->attempt(['email' => $email,'password' => $password])){
             $pin = random_int(1000,9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
-            $user->role = filter_var($req->input('auth'));
             $user->confirmed = 0;
             $user->pin = $pin;
             //  Nexmo::message()->send([
@@ -494,7 +433,6 @@ public function timenow(){
 
                 }
                     $percnt = (100 / $taskcnt) * $done;
-   
                     $leadscount = lead::where('admin_id', null)->where('assigned', 0)->get()->count();
                     $todayAppointCount = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('appointmentdate', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
                     return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));

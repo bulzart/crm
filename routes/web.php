@@ -20,12 +20,11 @@ use Spatie\Permission\Models\Permission;
 
 use function GuzzleHttp\Promise\task;
 
-route::prefix('')->middleware(['role:admin,admins'])->group(function(){
+route::prefix('')->group(function(){
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
     route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
-    route::get('join/{campaign}',[UserController::class,'getlead'])->name('getlead');
     route::get('/',[UserController::class,'dashboard'])->name('dashboard');
     route::get('logout',[UserController::class,'logout'])->name('logout');
     route::get('leads',[UserController::class,'leads'])->name('leads');
