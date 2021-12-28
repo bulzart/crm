@@ -37,7 +37,6 @@ class Leads extends Migration
             $table->integer('assign_to_id')->nullable(); //Foreign Key
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-
             $table->foreign('campaign_id')->references('id')->on('campaigns');
         });
     }
