@@ -22,8 +22,6 @@ class LeadFactory extends Factory
        else{
 $status = "Submited";
        }
-      
-    
     return $status;
     }
     public function definition()

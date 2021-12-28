@@ -80,7 +80,9 @@ class UserController extends Controller
             'address' => 'required',
             'postal' => 'required',
             'location' => 'required',
-            'campaign' => 'exists:campaigns,id'
+            'campaign' => 'exists:campaigns,id',
+            'count' => 'min:1',
+            'time' => 'required'
         ]);
         $lead = new lead();
         $lead->first_name = filter_var($req->input('fname'), FILTER_SANITIZE_STRING);
@@ -220,18 +222,18 @@ class UserController extends Controller
     public function leads($page = 1)
     {
 
-        if (Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager' || Auth::guard('admins')->user()->role == 'menagment') {
-            $leads = lead::where('completed', '0')->where('assigned', 0)->paginate(8);
-        } elseif (Auth::guard('admins')->user()->role == 'digital') {
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->role == 'menagment') {
+            $leads = lead::where('completed', '0')->where('assigned', 0)->where('assigned_to_id',null)->paginate(8);
+        }elseif (Auth::guard('admins')->user()->hasRole('digital')) {
             $leads = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
-        } elseif (Auth::guard('admins')->user()->role == 'fs') {
+        }elseif (Auth::guard('admins')->user()->hasRole('fs')) {
             $leads = lead::whereNotNull('admin_id')->where('assigned', 1)->paginate(7);
         }
 
         $insta = lead::where('campaign_id', 1)->get()->count();
         $facebook = lead::where('campaign_id', 2)->get()->count();
-        $google = lead::where('campaign_id', 5)->get()->count();
-        $total = array('instagram' => $insta, 'facebook' => $facebook, 'google' => $google);
+        $sana = lead::where('campaign_id', 3)->get()->count();
+        $total = array($insta,$facebook,$sana);
 
         if (!Auth::guard('admins')->check()) {
             return abort('403');
@@ -243,7 +245,6 @@ class UserController extends Controller
     {
         $req->validate([
             'admin' => "required|exists:admins,id",
-
         ]);
         $lead = lead::find($id);
         $lead->admin_id = (int) $req->input('admin');
@@ -455,7 +456,7 @@ class UserController extends Controller
 
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
 
-            $unsigned = appointment::whereNotNull('unsigned_data')->get();
+            $unsigned = lead::whereNotNull('unsigned_data')->get();
             $realunsigned = [];
             $uncnt = 0;
             foreach ($unsigned as $un) {
@@ -465,7 +466,7 @@ class UserController extends Controller
 
             //  if(Auth::guard('admins')->user()->role == 'backoffice'){
 
-            //     $unsigned = appointment::whereNotNull('unsigned_data')->get();
+            //     $unsigned = lead::whereNotNull('unsigned_data')->get();
             //     $realunsigned = [];
             //     $uncnt = 0;
             //     foreach($unsigned as $un){
@@ -491,8 +492,8 @@ class UserController extends Controller
                 }
             }
 
-                $tasks = appointment::all();
-                $taskcnt = appointment::count();
+                $tasks = lead::all();
+                $taskcnt = lead::count();
                 foreach($tasks as $task){
                     if(!$this->isdone($task)){
 
@@ -510,7 +511,7 @@ class UserController extends Controller
                         $percnt = (100 / $taskcnt) * $done;
 
                         $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
-                        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wants_online', 0)->where('assigned', 1)->get()->count();
+                        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
                         return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
 
                 }

@@ -449,7 +449,7 @@
                         </div> -->
                         <div class="row">
                             <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
-                                <div class="first-box " style="background-color: #BDC1CC; border-radius: 25px;  margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="fourth-box" style="background-color: #FF6262;  border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                     <div class="row">
                                         <div class="col my-auto">
                                             <div class=" ps-3">
@@ -461,11 +461,13 @@
                                         <div class="col-4">
                                             <div class="text-end">
                                                 <a href="{{route('tasks')}}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 92.259 71.213">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                        viewBox="0 0 92.259 71.213">
                                                         <defs>
                                                             <clipPath id="clip-path">
                                                                 <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                                    width="92.259" height="71.213" fill="#88889b" />
+                                                                    width="92.259" height="71.213" fill="#FD2F2F" />
                                                             </clipPath>
                                                         </defs>
                                                         <g id="Group_620" data-name="Group 620"
@@ -479,7 +481,7 @@
                                                                         <path id="Path_275" data-name="Path 275"
                                                                             d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
                                                                             transform="translate(-102.581)"
-                                                                            fill="#88889b" />
+                                                                            fill="#FD2F2F" />
                                                                     </g>
                                                                 </g>
                                                             </g>
@@ -503,8 +505,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
-                            <div class="third-box"
-                                    style="background-color: #FEC278; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                            <div class="third-box" style="background-color: #FEC278; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                     <div class="row">
                                         <div class="col my-auto">
                                             <div class=" ps-3">
@@ -616,7 +617,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
+                            <!-- <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
                                 <div class="fourth-box"
                                     style="background-color: #FF6262;  border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                     <div class="row">
@@ -661,7 +662,6 @@
                                                             transform="translate(617.762 292.384)" fill="#fff" />
                                                     </g>
                                                 </svg>
-
                                             </div>
                                         </div>
                                     </div>
@@ -671,7 +671,7 @@
                                         </span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

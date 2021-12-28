@@ -17,8 +17,8 @@ class TasksController extends Controller
 {
 
   public function accepttask($id){
-  $app = appointment::find($id);
-    appointment::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
+  $app = lead::find($id);
+    lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
     return redirect()->back()->with(['successs','Your action was done successfully!']);
   }
     public function dnotifications(){
@@ -114,7 +114,7 @@ $months = $long = array(
     }
 
     public function searchword(){
-        $data =  appointment::orderBy('name','asc')->get();
+        $data =  lead::orderBy('name','asc')->get();
         return view('costumers',compact('data'));
     }
     public function costumers(Request $request){
@@ -124,13 +124,13 @@ $months = $long = array(
         $n = date('Y-m-d', strtotime($request->searchdate2));
         $date2 = date('Y-m-d',strtotime($n . "+1 days"));
         if(!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
-            $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+            $data = lead::where('lname', 'like', '%' . $searchname . '%')
                 ->orWhere('name', 'like', '%' . $searchname . '%')->get();
         }elseif(isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)){
-            $data = appointment::whereBetween('created_at',[$date1,$date2])->get();
+            $data = lead::whereBetween('created_at',[$date1,$date2])->get();
         }
         else{
-           $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+           $data = lead::where('lname', 'like', '%' . $searchname . '%')
            ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
         }
         $contracts = [];
@@ -193,7 +193,7 @@ $months = $long = array(
     
 
       if (Auth::guard('admins')->user()->hasRole('fs')){
-          $tasks = appointment::where('completed',0)->get();
+          $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
           for ($i = 0; $i< count($tasks);$i++){
@@ -224,7 +224,7 @@ $months = $long = array(
 
 
       $cnt = 0;
-      $costumers = appointment::all();
+      $costumers = lead::all();
       $todaydate = Carbon::now()->format('m-d');
 
       $birthdays = [];
@@ -255,7 +255,7 @@ $months = $long = array(
 
         $data = $req->all();
 
-        $csapp = appointment::find($id);
+        $csapp = lead::find($id);
         $count = (int) $req->input('count');
         for($i = 0;$i <= $count;$i++){
 
