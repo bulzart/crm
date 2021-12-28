@@ -75,15 +75,15 @@ class UserController extends Controller
             'campaign' => 'exists:campaigns,id'
         ]);
         $lead = new lead();
-        $lead->name = filter_var($req->input('fname'),FILTER_SANITIZE_STRING);
-        $lead->lname = filter_var($req->input('lname'),FILTER_SANITIZE_STRING);
-        $lead->telprivat = filter_var($req->input('phone'),FILTER_SANITIZE_STRING);
+        $lead->first_name = filter_var($req->input('fname'),FILTER_SANITIZE_STRING);
+        $lead->last_lname = filter_var($req->input('lname'),FILTER_SANITIZE_STRING);
+        $lead->telephone = filter_var($req->input('phone'),FILTER_SANITIZE_STRING);
         $lead->address = filter_var($req->input('address'),FILTER_SANITIZE_STRING);
-        $lead->postcode = filter_var($req->input('postal'),FILTER_SANITIZE_STRING);
-        $lead->location = filter_var($req->input('location'),FILTER_SANITIZE_STRING);
+        $lead->postal_code = filter_var($req->input('postal'),FILTER_SANITIZE_STRING);
+        $lead->city = filter_var($req->input('location'),FILTER_SANITIZE_STRING);
         $lead->nationality = filter_var($req->input('country'),FILTER_SANITIZE_STRING);
         $lead->day = Carbon::now()->dayName;
-        $lead->count = (int) $req->input('count');
+        $lead->number_of_persons = (int) $req->input('count');
         $lead->campaign_id = (int) $req->input('campaign');
         $campaign = campaigns::where('id',$req->input('campaign'))->get();
         if($req->input('online') == 'yes'){
@@ -107,8 +107,8 @@ class UserController extends Controller
                      $latitude = $response->results[0]->geometry->location->lat;
                      $longitude = $response->results[0]->geometry->location->lng;
                  }
-                 $lead->lati = $latitude;
-                 $lead->longi = $longitude;
+                 $lead->latitude = $latitude;
+                 $lead->longitude = $longitude;
 
 
 

@@ -57,7 +57,6 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
     route::get('costumersview',function (){
-
         $data = \App\Models\appointment::all();
        return view('costumers',compact('data'));
     });
@@ -70,7 +69,7 @@ route::get('time',function(){
 return Carbon::now();
 
 
-})->middleware('permission:assign_lead,admins');
+});
 route::get('addtodo',[TodoController::class,'addtodo']);
 route::get('todos',[TodoController::class,'todos']);
 route::get('deletetodo',[TodoController::class,'deletetodo']);
