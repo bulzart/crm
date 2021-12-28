@@ -28,13 +28,13 @@ class Leads extends Migration
             $table->double('longitude', 8, 6);
             $table->integer('number_of_persons');
             $table->string('nationality');
-            $table->string('slug');
-            $table->string('status_task');
-            $table->string('status_contract');
-            $table->string('completed');
-            $table->date('appointment_date');
+            $table->string('slug')->nullable();
+            $table->string('status_task')->nullable();
+            $table->string('status_contract')->nullable();
+            $table->string('completed')->nullable();
+            $table->date('appointment_date')->nullable();
             $table->unsignedBigInteger('campaign_id'); //Foreign Key
-            $table->integer('assign_to_id'); //Foreign Key
+            $table->integer('assign_to_id')->nullable(); //Foreign Key
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
 

@@ -16,28 +16,28 @@ class LeadDataFahrzeug extends Migration
         //
         Schema::create('lead_data_fahrzeug',function(Blueprint $table){
             $table->id();
-            $table->string('vehicle_id');
-            $table->string('leasing');
-            $table->string('leasing_name');
-            $table->string('year_of_purchase');
-            $table->string('placing_on_the_market');
-            $table->date('insurance_date');
-            $table->string('redeemed');
-            $table->string('km_stood');
-            $table->string('issue_date');
-            $table->string('nationality');
-            $table->string('most_common');
-            $table->string('insurance');
-            $table->string('deductible');
-            $table->string('carried');
-            $table->string('repair_shop');
-            $table->string('accident_coverage');
-            $table->string('traffic_legal_protection');
-            $table->string('grossly');
-            $table->string('glass_protection');
-            $table->string('parking_damage');
-            $table->string('hour_breakdown_assistance');
-            $table->string('comment');
+            $table->string('vehicle_id')->nullable();
+            $table->string('leasing')->nullable();
+            $table->string('leasing_name')->nullable();
+            $table->string('year_of_purchase')->nullable();
+            $table->string('placing_on_the_market')->nullable();
+            $table->date('insurance_date')->nullable();
+            $table->string('redeemed')->nullable();
+            $table->string('km_stood')->nullable();
+            $table->string('issue_date')->nullable();
+            $table->string('nationality')->nullable();
+            $table->string('most_common')->nullable();
+            $table->string('insurance')->nullable();
+            $table->string('deductible')->nullable();
+            $table->string('carried')->nullable();
+            $table->string('repair_shop')->nullable();
+            $table->string('accident_coverage')->nullable();
+            $table->string('traffic_legal_protection')->nullable();
+            $table->string('grossly')->nullable();
+            $table->string('glass_protection')->nullable();
+            $table->string('parking_damage')->nullable();
+            $table->string('hour_breakdown_assistance')->nullable();
+            $table->string('comment')->nullable();
             $table->integer('person_id'); //Foreign Key
             $table->integer('leads_id'); //Foreign Key
             $table->timestamp('created_at')->useCurrent();

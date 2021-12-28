@@ -16,16 +16,16 @@ class LeadDataSW extends Migration
         //
         Schema::create('lead_data_s_w',function(Blueprint $table){
             $table->id();
-            $table->string('upload_police');
-            $table->string('comparison_type');
-            $table->string('comment');
-            $table->integer('number_of_people');
-            $table->integer('number_of_rooms');
-            $table->string('sum_insured');
-            $table->string('desired_additional_coverage');
-            $table->string('personal_liability');
-            $table->string('society');
-            $table->string('n_of_p_legal_protection');
+            $table->string('upload_police')->nullable();
+            $table->string('comparison_type')->nullable();
+            $table->string('comment')->nullable();
+            $table->integer('number_of_people')->nullable();
+            $table->integer('number_of_rooms')->nullable();
+            $table->string('sum_insured')->nullable();
+            $table->string('desired_additional_coverage')->nullable();
+            $table->string('personal_liability')->nullable();
+            $table->string('society')->nullable();
+            $table->string('n_of_p_legal_protection')->nullable();
             $table->integer('person_id'); //Foreign Key
             $table->integer('leads_id'); //Foreign Key
             $table->timestamp('created_at')->useCurrent();
