@@ -29,7 +29,7 @@ class RoleSeeder extends Seeder
             Role::create([
                 'id' => $id,
                 'name' => $role,
-                'guard_name' => 'api'
+                'guard_name' => 'admins'
             ]);
         }
     }

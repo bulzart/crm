@@ -20,7 +20,7 @@ class AdminsFactory extends Factory
               'name' => $this->faker->name(),
               'email' => 'bulzarti' . random_int(50,4000) . '@gmail.com',
               'password' => Hash::make('123456'),
-              'role' => 'admin'
+              
         ];
     }
 }

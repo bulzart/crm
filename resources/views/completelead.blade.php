@@ -13,7 +13,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<input type="hidden" value="{{$app->count}}" id="count" name="count">
+<input type="hidden" value="{{$app->number_of_persons}}" id="count" name="count">
 <div class="container justify-content-center d-flex" style="background-color:#66c196;">
 
    <br>

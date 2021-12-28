@@ -849,8 +849,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
         document.getElementById('counter'+ --count).innerHTML = '';
         document.getElementById('count').value = count;
     }
-</script>
-</body>
+</script>   
 
 
 

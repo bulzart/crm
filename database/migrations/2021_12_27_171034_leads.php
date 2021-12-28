@@ -33,11 +33,11 @@ class Leads extends Migration
             $table->string('status_contract')->nullable();
             $table->string('completed')->nullable();
             $table->date('appointment_date')->nullable();
-            $table->unsignedBigInteger('campaign_id'); //Foreign Key
+            $table->boolean('assigned')->default(0);
+            $table->integer('campaign_id'); //Foreign Key
             $table->integer('assign_to_id')->nullable(); //Foreign Key
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-            $table->foreign('campaign_id')->references('id')->on('campaigns');
         });
     }
 

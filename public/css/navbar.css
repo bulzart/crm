@@ -205,9 +205,6 @@ a {
     height: 100vh
 }
 
-body {
-    background: #eee
-}
 
 .mobile-text {
     color: #989696b8;
@@ -238,11 +235,6 @@ a:link{
     text-decoration: none;
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
-body {
-    background: #EEEEEE;
-    font-family: 'Roboto', sans-serif
-}
 
 .card {
     width: 300px;

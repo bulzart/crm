@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\family;
+use Database\Factories\FamilyFactory;
 use Illuminate\Database\Seeder;
 
-class AdminsTableSeeder extends Seeder
+class familySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +15,6 @@ class AdminsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        family::factory()->count(70)->create();
     }
 }

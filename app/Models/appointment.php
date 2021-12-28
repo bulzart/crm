@@ -9,7 +9,7 @@ class appointment extends Model
 {
     use HasFactory;
 
-    protected $table = 'csapp';
+    protected $table = 'leads';
 
     protected $hidden = 'unsigned_data';
 

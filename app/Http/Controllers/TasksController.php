@@ -192,15 +192,15 @@ $months = $long = array(
       $cnt1 = 0;
     
 
-      if (Auth::guard('admins')->user()->role == 'fs'){
+      if (Auth::guard('admins')->user()->hasRole('fs')){
           $tasks = appointment::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
           for ($i = 0; $i< count($tasks);$i++){
-          if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
-              $tasks2[$cntt] = $tasks[$i];
-              $cntt++;
-          }
+            if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
+                $tasks2[$cntt] = $tasks[$i];
+                $cntt++;
+            }
           }
       }
 
@@ -209,39 +209,39 @@ $months = $long = array(
       $opencnt = 0;
       $pendingcnt = 0;
 
-       foreach($tasks2 as $task){
-       if(!$this->isdone($task)){
-         $pending[$cnt] = $task;
-         $cnt++;
-         $pendingcnt++;
-   }
-       if($task->data == null){
-         $realopen[$cnt1] = $task;
-         $cnt1++;
-         $opencnt++;
-        }
-       }
-
-
-   $cnt = 0;
-   $costumers = appointment::all();
-   $todaydate = Carbon::now()->format('m-d');
-
-   $birthdays = [];
-   foreach($costumers as $cos){
-      if(substr($cos->birthday,5) == $todaydate)
-      {
-          $birthdays[$cnt]['birthday'] = $cos->birthday;
-          $now = (int) Carbon::now()->format('Y');
-          $birth = (int) substr($cos->birthday,-10,-6);
-          $birthdays[$cnt]['age'] = $now - $birth;
-          $birthdays[$cnt]['id'] = $cos->id;
-          $birthdays[$cnt]['name'] = ucfirst($cos->name);
-          $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
+      foreach($tasks2 as $task){
+        if(!$this->isdone($task)){
+          $pending[$cnt] = $task;
           $cnt++;
+          $pendingcnt++;
+        }
+        if($task->data == null){
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
+        }
       }
 
-   }
+
+      $cnt = 0;
+      $costumers = appointment::all();
+      $todaydate = Carbon::now()->format('m-d');
+
+      $birthdays = [];
+      foreach($costumers as $cos){
+          if(substr($cos->birthday,5) == $todaydate)
+          {
+              $birthdays[$cnt]['birthday'] = $cos->birthday;
+              $now = (int) Carbon::now()->format('Y');
+              $birth = (int) substr($cos->birthday,-10,-6);
+              $birthdays[$cnt]['age'] = $now - $birth;
+              $birthdays[$cnt]['id'] = $cos->id;
+              $birthdays[$cnt]['name'] = ucfirst($cos->name);
+              $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
+              $cnt++;
+          }
+
+      }
 
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
   }
