@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\lead;
+use App\Models\Admins;
 use Illuminate\Database\Seeder;
 
-class LeadTableSeeder extends Seeder
+class AdminSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,7 @@ class LeadTableSeeder extends Seeder
      */
     public function run()
     {
-        lead::factory()->count(400)->create();
+        Admins::factory()->count(7)->create();
+        }
     }
-}
+

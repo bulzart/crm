@@ -24,8 +24,8 @@ class Leads extends Migration
             $table->string('city');
             $table->string('address');
             $table->integer('postal_code');
-            $table->double('latitude', 8, 6);
-            $table->double('longitude', 8, 6);
+            $table->double('latitude', 11, 8);
+            $table->double('longitude', 11, 8);
             $table->integer('number_of_persons');
             $table->string('nationality');
             $table->string('slug')->nullable();

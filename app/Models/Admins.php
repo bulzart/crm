@@ -14,7 +14,7 @@ class Admins extends Authenticatable
 {
     
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
+    protected $guard_name = 'admins';
     /**
      * The attributes that are mass assignable.
      *
