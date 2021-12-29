@@ -41,6 +41,19 @@ route::prefix('')->group(function(){
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
 
     //----------------------------------------------------------------//
+
+
+    route::get('document/{id}',function ($id){
+       $person = family::find($id);
+    if($person != null){
+       return view('documentsform',compact('id','person'));
+      }
+       else{
+return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
+       }
+    })->name('document');
+
+
     route::get('leadfamily/{id}',function ($id){
       $data = \App\Models\lead::find($id);
       $data = $data->family;
@@ -48,7 +61,7 @@ route::prefix('')->group(function(){
    
       return view('leadfamily',compact('data'));
     })->name('leadfamily');
-    
+
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
 
     route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
