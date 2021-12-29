@@ -42,35 +42,16 @@ route::prefix('')->group(function(){
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
 
     //----------------------------------------------------------------//
-<<<<<<< HEAD
-    route::get('document/{id}',function ($id){
-       $person = family::find($id); 
-    if($person != null){
-       return view('documentsform',compact('id','person'));
-      }
-       else{
-return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
-       }
-    })->name('document');
-=======
     route::get('leadfamily/{id}',function ($id){
-      //  if(appointment::find($id)){
-      //    //    if(appointment::find($id)->completed == 0){
-      //    //        $data = appointment::find($id);
-      //    //        $data = json_decode($data->data);
-
-      //    // return view('documentsform',compact('id','data'));}}
-      //    }else{
-      //    return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
-      //  }
       $data = \App\Models\lead::find($id);
       $data = $data->family;
+
+   
       return view('leadfamily',compact('data'));
     })->name('leadfamily');
     
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
 
->>>>>>> 91436eb9f8476e462e28875348516b7ad3b6bb12
     route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
 
@@ -106,11 +87,11 @@ route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsm
 route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
 route::get('add',[TasksController::class,'adddata']);
-// route::get('permission', function(){
-//    $role = Role::find(9);
-//    $user = Admins::find(1);
-//    $user->assignRole($role);
-// });
+route::get('permission', function(){
+   $role = Role::find(9);
+   $user = Admins::find(1);
+   $user->assignRole($role);
+});
 
 
 

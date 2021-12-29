@@ -195,12 +195,20 @@ class TasksController extends Controller
       $cnt1 = 0;
     
       if (Auth::guard('admins')->user()->hasRole('admin')){
+    
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
-         
+
+          for ($i = 0; $i< count($tasks);$i++){
+            if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
+           
+                $tasks2[$cntt] = $tasks[$i];
+                $cntt++;
+            }
           }
-     
+      }
+      
       $realopen = [];
       $pending = [];
       $opencnt = 0;
@@ -219,20 +227,15 @@ class TasksController extends Controller
           $pendingcnt++;
         }
       }
-      
-
-
-     
-
 
 
       $cnt = 0;
-      $costumers = family::all();
+      $costumers = lead::all();
       $todaydate = Carbon::now()->format('m-d');
 
       $birthdays = [];
       foreach($costumers as $cos){
-          if(substr($cos->birthdate,5) == $todaydate)
+          if(substr($cos->birthday,5) == $todaydate)
           {
               $birthdays[$cnt]['birthday'] = $cos->birthday;
               $now = (int) Carbon::now()->format('Y');
@@ -246,7 +249,7 @@ class TasksController extends Controller
 
       }
 
-   return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
+   return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays','tasks'));
   }
 
 

@@ -227,20 +227,21 @@ class UserController extends Controller
         else{
 
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->role == 'menagment') {
-            $leads = lead::where('completed', '0')->where('assigned', 0)->where('assigned_to_id',null)->paginate(8);
+            $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id',null)->paginate(8);
+
         }elseif (Auth::guard('admins')->user()->hasRole('digital')) {
-            $leads = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
+            $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
         }elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-            $leads = lead::whereNotNull('admin_id')->where('assigned', 1)->paginate(7);
+            $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->paginate(7);
         }
 
         $insta = lead::where('campaign_id', 1)->get()->count();
         $facebook = lead::where('campaign_id', 3)->get()->count();
         $sana = lead::where('campaign_id', 2)->get()->count();
-        $total = array($insta,$facebook,$sana);
+        $total = array('instagram' => $insta,'facebook' => $facebook,'sana'=>$sana);
 
       
-        return view('leads', compact('leads', 'total'));}
+        return view('leads', compact('leads','total'));}
     }
 
     public function asignlead(Request $req, $id)
