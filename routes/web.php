@@ -32,7 +32,6 @@ route::prefix('')->group(function(){
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
-    route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
     route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
