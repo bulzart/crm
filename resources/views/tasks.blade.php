@@ -2,19 +2,29 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-4 col-12">
+        
+    
+        
         <div style="background: #f7f7f7; border-radius: 25px; padding: 5%;">
-            <span class="mt-2">Offene Aufgaben</span>
-            <span class="text-danger">{{$opencnt}}</span>
+            <span class="mt-2"></span>
+            <div class="row">
+                <div class="col-12">
+                <span class="Offene-Aufgaben" style="cursor: pointer;">Offene Aufgaben <span class="text-danger">{{$opencnt}}</span></span>
+                </div>
+            </div>
             <br><br>
-            @foreach($realopen as $task)
-                <a  href="{{route('leadfamily',$task->id)}}">
-                    <div class="p-1" style="background: white; border-radius: 12px;">
-                        <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
-                        <span class="m-1">Kommentar: {{$task->status_task}}</span>
-                    </div>
-                </a>
-                <br>
-            @endforeach
+            <div class="collapse">
+                @foreach($realopen as $task)
+                    <a  href="{{route('leadfamily',$task->id)}}">
+                        <div class="p-1" style="background: white; border-radius: 12px;">
+                            <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
+                            <span class="m-1">Kommentar: {{$task->status_task}}</span>
+                        </div>
+                    </a>
+                    <br>
+                @endforeach
+            </div>
+            
         </div>  
     </div>
     <div class="col-md-4 col-12">
@@ -49,4 +59,8 @@
         </div>
     </div>
 </div>
+
 @endsection
+
+
+

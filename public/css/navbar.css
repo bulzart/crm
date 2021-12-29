@@ -127,9 +127,9 @@ a {
     font-size: 1.25rem
 }
 
-.show {
+/* .show {
     left: 0
-}
+} */
 
 .body-pd {
     padding-left: 0;
@@ -180,9 +180,9 @@ a {
         padding: 1rem 1rem 0 0
     }
 
-    .show {
+    /* .show {
         width: calc(var(--nav-width) - 30px)
-    }
+    } */
     nav_link{
         text-decoration: none;
     }

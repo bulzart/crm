@@ -214,6 +214,8 @@ $dayofweek = 6;
         }
 
 
+    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
+  }
         $cnt = 0;
         $costumers = lead::all();
         $todaydate = Carbon::now()->format('m-d');
