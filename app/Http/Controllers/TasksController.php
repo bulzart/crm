@@ -37,13 +37,11 @@ class TasksController extends Controller
       if($req->date != null){
     if($admin->hasRole('admin')){
 
-
         $data = lead::where('wantsonline',0)->where('appointment_date',$req->date)->get();
     }
     elseif($admin->hasRole('fs')){
       $data = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->where('appointment_date',$req->date)->get();
     }
-
       }
       else{
         if($admin->hasRole('admin')){
@@ -60,39 +58,27 @@ class TasksController extends Controller
           $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->addDays()->toDateString())->get();}
       else{
 
+
           $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->toDateString())->get();
 
       }
     }
-
-
       }
       return $data;
     }
 
     public function vuedate(Request $req){
-      $page = $req->page;
-            $day = Carbon::now()->format('d');
-            $month = Carbon::now()->format('m');
-            $year = Carbon::now()->format('Y');
-            $fullcalendar = [];
-            $br = 1;
-      $dayofweek = 6;
 
-      $months = $long = array(
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      );
+$page = $req->page;
+      $day = Carbon::now()->format('d');
+      $month = Carbon::now()->format('m');
+      $year = Carbon::now()->format('Y');
+      $fullcalendar = [];
+      $br = 1;
+$dayofweek = 6;
+
+
+
 
 
       for($i = 0; $i <= 365; $i++){
@@ -117,7 +103,7 @@ class TasksController extends Controller
     }
 
     public function searchword(){
-        $data =  lead::orderBy('name','asc')->get();
+        $data =  lead::orderBy('first_name','asc')->get();
         return view('costumers',compact('data'));
     }
     public function costumers(Request $request){
@@ -127,28 +113,30 @@ class TasksController extends Controller
         $n = date('Y-m-d', strtotime($request->searchdate2));
         $date2 = date('Y-m-d',strtotime($n . "+1 days"));
         if(!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
-            $data = lead::where('lname', 'like', '%' . $searchname . '%')
-                ->orWhere('name', 'like', '%' . $searchname . '%')->get();
+            $data = lead::where('last_name', 'like', '%' . $searchname . '%')
+                ->orWhere('first_name', 'like', '%' . $searchname . '%')->get();
         }elseif(isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)){
             $data = lead::whereBetween('created_at',[$date1,$date2])->get();
         }
         else{
-           $data = lead::where('lname', 'like', '%' . $searchname . '%')
-           ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
+           $data = lead::where('last_name', 'like', '%' . $searchname . '%')
+           ->orWhere('first_name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
         }
         $contracts = [];
         $datcnt = 0;
         foreach($data as $dat){
-          if(Auth::guard('admins')->user()->role == 'fs' && $dat->lead->assign_to_id != Auth::guard('admins')->user()->id){
+
+          if(Auth::guard('admins')->user()->hasRole('fs') && $dat->lead->admin_id != Auth::guard('admins')->user()->id){
+
             unset($data[$datcnt]);
             $datcnt++;
       }
-     
+
           if($dat->contracts != null){
           $contracts[$dat->id] = json_decode($dat->contracts);
       }
     ;
-        } 
+        }
 
             return view('costumers', compact('data','contracts'));
 
@@ -200,9 +188,11 @@ class TasksController extends Controller
           $tasks2 = [];
           $cntt= 0;
 
+
           for ($i = 0; $i< count($tasks);$i++){
             if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
            
+
                 $tasks2[$cntt] = $tasks[$i];
                 $cntt++;
             }
@@ -255,85 +245,7 @@ class TasksController extends Controller
 
 
 	 public function documentform(Request $req,$id){
-    $req->validate([
-      'id' => 'exists:csapp,id'
-    ]);
 
-    $data = $req->all();
-
-    $csapp = lead::find($id);
-    $count = (int) $req->input('count');
-    for($i = 0;$i <= $count;$i++){
-
-
-      if($req->file('uploadvehicleid'.$i) != null){
-        $file = $req->file('uploadvehicleid'.$i);
-        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-        $path = $file->storeAs('img',$filename);
-        $data['uploadpolice'.$i] = filter_var($path,FILTER_SANITIZE_STRING);
-      }
-
-    }
-
-
-
-    if($req->file('preinsurer') != null){
-      $file = $req->file('preinsurer');
-      $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-      $path = $file->storeAs('img',$filename);
-      $data['preinsurer'] = filter_var($path,FILTER_SANITIZE_STRING);
-    }
-     if($req->file('idnecessary') != null){
-        $file = $req->file('idnecessary');
-        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-       $path = $file->storeAs('img',$filename);
-       $data['idnecessary'] = filter_var($path,FILTER_SANITIZE_STRING);
-     }
-     if($req->file('noticeby') != null){
-        $file = $req->file('noticeby');
-        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-       $path = $file->storeAs('img',$filename);
-       $data['noticeby'] = filter_var($path,FILTER_SANITIZE_STRING);
-     }
-     if($req->file('powerofattorney') != null){
-        $file = $req->file('powerofattorney');
-        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-       $path = $file->storeAs('img',$filename);
-       $data['powerofattorney'] = filter_var($path,FILTER_SANITIZE_STRING);
-     }
-     if($req->file('uploadpolice') != null){
-        $file = $req->file('uploadpolice');
-        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-       $path = $file->storeAs('img',$filename);
-       $data['uploadpolice'] = filter_var($path,FILTER_SANITIZE_STRING);
-     }
-     if($req->file('uploadvehicleid') != null){
-        $file = $req->file('uploadvehicleid');
-        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-       $path = $file->storeAs('img',$filename);
-       $data['uploadpolice'] = filter_var($path,FILTER_SANITIZE_STRING);
-     }
-     if($req->file('uploadpolice2') != null){
-        $file = $req->file('uploadpolice2');
-        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) . '.' . $file->getClientOriginalExtension();
-       $path = $file->storeAs('img',$filename);
-       $data['uploadpolice2'] = filter_var($path,FILTER_SANITIZE_STRING);
-     }
-
-
-     unset($data['countryCode'],$data['phonenumber']);
-
-
-    $data['csapp'] = $csapp->id;
-
-    if(!isset($data['admin_id'])){$data['admin_id'] = Auth::guard('admins')->user()->id;}
-
-     $csapp->unsigned_data = json_encode($data);
-    if($csapp->save()){
-      return redirect()->route('document',$id)->with('success','Action was done successfully');
-    }else{
-      return redirect()->route('document',$id)->with('fail','Action failed');
-    }
   }
 
 
@@ -354,7 +266,7 @@ class TasksController extends Controller
 
    }
    public function dates(){
-      if (Auth::guard('admins')->user()->role == 'salesmanager' ||Auth::guard('admins')->user()->role == 'admin'){
+      if (Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('admin')){
 
       }
       return view('dates2');

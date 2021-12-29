@@ -24,20 +24,20 @@
             <div>
                 <div class="nav_list">
                     <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon text-black'></i> <span class="nav_name text-black">Home</span> </a>
-                    @if(Auth::guard('admins')->user()->role == 'fs' || Auth::guard('admins')->user()->role == 'salesmanager' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'salesmanager')<a style="text-decoration: none;" href="{{route('calendar')}}" class="nav_link"> <i class='bi bi-calendar nav_icon text-black'></i> <span class="nav_name text-black">Calendar</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))<a style="text-decoration: none;" href="{{route('calendar')}}" class="nav_link"> <i class='bi bi-calendar nav_icon text-black'></i> <span class="nav_name text-black">Calendar</span> </a>@endif
                     @if(Auth::guard('admins')->check())<a style="text-decoration: none;" href="{{route('costumers')}}" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Costumers</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin')<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Cancellations</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'fs' || Auth::guard('admins')->user()->role == 'admin')<a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task text-black'></i> <span class="nav_name text-black">Tasks</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bxs-check-square text-black'></i> <span class="nav_name text-black">Status</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'finance' ||Auth::guard('admins')->user()->role == 'admin' )<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Trust</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'finance' || Auth::guard('admins')->user()->role == 'admin')<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Commisions</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Cancellations</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))<a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task text-black'></i> <span class="nav_name text-black">Tasks</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) <a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bxs-check-square text-black'></i> <span class="nav_name text-black">Status</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Trust</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Commisions</span> </a>@endif
                     @if(Auth::guard('admins')->check())<a href="#" style="text-decoration: none;" class="nav_link"><i class='bx bx-money text-black'></i><span class="nav_name text-black">Finance</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'backoffice' || Auth::guard('admins')->user()->role == 'admin') <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close text-black"></i><span class="nav_name text-black">Deposit</span> </a> @endif
-                    @if(Auth::guard('admins')->user()->role != 'backoffice' && Auth::guard('admins')->user()->role != 'finance' && Auth::guard('admins')->check())<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper text-black"></i><span class="nav_name text-black">Leads</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'salesmanager' ||Auth::guard('admins')->user()->role == 'menagment')<a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link"><i class='bi bi-calendar-date text-black'></i><span class="nav_name text-black">Dates</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment')<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Employees</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmanager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h text-black"></i><span class="nav_name text-black">Prov.system</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->role == 'admin' || Auth::guard('admins')->user()->role == 'menagment' || Auth::guard('admins')->user()->role == 'salesmanager')<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close text-black"></i><span class="nav_name text-black">Deposit</span> </a> @endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper text-black"></i><span class="nav_name text-black">Leads</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))<a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link"><i class='bi bi-calendar-date text-black'></i><span class="nav_name text-black">Dates</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment'))<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Employees</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h text-black"></i><span class="nav_name text-black">Prov.system</span> </a>@endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
 
                 </div> <a href="{{route('logout')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name text-black">LogOut</span> </a>
             </div>
@@ -477,7 +477,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
     function openCounteroffered() {
         if(counte % 2 == 1){
-        document.getElementById('counteroffered').innerHTML = 
+        document.getElementById('counteroffered').innerHTML =
             '<h4>Counteroffer</h4>  ' +
             '<div>' +
             '      <label>Upload Police</label>' +
@@ -576,7 +576,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
     function openChoiceSociety() {
         if(chsc % 2 == 1) {
-            document.getElementById('choosesociety').innerHTML = 
+            document.getElementById('choosesociety').innerHTML =
             '<div> ' +
 '	<h4>Legal Protection Insurance</h4> ' +
 '	<div> ' +
@@ -609,7 +609,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
         counte = 1;
         newre = 1;
     }
-    
+
     function openAnotherNewVehicle(){
 
         document.getElementById('anotherNewVehicle').innerHTML += '<div id="counter' + count +'"></div>';
@@ -849,7 +849,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
         document.getElementById('counter'+ --count).innerHTML = '';
         document.getElementById('count').value = count;
     }
-</script>   
+</script>
 
 
 
