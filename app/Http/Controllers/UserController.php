@@ -27,7 +27,6 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 
-
 class UserController extends Controller
 {
     public function closenots()
@@ -38,9 +37,8 @@ class UserController extends Controller
     public function acceptapp($id)
     {
         $lead = lead::find($id);
-        if ($lead->admin_id == Auth::guard('admins')->user()->id) {
+        if ($lead->assign_to_id == Auth::guard('admins')->user()->id) {
             $lead->assigned = 1;
-            $
             $lead->save();
             return redirect()->back();
         } else {
@@ -168,20 +166,20 @@ class UserController extends Controller
         }
         else{
 
-        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->role == 'menagment') {
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->hasRole('menagment')) {
             $leads = lead::where('completed', '0')->where('assigned', 0)->where('assigned_to_id',null)->paginate(8);
         }elseif (Auth::guard('admins')->user()->hasRole('digital')) {
-            $leads = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
+            $leads = lead::where('assigned_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
         }elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-            $leads = lead::whereNotNull('admin_id')->where('assigned', 1)->paginate(7);
+            $leads = lead::whereNotNull('assigned_to_id')->where('assigned', 1)->paginate(7);
         }
 
-        $insta = lead::where('campaign_id', 1)->get()->count();
-        $facebook = lead::where('campaign_id', 3)->get()->count();
-        $sana = lead::where('campaign_id', 2)->get()->count();
+        $insta = lead::where('campaign_id', 2)->get()->count();
+        $facebook = lead::where('campaign_id', 1)->get()->count();
+        $sana = lead::where('campaign_id', 3)->get()->count();
         $total = array($insta,$facebook,$sana);
 
-      
+
         return view('leads', compact('leads', 'total'));}
     }
 
@@ -191,9 +189,9 @@ class UserController extends Controller
             'admin' => "required|exists:admins,id",
         ]);
         $lead = lead::find($id);
-        $lead->admin_id = (int) $req->input('admin');
+        $lead->assign_to_id = (int) $req->input('admin');
         $lead->time = filter_var($req->input('apptime'), FILTER_SANITIZE_STRING);
-        $lead->appointmentdate = filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING);
+        $lead->appointment_date = filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING);
         if ($lead->save()) {
             return redirect()->route('leads')->with('success', 'You action has been done successfuly');
         } else {
@@ -215,7 +213,7 @@ class UserController extends Controller
     }
     public function alead($id)
     {
-        if (lead::find($id)->assigned == 1 && lead::find($id)->admin_id != null) {
+        if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
             return redirect()->back();
         } else {
             $admins = Admins::all();
@@ -336,7 +334,7 @@ class UserController extends Controller
     public function dealclosed($id)
     {
         $app = lead::where('id', $id)->first();
-        if ($app->assign_to_id != null && $app->admin_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
+        if ($app->assign_to_id != null && $app->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('completelead', compact('app'));
         } else {
             return redirect()->back();
@@ -345,7 +343,7 @@ class UserController extends Controller
     public function dealnotclosed($id)
     {
         $leads = lead::where('id', $id)->first();
-        if ($leads->admin_id != 0 && $leads->admin_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->role == 'admin') {
+        if ($leads->assign_to_id != null && $leads->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('rejectedleads', compact('leads'));
         } else {
             return redirect()->back();
@@ -383,8 +381,8 @@ class UserController extends Controller
     }
 
     public function dashboard(Request $req){
-    
-      
+
+
 
         $getmonth = isset($req->getmonth) ? $req->getmonth : null;
 
@@ -399,42 +397,32 @@ class UserController extends Controller
 
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
 
-           
+
             return view('dashboard');
         }
         if (Auth::guard('admins')->user()->hasRole('admin')) {
 
             $tasks = lead::all();
-            $taskcnt = 0;
+            $taskcnt = count($tasks);
 
             for ($i = 0; $i < count($tasks); $i++) {
-                if($task->status_task == 'Submited'){
+                if($tasks[$i]->status_task == 'Submited'){
                     $pendingcnt++;
                 }
-
-                if($task->status_task == 'Open'){
+                if($tasks[$i]->status_task == 'Open'){
                     $opencnt++;
                 }
-                if($task->status_task == 'Done'){
+                if($tasks[$i]->status_task == 'Done'){
                     $done++;
                 }
-            
             }
+            $percnt = (100 / $taskcnt) * $done;
 
-           
-
-                    
-
-                
-                    $percnt = (100 / $taskcnt) * $done;
-
-                    $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
-                    $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-                    return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
+            $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
+            $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+            return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
         }
-                
 
-            return view('dashboard');
-        
+        return view('dashboard');
     }
 }
