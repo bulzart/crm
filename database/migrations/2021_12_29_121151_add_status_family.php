@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RejectedLeads extends Migration
+class AddStatusFamily extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class RejectedLeads extends Migration
      */
     public function up()
     {
-        Schema::create('rejectedleads', function (Blueprint $table) {
-            $table->id();
-            $table->integer('leads_id'); // soon to be foreign key
-            $table->string('reason');
-            $table->text('image')->nullable();
-            $table->timestamps();
+        Schema::table('family_person', function (Blueprint $table) {
+            $table->string('status')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class RejectedLeads extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rejectedleads');
+        Schema::table('family_person', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 }

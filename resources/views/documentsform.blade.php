@@ -22,14 +22,14 @@
             </div>
             <div>
 
-<<<<<<< HEAD
+
                         <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}"
                            target="_blank">{{$data->preinsurer}}</a>
-=======
+
                 <label>Id necessary</label>
                 @if(isset($data->idnecessary))
                     <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}" target="_blank">{{$data->idnecessary}}</a>
->>>>>>> 9cffd31ca156e5000e0ec6748bc8e6127db04582
+
 
                     <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
                 @else
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-<<<<<<< HEAD
+
                         <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}"
                            target="_blank">{{$data->idnecessary}}</a>
 
@@ -80,14 +80,13 @@
                     @else
                         <input class="form-control" type="file" name="powerofattorney">
                     @endif
-=======
+
         <br>
         <div style="display: none" id="car">
             <input onclick="openCounterOffer()" class="btn btn-primary" type="button" value="Counter">
             <input onclick="openNewVehicle()" class="btn btn-secondary" type="button" value="New Vehicle">
             <hr>
 
->>>>>>> 9cffd31ca156e5000e0ec6748bc8e6127db04582
 
             <div class="" id="counteroffer">
 
@@ -96,17 +95,17 @@
             <div  id="newVehicle">
 
 
-<<<<<<< HEAD
+
                 <div class="" id="counteroffer">
 
                 </div>
 
                 <div id="newVehicle">
-=======
+
 
             </div>
             <div id="anotherNewVehicle">
->>>>>>> 9cffd31ca156e5000e0ec6748bc8e6127db04582
+
 
             </div>
 
@@ -579,7 +578,7 @@
                         <option>Single</option>
                     </select>
                 </div>
-<<<<<<< HEAD
+
                 <div id="anotherNewVehicle">
 
 
@@ -1255,7 +1254,7 @@
 
                     </div>
                     <div id="choosesociety">
-=======
+
                 <div>
                     <label>Employment Relationship: </label>
                     <select name="employmentrelationship">
@@ -1422,7 +1421,6 @@
 
             </div>
             <div id="choosesociety">
->>>>>>> 9cffd31ca156e5000e0ec6748bc8e6127db04582
 
 
                     </div>
@@ -1432,7 +1430,7 @@
     </form>
 </div>
 
-<<<<<<< HEAD
+
                 <input type="submit" class="mt-3 btn btn-primary" value="Save">
         </form>
     </div>
@@ -1601,8 +1599,6 @@
             display: none;
         }
     </style>
-=======
->>>>>>> 9cffd31ca156e5000e0ec6748bc8e6127db04582
 @endsection
 
 </html>

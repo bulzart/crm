@@ -367,7 +367,6 @@ class UserController extends Controller
         $rejectedlead = new rejectedlead();
 
         $rejectedlead->leads_id = $request->leadsid;
-        $rejectedlead->admin_id = $user_id;
         $rejectedlead->reason = $request->reason;
         $rejectedlead->image = 'img/' . $request->file('image')->getClientOriginalName();
 
@@ -409,6 +408,7 @@ class UserController extends Controller
                 if($tasks[$i]->status_task == 'Submited'){
                     $pendingcnt++;
                 }
+
                 if($tasks[$i]->status_task == 'Open'){
                     $opencnt++;
                 }

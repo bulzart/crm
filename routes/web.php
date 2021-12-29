@@ -15,8 +15,10 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TodoController;
 use App\Models\Admins;
 use App\Models\todo;
+use App\Models\family;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Http\Controllers\FamilyPersonsController;
 
 use function GuzzleHttp\Promise\task;
 
@@ -39,25 +41,43 @@ route::prefix('')->group(function(){
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
 
     //----------------------------------------------------------------//
+<<<<<<< HEAD
     route::get('document/{id}',function ($id){
-       if(appointment::find($id)){
-            if(appointment::find($id)->completed == 0){
-                $data = appointment::find($id);
-                $data = json_decode($data->data);
-
-       return view('documentsform',compact('id','data'));}}
+       $person = family::find($id); 
+    if($person != null){
+       return view('documentsform',compact('id','person'));
+      }
        else{
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
        }
     })->name('document');
+=======
+    route::get('leadfamily/{id}',function ($id){
+      //  if(appointment::find($id)){
+      //    //    if(appointment::find($id)->completed == 0){
+      //    //        $data = appointment::find($id);
+      //    //        $data = json_decode($data->data);
+
+      //    // return view('documentsform',compact('id','data'));}}
+      //    }else{
+      //    return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
+      //  }
+      $data = \App\Models\lead::find($id);
+      $data = $data->family;
+      return view('leadfamily',compact('data'));
+    })->name('leadfamily');
+    
+    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
+
+>>>>>>> 91436eb9f8476e462e28875348516b7ad3b6bb12
     route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
-    route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
+
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
-    route::get('costumersview',function (){
-        $data = \App\Models\appointment::all();
+    route::get('costumers',function (){
+        $data = \App\Models\family::all();
        return view('costumers',compact('data'));
-    });
+    })->name('costumers');
 route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
 route::get('vuedate',[TasksController::class,'vuedate']);

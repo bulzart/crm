@@ -28918,9 +28918,7 @@ var render = function () {
                                       src:
                                         "https://maps.google.com/maps?q=" +
                                         tod.address +
-                                        ",%20" +
-                                        tod.location +
-                                        "&t=k&z=15&ie=UTF8&iwloc=&output=embed",
+                                        "&t=&z=15&ie=UTF8&iwloc=&output=embed",
                                       frameborder: "0",
                                       scrolling: "no",
                                       marginheight: "0",
@@ -28933,15 +28931,11 @@ var render = function () {
                                     },
                                   }),
                                   _c("br"),
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: {
-                                        href: "https://www.embedgooglemap.net",
-                                      },
+                                  _c("a", {
+                                    attrs: {
+                                      href: "https://www.embedgooglemap.net",
                                     },
-                                    [_vm._v("embedgooglemap.net")]
-                                  ),
+                                  }),
                                 ]),
                               ]),
                               _vm._v(" "),

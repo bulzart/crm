@@ -13,12 +13,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Name\FullyQualified;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class TasksController extends Controller
 {
 
   public function accepttask($id){
-  $app = lead::find($id);
+    $app = lead::find($id);
     lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
     return redirect()->back()->with(['successs','Your action was done successfully!']);
   }
@@ -34,6 +36,7 @@ class TasksController extends Controller
       $today = Carbon::now()->format("Y-m-d");
       if($req->date != null){
     if($admin->hasRole('admin')){
+
         $data = lead::where('wantsonline',0)->where('appointment_date',$req->date)->get();
     }
     elseif($admin->hasRole('fs')){
@@ -45,6 +48,7 @@ class TasksController extends Controller
           if($now > 2300){
             $data = lead::where('wantsonline',0)->where('appointment_date',Carbon::now()->addDays()->toDateString())->get();}
         else{
+
             $data = lead::where('wantsonline',0)->where('appointment_date',Carbon::now()->toDateString())->get();
 
         }
@@ -53,7 +57,10 @@ class TasksController extends Controller
         if($now > 2300){
           $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->addDays()->toDateString())->get();}
       else{
+
+
           $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->toDateString())->get();
+
       }
     }
       }
@@ -61,6 +68,7 @@ class TasksController extends Controller
     }
 
     public function vuedate(Request $req){
+
 $page = $req->page;
       $day = Carbon::now()->format('d');
       $month = Carbon::now()->format('m');
@@ -68,6 +76,7 @@ $page = $req->page;
       $fullcalendar = [];
       $br = 1;
 $dayofweek = 6;
+
 
 
 
@@ -116,7 +125,9 @@ $dayofweek = 6;
         $contracts = [];
         $datcnt = 0;
         foreach($data as $dat){
+
           if(Auth::guard('admins')->user()->hasRole('fs') && $dat->lead->admin_id != Auth::guard('admins')->user()->id){
+
             unset($data[$datcnt]);
             $datcnt++;
       }
@@ -176,7 +187,35 @@ $dayofweek = 6;
           $tasks2 = [];
           $cntt= 0;
 
+         
           }
+     
+      $realopen = [];
+      $pending = [];
+      $opencnt = 0;
+      $pendingcnt = 0;
+
+      foreach($tasks2 as $task){
+        if($task->status_task == 'Open'){
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
+        }
+
+        if($task->status_task == 'Submited'){
+          $pending[$cnt] = $task;
+          $cnt++;
+          $pendingcnt++;
+        }
+      }
+      
+
+
+     
+
+
+          }
+
 
       $cnt = 0;
       $costumers = family::all();
@@ -195,7 +234,7 @@ $dayofweek = 6;
               $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
               $cnt++;
           }
-dd($birthdays);
+
       }
 
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
