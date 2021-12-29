@@ -481,9 +481,14 @@ class UserController extends Controller
             
             }
 
-           
-
+                $tasks = lead::all();
+                $taskcnt = lead::count();
+                foreach($tasks as $task){
                     
+                    if($task->status_task == 'Submited'){
+                        $pendingcnt++;
+                    }
+
 
                 
                     $percnt = (100 / $taskcnt) * $done;

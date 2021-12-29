@@ -18,7 +18,7 @@ class TasksController extends Controller
 {
 
   public function accepttask($id){
-  $app = lead::find($id);
+    $app = lead::find($id);
     lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
     return redirect()->back()->with(['successs','Your action was done successfully!']);
   }
@@ -69,28 +69,28 @@ class TasksController extends Controller
     }
 
     public function vuedate(Request $req){
-$page = $req->page;
-      $day = Carbon::now()->format('d');
-      $month = Carbon::now()->format('m');
-      $year = Carbon::now()->format('Y');
-      $fullcalendar = [];
-      $br = 1;
-$dayofweek = 6;
+      $page = $req->page;
+            $day = Carbon::now()->format('d');
+            $month = Carbon::now()->format('m');
+            $year = Carbon::now()->format('Y');
+            $fullcalendar = [];
+            $br = 1;
+      $dayofweek = 6;
 
-$months = $long = array(
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-);
+      $months = $long = array(
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      );
 
 
       for($i = 0; $i <= 365; $i++){
@@ -192,18 +192,36 @@ $months = $long = array(
       $cnt = 0;
       $cnt1 = 0;
     
-
       if (Auth::guard('admins')->user()->hasRole('admin')){
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
          
           }
-      
+     
+      $realopen = [];
+      $pending = [];
+      $opencnt = 0;
+      $pendingcnt = 0;
+
+      foreach($tasks2 as $task){
+        if($task->status_task == 'Open'){
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
+        }
+
+        if($task->status_task == 'Submited'){
+          $pending[$cnt] = $task;
+          $cnt++;
+          $pendingcnt++;
+        }
+      }
       
 
 
      
+
 
 
       $cnt = 0;
@@ -232,29 +250,29 @@ dd($birthdays);
 
 
 	 public function documentform(Request $req,$id){
-         $req->validate([
-           'id' => 'exists:csapp,id'
-         ]);
+    $req->validate([
+      'id' => 'exists:csapp,id'
+    ]);
 
-        $data = $req->all();
+    $data = $req->all();
 
-        $csapp = lead::find($id);
-        $count = (int) $req->input('count');
-        for($i = 0;$i <= $count;$i++){
-
-
-           if($req->file('uploadvehicleid'.$i) != null){
-              $file = $req->file('uploadvehicleid'.$i);
-              $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
-             $path = $file->storeAs('img',$filename);
-             $data['uploadpolice'.$i] = filter_var($path,FILTER_SANITIZE_STRING);
-           }
-
-        }
+    $csapp = lead::find($id);
+    $count = (int) $req->input('count');
+    for($i = 0;$i <= $count;$i++){
 
 
+      if($req->file('uploadvehicleid'.$i) != null){
+        $file = $req->file('uploadvehicleid'.$i);
+        $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i') . rand(1,999) .  '.' . $file->getClientOriginalExtension();
+        $path = $file->storeAs('img',$filename);
+        $data['uploadpolice'.$i] = filter_var($path,FILTER_SANITIZE_STRING);
+      }
 
-  if($req->file('preinsurer') != null){
+    }
+
+
+
+    if($req->file('preinsurer') != null){
       $file = $req->file('preinsurer');
       $filename = str_replace('.',$file->guessClientExtension(),$file->getClientOriginalName()) . Carbon::now()->format('H-i')  . rand(1,999) .  '.' . $file->getClientOriginalExtension();
       $path = $file->storeAs('img',$filename);
@@ -306,11 +324,11 @@ dd($birthdays);
     if(!isset($data['admin_id'])){$data['admin_id'] = Auth::guard('admins')->user()->id;}
 
      $csapp->unsigned_data = json_encode($data);
-        if($csapp->save()){
-            return redirect()->route('document',$id)->with('success','Action was done successfully');
-        }else{
-            return redirect()->route('document',$id)->with('fail','Action failed');
-        }
+    if($csapp->save()){
+      return redirect()->route('document',$id)->with('success','Action was done successfully');
+    }else{
+      return redirect()->route('document',$id)->with('fail','Action failed');
+    }
   }
 
 
