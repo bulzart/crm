@@ -192,18 +192,18 @@ $months = $long = array(
       $cnt1 = 0;
     
 
-      if (Auth::guard('admins')->user()->hasRole('fs')){
+      if (Auth::guard('admins')->user()->hasRole('admin')){
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
           for ($i = 0; $i< count($tasks);$i++){
-            if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
+            if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
                 $tasks2[$cntt] = $tasks[$i];
                 $cntt++;
             }
           }
       }
-
+      
       $realopen = [];
       $pending = [];
       $opencnt = 0;
