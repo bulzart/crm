@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusFamily extends Migration
+class CreateCampaignTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class AddStatusFamily extends Migration
      */
     public function up()
     {
-        Schema::table('family_person', function (Blueprint $table) {
-            $table->string('status')->nullable();
-     
+        Schema::create('campaigns', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
-      
-        
     }
 
     /**
@@ -28,9 +27,6 @@ class AddStatusFamily extends Migration
      */
     public function down()
     {
-        Schema::table('family_person', function (Blueprint $table) {
-            $table->dropColumn('status');
-
-        });
+        Schema::dropIfExists('campaigns');
     }
 }

@@ -183,11 +183,16 @@ $dayofweek = 6;
       $cnt1 = 0;
     
       if (Auth::guard('admins')->user()->hasRole('admin')){
+    
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
+
+
           for ($i = 0; $i< count($tasks);$i++){
             if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
+           
+
                 $tasks2[$cntt] = $tasks[$i];
                 $cntt++;
             }
@@ -234,7 +239,7 @@ $dayofweek = 6;
 
       }
 
-   return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
+   return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays','tasks'));
   }
 
 
