@@ -43,7 +43,8 @@ $status = "Submited";
             'campaign_id' => random_int(1,3),
             'appointment_date' => Carbon::now()->addDay(random_int(0,7))->format('Y-m-d'),
             'assign_to_id' => random_int(1,7),
-            'status_task' => $this->randomm()
+            'status_task' => $this->randomm(),
+            'assigned' => random_int(0,1)
         ];
     }
 }

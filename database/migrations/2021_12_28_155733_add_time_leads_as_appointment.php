@@ -31,5 +31,6 @@ class AddTimeLeadsAsAppointment extends Migration
             $table->dropColumn('time');
             $table->dropColumn('assigned');
         });
+
     }
 }

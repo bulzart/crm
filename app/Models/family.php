@@ -9,4 +9,7 @@ class family extends Model
 {
     protected $table = 'family_person';
     use HasFactory;
+    public function lead(){
+        return $this->belongsTo(lead::class,'leads_id');
+    }
 }
