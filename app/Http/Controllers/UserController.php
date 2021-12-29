@@ -458,7 +458,7 @@ class UserController extends Controller
 
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
 
-           
+            
             return view('dashboard');
         }
         if (Auth::guard('admins')->user()->hasRole('admin')) {
@@ -477,7 +477,6 @@ class UserController extends Controller
                 if($tasks[$i]->status_task == 'Done'){
                     $done++;
                 }
-            
             }
 
            
