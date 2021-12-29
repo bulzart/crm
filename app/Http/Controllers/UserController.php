@@ -498,24 +498,28 @@ class UserController extends Controller
                 $tasks = lead::all();
                 $taskcnt = lead::count();
                 foreach($tasks as $task){
-                    if(!$this->isdone($task)){
+                    // if(!$this->isdone($task)){
 
-                      $pendingcnt++;
-                }
-                    if($task->data == null){
-                      $opencnt++;
-                     }
-                     if($task->completed == 1)
-                     {
-                         $done++;
-                     }
+                    //   $pendingcnt++;
+                    // }
 
+                    if($task->status_task == 'Submited'){
+                        $pendingcnt++;
                     }
-                        $percnt = (100 / $taskcnt) * $done;
 
-                        $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
-                        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-                        return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
+                    if($task->status_task == 'Open'){
+                        $opencnt++;
+                    }
+                    if($task->status_task == 'Done'){
+                        $done++;
+                    }
+
+                }
+                    $percnt = (100 / $taskcnt) * $done;
+
+                    $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
+                    $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+                    return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
 
                 }
 
