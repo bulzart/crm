@@ -13,7 +13,10 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\TodoController;
+use App\Models\Admins;
 use App\Models\todo;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 use function GuzzleHttp\Promise\task;
 
@@ -22,13 +25,11 @@ route::prefix('')->group(function(){
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
     route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
-    route::get('join/{campaign}',[UserController::class,'getlead'])->name('getlead');
     route::get('/',[UserController::class,'dashboard'])->name('dashboard');
     route::get('logout',[UserController::class,'logout'])->name('logout');
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
-    route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
     route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
@@ -49,23 +50,19 @@ route::prefix('')->group(function(){
 return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
        }
     })->name('document');
-    route::post('documentform/{id}',[\App\Http\Controllers\TasksController::class,'documentform'])->name('documentform');
+    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
     route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
-
     route::get('costumersview',function (){
-
         $data = \App\Models\appointment::all();
        return view('costumers',compact('data'));
-    })->middleware(\App\Http\Middleware\Firsttime::class);
+    });
 route::get('ispending',[TasksController::class,'itis']);
 route::get('todayappointments',[TasksController::class,'today']);
 route::get('vuedate',[TasksController::class,'vuedate']);
 route::get('chat',[ChatController::class,'chat']);
-route::get('time',function(){
-   return Carbon::now()->format('Y-m-d');
-});
+
 route::get('addtodo',[TodoController::class,'addtodo']);
 route::get('todos',[TodoController::class,'todos']);
 route::get('deletetodo',[TodoController::class,'deletetodo']);
@@ -88,6 +85,12 @@ route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsm
 route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
 route::get('add',[TasksController::class,'adddata']);
+// route::get('permission', function(){
+//    $role = Role::find(9);
+//    $user = Admins::find(1);
+//    $user->assignRole($role);
+// });
+
 
 
 

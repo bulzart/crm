@@ -8,7 +8,7 @@
                 <perfect-scrollbar class="ps-show-limits">
                     <div style="position: static;" class="ps ps--active-y">
                         <div class="ps-content">
-                            <ul class=" list-group list-group-flush" style="max-height: 400px; overflow-y: scroll;">
+                            <ul class=" list-group list-group-flush" style="height: 280px; overflow-y: scroll;">
                                 <li class="list-group-item" v-for="todo in todos">
                                     <div class="todo-indicator bg-warning"></div>
                                     <div class="widget-content p-0">
@@ -44,7 +44,7 @@
                 <perfect-scrollbar class="ps-show-limits">
                     <div style="position: static;" class="ps ps--active-y">
                         <div class="ps-content">
-                            <ul class=" list-group list-group-flush" style="max-height: 400px; overflow-y: scroll;">
+                            <ul class=" list-group list-group-flush" style="height: 200px; overflow-y: scroll;">
                                 <li class="list-group-item" v-for="number in numbers">
                                     <div class="todo-indicator bg-warning"></div>
                                     <div class="widget-content p-0">

@@ -15,7 +15,7 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->integer('receiver_id');
+            $table->integer('receiver_id'); // soon to be foreign key
             $table->string('text');
             $table->boolean('done')->default(0);
             $table->timestamps();

@@ -17,9 +17,9 @@ class TasksController extends Controller
 {
 
   public function accepttask($id){
-  $app = appointment::find($id);
-    appointment::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
-    return redirect()->back();
+  $app = lead::find($id);
+    lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
+    return redirect()->back()->with(['successs','Your action was done successfully!']);
   }
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
@@ -114,7 +114,7 @@ $months = $long = array(
     }
 
     public function searchword(){
-        $data =  appointment::orderBy('name','asc')->get();
+        $data =  lead::orderBy('name','asc')->get();
         return view('costumers',compact('data'));
     }
     public function costumers(Request $request){
@@ -124,21 +124,28 @@ $months = $long = array(
         $n = date('Y-m-d', strtotime($request->searchdate2));
         $date2 = date('Y-m-d',strtotime($n . "+1 days"));
         if(!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
-            $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+            $data = lead::where('lname', 'like', '%' . $searchname . '%')
                 ->orWhere('name', 'like', '%' . $searchname . '%')->get();
         }elseif(isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)){
-            $data = appointment::whereBetween('created_at',[$date1,$date2])->get();
+            $data = lead::whereBetween('created_at',[$date1,$date2])->get();
         }
         else{
-           $data = appointment::where('lname', 'like', '%' . $searchname . '%')
+           $data = lead::where('lname', 'like', '%' . $searchname . '%')
            ->orWhere('name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
         }
         $contracts = [];
+        $datcnt = 0;
         foreach($data as $dat){
+          if(Auth::guard('admins')->user()->role == 'fs' && $dat->lead->admin_id != Auth::guard('admins')->user()->id){
+            unset($data[$datcnt]);
+            $datcnt++;
+      }
+     
           if($dat->contracts != null){
           $contracts[$dat->id] = json_decode($dat->contracts);
       }
-        }
+    ;
+        } 
 
             return view('costumers', compact('data','contracts'));
 
@@ -147,9 +154,6 @@ $months = $long = array(
 
       public function adddata($req = null,$object = null,$count = null)
       {
-
-
-
             $arr1 =  json_decode($req,true);
             $arr2 =  json_decode($object,true);
             if(count($arr1) >= count($arr2)){
@@ -186,18 +190,17 @@ $months = $long = array(
     public function tasks(){
       $cnt = 0;
       $cnt1 = 0;
-      if (Auth::guard('admins')->user()->role == 'admin'){
-          $tasks2 = appointment::where('completed',0)->get();
-      }
-      if (Auth::guard('admins')->user()->role == 'fs'){
-          $tasks = appointment::where('completed',0)->get();
+    
+
+      if (Auth::guard('admins')->user()->hasRole('fs')){
+          $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
           for ($i = 0; $i< count($tasks);$i++){
-          if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
-              $tasks2[$cntt] = $tasks[$i];
-              $cntt++;
-          }
+            if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
+                $tasks2[$cntt] = $tasks[$i];
+                $cntt++;
+            }
           }
       }
 
@@ -206,39 +209,39 @@ $months = $long = array(
       $opencnt = 0;
       $pendingcnt = 0;
 
-       foreach($tasks2 as $task){
-       if(!$this->isdone($task)){
-         $pending[$cnt] = $task;
-         $cnt++;
-         $pendingcnt++;
-   }
-       if($task->data == null){
-         $realopen[$cnt1] = $task;
-         $cnt1++;
-         $opencnt++;
-        }
-       }
-
-
-   $cnt = 0;
-   $costumers = appointment::all();
-   $todaydate = Carbon::now()->format('m-d');
-
-   $birthdays = [];
-   foreach($costumers as $cos){
-      if(substr($cos->birthday,5) == $todaydate)
-      {
-          $birthdays[$cnt]['birthday'] = $cos->birthday;
-          $now = (int) Carbon::now()->format('Y');
-          $birth = (int) substr($cos->birthday,-10,-6);
-          $birthdays[$cnt]['age'] = $now - $birth;
-          $birthdays[$cnt]['id'] = $cos->id;
-          $birthdays[$cnt]['name'] = ucfirst($cos->name);
-          $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
+      foreach($tasks2 as $task){
+        if(!$this->isdone($task)){
+          $pending[$cnt] = $task;
           $cnt++;
+          $pendingcnt++;
+        }
+        if($task->data == null){
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
+        }
       }
 
-   }
+
+      $cnt = 0;
+      $costumers = lead::all();
+      $todaydate = Carbon::now()->format('m-d');
+
+      $birthdays = [];
+      foreach($costumers as $cos){
+          if(substr($cos->birthday,5) == $todaydate)
+          {
+              $birthdays[$cnt]['birthday'] = $cos->birthday;
+              $now = (int) Carbon::now()->format('Y');
+              $birth = (int) substr($cos->birthday,-10,-6);
+              $birthdays[$cnt]['age'] = $now - $birth;
+              $birthdays[$cnt]['id'] = $cos->id;
+              $birthdays[$cnt]['name'] = ucfirst($cos->name);
+              $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
+              $cnt++;
+          }
+
+      }
 
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
   }
@@ -252,9 +255,7 @@ $months = $long = array(
 
         $data = $req->all();
 
-dd($data);
-        $csapp = appointment::find($id);
-        $data2 = (array) json_decode($csapp->data);
+        $csapp = lead::find($id);
         $count = (int) $req->input('count');
         for($i = 0;$i <= $count;$i++){
 
@@ -313,20 +314,19 @@ dd($data);
        $data['uploadpolice2'] = filter_var($path,FILTER_SANITIZE_STRING);
      }
 
-    $data['phone'] = $data['countryCode'] . $data['phonenumber'];
+
      unset($data['countryCode'],$data['phonenumber']);
-    $datas = $this->adddata($data,$data2);
-    $datas['admin_id'] = Auth::guard('admins')->user()->id;
-    $datas['csapp'] = $csapp->id;
-
-    $datas['admin_id'] = Auth::guard('admins')->user()->id;
 
 
-     $csapp->unsigned_data = json_encode($datas);
+    $data['csapp'] = $csapp->id;
+
+    if(!isset($data['admin_id'])){$data['admin_id'] = Auth::guard('admins')->user()->id;}
+
+     $csapp->unsigned_data = json_encode($data);
         if($csapp->save()){
-            return redirect()->route('documentform',$id)->with('success','Action has Success');
+            return redirect()->route('document',$id)->with('success','Action was done successfully');
         }else{
-            return redirect()->route('documentform',$id)->with('fail','Action was Fail');
+            return redirect()->route('document',$id)->with('fail','Action failed');
         }
   }
 

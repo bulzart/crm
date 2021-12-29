@@ -15,8 +15,9 @@ class CreateTodosTable extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->integer('admin_id');
+            $table->integer('admin_id'); // soon to be foreign key
             $table->string('text')->nullable();
+            $table->boolean('number')->default(0);
             $table->boolean('done')->default(0);
             $table->timestamps();
         });

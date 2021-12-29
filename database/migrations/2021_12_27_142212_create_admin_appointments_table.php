@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RejectedLeads extends Migration
+class CreateAdminAppointmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class RejectedLeads extends Migration
      */
     public function up()
     {
-        Schema::create('rejectedleads', function (Blueprint $table) {
+        Schema::create('admin_appointments', function (Blueprint $table) {
             $table->id();
-            $table->integer('leads_id'); // soon to be foreign key
-            $table->integer('admin_id'); // soon to be foreign key
-            $table->string('reason');
-            $table->text('image')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class RejectedLeads extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rejectedleads');
+        Schema::dropIfExists('admin_appointments');
     }
 }

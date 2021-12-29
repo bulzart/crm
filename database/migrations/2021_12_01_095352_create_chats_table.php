@@ -15,8 +15,8 @@ class CreateChatsTable extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $table->integer('costumer_id')->index();
-            $table->integer('admin_id')->index();
+            $table->integer('costumer_id')->index(); // soon to be foreign key
+            $table->integer('admin_id')->index(); // soon to be foreign key
             $table->json('chat')->nullable();
             $table->string('rating')->index();
             $table->timestamps();
