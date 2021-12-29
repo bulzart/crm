@@ -23,7 +23,10 @@ class RoleSeeder extends Seeder
             6 => 'it administrator',
             7 => 'it development',
             8 => 'finance',
+            9 => 'admin'
         ];
+
+
 
         foreach($roles as $id => $role){
             Role::create([

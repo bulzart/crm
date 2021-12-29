@@ -50,7 +50,7 @@
                         <span>Grund: {{$l->addres}}</span><br>
                         <span>Teilnahme: {{$l->created_at}}</span><br>
                         <span class="fw-bold">Herkunft vom lead</span><br>
-                        <a href="tel:{{$l->telprivat}}"><i class="fas fa-phone-square-alt" style="font-size: 58px;"></i></a>
+                        <a href="tel:{{$l->telephone}}"><i class="fas fa-phone-square-alt" style="font-size: 58px;"></i></a>
                     </div>
                     <div class="modal-footer">
                         <a href="{{route('dlead',$l->id)}}" type="button" class="btn btn-danger">X</a>
@@ -84,7 +84,7 @@ Statistics
     <div>
         <span>Instagram: {{$total['instagram']}}</span><br>
         <span>Facebook: {{$total['facebook']}}</span><br>
-        <span>Google: {{$total['google']}}</span>
+        <span>Sanascout: {{$total['sana']}}</span>
     </div>
 </div>
 

@@ -237,7 +237,6 @@ $dayofweek = 6;
         return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
     }
 
-
 	 public function documentform(Request $req,$id){
 
   }
