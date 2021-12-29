@@ -73,6 +73,7 @@ class UserController extends Controller
 
     public function addappointment(Request $req)
     {
+        dd(Auth::guard('admins')->user()->id);
         $req->validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -80,19 +81,22 @@ class UserController extends Controller
             'address' => 'required',
             'postal' => 'required',
             'location' => 'required',
-            'campaign' => 'exists:campaigns,id',
+
             'count' => 'min:1',
-            'time' => 'required'
+            'apptime' => 'required',
+            'appbirthdate' => 'required'
         ]);
+
         $lead = new lead();
         $lead->first_name = filter_var($req->input('fname'), FILTER_SANITIZE_STRING);
-        $lead->last_lname = filter_var($req->input('lname'), FILTER_SANITIZE_STRING);
+        $lead->last_name = filter_var($req->input('lname'), FILTER_SANITIZE_STRING);
         $lead->telephone = filter_var($req->input('phone'), FILTER_SANITIZE_STRING);
         $lead->address = filter_var($req->input('address'), FILTER_SANITIZE_STRING);
         $lead->postal_code = filter_var($req->input('postal'), FILTER_SANITIZE_STRING);
         $lead->city = filter_var($req->input('location'), FILTER_SANITIZE_STRING);
         $lead->nationality = filter_var($req->input('country'), FILTER_SANITIZE_STRING);
-        $lead->day = Carbon::now()->dayName;
+        $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
+        $lead->birthdate = filter_var($req->input('appbirthdate'),FILTER_SANITIZE_STRING);
         $lead->number_of_persons = (int) $req->input('count');
         $lead->campaign_id = (int) $req->input('campaign');
         $campaign = campaigns::where('id', $req->input('campaign'))->get();
@@ -122,12 +126,12 @@ class UserController extends Controller
 
 
         if ($lead->save()) {
-            $lead->slug = Str::slug($req->input('fname')) . '-' . $lead->id;
+            $lead->slug = Str::slug($req->input('first_name')) . '-' . $lead->id;
 
             $lead->save();
-            return redirect()->route('getlead', $campaign[0]->name)->with('joined', 'You joined successfully, our team will try to contact you as soon as possible!');
+            return redirect()->back()->with('joined', 'You joined successfully, our team will try to contact you as soon as possible!');
         } else {
-            return redirect()->route('getlead', $campaign[0]->name)->with('fail', 'Your joined fail');
+            return redirect()->route('getlead')->with('fail', 'Your joined fail');
         }
     }
 
@@ -166,21 +170,23 @@ class UserController extends Controller
         }
         else{
 
-        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->hasRole('menagment')) {
-            $leads = lead::where('completed', '0')->where('assigned', 0)->where('assigned_to_id',null)->paginate(8);
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->role == 'menagment') {
+            $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id',null)->paginate(8);
+
         }elseif (Auth::guard('admins')->user()->hasRole('digital')) {
-            $leads = lead::where('assigned_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
+            $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
         }elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-            $leads = lead::whereNotNull('assigned_to_id')->where('assigned', 1)->paginate(7);
+            $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->paginate(7);
         }
 
-        $insta = lead::where('campaign_id', 2)->get()->count();
-        $facebook = lead::where('campaign_id', 1)->get()->count();
-        $sana = lead::where('campaign_id', 3)->get()->count();
-        $total = array($insta,$facebook,$sana);
+        $insta = lead::where('campaign_id', 1)->get()->count();
+        $facebook = lead::where('campaign_id', 3)->get()->count();
+        $sana = lead::where('campaign_id', 2)->get()->count();
+        $total = array('instagram' => $insta,'facebook' => $facebook,'sana'=>$sana);
 
+      
+        return view('leads', compact('leads','total'));}
 
-        return view('leads', compact('leads', 'total'));}
     }
 
     public function asignlead(Request $req, $id)

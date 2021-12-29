@@ -33,7 +33,7 @@
        var locations = [
                                             <?php 
                                                 foreach($maps as $row3){ 
-                                                    echo '["'.$row3['name'].'", '.$row3['lati'].', '.$row3['longi'].'],'; 
+                                                    echo '["'.$row3['name'].'", '.$row3['latitude'].', '.$row3['longitude'].'],'; 
                                                 } 
                                             ?>
                                             
@@ -43,7 +43,7 @@
 
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 8,
+            zoom: 4,
             center: new google.maps.LatLng(42.6026,20.9030),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
