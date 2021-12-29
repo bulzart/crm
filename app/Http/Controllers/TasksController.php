@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
+use App\Models\family;
 use App\Models\lead;
 use App\Models\notification;
 use Carbon\Carbon;
@@ -192,44 +193,26 @@ $months = $long = array(
       $cnt1 = 0;
     
 
-      if (Auth::guard('admins')->user()->hasRole('fs')){
+      if (Auth::guard('admins')->user()->hasRole('admin')){
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
-          for ($i = 0; $i< count($tasks);$i++){
-            if ($tasks[$i]->lead->admin_id == Auth::guard('admins')->user()->id){
-                $tasks2[$cntt] = $tasks[$i];
-                $cntt++;
-            }
+         
           }
-      }
+      
+      
 
-      $realopen = [];
-      $pending = [];
-      $opencnt = 0;
-      $pendingcnt = 0;
 
-      foreach($tasks2 as $task){
-        if(!$this->isdone($task)){
-          $pending[$cnt] = $task;
-          $cnt++;
-          $pendingcnt++;
-        }
-        if($task->data == null){
-          $realopen[$cnt1] = $task;
-          $cnt1++;
-          $opencnt++;
-        }
-      }
+     
 
 
       $cnt = 0;
-      $costumers = lead::all();
+      $costumers = family::all();
       $todaydate = Carbon::now()->format('m-d');
 
       $birthdays = [];
       foreach($costumers as $cos){
-          if(substr($cos->birthday,5) == $todaydate)
+          if(substr($cos->birthdate,5) == $todaydate)
           {
               $birthdays[$cnt]['birthday'] = $cos->birthday;
               $now = (int) Carbon::now()->format('Y');
@@ -240,7 +223,7 @@ $months = $long = array(
               $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
               $cnt++;
           }
-
+dd($birthdays);
       }
 
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
@@ -356,6 +339,3 @@ $months = $long = array(
 
 
 }
-
-
-
