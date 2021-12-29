@@ -1,18 +1,21 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="css/navbar.css">
+    
 </head>
 
 <body id="body-pd">
+    
 <div class="row">
         <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
         <header class="header" id="header">
@@ -23,25 +26,96 @@
         <nav class="nav">
             <div>
                 <div class="nav_list">
-                    <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon text-black'></i> <span class="nav_name text-black">Home</span> </a>
-                    @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))<a style="text-decoration: none;" href="{{route('calendar')}}" class="nav_link"> <i class='bi bi-calendar nav_icon text-black'></i> <span class="nav_name text-black">Calendar</span> </a>@endif
-                    @if(Auth::guard('admins')->check())<a style="text-decoration: none;" href="{{route('costumers')}}" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Costumers</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Cancellations</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))<a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-task text-black'></i> <span class="nav_name text-black">Tasks</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) <a href="#" style="text-decoration: none;" class="nav_link"> <i class='bx bxs-check-square text-black'></i> <span class="nav_name text-black">Status</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Trust</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))<a style="text-decoration: none;" href="#" class="nav_link"> <i class='bx bx-user nav_icon text-black'></i> <span class="nav_name text-black">Commisions</span> </a>@endif
-                    @if(Auth::guard('admins')->check())<a href="#" style="text-decoration: none;" class="nav_link"><i class='bx bx-money text-black'></i><span class="nav_name text-black">Finance</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) <a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-window-close text-black"></i><span class="nav_name text-black">Deposit</span> </a> @endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))<a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link"><i class="fas fa-newspaper text-black"></i><span class="nav_name text-black">Leads</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))<a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link"><i class='bi bi-calendar-date text-black'></i><span class="nav_name text-black">Dates</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment'))<a href="#" style="text-decoration: none;" class="nav_link"><i class="far fa-calendar-alt text-black"></i><span class="nav_name text-black">Employees</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-sliders-h text-black"></i><span class="nav_name text-black">Prov.system</span> </a>@endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))<a href="#" style="text-decoration: none;" class="nav_link"><i class="fas fa-chart-pie text-black"></i><span class="nav_name text-black">Statistics</span> </a>@endif
-
-                </div> <a href="{{route('logout')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name text-black">LogOut</span> </a>
+                    <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> 
+                        <i class='bx bx-grid-alt nav_icon text-black'></i> <span class="nav_name text-black">Home</span> 
+                    </a>
+                    @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
+                        <a style="text-decoration: none;" href="{{route('calendar')}}" class="nav_link"> 
+                            <i class='bi bi-calendar nav_icon text-black'></i> 
+                            <span class="nav_name text-black">Calendar</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->check())
+                        <a style="text-decoration: none;" href="{{route('costumers')}}" class="nav_link"> 
+                            <i class='bx bx-user nav_icon text-black'></i> 
+                            <span class="nav_name text-black">Costumers</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                        <a style="text-decoration: none;" href="#" class="nav_link"> 
+                            <i class='bx bx-user nav_icon text-black'></i> 
+                            <span class="nav_name text-black">Cancellations</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
+                        <a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> 
+                            <i class='bx bx-task text-black'></i> 
+                            <span class="nav_name text-black">Tasks</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) 
+                        <a href="#" style="text-decoration: none;" class="nav_link"> 
+                            <i class='bx bxs-check-square text-black'></i> 
+                            <span class="nav_name text-black">Status</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
+                        <a style="text-decoration: none;" href="#" class="nav_link"> 
+                            <i class='bx bx-user nav_icon text-black'></i> 
+                            <span class="nav_name text-black">Trust</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
+                        <a style="text-decoration: none;" href="#" class="nav_link"> 
+                            <i class='bx bx-user nav_icon text-black'></i> 
+                            <span class="nav_name text-black">Commisions</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->check())
+                        <a href="#" style="text-decoration: none;" class="nav_link">
+                            <i class='bx bx-money text-black'></i>
+                            <span class="nav_name text-black">Finance</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) 
+                        <a href="#" style="text-decoration: none;" class="nav_link">
+                            <i class="far fa-window-close text-black"></i>
+                            <span class="nav_name text-black">Deposit</span> 
+                        </a> 
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
+                        <a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link">
+                            <i class="fas fa-newspaper text-black"></i>
+                            <span class="nav_name text-black">Leads</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
+                        <a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link">
+                            <i class='bi bi-calendar-date text-black'></i>
+                            <span class="nav_name text-black">Dates</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment'))
+                        <a href="#" style="text-decoration: none;" class="nav_link">
+                            <i class="far fa-calendar-alt text-black"></i>
+                            <span class="nav_name text-black">Employees</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                        <a href="#" style="text-decoration: none;" class="nav_link">
+                            <i class="fas fa-sliders-h text-black"></i>
+                            <span class="nav_name text-black">Prov.system</span> 
+                        </a>
+                    @endif
+                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                        <a href="#" style="text-decoration: none;" class="nav_link">
+                            <i class="fas fa-chart-pie text-black"></i>
+                            <span class="nav_name text-black">Statistics</span> 
+                        </a>
+                    @endif
+                </div> 
+                <a href="{{route('logout')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name text-black">LogOut</span> </a>
             </div>
-
         </nav>
     </div>
     <!--Container Main start-->
@@ -849,7 +923,308 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
         document.getElementById('counter'+ --count).innerHTML = '';
         document.getElementById('count').value = count;
     }
+
+    $(document).ready(function(){
+        $(".Offene-Aufgaben").click(function(){
+            $(".collapse").collapse('toggle');
+        });
+    });
 </script>
+
+
+<style>
+    * {
+        font-family: 'Poppins';font-size: 17px;
+
+    }
+    .hide {
+            display: none;
+        }
+    :root {
+        --header-height: 3rem;
+        --nav-width: 68px;
+        --first-color: #fff;
+        --first-color-light: #AFA5D9;
+        --white-color: #F7F6FB;
+        --body-font: 'Nunito', sans-serif;
+        --normal-font-size: 1rem;
+        --z-fixed: 100
+    }
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box
+    }
+
+    body {
+        position: relative;
+        margin: var(--header-height) 0 0 0;
+        padding: 0 1rem;
+        font-family: var(--body-font);
+        font-size: var(--normal-font-size);
+        transition: .5s
+    }
+
+    a {
+        text-decoration: none
+    }
+
+    .header {
+        width: 100%;
+        height: 0px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        background-color: var(--white-color);
+        z-index: var(--z-fixed);
+        transition: .5s
+    }
+
+    .header_toggle {
+        color: var(--first-color);
+        font-size: 1.5rem;
+        cursor: pointer
+    }
+
+    .header_img {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        border-radius: 50%;
+        overflow: hidden
+    }
+
+    .header_img img {
+        width: 40px
+    }
+
+    .l-navbar {
+        position: fixed;
+        top: 0;
+        left: -30%;
+        width: var(--nav-width);
+        height: 100vh;
+        background-color: var(--first-color);
+        padding: .5rem 1rem 0 0;
+        transition: .7s;
+        z-index: var(--z-fixed)
+    }
+
+    .nav {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden
+    }
+
+    .nav_logo,
+    .nav_link {
+        display: grid;
+        grid-template-columns: max-content max-content;
+        align-items: center;
+        column-gap: 1rem;
+        padding: .5rem 0 .5rem 1.5rem
+    }
+
+    .nav_logo {
+        margin-bottom: 2rem
+    }
+
+    .nav_logo-icon {
+        font-size: 1.25rem;
+        color: var(--white-color)
+    }
+
+    .nav_logo-name {
+        color: var(--white-color);
+        font-weight: 700
+    }
+
+    .nav_link {
+        position: relative;
+        color: var(--first-color-light);
+        margin-bottom: 1.5rem;
+        transition: .3s
+    }
+
+    .nav_link:hover {
+        color: var(--white-color)
+    }
+
+    .nav_icon {
+        font-size: 1.25rem
+    }
+
+    /* .show {
+        left: 0
+    } */
+
+    .body-pd {
+        padding-left: 0;
+    }
+
+    .active {
+        color: var(--white-color)
+    }
+
+    .active::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 2px;
+        height: 32px;
+        background-color: var(--white-color)
+    }
+
+    .height-100 {
+        height: 100vh
+    }
+    #body-pd{
+        margin: 0;
+    }
+    @media screen and (min-width: 880px) {
+        body {
+            margin: calc(var(--header-height) + 1rem) 0 0 0;
+            padding-left: calc(var(--nav-width) + 2rem)
+        }
+
+        .header {
+
+            height: 0px;
+            padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
+        }
+
+        .header_img {
+            width: 40px;
+            height: 40px
+        }
+
+        .header_img img {
+            width: 45px
+        }
+
+        .l-navbar {
+            left: 0;
+            padding: 1rem 1rem 0 0
+        }
+
+        /* .show {
+            width: calc(var(--nav-width) - 30px)
+        } */
+        .nav_link{
+            text-decoration: none;
+        }
+
+        .body-pd {
+            padding-left: calc(var(--nav-width))
+        }
+
+        .card {
+        width: 350px;
+        padding: 10px;
+        border-radius: 20px;
+        background: #fff;
+        border: none;
+        height: 350px;
+        position: relative
+    }
+
+    .container {
+        height: 100vh
+    }
+
+
+    .mobile-text {
+        color: #989696b8;
+        font-size: 15px
+    }
+
+    .form-control {
+        margin-right: 12px
+    }
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #ff8880;
+        outline: 0;
+        box-shadow: none
+    }
+
+    .cursor {
+        cursor: pointer
+    }
+    #nav-bar{
+        min-width: 200px;
+    }
+
+    }
+    a:link{
+        text-decoration: none;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+    .card {
+        width: 300px;
+        border: none;
+        border-radius: 15px
+    }
+
+    .adiv {
+        background: #04CB28;
+        border-radius: 15px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        font-size: 12px;
+        height: 46px
+    }
+
+    .chat {
+        border: none;
+        background: #E2FFE8;
+        font-size: 10px;
+        border-radius: 20px
+    }
+
+    .bg-white {
+        border: 1px solid #E7E7E9;
+        font-size: 10px;
+        border-radius: 20px
+    }
+
+    .myvideo img {
+        border-radius: 20px
+    }
+
+    .dot {
+        font-weight: bold
+    }
+
+    .form-control {
+        border-radius: 12px;
+        border: 1px solid #F0F0F0;
+        font-size: 8px
+    }
+
+    .form-control:focus {
+        box-shadow: none
+    }
+
+    .form-control::placeholder {
+        font-size: 8px;
+        color: #C4C4C4
+    }
+    .calendarspan span{
+        font-size: 12px;
+    }
+</style>
 
 
 
