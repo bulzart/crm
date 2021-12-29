@@ -405,7 +405,7 @@ class UserController extends Controller
     public function dealnotclosed($id)
     {
         $leads = lead::where('id', $id)->first();
-        if ($leads->admin_id != 0 && $leads->admin_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->role == 'admin') {
+        if ($leads->assign_to_id != null && $leads->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('rejectedleads', compact('leads'));
         } else {
             return redirect()->back();
@@ -429,7 +429,6 @@ class UserController extends Controller
         $rejectedlead = new rejectedlead();
 
         $rejectedlead->leads_id = $request->leadsid;
-        $rejectedlead->admin_id = $user_id;
         $rejectedlead->reason = $request->reason;
         $rejectedlead->image = 'img/' . $request->file('image')->getClientOriginalName();
 
@@ -465,17 +464,17 @@ class UserController extends Controller
         if (Auth::guard('admins')->user()->hasRole('admin')) {
 
             $tasks = lead::all();
-            $taskcnt = 0;
+            $taskcnt = count($tasks);
 
             for ($i = 0; $i < count($tasks); $i++) {
-                if($task->status_task == 'Submited'){
+                if($tasks[$i]->status_task == 'Submited'){
                     $pendingcnt++;
                 }
 
-                if($task->status_task == 'Open'){
+                if($tasks[$i]->status_task == 'Open'){
                     $opencnt++;
                 }
-                if($task->status_task == 'Done'){
+                if($tasks[$i]->status_task == 'Done'){
                     $done++;
                 }
             
