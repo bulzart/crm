@@ -339,6 +339,3 @@ dd($birthdays);
 
 
 }
-
-
-
