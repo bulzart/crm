@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
+use App\Models\family;
 use App\Models\lead;
 use App\Models\notification;
 use Carbon\Carbon;
@@ -195,14 +196,9 @@ class TasksController extends Controller
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
-          for ($i = 0; $i< count($tasks);$i++){
-            if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
-                $tasks2[$cntt] = $tasks[$i];
-                $cntt++;
-            }
+         
           }
-      }
-      
+     
       $realopen = [];
       $pending = [];
       $opencnt = 0;
@@ -221,15 +217,20 @@ class TasksController extends Controller
           $pendingcnt++;
         }
       }
+      
+
+
+     
+
 
 
       $cnt = 0;
-      $costumers = lead::all();
+      $costumers = family::all();
       $todaydate = Carbon::now()->format('m-d');
 
       $birthdays = [];
       foreach($costumers as $cos){
-          if(substr($cos->birthday,5) == $todaydate)
+          if(substr($cos->birthdate,5) == $todaydate)
           {
               $birthdays[$cnt]['birthday'] = $cos->birthday;
               $now = (int) Carbon::now()->format('Y');
@@ -240,7 +241,7 @@ class TasksController extends Controller
               $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
               $cnt++;
           }
-
+dd($birthdays);
       }
 
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
@@ -356,6 +357,3 @@ class TasksController extends Controller
 
 
 }
-
-
-
