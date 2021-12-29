@@ -17,6 +17,7 @@ use App\Models\Admins;
 use App\Models\todo;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Http\Controllers\FamilyPersonsController;
 
 use function GuzzleHttp\Promise\task;
 
@@ -40,17 +41,23 @@ route::prefix('')->group(function(){
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
 
     //----------------------------------------------------------------//
-    route::get('document/{id}',function ($id){
-       if(appointment::find($id)){
-            if(appointment::find($id)->completed == 0){
-                $data = appointment::find($id);
-                $data = json_decode($data->data);
+    route::get('leadfamily/{id}',function ($id){
+      //  if(appointment::find($id)){
+      //    //    if(appointment::find($id)->completed == 0){
+      //    //        $data = appointment::find($id);
+      //    //        $data = json_decode($data->data);
 
-       return view('documentsform',compact('id','data'));}}
-       else{
-return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
-       }
-    })->name('document');
+      //    // return view('documentsform',compact('id','data'));}}
+      //    }else{
+      //    return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
+      //  }
+      $data = \App\Models\lead::find($id);
+      $data = $data->family;
+      return view('leadfamily',compact('data'));
+    })->name('leadfamily');
+    
+    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
+
     route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
     route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
     route::get('costumers',[TasksController::class,'costumers'])->name('costumers');
