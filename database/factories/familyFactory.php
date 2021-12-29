@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\family;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class familyFactory extends Factory
@@ -18,7 +19,7 @@ class familyFactory extends Factory
         return [
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'birthdate' => $this->faker->date('Y-m-d',2010),
+            'birthdate' => Carbon::now()->subDays(random_int(0,12000))->format('Y-m-d'),
             'leads_id' => random_int(1,30)
         ];
     }
