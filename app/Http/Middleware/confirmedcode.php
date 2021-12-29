@@ -18,9 +18,10 @@ class confirmedcode
     public function handle(Request $request, Closure $next)
     {
                      if(Auth::guard('admins')->check()){
-            if(Auth::guard('admins')->user()->confirmed == 0){
-                   return redirect()->route('smsconfirmation');
-            }elseif(Auth::guard('admins')->user()->firsttime == 1){
+            // if(Auth::guard('admins')->user()->confirmed == 0){
+            //        return redirect()->route('smsconfirmation');
+            // }else
+            if(Auth::guard('admins')->user()->firsttime == 1){
                 return redirect()->route('smsconfirm');
             }
             else{

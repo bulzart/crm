@@ -221,6 +221,10 @@ class UserController extends Controller
 
     public function leads($page = 1)
     {
+        if(!Auth::guard('admins')->check()){
+            return abort('403');
+        }
+        else{
 
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->role == 'menagment') {
             $leads = lead::where('completed', '0')->where('assigned', 0)->where('assigned_to_id',null)->paginate(8);
@@ -231,14 +235,12 @@ class UserController extends Controller
         }
 
         $insta = lead::where('campaign_id', 1)->get()->count();
-        $facebook = lead::where('campaign_id', 2)->get()->count();
-        $sana = lead::where('campaign_id', 3)->get()->count();
+        $facebook = lead::where('campaign_id', 3)->get()->count();
+        $sana = lead::where('campaign_id', 2)->get()->count();
         $total = array($insta,$facebook,$sana);
 
-        if (!Auth::guard('admins')->check()) {
-            return abort('403');
-        }
-        return view('leads', compact('leads', 'total'));
+      
+        return view('leads', compact('leads', 'total'));}
     }
 
     public function asignlead(Request $req, $id)
@@ -440,8 +442,9 @@ class UserController extends Controller
         }
     }
 
-    public function dashboard(Request $req)
-    {
+    public function dashboard(Request $req){
+    
+      
 
         $getmonth = isset($req->getmonth) ? $req->getmonth : null;
 
