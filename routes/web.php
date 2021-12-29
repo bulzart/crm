@@ -86,6 +86,11 @@ route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsm
 route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
 route::get('add',[TasksController::class,'adddata']);
+// route::get('permission', function(){
+//    $role = Role::find(9);
+//    $user = Admins::find(1);
+//    $user->assignRole($role);
+// });
 
 
 
