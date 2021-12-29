@@ -17,7 +17,7 @@ use App\Models\todo;
 
 use function GuzzleHttp\Promise\task;
 
-route::prefix('')->middleware(confirmedcode::class)->group(function(){
+route::prefix('')->group(function(){
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);

@@ -36,6 +36,7 @@ class UserController extends Controller
         $lead = lead::find($id);
         if($lead->admin_id == Auth::guard('admins')->user()->id){
             $lead->assigned = 1;
+            $
             $lead->save();
             return redirect()->back();
         }
