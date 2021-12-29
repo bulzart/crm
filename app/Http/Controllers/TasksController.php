@@ -187,6 +187,8 @@ $dayofweek = 6;
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
+
+
           for ($i = 0; $i< count($tasks);$i++){
             if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
                 $tasks2[$cntt] = $tasks[$i];
