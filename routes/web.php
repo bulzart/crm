@@ -22,7 +22,7 @@ use App\Http\Controllers\FamilyPersonsController;
 
 use function GuzzleHttp\Promise\task;
 
-route::prefix('')->middleware('role:admin,admins')->group(function(){
+route::prefix('')->group(function(){
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
