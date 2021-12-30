@@ -99,8 +99,8 @@ class UserController extends Controller
         $lead->postal_code = filter_var($req->input('postal'), FILTER_SANITIZE_STRING);
         $lead->city = filter_var($req->input('location'), FILTER_SANITIZE_STRING);
         $lead->nationality = filter_var($req->input('country'), FILTER_SANITIZE_STRING);
-        $lead->time = filter_var($req->input('apptime'),FILTER_SANITIZE_STRING);
-        $lead->birthdate = filter_var($req->input('appbirthdate'),FILTER_SANITIZE_STRING);
+        $lead->time = filter_var($req->input('apptime'), FILTER_SANITIZE_STRING);
+        $lead->birthdate = filter_var($req->input('appbirthdate'), FILTER_SANITIZE_STRING);
         $lead->number_of_persons = (int) $req->input('count');
         $lead->campaign_id = (int) $req->input('campaign');
         $campaign = campaigns::where('id', $req->input('campaign'))->get();
@@ -170,28 +170,26 @@ class UserController extends Controller
 
     public function leads($page = 1)
     {
-        if(!Auth::guard('admins')->check()){
+        if (!Auth::guard('admins')->check()) {
             return abort('403');
+        } else {
+
+            if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->role == 'menagment') {
+                $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->paginate(8);
+            } elseif (Auth::guard('admins')->user()->hasRole('digital')) {
+                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
+            } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
+                $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->paginate(7);
+            }
+
+            $insta = lead::where('campaign_id', 1)->get()->count();
+            $facebook = lead::where('campaign_id', 3)->get()->count();
+            $sana = lead::where('campaign_id', 2)->get()->count();
+            $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
+
+
+            return view('leads', compact('leads', 'total'));
         }
-        else{
-
-        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')|| Auth::guard('admins')->user()->role == 'menagment') {
-            $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id',null)->paginate(8);
-
-        }elseif (Auth::guard('admins')->user()->hasRole('digital')) {
-            $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
-        }elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-            $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->paginate(7);
-        }
-
-        $insta = lead::where('campaign_id', 1)->get()->count();
-        $facebook = lead::where('campaign_id', 3)->get()->count();
-        $sana = lead::where('campaign_id', 2)->get()->count();
-        $total = array('instagram' => $insta,'facebook' => $facebook,'sana'=>$sana);
-
-      
-        return view('leads', compact('leads','total'));}
-
     }
 
     public function asignlead(Request $req, $id)
@@ -392,7 +390,8 @@ class UserController extends Controller
         }
     }
 
-    public function dashboard(Request $req){
+    public function dashboard(Request $req)
+    {
 
 
 
@@ -405,26 +404,40 @@ class UserController extends Controller
         $opencnt = 0;
         $done = 0;
         $pendencies = [];
-        if(Auth::guard('admins')->user()->hasRole('backoffice')){
-        $pendency = family::where('status','Submited')->get();
+        if (Auth::guard('admins')->user()->hasRole('backoffice')) {
+            $pendency = family::where('status', 'Submited')->get();
+            
+            for($i = 0; $i < count($pendency);$i++){
+                $pendencies[$i]['name'] = $pendency[$i]['first_name'] . $pendency[$i]['last_name'];
+                $pendencies[$i]['datas'] = $pendency[$i]->datas;
+                $pendencies[$i]['datak'] = $pendency[$i]->datak;
+                $pendencies[$i]['counter'] = $pendency[$i]->datacounter;
+                $pendencies[$i]['datasw'] = $pendency[$i]->datasw;
+               //$pendencies[$i]['datafah'] = $pendencies[$i]->datafah; 
+            }
+            $morethan30 = '';
+            $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
+           
+
         }
 
-      
-      
-        
-        if(Auth::guard('admins')->check()) {
+
+
+
+        if (Auth::guard('admins')->check()) {
 
             $tasks = lead::all();
             $taskcnt = count($tasks);
 
             for ($i = 0; $i < count($tasks); $i++) {
-                if($tasks[$i]->status_task == 'Submited'){
+                if ($tasks[$i]->status_task == 'Submited') {
                     $pendingcnt++;
                 }
-                if($tasks[$i]->status_task == 'Open'){
+
+                if ($tasks[$i]->status_task == 'Open') {
                     $opencnt++;
                 }
-                if($tasks[$i]->status_task == 'Done'){
+                if ($tasks[$i]->status_task == 'Done') {
                     $done++;
                 }
             } 
@@ -437,9 +450,7 @@ class UserController extends Controller
 
             $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
             $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-            return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
+            return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
         }
-
-       
     }
 }

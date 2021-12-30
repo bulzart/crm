@@ -19,6 +19,7 @@ use App\Models\family;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\FamilyPersonsController;
+use App\Http\Controllers\StatusController;
 
 use function GuzzleHttp\Promise\task;
 
@@ -92,10 +93,11 @@ route::prefix('')->group(function(){
    route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
    route::get('add',[TasksController::class,'adddata']);
 // route::get('permission', function(){
-
 //    $user = Admins::find(1);
 //   return $user->getRoleNames();
 // });
+route::get('status',[StatusController::class,'status']);
+
 
 
 
