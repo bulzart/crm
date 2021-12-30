@@ -24,35 +24,6 @@ use function GuzzleHttp\Promise\task;
 
 route::prefix('')->middleware('role:admin,admins')->group(function(){
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
-<<<<<<< HEAD
-   route::get('closenots',[UserController::class,'closenots']);
-   route::get('notifications',[UserController::class,'notifications']);
-   route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
-   route::get('/',[UserController::class,'dashboard'])->name('dashboard');
-   route::get('logout',[UserController::class,'logout'])->name('logout');
-   route::get('leads',[UserController::class,'leads'])->name('leads');
-   route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
-   route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
-   route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
-   route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
-   route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
-   route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
-   route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
-   route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
-   route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
-
-    //----------------------------------------------------------------//
-   route::get('leadfamily/{id}',function ($id){
-      //  if(appointment::find($id)){
-      //    //    if(appointment::find($id)->completed == 0){
-      //    //        $data = appointment::find($id);
-      //    //        $data = json_decode($data->data);
-
-      //    // return view('documentsform',compact('id','data'));}}
-      //    }else{
-      //    return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
-      //  }
-=======
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
     route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
@@ -72,7 +43,6 @@ route::prefix('')->middleware('role:admin,admins')->group(function(){
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
->>>>>>> bf7dfebaf2035a588149c288f4e8b96e6e0e3d43
       $data = \App\Models\lead::find($id);
       $data = $data->family;
 
@@ -80,14 +50,10 @@ route::prefix('')->middleware('role:admin,admins')->group(function(){
       return view('leadfamily',compact('data'));
    })->name('leadfamily');
     
-<<<<<<< HEAD
-   route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
-=======
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
     route::post('deleteFamilyPerson/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson'])->name('deleteFamilyPerson');
->>>>>>> bf7dfebaf2035a588149c288f4e8b96e6e0e3d43
 
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
