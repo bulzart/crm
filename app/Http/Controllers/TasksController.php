@@ -185,10 +185,8 @@ class TasksController extends Controller
       $pendingcnt = 0;
   
       for ($i = 0; $i < count($tasks); $i++) {
-        if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id) {
           $tasks2[$cntt] = $tasks[$i];
           $cntt++;
-        }
       }
       foreach ($tasks2 as $task) {
         if ($task->status_task == 'Open') {
@@ -204,6 +202,18 @@ class TasksController extends Controller
         }
       }
     }
+
+      // $tasks23 = lead::all();
+      //       $taskcnt23 = count($tasks23);
+
+      //       for ($i = 0; $i < count($tasks23); $i++) {
+      //           if($tasks23[$i]->status_task == 'Submited'){
+      //               $pendingcnt++;
+      //           }
+      //           if($tasks23[$i]->status_task == 'Open'){
+      //               $opencnt++;
+      //           }
+      //       } 
 
 
 

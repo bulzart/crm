@@ -687,7 +687,7 @@
             
             <todo></todo>
     </div>
-    @endif
+    
     <div class="col-md-6 col-6 mt-3">
             @foreach($pendencies as $pending)
            <a href="#">{{$pending['name']}}</a><br>
@@ -703,7 +703,7 @@
 
 
         </div>
-
+        @endif
 </body>
 
 
