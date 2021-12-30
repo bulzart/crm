@@ -32,6 +32,7 @@ route::prefix('')->group(function(){
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
+    route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
     route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
@@ -41,19 +42,6 @@ route::prefix('')->group(function(){
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
 
     //----------------------------------------------------------------//
-
-
-    route::get('document/{id}',function ($id){
-       $person = family::find($id);
-    if($person != null){
-       return view('documentsform',compact('id','person'));
-      }
-       else{
-return redirect()->route('dashboard')->with('unsuccessfull','Task was completed successfully');
-       }
-    })->name('document');
-
-
     route::get('leadfamily/{id}',function ($id){
       $data = \App\Models\lead::find($id);
       $data = $data->family;
@@ -61,7 +49,7 @@ return redirect()->route('dashboard')->with('unsuccessfull','Task was completed 
    
       return view('leadfamily',compact('data'));
     })->name('leadfamily');
-
+    
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
 
     route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
@@ -99,11 +87,11 @@ route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsm
 route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
 route::get('add',[TasksController::class,'adddata']);
-route::get('permission', function(){
-   $role = Role::find(9);
-   $user = Admins::find(1);
-   $user->assignRole($role);
-});
+// route::get('permission', function(){
+
+//    $user = Admins::find(1);
+//   return $user->getRoleNames();
+// });
 
 
 

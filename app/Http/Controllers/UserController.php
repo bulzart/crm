@@ -389,23 +389,23 @@ class UserController extends Controller
 
 
 
-        $getmonth = isset($req->getmonth) ? $req->getmonth : null;
+        $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
-        // $day = Carbon::now()->format('d');
-        // $month = Carbon::now()->format('m');
-        // $year = Carbon::now()->format('Y');
 
-        // date_default_timezone_set('Europe/Berlin');
+
+        date_default_timezone_set('Europe/Berlin');
         $pendingcnt = 0;
         $opencnt = 0;
         $done = 0;
-
-        if (Auth::guard('admins')->user()->hasRole('backoffice')) {
-
-
-            return view('dashboard');
+        $pendencies = [];
+        if(Auth::guard('admins')->user()->hasRole('backoffice')){
+        $pendency = family::where('status','Submited')->get();
         }
-        if (Auth::guard('admins')->user()->hasRole('admin')) {
+
+      
+      
+        
+        if(Auth::guard('admins')->check()) {
 
             $tasks = lead::all();
             $taskcnt = count($tasks);
@@ -429,6 +429,6 @@ class UserController extends Controller
             return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
         }
 
-        return view('dashboard');
+       
     }
 }

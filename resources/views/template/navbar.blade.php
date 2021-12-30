@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+
     
 </head>
 
@@ -1225,17 +1228,3 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
         font-size: 12px;
     }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

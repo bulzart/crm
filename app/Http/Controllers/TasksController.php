@@ -179,65 +179,73 @@ $dayofweek = 6;
 
     }
     public function tasks(){
-        $cnt = 0;
-        $cnt1 = 0;
+      $cnt = 0;
+      $cnt1 = 0;
+    
+      if (Auth::guard('admins')->user()->hasRole('admin')){
+    
+          $tasks = lead::where('completed',0)->get();
+          $tasks2 = [];
+          $cntt= 0;
 
-        if (Auth::guard('admins')->user()->hasRole('admin')){
-            $tasks = lead::where('completed',0)->get();
-            $tasks2 = [];
-            $cntt= 0;
-            for ($i = 0; $i< count($tasks);$i++){
-                if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
-                    $tasks2[$cntt] = $tasks[$i];
-                    $cntt++;
-                }
+
+          for ($i = 0; $i< count($tasks);$i++){
+            if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
+                $tasks2[$cntt] = $tasks[$i];
+                $cntt++;
             }
+          }
+      }
+      if(Auth::guard('admins')->user()->hasRole('fs')){
+
+      }
+      
+      $realopen = [];
+      $pending = [];
+      $opencnt = 0;
+      $pendingcnt = 0;
+
+      foreach($tasks2 as $task){
+        if($task->status_task == 'Open'){
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
         }
 
-        $realopen = [];
-        $pending = [];
-        $opencnt = 0;
-        $pendingcnt = 0;
-
-        foreach($tasks2 as $task){
-            if($task->status_task == 'Open'){
-                $realopen[$cnt1] = $task;
-                $cnt1++;
-                $opencnt++;
-            }
-
-            if($task->status_task == 'Submited'){
-                $pending[$cnt] = $task;
-                $cnt++;
-                $pendingcnt++;
-            }
+        if($task->status_task == 'Submited'){
+          $pending[$cnt] = $task;
+          $cnt++;
+          $pendingcnt++;
         }
+      }
 
 
-    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
+      $cnt = 0;
+      $costumers = family::all();
+      $todaydate = Carbon::now()->format('m-d');
+
+      $birthdays = [];
+      foreach($costumers as $cos){
+          if(substr($cos->birthdate,5) == $todaydate)
+          {
+              $birthdays[$cnt]['birthday'] = $cos->birthdate;
+              $now = (int) Carbon::now()->format('Y');
+              $birth = (int) substr($cos->birthdate,-10,-6);
+              $birthdays[$cnt]['age'] = $now - $birth;
+              $birthdays[$cnt]['id'] = $cos->id;
+              $birthdays[$cnt]['name'] = ucfirst($cos->first_name);
+              $birthdays[$cnt]['lname'] = ucfirst($cos->last_name);
+              $cnt++;
+          }
+         
+
+      }
+
+   return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays','tasks'));
   }
-        $cnt = 0;
-        $costumers = lead::all();
-        $todaydate = Carbon::now()->format('m-d');
+  
 
-        $birthdays = [];
-        foreach($costumers as $cos){
-            if(substr($cos->birthday,5) == $todaydate)
-            {
-                $birthdays[$cnt]['birthday'] = $cos->birthday;
-                $now = (int) Carbon::now()->format('Y');
-                $birth = (int) substr($cos->birthday,-10,-6);
-                $birthdays[$cnt]['age'] = $now - $birth;
-                $birthdays[$cnt]['id'] = $cos->id;
-                $birthdays[$cnt]['name'] = ucfirst($cos->name);
-                $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
-                $cnt++;
-            }
 
-        }
-
-        return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
-    }
 
 	 public function documentform(Request $req,$id){
 
