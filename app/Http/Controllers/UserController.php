@@ -25,10 +25,15 @@ use Nexmo;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Http\Middleware\confirmedcode;
+
 
 
 class UserController extends Controller
 {
+    // public function __construct(){
+    //     $this->middleware(confirmedcode::class);
+    // }
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
@@ -239,17 +244,30 @@ class UserController extends Controller
         if (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password])) {
             $pin = random_int(1000, 9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
-            $user->confirmed = 0;
-            $user->pin = $pin;
-            $role = Role::where("name", 'admin')->get();
-            $user->assignRole($role);
-            //  Nexmo::message()->send([
-            //  'to' => '38345626643',
-            //  'from' => '38345917726',
-            // 'text' => '12345']);
-            $user->save();
-            //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
-            return redirect()->route('dashboard');
+            // $user->confirmed = 0;
+            if(Admins::find(Auth::guard('admins')->user()->firsttime == 1)){
+                //dd($user);
+                //return redirect()->route('smsverification');
+                $user->pin = $pin;
+                $user->save();
+                Nexmo::message()->send([
+                 'to' => '38345464926',
+                 'from' => 'Vonage APIs',
+                'text' => $pin]);
+                return view('confirm_sms');
+            }else{
+                $user->pin = $pin;
+                $role = Role::where("name", 'admin')->get();
+                $user->assignRole($role);
+                //  Nexmo::message()->send([
+                //  'to' => '38345626643',
+                //  'from' => '38345917726',
+                // 'text' => '12345']);
+                $user->save();
+                //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
+                return redirect()->route('dashboard');
+            }
+            
         } else {
             return redirect()->route('rnlogin');
         }
