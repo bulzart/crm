@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 route::post('update/{id}',[FamilyPersonsController::class,'updateFamilyPerson']);
+route::post('delete/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson']);
+

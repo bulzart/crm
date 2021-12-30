@@ -42,4 +42,9 @@ class FamilyPersonsController extends Controller
     
         return redirect()->back()->with('message', 'Family person was updated');
     }
+
+    public function deleteFamilyPerson($id, $leadId)
+    {
+        $updatedPerson = family::where('id', $id)->where('leads_id', $leadId)->delete();
+    }
 }
