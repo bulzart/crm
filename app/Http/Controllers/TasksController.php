@@ -185,10 +185,8 @@ class TasksController extends Controller
       $pendingcnt = 0;
   
       for ($i = 0; $i < count($tasks); $i++) {
-        if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id) {
           $tasks2[$cntt] = $tasks[$i];
           $cntt++;
-        }
       }
       foreach ($tasks2 as $task) {
         if ($task->status_task == 'Open') {
