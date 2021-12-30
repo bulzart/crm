@@ -68,7 +68,6 @@ class TasksController extends Controller
 
   public function vuedate(Request $req)
   {
-
     $page = $req->page;
     $day = Carbon::now()->format('d');
     $month = Carbon::now()->format('m');
@@ -167,46 +166,46 @@ class TasksController extends Controller
       return $data;
     }
   }
-  public function tasks()
+  public function tasks(Request $req)
   {
     $cnt = 0;
     $cnt1 = 0;
-
+    if (Auth::guard('admins')->user()->hasRole('backoffice')) {
+    }
     if (Auth::guard('admins')->user()->hasRole('admin')) {
 
       $tasks = lead::where('completed', 0)->get();
       $tasks2 = [];
       $cntt = 0;
 
-
+      $realopen = [];
+      $pending = [];
+      $opencnt = 0;
+      $pendingcnt = 0;
+  
       for ($i = 0; $i < count($tasks); $i++) {
         if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id) {
           $tasks2[$cntt] = $tasks[$i];
           $cntt++;
         }
       }
-    }
-    if (Auth::guard('admins')->user()->hasRole('fs')) {
-    }
+      foreach ($tasks2 as $task) {
+        if ($task->status_task == 'Open') {
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
+        }
 
-    $realopen = [];
-    $pending = [];
-    $opencnt = 0;
-    $pendingcnt = 0;
-
-    foreach ($tasks2 as $task) {
-      if ($task->status_task == 'Open') {
-        $realopen[$cnt1] = $task;
-        $cnt1++;
-        $opencnt++;
-      }
-
-      if ($task->status_task == 'Submited') {
-        $pending[$cnt] = $task;
-        $cnt++;
-        $pendingcnt++;
+        if ($task->status_task == 'Submited') {
+          $pending[$cnt] = $task;
+          $cnt++;
+          $pendingcnt++;
+        }
       }
     }
+
+
+
 
 
     $cnt = 0;
@@ -227,7 +226,7 @@ class TasksController extends Controller
       }
     }
 
-    return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
+    if (Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
   }
 
 

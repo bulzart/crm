@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admins;
+use App\Models\family;
 use Illuminate\Http\Request;
 use App\Models\todo;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
@@ -36,7 +40,12 @@ class TodoController extends Controller
     }
     public function todos(){
         if(Auth::guard('admins')->check()){
-         return $todos = todo::where('admin_id',Auth::guard('admins')->user()->id)->where('number',0)->orderBy('created_at','desc')->get();
+        $data['costumers'] = family::all();
+        $role = Admins::whereHas("admin", function($q){ $q->where("name", "admin"); })->get();
+
+        dd($role);
+        $data['consultants'] = Admins::with('admin')->get();
+       
         }
     }
     public function deletetodo(Request $req){

@@ -10,22 +10,28 @@ class family extends Model
     protected $table = 'family_person';
     public $datas;
     use HasFactory;
-    public function lead(){
-        return $this->belongsTo(lead::class,'leads_id');
+    public function lead()
+    {
+        return $this->belongsTo(lead::class, 'leads_id');
     }
-    public function datacounter(){
-return $this->hasMany(datacounter::class,'person_id');
+    public function datacounter()
+    {
+        return $this->hasMany(datacounter::class, 'person_id');
     }
-    public function datak(){
-return $this->hasMany(datak::class,'person_id');
+    public function datak()
+    {
+        return $this->hasMany(datak::class, 'person_id');
     }
-    public function datas(){
-        return $this->hasMany(datas::class,'person_id');
-            }
-            public function datafah(){
-                return $this->hasMany(datasfah::class,'person_id');
-            }
-            public function datasw(){
-                return $this->hasMany(datasw::class,'person_id');
-            }
+    public function datas()
+    {
+        return $this->hasMany(datas::class, 'person_id');
+    }
+    public function datafah()
+    {
+        return $this->hasMany(datasfah::class, 'person_id');
+    }
+    public function datasw()
+    {
+        return $this->hasMany(datasw::class, 'person_id');
+    }
 }
