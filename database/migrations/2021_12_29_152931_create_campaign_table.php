@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Campaigns extends Migration
+class CreateCampaignTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class Campaigns extends Migration
      */
     public function up()
     {
-        Schema::create('campaigns', function (Blueprint $table){
-           $table->id();
-           $table->string('name');
+        Schema::create('campaigns', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 

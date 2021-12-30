@@ -15,7 +15,10 @@ class AddStatusFamily extends Migration
     {
         Schema::table('family_person', function (Blueprint $table) {
             $table->string('status')->nullable();
+     
         });
+      
+        
     }
 
     /**
@@ -27,6 +30,7 @@ class AddStatusFamily extends Migration
     {
         Schema::table('family_person', function (Blueprint $table) {
             $table->dropColumn('status');
+
         });
     }
 }

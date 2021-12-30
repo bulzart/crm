@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\LeadsExport;
-use App\Models\Admins;
-use App\Models\appointment;
-use App\Models\lead;
 use App\Models\family;
-use App\Models\notification;
-use Carbon\Carbon;
+use App\Models\FamilyPerson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Name\FullyQualified;
-
 class FamilyPersonsController extends Controller
 {
 
@@ -36,7 +28,23 @@ class FamilyPersonsController extends Controller
   
         return view('leadfamily_person',compact('tasks2'));
     }
+
+    public function getAllFamilyPersonsOfLead($id)
+    {
+        $familyPersons = FamilyPerson::where('leads_id', $id)->get();
+
+        return $familyPersons;
+    }
+
+    public function updateFamilyPerson($id, Request $request)
+    {
+        $updatedPerson = family::where('id', $id)->update($request->all());
+    
+        return redirect()->back()->with('message', 'Family person was updated');
+    }
+
+    public function deleteFamilyPerson($id, $leadId)
+    {
+        $updatedPerson = family::where('id', $id)->where('leads_id', $leadId)->delete();
+    }
 }
-
-
-

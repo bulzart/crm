@@ -18,24 +18,27 @@ use Spatie\Permission\Models\Permission;
 
 class TasksController extends Controller
 {
-
-    public function accepttask($id){
-      $app = lead::find($id);
-      lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
-      return redirect()->back()->with(['successs','Your action was done successfully!']);
+    public function accepttask($id)
+    {
+        $app = lead::find($id);
+        lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
+        return redirect()->back()->with(['successs','Your action was done successfully!']);
     }
 
-    public function dnotifications(){
-       notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
+    public function dnotifications()
+    {
+      notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
 
-    public function today(Request $req){
-      $some_date = Carbon::now()->format('H:i');
-      $now = (int) str_replace(':','',$some_date);
-      $admin = Auth::guard('admins')->user();
-      $today = Carbon::now()->format("Y-m-d");
-      if($req->date != null){
-        if($admin->hasRole('admin')){
+    public function today(Request $req)
+    {
+        $some_date = Carbon::now()->format('H:i');
+        $now = (int) str_replace(':','',$some_date);
+
+        $admin = Auth::guard('admins')->user();
+        $today = Carbon::now()->format("Y-m-d");
+        if($req->date != null){
+    if($admin->hasRole('admin')){
 
             $data = lead::where('wantsonline',0)->where('appointment_date',$req->date)->get();
         }
@@ -61,8 +64,8 @@ class TasksController extends Controller
       return $data;
     }
 
-    public function vuedate(Request $req){
-
+    public function vuedate(Request $req)
+    {
       $page = $req->page;
       $day = Carbon::now()->format('d');
       $month = Carbon::now()->format('m');
@@ -87,16 +90,17 @@ class TasksController extends Controller
 
       return $calendar;
 
-      return $fullcalendar;
-
+     return $fullcalendar;
     }
 
-    public function searchword(){
+    public function searchword()
+    {
         $data =  lead::orderBy('first_name','asc')->get();
         return view('costumers',compact('data'));
     }
 
-    public function costumers(Request $request){
+    public function costumers(Request $request)
+    {
         $searchname = $request->searchname;
         $cnt = 0;
         $date1 = date('Y-m-d', strtotime($request->searchdate1));
@@ -122,9 +126,9 @@ class TasksController extends Controller
           }
 
           if($dat->contracts != null){
-            $contracts[$dat->id] = json_decode($dat->contracts);
-          }
-          ;
+          $contracts[$dat->id] = json_decode($dat->contracts);
+      }
+    
         }
 
         return view('costumers', compact('data','contracts'));
@@ -163,22 +167,27 @@ class TasksController extends Controller
             return $data;
 
       }
-
     }
     public function tasks(){
       $cnt = 0;
       $cnt1 = 0;
     
       if (Auth::guard('admins')->user()->hasRole('admin')){
+    
           $tasks = lead::where('completed',0)->get();
           $tasks2 = [];
           $cntt= 0;
+
+
           for ($i = 0; $i< count($tasks);$i++){
             if ($tasks[$i]->assign_to_id == Auth::guard('admins')->user()->id){
                 $tasks2[$cntt] = $tasks[$i];
                 $cntt++;
             }
           }
+      }
+      if(Auth::guard('admins')->user()->hasRole('fs')){
+
       }
       
       $realopen = [];
@@ -202,27 +211,29 @@ class TasksController extends Controller
 
 
       $cnt = 0;
-      $costumers = lead::all();
+      $costumers = family::all();
       $todaydate = Carbon::now()->format('m-d');
 
       $birthdays = [];
       foreach($costumers as $cos){
-          if(substr($cos->birthday,5) == $todaydate)
+          if(substr($cos->birthdate,5) == $todaydate)
           {
-              $birthdays[$cnt]['birthday'] = $cos->birthday;
+              $birthdays[$cnt]['birthday'] = $cos->birthdate;
               $now = (int) Carbon::now()->format('Y');
-              $birth = (int) substr($cos->birthday,-10,-6);
+              $birth = (int) substr($cos->birthdate,-10,-6);
               $birthdays[$cnt]['age'] = $now - $birth;
               $birthdays[$cnt]['id'] = $cos->id;
-              $birthdays[$cnt]['name'] = ucfirst($cos->name);
-              $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
+              $birthdays[$cnt]['name'] = ucfirst($cos->first_name);
+              $birthdays[$cnt]['lname'] = ucfirst($cos->last_name);
               $cnt++;
           }
+         
 
       }
 
-    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays'));
+   return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays','tasks'));
   }
+  
 
 
 

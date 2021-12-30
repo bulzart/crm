@@ -15,14 +15,24 @@ class LeadFactory extends Factory
     public function randomm():string{
         $num = random_int(1,50);
         $status = "";
-        if($num > 42) $status = "Done";
+        if($num > 49) $status = "Submited";
        elseif($num%2 == 0){
            $status = "Open";
        }
        else{
-$status = "Submited";
+$status = "Done";
        }
     return $status;
+    }
+
+    public function assign(){
+        $num = random_int(1,50);
+        $aa = null;
+        if($num > 40) $aa = null;
+        elseif($num % 2 == 0) $aa = 1;
+        elseif($num % 2 == 1) $aa = 0;
+        return $aa;
+
     }
     public function definition()
     {
@@ -42,7 +52,7 @@ $status = "Submited";
             'completed' => random_int(0,1),
             'campaign_id' => random_int(1,3),
             'appointment_date' => Carbon::now()->addDay(random_int(0,7))->format('Y-m-d'),
-            'assign_to_id' => random_int(1,7),
+            'assign_to_id' => $this->assign(),
             'status_task' => $this->randomm(),
             'assigned' => random_int(0,1)
         ];

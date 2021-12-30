@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FamilyPersonsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+route::post('update/{id}',[FamilyPersonsController::class,'updateFamilyPerson']);
+route::post('delete/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson']);
+
