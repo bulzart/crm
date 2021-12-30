@@ -171,6 +171,7 @@ class TasksController extends Controller
     $cnt = 0;
     $cnt1 = 0;
     if (Auth::guard('admins')->user()->hasRole('backoffice')) {
+      
     }
     if (Auth::guard('admins')->user()->hasRole('admin')) {
 

@@ -26,12 +26,15 @@ use Illuminate\Support\Str;
 
 class CalendarController extends Controller
 {
-    public function calendar(){
+    public function calendar()
+    {
+        $maps = null;
 
-         $maps = null;
-
-         if(Auth::guard('admins')->user()->hasRole('admin')){$maps = lead::where('appointment_date',Carbon::now()->format('Y-m-d'))->get(); }else{ $maps = lead::where('assign_to_id',auth::guard('admins')->user()->id)->where('appointment_date',Carbon::now()->format('Y-m-d'))->get();}
-
+        if(Auth::guard('admins')->user()->hasRole('admin')){
+            $maps = lead::where('appointment_date',Carbon::now()->format('Y-m-d'))->get(); 
+        }else{ 
+            $maps = lead::where('assign_to_id',auth::guard('admins')->user()->id)->where('appointment_date',Carbon::now()->format('Y-m-d'))->get();
+        }
 
         return view('calendar',compact('maps'));
     }
