@@ -88,10 +88,10 @@ route::get('smsverification',[UserController::class,'smsconfirmation'])->name('s
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
 route::get('add',[TasksController::class,'adddata']);
 // route::get('permission', function(){
-
 //    $user = Admins::find(1);
 //   return $user->getRoleNames();
 // });
+
 
 
 
