@@ -924,9 +924,33 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
         document.getElementById('count').value = count;
     }
 
+    var Offene_Aufgaben__bool = false;
+
     $(document).ready(function(){
-        $(".Offene-Aufgaben").click(function(){
-            $(".collapse").collapse('toggle');
+        $("#Offene_Aufgaben__").click(function(){
+            $("#first_collapse").collapse('toggle');
+            if(Offene_Aufgaben__bool == false){
+                $("#Offene_Aufgaben_arrow__").addClass("bi bi-caret-down-fill bi-caret-up-fill");
+                Offene_Aufgaben__bool = true;
+            }else{
+                $("#Offene_Aufgaben_arrow__").removeClass("bi bi-caret-up-fill");
+                Offene_Aufgaben__bool = false;
+            }
+        });
+    });
+
+    var Pending__bool = false;
+
+    $(document).ready(function(){
+        $("#Pending__").click(function(){
+            $("#collapse__").collapse('toggle');
+            if(Pending__bool == false){
+                $("#Pending_arrow__").addClass("bi bi-caret-down-fill bi-caret-up-fill");
+                Pending__bool = true;
+            }else{
+                $("#Pending_arrow__").removeClass("bi bi-caret-up-fill");
+                Pending__bool = false;
+            }
         });
     });
 </script>
@@ -1225,17 +1249,3 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
         font-size: 12px;
     }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
