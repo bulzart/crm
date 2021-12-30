@@ -25,8 +25,8 @@
     <div class="col-md-4 col-12 mb-3">
         <div style="background: #ffebe5; border-radius: 25px; padding: 5%;">
             <div class="row">
-                <div class="col-12">
-                    <span id="Pending__" style="cursor: pointer;">Pending <span class="text-danger">{{$pendingcnt}}</span> <i id="Pending_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
+                <div class="col-12" style="cursor: pointer;" id="Pending__" >
+                    <span>Pending <span class="text-danger">{{$opencnt}}</span> <i id="Pending_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
                 </div>
             </div>
             <br>

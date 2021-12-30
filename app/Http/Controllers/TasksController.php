@@ -19,67 +19,57 @@ use Spatie\Permission\Models\Permission;
 class TasksController extends Controller
 {
 
-  public function accepttask($id){
-    $app = lead::find($id);
-    lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
-    return redirect()->back()->with(['successs','Your action was done successfully!']);
-  }
+    public function accepttask($id){
+      $app = lead::find($id);
+      lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
+      return redirect()->back()->with(['successs','Your action was done successfully!']);
+    }
+
     public function dnotifications(){
        notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
     }
+
     public function today(Request $req){
       $some_date = Carbon::now()->format('H:i');
-        $now = (int) str_replace(':','',$some_date);
-
-
+      $now = (int) str_replace(':','',$some_date);
       $admin = Auth::guard('admins')->user();
       $today = Carbon::now()->format("Y-m-d");
       if($req->date != null){
-    if($admin->hasRole('admin')){
+        if($admin->hasRole('admin')){
 
-        $data = lead::where('wantsonline',0)->where('appointment_date',$req->date)->get();
-    }
-    elseif($admin->hasRole('fs')){
-      $data = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->where('appointment_date',$req->date)->get();
-    }
-      }
-      else{
+            $data = lead::where('wantsonline',0)->where('appointment_date',$req->date)->get();
+        }
+        elseif($admin->hasRole('fs')){
+          $data = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('wantsonline',0)->where('appointment_date',$req->date)->get();
+        }
+      }else{
         if($admin->hasRole('admin')){
           if($now > 2300){
-            $data = lead::where('wantsonline',0)->where('appointment_date',Carbon::now()->addDays()->toDateString())->get();}
-        else{
-
+            $data = lead::where('wantsonline',0)->where('appointment_date',Carbon::now()->addDays()->toDateString())->get();
+          }else{
             $data = lead::where('wantsonline',0)->where('appointment_date',Carbon::now()->toDateString())->get();
-
+          }
         }
-      }
-      if($admin->hasRole('fs')){
-        if($now > 2300){
-          $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->addDays()->toDateString())->get();}
-      else{
-
-
-          $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->toDateString())->get();
-
-      }
-    }
+        if($admin->hasRole('fs')){
+          if($now > 2300){
+            $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->addDays()->toDateString())->get();
+          }else{
+            $data = lead::where('assign_to_id',$admin->id)->where('wantsonline',0)->where('appointment_date',Carbon::now()->toDateString())->get();
+          }
+        }
       }
       return $data;
     }
 
     public function vuedate(Request $req){
 
-$page = $req->page;
+      $page = $req->page;
       $day = Carbon::now()->format('d');
       $month = Carbon::now()->format('m');
       $year = Carbon::now()->format('Y');
       $fullcalendar = [];
       $br = 1;
-$dayofweek = 6;
-
-
-
-
+      $dayofweek = 6;
 
       for($i = 0; $i <= 365; $i++){
         $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
@@ -94,11 +84,10 @@ $dayofweek = 6;
       $calendar[1] = $fullcalendar[$page - 3];
       $calendar[2] = $fullcalendar[$page -2];
       $calendar[3] = $fullcalendar[$page -1];
+
       return $calendar;
 
-
-     return $fullcalendar;
-
+      return $fullcalendar;
 
     }
 
@@ -106,6 +95,7 @@ $dayofweek = 6;
         $data =  lead::orderBy('first_name','asc')->get();
         return view('costumers',compact('data'));
     }
+
     public function costumers(Request $request){
         $searchname = $request->searchname;
         $cnt = 0;
@@ -117,8 +107,7 @@ $dayofweek = 6;
                 ->orWhere('first_name', 'like', '%' . $searchname . '%')->get();
         }elseif(isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)){
             $data = lead::whereBetween('created_at',[$date1,$date2])->get();
-        }
-        else{
+        }else{
            $data = lead::where('last_name', 'like', '%' . $searchname . '%')
            ->orWhere('first_name', 'like', '%' . $searchname . '%')->whereBetween('created_at',[$date1,$date2])->get();
         }
@@ -130,18 +119,16 @@ $dayofweek = 6;
 
             unset($data[$datcnt]);
             $datcnt++;
-      }
+          }
 
           if($dat->contracts != null){
-          $contracts[$dat->id] = json_decode($dat->contracts);
-      }
-    ;
+            $contracts[$dat->id] = json_decode($dat->contracts);
+          }
+          ;
         }
 
-            return view('costumers', compact('data','contracts'));
-
-
-      }
+        return view('costumers', compact('data','contracts'));
+    }
 
       public function adddata($req = null,$object = null,$count = null)
       {

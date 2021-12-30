@@ -37,7 +37,11 @@ class UserController extends Controller
     public function acceptapp($id)
     {
         $lead = lead::find($id);
-        if ($lead->assign_to_id == Auth::guard('admins')->user()->id) {
+        if(Auth::guard('admins')->user()->hasRole('admin')){
+            $lead->assigned = 1;
+            $lead->save();
+            return redirect()->back();
+        }else if ($lead->assign_to_id == Auth::guard('admins')->user()->id) {
             $lead->assigned = 1;
             $lead->save();
             return redirect()->back();
@@ -232,6 +236,8 @@ class UserController extends Controller
             $user = Admins::find(Auth::guard('admins')->user()->id);
             $user->confirmed = 0;
             $user->pin = $pin;
+            $role = Role::where("name", 'admin')->get();
+            $user->assignRole($role);
             //  Nexmo::message()->send([
             //  'to' => '38345626643',
             //  'from' => '38345917726',
@@ -381,8 +387,6 @@ class UserController extends Controller
 
     public function dashboard(Request $req){
 
-
-
         $getmonth = isset($req->getmonth) ? $req->getmonth : null;
 
         // $day = Carbon::now()->format('d');
@@ -395,8 +399,6 @@ class UserController extends Controller
         $done = 0;
 
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
-
-
             return view('dashboard');
         }
         if (Auth::guard('admins')->user()->hasRole('admin')) {
@@ -408,7 +410,6 @@ class UserController extends Controller
                 if($tasks[$i]->status_task == 'Submited'){
                     $pendingcnt++;
                 }
-
                 if($tasks[$i]->status_task == 'Open'){
                     $opencnt++;
                 }
