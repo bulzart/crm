@@ -196,6 +196,9 @@ $dayofweek = 6;
             }
           }
       }
+      if(Auth::guard('admins')->user()->hasRole('fs')){
+
+      }
       
       $realopen = [];
       $pending = [];
@@ -218,27 +221,29 @@ $dayofweek = 6;
 
 
       $cnt = 0;
-      $costumers = lead::all();
+      $costumers = family::all();
       $todaydate = Carbon::now()->format('m-d');
 
       $birthdays = [];
       foreach($costumers as $cos){
-          if(substr($cos->birthday,5) == $todaydate)
+          if(substr($cos->birthdate,5) == $todaydate)
           {
-              $birthdays[$cnt]['birthday'] = $cos->birthday;
+              $birthdays[$cnt]['birthday'] = $cos->birthdate;
               $now = (int) Carbon::now()->format('Y');
-              $birth = (int) substr($cos->birthday,-10,-6);
+              $birth = (int) substr($cos->birthdate,-10,-6);
               $birthdays[$cnt]['age'] = $now - $birth;
               $birthdays[$cnt]['id'] = $cos->id;
-              $birthdays[$cnt]['name'] = ucfirst($cos->name);
-              $birthdays[$cnt]['lname'] = ucfirst($cos->lname);
+              $birthdays[$cnt]['name'] = ucfirst($cos->first_name);
+              $birthdays[$cnt]['lname'] = ucfirst($cos->last_name);
               $cnt++;
           }
+         
 
       }
 
    return view('tasks',compact('opencnt','pendingcnt','realopen','pending','birthdays','tasks'));
   }
+  
 
 
 

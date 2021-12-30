@@ -15,12 +15,12 @@ class LeadFactory extends Factory
     public function randomm():string{
         $num = random_int(1,50);
         $status = "";
-        if($num > 42) $status = "Done";
+        if($num > 49) $status = "Submited";
        elseif($num%2 == 0){
            $status = "Open";
        }
        else{
-$status = "Submited";
+$status = "Done";
        }
     return $status;
     }

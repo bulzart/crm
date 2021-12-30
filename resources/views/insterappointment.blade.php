@@ -557,6 +557,9 @@
                                                           placeholder="Postal code" required="required"></div>
                                 <div class="input"><input type="text" name="location" required="required"> <span>Location</span>
                                 </div>
+                                <div>
+                                    <input type="date" name="appbirthdate" class="form-control">
+                                </div>
                                 <div class="input"><input type="text" name="country" required="required">
                                     <span>Contry</span></div>
                                 <div class="input"><input type="number" name="count" class="col-12 form-control"
@@ -579,6 +582,9 @@
                                     </select></div>
                                 <div class="input">
                                     <input type="date" name="appdate" class="form-control">
+                                </div>
+                                <div>
+                                    <input type="time" name="apptime" class="form-control">
                                 </div>
                             </div>
 

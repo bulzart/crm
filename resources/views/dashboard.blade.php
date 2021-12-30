@@ -403,7 +403,7 @@
                         </div>
                     </div>
                 </section>
-                @if(!(Auth::guard('admins')->user()->hasRole('backoffice')))
+                @if(Auth::guard('admins')->user()->hasRole('admin'))
                 <div class="col-12">
                     <div class="row">
                         <!-- <div class="col-4 col-md-4">
@@ -676,7 +676,11 @@
                     </div>
                 </div>
             </div>
+           
+       
+       
             <div class="row mt-3">
+          
                 <div class="col-md-6 col-sm-6 col-12">
                     <div class="row">
                         <div class="col-md-12 col-12">
@@ -688,8 +692,15 @@
                         <div class="col-md-12 col-12">
                             <calendar></calendar>
                         </div>
+                        <div class="btninsertapp">
+                    <a href="{{route('insertappointment')}}">
+                        <button type="submit">+</button>
+                    </a>
+                </div>
                     </div>
                 </div>
+          
+               
                 <div class="col-md-6 col-sm-6 col-12 row">
                     <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                         <div class="text-center text-white p-2" style="background: #792765; border-radius: 12px;">
@@ -722,51 +733,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="btninsertapp">
-                    <a href="{{route('insertappointment')}}">
-                        <button type="submit">+</button>
-                    </a>
-                </div>
+               
             </div>
+          
             @endif
-            @if(Auth::guard('admins')->user()->role == 'backoffice')
-            <div class="col-md-12 col-12 my-3">
-                <todo></todo>
-            </div>
-            <div class="col-md-6 col-12 mt-4">
-                @foreach($realunsigned as $unsigned)
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kk-{{$unsigned['csapp']}}">
-                    An task is to be opened that was requested from {{App\Models\Admins::find($unsigned['admin_id'])->name}}
-                </button>
-                <div class="modal fade text-center justify-content-center" id="kk-{{$unsigned['csapp']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content" style="width: 900px; height: 600px;">
-                            <div class="modal-header">
-                                <h5 class="modal-title text-center" id="exampleModalLabel"></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body" style="width: 100%; height: 200px; overflow-y: scroll;">
-
-                                <div class="text-center">
-                                    <?php
-                                    foreach ($unsigned as $id => $text) {
-                                        echo $id . ": ";
-                                        echo $text . "<br>";
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="{{route('accepttask',$unsigned['csapp'])}}">Accept</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-        @endif
+            @if(Auth::guard('admins')->user()->hasRole('backoffice'))
+            <todo></todo>
+            @endif
     </div>
+    
 </body>
 
 
