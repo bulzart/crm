@@ -83,7 +83,7 @@ route::prefix('')->group(function(){
 
    route::get('smsconfirm',function (){
       $Admin = Admins::find(12);
-      return $Admin->getRoleNames();
+      return view('confirm_sms');
       
    })->name('smsconfirm');
    Route::get('login',[UserController::class,'rnlogin'])->name('rnlogin');
