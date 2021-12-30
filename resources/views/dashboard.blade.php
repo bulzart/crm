@@ -366,38 +366,26 @@
                             </div>
                             <div class="col text-right my-2">
                                 <div class="pull-right text-end">
-                                    <button class="border-0 px-2 pt-1 pb-2 me-2"
-                                        style="background-color: #C4C6D2; border-radius: 12px;">
-                                        <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width=""
-                                            height="22px" viewBox="0 0 32.504 28.358">
-                                            <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(0)" fill="none"
-                                                stroke="#fff" stroke-linecap="round" stroke-width="2">
+                                    <button class="border-0 px-2 pt-1 pb-2 me-2" style="background-color: #C4C6D2; border-radius: 12px;">
+                                        <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width="" height="22px" viewBox="0 0 32.504 28.358">
+                                            <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2">
                                                 <ellipse cx="12.438" cy="12.438" rx="12.438" ry="12.438" stroke="none" />
                                                 <ellipse cx="12.438" cy="12.438" rx="11.438" ry="11.438" fill="none" />
                                             </g>
-                                            <line id="Line_4" data-name="Line 4" x2="8.532" y2="7.141"
-                                                transform="translate(22.563 19.808)" fill="none" stroke="#fff"
-                                                stroke-linecap="round" stroke-width="2" />
+                                            <line id="Line_4" data-name="Line 4" x2="8.532" y2="7.141" transform="translate(22.563 19.808)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2" />
                                         </svg>
                                     </button>
-                                    <button class="border-0 px-2 pt-1 pb-2"
-                                        style="background-color: #C4C6D2; border-radius: 12px;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="" height="22px"
-                                            viewBox="0 0 28.063 28.637">
+                                    <button class="border-0 px-2 pt-1 pb-2" style="background-color: #C4C6D2; border-radius: 12px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="" height="22px" viewBox="0 0 28.063 28.637">
                                             <g id="Group_2" data-name="Group 2" transform="translate(1 1)">
-                                                <circle id="Ellipse_3" data-name="Ellipse 3" cx="6.803" cy="6.803" r="6.803"
-                                                    transform="translate(6.229)" fill="none" stroke="#fff"
-                                                    stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                    stroke-width="2" />
-                                                <path id="Path_1" data-name="Path 1"
-                                                    d="M2,102.218a13.032,13.032,0,0,1,26.063,0"
-                                                    transform="translate(-2 -75.581)" fill="none" stroke="#fff"
-                                                    stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
-                                                    stroke-width="2" />
+                                                <circle id="Ellipse_3" data-name="Ellipse 3" cx="6.803" cy="6.803" r="6.803" transform="translate(6.229)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                                                <path id="Path_1" data-name="Path 1" d="M2,102.218a13.032,13.032,0,0,1,26.063,0" transform="translate(-2 -75.581)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
                                             </g>
                                         </svg>
                                     </button>
-                                    <button type="button" style="border: none; background: transparent;"><notifications></notifications></button>
+                                    <button type="button" style="border: none; background: transparent;">
+                                        <notifications></notifications>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -461,36 +449,22 @@
                                         <div class="col-4">
                                             <div class="text-end">
                                                 <a href="{{route('tasks')}}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
-                                                        viewBox="0 0 92.259 71.213">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="" height="" viewBox="0 0 92.259 71.213">
                                                         <defs>
                                                             <clipPath id="clip-path">
-                                                                <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                                    width="92.259" height="71.213" fill="#FD2F2F" />
+                                                                <rect id="Rectangle_5" data-name="Rectangle 5" width="92.259" height="71.213" fill="#FD2F2F" />
                                                             </clipPath>
                                                         </defs>
-                                                        <g id="Group_620" data-name="Group 620"
-                                                            transform="translate(-558.382 -263.428)">
-                                                            <g id="Group_18" data-name="Group 18"
-                                                                transform="translate(558.382 263.428)"
-                                                                style="isolation: isolate">
+                                                        <g id="Group_620" data-name="Group 620" transform="translate(-558.382 -263.428)">
+                                                            <g id="Group_18" data-name="Group 18" transform="translate(558.382 263.428)" style="isolation: isolate">
                                                                 <g id="Group_9" data-name="Group 9">
-                                                                    <g id="Group_8" data-name="Group 8"
-                                                                        clip-path="url(#clip-path)">
-                                                                        <path id="Path_275" data-name="Path 275"
-                                                                            d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
-                                                                            transform="translate(-102.581)"
-                                                                            fill="#FD2F2F" />
+                                                                    <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path)">
+                                                                        <path id="Path_275" data-name="Path 275" d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664" transform="translate(-102.581)" fill="#FD2F2F" />
                                                                     </g>
                                                                 </g>
                                                             </g>
-                                                            <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42"
-                                                                cy="2.42" rx="2.42" ry="2.42"
-                                                                transform="translate(617.762 283.64)" fill="#fff" />
-                                                            <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42"
-                                                                cy="2.42" rx="2.42" ry="2.42"
-                                                                transform="translate(617.762 292.384)" fill="#fff" />
+                                                            <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42" cy="2.42" rx="2.42" ry="2.42" transform="translate(617.762 283.64)" fill="#fff" />
+                                                            <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42" cy="2.42" rx="2.42" ry="2.42" transform="translate(617.762 292.384)" fill="#fff" />
                                                         </g>
                                                     </svg>
                                                 </a>
@@ -505,7 +479,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
-                            <div class="third-box" style="background-color: #FEC278; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="third-box" style="background-color: #FEC278; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                     <div class="row">
                                         <div class="col my-auto">
                                             <div class=" ps-3">
@@ -517,36 +491,22 @@
                                         <div class="col-4">
                                             <div class="text-end">
                                                 <a href="{{route('tasks')}}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
-                                                        viewBox="0 0 92.259 71.213">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="" height="" viewBox="0 0 92.259 71.213">
                                                         <defs>
                                                             <clipPath id="clip-path">
-                                                                <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                                    width="92.259" height="71.213" fill="#EDAE60" />
+                                                                <rect id="Rectangle_5" data-name="Rectangle 5" width="92.259" height="71.213" fill="#EDAE60" />
                                                             </clipPath>
                                                         </defs>
-                                                        <g id="Group_620" data-name="Group 620"
-                                                            transform="translate(-558.382 -263.428)">
-                                                            <g id="Group_18" data-name="Group 18"
-                                                                transform="translate(558.382 263.428)"
-                                                                style="isolation: isolate">
+                                                        <g id="Group_620" data-name="Group 620" transform="translate(-558.382 -263.428)">
+                                                            <g id="Group_18" data-name="Group 18" transform="translate(558.382 263.428)" style="isolation: isolate">
                                                                 <g id="Group_9" data-name="Group 9">
-                                                                    <g id="Group_8" data-name="Group 8"
-                                                                        clip-path="url(#clip-path)">
-                                                                        <path id="Path_275" data-name="Path 275"
-                                                                            d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
-                                                                            transform="translate(-102.581)"
-                                                                            fill="#EDAE60" />
+                                                                    <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path)">
+                                                                        <path id="Path_275" data-name="Path 275" d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664" transform="translate(-102.581)" fill="#EDAE60" />
                                                                     </g>
                                                                 </g>
                                                             </g>
-                                                            <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42"
-                                                                cy="2.42" rx="2.42" ry="2.42"
-                                                                transform="translate(617.762 283.64)" fill="#fff" />
-                                                            <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42"
-                                                                cy="2.42" rx="2.42" ry="2.42"
-                                                                transform="translate(617.762 292.384)" fill="#fff" />
+                                                            <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42" cy="2.42" rx="2.42" ry="2.42" transform="translate(617.762 283.64)" fill="#fff" />
+                                                            <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42" cy="2.42" rx="2.42" ry="2.42" transform="translate(617.762 292.384)" fill="#fff" />
                                                         </g>
                                                     </svg>
                                                 </a>
@@ -561,49 +521,34 @@
                                 </div>
                             </div>
                             <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
-                                <div class="second-box"
-                                    style="background-color: #4CC590; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="second-box" style="background-color: #4CC590; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                     <div class="row">
                                         <div class="col my-auto">
                                             <div class=" ps-3 ">
                                                 <span class="fs-1 fw-bold text-white">
-                                                {{round($percnt,2)}}%
+                                                    {{round($percnt,2)}}%
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="text-end">
                                                 <a href="{{route('tasks')}}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
-                                                        viewBox="0 0 92.259 71.213">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="" height="" viewBox="0 0 92.259 71.213">
                                                         <defs>
                                                             <clipPath id="clip-path">
-                                                                <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                                    width="92.259" height="71.213" fill="#49B178" />
+                                                                <rect id="Rectangle_5" data-name="Rectangle 5" width="92.259" height="71.213" fill="#49B178" />
                                                             </clipPath>
                                                         </defs>
-                                                        <g id="Group_620" data-name="Group 620"
-                                                            transform="translate(-558.382 -263.428)">
-                                                            <g id="Group_18" data-name="Group 18"
-                                                                transform="translate(558.382 263.428)"
-                                                                style="isolation: isolate">
+                                                        <g id="Group_620" data-name="Group 620" transform="translate(-558.382 -263.428)">
+                                                            <g id="Group_18" data-name="Group 18" transform="translate(558.382 263.428)" style="isolation: isolate">
                                                                 <g id="Group_9" data-name="Group 9">
-                                                                    <g id="Group_8" data-name="Group 8"
-                                                                        clip-path="url(#clip-path)">
-                                                                        <path id="Path_275" data-name="Path 275"
-                                                                            d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
-                                                                            transform="translate(-102.581)"
-                                                                            fill="#49B178" />
+                                                                    <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path)">
+                                                                        <path id="Path_275" data-name="Path 275" d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664" transform="translate(-102.581)" fill="#49B178" />
                                                                     </g>
                                                                 </g>
                                                             </g>
-                                                            <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42"
-                                                                cy="2.42" rx="2.42" ry="2.42"
-                                                                transform="translate(617.762 283.64)" fill="#fff" />
-                                                            <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42"
-                                                                cy="2.42" rx="2.42" ry="2.42"
-                                                                transform="translate(617.762 292.384)" fill="#fff" />
+                                                            <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42" cy="2.42" rx="2.42" ry="2.42" transform="translate(617.762 283.64)" fill="#fff" />
+                                                            <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42" cy="2.42" rx="2.42" ry="2.42" transform="translate(617.762 292.384)" fill="#fff" />
                                                         </g>
                                                     </svg>
                                                 </a>
@@ -612,7 +557,7 @@
                                     </div>
                                     <div class="py-3  ps-3">
                                         <span class="text-white fw-bolder">
-                                        Done cases
+                                            Done cases
                                         </span>
                                     </div>
                                 </div>
@@ -676,11 +621,11 @@
                     </div>
                 </div>
             </div>
-           
-       
-       
+
+
+
             <div class="row mt-3">
-          
+
                 <div class="col-md-6 col-sm-6 col-12">
                     <div class="row">
                         <div class="col-md-12 col-12">
@@ -693,14 +638,14 @@
                             <calendar></calendar>
                         </div>
                         <div class="btninsertapp">
-                    <a href="{{route('insertappointment')}}">
-                        <button type="submit">+</button>
-                    </a>
-                </div>
+                            <a href="{{route('insertappointment')}}">
+                                <button type="submit">+</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
-          
-               
+
+
                 <div class="col-md-6 col-sm-6 col-12 row">
                     <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
                         <div class="text-center text-white p-2" style="background: #792765; border-radius: 12px;">
@@ -733,15 +678,32 @@
                         </div>
                     </div>
                 </div>
-               
-            </div>
-          
-            @endif
-            @if(Auth::guard('admins')->user()->hasRole('backoffice'))
-            <todo></todo>
+
+ 
             @endif
     </div>
-    
+    @if(Auth::guard('admins')->user()->hasRole('backoffice'))
+    <div class="col-md-6 col-6">
+            
+            <todo></todo>
+    </div>
+    @endif
+    <div class="col-md-6 col-6 mt-3">
+            @foreach($pendencies as $pending)
+           <a href="#">{{$pending['name']}}</a><br>
+            @endforeach
+    </div>
+    <div class="col-md-6 col-6 mt-3">
+        Open more than 30 days
+        <br>
+            @foreach($morethan30 as $more)
+           <a href="#">{{$more->first_name}} {{$more->last_name}}</a><br>
+            @endforeach
+    </div>
+
+
+        </div>
+
 </body>
 
 
