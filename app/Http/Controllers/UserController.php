@@ -143,6 +143,7 @@ class UserController extends Controller
         $leads = lead::find($id);
         return view('deletedlead', compact('leads'));
     }
+    
     public function deletedlead(Request $request, $id)
     {
         $leads = lead::find($id);
@@ -421,8 +422,13 @@ class UserController extends Controller
                 if($tasks[$i]->status_task == 'Done'){
                     $done++;
                 }
+            } 
+
+
+            $percnt = 0;
+            if($taskcnt != 0){
+                $percnt = (100 / $taskcnt) * $done;
             }
-            $percnt = (100 / $taskcnt) * $done;
 
             $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
             $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();

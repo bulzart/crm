@@ -18,23 +18,26 @@ use Spatie\Permission\Models\Permission;
 
 class TasksController extends Controller
 {
-
-  public function accepttask($id){
-    $app = lead::find($id);
-    lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
-    return redirect()->back()->with(['successs','Your action was done successfully!']);
-  }
-    public function dnotifications(){
-       notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
+    public function accepttask($id)
+    {
+        $app = lead::find($id);
+        lead::where('id',$id)->update(['unsigned_data' => null,'data' => $this->adddata((array) json_decode($app->data),(array) json_decode($app->unsigned_data))]);
+        return redirect()->back()->with(['successs','Your action was done successfully!']);
     }
-    public function today(Request $req){
-      $some_date = Carbon::now()->format('H:i');
+
+    public function dnotifications()
+    {
+      notification::where('receiver_id',Auth::guard('admins')->user()->id)->where('done',0)->update(['done'=>1]);
+    }
+
+    public function today(Request $req)
+    {
+        $some_date = Carbon::now()->format('H:i');
         $now = (int) str_replace(':','',$some_date);
 
-
-      $admin = Auth::guard('admins')->user();
-      $today = Carbon::now()->format("Y-m-d");
-      if($req->date != null){
+        $admin = Auth::guard('admins')->user();
+        $today = Carbon::now()->format("Y-m-d");
+        if($req->date != null){
     if($admin->hasRole('admin')){
 
         $data = lead::where('wantsonline',0)->where('appointment_date',$req->date)->get();
@@ -67,19 +70,15 @@ class TasksController extends Controller
       return $data;
     }
 
-    public function vuedate(Request $req){
-
-$page = $req->page;
+    public function vuedate(Request $req)
+    {
+      $page = $req->page;
       $day = Carbon::now()->format('d');
       $month = Carbon::now()->format('m');
       $year = Carbon::now()->format('Y');
       $fullcalendar = [];
       $br = 1;
-$dayofweek = 6;
-
-
-
-
+      $dayofweek = 6;
 
       for($i = 0; $i <= 365; $i++){
         $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
@@ -96,17 +95,17 @@ $dayofweek = 6;
       $calendar[3] = $fullcalendar[$page -1];
       return $calendar;
 
-
      return $fullcalendar;
-
-
     }
 
-    public function searchword(){
+    public function searchword()
+    {
         $data =  lead::orderBy('first_name','asc')->get();
         return view('costumers',compact('data'));
     }
-    public function costumers(Request $request){
+
+    public function costumers(Request $request)
+    {
         $searchname = $request->searchname;
         $cnt = 0;
         $date1 = date('Y-m-d', strtotime($request->searchdate1));
@@ -135,7 +134,7 @@ $dayofweek = 6;
           if($dat->contracts != null){
           $contracts[$dat->id] = json_decode($dat->contracts);
       }
-    ;
+    
         }
 
             return view('costumers', compact('data','contracts'));
@@ -176,7 +175,6 @@ $dayofweek = 6;
             return $data;
 
       }
-
     }
     public function tasks(){
       $cnt = 0;
