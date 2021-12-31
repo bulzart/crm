@@ -245,17 +245,17 @@ class UserController extends Controller
             $pin = random_int(1000, 9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
             // $user->confirmed = 0;
-            if(Admins::find(Auth::guard('admins')->user()->firsttime == 1)){
-                //dd($user);
-                //return redirect()->route('smsverification');
-                $user->pin = $pin;
-                $user->save();
-                Nexmo::message()->send([
-                 'to' => '38345464926',
-                 'from' => 'Vonage APIs',
-                'text' => $pin]);
-                return view('confirm_sms');
-            }else{
+            // if(Admins::find(Auth::guard('admins')->user()->firsttime == 1)){
+            //     //dd($user);
+            //     //return redirect()->route('smsverification');
+            //     $user->pin = $pin;
+            //     $user->save();
+            //     Nexmo::message()->send([
+            //      'to' => '38345464926',
+            //      'from' => 'Vonage APIs',
+            //     'text' => $pin]);
+            //     return view('confirm_sms');
+            // }else{
                 $user->pin = $pin;
                 $role = Role::where("name", 'admin')->get();
                 $user->assignRole($role);
@@ -266,7 +266,7 @@ class UserController extends Controller
                 $user->save();
                 //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
                 return redirect()->route('dashboard');
-            }
+            //}
             
         } else {
             return redirect()->route('rnlogin');
