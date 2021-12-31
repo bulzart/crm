@@ -351,8 +351,6 @@
 
                 </nav>
             </div>
-            <!--Container Main start-->
-
         </div>
 
 
@@ -679,15 +677,17 @@
                     </div>
                 </div>
 
- 
+
             @endif
     </div>
+
+
     @if(Auth::guard('admins')->user()->hasRole('backoffice'))
     <div class="col-md-6 col-6">
-            
+
             <todo></todo>
     </div>
-    
+
     <div class="col-md-6 col-6 mt-3">
             @foreach($pendencies as $pending)
            <a href="#">{{$pending['name']}}</a><br>
@@ -704,6 +704,44 @@
 
         </div>
         @endif
+        @if(Auth::guard('admins')->user()->hasRole('salesmanager'))
+            @foreach($trainings as $training)
+                <p>{{$training->text    }}</p>
+            @endforeach
+            <div class="col-md-6 col-sm-6 col-12 row">
+                <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
+                    <div class="text-center text-white p-2" style="background: #792765; border-radius: 12px;">
+                        <div class="col-12"><i style="font-size: 42px;" class='bx bx-user'></i></div>
+                        {{$leadscount}}<br><span>New Leads </span>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2">
+                    <div class="text-center text-white p-2" style="background: #fe86c6; border-radius: 12px;">
+                        <div class="col-12"><i style="font-size: 42px;" class='bx bxs-bell'></i></div>
+                        {{$opencnt}}<br><span>Open tasks</span>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-6 col-md-4 col-xs-6 col-lg-4 mb-2" id="pend">
+                    <div class="text-center text-white p-2" style="background: #8a8bff; border-radius: 12px;">
+                        <div class="col-12"><i style="font-size: 42px;" class="fas fa-exclamation-circle"></i></div>
+                        {{$pendingcnt}}<br><span>Pendencies</span>
+                    </div>
+                </div>
+                <div class="rounded col-4 col-sm-6 col-xs-6 col-md-4 col-lg-4 mb-2">
+                    <div class="text-center text-white p-2" style="background: #ffbe6a; border-radius: 12px;">
+                        <div class="col-12"><i style="font-size: 42px;" class="fas fa-calendar-alt"></i></div>
+                        {{$todayAppointCount}}<br><span>Today appointments</span>
+                    </div>
+                </div>
+                <div class="col-4 col-sm-6 col-xs-6 col-md-4 col-lg-4 mb-2">
+                    <div class="text-center text-white p-2" style="background: #00c78c; border-radius: 12px;">
+                        <div class="col-12"><i style="font-size: 42px;" class="fas fa-comment"></i></div>
+                        0<br><span>HR communications</span>
+                    </div>
+                </div>
+            </div>
+
+    @endif
 </body>
 
 

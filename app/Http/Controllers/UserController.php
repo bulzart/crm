@@ -6,6 +6,7 @@ use App\Imports\LeadsImport;
 use App\Models\Admins;
 use App\Models\Deletedlead;
 use App\Models\rejectedlead;
+use App\Models\Trainings;
 use App\Models\User;
 use App\Mail\confirmcode;
 use App\Models\appointment;
@@ -152,7 +153,7 @@ class UserController extends Controller
         $leads = lead::find($id);
         return view('deletedlead', compact('leads'));
     }
-    
+
     public function deletedlead(Request $request, $id)
     {
         $leads = lead::find($id);
@@ -267,7 +268,7 @@ class UserController extends Controller
                 //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
                 return redirect()->route('dashboard');
             //}
-            
+
         } else {
             return redirect()->route('rnlogin');
         }
@@ -424,23 +425,42 @@ class UserController extends Controller
         $pendencies = [];
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
             $pendency = family::where('status', 'Submited')->get();
-            
+
             for($i = 0; $i < count($pendency);$i++){
                 $pendencies[$i]['name'] = $pendency[$i]['first_name'] . $pendency[$i]['last_name'];
                 $pendencies[$i]['datas'] = $pendency[$i]->datas;
                 $pendencies[$i]['datak'] = $pendency[$i]->datak;
                 $pendencies[$i]['counter'] = $pendency[$i]->datacounter;
                 $pendencies[$i]['datasw'] = $pendency[$i]->datasw;
-               //$pendencies[$i]['datafah'] = $pendencies[$i]->datafah; 
+               //$pendencies[$i]['datafah'] = $pendencies[$i]->datafah;
             }
             $morethan30 = '';
             $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-           
+
             return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
         }
 
+        if(Auth::guard('admins')->user()->hasRole('salesmanager')){
+            $trainings = Trainings::where('admin_id',Auth::guard('admins')->user()->id)->get();
 
+            $tasks = lead::all();
 
+            for ($i = 0; $i < count($tasks); $i++) {
+                if ($tasks[$i]->status_task == 'Submited') {
+                    $pendingcnt++;
+                }
+                if ($tasks[$i]->status_task == 'Open') {
+                    $opencnt++;
+                }
+                if ($tasks[$i]->status_task == 'Done') {
+                    $done++;
+                }
+            }
+            $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
+            $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+
+            return view('dashboard', compact('trainings','leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt'));
+        }
 
         if (Auth::guard('admins')->check()) {
 
@@ -458,7 +478,7 @@ class UserController extends Controller
                 if ($tasks[$i]->status_task == 'Done') {
                     $done++;
                 }
-            } 
+            }
 
 
             $percnt = 0;
