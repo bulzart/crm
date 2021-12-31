@@ -10,6 +10,7 @@ class Trainings extends Model
     use HasFactory;
 
     protected $table = 'trainings';
+    public $timestamps = false;
 
     protected $fillable = [
         'text',
