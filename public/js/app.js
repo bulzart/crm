@@ -5619,60 +5619,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
-    this.fetchtodo();
-    this.fetchnumbers();
+    this.fetchnumbers(), this.fetchtask();
   },
   data: function data() {
     return {
-      todos: null,
+      addtasks: null,
       numbers: null
     };
   },
   methods: {
-    addtodo: function addtodo() {
-      var val = document.getElementById('todo');
-      axios.get('addtodo?todo=' + val.value).then(this.fetchtodo());
-      val.value = "";
+    fetchtask: function fetchtask() {
+      var _this = this;
+
+      axios.get('todos').then(function (response) {
+        _this.addtasks = response.data;
+      });
     },
     addnumber: function addnumber() {
       var val = document.getElementById('number');
       axios.get('addnumber?number=' + val.value).then(this.fetchnumbers);
       val.value = "";
-    },
-    fetchtodo: function fetchtodo() {
-      var _this = this;
-
-      axios.get('todos').then(function (response) {
-        _this.todos = response.data;
-      });
     },
     fetchnumbers: function fetchnumbers() {
       var _this2 = this;
@@ -5681,14 +5649,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.numbers = response.data;
       });
     },
-    deletetodo: function deletetodo(val) {
-      axios.get('deletetodo?id=' + val).then(this.fetchtodo);
-    },
     deletenumber: function deletenumber(val) {
       axios.get('deletenumber?id=' + val).then(this.fetchnumbers);
-    },
-    donetodo: function donetodo(val) {
-      axios.get('donetodo?id=' + val).then(this.fetchtodo);
     }
   }
 });
@@ -29498,7 +29460,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row d-flex justify-content-center" }, [
+  return _c("div", { staticClass: "row" }, [
     _c(
       "div",
       { staticClass: "card-hover-shadow-2x mb-3 card col-6 col-md-6" },
@@ -29508,156 +29470,7 @@ var render = function () {
         _c(
           "div",
           { staticClass: "scroll-area-sm" },
-          [
-            _c("perfect-scrollbar", { staticClass: "ps-show-limits" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "ps ps--active-y",
-                  staticStyle: { position: "static" },
-                },
-                [
-                  _c("div", { staticClass: "ps-content" }, [
-                    _c(
-                      "ul",
-                      {
-                        staticClass: " list-group list-group-flush",
-                        staticStyle: {
-                          height: "280px",
-                          "overflow-y": "scroll",
-                        },
-                      },
-                      _vm._l(_vm.todos, function (todo) {
-                        return _c("li", { staticClass: "list-group-item" }, [
-                          _c("div", {
-                            staticClass: "todo-indicator bg-warning",
-                          }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "widget-content p-0" }, [
-                            _c(
-                              "div",
-                              { staticClass: "widget-content-wrapper" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-left mr-2" },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "custom-checkbox custom-control",
-                                      },
-                                      [_vm._v(" ")]
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-left" },
-                                  [
-                                    todo.done == 0
-                                      ? _c(
-                                          "div",
-                                          { staticClass: "widget-heading" },
-                                          [_vm._v(_vm._s(todo.text) + " ")]
-                                        )
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    todo.done == 1
-                                      ? _c(
-                                          "div",
-                                          {
-                                            staticClass: "widget-heading",
-                                            staticStyle: {
-                                              "text-decoration": "line-through",
-                                              color: "green",
-                                            },
-                                          },
-                                          [_vm._v(_vm._s(todo.text) + " ")]
-                                        )
-                                      : _vm._e(),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-right" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "border-0 btn-transition btn btn-outline-success",
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.donetodo(todo.id)
-                                          },
-                                        },
-                                      },
-                                      [_c("i", { staticClass: "fa fa-check" })]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "border-0 btn-transition btn btn-outline-danger",
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.deletetodo(todo.id)
-                                          },
-                                        },
-                                      },
-                                      [_c("i", { staticClass: "fa fa-trash" })]
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
-                          ]),
-                        ])
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "d-inline d-flex" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { name: "todo", id: "todo", type: "text" },
-                        on: {
-                          keyup: function ($event) {
-                            if (
-                              !$event.type.indexOf("key") &&
-                              _vm._k(
-                                $event.keyCode,
-                                "enter",
-                                13,
-                                $event.key,
-                                "Enter"
-                              )
-                            ) {
-                              return null
-                            }
-                            return _vm.addtodo.apply(null, arguments)
-                          },
-                        },
-                      }),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: { click: _vm.addtodo },
-                        },
-                        [_vm._v("Add")]
-                      ),
-                    ]),
-                  ]),
-                ]
-              ),
-            ]),
-          ],
+          [_c("perfect-scrollbar", { staticClass: "ps-show-limits" })],
           1
         ),
       ]
@@ -29810,7 +29623,7 @@ var staticRenderFns = [
           staticClass:
             "card-header-title font-size-lg text-capitalize font-weight-normal",
         },
-        [_c("i", { staticClass: "fa fa-tasks" }), _vm._v(" Todo list")]
+        [_c("i", { staticClass: "fa fa-tasks" }), _vm._v(" Numbers")]
       ),
     ])
   },

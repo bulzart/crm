@@ -62,7 +62,8 @@ class UserController extends Controller
     public function rnlogin()
     {
         if (!Auth::guard('admins')->check()) {
-            return view('login');
+            $roles = Role::all();
+            return view('login',compact('roles'));
         } else {
             return redirect()->route('dashboard');
         }
@@ -153,7 +154,6 @@ class UserController extends Controller
         $leads = lead::find($id);
         return view('deletedlead', compact('leads'));
     }
-
     public function deletedlead(Request $request, $id)
     {
         $leads = lead::find($id);
@@ -245,20 +245,14 @@ class UserController extends Controller
         if (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password])) {
             $pin = random_int(1000, 9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
-            // $user->confirmed = 0;
+            $user->confirmed = 0;
             // if(Admins::find(Auth::guard('admins')->user()->firsttime == 1)){
-            //     //dd($user);
+
             //     //return redirect()->route('smsverification');
-            //     $user->pin = $pin;
-            //     $user->save();
-            //     Nexmo::message()->send([
-            //      'to' => '38345464926',
-            //      'from' => 'Vonage APIs',
-            //     'text' => $pin]);
-            //     return view('confirm_sms');
+
             // }else{
                 $user->pin = $pin;
-                $role = Role::where("name", 'admin')->get();
+                $role = Role::where("name", $req->input('auth'))->get();
                 $user->assignRole($role);
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
@@ -354,10 +348,10 @@ class UserController extends Controller
             'fbydate' => 'required'
         ]);
 
-        $appointments = lead::where('appointmentdate', date('Y-m-d', strtotime($req->input('fbydate'))))->where('admin_id', Auth::guard('admins')->user()->id)->where('wantsonline', 0)->get();
+        $appointments = lead::where('appointment_date', date('Y-m-d', strtotime($req->input('fbydate'))))->where('admin_id', Auth::guard('admins')->user()->id)->where('wantsonline', 0)->get();
 
-        $leadscount = lead::where('admin_id', null)->where('assigned', 0)->get()->count();
-        $todayAppointCount = lead::where('admin_id', Auth::guard('admins')->user()->id)->where('appointmentdate', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+        $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
+        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointmentdate', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
 
         return view('dashboard', compact('appointments', 'leadscount', 'todayAppointCount'));
     }
@@ -387,7 +381,7 @@ class UserController extends Controller
             'image' => 'required'
         ]);
         $leads_id = $request->leadsid;
-        lead::where('id', $leads_id)->update(['admin_id' => 0, 'assigned' => 0]);
+        lead::where('id', $leads_id)->update(['assign_to_id' => 0, 'assigned' => 0]);
 
 
 
@@ -403,9 +397,9 @@ class UserController extends Controller
         if ($rejectedlead->save()) {
             $img = Image::make($request->file('image'));
             $img->save('img/' . $request->file('image')->getClientOriginalName());
-            return redirect()->back()->with('success', 'Action was done successfully');
+            return redirect()->route('dashboard')->with('success', 'Action was done successfully');
         } else {
-            return redirect()->back()->with('fail', 'Action failed');
+            return redirect()->route('dashboard')->with('fail', 'Action failed');
         }
     }
 
@@ -432,30 +426,11 @@ class UserController extends Controller
             $morethan30 = '';
             $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
 
-            return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
+            return view('dashboard', compact('pendencies','morethan30'));
         }
 
-        if(Auth::guard('admins')->user()->hasRole('salesmanager')){
-            $trainings = Trainings::where('admin_id',Auth::guard('admins')->user()->id)->get();
 
-            $tasks = lead::all();
 
-            for ($i = 0; $i < count($tasks); $i++) {
-                if ($tasks[$i]->status_task == 'Submited') {
-                    $pendingcnt++;
-                }
-                if ($tasks[$i]->status_task == 'Open') {
-                    $opencnt++;
-                }
-                if ($tasks[$i]->status_task == 'Done') {
-                    $done++;
-                }
-            }
-            $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
-            $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-
-            return view('dashboard', compact('trainings','leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt'));
-        }
 
         if (Auth::guard('admins')->check()) {
 
