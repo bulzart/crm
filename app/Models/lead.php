@@ -12,4 +12,8 @@ class lead extends Model
     public function campaign(){
         return $this->belongsTo(campaigns::class);
     }
+
+    public function family(){
+        return $this->hasMany(family::class, 'leads_id');
+    }
 }

@@ -7,30 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class family extends Model
 {
+    protected $table = 'family_person';
+    public $datas;
     use HasFactory;
-    public $members;
-    public $cnt = 0;
-    public function __construct($old = null)
+    public function lead()
     {
-        if($old != null){
-            $this->members = $old->members;
-        }
-        else{
-            $this->members = [];
-        }
+        return $this->belongsTo(lead::class, 'leads_id');
     }
-
-
-    public function addmember($fname,$lname,$birthday){
-        if($fname != null){
-       $this->members[$this->cnt]['fname'] = $fname; 
+    public function datacounter()
+    {
+        return $this->hasMany(datacounter::class, 'person_id');
     }
-    if($lname != null){
-        $this->members[$this->cnt]['lname'] = $lname;
+    public function datak()
+    {
+        return $this->hasMany(datak::class, 'person_id');
     }
-    if($birthday != null){
-        $this->members[$this->cnt]['birthday'] = $birthday;
+    public function datas()
+    {
+        return $this->hasMany(datas::class, 'person_id');
     }
-    $this->cnt++;
-}
+    public function datafah()
+    {
+        return $this->hasMany(datasfah::class, 'person_id');
+    }
+    public function datasw()
+    {
+        return $this->hasMany(datasw::class, 'person_id');
+    }
 }
