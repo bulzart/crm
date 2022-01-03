@@ -1,16 +1,7 @@
 <template>
-      <div class="row">
+<div class="row d-flex justify-content-center">
+       
         <div class="card-hover-shadow-2x mb-3 card col-6 col-md-6">
-            <div class="card-header-tab card-header mb-2">
-                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Numbers</div>
-            </div>
-            <div class="scroll-area-sm">
-                <perfect-scrollbar class="ps-show-limits">
-                   
-                </perfect-scrollbar>
-            </div>
-        </div>
-         <div class="card-hover-shadow-2x mb-3 card col-6 col-md-6">
             <div class="card-header-tab card-header mb-2">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Numbers</div>
             </div>
@@ -24,7 +15,7 @@
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left mr-2">
-                                                <div class="custom-checkbox custom-control">&nbsp;</label> </div>
+                                                <div class="custom-checkbox custom-control">&nbsp;</label></div>
                                             </div>
                                             <div class="widget-content-left">
                                                 
@@ -45,41 +36,82 @@
                 </perfect-scrollbar>
             </div>
         </div>
+         <div class="card-hover-shadow-2x mb-3 card col-6 col-md-6">
+            <div class="card-header-tab card-header mb-2">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Todo</div>
+            </div>
+            <div class="scroll-area-sm">
+                <perfect-scrollbar class="ps-show-limits">
+                    <div id="alrt">
 
 </div>
+                    <div class="ps ps--active-y">
+                        Admin
+                   <select name="admin" @change="onChangeSelect($event)">
+                       <option v-for="admin in todos.admins" :value="admin.id">{{admin.name}}</option>
+                   </select>
+                    
+                    Costumer
+                     <select name="costumer" @change="onChangeCostumer($event)">
+                       <option v-for="costumer in todos.costumers" :value="costumer.id">{{costumer.first_name}}</option>
+                   </select>
+                   </div>
+                   <button @click="assignpendency" class="btn btn-primary">Assign pendency</button>
+                </perfect-scrollbar>
+            </div>
 
+        </div>
+
+</div>
 </template>
 <script>
 export default {
     mounted(){
-this.fetchnumbers(),
-this.fetchtask()
-},
+this.fetchnumbers();
+this.fetchtasks();
+
+    },
+
+
   data(){
       return{
-    addtasks: null,
-       numbers: null
+       todos: null,
+       numbers: null,
+       admin: null,
+       costumer: null
       }
   },
   methods:{
-      fetchtask:function(){
-        axios.get('todos').then((response) => {this.addtasks = response.data;});
+      onChangeSelect(event){
+      this.admin = parseInt(event.target.value);
       },
+      onChangeCostumer(event){
+this.costumer = parseInt(event.target.value);
+      },
+
        addnumber:function(){
           var val = document.getElementById('number')
            axios.get('addnumber?number=' + val.value).then(this.fetchnumbers
       );
       val.value = "";
       },
+      assignpendency:function(){
+axios.get('assignpendency/' + this.admin + '/' + this.costumer);
+document.getElementById('alrt').innerHTML = "";
+document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert" id="alrt"> Pendency was assigned successfully</div>' ;
+
+      },
       fetchnumbers(){
           axios.get('numbers').then((response) => { this.numbers = response.data;});
       },
-
        deletenumber:function(val){
          axios.get('deletenumber?id='+ val).then(
                 this.fetchnumbers
           );
       },
+      fetchtasks:function(){
+          axios.get('todos').then((response) => { this.todos = response.data});
+      }
   }
 }
 </script>

@@ -88,7 +88,7 @@
             <hr>
 
 
-            <div class="" id="counteroffer">
+            <div  id="counteroffer">
 
             </div>
 

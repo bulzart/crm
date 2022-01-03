@@ -18,7 +18,12 @@ use Spatie\Permission\Models\Permission;
 
 class TasksController extends Controller
 {
-
+public function assignpendency($admin,$id){
+   $costumer = family::where('id',$id)->update(['status' => 'Open']);
+   $lead = lead::find(family::find($id)->lead->id);
+   $lead->assign_to_id = $admin;
+   $lead->save();
+}
   public function accepttask($id)
   {
     $app = lead::find($id);

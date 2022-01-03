@@ -5634,48 +5634,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
-    this.fetchnumbers(), this.fetchtask();
+    this.fetchnumbers();
+    this.fetchtasks();
   },
   data: function data() {
     return {
-      addtasks: null,
-      numbers: null
+      todos: null,
+      numbers: null,
+      admin: null,
+      costumer: null
     };
   },
   methods: {
-    fetchtask: function fetchtask() {
-      var _this = this;
-
-      axios.get('todos').then(function (response) {
-        _this.addtasks = response.data;
-      });
+    onChangeSelect: function onChangeSelect(event) {
+      this.admin = parseInt(event.target.value);
+    },
+    onChangeCostumer: function onChangeCostumer(event) {
+      this.costumer = parseInt(event.target.value);
     },
     addnumber: function addnumber() {
       var val = document.getElementById('number');
       axios.get('addnumber?number=' + val.value).then(this.fetchnumbers);
       val.value = "";
     },
+    assignpendency: function assignpendency() {
+      axios.get('assignpendency/' + this.admin + '/' + this.costumer);
+      document.getElementById('alrt').innerHTML = "";
+      document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert" id="alrt"> Pendency was assigned successfully</div>';
+    },
     fetchnumbers: function fetchnumbers() {
-      var _this2 = this;
+      var _this = this;
 
       axios.get('numbers').then(function (response) {
-        _this2.numbers = response.data;
+        _this.numbers = response.data;
       });
     },
     deletenumber: function deletenumber(val) {
       axios.get('deletenumber?id=' + val).then(this.fetchnumbers);
+    },
+    fetchtasks: function fetchtasks() {
+      var _this2 = this;
+
+      axios.get('todos').then(function (response) {
+        _this2.todos = response.data;
+      });
     }
   }
 });
@@ -29482,148 +29486,12 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
+  return _c("div", { staticClass: "row d-flex justify-content-center" }, [
     _c(
       "div",
       { staticClass: "card-hover-shadow-2x mb-3 card col-6 col-md-6" },
       [
         _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "scroll-area-sm" },
-          [
-            _c("perfect-scrollbar", { staticClass: "ps-show-limits" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "ps ps--active-y",
-                  staticStyle: { position: "static" },
-                },
-                [
-                  _c("div", { staticClass: "ps-content" }, [
-                    _c(
-                      "ul",
-                      {
-                        staticClass: " list-group list-group-flush",
-                        staticStyle: {
-                          height: "200px",
-                          "overflow-y": "scroll",
-                        },
-                      },
-                      _vm._l(_vm.tasks, function (task) {
-                        return _c("li", { staticClass: "list-group-item" }, [
-                          _c("div", {
-                            staticClass: "todo-indicator bg-warning",
-                          }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "widget-content p-0" }, [
-                            _c(
-                              "div",
-                              { staticClass: "widget-content-wrapper" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-left mr-2" },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "custom-checkbox custom-control",
-                                      },
-                                      [_vm._v(" ")]
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-left" },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "widget-heading" },
-                                      [_vm._v(_vm._s(_vm.number.text) + " ")]
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-right" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "border-0 btn-transition btn btn-outline-danger",
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.deletenumber(
-                                              _vm.number.id
-                                            )
-                                          },
-                                        },
-                                      },
-                                      [_c("i", { staticClass: "fa fa-trash" })]
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
-                          ]),
-                        ])
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "d-inline d-flex" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { name: "todo", id: "number", type: "text" },
-                        on: {
-                          keyup: function ($event) {
-                            if (
-                              !$event.type.indexOf("key") &&
-                              _vm._k(
-                                $event.keyCode,
-                                "enter",
-                                13,
-                                $event.key,
-                                "Enter"
-                              )
-                            ) {
-                              return null
-                            }
-                            return _vm.addnumber.apply(null, arguments)
-                          },
-                        },
-                      }),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: { click: _vm.addnumber },
-                        },
-                        [_vm._v("Add")]
-                      ),
-                    ]),
-                  ]),
-                ]
-              ),
-            ]),
-          ],
-          1
-        ),
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "card-hover-shadow-2x mb-3 card col-6 col-md-6" },
-      [
-        _vm._m(1),
         _vm._v(" "),
         _c(
           "div",
@@ -29752,6 +29620,77 @@ var render = function () {
         ),
       ]
     ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card-hover-shadow-2x mb-3 card col-6 col-md-6" },
+      [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "scroll-area-sm" },
+          [
+            _c("perfect-scrollbar", { staticClass: "ps-show-limits" }, [
+              _c("div", { attrs: { id: "alrt" } }),
+              _vm._v(" "),
+              _c("div", { staticClass: "ps ps--active-y" }, [
+                _vm._v(
+                  "\r\n                        Admin\r\n                   "
+                ),
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "admin" },
+                    on: {
+                      change: function ($event) {
+                        return _vm.onChangeSelect($event)
+                      },
+                    },
+                  },
+                  _vm._l(_vm.todos.admins, function (admin) {
+                    return _c("option", { domProps: { value: admin.id } }, [
+                      _vm._v(_vm._s(admin.name)),
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(
+                  "\r\n                    \r\n                    Costumer\r\n                     "
+                ),
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "costumer" },
+                    on: {
+                      change: function ($event) {
+                        return _vm.onChangeCostumer($event)
+                      },
+                    },
+                  },
+                  _vm._l(_vm.todos.costumers, function (costumer) {
+                    return _c("option", { domProps: { value: costumer.id } }, [
+                      _vm._v(_vm._s(costumer.first_name)),
+                    ])
+                  }),
+                  0
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: { click: _vm.assignpendency },
+                },
+                [_vm._v("Assign pendency")]
+              ),
+            ]),
+          ],
+          1
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -29781,7 +29720,7 @@ var staticRenderFns = [
           staticClass:
             "card-header-title font-size-lg text-capitalize font-weight-normal",
         },
-        [_c("i", { staticClass: "fa fa-tasks" }), _vm._v(" Numbers")]
+        [_c("i", { staticClass: "fa fa-tasks" }), _vm._v(" Todo")]
       ),
     ])
   },

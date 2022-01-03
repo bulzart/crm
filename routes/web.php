@@ -82,7 +82,7 @@ route::prefix('')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 });
-
+route::get('assignpendency/{admin}/{id}',[TasksController::class,'assignpendency']);
    route::get('smsconfirm',function (){
       $Admin = Admins::find(12);
       return view('confirm_sms');
@@ -98,6 +98,7 @@ route::prefix('')->group(function(){
 //   return $user->getRoleNames();
 // });
 route::get('status',[StatusController::class,'status']);
+
 
 
 

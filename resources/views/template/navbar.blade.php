@@ -1251,4 +1251,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
     .calendarspan span{
         font-size: 12px;
     }
+    #alrt{
+        display: none;
+    }
 </style>
