@@ -62,7 +62,8 @@ class UserController extends Controller
     public function rnlogin()
     {
         if (!Auth::guard('admins')->check()) {
-            return view('login');
+            $roles = Role::all();
+            return view('login',compact('roles'));
         } else {
             return redirect()->route('dashboard');
         }
@@ -335,7 +336,7 @@ class UserController extends Controller
         $lead->status_task = "open";
         $lead->save();
 
-        return redirect()->back()->with('success', 'Action was successfull');
+        return redirect()->back()->with('success', 'Action was successfull!');
     }
     public function timenow()
     {
