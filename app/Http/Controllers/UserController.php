@@ -6,6 +6,7 @@ use App\Imports\LeadsImport;
 use App\Models\Admins;
 use App\Models\Deletedlead;
 use App\Models\rejectedlead;
+use App\Models\Trainings;
 use App\Models\User;
 use App\Mail\confirmcode;
 use App\Models\appointment;
@@ -25,10 +26,15 @@ use Nexmo;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Http\Middleware\confirmedcode;
+
 
 
 class UserController extends Controller
 {
+    // public function __construct(){
+    //     $this->middleware(confirmedcode::class);
+    // }
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
@@ -56,8 +62,7 @@ class UserController extends Controller
     public function rnlogin()
     {
         if (!Auth::guard('admins')->check()) {
-            $roles = Role::all();
-            return view('login',compact('roles'));
+            return view('login');
         } else {
             return redirect()->route('dashboard');
         }
@@ -148,7 +153,6 @@ class UserController extends Controller
         $leads = lead::find($id);
         return view('deletedlead', compact('leads'));
     }
-    
     public function deletedlead(Request $request, $id)
     {
         $leads = lead::find($id);
@@ -239,21 +243,25 @@ class UserController extends Controller
         $password = filter_var($req->input('password'), FILTER_SANITIZE_STRING);
         if (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password])) {
             $pin = random_int(1000, 9999);
-            $user = Auth::guard('admins')->user();
+            $user = Admins::find(Auth::guard('admins')->user()->id);
             $user->confirmed = 0;
-            $user->pin = $pin;
-            $role = Role::where('name',$req->input('auth'))->get();
-            $rolee = $user->getRoleNames();
-           
-            $user->removeRole($rolee[0]);
-            $user->assignRole($role);
-            //  Nexmo::message()->send([
-            //  'to' => '38345626643',
-            //  'from' => '38345917726',
-            // 'text' => '12345']);
-            $user->save();
-            //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
-            return redirect()->route('dashboard');
+            // if(Admins::find(Auth::guard('admins')->user()->firsttime == 1)){
+
+            //     //return redirect()->route('smsverification');
+
+            // }else{
+                $user->pin = $pin;
+                $role = Role::where("name", $req->input('auth'))->get();
+                $user->assignRole($role);
+                //  Nexmo::message()->send([
+                //  'to' => '38345626643',
+                //  'from' => '38345917726',
+                // 'text' => '12345']);
+                $user->save();
+                //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
+                return redirect()->route('dashboard');
+            //}
+
         } else {
             return redirect()->route('rnlogin');
         }

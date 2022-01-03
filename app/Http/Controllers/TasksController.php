@@ -9,7 +9,6 @@ use App\Models\family;
 use App\Models\lead;
 use App\Models\notification;
 use Carbon\Carbon;
-use Database\Factories\familyFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;

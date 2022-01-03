@@ -13,10 +13,14 @@ class FamilyPersonsController extends Controller
         $cnt = 0;
         $cnt1 = 0;
       
+<<<<<<< HEAD
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('backoffice')){
             if(Auth::guard('admins')->user()->hasRole('fs')){
                 $lead = lead::find($id);
                 if($lead->assign_to_id == Auth::guard('admins')->user()->id){
+=======
+        if (Auth::guard('admins')->user()->hasRole('admin')){
+>>>>>>> c7c3bbe8dc313c2ee71ba4a4b8de02b14a8b05c3
             $tasks = family::where('leads_id', $id)->get();
             //dd($tasks);
             $tasks2 = [];
@@ -28,8 +32,11 @@ class FamilyPersonsController extends Controller
                 }
             }
         }
+<<<<<<< HEAD
         }
         }
+=======
+>>>>>>> c7c3bbe8dc313c2ee71ba4a4b8de02b14a8b05c3
   
         return view('leadfamily_person',compact('tasks2'));
     }
@@ -37,7 +44,11 @@ class FamilyPersonsController extends Controller
     public function getAllFamilyPersonsOfLead($id)
     {
         $familyPersons = FamilyPerson::where('leads_id', $id)->get();
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> c7c3bbe8dc313c2ee71ba4a4b8de02b14a8b05c3
         return $familyPersons;
     }
 
