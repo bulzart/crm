@@ -1,3 +1,5 @@
+
+
 <html>
 <head>
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
@@ -27,7 +29,7 @@
            <div id="area" class="row text-center">
 
            </div>
-       
+
        </form>
 
 
@@ -36,19 +38,19 @@
 
 
     var cnt = document.getElementById('count').value;
-   
+
 var area = document.getElementById('area');
 
 for(var i = 1; i <= cnt; i++){
 
     area.innerHTML  += "<div class='rounded mb-1' id='" + i + "'>" + i + ' Person info ' + '<i class="far fa-plus-square" id="' + i + 'i" onclick="opend(' + i + ');return false;" style="font-size: 25px;"></i>';
-    
+
     var input = document.createElement('input');
     var input1 = document.createElement('input');
     var input2 = document.createElement('input');
     var input3 = document.createElement('i');
     input.style.display = 'none';
-    
+
     input.type = "text";
     input.name = "fname" + i;
     input.placeholder = "First name";
@@ -74,7 +76,7 @@ for(var i = 1; i <= cnt; i++){
     area.appendChild(input2);
     area.appendChild(input3);
     area.innerHTML += '</div>';
- 
+
 }
 area.innerHTML += '<input type="submit" class="btn btn-primary mt-3">';
 function opend(id){

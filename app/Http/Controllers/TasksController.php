@@ -175,10 +175,10 @@ class TasksController extends Controller
       $pendingtasks = family::where('status','submited')->get();
       $opencnt = count($opentasks);
       $pendingcnt = count($pendingtasks);
-     
+
   return view('tasks',compact('opentasks','pendingtasks','opencnt','pendingcnt'));
     }
-    if (Auth::guard('admins')->user()->hasRole('fs')) {
+    if (Auth::guard('admins')->user()->hasRole('fs') ) {
 
       $tasks = lead::where('completed', 0)->get();
       $tasks2 = [];
@@ -188,7 +188,7 @@ class TasksController extends Controller
       $pending = [];
       $opencnt = 0;
       $pendingcnt = 0;
-  
+
       for ($i = 0; $i < count($tasks); $i++) {
           $tasks2[$cntt] = $tasks[$i];
           $cntt++;
@@ -206,7 +206,7 @@ class TasksController extends Controller
           $pendingcnt++;
         }
       }
-    
+
     $cnt = 0;
     $costumers = family::all();
     $todaydate = Carbon::now()->format('m-d');
@@ -225,16 +225,20 @@ class TasksController extends Controller
       }
     }
   }
-    if (Auth::guard('admins')->user()->hasRole('backoffice')) return view('task',compact('opentasks'));
-    if (Auth::guard('admins')->user()->hasRole('fs')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
-  }
+    if (Auth::guard('admins')->user()->hasRole('backoffice')) {
+        return view('task', compact('opentasks'));
+    }
+    if (Auth::guard('admins')->user()->hasRole('fs')) {
+        return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
+    }
+    }
 
 
 
 
   public function documentform(Request $req, $id)
   {
-    
+
   }
 
 
