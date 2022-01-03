@@ -40,12 +40,12 @@ class TodoController extends Controller
     }
     public function todos(){
         if(Auth::guard('admins')->check()){
-        $data['costumers'] = family::all();
-        $role = Admins::whereHas("admin", function($q){ $q->where("name", "admin"); })->get();
-
-        dd($role);
-        $data['consultants'] = Admins::with('admin')->get();
-       
+        $data['costumers'] = family::where('status','open')->get();
+        $role = 'admin';
+        $role = Role::where('name','backoffice')->get();
+        $data['admins'] = Admins::role($role)->get();
+    return $data;
+  
         }
     }
     public function deletetodo(Request $req){
