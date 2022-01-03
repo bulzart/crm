@@ -16,12 +16,12 @@ class LeadDataKk extends Migration
         //
         Schema::create('lead_data_kk',function(Blueprint $table){
             $table->id();
+            $table->integer('leads_id'); //Foreign Key
+            $table->integer('person_id'); //Foreign Key
             $table->string('pre_insurer')->nullable();
             $table->string('id_required')->nullable();
             $table->string('notice_by')->nullable();
-            $table->string('power_of_attorney')->nullable();
-            $table->integer('person_id'); //Foreign Key
-            $table->integer('leads_id'); //Foreign Key
+            $table->text('power_of_attorney')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

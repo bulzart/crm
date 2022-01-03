@@ -19,6 +19,7 @@ use App\Models\family;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\FamilyPersonsController;
+use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 
 use function GuzzleHttp\Promise\task;
@@ -55,6 +56,7 @@ route::prefix('')->group(function(){
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
     route::post('deleteFamilyPerson/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson'])->name('deleteFamilyPerson');
+    route::post('createLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'createLeadDataKK'])->name('createLeadDataKK');
 
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
