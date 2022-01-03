@@ -406,17 +406,12 @@ class UserController extends Controller
     public function dashboard(Request $req)
     {
 
-
-
         $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
 
 
         date_default_timezone_set('Europe/Berlin');
-        $pendingcnt = 0;
-        $opencnt = 0;
-        $done = 0;
-        $pendencies = [];
+       
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
             $pendency = family::where('status', 'Submited')->get();
             
@@ -438,8 +433,12 @@ class UserController extends Controller
 
 
         if (Auth::guard('admins')->check()) {
+            $pendingcnt = 0;
+            $opencnt = 0;
+            $done = 0;
+            $pendencies = [];
 
-            $tasks = lead::all();
+            $tasks = lead::where('completed',0)->get();
             $taskcnt = count($tasks);
 
             for ($i = 0; $i < count($tasks); $i++) {
@@ -463,6 +462,7 @@ class UserController extends Controller
 
             $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
             $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+
             return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies'));
         }
     }
