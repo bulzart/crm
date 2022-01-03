@@ -28865,7 +28865,10 @@ var render = function () {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "mt-4", attrs: { id: "calendarr" } },
+        {
+          staticClass: "mt-4",
+          staticStyle: { height: "250px", "overflow-y": "scroll" },
+        },
         [
           _vm.today == null
             ? _c("div", { staticClass: "text-center" }, [

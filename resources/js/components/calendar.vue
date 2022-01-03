@@ -63,7 +63,7 @@
                 </div>
               </div>
 
-            <div class="mt-4" id="calendarr">
+            <div class="mt-4" style="height: 250px; overflow-y: scroll;" >
               <div class="text-center" v-if="today == null">No appointments for today</div>
             <div v-if="today != null" v-for="tod in today" class="mb-2 text-white" style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: pointer;" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
                 <div class="modal fade" :id="tod.slug" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

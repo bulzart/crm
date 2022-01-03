@@ -39,10 +39,8 @@
         background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='18' ry='18' stroke='black' stroke-width='1' stroke-dasharray='7%2c 11' stroke-dashoffset='63' stroke-linecap='square'/%3e%3c/svg%3e");
         border-radius: 18px;
     }
-    #calendarr{
-        height: 300px;
-        overflow-y: scroll;
-    }
+
+
 </style>
 
 <body>
