@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>
@@ -193,7 +193,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>
@@ -249,7 +249,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>

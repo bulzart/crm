@@ -405,10 +405,6 @@ class UserController extends Controller
 
     public function dashboard(Request $req)
     {
-<<<<<<< HEAD
-=======
-
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
         $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
         date_default_timezone_set('Europe/Berlin');

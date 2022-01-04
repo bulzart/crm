@@ -10,14 +10,7 @@
             </div>
             <br>
             <div class="collapse" id="first_collapse">
-<<<<<<< HEAD
-                <span>Open pendencies</span>
-
                 @foreach($realopen as $task)
-
-=======
-                @foreach($realopen as $task)
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
                     <a  href="{{route('leadfamily',$task->id)}}">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
@@ -38,14 +31,7 @@
             </div>
             <br>
             <div class="collapse" id="collapse__">
-<<<<<<< HEAD
-
-
                 @foreach($pending as $task)
-
-=======
-                @foreach($pending as $task)
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
                     <a href="{{route('leadfamily',$task->id)}}">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
@@ -57,13 +43,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-    @if(!Auth::guard('admins')->user()->hasRole('backoffice'))
-
-
-=======
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
     <div class="col-md-4 col-12 mb-3">
         <div style="border-radius: 25px; padding: 5%;">
             <p class="text-center">Costumer birthdays today:</p>
@@ -79,12 +58,6 @@
             @endforeach
         </div>
     </div>
-<<<<<<< HEAD
-
-    @endif
-
-=======
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
 </div>
 
 @endsection
