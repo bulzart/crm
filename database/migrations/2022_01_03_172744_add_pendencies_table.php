@@ -17,6 +17,7 @@ class AddPendenciesTable extends Migration
             $table->id();
             $table->integer('admin_id')->nullable();
             $table->integer('family_id')->nullable();
+            $table->string('description')->nullable();
             $table->boolean('done')->default(0);
             $table->timestamps();
         });
