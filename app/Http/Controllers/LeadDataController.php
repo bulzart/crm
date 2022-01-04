@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\FolderPaths;
+use App\Models\family;
 use App\Models\LeadDataCounteroffered;
 use App\Models\LeadDataFahrzeug;
 use App\Models\LeadDataKK;
@@ -93,6 +94,10 @@ class LeadDataController extends Controller
             'society' => $request->society,
             'n_of_p_legal_protection' => $request->n_of_p_legal_protection,
         ]);
+
+        $family = family::where('id', $personId)->first();
+        $status = ['status' => 'Submited'];
+        $family->update($status);
     }
 
     public function updateLeadDataKK($leadId, $personId, Request $request)
