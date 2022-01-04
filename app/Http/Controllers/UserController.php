@@ -92,7 +92,6 @@ class UserController extends Controller
             'address' => 'required',
             'postal' => 'required',
             'location' => 'required',
-
             'count' => 'min:1',
             'apptime' => 'required',
             'appbirthdate' => 'required'
@@ -252,8 +251,8 @@ class UserController extends Controller
 
             // }else{
                 $user->pin = $pin;
-                $role = Role::where("name", $req->input('auth'))->get();
-                $user->assignRole($role);
+//                $role = Role::where("name", $req->input('auth'))->get();
+//                $user->assignRole($role);
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
                 //  'from' => '38345917726',
@@ -405,14 +404,10 @@ class UserController extends Controller
 
     public function dashboard(Request $req)
     {
-<<<<<<< HEAD
-=======
-
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
         $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
         date_default_timezone_set('Europe/Berlin');
-       
+
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
             $pendency = family::where('status', 'Submited')->get();
 

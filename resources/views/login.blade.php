@@ -69,19 +69,13 @@
               <i onclick="showpw();return false;" class="far fa-eye mt-3 mx-1" style="cursor:pointer;" id="show"></i>
             </span>
           </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
           <select class="form-control" name="auth">
             @foreach($roles as $role)
             <option value="{{$role->name}}">{{$role->name}}</option>
              @endforeach
           </select>
-<<<<<<< HEAD
 
-=======
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
           <div class="pt-2">
             <button type="submit" class="py-2 w-100 border-0 fw-bold btn_anmelden__">
               Anmelden

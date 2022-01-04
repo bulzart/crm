@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 
-
-<html>
-=======
 <!doctype html>
 <html lang="en">
 
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,7 +15,7 @@
     <title>Appointments</title>
 </head>
 
-<<<<<<< HEAD
+
 <input type="hidden" value="{{$app->number_of_persons}}" id="count" name="count">
 <div class="container justify-content-center d-flex" style="background-color:#66c196;">
 
@@ -102,7 +97,7 @@ document.getElementById(id + 'ch').style.display = 'none';
 }
 
 </script>
-=======
+
 <body>
 
     <section>
@@ -240,7 +235,7 @@ document.getElementById(id + 'ch').style.display = 'none';
                                                     </div>
                                                     <div class="col">
                                                         <input type="text" id="inputTxt4" class="form-control"
-                                                            aria-describedby="passwordHelpInline" name="fname1"> 
+                                                            aria-describedby="passwordHelpInline" name="fname1">
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 align-items-center m-1">
@@ -278,18 +273,18 @@ document.getElementById(id + 'ch').style.display = 'none';
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                 
-                                 
+
+
+
                                 </div>
                                 <div class="text-center">
                                 <input type="submit" class="btn btn-success text-center mt-2 col-10 py-2" style="border-radius: 35px;">
                             </div>
-                          
+
                         </div>
-                        
+
                     </div>
-              
+
                     </form>
                 </div>
             </section>
@@ -424,7 +419,7 @@ document.getElementById(id + 'ch').style.display = 'none';
 '                                        <h2 class="accordion-header" id="flush-headingTwo">' +
 '                                            <button class="accordion-button collapsed d-btnn" type="button"' +
 '                                                data-bs-toggle="collapse" data-bs-target="#flush-collapse' + i + '"' +
-'                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' + 
+'                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' +
 '                                                Person' + i + ' erfassen' +
 '                                            </button>' +
 '                                        </h2>' +
@@ -436,7 +431,7 @@ document.getElementById(id + 'ch').style.display = 'none';
 '                                                        <label for="inputTxt4" class="col-form-label">Vorname:</label>' +
 '                                                    </div>' +
 '                                                    <div class="col">' +
-'                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +   
+'                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +
 '                                                           aria-describedby="passwordHelpInline">' +
 '                                                    </div>' +
 '                                                </div>' +
@@ -479,6 +474,4 @@ document.getElementById(id + 'ch').style.display = 'none';
             }
             </script>
 </body>
->>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
-
 </html>
