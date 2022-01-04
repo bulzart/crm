@@ -153,8 +153,7 @@ document.getElementById(id + 'ch').style.display = 'none';
         <div class="col">
             <section>
                 <div class="container">
-                    <form action="{{route('completeapp',$app->id)}}" method="post">
-                        @csrf
+                   
                     <div class="accepted-section row">
                         <div
                             class="header-section-name text-center col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 g-0 my-auto">
@@ -215,9 +214,12 @@ document.getElementById(id + 'ch').style.display = 'none';
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
                             <div class="border-left-div">
                                 <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
+                                <form action="{{route('completeapp',$app->id)}}" method="post">
+                        @csrf
                                     <div class="accordion-item my-1">
                                         <h2 class="accordion-header" id="flush-headingOne">
                                             <button class="accordion-button collapsed" type="button"

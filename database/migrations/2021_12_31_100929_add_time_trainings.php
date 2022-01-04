@@ -26,7 +26,7 @@ class AddTimeTrainings extends Migration
     public function down()
     {
         Schema::table('trainings', function (Blueprint $table) {
-            //
+        $table->dropColumn('time');
         });
     }
 }

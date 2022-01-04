@@ -1,5 +1,5 @@
 <template>
-<div class="row d-flex justify-content-center">
+<div class="row">
        
         <div class="card-hover-shadow-2x mb-3 card col-6 col-md-6">
             <div class="card-header-tab card-header mb-2">
@@ -69,7 +69,7 @@ export default {
     mounted(){
 this.fetchnumbers();
 this.fetchtasks();
-
+this.defaultvalue();
     },
 
 
@@ -95,11 +95,15 @@ this.costumer = parseInt(event.target.value);
       );
       val.value = "";
       },
+      defaultvalue:function(){
+          console.log(this.todos.admins[0].id);
+          this.admin = this.todos.admins[0].id;
+          this.costumer = this.todos.costumers[0].id;
+      },
       assignpendency:function(){
 axios.get('assignpendency/' + this.admin + '/' + this.costumer);
 document.getElementById('alrt').innerHTML = "";
 document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert" id="alrt"> Pendency was assigned successfully</div>' ;
-
       },
       fetchnumbers(){
           axios.get('numbers').then((response) => { this.numbers = response.data;});
