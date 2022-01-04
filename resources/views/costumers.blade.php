@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-12 text-center" style="background: #f7f7f7;">
 
-    <form action="{{route('costumers')}}">
+    <form action="{{route('search')}}">
         <input class="form-control" type="text" name="searchname" placeholder="Search...">
         <div class="d-inline">
         <input type="date" name="searchdate1">

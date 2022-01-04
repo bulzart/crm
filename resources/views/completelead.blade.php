@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -13,6 +14,89 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Appointments</title>
 </head>
+
+
+<input type="hidden" value="{{$app->number_of_persons}}" id="count" name="count">
+<div class="container justify-content-center d-flex" style="background-color:#66c196;">
+
+   <br>
+       <form action="{{route('completeapp',$app->id)}}" method="post">
+
+           @csrf
+           <div class="text-center">
+         <h4 class="text-light">{{$app->name}}</h4><h6 class="text-light">{{$app->address}}</h6>
+         <i class="fas fa-map-marker-alt" style="font-size: 25px; color: white;"></i>
+</div>
+           <div id="area" class="row text-center">
+
+           </div>
+
+       </form>
+
+
+</div>
+<script type="text/javascript">
+
+
+    var cnt = document.getElementById('count').value;
+
+var area = document.getElementById('area');
+
+for(var i = 1; i <= cnt; i++){
+
+    area.innerHTML  += "<div class='rounded mb-1' id='" + i + "'>" + i + ' Person info ' + '<i class="far fa-plus-square" id="' + i + 'i" onclick="opend(' + i + ');return false;" style="font-size: 25px;"></i>';
+
+    var input = document.createElement('input');
+    var input1 = document.createElement('input');
+    var input2 = document.createElement('input');
+    var input3 = document.createElement('i');
+    input.style.display = 'none';
+
+    input.type = "text";
+    input.name = "fname" + i;
+    input.placeholder = "First name";
+    input.className = "form-control col-md-12 text-center";
+    input.id = i + 'f';
+    input1.style.display = 'none';
+    input1.type = "text";
+    input1.id = i + 'l';
+    input1.placeholder = 'Last name';
+    input1.name = "lname" + i;
+    input1.className = "form-control col-md-12 text-center";
+    input2.style.display = 'none';
+    input2.type = "date";
+    input2.id = i + 'd';
+    input2.name = "birthday" + i;
+    input2.className = "form-control col-md-12 text-center";
+    input3.className = 'fas fa-check-circle text-center mt-2';
+    input3.style.fontSize = '23px';
+    input3.id = i + 'ch';
+    input3.style.display = 'none';
+    area.appendChild(input);
+    area.appendChild(input1);
+    area.appendChild(input2);
+    area.appendChild(input3);
+    area.innerHTML += '</div>';
+
+}
+area.innerHTML += '<input type="submit" class="btn btn-primary mt-3">';
+function opend(id){
+ if(document.getElementById(id + 'l').style.display == 'none'){
+document.getElementById(id + 'l').style.display = 'block';
+document.getElementById(id + 'f').style.display = 'block';
+document.getElementById(id + 'd').style.display = 'block';
+document.getElementById(id + 'ch').style.display = 'block';
+}
+else{
+    document.getElementById(id + 'l').style.display = 'none';
+document.getElementById(id + 'f').style.display = 'none';
+document.getElementById(id + 'd').style.display = 'none';
+document.getElementById(id + 'ch').style.display = 'none';
+
+}
+}
+
+</script>
 
 <body>
 
@@ -153,7 +237,7 @@
                                                     </div>
                                                     <div class="col">
                                                         <input type="text" id="inputTxt4" class="form-control"
-                                                            aria-describedby="passwordHelpInline" name="fname1"> 
+                                                            aria-describedby="passwordHelpInline" name="fname1">
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 align-items-center m-1">
@@ -191,18 +275,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                 
-                                 
+
+
+
                                 </div>
                                 <div class="text-center">
                                 <input type="submit" class="btn btn-success text-center mt-2 col-10 py-2" style="border-radius: 35px;">
                             </div>
-                          
+
                         </div>
-                        
+
                     </div>
-              
+
                     </form>
                 </div>
             </section>
@@ -337,7 +421,7 @@
 '                                        <h2 class="accordion-header" id="flush-headingTwo">' +
 '                                            <button class="accordion-button collapsed d-btnn" type="button"' +
 '                                                data-bs-toggle="collapse" data-bs-target="#flush-collapse' + i + '"' +
-'                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' + 
+'                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' +
 '                                                Person' + i + ' erfassen' +
 '                                            </button>' +
 '                                        </h2>' +
@@ -349,7 +433,7 @@
 '                                                        <label for="inputTxt4" class="col-form-label">Vorname:</label>' +
 '                                                    </div>' +
 '                                                    <div class="col">' +
-'                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +   
+'                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +
 '                                                           aria-describedby="passwordHelpInline">' +
 '                                                    </div>' +
 '                                                </div>' +
@@ -392,5 +476,4 @@
             }
             </script>
 </body>
-
 </html>
