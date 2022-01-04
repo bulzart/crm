@@ -5638,6 +5638,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.fetchnumbers();
     this.fetchtasks();
+    this.defaultvalue();
   },
   data: function data() {
     return {
@@ -5658,6 +5659,11 @@ __webpack_require__.r(__webpack_exports__);
       var val = document.getElementById('number');
       axios.get('addnumber?number=' + val.value).then(this.fetchnumbers);
       val.value = "";
+    },
+    defaultvalue: function defaultvalue() {
+      console.log(this.todos.admins[0].id);
+      this.admin = this.todos.admins[0].id;
+      this.costumer = this.todos.costumers[0].id;
     },
     assignpendency: function assignpendency() {
       axios.get('assignpendency/' + this.admin + '/' + this.costumer);
@@ -29489,7 +29495,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row d-flex justify-content-center" }, [
+  return _c("div", { staticClass: "row" }, [
     _c(
       "div",
       { staticClass: "card-hover-shadow-2x mb-3 card col-6 col-md-6" },

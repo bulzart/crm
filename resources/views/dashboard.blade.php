@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="assets/css/style.css">
 
         <title>Dashboard</title>
+
     </head>
     <style>
         .dateee {
@@ -302,6 +303,7 @@
                             <calendar></calendar>
                         </div>
                     </div>
+                   
                     <div class="col-12 col-md-12 col-lg-5 col-xl-5">
                         <div class="my-1">
                             <div class="row">
@@ -447,10 +449,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-6 col-sm-4 col-md-3 col-lg-6 col-xl-4 g-0">
-                                    <div class="text-center box-1"
+                                <div class="col-6 col-sm-4 col-md-3 col-lg-6 col-xl-4 g-0 ">
+                                    <div class="text-center box-1 "
                                          style="margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                        <div class="py-4">
+                                        <div class="py-4 ">
                                             <div class="py-2">
                                                 <svg id="Group_549" data-name="Group 549"
                                                      xmlns="http://www.w3.org/2000/svg" width="29.713"
@@ -487,12 +489,17 @@
             </div>
         </div>
     </section>
-    @endif
+@else
+<div class="row" id="app">
+    <todo></todo>
+</div>
+@endif
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous">
     </script>
+
     </body>
 
     </html>

@@ -48,10 +48,10 @@ route::prefix('')->group(function(){
       $data = \App\Models\lead::find($id);
       $data = $data->family;
 
-   
+
       return view('leadfamily',compact('data'));
    })->name('leadfamily');
-    
+
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
@@ -75,6 +75,7 @@ route::prefix('')->group(function(){
         $data = \App\Models\family::all();
        return view('costumers',compact('data'));
    })->name('costumers');
+   route::get('search',[TasksController::class,'costumers'])->name('search');
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
@@ -102,10 +103,12 @@ route::get('assignpendency/{admin}/{id}',[TasksController::class,'assignpendency
    route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
    route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
    route::get('add',[TasksController::class,'adddata']);
-// route::get('permission', function(){
-//    $user = Admins::find(1);
-//   return $user->getRoleNames();
-// });
+route::get('permission', function(){
+   $role = Role::find(2);
+   $user = Admins::find(2);
+   $user->assignRole($role);
+  return $user->getRoleNames();
+});
 route::get('status',[StatusController::class,'status']);
 
 

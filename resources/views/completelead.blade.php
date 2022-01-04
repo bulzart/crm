@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -69,8 +70,7 @@
         <div class="col">
             <section>
                 <div class="container">
-                    <form action="{{route('completeapp',$app->id)}}" method="post">
-                        @csrf
+                   
                     <div class="accepted-section row">
                         <div
                             class="header-section-name text-center col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 g-0 my-auto">
@@ -131,9 +131,12 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
                             <div class="border-left-div">
                                 <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
+                                <form action="{{route('completeapp',$app->id)}}" method="post">
+                        @csrf
                                     <div class="accordion-item my-1">
                                         <h2 class="accordion-header" id="flush-headingOne">
                                             <button class="accordion-button collapsed" type="button"
@@ -151,7 +154,7 @@
                                                     </div>
                                                     <div class="col">
                                                         <input type="text" id="inputTxt4" class="form-control"
-                                                            aria-describedby="passwordHelpInline" name="fname1"> 
+                                                            aria-describedby="passwordHelpInline" name="fname1">
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 align-items-center m-1">
@@ -189,18 +192,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                 
-                                 
+
+
+
                                 </div>
                                 <div class="text-center">
                                 <input type="submit" class="btn btn-success text-center mt-2 col-10 py-2" style="border-radius: 35px;">
                             </div>
-                          
+
                         </div>
-                        
+
                     </div>
-              
+
                     </form>
                 </div>
             </section>
@@ -335,7 +338,7 @@
 '                                        <h2 class="accordion-header" id="flush-headingTwo">' +
 '                                            <button class="accordion-button collapsed d-btnn" type="button"' +
 '                                                data-bs-toggle="collapse" data-bs-target="#flush-collapse' + i + '"' +
-'                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' + 
+'                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' +
 '                                                Person' + i + ' erfassen' +
 '                                            </button>' +
 '                                        </h2>' +
@@ -347,7 +350,7 @@
 '                                                        <label for="inputTxt4" class="col-form-label">Vorname:</label>' +
 '                                                    </div>' +
 '                                                    <div class="col">' +
-'                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +   
+'                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +
 '                                                           aria-describedby="passwordHelpInline">' +
 '                                                    </div>' +
 '                                                </div>' +
@@ -390,5 +393,4 @@
             }
             </script>
 </body>
-
 </html>

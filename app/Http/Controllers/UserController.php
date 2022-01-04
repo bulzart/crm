@@ -38,7 +38,7 @@ class UserController extends Controller
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
-        return 'null';
+    
     }
     public function acceptapp($id)
     {
@@ -92,7 +92,6 @@ class UserController extends Controller
             'address' => 'required',
             'postal' => 'required',
             'location' => 'required',
-
             'count' => 'min:1',
             'apptime' => 'required',
             'appbirthdate' => 'required'
@@ -246,14 +245,15 @@ class UserController extends Controller
             $pin = random_int(1000, 9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
             $user->confirmed = 0;
-            // if(Admins::find(Auth::guard('admins')->user()->firsttime == 1)){
-
-            //     //return redirect()->route('smsverification');
-
-            // }else{
+          
                 $user->pin = $pin;
-                $role = Role::where("name", $req->input('auth'))->get();
+
+                
+                $role = Role::where('name',$req->input('auth'))->get();
+                $rolee = $user->getRoleNames();
+                $user->removeRole($rolee[0]);
                 $user->assignRole($role);
+
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
                 //  'from' => '38345917726',
@@ -261,7 +261,7 @@ class UserController extends Controller
                 $user->save();
                 //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
                 return redirect()->route('dashboard');
-            //}
+         
 
         } else {
             return redirect()->route('rnlogin');
@@ -293,13 +293,10 @@ class UserController extends Controller
             $perdoruesi->confirmed = 0;
             $perdoruesi->save();
             Auth::guard('admins')->logout();
+            
         }
+        
         return redirect()->route('rnlogin');
-
-
-
-
-        return redirect()->route('home');
     }
     public function adduser()
     {
@@ -310,14 +307,7 @@ class UserController extends Controller
         $user->role = 'sm';
         $user->save();
     }
-    public function isdone($object): bool
-    {
-
-        if ($object['job'] != null && $object['email'] != null && $object['lenker'] != null && $object['lenker'] != '' && $object['comment'] != null && $object['comment'] != '' && $object['kmstand'] != null && $object['kmstand'] != "" && $object['society'] != null && $object['socity'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['insurance'] != null && $object['insurance'] != '' && $object['carcomment'] != null && $object['carcomment'] != '' && $object['preinsurer'] != null && $object['preinsurer'] != '' && $object['idnecessary'] != null && $object['idnecessary'] != '' && $object['leasingname'] != null && $object['leasingname'] != '' && $object['nationality'] != null && $object['nationality'] != '' && $object['nationality'] != '' && $object['nationality'] != null && $object['uploadpolice'] != null && $object['uploadpolice'] != '' && $object['yearpurchase'] != null && $object['yearpurchase'] != '' && $object['thingscarried'] != null && $object['thingscarried'] != '' && $object['startinsurance'] != null && $object['startinsurance'] != '' && $object['commentatpolice'] != null && $object['commentatpolice'] != '' && $object['powerofattorney'] != null && $object['powerofattorney'] != '' && $object['insuranceamount'] != null && $object['insuranceamount'] != '' && $object['residencepermit'] != null && $object['residencepermit'] != '' && $object['uploadvehicleid'] != null && $object['uploadvehicleid'] != '' && $object['contractstartdate'] != null && $object['contractstartdate'] != '' && $object['firstcommissioning'] != null && $object['firstcommissioning'] != '' &&  $object['nationalityfinance'] != null && $object['nationalityfinance'] != '' && $object['wishedadditionalthings'] != null && $object['wishedadditionalthings'] != '' && $object['dateofissueofdriverslicense'] != null && $object['dateofissueofdriverslicense'] != '' && $object['whichcompaniesshouldmakeanoffer'] != null && $object['whichcompaniesshouldmakeanoffer'] != '') {
-            return true;
-        }
-        return false;
-    }
+   
     public function completeapp(Request $req, $id)
     {
         $lead = lead::find($id);
@@ -408,7 +398,7 @@ class UserController extends Controller
         $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
         date_default_timezone_set('Europe/Berlin');
-       
+
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
             $pendency = family::where('status', 'Submited')->get();
 
