@@ -10,19 +10,23 @@
                         <h2 class="accordion-header" id="flush-headingFivve">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseFivve" aria-expanded="false" aria-controls="flush-collapseFivve">
-                                Person 1 erfassen
+                                {{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}
                             </button>
                         </h2>
                         <div id="flush-collapseFivve" class="accordion-collapse collapse show" aria-labelledby="flush-headingFivve"
                              data-bs-parent="#accordionFlushExample">
+                            <form method="POST" action="{{route('updateleadfamilyperson',$task->id)}}">
+                                @csrf
                             <div class="accordion-body p-0 mx-2 py-2">
+
                                 <div class="row g-3 align-items-center m-1">
+
                                     <div class="col-4">
                                         <label for="inputTxt4" class="col-form-label">Vorname:</label>
                                     </div>
                                     <div class="col">
                                         <input type="text" id="inputTxt4" class="form-control"
-                                               aria-describedby="passwordHelpInline">
+                                               aria-describedby="passwordHelpInline" name="familyfirstname" value="{{$task->first_name}}">
                                     </div>
                                 </div>
                                 <div class="row g-3 align-items-center m-1">
@@ -31,32 +35,14 @@
                                     </div>
                                     <div class="col">
                                         <input type="text" id="inputTxt5" class="form-control"
-                                               aria-describedby="passwordHelpInline">
-                                    </div>
-                                </div>
-                                <div class="row g-3 align-items-center m-1">
-                                    <div class="col-4">
-                                        <label for="inputTxt6" class="col-form-label">Geburtstag:</label>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" id="inputTxt6" class="form-control"
-                                               aria-describedby="passwordHelpInline">
+                                               aria-describedby="passwordHelpInline" name="familylastname" value="{{$task->last_name}}">
                                     </div>
                                 </div>
                                 <div class="text-end">
-                                    <button class="accept-btn m-2 py-1 px-5 collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#flush-collapseFivve" aria-expanded="false"
-                                            aria-controls="flush-collapseFivve">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="23.232" height="23.805"
-                                             viewBox="0 0 46.232 33.805">
-                                            <path id="Path_277" data-name="Path 277"
-                                                  d="M8370.12,999.407l15.7,15.954,7.778-8.812,19.931-22.581"
-                                                  transform="translate(-8368.706 -982.557)" fill="none" stroke="currentColor"
-                                                  stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-                                        </svg>
-                                    </button>
+                                    <input type="submit" value="Edit" class="btn-info">
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

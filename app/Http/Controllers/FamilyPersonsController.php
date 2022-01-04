@@ -34,30 +34,26 @@ class FamilyPersonsController extends Controller
 
 
 
-        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
-            if(Auth::guard('admins')->user()->hasRole('fs')){
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')) {
+            if (Auth::guard('admins')->user()->hasRole('fs')) {
 
-            $tasks = family::where('leads_id', $id)->get();
-            //dd($tasks);
-            $tasks2 = [];
-            $cntt= 0;
-            for ($i = 0; $i< count($tasks);$i++){
-                if ($tasks[$i]->lead->assign_to_id == Auth::guard('admins')->user()->id){
-                    $tasks2[$cntt] = $tasks[$i];
-                    $cntt++;
+                $tasks = family::where('leads_id', $id)->get();
+                //dd($tasks);
+                $tasks2 = [];
+                $cntt = 0;
+                for ($i = 0; $i < count($tasks); $i++) {
+                    if ($tasks[$i]->lead->assign_to_id == Auth::guard('admins')->user()->id) {
+                        $tasks2[$cntt] = $tasks[$i];
+                        $cntt++;
+                    }
+
+                    return view('documentsform', compact('tasks2'));
                 }
-            
-            return view('documentsform',compact('tasks2'));
+
+            } else {
+                return redirect()->back();
+            }
         }
-
-        }
-
-        else{
-            return redirect()->back();
-        } 
-  
-    
-
     }
 
     public function getAllFamilyPersonsOfLead($id)
@@ -74,7 +70,12 @@ class FamilyPersonsController extends Controller
     }
 
     public function deleteFamilyPerson($id, $leadId)
-    {
-        $updatedPerson = family::where('id', $id)->where('leads_id', $leadId)->delete();
+        {
+            $updatedPerson = family::where('id', $id)->where('leads_id', $leadId)->delete();
+        }
+
+    public function updateleadfamilyperson( Request $request, $id){
+        family::where('id',$id)->update(['first_name'=>$request->familyfirstname,'last_name'=>$request->familylastname]);
+        return redirect()->back()->with('success','Update successfuly');
     }
 }
