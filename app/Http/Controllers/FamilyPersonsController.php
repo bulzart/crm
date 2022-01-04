@@ -13,10 +13,29 @@ class FamilyPersonsController extends Controller
     public function family_persons($id){
         $cnt = 0;
         $cnt1 = 0;
-      
+
+
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
             if(Auth::guard('admins')->user()->hasRole('fs')){
-         
+
+                $tasks = family::where('leads_id', $id)->get();
+                //dd($tasks);
+                $tasks2 = [];
+                $cntt= 0;
+                for ($i = 0; $i< count($tasks);$i++){
+                    if ($tasks[$i]->lead->assign_to_id == Auth::guard('admins')->user()->id){
+                        $tasks2[$cntt] = $tasks[$i];
+                        $cntt++;
+                    }
+                }
+            }
+        }
+
+
+
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
+            if(Auth::guard('admins')->user()->hasRole('fs')){
+
             $tasks = family::where('leads_id', $id)->get();
             //dd($tasks);
             $tasks2 = [];
@@ -29,7 +48,8 @@ class FamilyPersonsController extends Controller
             }
         }
         }
-  
+
+
         return view('leadfamily_person',compact('tasks2'));
     }
 
@@ -42,7 +62,7 @@ class FamilyPersonsController extends Controller
     public function updateFamilyPerson($id, Request $request)
     {
         $updatedPerson = family::where('id', $id)->update($request->all());
-    
+
         return redirect()->back()->with('message', 'Family person was updated');
     }
 

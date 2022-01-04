@@ -381,7 +381,7 @@ class UserController extends Controller
             'image' => 'required'
         ]);
         $leads_id = $request->leadsid;
-        lead::where('id', $leads_id)->update(['admin_id' => 0, 'assigned' => 0]);
+        lead::where('id', $leads_id)->update(['assign_to_id' => 0, 'assigned' => 0]);
 
 
 
@@ -397,35 +397,36 @@ class UserController extends Controller
         if ($rejectedlead->save()) {
             $img = Image::make($request->file('image'));
             $img->save('img/' . $request->file('image')->getClientOriginalName());
-            return redirect()->back()->with('success', 'Action was done successfully');
+            return redirect()->route('dashboard')->with('success', 'Action was done successfully');
         } else {
-            return redirect()->back()->with('fail', 'Action failed');
+            return redirect()->route('dashboard')->with('fail', 'Action failed');
         }
     }
 
     public function dashboard(Request $req)
     {
+<<<<<<< HEAD
+=======
 
+>>>>>>> e82e8fcd3ed9c4e42186bfcbdd31ca52985d2e0e
         $getmonth = isset($req->getmonth) ? $req->getmonth : "";
-
-
 
         date_default_timezone_set('Europe/Berlin');
        
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
             $pendency = family::where('status', 'Submited')->get();
-            
+
             for($i = 0; $i < count($pendency);$i++){
                 $pendencies[$i]['name'] = $pendency[$i]['first_name'] . $pendency[$i]['last_name'];
                 $pendencies[$i]['datas'] = $pendency[$i]->datas;
                 $pendencies[$i]['datak'] = $pendency[$i]->datak;
                 $pendencies[$i]['counter'] = $pendency[$i]->datacounter;
                 $pendencies[$i]['datasw'] = $pendency[$i]->datasw;
-               //$pendencies[$i]['datafah'] = $pendencies[$i]->datafah; 
+               //$pendencies[$i]['datafah'] = $pendencies[$i]->datafah;
             }
             $morethan30 = '';
             $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-           
+
             return view('dashboard', compact('pendencies','morethan30'));
         }
 
@@ -452,7 +453,7 @@ class UserController extends Controller
                 if ($tasks[$i]->status_task == 'Done') {
                     $done++;
                 }
-            } 
+            }
 
 
             $percnt = 0;
