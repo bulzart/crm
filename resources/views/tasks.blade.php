@@ -1,5 +1,6 @@
 @extends('template.navbar')
 @section('content')
+@if(Auth::guard('admins')->user()->hasRole('fs'))
 <div class="row justify-content-center">
     <div class="col-md-4 col-12 mb-3">
         <div style="background: #f7f7f7; border-radius: 25px; padding: 5%;">
@@ -59,7 +60,33 @@
         </div>
     </div>
 </div>
+@endif
+@if(Auth::guard('admins')->user()->hasRole('backoffice'))
+<div class="row justify-content-center">
+    <div class="col-md-6 col-12 mb-3">
+        <div style="background: #ffebe5; border-radius: 25px; padding: 5%;">
+            <div class="row">
+                <div class="col-12" style="cursor: pointer;" id="Pending__" >
+                    <span>Answered <span class="text-danger">{{count($answered)}}</span> <i id="Pending_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
+                </div>
+            </div>
+            <br>
+            <div class="collapse" id="collapse__">
+                @foreach($answered as $task)
+                    <a href="{{route('leadfamily',$task->id)}}">
+                        <div class="p-1" style="background: white; border-radius: 12px;">
+                            <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
 
+                        </div>
+                    </a>
+                    <br>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+</div>
+@endif
 @endsection
 
 

@@ -15,8 +15,6 @@ class FamilyPersonsController extends Controller
         $cnt1 = 0;
       
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
-            if(Auth::guard('admins')->user()->hasRole('fs')){
-         
             $tasks = family::where('leads_id', $id)->get();
             //dd($tasks);
             $tasks2 = [];
@@ -26,16 +24,21 @@ class FamilyPersonsController extends Controller
                     $tasks2[$cntt] = $tasks[$i];
                     $cntt++;
                 }
-            }
+            
+            return view('documentsform',compact('tasks2'));
         }
+
         }
+        else{
+            return redirect()->back();
+        } 
   
-        return view('leadfamily_person',compact('tasks2'));
+    
     }
 
     public function getAllFamilyPersonsOfLead($id)
     {
-        $familyPersons = FamilyPerson::where('leads_id', $id)->get();
+        $familyPersons = family::where('leads_id', $id)->get();
         return $familyPersons;
     }
 

@@ -8,6 +8,7 @@ use App\Models\appointment;
 use App\Models\family;
 use App\Models\lead;
 use App\Models\notification;
+use App\Models\Pendency;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,11 +19,12 @@ use Spatie\Permission\Models\Permission;
 
 class TasksController extends Controller
 {
-public function assignpendency($admin,$id){
-   $costumer = family::where('id',$id)->update(['status' => 'Open']);
-   $lead = lead::find(family::find($id)->lead->id);
-   $lead->assign_to_id = $admin;
-   $lead->save();
+public function assignpendency($admin,$id):bool{
+  $pendency = new Pendency();
+  $pendency->admin_id = (int) $admin;
+  $pendency->family_id = (int) $id;
+  $pendency->save();
+  return true;
 }
   public function accepttask($id)
   {
@@ -39,7 +41,7 @@ public function assignpendency($admin,$id){
     $some_date = Carbon::now()->format('H:i');
     $now = (int) str_replace(':', '', $some_date);
 
-
+     
     $admin = Auth::guard('admins')->user();
     $today = Carbon::now()->format("Y-m-d");
     if ($req->date != null) {
@@ -59,11 +61,10 @@ public function assignpendency($admin,$id){
         }
       }
       if ($admin->hasRole('fs')) {
+ 
         if ($now > 2300) {
           $data = lead::where('assign_to_id', $admin->id)->where('wantsonline', 0)->where('appointment_date', Carbon::now()->addDays()->toDateString())->get();
         } else {
-
-
           $data = lead::where('assign_to_id', $admin->id)->where('wantsonline', 0)->where('appointment_date', Carbon::now()->toDateString())->get();
         }
       }
@@ -176,12 +177,16 @@ public function assignpendency($admin,$id){
     $cnt = 0;
     $cnt1 = 0;
     if (Auth::guard('admins')->user()->hasRole('backoffice')) {
-      $opentasks = family::where('status','open')->get();
-      $pendingtasks = family::where('status','submited')->get();
-      $opencnt = count($opentasks);
-      $pendingcnt = count($pendingtasks);
+     $pend = Pendency::where('done',1)->get();
+     $answered = [];
      
-  return view('tasks',compact('opentasks','pendingtasks','opencnt','pendingcnt'));
+  
+       foreach($pend as $p){
+         $answered[$cnt] = $p->family;
+          $cnt++;
+       }
+    
+  return view('tasks',compact('answered'));
     }
     if (Auth::guard('admins')->user()->hasRole('fs')) {
 

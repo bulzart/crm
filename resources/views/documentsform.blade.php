@@ -1431,8 +1431,7 @@
 </div>
 
 
-                <input type="submit" class="mt-3 btn btn-primary" value="Save">
-        </form>
+      
     </div>
     </div>
     <script>

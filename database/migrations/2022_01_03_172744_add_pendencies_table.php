@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTimeTrainings extends Migration
+class AddPendenciesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddTimeTrainings extends Migration
      */
     public function up()
     {
-        Schema::table('trainings', function (Blueprint $table) {
-               $table->time('time')->useCurrent();
+        Schema::create('pendencies', function (Blueprint $table) {
+            $table->id();
+            $table->integer('admin_id')->nullable();
+            $table->integer('family_id')->nullable();
+            $table->boolean('done')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddTimeTrainings extends Migration
      */
     public function down()
     {
-        Schema::table('trainings', function (Blueprint $table) {
-        $table->dropColumn('time');
-        });
+        Schema::dropIfExists('pendencies');
     }
 }
