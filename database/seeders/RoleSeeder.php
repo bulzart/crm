@@ -15,8 +15,8 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $roles = [
-            1 => 'consultant',
-            2 => 'back Office',
+            1 => 'fs',
+            2 => 'backoffice',
             3 => 'team Leader',
             4 => 'sales Manager',
             5 => 'management',

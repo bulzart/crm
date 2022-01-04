@@ -14,6 +14,7 @@ class FamilyPersonsController extends Controller
         $cnt = 0;
         $cnt1 = 0;
 
+
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
             if(Auth::guard('admins')->user()->hasRole('fs')){
 
@@ -29,6 +30,25 @@ class FamilyPersonsController extends Controller
                 }
             }
         }
+
+
+
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
+            if(Auth::guard('admins')->user()->hasRole('fs')){
+
+            $tasks = family::where('leads_id', $id)->get();
+            //dd($tasks);
+            $tasks2 = [];
+            $cntt= 0;
+            for ($i = 0; $i< count($tasks);$i++){
+                if ($tasks[$i]->lead->assign_to_id == Auth::guard('admins')->user()->id){
+                    $tasks2[$cntt] = $tasks[$i];
+                    $cntt++;
+                }
+            }
+        }
+        }
+
 
         return view('leadfamily_person',compact('tasks2'));
     }

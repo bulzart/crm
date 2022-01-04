@@ -57,6 +57,15 @@ route::prefix('')->group(function(){
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
     route::post('deleteFamilyPerson/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson'])->name('deleteFamilyPerson');
     route::post('createLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'createLeadDataKK'])->name('createLeadDataKK');
+    route::post('createLeadDataCounteroffered/{leadId}/{personId}',[LeadDataController::class,'createleadDataACounteroffered'])->name('createleadDataACounteroffered');
+    route::post('createLeadDataFahrzeug/{leadId}/{personId}',[LeadDataController::class,'createLeadDataFahrzeug'])->name('createLeadDataFahrzeug');
+    route::post('createLeadDataThings/{leadId}/{personId}',[LeadDataController::class,'createLeadDataThings'])->name('createLeadDataThings');
+    route::post('updateLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataKK'])->name('updateLeadDataKK');
+    route::post('updateleadDataACounteroffered/{leadId}/{personId}',[LeadDataController::class,'updateleadDataACounteroffered'])->name('updateleadDataACounteroffered');
+    route::post('updateLeadDataFahrzeug/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataFahrzeug'])->name('updateLeadDataFahrzeug');
+    route::post('updateLeadDataThings/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataThings'])->name('updateLeadDataThings');
+    route::post('createLeadDataPrevention/{leadId}/{personId}',[LeadDataController::class,'createLeadDataPrevention'])->name('createLeadDataPrevention');
+    route::get('getAllLeadDataById/{leadId}/{personId}',[LeadDataController::class,'getAllLeadDataById'])->name('getAllLeadDataById');
 
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
@@ -82,7 +91,7 @@ route::prefix('')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 });
-
+route::get('assignpendency/{admin}/{id}',[TasksController::class,'assignpendency']);
    route::get('smsconfirm',function (){
       $Admin = Admins::find(12);
       return view('confirm_sms');
@@ -98,6 +107,7 @@ route::prefix('')->group(function(){
 //   return $user->getRoleNames();
 // });
 route::get('status',[StatusController::class,'status']);
+
 
 
 

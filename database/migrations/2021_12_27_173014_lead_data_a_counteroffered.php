@@ -16,11 +16,11 @@ class LeadDataACounteroffered extends Migration
         //
         Schema::create('lead_data_a_counteroffered',function(Blueprint $table){
             $table->id();
+            $table->integer('leads_id'); //Foreign Key
+            $table->integer('person_id'); //Foreign Key
             $table->string('upload_police')->nullable();
             $table->string('comparison_type')->nullable();
             $table->string('comment')->nullable();
-            $table->integer('person_id'); //Foreign Key
-            $table->integer('leads_id'); //Foreign Key
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
