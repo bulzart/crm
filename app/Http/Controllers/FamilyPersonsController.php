@@ -13,7 +13,6 @@ class FamilyPersonsController extends Controller
     public function family_persons($id){
         $cnt = 0;
         $cnt1 = 0;
-      
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
             $tasks = family::where('leads_id', $id)->get();
             //dd($tasks);
