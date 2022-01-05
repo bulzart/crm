@@ -1,6 +1,9 @@
 <html>
 @extends('template.navbar')
 @section('content')
+    <head>
+        <title>Costumers</title>
+    </head>
 <div class="col-12 text-center" style="background: #f7f7f7;">
 
     <form action="{{route('search')}}">
