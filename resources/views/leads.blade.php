@@ -20,9 +20,12 @@
 <section>
     <div class="container-fluid">
         <div class="row">
+
             <div class="col my-3">
+
                 <div class="leads-div py-3 px-4">
-                    <div class="leads-header my-2">
+                    @if(!Auth::guard('admins')->user()->hasRole('fs'))
+                    <div class="leads-header my-2" >
                         <span class="fs-4 fw-600 header-text">Leads</span>
                     </div>
                     <div class="information-div">
@@ -31,37 +34,41 @@
                   Information
                 </span>
                         </div>
-                        <div class="info-content">
-                            <div class="tasks-divv py-2 px-1">
-                                <div class="row my-1 mx-3">
-                                    <div class="col-3 g-0">
-                                        <div class="">
+                        <div class="row my-1 mx-3">
+                            <div class="col-3 g-0">
+                                <div class="">
                         <span class="spn-muted">
                           Datum
                         </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
+                                </div>
+                            </div>
+
+                            <div class="col g-0">
+                                <div class="">
                         <span class="spn-muted">
                           Beschreibung
                         </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                         <span class="spn-muted">
                           Kundenname
                         </span>
-                                        </div>
-                                    </div>
                                 </div>
-                                <hr class="m-0">
-                                <div class="row my-1 mx-3">
+                            </div>
+                        </div>
+                        <hr class="m-0">
+
+                        <div class="info-content" style="height: 200px;overflow-y: scroll;overflow-x: hidden">
+                            <div class="tasks-divv py-2 px-1">
+
+                                @foreach($asigned as $assign)
+                                <div class="row my-1 mx-3" >
                                     <div class="col-3 g-0">
                                         <div class="">
                         <span class="spn-normal">
-                          21.09.2022
+                          {{$assign->created_at->format('d/m/y')}}
                         </span>
                                         </div>
                                     </div>
@@ -75,108 +82,13 @@
                                     <div class="col g-0">
                                         <div class="">
                         <span class="spn-normal">
-                          Max Mustermann
+                          {{$assign->first_name}}
                         </span>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="m-0">
-                                <div class="row my-1 mx-3">
-                                    <div class="col-3 g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          21.09.2022
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Policen eintragen
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Max Mustermann
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="m-0">
-                                <div class="row my-1 mx-3">
-                                    <div class="col-3 g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          21.09.2022
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Policen eintragen
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Max Mustermann
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="m-0">
-                                <div class="row my-1 mx-3">
-                                    <div class="col-3 g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          21.09.2022
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Policen eintragen
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Max Mustermann
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="m-0">
-                                <div class="row my-1 mx-3">
-                                    <div class="col-3 g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          21.09.2022
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Policen eintragen
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0">
-                                        <div class="">
-                        <span class="spn-normal">
-                          Max Mustermann
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="m-0">
+                                @endforeach
 
                                 <div class="text-end py-3">
                     <span class="px-2">
@@ -197,7 +109,7 @@
                             </div>
                         </div>
                     </div>
-
+@endif
 
                     <div class="assigned-leads py-3">
                         <div class="assigned-leads-header row">
@@ -235,7 +147,7 @@
                                             </div>
                                             <div class="">
                       <span>
-                        {{$lead->number_of_persons}} Persons
+                        {{$lead->number_of_persons}} Personon
                       </span>
                                             </div>
                                             <div class="">

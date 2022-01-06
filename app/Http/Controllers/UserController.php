@@ -157,6 +157,18 @@ class UserController extends Controller
     public function deletedlead(Request $request, $id)
     {
         $leads = lead::find($id);
+
+        $deletedlead = new Deletedlead();
+        $deletedlead->name = $leads->first_name;
+        $deletedlead->address = $leads->address;
+        $deletedlead->count = $leads->number_of_persons;
+        $deletedlead->date = Carbon::now();
+        $deletedlead->reason = $request->reason;
+        $deletedlead->comment = $request->comment;
+
+        $deletedlead->save();
+
+
         if ($leads->delete()) {
             return redirect()->route('leads')->with('success', 'Lead Deleted Successfuly');
         } else {
@@ -179,13 +191,12 @@ class UserController extends Controller
         if (!Auth::guard('admins')->check()) {
             return abort('403');
         } else {
-
-            if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->role == 'menagment') {
+            $asigned = [];
+            if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
                 $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
-            } elseif (Auth::guard('admins')->user()->hasRole('digital')) {
-                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->get();
+                $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-                $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->get();
+                $leads = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('assigned',0)->get();
             }
 
             $insta = lead::where('campaign_id', 1)->get()->count();
@@ -194,10 +205,9 @@ class UserController extends Controller
             $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
 
 
-            return view('leads', compact('leads', 'total'));
+            return view('leads', compact('leads', 'total', 'asigned'));
         }
     }
-
     public function asignlead(Request $req, $id)
     {
         $req->validate([
