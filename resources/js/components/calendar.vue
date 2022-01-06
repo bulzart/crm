@@ -217,7 +217,7 @@ this.date_function();
   date_function: function () {
 
             var currentDate = new Date();
-
+              
             var formatted_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
             this.todayd = formatted_date;
               this.year = parseInt(formatted_date.slice(0,4));

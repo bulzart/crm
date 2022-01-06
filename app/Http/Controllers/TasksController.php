@@ -20,12 +20,16 @@ use DB;
 
 class TasksController extends Controller
 {
-public function assignpendency($admin,$id):bool{
-  $pendency = new Pendency();
+public function assignpendency($admin,$id,$desc = null){
+$retor = Pendency::where('family_id',$id)->get();
+  if($retor != null){
+    $pendency = new Pendency();
   $pendency->admin_id = (int) $admin;
   $pendency->family_id = (int) $id;
+  $pendency->description = filter_var($desc,FILTER_SANITIZE_STRING);
+  $family = DB::table('family_person')->where('id','=',$id)->update(['status' => 'Open']);
   $pendency->save();
-  return true;
+}
 }
   public function accepttask($id)
   {
@@ -178,37 +182,56 @@ public function assignpendency($admin,$id):bool{
     $cnt = 0;
     $cnt1 = 0;
     if (Auth::guard('admins')->user()->hasRole('backoffice')) {
-      if(isset($req->searchname)){
-    //     $name = filter_var($req->searchname,FILTER_SANITIZE_STRING);
-        $start = microtime(true);
-    //  $pend = DB::table('family_person')
-    //  ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-    //  ->where('pendencies.done','=',1)
-    // ->select('family_person.first_name','pendencies.family_id')
-    // ->where('family_person.first_name','like','%'.$name.'%')
-    //  ->get();
-     $pend2 = DB::table('leads')->select('first_name','last_name')->where('first_name','like','%Thali%')->get();
+      if(isset($req->searchpend)){
+     $pend = DB::table('family_person')
+     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+     ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
+     ->where('pendencies.done','=',1)
+    ->where('family_person.first_name','like','%'.$req->searchpend.'%')
+    ->orderBy('family_person.first_name','asc') 
+     ->get();
 
-     $time = microtime(true) - $start;
- 
-     
-     $start2 = microtime(true);
-     lead::where('id','>',500)->get();
-     $time2 = microtime(true) - $start2;
-     dd($time,$time2);
-     die();
       }
       else{
-        $pend = Pendency::where('done',1)->orderBy('created_at','desc')->get();
+        $pend = DB::table('family_person')
+        ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+        ->where('pendencies.done','=',1)
+       ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
+       ->orderBy('family_person.first_name','asc') 
+       ->get();
       }
+      if(isset($req->searchopen)){
+        $open = DB::table('family_person')
+        ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+        ->where('pendencies.done','=',0)
+        ->where('family_person.first_name','like','%'.$req->searchopen.'%')
+       ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
+       ->orderBy('family_person.first_name','asc') 
+       ->get();
+      }
+      else{
+        $open = DB::table('family_person')
+        ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+        ->where('pendencies.done','=',0)
+       ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
+       ->orderBy('family_person.first_name','asc') 
+       ->get();
+      }
+
      $answered = [];
-     
+     $opened = [];
        foreach($pend as $p){
-         $answered[$cnt] = $p->family;
+         $answered[$cnt] = $p;
           $cnt++;
        }
+       $cnt = 0;
+       foreach($open as $p){
+        $opened[$cnt] = $p;
+         $cnt++;
+      }
+
     
-  return view('tasks',compact('answered'));
+  return view('tasks',compact('answered','pend','opened'));
     }
     if (Auth::guard('admins')->user()->hasRole('fs')) {
 

@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>
@@ -138,7 +138,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>
@@ -250,7 +250,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="text-end">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
                                              viewBox="0 0 92.259 71.213">
                                             <defs>
@@ -302,8 +302,35 @@
                         <div class="calendar-div">
                             <calendar></calendar>
                         </div>
+                            <div class="text-center my-4">
+                                <a href="{{route('insertappointment')}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="37.694" height="37.694"
+                                     viewBox="0 0 37.694 37.694">
+                                    <g id="Group_621" data-name="Group 621"
+                                       transform="translate(-663.236 -976.679)">
+                                        <g id="Group_550" data-name="Group 550"
+                                           transform="translate(663.236 976.679)">
+                                            <rect id="Rectangle_9" data-name="Rectangle 9"
+                                                  width="37.694" height="37.694" rx="18.847"
+                                                  fill="#4ec590" />
+                                            <g id="Group_42" data-name="Group 42"
+                                               transform="translate(12.724 12.724)">
+                                                <line id="Line_11" data-name="Line 11" y2="11.972"
+                                                      transform="translate(5.986 0)" fill="none"
+                                                      stroke="#fff" stroke-linecap="round"
+                                                      stroke-width="2" />
+                                                <line id="Line_12" data-name="Line 12" x1="11.972"
+                                                      transform="translate(0 5.634)" fill="none"
+                                                      stroke="#fff" stroke-linecap="round"
+                                                      stroke-width="2" />
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                </a>
+                            </div>
                     </div>
-                   
+
                     <div class="col-12 col-md-12 col-lg-5 col-xl-5">
                         <div class="my-1">
                             <div class="row">
@@ -492,6 +519,22 @@
 @else
 <div class="row" id="app">
     <todo></todo>
+</div>
+<div class="row">
+    <div class="col-md-6 col-12">
+        Answered pendencies
+        <br>
+        @foreach($pendencies as $pendency)
+        <a href="#">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
+        @endforeach
+    </div>
+    <div class="col-md-6 col-12">
+        Open for more than a month
+        <br>
+        @foreach($morethan30 as $pendency)
+        <a href="#">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
+        @endforeach
+    </div>
 </div>
 @endif
 

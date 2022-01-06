@@ -8,7 +8,7 @@
             
         </div>
     </div>
-    </div>
+ 
     <div class="mapouter mb-4">
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFBE1cuoGyzaiyvog5Zi6-tBvRwyXHiz8"></script>
 
