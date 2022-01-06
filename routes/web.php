@@ -21,6 +21,8 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
+use App\Models\lead;
+
 
 use function GuzzleHttp\Promise\task;
 
@@ -98,7 +100,7 @@ route::prefix('')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 });
-route::get('assignpendency/{admin}/{id}',[TasksController::class,'assignpendency']);
+route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
    route::get('smsconfirm',function (){
       $Admin = Admins::find(12);
       return view('confirm_sms');
@@ -116,10 +118,6 @@ route::get('permission', function(){
   return $user->getRoleNames();
 });
 route::get('status',[StatusController::class,'status']);
-
-
-
-
 
 
 

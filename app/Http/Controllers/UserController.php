@@ -92,6 +92,7 @@ class UserController extends Controller
             'address' => 'required',
             'postal' => 'required',
             'location' => 'required',
+
             'count' => 'min:1',
             'apptime' => 'required',
             'appbirthdate' => 'required'
@@ -247,13 +248,11 @@ class UserController extends Controller
             $user->confirmed = 0;
           
                 $user->pin = $pin;
-
                 
                 $role = Role::where('name',$req->input('auth'))->get();
                 $rolee = $user->getRoleNames();
                 $user->removeRole($rolee[0]);
                 $user->assignRole($role);
-
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
                 //  'from' => '38345917726',
@@ -348,7 +347,7 @@ class UserController extends Controller
     public function dealclosed($id)
     {
         $app = lead::where('id', $id)->first();
-        if ($app->assign_to_id != null && $app->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
+        if ($app->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('completelead', compact('app'));
         } else {
             return redirect()->back();
@@ -371,7 +370,7 @@ class UserController extends Controller
             'image' => 'required'
         ]);
         $leads_id = $request->leadsid;
-        lead::where('id', $leads_id)->update(['assign_to_id' => 0, 'assigned' => 0]);
+        lead::where('id', $leads_id)->update(['admin_id' => 0, 'assigned' => 0]);
 
 
 
@@ -387,32 +386,30 @@ class UserController extends Controller
         if ($rejectedlead->save()) {
             $img = Image::make($request->file('image'));
             $img->save('img/' . $request->file('image')->getClientOriginalName());
-            return redirect()->route('dashboard')->with('success', 'Action was done successfully');
+            return redirect()->back()->with('success', 'Action was done successfully');
         } else {
-            return redirect()->route('dashboard')->with('fail', 'Action failed');
+            return redirect()->back()->with('fail', 'Action failed');
         }
     }
 
     public function dashboard(Request $req)
     {
+if(!Auth::guard('admins')->check()){
+   return redirect()->route('rnlogin');
+}
         $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
+
+
         date_default_timezone_set('Europe/Berlin');
-
+       
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
-            $pendency = family::where('status', 'Submited')->get();
-
-            for($i = 0; $i < count($pendency);$i++){
-                $pendencies[$i]['name'] = $pendency[$i]['first_name'] . $pendency[$i]['last_name'];
-                $pendencies[$i]['datas'] = $pendency[$i]->datas;
-                $pendencies[$i]['datak'] = $pendency[$i]->datak;
-                $pendencies[$i]['counter'] = $pendency[$i]->datacounter;
-                $pendencies[$i]['datasw'] = $pendency[$i]->datasw;
-               //$pendencies[$i]['datafah'] = $pendencies[$i]->datafah;
-            }
+            $pendencies = family::where('status', 'Submited')->get();
+            
+    
             $morethan30 = '';
             $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-
+     
             return view('dashboard', compact('pendencies','morethan30'));
         }
 
@@ -439,7 +436,7 @@ class UserController extends Controller
                 if ($tasks[$i]->status_task == 'Done') {
                     $done++;
                 }
-            }
+            } 
 
 
             $percnt = 0;

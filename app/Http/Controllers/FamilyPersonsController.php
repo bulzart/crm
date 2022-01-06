@@ -9,12 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class FamilyPersonsController extends Controller
 {
-
     public function family_persons($id){
         $cnt = 0;
         $cnt1 = 0;
-
-
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
 
             if(Auth::guard('admins')->user()->hasRole('fs')){
@@ -65,7 +62,7 @@ class FamilyPersonsController extends Controller
     public function updateFamilyPerson($id, Request $request)
     {
         $updatedPerson = family::where('id', $id)->update($request->all());
-
+    
         return redirect()->back()->with('message', 'Family person was updated');
     }
 

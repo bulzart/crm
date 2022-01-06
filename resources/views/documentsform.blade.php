@@ -55,10 +55,9 @@
             </div>
         </div>
 
-
+@if(isset($data->idnecessary))
                         <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}"
                            target="_blank">{{$data->idnecessary}}</a>
-
                         <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
                     @else
                         <input class="form-control" type="file" name="idnecessary">

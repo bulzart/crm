@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use DB;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if(env("APP_ENV")==="local"){
+            DB::listen(function ($query) {
+                error_log($query->time);
+            });
+        }
     }
 }

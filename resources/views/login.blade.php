@@ -72,7 +72,9 @@
 
           <select class="form-control" name="auth">
             @foreach($roles as $role)
+            @if($role->name != 'admin')
             <option value="{{$role->name}}">{{$role->name}}</option>
+            @endif
              @endforeach
           </select>
 
