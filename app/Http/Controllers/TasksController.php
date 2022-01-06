@@ -255,12 +255,13 @@ dd($data);
           $cnt1++;
           $opencnt++;
         }
-
-        if ($task->status_task == 'Submited') {
-          $pending[$cnt] = $task;
-          $cnt++;
-          $pendingcnt++;
-        }
+      $pending = DB::table('family_person')
+      ->join('pendencies','family_person.id','=','pendencies.family_id')
+      ->where('pendencies.done','=',0)
+      ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+      ->get();
+     
+      
       }
 
     $cnt = 0;
