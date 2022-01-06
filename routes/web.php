@@ -49,8 +49,6 @@ route::prefix('')->group(function(){
     route::get('leadfamily/{id}',function ($id){
       $data = \App\Models\lead::find($id);
       $data = $data->family;
-
-
       return view('leadfamily',compact('data'));
    })->name('leadfamily');
 
