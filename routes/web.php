@@ -80,7 +80,18 @@ route::prefix('')->group(function(){
 
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
    route::get('costumers',function (){
+
         $data = \App\Models\family::all();
+
+           if (Auth::guard('admins')->user()->hasRole('fs')) {
+               for ($i = 0; $i < count($data); $i++) {
+                   if($data[$i]->lead->assign_to_id != Auth::guard('admins')->user()->id) {unset($data[$i]);}
+
+               }
+           }
+
+
+
        return view('costumers',compact('data'));
    })->name('costumers');
    route::get('search',[TasksController::class,'costumers'])->name('search');

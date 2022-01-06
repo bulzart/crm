@@ -30,9 +30,14 @@
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
                             </span>
-                        <input type="text" class="form-control search-bar-one"
+                        <form method="get" action="{{route('search')}}">
+                            @csrf
+                        <input type="text" class="form-control search-bar-one" name="searchname"
                                placeholder="Suche (Kundenname,Vertragsnummer)" aria-label="Username"
                                aria-describedby="basic-addon1">
+                            <input type="date"  class="dropdown-item" name="searchdate1" style="display: none">
+                            <input type="date" class="dropdown-item" name="searchdate2" style="display: none">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -99,11 +104,12 @@
                                 </span>
                             Filter
                         </button>
-                        <form method="post" class="dropdown-menu px-2" aria-labelledby="dropdownMenuButton1">
+                        <form method="get" action="{{route('search')}}" class="dropdown-menu px-2" aria-labelledby="dropdownMenuButton1">
+                            @csrf
                             <label for="from-date" class="fw-600">From</label>
-                            <input type="date" name="from-date" class="dropdown-item">
+                            <input type="date" class="dropdown-item" name="searchdate1">
                             <label for="to-date" class="fw-600">To</label>
-                            <input type="date" name="to-date" class="dropdown-item">
+                            <input type="date" class="dropdown-item" name="searchdate2">
                             <input type="submit"
                                    class="border-0 bg-secondary text-light fw-600 my-2 text-center rounded dropdown-item"
                                    value="Submit">
@@ -111,8 +117,8 @@
                     </div>
                 </div>
             </div>
-            <div class="mx-3 my-2 ">
-                <div class="row my-1 mx-3">
+            <div class="my-3 mx-3">
+                <div class="row my-1 mx-3 ">
                     <div class="col g-0">
                         <div class="">
                                 <span class="spn-muted">
@@ -170,228 +176,220 @@
                     </div>
                 </div>
                 <hr class="">
-                <div class="row my-1 mx-3">
-                    <div class="col g-0">
-                        <div class="">
+            </div>
+            <div class="mx-3 my-2 ">
+                <div class="scroll-1" style="font-size: 14px;">
+                    @foreach($data as $dat)
+                        <div class="row my-1 mx-3">
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
-                                    1001
+                                    {{$dat->id}}
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
-                                    Samir
+                                    {{$dat->first_name}}
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
-                                    Mensaria
+                                    {{$dat->last_name}}
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
-                                    Ja
+                                    {{$dat->status_task}}
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     Grundversicherung
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     251.00 CHF
                                 </span>
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class=" ">
+                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                        AUFGENOMMEN
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class=" ">
-                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 px-3">
-                                AUFGENOMMEN
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row my-1 mx-3">
-                    <div class="col g-0">
-                        <div class="">
+                        <div class="row my-1 mx-3">
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     Zusatversicherung
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     45.00 CHF
                                 </span>
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class=" ">
+                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                        AUFGENOMMEN
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class=" ">
-                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 px-3">
-                                AUFGENOMMEN
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row my-1 mx-3">
-                    <div class="col g-0">
-                        <div class="">
+                        <div class="row my-1 mx-3">
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     Autoversicherung
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     2250.00 CHF
                                 </span>
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class=" ">
+                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                        PROVISIONERT
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class=" ">
-                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 px-3 bg-success">
-                                PROVISIONERT
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row my-1 mx-3">
-                    <div class="col g-0">
-                        <div class="">
+                        <div class="row my-1 mx-3">
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
 
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     Lebensversicherung
                                 </span>
-                        </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class="">
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class="">
                                 <span class="spn-normal">
                                     250.00 CHF
                                 </span>
+                                </div>
+                            </div>
+                            <div class="col g-0">
+                                <div class=" ">
+                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                        OFFEN
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col g-0">
-                        <div class=" ">
-                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 px-3 bg-warning">
-                                OFFEN
-                            </button>
-                        </div>
-                    </div>
+                        <hr>
+                    @endforeach
                 </div>
 
-                <div class="text-end py-3">
-                        <span class="px-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-chevron-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                            </svg>
-                        </span>
-                    <span class="px-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                            </svg>
-                        </span>
-                </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -403,10 +401,32 @@
 
 @endsection
 <style>
+    .scroll-1 {
+        height: 300px;
+        overflow-y: scroll;
+        overflow-x: hidden !important;
+    }
+    .scroll-1::-webkit-scrollbar {
+        width: 4px !important;
+    }
+    /* Track */
+    .scroll-1::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+    /* Handle */
+    .scroll-1::-webkit-scrollbar-thumb {
+        background: #91dfa1;
+        border-radius: 10px;
+    }
+    /* Handle on hover */
+    .scroll-1::-webkit-scrollbar-thumb:hover {
+        background: #91dfa1;
+    }
     .search-bar-one {
         border: none !important;
         border-bottom: #474747 1px solid !important;
-        border-radius: 0;
+        border-radius: 0 !important;
     }
 
     .search-bar-one::placeholder {
@@ -429,6 +449,7 @@
         background-color: rgb(100, 199, 100);
         color: #fff;
         border-radius: 15px;
+        font-size: 10px !important;
     }
 
     .name-spnnnn {
@@ -447,7 +468,7 @@
 
     .spn-normal {
         font-weight: 600;
-        font-size: 14px !important;
+        font-size: 12px !important;
     }
     .nav-itemsss a:hover {
         background-color: #c9cad8;
