@@ -46,7 +46,7 @@ $retor = Pendency::where('family_id',$id)->get();
     $some_date = Carbon::now()->format('H:i');
     $now = (int) str_replace(':', '', $some_date);
 
-     
+
     $admin = Auth::guard('admins')->user();
     $today = Carbon::now()->format("Y-m-d");
     if ($req->date != null) {
@@ -66,7 +66,7 @@ $retor = Pendency::where('family_id',$id)->get();
         }
       }
       if ($admin->hasRole('fs')) {
- 
+
         if ($now > 2300) {
           $data = lead::where('assign_to_id', $admin->id)->where('wantsonline', 0)->where('appointment_date', Carbon::now()->addDays()->toDateString())->get();
         } else {
@@ -123,29 +123,30 @@ $retor = Pendency::where('family_id',$id)->get();
     $n = date('Y-m-d', strtotime($request->searchdate2));
     $date2 = date('Y-m-d', strtotime($n . "+1 days"));
     if (!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
-      $data = lead::where('last_name', 'like', '%' . $searchname . '%')
+      $data = family::where('last_name', 'like', '%' . $searchname . '%')
         ->orWhere('first_name', 'like', '%' . $searchname . '%')->get();
     } elseif (isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)) {
-      $data = lead::whereBetween('created_at', [$date1, $date2])->get();
+      $data = family::whereBetween('created_at', [$date1, $date2])->get();
     } else {
-      $data = lead::where('last_name', 'like', '%' . $searchname . '%')
+      $data = family::where('last_name', 'like', '%' . $searchname . '%')
         ->orWhere('first_name', 'like', '%' . $searchname . '%')->whereBetween('created_at', [$date1, $date2])->get();
     }
     $contracts = [];
     $datcnt = 0;
     foreach ($data as $dat) {
 
-      if (Auth::guard('admins')->user()->hasRole('fs') && $dat->lead->admin_id != Auth::guard('admins')->user()->id) {
+      if (Auth::guard('admins')->user()->hasRole('fs') && $dat->assign_to_id != Auth::guard('admins')->user()->id) {
 
         unset($data[$datcnt]);
         $datcnt++;
       }
+      dd($data);
 
       if ($dat->contracts != null) {
         $contracts[$dat->id] = json_decode($dat->contracts);
       };
     }
-
+dd($data);
     return view('costumers', compact('data', 'contracts'));
   }
 
@@ -188,7 +189,7 @@ $retor = Pendency::where('family_id',$id)->get();
      ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
      ->where('pendencies.done','=',1)
     ->where('family_person.first_name','like','%'.$req->searchpend.'%')
-    ->orderBy('family_person.first_name','asc') 
+    ->orderBy('family_person.first_name','asc')
      ->get();
 
       }
@@ -197,7 +198,7 @@ $retor = Pendency::where('family_id',$id)->get();
         ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
         ->where('pendencies.done','=',1)
        ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
-       ->orderBy('family_person.first_name','asc') 
+       ->orderBy('family_person.first_name','asc')
        ->get();
       }
       if(isset($req->searchopen)){
@@ -206,7 +207,7 @@ $retor = Pendency::where('family_id',$id)->get();
         ->where('pendencies.done','=',0)
         ->where('family_person.first_name','like','%'.$req->searchopen.'%')
        ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
-       ->orderBy('family_person.first_name','asc') 
+       ->orderBy('family_person.first_name','asc')
        ->get();
       }
       else{
@@ -214,7 +215,7 @@ $retor = Pendency::where('family_id',$id)->get();
         ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
         ->where('pendencies.done','=',0)
        ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
-       ->orderBy('family_person.first_name','asc') 
+       ->orderBy('family_person.first_name','asc')
        ->get();
       }
 
@@ -230,7 +231,7 @@ $retor = Pendency::where('family_id',$id)->get();
          $cnt++;
       }
 
-    
+
   return view('tasks',compact('answered','pend','opened'));
     }
     if (Auth::guard('admins')->user()->hasRole('fs')) {
@@ -243,7 +244,7 @@ $retor = Pendency::where('family_id',$id)->get();
       $pending = [];
       $opencnt = 0;
       $pendingcnt = 0;
-  
+
       for ($i = 0; $i < count($tasks); $i++) {
           $tasks2[$cntt] = $tasks[$i];
           $cntt++;
@@ -261,7 +262,7 @@ $retor = Pendency::where('family_id',$id)->get();
           $pendingcnt++;
         }
       }
-    
+
     $cnt = 0;
     $costumers = family::all();
     $todaydate = Carbon::now()->format('m-d');
@@ -289,7 +290,7 @@ $retor = Pendency::where('family_id',$id)->get();
 
   public function documentform(Request $req, $id)
   {
-    
+
   }
 
 
