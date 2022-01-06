@@ -8,7 +8,6 @@ use App\Http\Middleware\confirmedcode;
 use App\Mail\confirmcode as MailConfirmcode;
 use Carbon\Carbon;
 use App\Http\Controllers\TasksController;
-use App\Models\appointment;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
@@ -22,6 +21,7 @@ use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 use App\Models\lead;
+use Musonza\Chat\Chat;
 
 
 use function GuzzleHttp\Promise\task;
@@ -118,6 +118,22 @@ route::get('permission', function(){
   return $user->getRoleNames();
 });
 route::get('status',[StatusController::class,'status']);
+route::get('chat',function(){
+   $admin1 = Admins::find(1);
+   $admin2 = Admins::find(2);
+   $chat = Chat::createConversation([$admin1,$admin2]);
+   
+   $message = Chat::message('http://127.0.0.1:8000/images/logo.png')
+   ->from($admin1)
+   ->to($chat)
+   ->type('image')
+   ->send();
+
+
+
+});
+route::get('chat/{admin1}/{admin2}/{pid}',[ChatController::class,"chat"]);
+
 
 
 

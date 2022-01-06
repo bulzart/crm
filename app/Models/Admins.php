@@ -8,12 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Musonza\Chat\Traits\Messageable;
 
 
 class Admins extends Authenticatable
 {
     
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Messageable;
+
     protected $guard_name = 'admins';
     /**
      * The attributes that are mass assignable.

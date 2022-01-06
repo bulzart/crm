@@ -29350,9 +29350,206 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    aaaaaaa\n    ")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticStyle: { "background-color": "#eee" } }, [
+      _c("div", { staticClass: "container py-5" }, [
+        _c("div", { staticClass: "row d-flex justify-content-center" }, [
+          _c("div", { staticClass: "col-md-8 col-lg-6 col-xl-4" }, [
+            _c(
+              "div",
+              {
+                staticClass: "card",
+                staticStyle: { "border-radius": "15px" },
+                attrs: { id: "chat1" },
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0",
+                    staticStyle: {
+                      "border-top-left-radius": "15px",
+                      "border-top-right-radius": "15px",
+                    },
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-angle-left" }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mb-0 fw-bold" }, [
+                      _vm._v("Live chat"),
+                    ]),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fas fa-times" }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-flex flex-row justify-content-start mb-4",
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: { width: "45px", height: "100%" },
+                        attrs: {
+                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp",
+                          alt: "avatar 1",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "p-3 ms-3",
+                          staticStyle: {
+                            "border-radius": "15px",
+                            "background-color": "rgba(57, 192, 237,.2)",
+                          },
+                        },
+                        [
+                          _c("p", { staticClass: "small mb-0" }, [
+                            _vm._v(
+                              "Hello and thank you for visiting MDBootstrap. Please click the video below."
+                            ),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "d-flex flex-row justify-content-end mb-4" },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "p-3 me-3 border",
+                          staticStyle: {
+                            "border-radius": "15px",
+                            "background-color": "#fbfbfb",
+                          },
+                        },
+                        [
+                          _c("p", { staticClass: "small mb-0" }, [
+                            _vm._v("Thank you, I really like your product."),
+                          ]),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticStyle: { width: "45px", height: "100%" },
+                        attrs: {
+                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp",
+                          alt: "avatar 1",
+                        },
+                      }),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-flex flex-row justify-content-start mb-4",
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: { width: "45px", height: "100%" },
+                        attrs: {
+                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp",
+                          alt: "avatar 1",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "ms-3",
+                          staticStyle: { "border-radius": "15px" },
+                        },
+                        [
+                          _c("div", { staticClass: "bg-image" }, [
+                            _c("img", {
+                              staticStyle: { "border-radius": "15px" },
+                              attrs: {
+                                src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/screenshot1.webp",
+                                alt: "video",
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c("a", { attrs: { href: "#!" } }, [
+                              _c("div", { staticClass: "mask" }),
+                            ]),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "d-flex flex-row justify-content-start mb-4",
+                    },
+                    [
+                      _c("img", {
+                        staticStyle: { width: "45px", height: "100%" },
+                        attrs: {
+                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp",
+                          alt: "avatar 1",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "p-3 ms-3",
+                          staticStyle: {
+                            "border-radius": "15px",
+                            "background-color": "rgba(57, 192, 237,.2)",
+                          },
+                        },
+                        [
+                          _c("p", { staticClass: "small mb-0" }, [
+                            _vm._v("..."),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-outline" }, [
+                    _c("textarea", {
+                      staticClass: "form-control",
+                      attrs: { id: "textAreaExample", rows: "4" },
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "textAreaExample" },
+                      },
+                      [_vm._v("Type your message")]
+                    ),
+                  ]),
+                ]),
+              ]
+            ),
+          ]),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -41923,7 +42120,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\Kutiza\\\\crm"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\Kutiza\\\\crm","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 

@@ -27,6 +27,7 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
+use DB;
 
 
 
@@ -196,7 +197,10 @@ class UserController extends Controller
                 $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
                 $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-                $leads = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('assigned',0)->get();
+
+                
+                    $leads = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('assigned',0)->get();
+
             }
 
             $insta = lead::where('campaign_id', 1)->get()->count();
@@ -205,7 +209,9 @@ class UserController extends Controller
             $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
 
 
-            return view('leads', compact('leads', 'total', 'asigned'));
+
+            return view('leads', compact('leads', 'total','asigned'));
+
         }
     }
     public function asignlead(Request $req, $id)
