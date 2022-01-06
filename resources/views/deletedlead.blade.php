@@ -56,9 +56,6 @@
 </section>
 
 <div class="row">
-    <div class="col-2">
-
-    </div>
     <div class="col">
         <section>
             <div class="container">
@@ -68,7 +65,7 @@
                         <div class="py-3 ">
                             <div class="mx-3">
                                     <span class="fs-3 fw-bold text-color-header1">
-                                        Markus Jurgen
+                                        {{$leads->first_name}}
                                     </span>
                             </div>
                             <div class="mx-3">
@@ -82,7 +79,7 @@
                                                       stroke-width="0.5" />
                                             </svg>
                                         </span>
-                                        Raumweg 23, 3700 Thun
+                                        {{$leads->address}}
                                     </span>
                             </div>
                             <div class="input-group justify-content-center mt-3">
@@ -98,7 +95,7 @@
                                             </svg>
                                         </span>
                                     <span class="px-2" style="font-size: 14px;">
-                                            4 Personon
+                                            {{$leads->number_of_persons}} Personon
                                         </span>
                                 </button>
                                 <button class="py-2 border-0 static-btn1 m-1">
@@ -113,7 +110,7 @@
                                             </svg>
                                         </span>
                                     <span class="px-2" style="font-size: 14px;">
-                                            11:00 - 24.09.2021
+                                            {{$leads->created_at}}
                                         </span>
                                 </button>
                             </div>
@@ -124,10 +121,12 @@
                     </div>
                     <div class="declined-items py-3 col-12 col-sm-12 col-md-12 col-lg col-xl g-0 ">
                         <div class="border-left-div">
+                            <form method="POST" action="{{route('deletedlead',$leads->id)}}">
+                                @csrf
                             <div class="termin-div mx-3 py-3">
                                 <div class="text-center py-3">
                                         <span class="fs-5 fw-bold text-secondary">
-                                            Termin nicht stattgefunden
+                                            Kein Termin Vereinbart
                                         </span>
                                 </div>
                                 <div class="row g-3 align-items-center py-1 mx-5">
@@ -136,77 +135,20 @@
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <input type="text" id="inputTxt4" class="form-control"
-                                               aria-describedby="passwordHelpInline">
+                                               aria-describedby="passwordHelpInline" name="reason">
                                     </div>
                                 </div>
-                                <div class="row mx-2 text-center my-3 mx-5">
-                                    <div class="col g-0 upload-div">
-                                        <div class="text-start">
-                                            <div class="">
-                                                    <span>
-                                                        Uploads: 1
-                                                    </span>
-                                            </div>
-                                            <div class="">
-                                                <ul>
-                                                    <li>Bild23123412.jpg</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col decline-div text-end g-0">
-                                        <div class="upload-box mx-1 my-2">
-                                            <div class="mx-1 my-2 p-4 text-center">
-                                                <label for="file-input-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53"
-                                                         viewBox="0 0 53 53">
-                                                        <g id="Group_621" data-name="Group 621"
-                                                           transform="translate(-78.283 -14.777)">
-                                                            <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5"
-                                                                    cy="26.5" r="26.5"
-                                                                    transform="translate(78.283 14.777)"
-                                                                    fill="#5f5f5f" />
-                                                            <g id="Group_326" data-name="Group 326"
-                                                               transform="translate(95.656 31.893)">
-                                                                <path id="Path_234" data-name="Path 234"
-                                                                      d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
-                                                                      transform="translate(0 1.82)" fill="#fff"
-                                                                      stroke="#fff" stroke-width="0.5" />
-                                                                <path id="Path_235" data-name="Path 235"
-                                                                      d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
-                                                                      transform="translate(0.92 0)" fill="#fff"
-                                                                      stroke="#fff" stroke-width="0.5" />
-                                                            </g>
-                                                        </g>
-                                                    </svg>
-                                                </label>
-                                                <input type="file" id="file-input-3"
-                                                       class="svg-div w-100 border-0  g-0">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="decline-btn-div text-end mx-5">
-                                    <button class="decline-btn py-1 px-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="19.145" height="19.524"
-                                             viewBox="0 0 33.145 33.524">
-                                            <g id="Group_620" data-name="Group 620"
-                                               transform="translate(-517.079 -959.408)">
-                                                <line id="Line_24" data-name="Line 24" y1="30.316" x2="30.316"
-                                                      transform="translate(518.493 960.822)" fill="none"
-                                                      stroke="currentColor" stroke-linecap="round" stroke-width="3" />
-                                                <line id="Line_25" data-name="Line 25" x2="30.316" y2="30.316"
-                                                      transform="translate(518.493 961.201)" fill="none"
-                                                      stroke="currentColor" stroke-linecap="round" stroke-width="3" />
-                                            </g>
-                                        </svg>
-                                    </button>
+                                <div class="mb-3 mx-4">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Kommentar:</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"></textarea>
                                 </div>
                             </div>
                             <div class="fertig-div text-center my-2">
-                                <button class="fertig-btn px-4 py-2">Fertig</button>
+                                <input type="submit" class="fertig-btn px-4 py-2" value="Fertig">
                             </div>
+                            </form>
                         </div>
+
                     </div>
                 </div>
             </div>
