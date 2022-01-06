@@ -18,7 +18,7 @@
                     <a  href="{{route('leadfamily',$task->id)}}">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
-                            <span class="m-1">Kommentar: {{$task->status_task}}</span>
+
                         </div>
                     </a>
                     <br>
@@ -41,7 +41,6 @@
                     <a href="{{route('leadfamily',$task->id)}}">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
-                            <span class="m-1">Kommentar: {{$task->status_task}}</span>
                         </div>
                     </a>
                     <br>

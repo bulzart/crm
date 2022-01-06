@@ -27,6 +27,7 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
+use DB;
 
 
 
@@ -179,13 +180,13 @@ class UserController extends Controller
         if (!Auth::guard('admins')->check()) {
             return abort('403');
         } else {
-
-            if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->role == 'menagment') {
+            $asigned = [];
+            if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
                 $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
-            } elseif (Auth::guard('admins')->user()->hasRole('digital')) {
-                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->get();
+                $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-                $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->get();
+                
+                    $leads = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('assigned',0)->get();
             }
 
             $insta = lead::where('campaign_id', 1)->get()->count();
@@ -194,7 +195,7 @@ class UserController extends Controller
             $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
 
 
-            return view('leads', compact('leads', 'total'));
+            return view('leads', compact('leads', 'total','asigned'));
         }
     }
 
