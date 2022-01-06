@@ -38,7 +38,7 @@ class UserController extends Controller
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
-    
+
     }
     public function acceptapp($id)
     {
@@ -174,18 +174,18 @@ class UserController extends Controller
     }
 
 
-    public function leads($page = 1)
+    public function leads()
     {
         if (!Auth::guard('admins')->check()) {
             return abort('403');
         } else {
 
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->role == 'menagment') {
-                $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->paginate(8);
+                $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
             } elseif (Auth::guard('admins')->user()->hasRole('digital')) {
-                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->paginate(7);
+                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('completed', '0')->where('wantsonline', 1)->get();
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-                $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->paginate(7);
+                $leads = lead::whereNotNull('assign_to_id')->where('assigned', 1)->get();
             }
 
             $insta = lead::where('campaign_id', 1)->get()->count();
@@ -246,9 +246,9 @@ class UserController extends Controller
             $pin = random_int(1000, 9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
             $user->confirmed = 0;
-          
+
                 $user->pin = $pin;
-                
+
                 $role = Role::where('name',$req->input('auth'))->get();
                 $rolee = $user->getRoleNames();
                 $user->removeRole($rolee[0]);
@@ -260,7 +260,7 @@ class UserController extends Controller
                 $user->save();
                 //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
                 return redirect()->route('dashboard');
-         
+
 
         } else {
             return redirect()->route('rnlogin');
@@ -292,9 +292,9 @@ class UserController extends Controller
             $perdoruesi->confirmed = 0;
             $perdoruesi->save();
             Auth::guard('admins')->logout();
-            
+
         }
-        
+
         return redirect()->route('rnlogin');
     }
     public function adduser()
@@ -306,7 +306,7 @@ class UserController extends Controller
         $user->role = 'sm';
         $user->save();
     }
-   
+
     public function completeapp(Request $req, $id)
     {
         $lead = lead::find($id);
@@ -402,14 +402,14 @@ if(!Auth::guard('admins')->check()){
 
 
         date_default_timezone_set('Europe/Berlin');
-       
+
         if (Auth::guard('admins')->user()->hasRole('backoffice')) {
             $pendencies = family::where('status', 'Submited')->get();
-            
-    
+
+
             $morethan30 = '';
             $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-     
+
             return view('dashboard', compact('pendencies','morethan30'));
         }
 
@@ -436,7 +436,7 @@ if(!Auth::guard('admins')->check()){
                 if ($tasks[$i]->status_task == 'Done') {
                     $done++;
                 }
-            } 
+            }
 
 
             $percnt = 0;
