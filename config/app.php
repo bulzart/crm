@@ -164,6 +164,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Musonza\Chat\ChatServiceProvider::class,
     
 
         /*
@@ -236,6 +237,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Nexmo' => 'Nexmo\Laravel\Facade\Nexmo',
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Chat' => Musonza\Chat\Facades\ChatFacade::class
 
 
 

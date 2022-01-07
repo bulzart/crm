@@ -28,7 +28,7 @@
 <br>
   <select name="admin" class="form-control">
       @foreach($admins as $admin)
-      <option value="{{$admin->id}}">{{$admin->name}}</option>
+      <option value="{{$admin['id']}}">{{$admin->name}}</option>
       @endforeach
   </select>
 
