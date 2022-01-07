@@ -112,42 +112,83 @@ $retor = Pendency::where('family_id',$id)->get();
 
   public function searchword()
   {
-    $data =  lead::orderBy('first_name', 'asc')->get();
-    return view('costumers', compact('data'));
+      if(Auth::guard('admins')->user()->hasRole('fs')){
+          $data = DB::table('family_person')
+              ->join('leads','family_person.leads_id','=','leads.id')
+              ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+              ->select('family_person.*')
+              ->orderBy('family_person.first_name','asc')
+              ->get();
+          return view('costumers', compact('data'));
+
+      }else{
+          $data = family::orderBy('first_name','asc')->get();
+          return view('costumers', compact('data'));
+      }
   }
   public function costumers(Request $request)
   {
-    $searchname = $request->searchname;
-    $cnt = 0;
-    $date1 = date('Y-m-d', strtotime($request->searchdate1));
-    $n = date('Y-m-d', strtotime($request->searchdate2));
-    $date2 = date('Y-m-d', strtotime($n . "+1 days"));
-    if (!isset($request->searchdate1) && !isset($request->searchdate2) && isset($request->searchname)) {
-      $data = family::where('last_name', 'like', '%' . $searchname . '%')
-        ->orWhere('first_name', 'like', '%' . $searchname . '%')->get();
-    } elseif (isset($request->searchdate1) && isset($request->searchdate2) && !isset($request->searchname)) {
-      $data = family::whereBetween('created_at', [$date1, $date2])->get();
-    } else {
-      $data = family::where('last_name', 'like', '%' . $searchname . '%')
-        ->orWhere('first_name', 'like', '%' . $searchname . '%')->whereBetween('created_at', [$date1, $date2])->get();
+      $cnt = 0;
+      $date1 = date('Y-m-d', strtotime($request->searchdate1));
+      $n = date('Y-m-d', strtotime($request->searchdate2));
+      $date2 = date('Y-m-d', strtotime($n . "+1 days"));
+      $searchname = $request->searchname;
+    if(Auth::guard('admins')->user()->hasRole('fs')){
+        $data = DB::table('family_person')
+            ->join('leads','family_person.leads_id','=','leads.id')
+            ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+            ->select('family_person.*')
+            ->get();
+        if ($searchname != ''){
+            $data = DB::table('family_person')
+                ->join('leads','family_person.leads_id','=','leads.id')
+                ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+                ->where('family_person.first_name','like','%'.$searchname.'%')
+                ->orWhere('family_person.last_name','like','%'.$searchname.'%')
+                ->select('family_person.*')
+                ->get();
+
     }
-    $contracts = [];
-    $datcnt = 0;
-    foreach ($data as $dat) {
+        if (isset($request->searchdate1) && isset($request->searchdate2)) {
+            $data = DB::table('family_person')
+                ->join('leads','family_person.leads_id','=','leads.id')
+                ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+                ->whereBetween('family_person.created_at', [$date1, $date2])
+                ->select('family_person.*')
+                ->get();
 
-      if (Auth::guard('admins')->user()->hasRole('fs') && $dat->assign_to_id != Auth::guard('admins')->user()->id) {
+        }
 
-        unset($data[$datcnt]);
-        $datcnt++;
-      }
-      dd($data);
+        return view('costumers', compact('data'));
 
-      if ($dat->contracts != null) {
-        $contracts[$dat->id] = json_decode($dat->contracts);
-      };
+    }else {
+        if (Auth::guard('admins')->check()){
+            $data = family::all();
+        }
+        if ($searchname != null) {
+            $data = family::where('last_name', 'like', '%' . $searchname . '%')
+                ->orWhere('first_name', 'like', '%' . $searchname . '%')->get();
+        }
+        if (isset($request->searchdate1) && isset($request->searchdate2)) {
+            $data = family::whereBetween('created_at', [$date1, $date2])->get();
+        }
+        $contracts = [];
+        $datcnt = 0;
+        foreach ($data as $dat) {
+
+            if (Auth::guard('admins')->user()->hasRole('fs') && $dat->assign_to_id != Auth::guard('admins')->user()->id) {
+                unset($data[$datcnt]);
+                $datcnt++;
+            }
+
+
+            if ($dat->contracts != null) {
+                $contracts[$dat->id] = json_decode($dat->contracts);
+            }
+        }
+
+        return view('costumers', compact('data', 'contracts'));
     }
-dd($data);
-    return view('costumers', compact('data', 'contracts'));
   }
 
   public function adddata($req = null, $object = null, $count = null)
@@ -183,41 +224,52 @@ dd($data);
     $cnt = 0;
     $cnt1 = 0;
     if (Auth::guard('admins')->user()->hasRole('backoffice')) {
-      if(isset($req->searchpend)){
-     $pend = DB::table('family_person')
-     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-     ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
-     ->where('pendencies.done','=',1)
-    ->where('family_person.first_name','like','%'.$req->searchpend.'%')
-    ->orderBy('family_person.first_name','asc')
-     ->get();
+        if (isset($req->searchpend)) {
+            $pend = DB::table('family_person')
+                ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->where('pendencies.done', '=', 1)
+                ->where('family_person.first_name', 'like', '%' . $req->searchpend . '%')
+                ->orderBy('family_person.first_name', 'asc')
+                ->get();
 
-      }
-      else{
-        $pend = DB::table('family_person')
-        ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-        ->where('pendencies.done','=',1)
-       ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
-       ->orderBy('family_person.first_name','asc')
-       ->get();
-      }
-      if(isset($req->searchopen)){
-        $open = DB::table('family_person')
-        ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-        ->where('pendencies.done','=',0)
-        ->where('family_person.first_name','like','%'.$req->searchopen.'%')
-       ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
-       ->orderBy('family_person.first_name','asc')
-       ->get();
-      }
-      else{
-        $open = DB::table('family_person')
-        ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-        ->where('pendencies.done','=',0)
-       ->select('family_person.first_name','pendencies.family_id','family_person.id','family_person.last_name')
-       ->orderBy('family_person.first_name','asc')
-       ->get();
-      }
+        } else {
+            $pend = DB::table('family_person')
+                ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+                ->where('pendencies.done', '=', 1)
+                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->orderBy('family_person.first_name', 'asc')
+                ->get();
+        }
+        if (isset($req->searchopen)) {
+            $open = DB::table('family_person')
+                ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+                ->where('pendencies.done', '=', 0)
+                ->where('family_person.first_name', 'like', '%' . $req->searchopen . '%')
+                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->orderBy('family_person.first_name', 'asc')
+                ->get();
+        } else {
+            $open = DB::table('family_person')
+                ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+                ->where('pendencies.done', '=', 0)
+                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->orderBy('family_person.first_name', 'asc')
+                ->get();
+        }
+
+        $answered = [];
+        $opened = [];
+        foreach ($pend as $p) {
+            $answered[$cnt] = $p;
+            $cnt++;
+        }
+        $cnt = 0;
+        foreach ($open as $p) {
+            $opened[$cnt] = $p;
+            $cnt++;
+        }
+
 
      $answered = [];
      $opened = [];
@@ -231,11 +283,9 @@ dd($data);
          $cnt++;
       }
 
-
-  return view('tasks',compact('answered','pend','opened'));
     }
-    if (Auth::guard('admins')->user()->hasRole('fs')) {
-
+    if (Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')) {
+if(Auth::guard('admins')->user()->hasRole('admin')){
       $tasks = lead::where('completed', 0)->get();
       $tasks2 = [];
       $cntt = 0;
@@ -260,10 +310,36 @@ dd($data);
       ->where('pendencies.done','=',0)
       ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
       ->get();
-     
-      
       }
+    }
+    else{
+      $tasks = lead::where('completed', 0)->where('assign_to_id',Auth::guard('admins')->user()->id)->get();
+      $tasks2 = [];
+      $cntt = 0;
 
+      $realopen = [];
+      $pending = [];
+      $opencnt = 0;
+      $pendingcnt = 0;
+
+      for ($i = 0; $i < count($tasks); $i++) {
+          $tasks2[$cntt] = $tasks[$i];
+          $cntt++;
+      }
+      foreach ($tasks2 as $task) {
+        if ($task->status_task == 'Open') {
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
+        }
+      $pending = DB::table('family_person')
+      ->join('pendencies','family_person.id','=','pendencies.family_id')
+      ->where('pendencies.done','=',0)
+      ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
+      ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+      ->get();
+      }
+    }
     $cnt = 0;
     $costumers = family::all();
     $todaydate = Carbon::now()->format('m-d');
@@ -282,8 +358,8 @@ dd($data);
       }
     }
   }
-    if (Auth::guard('admins')->user()->hasRole('backoffice')) return view('task',compact('opentasks'));
-    if (Auth::guard('admins')->user()->hasRole('fs')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
+if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('tasks',compact('answered','pend','opened'));
+if(Auth::guard('admins')->user()->hasRole('fs')  || Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
   }
 
 
@@ -315,8 +391,7 @@ dd($data);
   }
   public function dates()
   {
-    if (Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('admin')) {
-    }
-    return view('dates2');
+   
+
   }
 }

@@ -16,33 +16,6 @@
         <title>Dashboard</title>
 
     </head>
-    <style>
-        .dateee {
-            border-radius: 15px;
-            border: #4CC590 1px solid;
-            color: #000;
-            background-color: #fff;
-        }
-
-        .dateee:hover {
-            background-color: #4CC590;
-            border-radius: 15px;
-            color: #fff;
-        }
-
-        .dateee:focus {
-            background-color: #4CC590;
-            border-radius: 15px;
-            color: #fff;
-        }
-
-        .box-1 {
-            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='18' ry='18' stroke='black' stroke-width='1' stroke-dasharray='7%2c 11' stroke-dashoffset='63' stroke-linecap='square'/%3e%3c/svg%3e");
-            border-radius: 18px;
-        }
-
-
-    </style>
 
     <body>
 
@@ -433,7 +406,7 @@
                                 </div>
                                 <div class="col-6 col-sm-4 col-md-3 col-lg-6 col-xl-4 g-0">
                                     <div class="text-center"
-                                         style="background-color: #4EC590; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                         style="background-color: #4e5ec5; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                         <div class="pt-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
                                                  fill="#fff" class="bi bi-exclamation-octagon-fill"
@@ -455,7 +428,7 @@
                                 </div>
                                 <div class="col-6 col-sm-4 col-md-3 col-lg-6 col-xl-4 g-0">
                                     <div class="text-center"
-                                         style="background-color: #4EC590; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                         style="background-color: #c7cb81; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                         <div class="pt-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
                                                  fill="#fff" class="bi bi-exclamation-octagon-fill"
@@ -525,14 +498,14 @@
         Answered pendencies
         <br>
         @foreach($pendencies as $pendency)
-        <a href="#">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
+        <a href="{{route('leadfamilyperson',$pendency->lead->id)}}">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
         @endforeach
     </div>
     <div class="col-md-6 col-12">
         Open for more than a month
         <br>
         @foreach($morethan30 as $pendency)
-        <a href="#">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
+        <a href="{{route('leadfamilyperson',$pendency->lead->id)}}">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
         @endforeach
     </div>
 </div>
@@ -547,3 +520,34 @@
 
     </html>
 @endsection
+<style>
+    .dateee {
+        border-radius: 15px;
+        border: #4CC590 1px solid;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .dateee:hover {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .dateee:focus {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .box-1 {
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='18' ry='18' stroke='black' stroke-width='1' stroke-dasharray='7%2c 11' stroke-dashoffset='63' stroke-linecap='square'/%3e%3c/svg%3e");
+        border-radius: 18px;
+    }
+    body{
+        overflow-x:hidden !important;
+    }
+
+
+</style>
+

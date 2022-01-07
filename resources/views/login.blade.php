@@ -72,11 +72,13 @@
 
           <select class="form-control" name="auth">
             @foreach($roles as $role)
-            @if($role->name != 'admin')
             <option value="{{$role->name}}">{{$role->name}}</option>
-            @endif
              @endforeach
           </select>
+          <div class="mb-2 mt-2 form-check">
+    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+    <label class="form-check-label" for="remember">Remember me</label>
+  </div>
 
           <div class="pt-2">
             <button type="submit" class="py-2 w-100 border-0 fw-bold btn_anmelden__">

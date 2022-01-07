@@ -20,8 +20,8 @@ class RoleSeeder extends Seeder
             3 => 'team Leader',
             4 => 'sales Manager',
             5 => 'management',
-            8 => 'finance',
-            //9 => 'admin'
+            6 => 'finance',
+            7 => 'admin'
         ];
 
 

@@ -30,13 +30,11 @@
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
                             </span>
-                        <form method="get" action="{{route('search')}}">
+                        <form method="post" action="{{route('search')}}">
                             @csrf
                         <input type="text" class="form-control search-bar-one" name="searchname"
                                placeholder="Suche (Kundenname,Vertragsnummer)" aria-label="Username"
                                aria-describedby="basic-addon1">
-                            <input type="date"  class="dropdown-item" name="searchdate1" style="display: none">
-                            <input type="date" class="dropdown-item" name="searchdate2" style="display: none">
                         </form>
                     </div>
                 </div>
@@ -104,7 +102,7 @@
                                 </span>
                             Filter
                         </button>
-                        <form method="get" action="{{route('search')}}" class="dropdown-menu px-2" aria-labelledby="dropdownMenuButton1">
+                        <form method="post" action="{{route('search')}}" class="dropdown-menu px-2" aria-labelledby="dropdownMenuButton1">
                             @csrf
                             <label for="from-date" class="fw-600">From</label>
                             <input type="date" class="dropdown-item" name="searchdate1">
@@ -205,7 +203,7 @@
                             <div class="col g-0">
                                 <div class="">
                                 <span class="spn-normal">
-                                    {{$dat->status_task}}
+                                    {{$dat->status}}
                                 </span>
                                 </div>
                             </div>
@@ -489,6 +487,9 @@
             width: 80px !important;
             text-align: center !important;
         }
+    }
+    body{
+        overflow-x: hidden !important;
     }
 </style>
 
