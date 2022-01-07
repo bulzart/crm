@@ -20,6 +20,7 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TeamController;
 use App\Models\lead;
 use Musonza\Chat\Chat;
 
@@ -72,6 +73,13 @@ route::prefix('')->group(function(){
     route::post('deleteLeadDataThings/{dataId}',[LeadDataController::class,'deleteLeadDataThings'])->name('deleteLeadDataThings');
     route::post('deleteLeadDataPrevention/{dataId}',[LeadDataController::class,'deleteLeadDataPrevention'])->name('deleteLeadDataPrevention');
 
+    route::post('deleteTeam/{teamId}',[TeamController::class,'deleteTeam'])->name('deleteTeam');
+    route::get('showTeamById/{teamId}',[TeamController::class,'showTeamById'])->name('showTeamById');
+    route::get('updateTeam/{teamId}',[TeamController::class,'updateTeam'])->name('updateTeam');
+
+    Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
+      route::post('create',[TeamController::class,'createTeam'])->name('createTeam');
+  });
 
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
