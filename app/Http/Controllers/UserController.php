@@ -241,7 +241,8 @@ class UserController extends Controller
         if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
             return redirect()->back();
         } else {
-            $admins = Admins::all();
+            $role = Role::find(1);
+            $admins = Admins::role($role)->get();
             $lead = lead::find($id);
 
             return view('alead', compact('admins', 'lead'));

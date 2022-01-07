@@ -5414,6 +5414,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -28941,7 +28989,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "mt-2 mb-2" }, [
+    _c("div", { staticClass: "mt-2 mb-2 calendar-divider" }, [
       _c("span", { staticClass: "fs-5" }, [_vm._v("Termin")]),
       _vm._v(" "),
       _c("div", { staticClass: "row text-center mx-3" }, [
@@ -28970,11 +29018,7 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[0].dayn) +
-                      "," +
-                      _vm._s(_vm.lista[0].month) +
-                      "," +
-                      _vm._s(_vm.lista[0].year)
+                    _vm._s(_vm.lista[0].month) + "," + _vm._s(_vm.lista[0].year)
                   ),
                 ]
               ),
@@ -28984,7 +29028,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black",
+                  staticClass: "not-this-month text-black text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[0].date)
@@ -28993,7 +29037,10 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[0].day) + " " + _vm._s(_vm.lista[0].month)
+                    _vm._s(_vm.lista[0].day) +
+                      "," +
+                      _vm._s(_vm.lista[0].dayn) +
+                      "\n                    "
                   ),
                 ]
               ),
@@ -29054,7 +29101,7 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[1].dayn) + "," + _vm._s(_vm.lista[1].year)
+                    _vm._s(_vm.lista[1].month) + "," + _vm._s(_vm.lista[1].year)
                   ),
                 ]
               ),
@@ -29064,7 +29111,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black",
+                  staticClass: "not-this-month text-black text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[1].date)
@@ -29073,7 +29120,10 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[1].day) + " " + _vm._s(_vm.lista[1].month)
+                    _vm._s(_vm.lista[1].day) +
+                      "," +
+                      _vm._s(_vm.lista[1].dayn) +
+                      "\n                    "
                   ),
                 ]
               ),
@@ -29129,7 +29179,7 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[2].dayn) + "," + _vm._s(_vm.lista[2].year)
+                    _vm._s(_vm.lista[2].month) + "," + _vm._s(_vm.lista[2].year)
                   ),
                 ]
               ),
@@ -29139,7 +29189,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black",
+                  staticClass: "not-this-month text-black text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[2].date)
@@ -29148,7 +29198,10 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[2].day) + " " + _vm._s(_vm.lista[2].month)
+                    _vm._s(_vm.lista[2].day) +
+                      "," +
+                      _vm._s(_vm.lista[2].dayn) +
+                      "\n                    "
                   ),
                 ]
               ),
@@ -29204,7 +29257,7 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[3].dayn) + "," + _vm._s(_vm.lista[3].year)
+                    _vm._s(_vm.lista[3].month) + "," + _vm._s(_vm.lista[3].year)
                   ),
                 ]
               ),
@@ -29214,7 +29267,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black",
+                  staticClass: "not-this-month text-black text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[3].date)
@@ -29223,7 +29276,10 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[3].day) + " " + _vm._s(_vm.lista[3].month)
+                    _vm._s(_vm.lista[3].day) +
+                      "," +
+                      _vm._s(_vm.lista[3].dayn) +
+                      "\n                    "
                   ),
                 ]
               ),
@@ -29355,6 +29411,7 @@ var render = function () {
                                       marginwidth: "0",
                                     },
                                   }),
+                                  _vm._v(" "),
                                   _c("a", {
                                     attrs: {
                                       href: "https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/",
@@ -29379,7 +29436,11 @@ var render = function () {
                                       "data-bs-target": "#" + tod.slug + "1",
                                     },
                                   },
-                                  [_vm._v("Open in large")]
+                                  [
+                                    _vm._v(
+                                      "Open in large\n                                    "
+                                    ),
+                                  ]
                                 ),
                                 _vm._v(" "),
                                 _c("h3", [
@@ -29561,7 +29622,13 @@ var render = function () {
                       _c(
                         "div",
                         { staticClass: "col-md-1 col-6 col-xs-2 mt-3" },
-                        [_vm._v("\n    " + _vm._s(tod.time) + "\n    ")]
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(tod.time) +
+                              "\n                    "
+                          ),
+                        ]
                       ),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-11 col-6 col-xs-10" }, [
@@ -29585,7 +29652,9 @@ var render = function () {
                           },
                         }),
                         _vm._v(
-                          " " + _vm._s(tod.address) + "\n                "
+                          "\n                        " +
+                            _vm._s(tod.address) +
+                            "\n                    "
                         ),
                       ]),
                     ]),
@@ -29644,6 +29713,7 @@ var render = function () {
                                           marginwidth: "0",
                                         },
                                       }),
+                                      _vm._v(" "),
                                       _c("a", {
                                         attrs: {
                                           href: "https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/",
@@ -29679,8 +29749,6 @@ var render = function () {
         ],
         2
       ),
-      _vm._v(" "),
-      _c("div"),
     ]),
   ])
 }
@@ -29716,7 +29784,7 @@ var staticRenderFns = [
           staticClass: "btn btn-primary",
           attrs: { type: "button", "data-bs-dismiss": "modal" },
         },
-        [_vm._v("Undertood")]
+        [_vm._v("Undertood\n                                ")]
       ),
     ])
   },
@@ -29751,7 +29819,7 @@ var staticRenderFns = [
           staticClass: "btn btn-primary",
           attrs: { type: "button", "data-bs-dismiss": "modal" },
         },
-        [_vm._v("Undertood")]
+        [_vm._v("Undertood\n                                ")]
       ),
     ])
   },

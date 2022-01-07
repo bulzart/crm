@@ -488,6 +488,9 @@
             text-align: center !important;
         }
     }
+    body{
+        overflow-x: hidden !important;
+    }
 </style>
 
 
