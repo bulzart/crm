@@ -18,6 +18,7 @@ class LeadDataController extends Controller
 
     public function createLeadDataKK($leadId, $personId, Request $request)
     {
+        dd($request);
         LeadDataKK::create([
             'leads_id' => $leadId,
             'person_id' => $personId,

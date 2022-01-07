@@ -230,12 +230,9 @@ dd($data);
         $opened[$cnt] = $p;
          $cnt++;
       }
-
-
-  return view('tasks',compact('answered','pend','opened'));
     }
-    if (Auth::guard('admins')->user()->hasRole('fs')) {
-
+    if (Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')) {
+if(Auth::guard('admins')->user()->hasRole('admin')){
       $tasks = lead::where('completed', 0)->get();
       $tasks2 = [];
       $cntt = 0;
@@ -260,10 +257,36 @@ dd($data);
       ->where('pendencies.done','=',0)
       ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
       ->get();
-     
-      
       }
+    }
+    else{
+      $tasks = lead::where('completed', 0)->where('assign_to_id',Auth::guard('admins')->user()->id)->get();
+      $tasks2 = [];
+      $cntt = 0;
 
+      $realopen = [];
+      $pending = [];
+      $opencnt = 0;
+      $pendingcnt = 0;
+
+      for ($i = 0; $i < count($tasks); $i++) {
+          $tasks2[$cntt] = $tasks[$i];
+          $cntt++;
+      }
+      foreach ($tasks2 as $task) {
+        if ($task->status_task == 'Open') {
+          $realopen[$cnt1] = $task;
+          $cnt1++;
+          $opencnt++;
+        }
+      $pending = DB::table('family_person')
+      ->join('pendencies','family_person.id','=','pendencies.family_id')
+      ->where('pendencies.done','=',0)
+      ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
+      ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+      ->get();
+      }
+    }
     $cnt = 0;
     $costumers = family::all();
     $todaydate = Carbon::now()->format('m-d');
@@ -282,8 +305,8 @@ dd($data);
       }
     }
   }
-    if (Auth::guard('admins')->user()->hasRole('backoffice')) return view('task',compact('opentasks'));
-    if (Auth::guard('admins')->user()->hasRole('fs')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
+if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('tasks',compact('answered','pend','opened'));
+if(Auth::guard('admins')->user()->hasRole('fs')  || Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
   }
 
 
@@ -315,8 +338,7 @@ dd($data);
   }
   public function dates()
   {
-    if (Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('admin')) {
-    }
-    return view('dates2');
+   
+
   }
 }

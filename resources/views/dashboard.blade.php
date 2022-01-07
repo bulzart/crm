@@ -525,14 +525,14 @@
         Answered pendencies
         <br>
         @foreach($pendencies as $pendency)
-        <a href="#">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
+        <a href="{{route('leadfamilyperson',$pendency->lead->id)}}">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
         @endforeach
     </div>
     <div class="col-md-6 col-12">
         Open for more than a month
         <br>
         @foreach($morethan30 as $pendency)
-        <a href="#">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
+        <a href="{{route('leadfamilyperson',$pendency->lead->id)}}">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>
         @endforeach
     </div>
 </div>

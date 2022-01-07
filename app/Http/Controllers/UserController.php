@@ -28,8 +28,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
 use DB;
-
-
+use Illuminate\Auth\Access\Response;
 
 class UserController extends Controller
 {
@@ -262,7 +261,10 @@ class UserController extends Controller
     {
         $email = filter_var($req->input('email'), FILTER_SANITIZE_STRING);
         $password = filter_var($req->input('password'), FILTER_SANITIZE_STRING);
-        if (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password])) {
+
+        $remember = $req->input('remember') == 'on' ? true : false;
+        if (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password],$remember)) {
+            $req->session()->regenerate();
             $pin = random_int(1000, 9999);
             $user = Admins::find(Auth::guard('admins')->user()->id);
             $user->confirmed = 0;
@@ -271,7 +273,8 @@ class UserController extends Controller
 
                 $role = Role::where('name',$req->input('auth'))->get();
                 $rolee = $user->getRoleNames();
-                $user->removeRole($rolee[0]);
+                if($user->hasAnyRole()){
+                $user->removeRole($rolee[0]);}
                 $user->assignRole($role);
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
@@ -279,6 +282,7 @@ class UserController extends Controller
                 // 'text' => '12345']);
                 $user->save();
                 //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
+           
                 return redirect()->route('dashboard');
 
 
@@ -304,7 +308,7 @@ class UserController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         if (Auth::guard('admins')->check()) {
             $perdoruesi = Admins::where('id', Auth::guard('admins')->user()->id)->first();
@@ -312,6 +316,7 @@ class UserController extends Controller
             $perdoruesi->confirmed = 0;
             $perdoruesi->save();
             Auth::guard('admins')->logout();
+            $request->session()->regenerateToken();
 
         }
 
@@ -413,7 +418,7 @@ class UserController extends Controller
     }
 
     public function dashboard(Request $req)
-    {
+{
 if(!Auth::guard('admins')->check()){
    return redirect()->route('rnlogin');
 }
@@ -423,51 +428,62 @@ if(!Auth::guard('admins')->check()){
 
         date_default_timezone_set('Europe/Berlin');
 
-        if (Auth::guard('admins')->user()->hasRole('backoffice')) {
-            $pendencies = family::where('status', 'Submited')->get();
-
-
-            $morethan30 = '';
-            $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-
-            return view('dashboard', compact('pendencies','morethan30'));
-        }
-
-
-
+       
 
         if (Auth::guard('admins')->check()) {
             $pendingcnt = 0;
             $opencnt = 0;
             $done = 0;
             $pendencies = [];
+            if (Auth::guard('admins')->user()->hasRole('backoffice')) {
+                $pendencies = family::where('status', 'Submited')->get();
+                
+                $morethan30 = '';
+                $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
+    
+                return view('dashboard', compact('pendencies','morethan30'));
+            }
+         
 
-            $tasks = lead::where('completed',0)->get();
-            $taskcnt = count($tasks);
+            
+          
+elseif(Auth::guard('admins')->user()->hasRole('admin')){
+    $tasks = lead::where('completed',0)->get();
+                $pendingcnt = DB::table('family_person')
+                ->join('pendencies','family_person.id','=','pendencies.family_id')
+                ->where('pendencies.done','=',0)
+                ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+                ->count();
+        }
+        elseif(Auth::guard('admins')->user()->hasRole('fs')){
+         $tasks = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('completed',0)->get();
+            $pendingcnt = DB::table('family_person')
+            ->join('pendencies','family_person.id','=','pendencies.family_id')
+            ->where('pendencies.done','=',0)
+            ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
+            ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+            ->count();
+    }
 
-            for ($i = 0; $i < count($tasks); $i++) {
-                if ($tasks[$i]->status_task == 'Submited') {
-                    $pendingcnt++;
-                }
-
+        for ($i = 0; $i < count($tasks); $i++) {
                 if ($tasks[$i]->status_task == 'Open') {
                     $opencnt++;
                 }
                 if ($tasks[$i]->status_task == 'Done') {
                     $done++;
                 }
-            }
-
+        }
 
             $percnt = 0;
+            $taskcnt = count($tasks);
             if($taskcnt != 0){
                 $percnt = (100 / $taskcnt) * $done;
             }
-
+         
             $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
             $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-
-            return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies'));
+            if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
+           
         }
     }
 }

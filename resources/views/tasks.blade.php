@@ -1,6 +1,6 @@
 @extends('template.navbar')
 @section('content')
-@if(Auth::guard('admins')->user()->hasRole('fs'))
+@if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
 <div class="row justify-content-center">
     <div class="col-md-4 col-12 mb-3">
         <div style="background: #f7f7f7; border-radius: 25px; padding: 5%;">
@@ -49,9 +49,6 @@
             </div>
         </div>
     </div>
-
-
-    @if(!Auth::guard('admins')->user()->hasRole('backoffice'))
     <div class="col-md-4 col-12 mb-3">
         <div style="border-radius: 25px; padding: 5%;">
             <p class="text-center">Costumer birthdays today:</p>
@@ -67,11 +64,8 @@
             @endforeach
         </div>
     </div>
-
-
-    @endif
-
 </div>
+
 @endif
 @if(Auth::guard('admins')->user()->hasRole('backoffice'))
 <div class="row justify-content-center">
