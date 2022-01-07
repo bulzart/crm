@@ -406,7 +406,7 @@
                                 </div>
                                 <div class="col-6 col-sm-4 col-md-3 col-lg-6 col-xl-4 g-0">
                                     <div class="text-center"
-                                         style="background-color: #4EC590; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                         style="background-color: #4e5ec5; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                         <div class="pt-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
                                                  fill="#fff" class="bi bi-exclamation-octagon-fill"
@@ -428,7 +428,7 @@
                                 </div>
                                 <div class="col-6 col-sm-4 col-md-3 col-lg-6 col-xl-4 g-0">
                                     <div class="text-center"
-                                         style="background-color: #4EC590; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                         style="background-color: #c7cb81; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                         <div class="pt-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
                                                  fill="#fff" class="bi bi-exclamation-octagon-fill"

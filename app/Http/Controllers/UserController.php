@@ -246,16 +246,14 @@ class UserController extends Controller
     {
         if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
             return redirect()->back();
-        } elseif(!Auth::guard('admins')->user()->hasRole('fs')){
-            $admins = Admins::all();
-        }
-        else{
-            $admins = Admins::find(Auth::guard('admins')->user()->id);
-        }
+        } else {
+            $role = Role::find(1);
+            $admins = Admins::role($role)->get();
             $lead = lead::find($id);
-            dd($admins);
-            return view('alead', compact('admins','lead'));
+
+            return view('alead', compact('admins', 'lead'));
         }
+    }
     
 
     public function trylogin(Request $req)
