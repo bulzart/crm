@@ -1,3 +1,34 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@bulzart 
+bulzart
+/
+crm
+Public
+Code
+Issues
+Pull requests
+1
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+crm/resources/views/calendar.blade.php
+@Albenit
+Albenit niti
+Latest commit 2aed226 1 hour ago
+ History
+ 2 contributors
+@Albenit@bulzart
+176 lines (147 sloc)  5.44 KB
+   
 @extends('template.navbar')
 @section('content')
 
@@ -85,26 +116,19 @@
                 echo '["' . $row3['name'] . '", ' . $row3['latitude'] . ', ' . $row3['longitude'] . '],';
             }
             ?>
-
         ];
-
-
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
             center: new google.maps.LatLng(42.6026, 20.9030),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-
         var infowindow = new google.maps.InfoWindow();
-
         var marker, i;
-
         for (i = 0; i < locations.length; i++) {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                 map: map
             });
-
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
                     infowindow.setContent(locations[i][0]);
@@ -120,12 +144,10 @@
 <style>
     .mapouter {
         position: relative;
-
     }
     .gmap_canvas {
         overflow: hidden;
         background: none !important;
-
     }
     .scroll-2 {
         height: 380px !important;
@@ -137,34 +159,28 @@
    .fw-600 {
          font-weight: 600;
      }
-
     .notice-box {
         background-color: #FFEBE5;
         border-radius: 35px;
     }
-
     .person-box-1 {
         background-color: #fff;
         border-radius: 15px;
     }
-
     .input-group select {
         border-radius: 7px !important;
         box-shadow: none !important;
     }
-
     .calendar-box {
         background-color: #EFEFEF;
         border-radius: 35px;
     }
-
     .person-box {
         color: #fff;
         font-weight: 600;
         border-radius: 15px;
         background-color: #4EC590;
     }
-
     .title-div {
         color: #5F5F5F;
         font-weight: 600;
@@ -172,5 +188,17 @@
     body{
         overflow-x: hidden !important;
     }
-
 </style>
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
