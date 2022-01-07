@@ -268,6 +268,9 @@
         overflow-y: scroll;
         overflow-x: hidden !important;
     }
+    body{
+        overflow-x: hidden !important;
+    }
 </style>
 
 

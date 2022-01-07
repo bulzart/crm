@@ -84,19 +84,10 @@ route::prefix('')->group(function(){
    route::any('tasks',[TasksController::class,'tasks'])->name('tasks');
 
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
-   route::get('costumers',function (){
 
-        $data = \App\Models\family::all();
-        $datcnt = 0;
-        foreach ($data as $dat) {
-         if (Auth::guard('admins')->user()->hasRole('fs') && $dat->lead->assign_to_id != Auth::guard('admins')->user()->id) {
-           unset($data[$datcnt]);
-           $datcnt++;
-         }
-      }
-       return view('costumers',compact('data'));
-   })->name('costumers');
-   route::get('search',[TasksController::class,'costumers'])->name('search');
+   route::any('costumers',[TasksController::class,'costumers'])->name('costumers');
+   route::any('search',[TasksController::class,'costumers'])->name('search');
+
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
