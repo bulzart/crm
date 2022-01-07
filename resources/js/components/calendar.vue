@@ -63,7 +63,7 @@
                 </div>
               </div>
 
-            <div class="mt-4" style="height: 250px; overflow-y: scroll;" >
+            <div class="mt-4 scroll-2" style="height: 250px; overflow-y: scroll; overflow-x:hidden !important;" >
               <div class="text-center" v-if="today == null">No appointments for today</div>
             <div v-if="today != null" v-for="tod in today" class="mb-2 text-white" style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: pointer;" data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
                 <div class="modal fade" :id="tod.slug" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -217,7 +217,7 @@ this.date_function();
   date_function: function () {
 
             var currentDate = new Date();
-              
+
             var formatted_date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
             this.todayd = formatted_date;
               this.year = parseInt(formatted_date.slice(0,4));
@@ -248,3 +248,29 @@ this.date_function();
         }
     }
 </script>
+<style>
+.scroll-2 {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.scroll-2::-webkit-scrollbar {
+    width: 4px !important;
+}
+/* Track */
+.scroll-2::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+/* Handle */
+.scroll-2::-webkit-scrollbar-thumb {
+    background: #91dfa1;
+    border-radius: 10px;
+}
+/* Handle on hover */
+.scroll-2::-webkit-scrollbar-thumb:hover {
+    background: #91dfa1;
+}
+</style>

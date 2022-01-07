@@ -1,5 +1,6 @@
 @extends('template.navbar')
 @section('content')
+
 @if(Auth::guard('admins')->user()->hasRole('fs'))
 <div class="row justify-content-center">
     <div class="col-md-4 col-12 mb-3">
@@ -86,7 +87,7 @@
                     </form>
                     <span>Answered <span class="text-danger">{{count($answered)}}</span><i id="Pending_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
                 </div>
-                
+
             </div>
             <br>
             <div class="collapse" id="collapse__">
@@ -115,7 +116,7 @@
                     </form>
                     <span>Open <span class="text-danger">{{count($opened)}}</span><i id="Offene_Aufgaben_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
                 </div>
-                
+
             </div>
             <br>
             <div class="collapse" id="first_collapse">
@@ -136,6 +137,7 @@
 
 </div>
 @endif
+
 @endsection
 
 
