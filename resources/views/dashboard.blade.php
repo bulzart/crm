@@ -16,33 +16,6 @@
         <title>Dashboard</title>
 
     </head>
-    <style>
-        .dateee {
-            border-radius: 15px;
-            border: #4CC590 1px solid;
-            color: #000;
-            background-color: #fff;
-        }
-
-        .dateee:hover {
-            background-color: #4CC590;
-            border-radius: 15px;
-            color: #fff;
-        }
-
-        .dateee:focus {
-            background-color: #4CC590;
-            border-radius: 15px;
-            color: #fff;
-        }
-
-        .box-1 {
-            background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='18' ry='18' stroke='black' stroke-width='1' stroke-dasharray='7%2c 11' stroke-dashoffset='63' stroke-linecap='square'/%3e%3c/svg%3e");
-            border-radius: 18px;
-        }
-
-
-    </style>
 
     <body>
 
@@ -547,3 +520,34 @@
 
     </html>
 @endsection
+<style>
+    .dateee {
+        border-radius: 15px;
+        border: #4CC590 1px solid;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .dateee:hover {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .dateee:focus {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .box-1 {
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='18' ry='18' stroke='black' stroke-width='1' stroke-dasharray='7%2c 11' stroke-dashoffset='63' stroke-linecap='square'/%3e%3c/svg%3e");
+        border-radius: 18px;
+    }
+    body{
+        overflow-x:hidden !important;
+    }
+
+
+</style>
+
