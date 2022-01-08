@@ -13,7 +13,7 @@ class FamilyPersonsController extends Controller
         $cnt = 0;
         $cnt1 = 0;
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
-            $lead = lead::find($id);
+            $lead = family::find($id);
             return view('documentsform',compact('lead'));
          } 
          else {
@@ -31,7 +31,6 @@ class FamilyPersonsController extends Controller
     public function updateFamilyPerson($id, Request $request)
     {
         $updatedPerson = family::where('id', $id)->update($request->all());
-    
         return redirect()->back()->with('message', 'Family person was updated');
     }
 

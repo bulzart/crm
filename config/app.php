@@ -166,7 +166,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
 
 
-
         /*
          * Package Service Providers...
          */

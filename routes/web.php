@@ -59,7 +59,6 @@ route::prefix('')->group(function(){
       $data = $data->family;
       return view('leadfamily',compact('data'));
    })->name('leadfamily');
-
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
@@ -72,35 +71,26 @@ route::prefix('')->group(function(){
     route::post('updateLeadDataThings/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataThings'])->name('updateLeadDataThings');
     route::post('createLeadDataPrevention/{leadId}/{personId}',[LeadDataController::class,'createLeadDataPrevention'])->name('createLeadDataPrevention');
     route::get('getAllLeadDataById/{leadId}/{personId}',[LeadDataController::class,'getAllLeadDataById'])->name('getAllLeadDataById');
-
-
     route::post('deleteLeadDataKK/{dataId}',[LeadDataController::class,'deleteLeadDataKK'])->name('deleteLeadDataKK');
     route::post('deleteLeadDataCounteroffered/{dataId}',[LeadDataController::class,'deleteLeadDataCounteroffered'])->name('deleteLeadDataCounteroffered');
     route::post('deleteLeadDataFahrzeug/{dataId}',[LeadDataController::class,'deleteLeadDataFahrzeug'])->name('deleteLeadDataFahrzeug');
     route::post('deleteLeadDataThings/{dataId}',[LeadDataController::class,'deleteLeadDataThings'])->name('deleteLeadDataThings');
     route::post('deleteLeadDataPrevention/{dataId}',[LeadDataController::class,'deleteLeadDataPrevention'])->name('deleteLeadDataPrevention');
-
     route::post('deleteTeam/{teamId}',[TeamController::class,'deleteTeam'])->name('deleteTeam');
     route::get('showTeamById/{teamId}',[TeamController::class,'showTeamById'])->name('showTeamById');
     route::get('updateTeam/{teamId}',[TeamController::class,'updateTeam'])->name('updateTeam');
-
     Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
       route::post('create',[TeamController::class,'createTeam'])->name('createTeam');
   });
-
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::any('tasks',[TasksController::class,'tasks'])->name('tasks');
-
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
-
    route::any('costumers',[TasksController::class,'costumers'])->name('costumers');
    route::any('search',[TasksController::class,'costumers'])->name('search');
-
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
    route::get('chat',[ChatController::class,'chat']);
-
    route::get('addtodo',[TodoController::class,'addtodo']);
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);
@@ -130,17 +120,6 @@ route::get('permission', function(){
   return $user->getRoleNames();
 });
 route::get('status',[StatusController::class,'status']);
-route::get('chat',function(Request $req){
-   dd($req->session()->all());
-
- 
-
-
-
-});
-route::get('chat/{admin1}/{admin2}/{pid}',[ChatController::class,"chat"]);
-
-
 
 
 
