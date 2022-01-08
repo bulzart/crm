@@ -12,6 +12,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Document</title>
 </head>
 
@@ -298,13 +299,13 @@
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active col krankenkasse-btn" id="nav-home-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                  aria-selected="true">Krankenkasse</button>
+                  aria-selected="true" onclick="changecnt(0)">Krankenkasse</button>
                 <button class="nav-link col auto-btn" id="nav-profile-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                  aria-selected="false">Auto</button>
+                  aria-selected="false" onclick="changecnt(1)">Auto</button>
                 <button class="nav-link  col sachen-btn" id="nav-contact-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
-                  aria-selected="false">Sachen</button>
+                  aria-selected="false" onclick="changecnt(2)">Sachen</button>
                 <button class="nav-link  col vorsorge-btn" id="nav-fourth-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-fourth" type="button" role="tab" aria-controls="nav-fourth"
                   aria-selected="false">Vorsorge</button>
@@ -884,9 +885,9 @@
                                         aria-describedby="basic-addon1">
                                     </div> -->
                                     <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-                                      <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" autocomplete="off" checked>
-                                        <label class="btn btn-outline-secondary w-100 g-0" value="Partnergarage" for="btnradio1_">Partnergarage</label>
-                                        <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_" autocomplete="off">
+                                      <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" value="Partnergarage" checked>
+                                        <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1_">Partnergarage</label>
+                                        <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_">
                                         <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2_">Freie Wahl</label>
                                     </div>
                                   </div>
@@ -1760,30 +1761,33 @@
 function upload(x){
 document.getElementById(x.id + 'c').value = x.value;
 }
+function changecnt(x){
+  cntt = x;
+}
 function nextonee(){
-  if(cnt < 5 && cnt> -1){
-if(cntt == 0){
-  $('#nav-profile').addClass('active show');
-  $('#nav-home').removeClass('active show');
-  $('#nav-profile-tab').addClass('active');
-  $('#nav-home-tab').removeClass('active');
-}
-if(cntt == 1){
-  $('#nav-contact').addClass('active show');
-  $('#nav-profile').removeClass('active show');
-  $('#nav-contact-tab').addClass('active');
-  $('#nav-profile-tab').removeClass('active');
-}
-if(cntt == 2){
-  $('#nav-fourth').addClass('active show');
-  $('#nav-contact').removeClass('active show');
-  $('#nav-fourth-tab').addClass('active');
-  $('#nav-contact-tab').removeClass('active');
- document.getElementById("submitt").type = "submit";
-}
-cntt++;
-}
-}
+  if(cntt < 5 && cntt> -1){
+    if(cntt == 0){
+      $('#nav-profile').addClass('active show');
+      $('#nav-home').removeClass('active show');
+      $('#nav-profile-tab').addClass('active');
+      $('#nav-home-tab').removeClass('active');
+    }
+    if(cntt == 1){
+      $('#nav-contact').addClass('active show');
+      $('#nav-profile').removeClass('active show');
+      $('#nav-contact-tab').addClass('active');
+      $('#nav-profile-tab').removeClass('active');
+    }
+    if(cntt == 2){
+      $('#nav-fourth').addClass('active show');
+      $('#nav-contact').removeClass('active show');
+      $('#nav-fourth-tab').addClass('active');
+      $('#nav-contact-tab').removeClass('active');
+      document.getElementById("submitt").type = "submit";
+    }
+    cntt++;
+    }
+  }
 
 // $('#nextonee__').on('click', function(){
 //   alert('aaa');
