@@ -5684,6 +5684,114 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.fetchnumbers();
@@ -10861,6 +10969,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.scroll-2 {\n    height: 300px;\n    overflow-y: scroll;\n    overflow-x: hidden !important;\n    padding-left: 3px;\n    padding-right: 3px;\n}\n.scroll-2::-webkit-scrollbar {\n    width: 4px !important;\n}\n/* Track */\n.scroll-2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n/* Handle */\n.scroll-2::-webkit-scrollbar-thumb {\n    background: #91dfa1;\n    border-radius: 10px;\n}\n/* Handle on hover */\n.scroll-2::-webkit-scrollbar-thumb:hover {\n    background: #91dfa1;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.text-color123 {\n    color: grey;\n}\n\n/* overflow 1 */\n.overflow-div1::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div1::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div1::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div1::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n    border-radius: 10px;\n}\n\n/* ........................................................... */\n/* overflow 2 */\n.overflow-div2::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div2::-webkit-scrollbar-thumb {\n    background: #fff;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div2::-webkit-scrollbar-thumb:hover {\n    background: #fff1ff;\n    border-radius: 10px;\n}\n\n/* ........................................................... */\n/* overflow 3 */\n.overflow-div3::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div3::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div3::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div3::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n}\n\n/* ...................................................... */\n/* overflow 4 */\n.overflow-div4::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div4::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div4::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div4::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n}\n\n\n/* ................................................. */\n.collapsed .d-btnn {\n    background-color: #c8ddd1;\n    opacity: 0.4;\n}\n.d-btnn {\n    opacity: 1;\n}\n.form-control:focus {\n    border-color: #ced4da;\n    box-shadow: none;\n}\n.accordion-button {\n    color: #7DBF9A;\n    font-weight: bold;\n    border-radius: 15px !important;\n}\n.accordion-item {\n    border-radius: 15px !important;\n}\n.hr-style {\n    color: #fff !important;\n    height: 3px !important;\n    border-radius: 50px;\n    opacity: 1;\n    display: none;\n}\n.border-left-div {\n    border: none !important;\n    border-left: 3px solid #fff !important;\n}\n@media (max-width: 991.98px) {\n.hr-style {\n        display: block;\n}\n.border-left-div {\n        border: none !important;\n        border-left: none !important;\n}\n}\n.accepted-section {\n    background-color: #7DBF9A;\n    border-radius: 19px;\n}\n.decline-btn {\n    border: 2px solid #FF0D13;\n    border-radius: 13px !important;\n    background-color: #fff;\n    color: #FF0D13;\n}\n.decline-btn:hover {\n    background-color: #FF0D13;\n    color: #fff !important;\n}\n.accept-btn {\n    border: 2px solid #63D4A4;\n    border-radius: 13px !important;\n    background-color: #fff;\n    color: #63D4A4 !important;\n}\n.accept-btn:hover {\n    border: 2px solid #63D4A4;\n    background-color: #63D4A4;\n    color: #fff !important;\n}\n.text-color-header1 {\n    color: #fff;\n}\n.people-icon-div {\n    background-color: #525353;\n    margin: 3px;\n}\n.static-btn1 {\n    background-color: #fff !important;\n    border-radius: 8px !important;\n}\n.people-svg-span {\n    border-radius: 8px;\n}\n.accordion-button:not(.collapsed) {\n    color: #7DBF9A;\n    background-color: #fff;\n    box-shadow: none;\n}\n.accordion-button:not(.collapsed)::after {\n    background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e\");\n    background-color: transparent !important;\n}\n.accordion-button:focus {\n    border-color: transparent !important;\n    border: none !important;\n    box-shadow: none !important;\n}\n.priority-spnn {\n    background-color: #ad2b2b;\n    border-radius: 35px;\n    color: #fff;\n}\n.open-task-box {\n    border-radius: 35px !important;\n    background-color: #fff;\n    border: #707070 1px solid;\n}\n.pendzen-box {\n    border-radius: 35px !important;\n    background-color: #EAECF0;\n    border: none;\n}\n.third-box {\n    border-radius: 35px !important;\n    background-color: #fff;\n    border: #707070 1px solid;\n}\n.task-box {\n    background-color: #F7F7F7;\n    border-radius: 12px;\n}\n.name-spnnnn {\n    font-weight: 600;\n}\n.fw-600 {\n    font-weight: 600;\n}\n.spn-muted {\n    color: #707070;\n    font-weight: 600;\n    font-size: 14px !important;\n}\n.spn-normal {\n    font-weight: 600;\n    font-size: 14px !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -28392,6 +28524,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./todo.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -28817,15 +28979,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _todo_vue_vue_type_template_id_5289e811___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./todo.vue?vue&type=template&id=5289e811& */ "./resources/js/components/todo.vue?vue&type=template&id=5289e811&");
 /* harmony import */ var _todo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo.vue?vue&type=script&lang=js& */ "./resources/js/components/todo.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _todo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todo.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/todo.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
+;
 
 
 /* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _todo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _todo_vue_vue_type_template_id_5289e811___WEBPACK_IMPORTED_MODULE_0__.render,
   _todo_vue_vue_type_template_id_5289e811___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
@@ -28900,6 +29064,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_calendar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./calendar.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/calendar.vue?vue&type=style&index=0&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/todo.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/todo.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./todo.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&lang=css&");
 
 
 /***/ }),
@@ -30190,228 +30367,282 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row mt-3" }, [
-    _c(
-      "div",
-      { staticClass: "card-hover-shadow-2x mb-3 card col-6 col-md-6" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
+  return _c("div", { staticClass: "row my-2" }, [
+    _c("div", { staticClass: "col-12 col-sm-12 col-md-12 col-lg-6 g-0" }, [
+      _c("div", { staticClass: "to-do-div" }, [
         _c(
           "div",
-          { staticClass: "scroll-area-sm" },
+          {
+            staticClass: "accordion accordion-flush mx-3 ",
+            attrs: { id: "accordionFlush1" },
+          },
           [
-            _c("perfect-scrollbar", { staticClass: "ps-show-limits" }, [
-              _c("div", { attrs: { id: "alrt" } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "ps ps--active-y" }, [
-                _vm._v(
-                  "\r\n                        Admin\r\n                   "
-                ),
-                _c(
-                  "select",
-                  {
-                    staticClass: "form-control",
-                    attrs: { name: "admin" },
-                    on: {
-                      change: function ($event) {
-                        return _vm.onChangeSelect($event)
+            _c(
+              "div",
+              {
+                staticClass: "accordion-item my-1 py-2",
+                staticStyle: { "background-color": "#F7F7F7" },
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "mx-3" }, [
+                  _vm._v(
+                    "\n                        Admin\n                        "
+                  ),
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { name: "admin" },
+                      on: {
+                        change: function ($event) {
+                          return _vm.onChangeSelect($event)
+                        },
                       },
                     },
-                  },
-                  _vm._l(_vm.todos.admins, function (admin) {
-                    return _c("option", { domProps: { value: admin.id } }, [
-                      _vm._v(_vm._s(admin.name)),
-                    ])
-                  }),
-                  0
-                ),
-                _vm._v(
-                  "\r\n                    \r\n                    Costumer\r\n                     "
-                ),
-                _c(
-                  "select",
-                  {
-                    staticClass: "form-control",
-                    attrs: { name: "costumer" },
-                    on: {
-                      change: function ($event) {
-                        return _vm.onChangeCostumer($event)
+                    _vm._l(_vm.todos.admins, function (admin) {
+                      return _c("option", { domProps: { value: admin.id } }, [
+                        _vm._v(_vm._s(admin.name)),
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(
+                    "\n\n                        Costumer\n                        "
+                  ),
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { name: "costumer" },
+                      on: {
+                        change: function ($event) {
+                          return _vm.onChangeCostumer($event)
+                        },
                       },
                     },
-                  },
-                  _vm._l(_vm.todos.costumers, function (costumer) {
-                    return _c("option", { domProps: { value: costumer.id } }, [
-                      _vm._v(
-                        _vm._s(costumer.first_name) +
-                          " " +
-                          _vm._s(costumer.last_name)
-                      ),
-                    ])
+                    _vm._l(_vm.todos.costumers, function (costumer) {
+                      return _c(
+                        "option",
+                        { domProps: { value: costumer.id } },
+                        [
+                          _vm._v(
+                            _vm._s(costumer.first_name) +
+                              "\n                                " +
+                              _vm._s(costumer.last_name) +
+                              "\n                            "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(
+                    "\n                        Description\n                        "
+                  ),
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      id: "desc",
+                      placeholder: "Description",
+                    },
                   }),
-                  0
-                ),
-                _vm._v(
-                  "\r\n                   Description\r\n                   "
-                ),
-                _c("input", {
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    id: "desc",
-                    placeholder: "Description",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary mt-1",
-                  on: { click: _vm.assignpendency },
-                },
-                [_vm._v("Assign pendency")]
-              ),
-            ]),
-          ],
-          1
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "py-2 mx-3" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary  mt-1",
+                      on: { click: _vm.assignpendency },
+                    },
+                    [_vm._v("Assign pendency")]
+                  ),
+                ]),
+              ]
+            ),
+          ]
         ),
-      ]
-    ),
+      ]),
+    ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "card-hover-shadow-2x mb-3 card col-6 col-md-6" },
-      [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "scroll-area-sm" },
-          [
-            _c("perfect-scrollbar", { staticClass: "ps-show-limits" }, [
+    _c("div", { staticClass: "col-12 col-sm-12 col-md-12 col-lg-6 g-0" }, [
+      _c("div", {}, [
+        _c("div", { staticClass: " internal-nr-div pb-2" }, [
+          _c(
+            "div",
+            {
+              staticClass: "accordion accordion-flush mx-3 ",
+              attrs: { id: "accordionFlush4" },
+            },
+            [
               _c(
                 "div",
                 {
-                  staticClass: "ps ps--active-y",
-                  staticStyle: { position: "static" },
+                  staticClass: "accordion-item my-1 py-2 ",
+                  staticStyle: { "background-color": "#F7F7F7" },
                 },
                 [
-                  _c("div", { staticClass: "ps-content" }, [
-                    _c(
-                      "ul",
-                      {
-                        staticClass: " list-group list-group-flush",
-                        staticStyle: {
-                          height: "200px",
-                          "overflow-y": "scroll",
-                        },
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "accordion-collapse collapse show",
+                      attrs: {
+                        id: "flush-collapse4",
+                        "aria-labelledby": "flush-heading4",
+                        "data-bs-parent": "#accordionFlush4",
                       },
-                      _vm._l(_vm.numbers, function (number) {
-                        return _c("li", { staticClass: "list-group-item" }, [
-                          _c("div", {
-                            staticClass: "todo-indicator bg-warning",
-                          }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "widget-content p-0" }, [
-                            _c(
-                              "div",
-                              { staticClass: "widget-content-wrapper" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-left mr-2" },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "custom-checkbox custom-control",
-                                      },
-                                      [_vm._v(" ")]
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-left" },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "widget-heading" },
-                                      [_vm._v(_vm._s(number.text) + " ")]
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "widget-content-right" },
-                                  [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "border-0 btn-transition btn btn-outline-danger",
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.deletenumber(number.id)
-                                          },
-                                        },
-                                      },
-                                      [_c("i", { staticClass: "fa fa-trash" })]
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
-                          ]),
-                        ])
-                      }),
-                      0
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "d-inline d-flex" }, [
-                      _c("input", {
-                        staticClass: "form-control",
-                        attrs: { name: "todo", id: "number", type: "text" },
-                        on: {
-                          keyup: function ($event) {
-                            if (
-                              !$event.type.indexOf("key") &&
-                              _vm._k(
-                                $event.keyCode,
-                                "enter",
-                                13,
-                                $event.key,
-                                "Enter"
-                              )
-                            ) {
-                              return null
-                            }
-                            return _vm.addnumber.apply(null, arguments)
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "accordion-body p-0 mx-2 py-2 overflow-div3",
+                          staticStyle: {
+                            "background-color": "#F7F7F7",
+                            "border-bottom-left-radius": "15px",
+                            "border-bottom-right-radius": "15px",
+                            height: "170px",
+                            "overflow-y": "scroll !important",
+                            "overflow-x": "hidden !important",
                           },
                         },
-                      }),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: { click: _vm.addnumber },
-                        },
-                        [_vm._v("Add")]
+                        _vm._l(_vm.numbers, function (number) {
+                          return _c(
+                            "div",
+                            {
+                              staticClass: "py-2 my-2 mx-2",
+                              staticStyle: {
+                                "background-color": "#fff",
+                                "border-radius": "15px",
+                                color: "#000",
+                              },
+                            },
+                            [
+                              _c("div", { staticClass: "mx-3 " }, [
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col" }, [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "fw-bold fs-5 text-color123",
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    " +
+                                            _vm._s(number.text) +
+                                            "\n                                                "
+                                        ),
+                                      ]
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-2 text-end g-0 pe-2" },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "border-0  p-0 text-center bg-white text-danger",
+                                          on: {
+                                            click: function ($event) {
+                                              return _vm.deletenumber(number.id)
+                                            },
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "svg",
+                                            {
+                                              staticClass: "bi bi-trash",
+                                              attrs: {
+                                                xmlns:
+                                                  "http://www.w3.org/2000/svg",
+                                                width: "16",
+                                                height: "16",
+                                                fill: "currentColor",
+                                                viewBox: "0 0 16 16",
+                                              },
+                                            },
+                                            [
+                                              _c("path", {
+                                                attrs: {
+                                                  d: "M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z",
+                                                },
+                                              }),
+                                              _vm._v(" "),
+                                              _c("path", {
+                                                attrs: {
+                                                  "fill-rule": "evenodd",
+                                                  d: "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                              ]),
+                            ]
+                          )
+                        }),
+                        0
                       ),
-                    ]),
-                  ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mx-3" }, [
+                        _c("div", { staticClass: "input-group my-3" }, [
+                          _c("input", {
+                            staticClass: "form-control",
+                            staticStyle: { size: "auto" },
+                            attrs: { name: "todo", id: "number", type: "text" },
+                            on: {
+                              keyup: function ($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.addnumber.apply(null, arguments)
+                              },
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary",
+                              on: { click: _vm.addnumber },
+                            },
+                            [_vm._v("Add")]
+                          ),
+                        ]),
+                      ]),
+                    ]
+                  ),
                 ]
               ),
-            ]),
-          ],
-          1
-        ),
-      ]
-    ),
+            ]
+          ),
+        ]),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = [
@@ -30419,14 +30650,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header-tab card-header mb-2" }, [
+    return _c("div", { staticClass: "p-3" }, [
       _c(
-        "div",
+        "span",
         {
-          staticClass:
-            "card-header-title font-size-lg text-capitalize font-weight-normal",
+          staticClass: "col text-dark fw-bold fs-5",
+          staticStyle: { "background-color": "#F7F7F7" },
         },
-        [_c("i", { staticClass: "fa fa-tasks" }), _vm._v(" Todo")]
+        [
+          _vm._v(
+            "\n                            To Do\n                             "
+          ),
+        ]
       ),
     ])
   },
@@ -30434,14 +30669,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header-tab card-header mb-2" }, [
+    return _c("div", { staticClass: "p-3" }, [
       _c(
-        "div",
+        "span",
         {
-          staticClass:
-            "card-header-title font-size-lg text-capitalize font-weight-normal",
+          staticClass: "col text-dark fw-bold fs-5",
+          staticStyle: { "background-color": "#F7F7F7" },
         },
-        [_c("i", { staticClass: "fa fa-tasks" }), _vm._v(" Numbers")]
+        [
+          _vm._v(
+            "\n                            Informational Numbers\n                             "
+          ),
+        ]
       ),
     ])
   },
@@ -42616,7 +42855,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\Kutiza\\\\crm"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\Kutiza\\\\crm","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

@@ -15,10 +15,11 @@
 
 </head>
 <style>
-    /*.nav-itemsss {*/
-    /*    height: 93%;*/
-    /*    overflow: scroll !important;*/
-    /*}*/
+    .nav-itemsss {
+        overflow-y: auto !important;
+        /*overflow-x: auto !important;*/
+        height: 500px !important;
+    }
     .nav-itemsss a:hover {
         background-color: #c9cad8;
         color: #000;
@@ -47,7 +48,7 @@
 
 <div class="row">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
-        <div class="d-flex flex-column flex-shrink-0 p-3 bg-light navvv"
+        <div class="flex-column flex-shrink-0 p-3 bg-light navvv"
              style="height: 100% !important; position: fixed;">
 {{--            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">--}}
 {{--                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 100 67">--}}

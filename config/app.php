@@ -164,7 +164,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-    
+
 
         /*
          * Package Service Providers...
