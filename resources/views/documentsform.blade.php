@@ -316,42 +316,46 @@
               aria-labelledby="nav-home-tab">
               <div class="row mx-4">
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
-                  <div class="" style="background-color: #D2FEC9;height: 158px; border-radius: 13px;">
+                <div class="" style="background-color: #EFEFEF; border-radius: 13px;">
                     <div class="py-2 px-2">
                       <div class="row mx-2">
                         <div class="col-7 d-flex g-0">
                           <div class="">
                             <span class="fw-bold" style=" font-size: 12px;">
-                              Vorversicherer
+                            Vorversicherer
                             </span>
                           </div>
                         </div>
-                        <div class="col g-0 d-flex justify-content-end">
+                        <!-- <div class="col g-0 d-flex justify-content-end">
                           <div class="select-div text-end">
-                            <select name="" id="" class="fw-bold"
-                              style="background-color: #D2FEC9; font-size: 12px;color:#9F9F9F;">
+                            <select name="pre_insurer" class="fw-bold" id=""  style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
                               <option selected>Select</option>
                               <option value="1">Ja</option>
                               <option value="2">Nein</option>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
-                      <div class="text-center my-3">
-                        <span class="text-muted" style="font-size: 13px;">
-                          Police-vorher.pdf
-                        </span>
-                        <span class="ps-4">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                            <g id="Group_620" data-name="Group 620" transform="translate(-714 -602)">
-                              <circle id="Ellipse_30" data-name="Ellipse 30" cx="9" cy="9" r="9"
-                                transform="translate(714 602)" fill="#34c758" />
-                              <path id="Path_283" data-name="Path 283" d="M8370.12,986.7l2.781,2.828,4.912-5.565"
-                                transform="translate(-7650.572 -375.429)" fill="none" stroke="#feffff"
-                                stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
-                            </g>
-                          </svg>
-                        </span>
+                      <div class="upload-box mx-1 my-2">
+                        <div class="mx-1 my-2 p-4 text-center">
+                          <label for="file-input-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+                              <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
+                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
+                                  transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                <g id="Group_326" data-name="Group 326" transform="translate(95.656 31.893)">
+                                  <path id="Path_234" data-name="Path 234"
+                                    d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                    transform="translate(0 1.82)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                  <path id="Path_235" data-name="Path 235"
+                                    d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                    transform="translate(0.92 0)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                </g>
+                              </g>
+                            </svg>
+                          </label>
+                          <input type="file" name="pre_insurer" id="file-input-3" class="svg-div w-100 border-0  g-0">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -367,16 +371,16 @@
                             </span>
                           </div>
                         </div>
-                        <div class="col g-0 d-flex justify-content-end">
+                        <!-- <div class="col g-0 d-flex justify-content-end">
                           <div class="select-div text-end">
-                            <select name="" class="fw-bold" id=""
+                            <select name="id_required" class="fw-bold" id=""
                               style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
                               <option selected>Select</option>
                               <option value="1">Ja</option>
                               <option value="2">Nein</option>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                       <div class="upload-box mx-1 my-2">
                         <div class="mx-1 my-2 p-4 text-center">
@@ -414,16 +418,16 @@
                             </span>
                           </div>
                         </div>
-                        <div class="col g-0 d-flex justify-content-end">
+                        <!-- <div class="col g-0 d-flex justify-content-end">
                           <div class="select-div text-end">
-                            <select name="" class="fw-bold" id=""
+                            <select name="noname" class="fw-bold" id=""
                               style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
                               <option selected>Select</option>
                               <option value="1">Ja</option>
                               <option value="2">Nein</option>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                       <div class="upload-box mx-1 my-2">
                         <div class="mx-1 my-2 p-4 text-center">
@@ -445,7 +449,6 @@
                           </label>
                           <input type="file" id="file-input-2" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
                           <input type="text" class="form-control" id="file-input-2c" disabled style="background:transparent; border:none;">
-                          
                         </div>
                       </div>
                     </div>
@@ -462,16 +465,16 @@
                             </span>
                           </div>
                         </div>
-                        <div class="col g-0 d-flex justify-content-end">
+                        <!-- <div class="col g-0 d-flex justify-content-end">
                           <div class="select-div text-end ">
-                            <select name="" class="fw-bold" id=""
+                            <select name="power_of_attorney" class="fw-bold" id=""
                               style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
                               <option selected>Select</option>
                               <option value="1">Ja</option>
                               <option value="2">Nein</option>
                             </select>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                       <div class="upload-box mx-1 my-2">
                         <div class="mx-1 my-2 p-4 text-center">
@@ -493,7 +496,6 @@
                           </label>
                           <input type="file" id="file-input-3" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
                           <input type="text" class="form-control" id="file-input-3c" disabled style="background:transparent; border:none;">
-
                         </div>
                       </div>
                     </div>
@@ -600,7 +602,7 @@
                                 </div>
                                 <div class="col g-0 d-flex justify-content-end">
                                   <div class="select-div text-end ">
-                                    <select name="" class="fw-bold" id=""
+                                    <select name="comparison_type" class="fw-bold" id=""
                                       style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
                                       <option selected>Select</option>
                                       <option value="1">1:1 Deckung</option>
@@ -613,9 +615,8 @@
                             <div class="">
                               <div class="mb-3 mt-3">
                                 <label for="exampleFormControlTextarea1" class="form-label"
-                                  style="font-size: 13px;">Example
-                                  textarea</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  style="font-size: 13px;">Kommentar</label>
+                                <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                               </div>
                             </div>
                           </div>
@@ -634,13 +635,12 @@
                           <div class="d-block">
                             <div class="">
                               <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                Gegenofferte?
+                              Neues Fahrzeug
                               </span>
                             </div>
                             <div class="lh-1 " id="bastelle-span">
                               <span class="" style="font-size: 13px;">
-                                Bestelle eine Gegenofferte
-                                für eine bestehende Autoversicherung
+                                Bestelle eine Offerte für ein neu einzulösendes Fahrzeug.
                               </span>
                             </div>
                           </div>
@@ -657,7 +657,7 @@
                                   <div class="">
                                     <div class="">
                                       <span class="">
-                                        Bestelle eine Offerte für ein neu einzulösendes Fahrzeug.
+                                        Fahrzeugausweis hochladen
                                       </span>
                                     </div>
                                     <div class="upload-box mx-1 my-2">
@@ -703,17 +703,17 @@
                                     <div class="col">
                                       <div class="btn-group w-100" role="group"
                                         aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check " name="btnradio" id="btnradio1"
+                                        <input type="radio" class="btn-check " name="leasing" id="btnradio1"
                                           autocomplete="off" checked>
-                                        <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1">Ja</label>
+                                        <label class="btn btn-outline-secondary w-100 g-0" value="Ja" for="btnradio1">Ja</label>
 
-                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2"
+                                        <input type="radio" class="btn-check" name="leasing" value="Nein"  id="btnradio2"
                                           autocomplete="off">
                                         <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2">Nein</label>
                                       </div>
                                       <div class="">
-                                        <select name="" class="w-100 slct1" id="">
-                                          <option value="">Gesellschaft</option>
+                                        <select name="leasing_name" class="w-100 slct1" id="">
+                                          <option value="Gesellschaft">Gesellschaft</option>
                                         </select>
                                       </div>
                                     </div>
@@ -736,10 +736,10 @@
                                           Kaufjahr
                                         </span>
                                       </div>
-                                      <select name="" class="fw-normal" id="" style="background-color: #EFEFEF;">
-                                        <option selected>2021</option>
-                                        <option value="1">2022</option>
-                                        <option value="2">2023</option>
+                                      <select name="year_of_purchase" class="fw-normal" id="" style="background-color: #EFEFEF;">
+                                        <option value="2021" selected>2021</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2019">2019</option>
                                       </select>
                                     </div>
                                   </div>
@@ -749,7 +749,7 @@
                                         Este inverkehrssetzung:
                                       </span>
                                     </div>
-                                    <input type="date" class="py-1 border-0">
+                                    <input name="placing_on_the_market" type="date" class="py-1 border-0">
                                   </div>
                                   <div class="date-input-div mb-2">
                                     <div class="">
@@ -757,15 +757,15 @@
                                         Beginn Versicherung:
                                       </span>
                                     </div>
-                                    <input type="date" class="py-1 border-0">
+                                    <input name="insurance_date" type="date" class="py-1 border-0">
                                   </div>
                                   <div class="input-select-div mb-2">
                                     <div class="">
                                       <span class="">
-                                        Anzahl Personen
+                                      Eingelöster Kanton:
                                       </span>
                                     </div>
-                                    <select class="form-select w-75" aria-label="Default select example">
+                                    <select name="noname" class="form-select w-75" aria-label="Default select example">
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
@@ -778,7 +778,7 @@
                                         KM - Stand:
                                       </span>
                                     </div>
-                                    <input class="py-1" type="text" name="" id="">
+                                    <input name="km_stood" class="py-1" type="text" id="">
                                   </div>
                                 </div>
                                 <div class="col">
@@ -792,10 +792,10 @@
                                   <div class="date-input-div mb-2">
                                     <div class="">
                                       <span>
-                                        Este inverkehrssetzung:
+                                        Erste inverkehrssetzung:
                                       </span>
                                     </div>
-                                    <input type="date" class="py-1 border-0">
+                                    <input name="placing_on_the_market" type="date" class="py-1 border-0">
                                   </div>
                                   <div class="input-select-div mb-2">
                                     <div class="">
@@ -803,7 +803,7 @@
                                         Nationalitat:
                                       </span>
                                     </div>
-                                    <select class="form-select w-75" aria-label="Default select example">
+                                    <select name="nationality" class="form-select w-75" aria-label="Default select example">
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
@@ -816,7 +816,7 @@
                                         Häufigster Lenker?
                                       </span>
                                     </div>
-                                    <select class="form-select w-75" aria-label="Default select example">
+                                    <select name="most_common" class="form-select w-75" aria-label="Default select example">
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
@@ -840,7 +840,7 @@
                                         Versischerung:
                                       </span>
                                     </div>
-                                    <select class="form-select w-75" aria-label="Default select example">
+                                    <select name="insurance" class="form-select w-75" aria-label="Default select example">
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
@@ -850,10 +850,10 @@
                                   <div class="input-select-div mb-2">
                                     <div class="">
                                       <span class="">
-                                        Versischerung:
+                                        Selbstbehalt Teilkasko:
                                       </span>
                                     </div>
-                                    <select class="form-select w-75" aria-label="Default select example">
+                                    <select name="deductible" class="form-select w-75" aria-label="Default select example">
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
@@ -863,10 +863,10 @@
                                   <div class="input-select-div mb-2">
                                     <div class="">
                                       <span class="">
-                                        Versischerung:
+                                      Mitgeführte Sachen:
                                       </span>
                                     </div>
-                                    <select class="form-select w-75" aria-label="Default select example">
+                                    <select name="carried" class="form-select w-75" aria-label="Default select example">
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
@@ -875,64 +875,70 @@
                                   </div>
                                   <div class="">
                                     <span>
-                                      Versischerung:
+                                    Reparaturwerkstatt:
                                     </span>
-                                    <div class="input-group mb-2">
-                                      <input type="text" class="form-control" aria-label=""
+                                    <!-- <div class="input-group mb-2">
+                                      <input name="noname" type="text" placeholder="Partnergarage" class="form-control" aria-label=""
                                         aria-describedby="basic-addon1">
-                                      <input type="text" class="form-control" aria-label=""
+                                      <input name="noname" type="text" placeholder="Freie Wahl" class="form-control" aria-label=""
                                         aria-describedby="basic-addon1">
+                                    </div> -->
+                                    <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
+                                      <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" autocomplete="off" checked>
+                                        <label class="btn btn-outline-secondary w-100 g-0" value="Partnergarage" for="btnradio1_">Partnergarage</label>
+                                        <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_" autocomplete="off">
+                                        <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2_">Freie Wahl</label>
                                     </div>
                                   </div>
                                   <div class="input-div1 mb-2">
                                     <div class="">
                                       <span class="">
-                                        + Unersischerung:
+                                        + Unfalldeckung:
                                       </span>
                                     </div>
-                                    <input class="py-1" type="text" name="" id="">
+                                    <input name="accident_coverage" class="py-1" type="text"  id="">
                                   </div>
                                 </div>
                                 <div class="col">
                                   <div class="input-div1 mb-2">
                                     <div class="">
                                       <span class="">
-                                        + Unersischerung:
+                                        + Verkehrsrechtsschutz:
                                       </span>
                                     </div>
-                                    <input class="py-1" type="text" name="" id="">
+                                    <input name="traffic_legal_protection" class="py-1" type="text" id="">
                                   </div>
                                   <div class="input-div1 mb-2">
                                     <div class="">
                                       <span class="">
-                                        + Unersischerung:
+                                        + Grobfahrlässigkeitschutz:
                                       </span>
                                     </div>
-                                    <input class="py-1" type="text" name="" id="">
+                                    <input name="grossly" class="py-1" type="text" id="">
                                   </div>
                                   <div class="input-div1 mb-2">
                                     <div class="">
                                       <span class="">
-                                        + Unersischerung:
+                                        + Glasschutz:
                                       </span>
                                     </div>
-                                    <input class="py-1" type="text" name="" id="">
+                                    <input name="glass_protection" class="py-1" type="text"  id="">
                                   </div>
                                   <div class="input-div1 mb-2">
                                     <div class="">
                                       <span class="">
-                                        + Unersischerung:
+                                        + Parkschaden:
                                       </span>
                                     </div>
-                                    <input class="py-1" type="text" name="" id="">
+                                    <input name="parking_damage" class="py-1" type="text"  id="">
                                   </div>
                                   <div class="input-div1 mb-2">
                                     <div class="">
                                       <span class="">
-                                        + Unersischerung:
+                                        + 24h Pannenhilfe:
                                       </span>
                                     </div>
-                                    <input class="py-1" type="text" name="" id="">
+                                    <input name="hour_breakdown_assistance" class="py-1" type="text"  id="">
                                   </div>
                                 </div>
                               </div>
@@ -981,15 +987,15 @@
                                   Nationalitat:
                                 </span>
                               </div>
-                              <input class="py-1" type="text" name="" id="">
+                              <input name="nationality_sachen" class="py-1" type="text"  id="">
                             </div>
                             <div class="input-select-div mb-2">
                               <div class="">
                                 <span class="" style="font-size: 15px;">
-                                  Anzahl Personen
+                                Aufenthaltsgenehmigung
                                 </span>
                               </div>
-                              <select class="form-select w-75" aria-label="Default select example">
+                              <select name="residence_permit" class="form-select w-75" aria-label="Default select example">
                                 <option selected></option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -997,9 +1003,9 @@
                               </select>
                             </div>
                             <div class=" mb-2">
-                              <label for="">Telefonnumer </label> <br>
+                              <label for="telephone_nr">Telefonnumer </label> <br>
                               <div class="input-group">
-                                <input id="int-tel" type="tel" class="form-control">
+                                <input name="telephone_nr" id="int-tel" type="tel" class="form-control">
                               </div>
                             </div>
                             <div class="input-div1 mb-2">
@@ -1008,7 +1014,7 @@
                                   Email
                                 </span>
                               </div>
-                              <input class="py-1" type="email" name="" id="">
+                              <input name="email" class="py-1" type="email" id="">
                             </div>
                             <div class="input-select-div mb-2">
                               <div class="">
@@ -1016,7 +1022,7 @@
                                   Zivilstand
                                 </span>
                               </div>
-                              <select class="form-select w-75" aria-label="Default select example">
+                              <select name="zivilstand" class="form-select w-75" aria-label="Default select example">
                                 <option selected></option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -1026,10 +1032,10 @@
                             <div class="input-select-div mb-2">
                               <div class="">
                                 <span class="" style="font-size: 15px;">
-                                  Arbeitsverhaltnis
+                                  Arbeitsverhältnis
                                 </span>
                               </div>
-                              <select class="form-select w-75" aria-label="Default select example">
+                              <select name="employment_relationship" class="form-select w-75" aria-label="Default select example">
                                 <option selected></option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -1046,7 +1052,7 @@
                                   Beruf:
                                 </span>
                               </div>
-                              <input class="py-1" type="text" name="" id="">
+                              <input name="job" class="py-1" type="text" id="">
                             </div>
                             <div class="input-select-div mb-2">
                               <div class="">
@@ -1054,7 +1060,7 @@
                                   Zahlungsrythmus:
                                 </span>
                               </div>
-                              <select class="form-select w-75" aria-label="Default select example">
+                              <select name="payment_frequency" class="form-select w-75" aria-label="Default select example">
                                 <option selected></option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -1068,7 +1074,7 @@
                                   Betrag pro Monat:
                                 </span>
                               </div>
-                              <input class="py-1" type="email" name="" id="">
+                              <input name="amount_per_month" class="py-1" type="email"  id="">
                             </div>
                             <div class="input-select-div mb-2">
                               <div class="">
@@ -1076,7 +1082,7 @@
                                   Anteli Garantie/Fond:
                                 </span>
                               </div>
-                              <select class="form-select w-75" aria-label="Default select example">
+                              <select name="share_guarantee" class="form-select w-75" aria-label="Default select example">
                                 <option selected></option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -1089,7 +1095,7 @@
                                   Vertragsbeginn ab:
                                 </span>
                               </div>
-                              <input type="date" class="py-1 border-0">
+                              <input name="start_of_contract" type="date" class="py-1 border-0">
                             </div>
                             <div class="group-button-div mb-2">
                               <div class="">
@@ -1098,11 +1104,11 @@
                                 </span>
                               </div>
                               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio1" id="btnradio3" autocomplete="off"
+                                <input type="radio" class="btn-check" name="premium_exemption" value="Ja" id="btnradio3" autocomplete="off"
                                   checked>
                                 <label class="btn btn-outline-secondary" for="btnradio3">Ja</label>
 
-                                <input type="radio" class="btn-check" name="btnradio1" id="btnradio4"
+                                <input type="radio" class="btn-check" name="premium_exemption" value="Nein" id="btnradio4"
                                   autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="btnradio4">Nein</label>
                               </div>
@@ -1118,11 +1124,11 @@
                                 </span>
                               </div>
                               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio2" id="btnradio5" autocomplete="off"
+                                <input type="radio" class="btn-check" name="eu_pension" value="Ja" id="btnradio5" autocomplete="off"
                                   checked>
                                 <label class="btn btn-outline-secondary" for="btnradio5">Ja</label>
 
-                                <input type="radio" class="btn-check" name="btnradio2" id="btnradio6"
+                                <input type="radio" class="btn-check" name="eu_pension" value="Nein" id="btnradio6"
                                   autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="btnradio6">Nein</label>
                               </div>
@@ -1134,11 +1140,11 @@
                                 </span>
                               </div>
                               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio3" id="btnradio7" autocomplete="off"
+                                <input type="radio" class="btn-check" name="death_benefit" value="Ja" id="btnradio7" autocomplete="off"
                                   checked>
                                 <label class="btn btn-outline-secondary" for="btnradio7">Ja</label>
 
-                                <input type="radio" class="btn-check" name="btnradio3" id="btnradio8"
+                                <input type="radio" class="btn-check" name="death_benefit" value="Nein" id="btnradio8"
                                   autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="btnradio8">Nein</label>
                               </div>
@@ -1150,19 +1156,19 @@
                                 </span>
                               </div>
                               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="btnradio4" id="btnradio9" autocomplete="off"
+                                <input type="radio" class="btn-check" name="smoker" value="Ja" id="btnradio9" autocomplete="off"
                                   checked>
                                 <label class="btn btn-outline-secondary" for="btnradio9">Ja</label>
 
-                                <input type="radio" class="btn-check" name="btnradio4" id="btnradio10"
+                                <input type="radio" class="btn-check" name="smoker" value="Nein" id="btnradio10"
                                   autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="btnradio10">Nein</label>
                               </div>
                             </div>
                             <div class="mb-2">
-                              <label for="exampleFormControlTextarea1" class="form-label">Gewünschte
+                              <label for="exampleFormControlTextarea2" class="form-label">Gewünschte
                                 Gesellschaften:</label>
-                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              <textarea name="desired" class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
                             </div>
                           </div>
                         </div>
@@ -1222,7 +1228,7 @@
                             </div>
                             <div class="lh-1 " id="bastelle-span">
                               <span class="" style="font-size: 13px;">
-                                Bestelle eine Offerte für ein neu einzulösendes Fahrzeug.
+                                Bestelle eine Gegenofferte für eine bestehende Hausrat- / Prifathaftlichtversicherung.
                               </span>
                             </div>
                           </div>
@@ -1275,7 +1281,7 @@
                                 </div>
                                 <div class="col g-0 d-flex justify-content-end">
                                   <div class="select-div text-end ">
-                                    <select name="" class="fw-bold" id=""
+                                    <select  name="comparison_type" class="fw-bold" id=""
                                       style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
                                       <option selected>Select</option>
                                       <option value="1">1:1 Deckung</option>
@@ -1287,10 +1293,8 @@
                             </div>
                             <div class="">
                               <div class="mb-3 mt-3">
-                                <label for="exampleFormControlTextarea2" class="form-label"
-                                  style="font-size: 13px;">Example
-                                  textarea</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                                <label for="exampleFormControlTextarea2" class="form-label" style="font-size: 13px;">Kommentar</label>
+                                <textarea name="comment__" class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
                               </div>
                             </div>
                           </div>
@@ -1308,18 +1312,16 @@
                   <div class="accordion accordion-flush" id="accordionFlushExample4">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="flush-headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseOne"
-                          style="background-color: #EFEFEF !important; border-radius: 10px;">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color: #EFEFEF !important; border-radius: 10px;">
                           <div class="d-block">
                             <div class="">
                               <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                Gegenofferte?
+                                Neue Sachversicherung
                               </span>
                             </div>
                             <div class="lh-1 " id="bastelle-span">
                               <span class="" style="font-size: 13px;">
-                                Bestelle eine Offerte für ein neu einzulösendes Fahrzeug.
+                                Bestelle eine Offerte für eine neue Hausrat- / Haftpflichtversicherung.
                               </span>
                             </div>
                           </div>
@@ -1340,8 +1342,7 @@
                               </div>
                               <div class="col g-0 d-flex justify-content-end">
                                 <div class="select-div text-end ">
-                                  <select name="" class="fw-bold" id=""
-                                    style="background-color: #EFEFEF; font-size: 15px;color:#9F9F9F;">
+                                  <select name="noname" class="fw-bold" id="" style="background-color: #EFEFEF; font-size: 15px;color:#9F9F9F;">
                                     <option selected>Select</option>
                                     <option value="1">Ja</option>
                                     <option value="2">Nein</option>
@@ -1356,7 +1357,7 @@
                                     Anzahl Personen
                                   </span>
                                 </div>
-                                <select class="form-select w-50" aria-label="Default select example">
+                                <select name="number_of_people" class="form-select w-50" aria-label="Default select example">
                                   <option selected></option>
                                   <option value="1">One</option>
                                   <option value="2">Two</option>
@@ -1366,10 +1367,10 @@
                               <div class="input-select-div">
                                 <div class="">
                                   <span class="" style="font-size: 15px;">
-                                    Anzahl Personen
+                                  Anzahl Zimmer
                                   </span>
                                 </div>
-                                <select class="form-select w-50" aria-label="Default select example">
+                                <select name="number_of_rooms" class="form-select w-50" aria-label="Default select example">
                                   <option selected></option>
                                   <option value="1">One</option>
                                   <option value="2">Two</option>
@@ -1382,13 +1383,12 @@
                                     Versicherungsumme
                                   </span>
                                 </div>
-                                <input class="py-1" type="text" name="" id="">
+                                <input name="sum_insured" class="py-1" type="text" id="">
                               </div>
                               <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label"
-                                  style="font-size: 15px;">Example
-                                  textarea</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <label for="exampleFormControlTextarea4" class="form-label"
+                                  style="font-size: 15px;">Gewünschte Zusatzdeckung:</label>
+                                <textarea name="desired_additional_coverag" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
                               </div>
                               <div class="input-select-div">
                                 <div class="">
@@ -1396,7 +1396,7 @@
                                     Pricathaftpflicht?
                                   </span>
                                 </div>
-                                <select class="form-select w-50" aria-label="Default select example">
+                                <select name="personal_liability" class="form-select w-50" aria-label="Default select example">
                                   <option selected></option>
                                   <option value="1">One</option>
                                   <option value="2">Two</option>
@@ -1426,12 +1426,12 @@
                           <div class="d-block">
                             <div class="">
                               <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                Gegenofferte?
+                                Gesellschaft wählen?
                               </span>
                             </div>
                             <div class="lh-1 " id="bastelle-span">
                               <span class="" style="font-size: 13px;">
-                                Bestelle eine Offerte für ein neu einzulösendes Fahrzeug.
+                                Bestelle eine Offerte für eine neue Hausrat- / Haftpflichtversicherung.
                               </span>
                             </div>
                           </div>
@@ -1452,7 +1452,7 @@
                               </div>
                               <div class="col g-0 d-flex justify-content-end">
                                 <div class="select-div text-end ">
-                                  <select name="" class="fw-bold" id=""
+                                  <select name="noname" class="fw-bold" id=""
                                     style="background-color: #EFEFEF; font-size: 15px;color:#9F9F9F;">
                                     <option selected>Select</option>
                                     <option value="1">Ja</option>
@@ -1467,7 +1467,7 @@
                                   Gesellschaft
                                 </span>
                               </div>
-                              <input class="py-1" type="text" name="" id="">
+                              <input name="society" class="py-1" type="text"  id="">
                             </div>
                             <div class="input-select-div">
                               <div class="">
@@ -1475,7 +1475,7 @@
                                   Anzahl Personen
                                 </span>
                               </div>
-                              <select class="form-select w-50" aria-label="Default select example">
+                              <select name="noname" class="form-select w-50" aria-label="Default select example">
                                 <option selected></option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>

@@ -21,6 +21,8 @@ class LeadDataS extends Migration
             $table->string('nationality')->nullable();
             $table->string('residence_permit')->nullable();
             $table->string('telephone_nr')->nullable();
+            $table->string('email')->nullable();
+            $table->string('zivilstand')->nullable();
             $table->string('employment_relationship')->nullable();
             $table->string('job')->nullable();
             $table->string('payment_frequency')->nullable();
