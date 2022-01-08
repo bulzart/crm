@@ -1,4 +1,5 @@
-
+@extends('template.navbar')
+@section('content')
 <!doctype html>
 <html lang="en">
 
@@ -25,9 +26,6 @@
     @endif
         <div class="px-4">
             <div class="row">
-                <div class="col">
-                    <img src="assets/images/logo.png" class="img-fluid" style="height: 66px;">
-                </div>
                 <div class="col text-right my-2 ">
                     <div class="pull-right text-end">
                         <button class="border-0 px-2 pt-1 pb-2 me-2"
@@ -64,20 +62,18 @@
     </section>
 
     <div class="row">
-        <div class="col-2">
 
-        </div>
         <div class="col">
             <section>
                 <div class="container">
-                   
+
                     <div class="accepted-section row">
                         <div
                             class="header-section-name text-center col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 g-0 my-auto">
                             <div class="py-3 ">
                                 <div class="mx-3">
                                     <span class="fs-3 fw-bold text-color-header1">
-                                        Markus Jurgen
+                                        {{$app->first_name}}
                                     </span>
                                 </div>
                                 <div class="mx-3">
@@ -91,7 +87,7 @@
                                                     stroke-width="0.5" />
                                             </svg>
                                         </span>
-                                        Raumweg 23, 3700 Thun
+                                        {{$app->address}}
                                     </span>
                                 </div>
                                 <div class="input-group justify-content-center mt-3">
@@ -107,7 +103,7 @@
                                             </svg>
                                         </span>
                                         <span class="px-2" style="font-size: 14px;">
-                                            4 Personon
+                                            {{$app->number_of_persons}} Persons
                                         </span>
                                     </button>
                                     <button class="py-2 border-0 static-btn1 m-1">
@@ -122,7 +118,7 @@
                                             </svg>
                                         </span>
                                         <span class="px-2" style="font-size: 14px;">
-                                            11:00 - 24.09.2021
+                                            {{$app->created_at}}
                                         </span>
                                     </button>
                                 </div>
@@ -131,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
                             <div class="border-left-div">
                                 <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
@@ -193,8 +189,6 @@
                                         </div>
                                     </div>
 
-
-
                                 </div>
                                 <div class="text-center">
                                 <input type="submit" class="btn btn-success text-center mt-2 col-10 py-2" style="border-radius: 35px;">
@@ -210,123 +204,6 @@
         </div>
     </div>
 
-    <style>
-        .collapsed .d-btnn {
-            background-color: #c8ddd1;
-            opacity: 0.4;
-        }
-
-        .d-btnn {
-            opacity: 1;
-        }
-
-        .form-control:focus {
-            border-color: #ced4da;
-            box-shadow: none;
-        }
-
-        .accordion-button {
-            color: #7DBF9A;
-            font-weight: bold;
-            border-radius: 15px !important;
-        }
-
-        .accordion-item {
-            border-radius: 15px !important;
-        }
-
-        .hr-style {
-            color: #fff !important;
-            height: 3px !important;
-            border-radius: 50px;
-            opacity: 1;
-            display: none;
-        }
-
-        .border-left-div {
-            border: none !important;
-            border-left: 3px solid #fff !important;
-
-        }
-
-        @media (max-width: 991.98px) {
-            .hr-style {
-                display: block;
-            }
-
-            .border-left-div {
-                border: none !important;
-                border-left: none !important;
-            }
-        }
-
-
-
-        .accepted-section {
-            background-color: #7DBF9A;
-            border-radius: 19px;
-        }
-
-        .decline-btn {
-            border: 2px solid #FF0D13;
-            border-radius: 13px !important;
-            background-color: #fff;
-            color: #FF0D13;
-
-        }
-
-        .decline-btn:hover {
-            background-color: #FF0D13;
-            color: #fff !important;
-        }
-
-        .accept-btn {
-            border: 2px solid #63D4A4;
-            border-radius: 13px !important;
-            background-color: #fff;
-            color: #63D4A4 !important;
-        }
-
-        .accept-btn:hover {
-            border: 2px solid #63D4A4;
-            background-color: #63D4A4;
-            color: #fff !important;
-        }
-
-        .text-color-header1 {
-            color: #fff;
-        }
-
-        .people-icon-div {
-            background-color: #525353;
-            margin: 3px;
-        }
-
-        .static-btn1 {
-            background-color: #fff !important;
-            border-radius: 8px !important;
-        }
-
-        .people-svg-span {
-            border-radius: 8px;
-        }
-
-        .accordion-button:not(.collapsed) {
-            color: #7DBF9A;
-            background-color: #fff;
-            box-shadow: none;
-        }
-
-        .accordion-button:not(.collapsed)::after {
-            content: '';
-        }
-
-        .accordion-button:focus {
-            border-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -394,3 +271,121 @@
             </script>
 </body>
 </html>
+@endsection
+<style>
+    .collapsed .d-btnn {
+        background-color: #c8ddd1;
+        opacity: 0.4;
+    }
+
+    .d-btnn {
+        opacity: 1;
+    }
+
+    .form-control:focus {
+        border-color: #ced4da;
+        box-shadow: none;
+    }
+
+    .accordion-button {
+        color: #7DBF9A;
+        font-weight: bold;
+        border-radius: 15px !important;
+    }
+
+    .accordion-item {
+        border-radius: 15px !important;
+    }
+
+    .hr-style {
+        color: #fff !important;
+        height: 3px !important;
+        border-radius: 50px;
+        opacity: 1;
+        display: none;
+    }
+
+    .border-left-div {
+        border: none !important;
+        border-left: 3px solid #fff !important;
+
+    }
+
+    @media (max-width: 991.98px) {
+        .hr-style {
+            display: block;
+        }
+
+        .border-left-div {
+            border: none !important;
+            border-left: none !important;
+        }
+    }
+
+
+
+    .accepted-section {
+        background-color: #7DBF9A;
+        border-radius: 19px;
+    }
+
+    .decline-btn {
+        border: 2px solid #FF0D13;
+        border-radius: 13px !important;
+        background-color: #fff;
+        color: #FF0D13;
+
+    }
+
+    .decline-btn:hover {
+        background-color: #FF0D13;
+        color: #fff !important;
+    }
+
+    .accept-btn {
+        border: 2px solid #63D4A4;
+        border-radius: 13px !important;
+        background-color: #fff;
+        color: #63D4A4 !important;
+    }
+
+    .accept-btn:hover {
+        border: 2px solid #63D4A4;
+        background-color: #63D4A4;
+        color: #fff !important;
+    }
+
+    .text-color-header1 {
+        color: #fff;
+    }
+
+    .people-icon-div {
+        background-color: #525353;
+        margin: 3px;
+    }
+
+    .static-btn1 {
+        background-color: #fff !important;
+        border-radius: 8px !important;
+    }
+
+    .people-svg-span {
+        border-radius: 8px;
+    }
+
+    .accordion-button:not(.collapsed) {
+        color: #7DBF9A;
+        background-color: #fff;
+        box-shadow: none;
+    }
+
+    .accordion-button:not(.collapsed)::after {
+        content: '';
+    }
+
+    .accordion-button:focus {
+        border-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+</style>

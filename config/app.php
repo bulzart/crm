@@ -236,6 +236,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Nexmo' => 'Nexmo\Laravel\Facade\Nexmo',
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Chat' => Musonza\Chat\Facades\ChatFacade::class
 
 
 

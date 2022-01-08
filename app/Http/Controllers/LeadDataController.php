@@ -18,6 +18,7 @@ class LeadDataController extends Controller
 
     public function createLeadDataKK($leadId, $personId, Request $request)
     {
+        dd($request);
         LeadDataKK::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -64,9 +65,11 @@ class LeadDataController extends Controller
         LeadDataThings::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'nationality' => $request->nationality,
+            'nationality' => $request->nationality_sachen,
             'residence_permit' => $request->residence_permit,
             'telephone_nr' => $request->telephone_nr,
+            'email' => $request->email_s,
+            'zivilstand' => $request->zivilstand,
             'employment_relationship' => $request->employment_relationship,
             'job' => $request->job,
             'payment_frequency' => $request->payment_frequency,
@@ -191,9 +194,9 @@ class LeadDataController extends Controller
         $leadDataPrevention = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'upload_police' => $request->upload_police ? $this->storeFile($request->upload_police, FolderPaths::KK_FILES) : null,
+            'upload_police' => $request->upload_police__ ? $this->storeFile($request->upload_police__, FolderPaths::KK_FILES) : null,
             'comparison_type' => $request->comparison_type,
-            'comment' => $request->comment,
+            'comment' => $request->comment__,
             'number_of_people' => $request->number_of_people,
             'number_of_rooms' => $request->number_of_rooms,
             'sum_insured' => $request->sum_insured,

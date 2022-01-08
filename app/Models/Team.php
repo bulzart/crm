@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Costumer extends Model
+class Team extends Model
 {
     use HasFactory;
+
+    protected $table = 'teams';
+
+    protected $fillable = [
+        'name',
+        'sales_manager_id',
+    ];
 }

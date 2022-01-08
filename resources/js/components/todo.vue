@@ -1,6 +1,32 @@
 <template>
-<div class="row">
-       
+<div class="row mt-3">
+        <div class="card-hover-shadow-2x mb-3 card col-6 col-md-6">
+            <div class="card-header-tab card-header mb-2">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Todo</div>
+            </div>
+            <div class="scroll-area-sm">
+                <perfect-scrollbar class="ps-show-limits">
+                    <div id="alrt">
+
+</div>
+                    <div class="ps ps--active-y">
+                        Admin
+                   <select name="admin" class="form-control" @change="onChangeSelect($event)">
+                       <option v-for="admin in todos.admins" :value="admin.id">{{admin.name}}</option>
+                   </select>
+                    
+                    Costumer
+                     <select name="costumer" class="form-control" @change="onChangeCostumer($event)">
+                       <option v-for="costumer in todos.costumers" :value="costumer.id">{{costumer.first_name}} {{costumer.last_name}}</option>
+                   </select>
+                   Description
+                   <input type="text" id="desc" placeholder="Description" class="form-control">
+                   </div>
+                   <button @click="assignpendency" class="btn btn-primary mt-1">Assign pendency</button>
+                </perfect-scrollbar>
+            </div>
+
+        </div>
         <div class="card-hover-shadow-2x mb-3 card col-6 col-md-6">
             <div class="card-header-tab card-header mb-2">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Numbers</div>
@@ -36,31 +62,7 @@
                 </perfect-scrollbar>
             </div>
         </div>
-         <div class="card-hover-shadow-2x mb-3 card col-6 col-md-6">
-            <div class="card-header-tab card-header mb-2">
-                <div class="card-header-title font-size-lg text-capitalize font-weight-normal"><i class="fa fa-tasks"></i>&nbsp;Todo</div>
-            </div>
-            <div class="scroll-area-sm">
-                <perfect-scrollbar class="ps-show-limits">
-                    <div id="alrt">
-
-</div>
-                    <div class="ps ps--active-y">
-                        Admin
-                   <select name="admin" @change="onChangeSelect($event)">
-                       <option v-for="admin in todos.admins" :value="admin.id">{{admin.name}}</option>
-                   </select>
-                    
-                    Costumer
-                     <select name="costumer" @change="onChangeCostumer($event)">
-                       <option v-for="costumer in todos.costumers" :value="costumer.id">{{costumer.first_name}}</option>
-                   </select>
-                   </div>
-                   <button @click="assignpendency" class="btn btn-primary">Assign pendency</button>
-                </perfect-scrollbar>
-            </div>
-
-        </div>
+        
 
 </div>
 </template>
@@ -101,7 +103,7 @@ this.costumer = parseInt(event.target.value);
           this.costumer = this.todos.costumers[0].id;
       },
       assignpendency:function(){
-axios.get('assignpendency/' + this.admin + '/' + this.costumer);
+axios.get('assignpendency/' + this.admin + '/' + this.costumer + '/' + document.getElementById('desc').value);
 document.getElementById('alrt').innerHTML = "";
 document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert" id="alrt"> Pendency was assigned successfully</div>' ;
       },
