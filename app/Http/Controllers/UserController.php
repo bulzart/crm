@@ -251,7 +251,7 @@ class UserController extends Controller
                 
                 $role = Role::where('name',$req->input('auth'))->get();
                 $rolee = $user->getRoleNames();
-                $user->removeRole($rolee[0]);
+                if($rolee != null) $user->removeRole($rolee[0]);
                 $user->assignRole($role);
 
                 //  Nexmo::message()->send([
