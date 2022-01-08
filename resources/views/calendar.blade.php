@@ -1,34 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@bulzart 
-bulzart
-/
-crm
-Public
-Code
-Issues
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-crm/resources/views/calendar.blade.php
-@Albenit
-Albenit niti
-Latest commit 2aed226 1 hour ago
- History
- 2 contributors
-@Albenit@bulzart
-176 lines (147 sloc)  5.44 KB
-   
+
 @extends('template.navbar')
 @section('content')
 
@@ -189,16 +159,3 @@ Latest commit 2aed226 1 hour ago
         overflow-x: hidden !important;
     }
 </style>
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete

@@ -164,8 +164,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Musonza\Chat\ChatServiceProvider::class,
-    
+
+
 
         /*
          * Package Service Providers...
