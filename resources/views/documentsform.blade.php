@@ -12,6 +12,7 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Document</title>
 </head>
 
@@ -287,10 +288,10 @@
         <div class="" style="background-color: #EFEFEF;border-radius: 22px;">
           <div class="py-4 px-3">
             <span class="fs-4">
-              {{$lead->first_name}} {{$lead->last_name}}
+              {{$lead->first_name}}
             </span> <br>
             <span class="fs-6 text-muted">
-              {{$lead->lead->address}}
+              {{$lead->address}}
             </span>
           </div>
           <div class="row mx-4">
@@ -298,13 +299,13 @@
               <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active col krankenkasse-btn" id="nav-home-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                  aria-selected="true">Krankenkasse</button>
+                  aria-selected="true" onclick="changecnt(0)">Krankenkasse</button>
                 <button class="nav-link col auto-btn" id="nav-profile-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                  aria-selected="false">Auto</button>
+                  aria-selected="false" onclick="changecnt(1)">Auto</button>
                 <button class="nav-link  col sachen-btn" id="nav-contact-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
-                  aria-selected="false">Sachen</button>
+                  aria-selected="false" onclick="changecnt(2)">Sachen</button>
                 <button class="nav-link  col vorsorge-btn" id="nav-fourth-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-fourth" type="button" role="tab" aria-controls="nav-fourth"
                   aria-selected="false">Vorsorge</button>
@@ -338,7 +339,7 @@
                       </div>
                       <div class="upload-box mx-1 my-2">
                         <div class="mx-1 my-2 p-4 text-center">
-                          <label for="file-input-0">
+                          <label for="file-input-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
                               <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
                                 <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
@@ -354,9 +355,7 @@
                               </g>
                             </svg>
                           </label>
-                          <input type="file" name="pre_insurer" id="file-input-0" class="svg-div w-100 border-0  g-0" onchange="upload(this)">
-                          <input type="text" class="form-control text-center" id="file-input-0c" disabled style="background:none; border:none;"></span>
-
+                          <input type="file" name="pre_insurer" id="file-input-3" class="svg-div w-100 border-0  g-0">
                         </div>
                       </div>
                     </div>
@@ -450,7 +449,7 @@
                             </svg>
                           </label>
                           <input type="file" id="file-input-2" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control text-center" id="file-input-2c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control" id="file-input-2c" disabled style="background:transparent; border:none;">
                         </div>
                       </div>
                     </div>
@@ -497,7 +496,7 @@
                             </svg>
                           </label>
                           <input type="file" id="file-input-3" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control text-center" id="file-input-3c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control" id="file-input-3c" disabled style="background:transparent; border:none;">
                         </div>
                       </div>
                     </div>
@@ -589,7 +588,7 @@
                                     </svg>
                                   </label>
                                   <input type="file" id="file-input-4" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control text-center" id="file-input-4c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control" id="file-input-4c" disabled style="background:transparent; border:none;">
                                 </div>
                               </div>
                             </div>
@@ -686,7 +685,7 @@
                                           </svg>
                                         </label>
                                         <input type="file" id="file-input-5" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control text-center" id="file-input-5c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control" id="file-input-5c" disabled style="background:transparent; border:none;">
                                       </div>
                                     </div>
                                   </div>
@@ -886,9 +885,9 @@
                                         aria-describedby="basic-addon1">
                                     </div> -->
                                     <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-                                      <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" autocomplete="off" checked>
-                                        <label class="btn btn-outline-secondary w-100 g-0" value="Partnergarage" for="btnradio1_">Partnergarage</label>
-                                        <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_" autocomplete="off">
+                                      <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" value="Partnergarage" checked>
+                                        <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1_">Partnergarage</label>
+                                        <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_">
                                         <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2_">Freie Wahl</label>
                                     </div>
                                   </div>
@@ -1268,7 +1267,7 @@
                                     </svg>
                                   </label>
                                   <input type="file" id="file-input-6" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control text-center" id="file-input-6c" disabled style="background:transparent;border:none;">
+                          <input type="text" class="form-control" id="file-input-6c" disabled style="background:transparent;border:none;">
                                 </div> 
                               </div>
                             </div>
@@ -1760,42 +1759,39 @@
 '<button class="nav-link col sachen-btn" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159" viewBox="0 0 58.155 19.159">  <g id="Group_453" data-name="Group 453" transform="translate(0.004)">      <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)" fill="none" stroke="#3fd599" stroke-width="2"></line>    <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z" transform="translate(58.151 0) rotate(90)" fill="#3fd599"></path></g></svg></button>',
 '<button class="nav-link  col vorsorge-btn" id="nav-fourth-tab" data-bs-toggle="tab" data-bs-target="#nav-fourth" type="button" role="tab" aria-controls="nav-fourth" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159" viewBox="0 0 58.155 19.159">  <g id="Group_453" data-name="Group 453" transform="translate(0.004)">     <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)" fill="none" stroke="#3fd599" stroke-width="2"></line>   <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z" transform="translate(58.151 0) rotate(90)" fill="#3fd599"></path></g> </svg></button>'];
 function upload(x){
-  let fullPath = document.getElementById(x.id).value;
-  if (fullPath) {
-    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-    var filename = fullPath.substring(startIndex);
-    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-        filename = filename.substring(1);
-    }
-  }
-document.getElementById(x.id + 'c').value = filename;
-
+document.getElementById(x.id + 'c').value = x.value;
+}
+function changecnt(x){
+  cntt = x;
 }
 function nextonee(){
+  if(cntt < 5 && cntt> -1){
+    if(cntt == 0){
+      $('#nav-profile').addClass('active show');
+      $('#nav-home').removeClass('active show');
+      $('#nav-profile-tab').addClass('active');
+      $('#nav-home-tab').removeClass('active');
+    }
+    if(cntt == 1){
+      $('#nav-contact').addClass('active show');
+      $('#nav-profile').removeClass('active show');
+      $('#nav-contact-tab').addClass('active');
+      $('#nav-profile-tab').removeClass('active');
+    }
+    if(cntt == 2){
+      $('#nav-fourth').addClass('active show');
+      $('#nav-contact').removeClass('active show');
+      $('#nav-fourth-tab').addClass('active');
+      $('#nav-contact-tab').removeClass('active');
+      document.getElementById("submitt").type = "submit";
+    }
+    cntt++;
+    }
+  }
 
-if(cntt == 0){
-  $('#nav-profile').addClass('active show');
-  $('#nav-home').removeClass('active show');
-  $('#nav-profile-tab').addClass('active');
-  $('#nav-home-tab').removeClass('active');
-}
-if(cntt == 1){
-  $('#nav-contact').addClass('active show');
-  $('#nav-profile').removeClass('active show');
-  $('#nav-contact-tab').addClass('active');
-  $('#nav-profile-tab').removeClass('active');
-}
-if(cntt == 2){
-  $('#nav-fourth').addClass('active show');
-  $('#nav-contact').removeClass('active show');
-  $('#nav-fourth-tab').addClass('active');
-  $('#nav-contact-tab').removeClass('active');
- document.getElementById("submitt").type = "submit";
-}
-cntt++;
-
-}
-
+// $('#nextonee__').on('click', function(){
+//   alert('aaa');
+// });
 
 
     function hideSpan() {
