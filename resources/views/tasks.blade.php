@@ -1,6 +1,8 @@
 @extends('template.navbar')
 @section('content')
+
 @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
+
 <div class="row justify-content-center">
     <div class="col-md-4 col-12 mb-3">
         <div style="background: #f7f7f7; border-radius: 25px; padding: 5%;">
@@ -15,7 +17,11 @@
                 <span>Open pendencies</span>
 <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($realopen as $task)
+<<<<<<< HEAD
                     <a  href="{{route('leadfamilyperson',$task->lead->id)}}">
+=======
+                    <a style="text-decoration: none; color: black"  href="{{route('leadfamily',$task->id)}}">
+>>>>>>> c5716b71a79488a9686a963bbeebf376a8f6d2e8
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
 
@@ -38,7 +44,11 @@
             <div class="collapse" id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($pending as $task)
+<<<<<<< HEAD
                     <a href="{{route('leadfamilyperson',$task->lead->id)}}">
+=======
+                    <a style="text-decoration: none; color: black"  href="{{route('leadfamily',$task->id)}}">
+>>>>>>> c5716b71a79488a9686a963bbeebf376a8f6d2e8
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
                         </div>
@@ -80,7 +90,7 @@
                     </form>
                     <span>Answered <span class="text-danger">{{count($answered)}}</span><i id="Pending_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
                 </div>
-                
+
             </div>
             <br>
             <div class="collapse" id="collapse__">
@@ -109,7 +119,7 @@
                     </form>
                     <span>Open <span class="text-danger">{{count($opened)}}</span><i id="Offene_Aufgaben_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
                 </div>
-                
+
             </div>
             <br>
             <div class="collapse" id="first_collapse">
@@ -130,7 +140,12 @@
 
 </div>
 @endif
+
 @endsection
 
 
-
+<style>
+    body{
+        overflow-x: hidden !important;
+    }
+</style>
