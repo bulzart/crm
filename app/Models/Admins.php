@@ -14,7 +14,7 @@ use Musonza\Chat\Traits\Messageable;
 class Admins extends Authenticatable
 {
     
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, Messageable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     protected $guard_name = 'admins';
     /**
