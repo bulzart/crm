@@ -8,6 +8,7 @@
                                 <span style="background-color: #F7F7F7;" class="col text-dark fw-bold fs-5">
                                 To Do
                                  </span>
+                            <hr class="text-black">
                         </div>
 
                         <div class="mx-3">
@@ -48,6 +49,7 @@
                                 <span style="background-color: #F7F7F7;" class="col text-dark fw-bold fs-5">
                                 Informational Numbers
                                  </span>
+                                <hr class="text-black">
                             </div>
 
                             <div id="flush-collapse4" class="accordion-collapse collapse show"

@@ -157,9 +157,12 @@
                                 </div>
                             </div>
                         </div>
+
+
+
                         <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
                             <div class="third-box"
-                                 style="background-color: #FEC278; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                 style="background-color: #FEC278; border-radius: 25px; border:none; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                 <div class="row">
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4">
@@ -573,22 +576,7 @@
             </div>
         </div>
             </div>
-        {{--<div class="row">--}}
-        {{--    <div class="col-md-6 col-12">--}}
-        {{--        Answered pendencies--}}
-        {{--        <br>--}}
-        {{--        @foreach($pendencies as $pendency)--}}
-        {{--        <a href="{{route('leadfamilyperson',$pendency->lead->id)}}">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>--}}
-        {{--        @endforeach--}}
-        {{--    </div>--}}
-        {{--    <div class="col-md-6 col-12">--}}
-        {{--        Open for more than a month--}}
-        {{--        <br>--}}
-        {{--        @foreach($morethan30 as $pendency)--}}
-        {{--        <a href="{{route('leadfamilyperson',$pendency->lead->id)}}">{{$pendency->first_name}} {{$pendency->last_name}}</a><br>--}}
-        {{--        @endforeach--}}
-        {{--    </div>--}}
-        {{--</div>--}}
+
     @endif
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
