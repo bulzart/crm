@@ -15,7 +15,7 @@
                 <span>Open pendencies</span>
 <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($realopen as $task)
-                    <a  href="{{route('leadfamily',$task->id)}}">
+                    <a  href="{{route('leadfamilyperson',$task->lead->id)}}">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
 
@@ -38,7 +38,7 @@
             <div class="collapse" id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($pending as $task)
-                    <a href="{{route('leadfamily',$task->id)}}">
+                    <a href="{{route('leadfamilyperson',$task->lead->id)}}">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
                         </div>
@@ -86,7 +86,7 @@
             <div class="collapse" id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($answered as $task)
-                    <a href="{{route('leadfamily',$task->id)}}">
+                    <a href="{{route('leadfamilyperson',$task->lead->id)}}">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
 
@@ -115,7 +115,7 @@
             <div class="collapse" id="first_collapse">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($opened as $task)
-                    <a href="{{route('leadfamily',$task->id)}}">
+                    <a href="{{route('leadfamilyperson',$task->lead->id)}}">
                         <div class="p-1" style="background: red; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
 
