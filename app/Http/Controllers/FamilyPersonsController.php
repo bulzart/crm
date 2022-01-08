@@ -31,7 +31,6 @@ class FamilyPersonsController extends Controller
     public function updateFamilyPerson($id, Request $request)
     {
         $updatedPerson = family::where('id', $id)->update($request->all());
-    
         return redirect()->back()->with('message', 'Family person was updated');
     }
 
