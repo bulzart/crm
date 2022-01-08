@@ -287,10 +287,10 @@
         <div class="" style="background-color: #EFEFEF;border-radius: 22px;">
           <div class="py-4 px-3">
             <span class="fs-4">
-              {{$lead->first_name}}
+              {{$lead->first_name}} {{$lead->last_name}}
             </span> <br>
             <span class="fs-6 text-muted">
-              {{$lead->address}}
+              {{$lead->lead->address}}
             </span>
           </div>
           <div class="row mx-4">
@@ -338,7 +338,7 @@
                       </div>
                       <div class="upload-box mx-1 my-2">
                         <div class="mx-1 my-2 p-4 text-center">
-                          <label for="file-input-3">
+                          <label for="file-input-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
                               <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
                                 <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
@@ -354,7 +354,9 @@
                               </g>
                             </svg>
                           </label>
-                          <input type="file" name="pre_insurer" id="file-input-3" class="svg-div w-100 border-0  g-0">
+                          <input type="file" name="pre_insurer" id="file-input-0" class="svg-div w-100 border-0  g-0" onchange="upload(this)">
+                          <input type="text" class="form-control text-center" id="file-input-0c" disabled style="background:none; border:none;"></span>
+
                         </div>
                       </div>
                     </div>
@@ -448,7 +450,7 @@
                             </svg>
                           </label>
                           <input type="file" id="file-input-2" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control" id="file-input-2c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control text-center" id="file-input-2c" disabled style="background:transparent; border:none;">
                         </div>
                       </div>
                     </div>
@@ -495,7 +497,7 @@
                             </svg>
                           </label>
                           <input type="file" id="file-input-3" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control" id="file-input-3c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control text-center" id="file-input-3c" disabled style="background:transparent; border:none;">
                         </div>
                       </div>
                     </div>
@@ -587,7 +589,7 @@
                                     </svg>
                                   </label>
                                   <input type="file" id="file-input-4" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control" id="file-input-4c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control text-center" id="file-input-4c" disabled style="background:transparent; border:none;">
                                 </div>
                               </div>
                             </div>
@@ -684,7 +686,7 @@
                                           </svg>
                                         </label>
                                         <input type="file" id="file-input-5" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control" id="file-input-5c" disabled style="background:transparent; border:none;">
+                          <input type="text" class="form-control text-center" id="file-input-5c" disabled style="background:transparent; border:none;">
                                       </div>
                                     </div>
                                   </div>
@@ -1266,7 +1268,7 @@
                                     </svg>
                                   </label>
                                   <input type="file" id="file-input-6" class="svg-div w-100 border-0  g-0" onchange="upload(this);">
-                          <input type="text" class="form-control" id="file-input-6c" disabled style="background:transparent;border:none;">
+                          <input type="text" class="form-control text-center" id="file-input-6c" disabled style="background:transparent;border:none;">
                                 </div> 
                               </div>
                             </div>
@@ -1770,7 +1772,7 @@ document.getElementById(x.id + 'c').value = filename;
 
 }
 function nextonee(){
-  if(cnt < 5 && cnt> -1){
+
 if(cntt == 0){
   $('#nav-profile').addClass('active show');
   $('#nav-home').removeClass('active show');
@@ -1791,12 +1793,9 @@ if(cntt == 2){
  document.getElementById("submitt").type = "submit";
 }
 cntt++;
-}
+
 }
 
-// $('#nextonee__').on('click', function(){
-//   alert('aaa');
-// });
 
 
     function hideSpan() {
