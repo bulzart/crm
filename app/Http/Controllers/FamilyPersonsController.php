@@ -30,17 +30,18 @@ class FamilyPersonsController extends Controller
 
     public function updateFamilyPerson($id, Request $request)
     {
-        $updatedPerson = family::where('id', $id)->update($request->all());
+        family::where('id', $id)->update($request->all());
         return redirect()->back()->with('message', 'Family person was updated');
     }
 
     public function deleteFamilyPerson($id, $leadId)
-        {
-            $updatedPerson = family::where('id', $id)->where('leads_id', $leadId)->delete();
-        }
+    {
+        family::where('id', $id)->where('leads_id', $leadId)->delete();
+    }
 
     public function updateleadfamilyperson( Request $request, $id){
-        family::where('id',$id)->update(['first_name'=>$request->familyfirstname,'last_name'=>$request->familylastname]);
+        family::where('id',$id)->update(['first_name' => $request->familyfirstname, 'last_name' => $request->familylastname]);
+
         return redirect()->back()->with('success','Update successfuly');
     }
 }

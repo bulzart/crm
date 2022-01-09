@@ -27,6 +27,8 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
+use App\Http\Requests\CompleteAppRequest;
+use App\Http\Requests\DeleteLeadRequest;
 use DB;
 use Illuminate\Auth\Access\Response;
 
@@ -154,7 +156,7 @@ class UserController extends Controller
         $leads = lead::find($id);
         return view('deletedlead', compact('leads'));
     }
-    public function deletedlead(Request $request, $id)
+    public function deletedlead(DeleteLeadRequest $request, $id)
     {
         $leads = lead::find($id);
 
@@ -330,7 +332,7 @@ class UserController extends Controller
         $user->save();
     }
 
-    public function completeapp(Request $req, $id)
+    public function completeapp(CompleteAppRequest $req, $id)
     {
         $lead = lead::find($id);
 

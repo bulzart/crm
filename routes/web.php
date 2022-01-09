@@ -46,10 +46,18 @@ route::prefix('')->group(function(){
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
     route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
-    route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
+
+    Route::group(['middleware' => 'json.response'], function () {
+      route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
+   });
+
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
-    route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
+
+    Route::group(['middleware' => 'json.response'], function () {
+      route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
+   });
+
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
 
@@ -91,7 +99,11 @@ route::prefix('')->group(function(){
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
    route::get('chat',[ChatController::class,'chat']);
-   route::get('addtodo',[TodoController::class,'addtodo']);
+
+   Route::group(['middleware' => 'json.response'], function () {
+      route::get('addtodo',[TodoController::class,'addtodo']);
+   });
+
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);
    route::get('donetodo',[TodoController::class,'donetodo']);
