@@ -269,14 +269,14 @@ class UserController extends Controller
 
                 $user->pin = $pin;
 
-                $role = Role::where('name',$req->input('auth'))->get();
-                $rolee = $user->getRoleNames();
-                if($user->hasAnyRole()){
-                $user->removeRole($rolee[0]);}
-                $user->assignRole($role);
+                // $role = Role::where('name',$req->input('auth'))->get();
+                // $rolee = $user->getRoleNames();
+                // if($user->hasAnyRole()){
+                // $user->removeRole($rolee[0]);}
+                // $user->assignRole($role);
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
-                //  'from' => '38345917726',
+                //  'from' => 'VONAGE APIs',
                 // 'text' => '12345']);
                 $user->save();
                 //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
@@ -337,9 +337,7 @@ class UserController extends Controller
         $cnt = $lead->number_of_persons;
         for ($i = 1; $i <= $cnt; $i++) {
             $family = new family();
-            if ($req->input('fname' . $i) != null) {
-                $family->first_name = filter_var($req->input('fname' . $i));
-            }
+            $family->first_name = filter_var($req->input('fname' . $i));  
             $family->birthdate = filter_var($req->input('birthday' . $i));
             $family->last_name = filter_var($req->input('lname' . $i));
             $family->leads_id = (int) $id;
@@ -350,10 +348,7 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Action was successfull!');
     }
-    public function timenow()
-    {
-        return Carbon::now()->format('H:i:s');
-    }
+
     public function filterbydateapp(Request $req)
     {
         $req->validate([
@@ -432,21 +427,22 @@ if(!Auth::guard('admins')->check()){
             $pendingcnt = 0;
             $opencnt = 0;
             $done = 0;
+            $tasks = null;
             $pendencies = [];
-            if (Auth::guard('admins')->user()->hasRole('backoffice')) {
+            if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
                 $pendencies = family::where('status', 'Submited')->get();
                 
                 $morethan30 = '';
                 $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-    
-                return view('dashboard', compact('pendencies','morethan30'));
+
             }
          
 
             
           
-elseif(Auth::guard('admins')->user()->hasRole('admin')){
+if(Auth::guard('admins')->user()->hasRole('admin')){
     $tasks = lead::where('completed',0)->get();
+
                 $pendingcnt = DB::table('family_person')
                 ->join('pendencies','family_person.id','=','pendencies.family_id')
                 ->where('pendencies.done','=',0)
@@ -480,8 +476,9 @@ elseif(Auth::guard('admins')->user()->hasRole('admin')){
          
             $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
             $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-            if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
-           
+            if(Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
+            if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('dashboard', compact('pendencies','morethan30'));
+            if(Auth::guard('admins')->user()->hasRole('admin')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
         }
     }
 }

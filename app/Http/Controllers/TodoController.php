@@ -42,7 +42,7 @@ class TodoController extends Controller
         if(Auth::guard('admins')->check()){
         $data['costumers'] = family::where('status','Submited')->get();
         $role = 'admin';
-        $role = Role::where('name','backoffice')->get();
+        $role = Role::where('name','fs')->orWhere('name','digital')->get();
         $data['admins'] = Admins::role($role)->get();
         return $data;
         }

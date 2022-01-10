@@ -29,10 +29,10 @@ class LeadDataS extends Migration
             $table->string('amount_per_month')->nullable();
             $table->string('share_guarantee')->nullable();
             $table->string('start_of_contract')->nullable();
-            $table->boolean('premium_exemption')->nullable();
-            $table->boolean('eu_pension')->nullable();
-            $table->boolean('death_benefit')->nullable();
-            $table->boolean('smoker')->nullable();
+            $table->string('premium_exemption')->nullable();
+            $table->string('eu_pension')->nullable();
+            $table->string('death_benefit')->nullable();
+            $table->string('smoker')->nullable();
             $table->string('desired')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

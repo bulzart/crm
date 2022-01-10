@@ -70,11 +70,7 @@
             </span>
           </div>
 
-          <select class="form-control" name="auth">
-            @foreach($roles as $role)
-            <option value="{{$role->name}}">{{$role->name}}</option>
-             @endforeach
-          </select>
+
           <div class="mb-2 mt-2 form-check">
     <input type="checkbox" class="form-check-input" id="remember" name="remember">
     <label class="form-check-label" for="remember">Remember me</label>

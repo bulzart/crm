@@ -79,7 +79,7 @@
 
     }
   </style>
-<form action="{{route('createLeadDataKK',[1,1])}}" method="post">
+<form action="{{route('createLeadDataKK',['leadId'=> $lead->lead->id,'personId' => $lead->id])}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="row">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
@@ -289,7 +289,7 @@
           <div class="py-4 px-3">
             <span class="fs-4">
               {{$lead->first_name}}
-            </span> <br>
+            </span><br>
             <span class="fs-6 text-muted">
               {{$lead->address}}
             </span>
@@ -308,7 +308,7 @@
                   aria-selected="false" onclick="changecnt(2)">Sachen</button>
                 <button class="nav-link  col vorsorge-btn" id="nav-fourth-tab" data-bs-toggle="tab"
                   data-bs-target="#nav-fourth" type="button" role="tab" aria-controls="nav-fourth"
-                  aria-selected="false">Vorsorge</button>
+                  aria-selected="false" onclick="changecnt(3)">Vorsorge</button>
               </div>
             </nav>
           </div>
@@ -339,7 +339,7 @@
                       </div>
                       <div class="upload-box mx-1 my-2">
                         <div class="mx-1 my-2 p-4 text-center">
-                          <label for="file-input-3">
+                          <label for="file-input-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
                               <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
                                 <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
@@ -355,7 +355,9 @@
                               </g>
                             </svg>
                           </label>
-                          <input type="file" name="pre_insurer" id="file-input-3" class="svg-div w-100 border-0  g-0">
+                          <input type="file" name="pre_insurer" id="file-input-0" class="svg-div w-100 border-0  g-0" onchange="upload(this)">
+                          <input type="text" class="form-control" id="file-input-0c" disabled style="background:none; border:none;"></span>
+
                         </div>
                       </div>
                     </div>
@@ -1763,6 +1765,9 @@ document.getElementById(x.id + 'c').value = x.value;
 }
 function changecnt(x){
   cntt = x;
+  if(x == 3){
+    document.getElementById("submitt").type = "submit";
+  }
 }
 function nextonee(){
   if(cntt < 5 && cntt> -1){
@@ -1785,14 +1790,12 @@ function nextonee(){
       $('#nav-contact-tab').removeClass('active');
       document.getElementById("submitt").type = "submit";
     }
+     if(cntt == 3){
+      document.getElementById("submitt").type = "submit";
+     }
     cntt++;
     }
   }
-
-// $('#nextonee__').on('click', function(){
-//   alert('aaa');
-// });
-
 
     function hideSpan() {
       if (document.getElementById("bastelle-span").style.display === "none") {

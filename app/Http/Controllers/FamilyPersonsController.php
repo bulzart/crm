@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\family;
 use App\Models\FamilyPerson;
 use App\Models\lead;
+use App\Models\Pendency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class FamilyPersonsController extends Controller
@@ -14,6 +15,8 @@ class FamilyPersonsController extends Controller
         $cnt1 = 0;
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
             $lead = family::find($id);
+            $pend = Pendency::where('admin_id',Auth::guard('admins')->user()->id)->where('family_id',$id)->get();
+
             return view('documentsform',compact('lead'));
          } 
          else {
