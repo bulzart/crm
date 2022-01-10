@@ -221,6 +221,7 @@ $retor = Pendency::where('family_id',$id)->get();
   }
   public function tasks(Request $req,$az = false)
   {
+    $start = microtime(true);
     $cnt = 0;
     $cnt1 = 0;
     if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {

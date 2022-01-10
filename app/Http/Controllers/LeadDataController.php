@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\FolderPaths;
+use App\Models\data;
 use App\Models\family;
 use App\Models\LeadDataCounteroffered;
 use App\Models\LeadDataFahrzeug;
@@ -18,7 +19,10 @@ class LeadDataController extends Controller
 {
     use FileManagerTrait;
     public function acceptdata($id){
-      
+      $data = new data();
+      $lead = family::find($id);
+      $data->getdata($id);
+      return view('updatedocument',compact('data','lead'));
     }
 
     public function createLeadDataKK($leadId, $personId, Request $request,$pendency = false)
@@ -39,7 +43,6 @@ class LeadDataController extends Controller
             'comment' => $request->comment
         ]);
         LeadDataFahrzeug::create([
-
             'leads_id' => $leadId,
             'person_id' => $personId,
             'leasing' => $request->leasing,
@@ -105,9 +108,13 @@ class LeadDataController extends Controller
             if($pend){
             $pend->done = 1;
             $pend->save();}
+            return redirect()->back()->with('success','Successfully submitted and will be waiting for the backoffice!');
     }
-    public function updateLeadDataKK($leadId, $personId, Request $request)
+    public function updateLeadDataKK($leadId, $personId, Request $request,$update = false)
     {
+        if($update){
+
+        }
         $leadDataKK = [
             'leads_id' => $leadId,
             'person_id' => $personId,

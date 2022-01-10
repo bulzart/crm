@@ -195,20 +195,15 @@ class UserController extends Controller
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
                 $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
                 $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
+
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-
-                
                     $leads = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('assigned',0)->get();
-
             }
 
             $insta = lead::where('campaign_id', 1)->get()->count();
             $facebook = lead::where('campaign_id', 3)->get()->count();
             $sana = lead::where('campaign_id', 2)->get()->count();
             $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
-
-
-
             return view('leads', compact('leads', 'total','asigned'));
 
         }
@@ -223,9 +218,9 @@ class UserController extends Controller
         $lead->time = filter_var($req->input('apptime'), FILTER_SANITIZE_STRING);
         $lead->appointment_date = filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING);
         if ($lead->save()) {
-            return redirect()->route('leads')->with('success', 'You action has been done successfuly');
+            return redirect()->route('leads')->with('success', 'Your action has been done successfuly');
         } else {
-            return redirect()->route('leads')->with('fail', 'You action has been fail');
+            return redirect()->route('leads')->with('fail', 'Your action has failed');
         }
     }
 
@@ -308,16 +303,14 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
-        if (Auth::guard('admins')->check()) {
+        if (Auth::guard('admins')->check()){
             $perdoruesi = Admins::where('id', Auth::guard('admins')->user()->id)->first();
             $perdoruesi->online = 0;
             $perdoruesi->confirmed = 0;
             $perdoruesi->save();
             Auth::guard('admins')->logout();
             $request->session()->regenerateToken();
-
         }
-
         return redirect()->route('rnlogin');
     }
     public function adduser()
@@ -412,6 +405,7 @@ class UserController extends Controller
 
     public function dashboard(Request $req)
 {
+
 if(!Auth::guard('admins')->check()){
    return redirect()->route('rnlogin');
 }
@@ -436,10 +430,7 @@ if(!Auth::guard('admins')->check()){
                 $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
 
             }
-         
 
-            
-          
 if(Auth::guard('admins')->user()->hasRole('admin')){
     $tasks = lead::where('completed',0)->get();
 
