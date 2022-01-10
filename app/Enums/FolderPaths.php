@@ -11,5 +11,5 @@ use BenSampo\Enum\Enum;
  */
 final class FolderPaths extends Enum
 {
-    const KK_FILES = 'images';
+    const KK_FILES = 'img';
 }
