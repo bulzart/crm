@@ -29,6 +29,9 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
 use DB;
 use Illuminate\Auth\Access\Response;
+use Session;
+use Excel;
+use File;
 
 class UserController extends Controller
 {
@@ -81,10 +84,25 @@ class UserController extends Controller
 
         return view('getlead', compact('campaign'));
     }
+    public function addappointmentfile(Request $request){
+        $this->validate($request,[
+            'file' => 'required'
+        ]);
+
+        $path = $request->file('file')->getRealPath();
+        $path1 = $request->file('file')->getClientOriginalName();
+
+        $data = Excel::load($path);
+
+
+
+
+
+    }
 
     public function addappointment(Request $req)
     {
-        dd(Auth::guard('admins')->user()->id);
+
         $req->validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -197,7 +215,7 @@ class UserController extends Controller
                 $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
 
-                
+
                     $leads = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('assigned',0)->get();
 
             }
@@ -253,7 +271,7 @@ class UserController extends Controller
             return view('alead', compact('admins', 'lead'));
         }
     }
-    
+
 
     public function trylogin(Request $req)
     {
@@ -280,7 +298,7 @@ class UserController extends Controller
                 // 'text' => '12345']);
                 $user->save();
                 //\Mail::to(Auth::guard('admins')->user()->email)->send(new confirmcode($pin));
-           
+
                 return redirect()->route('dashboard');
 
 
@@ -426,7 +444,7 @@ if(!Auth::guard('admins')->check()){
 
         date_default_timezone_set('Europe/Berlin');
 
-       
+
 
         if (Auth::guard('admins')->check()) {
             $pendingcnt = 0;
@@ -435,16 +453,16 @@ if(!Auth::guard('admins')->check()){
             $pendencies = [];
             if (Auth::guard('admins')->user()->hasRole('backoffice')) {
                 $pendencies = family::where('status', 'Submited')->get();
-                
+
                 $morethan30 = '';
                 $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-    
+
                 return view('dashboard', compact('pendencies','morethan30'));
             }
-         
 
-            
-          
+
+
+
 elseif(Auth::guard('admins')->user()->hasRole('admin')){
     $tasks = lead::where('completed',0)->get();
                 $pendingcnt = DB::table('family_person')
@@ -477,11 +495,36 @@ elseif(Auth::guard('admins')->user()->hasRole('admin')){
             if($taskcnt != 0){
                 $percnt = (100 / $taskcnt) * $done;
             }
-         
+
             $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
             $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
             if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
-           
+
+        }
+    }
+    public function addnewuser()
+    {
+        if (Auth::guard('admins')->user()->hasRole('admin')) {
+            $roles = Role::all();
+            return view('addnewuser', compact('roles'));
+        }
+    }
+    public function registernewuser(Request $request ){
+        $admins = new Admins();
+
+        $admins->name = $request->user_name;
+        $admins->email = $request->user_email;
+        $admins->phonenumber = $request->user_name;
+        $admins->password = Hash::make($request->user_password);
+
+        $admins->assignRole($request->role_name);
+
+        if($admins->save()){
+            return redirect()->back()->with('success','User Register Successfuly');
+        }else{
+            return redirect()->back()->with('fail','User Faild To Register');
+
         }
     }
 }
+

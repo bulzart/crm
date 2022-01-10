@@ -87,88 +87,12 @@
 
             <div class="mt-4 scroll-2" style="height: 250px; overflow-y: scroll; overflow-x:hidden !important;">
                 <div class="text-center" v-if="today == null">No appointments for today</div>
-                <div v-if="today != null" v-for="tod in today" class="mb-2 text-white"
+                <a style="text-decoration: none" v-if="today != null" v-for="tod in today"  :href="'acceptappointment/'+tod.id"><div  class="mb-2 text-white"
                      style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: pointer;"
-                     data-bs-toggle="modal" :data-bs-target="'#' + tod.slug">
-                    <div class="modal fade" :id="tod.slug" tabindex="-1" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-center" id="exampleModalLabel"></h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="mapouter">
-                                        <div class="gmap_canvas">
-                                            <iframe width="600" height="500" id="gmap_canvas"
-                                                    :src="'https://maps.google.com/maps?q='+ tod.address+'&t=&z=15&ie=UTF8&iwloc=&output=embed'"
-                                                    frameborder="0" scrolling="no" marginheight="0"
-                                                    marginwidth="0"></iframe>
-                                            <a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><a
-                                            href="https://www.embedgooglemap.net"></a></div>
-                                    </div>
-                                    <div class="text-center">
-                                        <button class="btn btn-primary mt-2" data-bs-toggle="modal"
-                                                :data-bs-target="'#' + tod.slug + '1'">Open in large
-                                        </button>
-                                        <h3>{{ tod.name }} {{ tod.lname }}</h3>
-                                        <div v-if="tod.assigned == 1">
-                                            <i class="fas fa-map-marker-alt" style="font-color: black;"></i>
-                                            <h5 class="text-secondary">{{ tod.address }},{{ tod.location }}</h5>
+                     >
 
-                                            <div class="row mt-5">
-                                                <div class="col-md-6 col-6 text-center">
-                                                    <i class="fas fa-users text-black" style="font-size:38px;"></i>
-                                                    <br>
-                                                    <span class="text-black">{{ tod.count }} People</span>
-                                                </div>
-                                                <div class="col-md-6 col-6">
-                                                    <i class="far fa-calendar-alt text-black"
-                                                       style="font-color: black; font-size:38px;"></i>
-                                                    <br>
-                                                    <span class="text-black">{{ tod.time }}</span>
-                                                    <br>
-                                                </div>
-                                            </div>
-
-                                            <div class="row text-center mt-5">
-                                                <div class="col-md-6 col-6">
-                                                    <a :href="'dealnotclosed/' + tod.id">
-                                                        <i class="far fa-window-close" style="font-size: 77px;"></i></a>
-                                                </div>
-                                                <div class="col-md-6 col-6">
-                                                    <a :href="'dealclosed/' + tod.id">
-                                                        <i style="font-size: 77px;"
-                                                           class="fas fa-check-square text-success"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div v-if="tod.assigned == 0">
-                                            <div class="text-center">
-                                                <a :href="'acceptapp/' + tod.id">
-                                                    <i style="font-size: 77px;"
-                                                       class="fas fa-check-square text-success"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Undertood
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="row">
-                        <div class="col-md-1 col-6 col-xs-2 mt-3">
-                            {{ tod.time }}
-                        </div>
                         <div class="col-md-11 col-6 col-xs-10">
                             <span style="margin-left: 9px; font-size: 20px;"
                                   class="d-flex">{{ tod.name }} {{ tod.lname }}</span>
@@ -195,7 +119,8 @@
                                                     frameborder="0" scrolling="no" marginheight="0"
                                                     marginwidth="0"></iframe>
                                             <a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a><br><a
-                                            href="https://www.embedgooglemap.net">embedgooglemap.net</a></div>
+                                            href="https://www.embedgooglemap.net">embedgooglemap.net</a>
+                                        </div>
                                     </div>
                                     <div class="text-center">
                                     </div>
@@ -209,6 +134,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
 

@@ -48,10 +48,21 @@ route::prefix('')->group(function(){
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
     route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
+    route::post('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
     route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
+    route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
+    route::get('acceptappointment/{id}',function ($id){
+        $lead = lead::find($id);
+        return view('acceptappointment',compact('lead'));
+    })->name('acceptappointment');
+    route::get('acceptleadinfo/{id}',function ($id){
+        $app = lead::find($id)->update(['assigned' => 1]);
+        return redirect()->back();
+    })->name('acceptleadinfo');
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
@@ -119,7 +130,6 @@ route::get('permission', function(){
    $user->assignRole($role);
   return $user->getRoleNames();
 });
-route::get('status',[StatusController::class,'status']);
 
 
 
