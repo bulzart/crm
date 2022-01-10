@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 class LeadDataController extends Controller
 {
     use FileManagerTrait;
+    public function acceptdata($id){
+      
+    }
 
     public function createLeadDataKK($leadId, $personId, Request $request,$pendency = false)
     {
@@ -99,7 +102,6 @@ class LeadDataController extends Controller
         $status = ['status' => 'Submited'];
         $family->update($status);
         $pend = Pendency::where('family_id',$personId)->where('admin_id',Auth::guard('admins')->user()->id)->first();
-
             if($pend){
             $pend->done = 1;
             $pend->save();}

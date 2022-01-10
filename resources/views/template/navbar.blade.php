@@ -1149,6 +1149,20 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
             }
         });
     });
+    var Pending__bool1 = false;
+
+$(document).ready(function(){
+    $("#Pending__1").click(function(){
+        $("#collapse__").collapse('toggle');
+        if(Pending__bool1 == false){
+            $("#Pending_arrow__1").addClass("bi bi-caret-down-fill bi-caret-up-fill");
+            Pending__bool1 = true;
+        }else{
+            $("#Pending_arrow__1").removeClass("bi bi-caret-up-fill");
+            Pending__bool1 = false;
+        }
+    });
+});
 </script>
 
 

@@ -223,7 +223,7 @@ $retor = Pendency::where('family_id',$id)->get();
   {
     $cnt = 0;
     $cnt1 = 0;
-    if (Auth::guard('admins')->user()->hasRole('backoffice')) {
+    if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
         if (isset($req->searchpend)) {
             $pend = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
@@ -260,6 +260,7 @@ $retor = Pendency::where('family_id',$id)->get();
 
         $answered = [];
         $opened = [];
+        
         foreach ($pend as $p) {
             $answered[$cnt] = $p;
             $cnt++;
@@ -269,19 +270,9 @@ $retor = Pendency::where('family_id',$id)->get();
             $opened[$cnt] = $p;
             $cnt++;
         }
+ 
 
-
-     $answered = [];
-     $opened = [];
-       foreach($pend as $p){
-         $answered[$cnt] = $p;
-          $cnt++;
-       }
-       $cnt = 0;
-       foreach($open as $p){
-        $opened[$cnt] = $p;
-         $cnt++;
-      }
+ 
 
     }
     if (Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')) {
@@ -358,8 +349,11 @@ if(Auth::guard('admins')->user()->hasRole('admin')){
       }
     }
   }
+  
 if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('tasks',compact('answered','pend','opened'));
-if(Auth::guard('admins')->user()->hasRole('fs')  || Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
+if(Auth::guard('admins')->user()->hasRole('fs')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
+if(Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks','answered','pend','opened'));
+
   }
 
 
