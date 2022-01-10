@@ -3,22 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Enums\FolderPaths;
+use App\Models\data;
 use App\Models\family;
 use App\Models\LeadDataCounteroffered;
 use App\Models\LeadDataFahrzeug;
 use App\Models\LeadDataKK;
 use App\Models\LeadDataPrevention;
 use App\Models\LeadDataThings;
+use App\Models\Pendency;
 use App\Traits\FileManagerTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LeadDataController extends Controller
 {
     use FileManagerTrait;
+    public function acceptdata($id){
+      $data = new data();
+      $lead = family::find($id);
+      $data->getdata($id);
+      return view('updatedocument',compact('data','lead'));
+    }
 
-    public function createLeadDataKK($leadId, $personId, Request $request)
+    public function createLeadDataKK($leadId, $personId, Request $request,$pendency = false)
     {
-        dd($request);
         LeadDataKK::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -27,7 +35,6 @@ class LeadDataController extends Controller
             'notice_by' => $request->notice_by ? $this->storeFile($request->notice_by, FolderPaths::KK_FILES) : null,
             'power_of_attorney' => $request->power_of_attorney ? $this->storeFile($request->power_of_attorney, FolderPaths::KK_FILES) : null,
         ]);
-
         LeadDataCounteroffered::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -35,7 +42,6 @@ class LeadDataController extends Controller
             'comparison_type' => $request->comparison_type,
             'comment' => $request->comment
         ]);
-
         LeadDataFahrzeug::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -61,7 +67,6 @@ class LeadDataController extends Controller
             'hour_breakdown_assistance' => $request->hour_breakdown_assistance,
             'comment' => $request->comment
         ]);
-
         LeadDataThings::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -82,7 +87,6 @@ class LeadDataController extends Controller
             'smoker' => $request->smoker,
             'desired' => $request->desired,
         ]);
-
         LeadDataPrevention::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -97,14 +101,20 @@ class LeadDataController extends Controller
             'society' => $request->society,
             'n_of_p_legal_protection' => $request->n_of_p_legal_protection,
         ]);
-
         $family = family::where('id', $personId)->first();
         $status = ['status' => 'Submited'];
         $family->update($status);
+        $pend = Pendency::where('family_id',$personId)->where('admin_id',Auth::guard('admins')->user()->id)->first();
+            if($pend){
+            $pend->done = 1;
+            $pend->save();}
+            return redirect()->back()->with('success','Successfully submitted and will be waiting for the backoffice!');
     }
-
-    public function updateLeadDataKK($leadId, $personId, Request $request)
+    public function updateLeadDataKK($leadId, $personId, Request $request,$update = false)
     {
+        if($update){
+
+        }
         $leadDataKK = [
             'leads_id' => $leadId,
             'person_id' => $personId,

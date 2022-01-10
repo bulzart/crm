@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ToDoRequest;
 use App\Models\Admins;
 use App\Models\family;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class TodoController extends Controller
         }
     }
 
-    public function addtodo(Request $req){
+    public function addtodo(ToDoRequest $req){
       $todo = new todo();
       $todo->text = filter_var($req->todo,FILTER_SANITIZE_STRING);
       $todo->admin_id = Auth::guard('admins')->user()->id;
@@ -42,7 +43,7 @@ class TodoController extends Controller
         if(Auth::guard('admins')->check()){
         $data['costumers'] = family::where('status','Submited')->get();
         $role = 'admin';
-        $role = Role::where('name','backoffice')->get();
+        $role = Role::where('name','fs')->orWhere('name','digital')->get();
         $data['admins'] = Admins::role($role)->get();
         return $data;
         }

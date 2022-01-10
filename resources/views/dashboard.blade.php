@@ -498,7 +498,7 @@
             </div>
         </section>
     @endif
-    @if(Auth::guard('admins')->user()->hasRole('backoffice'))
+    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
         <div class="row" id="app">
            <div class="col-12 col-md-12">
                <todo></todo>

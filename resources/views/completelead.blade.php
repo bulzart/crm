@@ -1,5 +1,4 @@
-@extends('template.navbar')
-@section('content')
+
 <!doctype html>
 <html lang="en">
 
@@ -271,7 +270,6 @@
             </script>
 </body>
 </html>
-@endsection
 <style>
     .collapsed .d-btnn {
         background-color: #c8ddd1;
