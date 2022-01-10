@@ -67,23 +67,23 @@
 </div>
 
 @endif
-@if(Auth::guard('admins')->user()->hasRole('backoffice'))
+@if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
 <div class="row justify-content-center">
     <div class="col-md-6 col-12 mb-3">
         <div style="background: #ffebe5; border-radius: 25px; padding: 5%;">
             <div class="row">
-                <div class="col-12" style="cursor: pointer;" id="Pending__" >
-                    <form action="{{route('tasks')}}">
+                <div class="col-12" style="cursor: pointer;" >
+                    <form action="{{route('tasks')}}" method="post">
                         @csrf
                         <input type="text" name="searchpend" placeholder="Search by name">
                         <input type="submit" class="btn btn-danger" value="Search">
                     </form>
-                    <span>Answered <span class="text-danger">{{count($answered)}}</span><i id="Pending_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
+                    <span>Answered <span class="text-danger">{{count($answered)}}</span></span>
                 </div>
                 
             </div>
             <br>
-            <div class="collapse" id="collapse__">
+            <div id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($answered as $task)
                     <a href="{{route('leadfamilyperson',$task->id)}}">
@@ -101,18 +101,18 @@
     <div class="col-md-6 col-12 mb-3">
         <div style="background: #f8f8f8;border-radius: 25px; padding: 5%;">
             <div class="row">
-                <div class="col-12" style="cursor: pointer;" id="Offene_Aufgaben__" >
-                    <form action="{{route('tasks')}}">
+                <div class="col-12" style="cursor: pointer;" id="Offene_Aufgaben__1" >
+                    <form action="{{route('tasks')}}" method="post">
                         @csrf
                         <input type="text" name="searchopen" placeholder="Search by name">
                         <input type="submit" class="btn btn-danger" value="Search">
                     </form>
-                    <span>Open <span class="text-danger">{{count($opened)}}</span><i id="Offene_Aufgaben_arrow__" style="color: #ff9b7d; float: right;" class="bi bi-caret-down-fill"></i></span>
+                    <span>Open <span class="text-danger">{{count($opened)}}</span></span>
                 </div>
                 
             </div>
             <br>
-            <div class="collapse" id="first_collapse">
+            <div id="first_collapse">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($opened as $task)
                     <a href="{{route('leadfamilyperson',$task->id)}}">

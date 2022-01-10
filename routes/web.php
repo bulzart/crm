@@ -131,7 +131,7 @@ route::get('permission', function(){
    $user->assignRole($role);
   return $user->getRoleNames();
 });
-route::get('status',[StatusController::class,'status']);
+route::get('acceptdata/{id}',[LeadDataController::class,'acceptdata']);
 
 
 
