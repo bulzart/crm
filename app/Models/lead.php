@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class lead extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'assigned'
+        ];
 
     public function campaign(){
         return $this->belongsTo(campaigns::class);

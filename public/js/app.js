@@ -5388,80 +5388,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -29541,384 +29467,151 @@ var render = function () {
           _vm._l(_vm.today, function (tod) {
             return _vm.today != null
               ? _c(
-                  "div",
+                  "a",
                   {
-                    staticClass: "mb-2 text-white",
-                    staticStyle: {
-                      background: "#00c78c",
-                      "border-radius": "9px",
-                      "min-height": "60px",
-                      cursor: "pointer",
-                    },
-                    attrs: {
-                      "data-bs-toggle": "modal",
-                      "data-bs-target": "#" + tod.slug,
-                    },
+                    staticStyle: { "text-decoration": "none" },
+                    attrs: { href: "acceptappointment/" + tod.id },
                   },
                   [
                     _c(
                       "div",
                       {
-                        staticClass: "modal fade",
-                        attrs: {
-                          id: tod.slug,
-                          tabindex: "-1",
-                          "aria-labelledby": "exampleModalLabel",
-                          "aria-hidden": "true",
+                        staticClass: "mb-2 text-white",
+                        staticStyle: {
+                          background: "#00c78c",
+                          "border-radius": "9px",
+                          "min-height": "60px",
+                          cursor: "pointer",
                         },
                       },
                       [
-                        _c("div", { staticClass: "modal-dialog" }, [
-                          _c("div", { staticClass: "modal-content" }, [
-                            _vm._m(0, true),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "modal-body" }, [
-                              _c("div", { staticClass: "mapouter" }, [
-                                _c("div", { staticClass: "gmap_canvas" }, [
-                                  _c("iframe", {
-                                    attrs: {
-                                      width: "600",
-                                      height: "500",
-                                      id: "gmap_canvas",
-                                      src:
-                                        "https://maps.google.com/maps?q=" +
-                                        tod.address +
-                                        "&t=&z=15&ie=UTF8&iwloc=&output=embed",
-                                      frameborder: "0",
-                                      scrolling: "no",
-                                      marginheight: "0",
-                                      marginwidth: "0",
-                                    },
-                                  }),
-                                  _vm._v(" "),
-                                  _c("a", {
-                                    attrs: {
-                                      href: "https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/",
-                                    },
-                                  }),
-                                  _c("br"),
-                                  _c("a", {
-                                    attrs: {
-                                      href: "https://www.embedgooglemap.net",
-                                    },
-                                  }),
-                                ]),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "text-center" }, [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-primary mt-2",
-                                    attrs: {
-                                      "data-bs-toggle": "modal",
-                                      "data-bs-target": "#" + tod.slug + "1",
-                                    },
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            { staticClass: "col-md-11 col-6 col-xs-10" },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "d-flex",
+                                  staticStyle: {
+                                    "margin-left": "9px",
+                                    "font-size": "20px",
                                   },
-                                  [
-                                    _vm._v(
-                                      "Open in large\n                                    "
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("h3", [
+                                },
+                                [
                                   _vm._v(
                                     _vm._s(tod.name) + " " + _vm._s(tod.lname)
                                   ),
-                                ]),
-                                _vm._v(" "),
-                                tod.assigned == 1
-                                  ? _c("div", [
-                                      _c("i", {
-                                        staticClass: "fas fa-map-marker-alt",
-                                        staticStyle: { "font-color": "black" },
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "h5",
-                                        { staticClass: "text-secondary" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(tod.address) +
-                                              "," +
-                                              _vm._s(tod.location)
-                                          ),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "row mt-5" }, [
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("i", {
+                                staticClass: "fas fa-map-marker-alt",
+                                staticStyle: {
+                                  "margin-left": "9px",
+                                  "font-size": "14px",
+                                },
+                              }),
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(tod.address) +
+                                  "\n                    "
+                              ),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "modal fade text-center justify-content-center",
+                            attrs: {
+                              id: tod.slug + "1",
+                              tabindex: "-1",
+                              "aria-labelledby": "exampleModalLabel",
+                              "aria-hidden": "true",
+                            },
+                          },
+                          [
+                            _c("div", { staticClass: "modal-dialog" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "modal-content",
+                                  staticStyle: {
+                                    width: "900px",
+                                    height: "600px",
+                                  },
+                                },
+                                [
+                                  _vm._m(0, true),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "modal-body",
+                                      staticStyle: {
+                                        width: "100%",
+                                        height: "auto",
+                                      },
+                                    },
+                                    [
+                                      _c("div", { staticClass: "mapouter" }, [
                                         _c(
                                           "div",
-                                          {
-                                            staticClass:
-                                              "col-md-6 col-6 text-center",
-                                          },
+                                          { staticClass: "gmap_canvas" },
                                           [
-                                            _c("i", {
-                                              staticClass:
-                                                "fas fa-users text-black",
+                                            _c("iframe", {
                                               staticStyle: {
-                                                "font-size": "38px",
+                                                height: "500px",
+                                                width: "100%",
+                                              },
+                                              attrs: {
+                                                id: "gmap_canvas",
+                                                src:
+                                                  "https://maps.google.com/maps?q=" +
+                                                  tod.address +
+                                                  ",%20" +
+                                                  tod.location +
+                                                  "&t=k&z=15&ie=UTF8&iwloc=&output=embed",
+                                                frameborder: "0",
+                                                scrolling: "no",
+                                                marginheight: "0",
+                                                marginwidth: "0",
                                               },
                                             }),
                                             _vm._v(" "),
-                                            _c("br"),
-                                            _vm._v(" "),
-                                            _c(
-                                              "span",
-                                              { staticClass: "text-black" },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(tod.count) + " People"
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "col-md-6 col-6" },
-                                          [
-                                            _c("i", {
-                                              staticClass:
-                                                "far fa-calendar-alt text-black",
-                                              staticStyle: {
-                                                "font-color": "black",
-                                                "font-size": "38px",
+                                            _c("a", {
+                                              attrs: {
+                                                href: "https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/",
                                               },
                                             }),
-                                            _vm._v(" "),
                                             _c("br"),
-                                            _vm._v(" "),
                                             _c(
-                                              "span",
-                                              { staticClass: "text-black" },
-                                              [_vm._v(_vm._s(tod.time))]
+                                              "a",
+                                              {
+                                                attrs: {
+                                                  href: "https://www.embedgooglemap.net",
+                                                },
+                                              },
+                                              [_vm._v("embedgooglemap.net")]
                                             ),
-                                            _vm._v(" "),
-                                            _c("br"),
                                           ]
                                         ),
                                       ]),
                                       _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "row text-center mt-5" },
-                                        [
-                                          _c(
-                                            "div",
-                                            { staticClass: "col-md-6 col-6" },
-                                            [
-                                              _c(
-                                                "a",
-                                                {
-                                                  attrs: {
-                                                    href:
-                                                      "dealnotclosed/" + tod.id,
-                                                  },
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass:
-                                                      "far fa-window-close",
-                                                    staticStyle: {
-                                                      "font-size": "77px",
-                                                    },
-                                                  }),
-                                                ]
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            { staticClass: "col-md-6 col-6" },
-                                            [
-                                              _c(
-                                                "a",
-                                                {
-                                                  attrs: {
-                                                    href:
-                                                      "dealclosed/" + tod.id,
-                                                  },
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass:
-                                                      "fas fa-check-square text-success",
-                                                    staticStyle: {
-                                                      "font-size": "77px",
-                                                    },
-                                                  }),
-                                                ]
-                                              ),
-                                            ]
-                                          ),
-                                        ]
-                                      ),
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                tod.assigned == 0
-                                  ? _c("div", [
-                                      _c(
-                                        "div",
-                                        { staticClass: "text-center" },
-                                        [
-                                          _c(
-                                            "a",
-                                            {
-                                              attrs: {
-                                                href: "acceptapp/" + tod.id,
-                                              },
-                                            },
-                                            [
-                                              _c("i", {
-                                                staticClass:
-                                                  "fas fa-check-square text-success",
-                                                staticStyle: {
-                                                  "font-size": "77px",
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                        ]
-                                      ),
-                                    ])
-                                  : _vm._e(),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(1, true),
-                          ]),
-                        ]),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-md-1 col-6 col-xs-2 mt-3" },
-                        [
-                          _vm._v(
-                            "\n                        " +
-                              _vm._s(tod.time) +
-                              "\n                    "
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-11 col-6 col-xs-10" }, [
-                        _c(
-                          "span",
-                          {
-                            staticClass: "d-flex",
-                            staticStyle: {
-                              "margin-left": "9px",
-                              "font-size": "20px",
-                            },
-                          },
-                          [_vm._v(_vm._s(tod.name) + " " + _vm._s(tod.lname))]
-                        ),
-                        _vm._v(" "),
-                        _c("i", {
-                          staticClass: "fas fa-map-marker-alt",
-                          staticStyle: {
-                            "margin-left": "9px",
-                            "font-size": "14px",
-                          },
-                        }),
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(tod.address) +
-                            "\n                    "
-                        ),
-                      ]),
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "modal fade text-center justify-content-center",
-                        attrs: {
-                          id: tod.slug + "1",
-                          tabindex: "-1",
-                          "aria-labelledby": "exampleModalLabel",
-                          "aria-hidden": "true",
-                        },
-                      },
-                      [
-                        _c("div", { staticClass: "modal-dialog" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "modal-content",
-                              staticStyle: { width: "900px", height: "600px" },
-                            },
-                            [
-                              _vm._m(2, true),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "modal-body",
-                                  staticStyle: {
-                                    width: "100%",
-                                    height: "auto",
-                                  },
-                                },
-                                [
-                                  _c("div", { staticClass: "mapouter" }, [
-                                    _c("div", { staticClass: "gmap_canvas" }, [
-                                      _c("iframe", {
-                                        staticStyle: {
-                                          height: "500px",
-                                          width: "100%",
-                                        },
-                                        attrs: {
-                                          id: "gmap_canvas",
-                                          src:
-                                            "https://maps.google.com/maps?q=" +
-                                            tod.address +
-                                            ",%20" +
-                                            tod.location +
-                                            "&t=k&z=15&ie=UTF8&iwloc=&output=embed",
-                                          frameborder: "0",
-                                          scrolling: "no",
-                                          marginheight: "0",
-                                          marginwidth: "0",
-                                        },
-                                      }),
-                                      _vm._v(" "),
-                                      _c("a", {
-                                        attrs: {
-                                          href: "https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/",
-                                        },
-                                      }),
-                                      _c("br"),
-                                      _c(
-                                        "a",
-                                        {
-                                          attrs: {
-                                            href: "https://www.embedgooglemap.net",
-                                          },
-                                        },
-                                        [_vm._v("embedgooglemap.net")]
-                                      ),
-                                    ]),
-                                  ]),
+                                      _c("div", { staticClass: "text-center" }),
+                                    ]
+                                  ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "text-center" }),
+                                  _vm._m(1, true),
                                 ]
                               ),
-                              _vm._v(" "),
-                              _vm._m(3, true),
-                            ]
-                          ),
-                        ]),
+                            ]),
+                          ]
+                        ),
                       ]
                     ),
                   ]
@@ -29932,41 +29625,6 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c("h5", {
-        staticClass: "modal-title text-center",
-        attrs: { id: "exampleModalLabel" },
-      }),
-      _vm._v(" "),
-      _c("button", {
-        staticClass: "btn-close",
-        attrs: {
-          type: "button",
-          "data-bs-dismiss": "modal",
-          "aria-label": "Close",
-        },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { type: "button", "data-bs-dismiss": "modal" },
-        },
-        [_vm._v("Undertood\n                                ")]
-      ),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

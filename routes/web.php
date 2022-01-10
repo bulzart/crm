@@ -52,6 +52,7 @@ route::prefix('')->group(function(){
    });
 
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
+    route::post('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
 
     Route::group(['middleware' => 'json.response'], function () {
@@ -60,6 +61,16 @@ route::prefix('')->group(function(){
 
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
+    route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
+    route::get('acceptappointment/{id}',function ($id){
+        $lead = lead::find($id);
+        return view('acceptappointment',compact('lead'));
+    })->name('acceptappointment');
+    route::get('acceptleadinfo/{id}',function ($id){
+        $app = lead::find($id)->update(['assigned' => 1]);
+        return redirect()->back();
+    })->name('acceptleadinfo');
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
@@ -131,7 +142,9 @@ route::get('permission', function(){
    $user->assignRole($role);
   return $user->getRoleNames();
 });
+
 route::get('acceptdata/{id}',[LeadDataController::class,'acceptdata']);
+
 
 
 
