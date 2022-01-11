@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\family;
 use App\Models\FamilyPerson;
 use App\Models\lead;
+use App\Models\data;
+use App\Models\LeadDataKK;
 use App\Models\Pendency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +17,14 @@ class FamilyPersonsController extends Controller
         $cnt1 = 0;
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
             $lead = family::find($id);
-            $pend = Pendency::where('admin_id',Auth::guard('admins')->user()->id)->where('family_id',$id)->get();
-
-            return view('documentsform',compact('lead'));
+           $data = LeadDataKK::where('person_id',$id)->get();
+           if($data == null){
+            return view('documentsform',compact('lead'));}
+            else{
+                $data = new data();
+                $data->getdata($id);
+                return redirect()->route('acceptdata',$id);
+            }
          } 
          else {
                 return redirect()->back();

@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Response;
+
 
 class CompleteAppRequest extends FormRequest
 {

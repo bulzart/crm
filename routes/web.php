@@ -74,9 +74,14 @@ route::prefix('')->group(function(){
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
-      $data = \App\Models\lead::find($id);
-      $data = $data->family;
-      return view('leadfamily',compact('data'));
+      $data = family::where('leads_id',$id)->get();
+
+      if($data != null)
+      {
+      return view('leadfamily',compact('data'));}
+      else{
+         return redirect()->back();
+      }
    })->name('leadfamily');
     route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
@@ -143,7 +148,8 @@ route::get('permission', function(){
   return $user->getRoleNames();
 });
 
-route::get('acceptdata/{id}',[LeadDataController::class,'acceptdata']);
+route::get('acceptdata/{id}',[LeadDataController::class,'acceptdata'])->name('acceptdata');
+
 
 
 
