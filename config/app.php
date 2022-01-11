@@ -163,7 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -235,8 +235,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Nexmo' => 'Nexmo\Laravel\Facade\Nexmo',
-        'Chat' => Musonza\Chat\Facades\ChatFacade::class
-
+        'Chat' => Musonza\Chat\Facades\ChatFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class
 
 
     ],

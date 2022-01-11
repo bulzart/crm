@@ -52,7 +52,7 @@ route::prefix('')->group(function(){
    });
 
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
-    route::post('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
+    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
 
     Route::group(['middleware' => 'json.response'], function () {
