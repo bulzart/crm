@@ -578,6 +578,157 @@
             </div>
 
     @endif
+    @if(Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <div class="my-3">
+                    <div class="row mx-2">
+                        <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                            <div class="text-center"
+                                 style="background-color: #8A8BF9; border-radius: 18px;  margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="pt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                         fill="#fff" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                        <path fill-rule="evenodd"
+                                              d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                    </svg>
+                                </div>
+                                <div class="py-2">
+                                                    <span class="fw-bold fs-5 text-white">
+                                                        {{$leadscount}}
+                                                    </span>
+                                    <br>
+                                    <span class="fw-bold fs-5 text-white">
+                                                        New Leads
+                                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                            <div class="text-center"
+                                 style="background-color: #F88DC4; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="pt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                         fill="#fff" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                                    </svg>
+                                </div>
+                                <div class="py-2">
+                                                    <span class="fw-bold fs-5 text-white">
+                                                        {{$opencnt}}
+                                                    </span>
+                                    <br>
+                                    <span class="fw-bold fs-5 text-white">
+                                                        Open Tasks
+                                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                            <div class="text-center"
+                                 style="background-color: #4EC590; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="pt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                         fill="#fff" class="bi bi-exclamation-octagon-fill"
+                                         viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                    </svg>
+                                </div>
+                                <div class="py-2">
+                                                    <span class="fw-bold fs-5 text-white">
+                                                        {{$pendingcnt}}
+                                                    </span>
+                                    <br>
+                                    <span class="fw-bold fs-5 text-white">
+                                                        Pendencies
+                                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                            <div class="text-center"
+                                 style="background-color: #4e5ec5; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="pt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                         fill="#fff" class="bi bi-exclamation-octagon-fill"
+                                         viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                    </svg>
+                                </div>
+                                <div class="py-2">
+                                                    <span class="fw-bold fs-5 text-white">
+                                                        {{$todayAppointCount}}
+                                                    </span>
+                                    <br>
+                                    <span class="fw-bold fs-5 text-white">
+                                                        Today App
+                                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                            <div class="text-center"
+                                 style="background-color: #c7cb81; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="pt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                         fill="#fff" class="bi bi-exclamation-octagon-fill"
+                                         viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                    </svg>
+                                </div>
+                                <div class="py-2">
+                                                    <span class="fw-bold fs-5 text-white">
+                                                        0
+                                                    </span>
+                                    <br>
+                                    <span class="fw-bold fs-5 text-white">
+                                                        HR Comm
+                                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                            <div class="text-center box-1 "
+                                 style="margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                <div class="py-4 ">
+                                    <div class="py-2">
+                                        <svg id="Group_549" data-name="Group 549"
+                                             xmlns="http://www.w3.org/2000/svg" width="29.713"
+                                             height="29.713" viewBox="0 0 29.713 29.713">
+                                            <rect id="Rectangle_9" data-name="Rectangle 9"
+                                                  width="29.713" height="29.713" rx="14.857"
+                                                  transform="translate(0)" fill="#4ec590"/>
+                                            <g id="Group_42" data-name="Group 42"
+                                               transform="translate(10.03 10.03)">
+                                                <line id="Line_11" data-name="Line 11" y2="9.437"
+                                                      transform="translate(4.719 0)" fill="none"
+                                                      stroke="#fff" stroke-linecap="round"
+                                                      stroke-width="2"/>
+                                                <line id="Line_12" data-name="Line 12" x1="9.437"
+                                                      transform="translate(0 4.441)" fill="none"
+                                                      stroke="#fff" stroke-linecap="round"
+                                                      stroke-width="2"/>
+                                            </g>
+                                        </svg>
+
+                                    </div>
+                                    <div class="py-1">
+                                                        <span class="text-muted">
+                                                            Add New One
+                                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    @endif
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

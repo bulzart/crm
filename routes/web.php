@@ -29,8 +29,9 @@ use Musonza\Chat\Chat;
 
 use function GuzzleHttp\Promise\task;
 
-route::prefix('')->group(function(){
-   route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
+
+route::prefix('')->middleware('confirmcode')->group(function(){
+
 // =====================================
    route::get('hyr',function(){
       Auth::guard('admins')->loginUsingId(2);
@@ -41,7 +42,6 @@ route::prefix('')->group(function(){
     route::get('notifications',[UserController::class,'notifications']);
     route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
     route::get('/',[UserController::class,'dashboard'])->name('dashboard');
-    route::get('logout',[UserController::class,'logout'])->name('logout');
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
@@ -129,17 +129,10 @@ route::prefix('')->group(function(){
    route::get('calendar',[CalendarController::class,'calendar'])->name('calendar');
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
-});
+
 route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
-   route::get('smsconfirm',function (){
-      $Admin = Admins::find(12);
-      return view('confirm_sms');
-   })->name('smsconfirm');
-   Route::get('login',[UserController::class,'rnlogin'])->name('rnlogin');
-   route::post('trylogin',[UserController::class,'trylogin'])->name('trylogin');
+
    route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
-   route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
-   route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
    route::get('add',[TasksController::class,'adddata']);
 route::get('permission', function(){
    $role = Role::find(2);
@@ -151,7 +144,16 @@ route::get('permission', function(){
 route::get('acceptdata/{id}',[LeadDataController::class,'acceptdata'])->name('acceptdata');
 
 
-
+});
+route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
+route::get('smsconfirm',function (){
+    $Admin = Admins::find(12);
+    return view('confirm_sms');
+})->name('smsconfirm');
+route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
+route::get('logout',[UserController::class,'logout'])->name('logout');
+Route::get('login',[UserController::class,'rnlogin'])->name('rnlogin');
+route::post('trylogin',[UserController::class,'trylogin'])->name('trylogin');
 
 
 
