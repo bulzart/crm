@@ -22,6 +22,7 @@ class LeadDataController extends Controller
       $data = new data();
       $lead = family::find($id);
       $data->getdata($id);
+
       return view('updatedocument',compact('data','lead'));
     }
 
@@ -90,7 +91,7 @@ class LeadDataController extends Controller
         LeadDataPrevention::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'upload_police' => $request->upload_police ? $this->storeFile($request->upload_police, FolderPaths::KK_FILES) : null,
+            'upload_police' => $request->upload_police__ ? $this->storeFile($request->upload_police__, FolderPaths::KK_FILES) : null,
             'comparison_type' => $request->comparison_type,
             'comment' => $request->comment,
             'number_of_people' => $request->number_of_people,
@@ -110,40 +111,39 @@ class LeadDataController extends Controller
             $pend->save();}
             return redirect()->back()->with('success','Successfully submitted and will be waiting for the backoffice!');
     }
-    public function updateLeadDataKK($leadId, $personId, Request $request,$update = false)
-    {
-        if($update){
 
-        }
+
+    public function updateLeadDataKK($leadId, $personId, Request $request)
+    {
+        $existingLeadDataKK = LeadDataKK::where('leads_id', $leadId)->where('person_id', $personId)->first();
         $leadDataKK = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'pre_insurer' => $request->pre_insurer ? $this->storeFile($request->pre_insurer, FolderPaths::KK_FILES) : null,
-            'id_required' => $request->id_required ? $this->storeFile($request->id_required, FolderPaths::KK_FILES) : null,
-            'notice_by' => $request->notice_by ? $this->storeFile($request->notice_by, FolderPaths::KK_FILES) : null,
-            'power_of_attorney' => $request->power_of_attorney ? $this->storeFile($request->power_of_attorney, FolderPaths::KK_FILES) : null,
+            'pre_insurer' => $request->hasFile('pre_insurer') ? $this->storeFile($request->pre_insurer, FolderPaths::KK_FILES) : $existingLeadDataKK->pre_insurer,
+            'id_required' => $request->hasFile('id_required') ? $this->storeFile($request->id_required, FolderPaths::KK_FILES) : $existingLeadDataKK->id_required,
+            'notice_by' => $request->hasFile('notice_by') ? $this->storeFile($request->notice_by, FolderPaths::KK_FILES) : $existingLeadDataKK->notice_by,
+            'power_of_attorney' => $request->hasFile('power_of_attorney') ? $this->storeFile($request->power_of_attorney, FolderPaths::KK_FILES) : $existingLeadDataKK->power_of_attorney,
         ];
-
-        $existingLeadDataKK = LeadDataKK::where('leads_id', $leadId)->where('person_id', $personId)->first();
 
         if($existingLeadDataKK){
             $existingLeadDataKK->update($leadDataKK);
         }
+        $existingLeadDataCounterOffered = LeadDataCounteroffered::where('leads_id', $leadId)->where('person_id', $personId)->first();
 
         $leadDataCounteroffered = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'upload_police' => $request->upload_police ? $this->storeFile($request->upload_police, FolderPaths::KK_FILES) : null,
+            'upload_police' => $request->hasFile('upload_police') ? $this->storeFile($request->upload_police, FolderPaths::KK_FILES) : $existingLeadDataCounterOffered->upload_police,
             'comparison_type' => $request->comparison_type,
             'comment' => $request->comment
         ];
 
-        $existingLeadDataCounterOffered = LeadDataCounteroffered::where('leads_id', $leadId)->where('person_id', $personId)->first();
         
         if($existingLeadDataCounterOffered){
             $existingLeadDataCounterOffered->update($leadDataCounteroffered);
         }
 
+        $existingLeadDataFahrzeug = LeadDataFahrzeug::where('leads_id', $leadId)->where('person_id', $personId)->first();
         $leadDataFahrzeug = [
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -152,7 +152,7 @@ class LeadDataController extends Controller
             'year_of_purchase' => $request->year_of_purchase,
             'placing_on_the_market' => $request->placing_on_the_market,
             'insurance_date' => $request->insurance_date,
-            'redeemed' => $request->redeemed ? $this->storeFile($request->redeemed, FolderPaths::KK_FILES) : null,
+            'redeemed' => $request->hasFile('redeemed') ? $this->storeFile($request->redeemed, FolderPaths::KK_FILES) : $existingLeadDataFahrzeug->redeemed,
             'km_stood' => $request->km_stood,
             'issue_date' => $request->issue_date,
             'nationality' => $request->nationality,
@@ -169,8 +169,6 @@ class LeadDataController extends Controller
             'hour_breakdown_assistance' => $request->hour_breakdown_assistance,
             'comment' => $request->comment
         ];
-
-        $existingLeadDataFahrzeug = LeadDataFahrzeug::where('leads_id', $leadId)->where('person_id', $personId)->first();
         
         if($existingLeadDataFahrzeug){
             $existingLeadDataFahrzeug->update($leadDataFahrzeug);
@@ -201,10 +199,11 @@ class LeadDataController extends Controller
             $existingLeadDataThings->update($leadDataThings);
         }
 
+        $existingLeadDataPrevention = LeadDataPrevention::where('leads_id', $leadId)->where('person_id', $personId)->first();
         $leadDataPrevention = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'upload_police' => $request->upload_police__ ? $this->storeFile($request->upload_police__, FolderPaths::KK_FILES) : null,
+            'upload_police' => $request->hasFile('upload_police__') ? $this->storeFile($request->upload_police__, FolderPaths::KK_FILES) : $existingLeadDataPrevention->upload_police__,
             'comparison_type' => $request->comparison_type,
             'comment' => $request->comment__,
             'number_of_people' => $request->number_of_people,
@@ -216,7 +215,6 @@ class LeadDataController extends Controller
             'n_of_p_legal_protection' => $request->n_of_p_legal_protection,
         ];
 
-        $existingLeadDataPrevention = LeadDataPrevention::where('leads_id', $leadId)->where('person_id', $personId)->first();
         
         if($existingLeadDataPrevention){
             $existingLeadDataPrevention->update($leadDataPrevention);
