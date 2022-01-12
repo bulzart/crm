@@ -31,7 +31,7 @@ class Leads extends Migration
             $table->string('slug')->nullable();
             $table->string('status_task')->nullable();
             $table->string('status_contract')->nullable();
-            $table->string('completed')->nullable();
+            $table->boolean('completed')->default(0);
             $table->date('appointment_date')->nullable();
             $table->integer('campaign_id'); //Foreign Key
             $table->integer('assign_to_id')->nullable(); //Foreign Key

@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Mega Dropdown</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="surfcategories" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="surfcategories">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Category</a>
+      </li>
+      <li v-for="category in categories" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" v-bind:id="category.id" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{category.modeli}}
+        </a>
+        <div class="dropdown-menu" :aria-labelledby="category.id">
+
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 row">
+                <ul class="nav flex-column">
+                <div v-for="subcategory in subcategories" v-if="subcategory.car_models_id == category.id" class="col-md-3"><li class="nav-item">
+                  <a class="nav-link" href="#">Link item</a>
+                </li>
+				</div>
+              </ul>
+              </div>
+            </div>
+          </div>
+          <!--  /.container  -->
+
+
+        </div>
+      </li>
+
+ 
+
+    </ul>
+
+  </div>
+
+
+</nav>
