@@ -356,8 +356,11 @@
                             </svg>
                           </label>
                           <input type="file" name="pre_insurer" id="file-input-0" class="svg-div w-100 border-0  g-0" onchange="upload(this)">
-                          <input type="text" class="form-control text-center" id="file-input-0c" disabled style="background:none; border:none;"></span>
-
+                          @if(isset($data->datakk[0]->pre_insurer))
+                          <a href="{{Storage::disk('img')->url($data->datakk[0]->pre_insurer)}}"><input type="text" class="form-control text-center" id="file-input-0c" disabled style="background:none; border:none;" value="{{$data->datakk[0]->pre_insurer}}"></a>
+                          @else
+                          <input type="text" class="form-control text-center" id="file-input-0c" disabled style="background:none; border:none;">
+                          @endif
                         </div>
                       </div>
                     </div>
@@ -369,7 +372,7 @@
                       <div class="row mx-2">
                         <div class="col-7 d-flex g-0">
                           <div class="">
-                            <span class="fw-bold" style=" font-size: 12px;">
+                            <span class="fw-bold" style="font-size: 12px;">
                               ID Notwending
                             </span>
                           </div>
@@ -607,9 +610,13 @@
                                   <div class="select-div text-end ">
                                     <select name="comparison_type" class="fw-bold" id=""
                                       style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                                      @if(isset($data->counter[0]->comparison_type))
+                                      <option value="{{$data->counter[0]->comparison_type}}" selected>{{$data->counter[0]->comparison_type}}</option>
+                                      @else
                                       <option selected>Select</option>
                                       <option value="1">1:1 Deckung</option>
                                       <option value="2">1:1 Deckung</option>
+                                      @endif
                                     </select>
                                   </div>
                                 </div>
@@ -706,17 +713,38 @@
                                     <div class="col">
                                       <div class="btn-group w-100" role="group"
                                         aria-label="Basic radio toggle button group">
-                                        <input type="radio" class="btn-check " name="leasing" id="btnradio1"
+                                        @if(isset($data->fahrzeug[0]->comparison_type))
+                                        @if($data->fahrzeug[0]->comparison_type == 'Ja')
+                                        <input type="radio" class="btn-check" value="Ja" name="leasing" id="btnradio1"
                                           autocomplete="off" checked>
                                         <label class="btn btn-outline-secondary w-100 g-0" value="Ja" for="btnradio1">Ja</label>
-
+                                        <input type="radio" class="btn-check" value="Nein" name="leasing" id="btnradio1"
+                                          autocomplete="off">
+                                        <label class="btn btn-outline-secondary w-100 g-0" value="Nein" for="btnradio1">Nein</label>
+                                        @else
+                                        <input type="radio" class="btn-check" value="Ja" name="leasing" id="btnradio1"
+                                          autocomplete="off">
+                                        <label class="btn btn-outline-secondary w-100 g-0" value="Ja" for="btnradio1">Ja</label>
+                                        <input type="radio" class="btn-check" value="Nein" name="leasing" id="btnradio1"
+                                          autocomplete="off" checked>
+                                        <label class="btn btn-outline-secondary w-100 g-0" value="Nein" for="btnradio1">Nein</label>
+                                        @endif
+                                        @else
+                                        <input type="radio" class="btn-check" value="Ja" name="leasing" id="btnradio1"
+                                          autocomplete="off">
+                                        <label class="btn btn-outline-secondary w-100 g-0" value="Ja" for="btnradio1">Ja</label>
                                         <input type="radio" class="btn-check" name="leasing" value="Nein"  id="btnradio2"
                                           autocomplete="off">
                                         <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2">Nein</label>
+                                        @endif
                                       </div>
                                       <div class="">
                                         <select name="leasing_name" class="w-100 slct1" id="">
+                                      @if(isset($data->fahrzeug[0]->leasing_name))
+                                      <option value="{{$data->fahrzeug[0]->leasing_name}}">{{$data->fahrzeug[0]->leasing_name}}</option>
+                                      @else
                                           <option value="Gesellschaft">Gesellschaft</option>
+                                          @endif
                                         </select>
                                       </div>
                                     </div>
@@ -740,9 +768,13 @@
                                         </span>
                                       </div>
                                       <select name="year_of_purchase" class="fw-normal" id="" style="background-color: #EFEFEF;">
+                                      @if(isset($data->fahrzeug[0]->year_of_purchase))
+                                      <option value="{{$data->fahrzeug[0]->year_of_purchase}}" selected>{{$data->fahrzeug[0]->year_of_purchase}}</option>
+                                        @else
                                         <option value="2021" selected>2021</option>
                                         <option value="2020">2020</option>
                                         <option value="2019">2019</option>
+                                        @endif
                                       </select>
                                     </div>
                                   </div>
@@ -752,7 +784,11 @@
                                         Este inverkehrssetzung:
                                       </span>
                                     </div>
-                                    <input name="placing_on_the_market" type="date" class="py-1 border-0">
+                                    @if(isset($data->fahrzeug[0]->year_of_purchase))
+                                    <input name="placing_on_the_market" type="date" value="{{$data->fahrzeug[0]->year_of_purchase}}" class="py-1 border-0">
+                                  @else
+                                  <input name="placing_on_the_market" type="date" class="py-1 border-0">
+                                  @endif
                                   </div>
                                   <div class="date-input-div mb-2">
                                     <div class="">
@@ -760,7 +796,11 @@
                                         Beginn Versicherung:
                                       </span>
                                     </div>
+                                    @if(isset($data->fahrzeug[0]->insurance_date))
+                                    <input name="insurance_date" type="date" class="py-1 border-0" value="{{$data->fahrzeug[0]->insurance_date}}">
+                                    @else
                                     <input name="insurance_date" type="date" class="py-1 border-0">
+                                    @endif
                                   </div>
                                   <div class="input-select-div mb-2">
                                     <div class="">
@@ -781,7 +821,11 @@
                                         KM - Stand:
                                       </span>
                                     </div>
+                                    @if(isset($data->fahrzeug[0]->km_stood))
+                                    <input name="km_stood" class="py-1" type="text" value="{{$data->fahrzeug[0]->km_stood}}">
+                                    @else
                                     <input name="km_stood" class="py-1" type="text" id="">
+                                    @endif
                                   </div>
                                 </div>
                                 <div class="col">
@@ -798,7 +842,11 @@
                                         Erste inverkehrssetzung:
                                       </span>
                                     </div>
-                                    <input name="placing_on_the_market" type="date" class="py-1 border-0">
+                                    @if(isset($data->fahrzeug[0]->placing_on_the_market))
+                                    <input name="placing_on_the_market" type="date" class="py-1 border-0" value="{{$data->fahrzeug[0]->placing_on_the_market}}">
+                                  @else
+                                  <input name="placing_on_the_market" type="date" class="py-1 border-0">
+                                  @endif
                                   </div>
                                   <div class="input-select-div mb-2">
                                     <div class="">
@@ -807,10 +855,14 @@
                                       </span>
                                     </div>
                                     <select name="nationality" class="form-select w-75" aria-label="Default select example">
+                                    @if(isset($data->fahrzeug[0]->nationality))
+                                    <option selected value="{{$data->fahrzeug[0]->nationality}}">{{$data->fahrzeug[0]->nationality}}</option>
+                                    @else
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
                                       <option value="3">Three</option>
+                                      @endif
                                     </select>
                                   </div>
                                   <div class="input-select-div mb-2">
@@ -820,10 +872,14 @@
                                       </span>
                                     </div>
                                     <select name="most_common" class="form-select w-75" aria-label="Default select example">
+                                    @if(isset($data->fahrzeug[0]->most_common))
+                                    <option value="{{$data->fahrzeug[0]->most_common}}" selected>{{$data->fahrzeug[0]->most_common}}</option>
+                                    @else
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
                                       <option value="3">Three</option>
+                                      @endif
                                     </select>
                                   </div>
                                 </div>
@@ -843,11 +899,16 @@
                                         Versischerung:
                                       </span>
                                     </div>
+                                    
                                     <select name="insurance" class="form-select w-75" aria-label="Default select example">
+                                    @if(isset($data->fahrzeug[0]->insurance))
+                                    <option selected>{{$data->fahrzeug[0]->insurance}}</option>
+                                    @else
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
                                       <option value="3">Three</option>
+                                      @endif
                                     </select>
                                   </div>
                                   <div class="input-select-div mb-2">
@@ -857,10 +918,14 @@
                                       </span>
                                     </div>
                                     <select name="deductible" class="form-select w-75" aria-label="Default select example">
+                                    @if(isset($data->fahrzeug[0]->deductible))
+                                    <option selected value="{{$data->fahrzeug[0]->deductible}}"></option>
+                                    @else
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
                                       <option value="3">Three</option>
+                                      @endif
                                     </select>
                                   </div>
                                   <div class="input-select-div mb-2">
@@ -870,10 +935,14 @@
                                       </span>
                                     </div>
                                     <select name="carried" class="form-select w-75" aria-label="Default select example">
+                                    @if(isset($data->fahrzeug[0]->carried))
+                                    <option value="{{$data->fahrzeug[0]->carried}}" selected>{{$data->fahrzeug[0]->carried}}</option>
+                                    @else
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
                                       <option value="3">Three</option>
+                                      @endif
                                     </select>
                                   </div>
                                   <div class="">
@@ -887,10 +956,15 @@
                                         aria-describedby="basic-addon1">
                                     </div> -->
                                     <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-                                      <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" value="Partnergarage" checked>
-                                        <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1_">Partnergarage</label>
+                                      @if(isset($data->fahrzeug[0]->repair_shop))
+                                      <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" value="{{$data->fahrzeug[0]->repair_shop}}" checked>
+                                        <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1_">{{$data->fahrzeug[0]->repair_shop}}</label>
+                                        @else
+                                        <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" value="{{$data->fahrzeug[0]->repair_shop}}" checked>
+                                        <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1_">{{$data->fahrzeug[0]->repair_shop}}</label>
                                         <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_">
                                         <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2_">Freie Wahl</label>
+                                        @endif
                                     </div>
                                   </div>
                                   <div class="input-div1 mb-2">

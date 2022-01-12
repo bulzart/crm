@@ -415,74 +415,75 @@ class UserController extends Controller
     }
 
     public function dashboard(Request $req)
-{
-
-if(!Auth::guard('admins')->check()){
-   return redirect()->route('rnlogin');
-}
-        $getmonth = isset($req->getmonth) ? $req->getmonth : "";
-
-
-
-        date_default_timezone_set('Europe/Berlin');
-
-
-
-        if (Auth::guard('admins')->check()) {
-            $pendingcnt = 0;
-            $opencnt = 0;
-            $done = 0;
-            $tasks = null;
-            $pendencies = [];
-            if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
-                $pendencies = family::where('status', 'Submited')->get();
-
-                $morethan30 = '';
-                $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
-
+    {
+    
+    if(!Auth::guard('admins')->check()){
+       return redirect()->route('rnlogin');
+    }
+            $getmonth = isset($req->getmonth) ? $req->getmonth : "";
+    
+    
+    
+            date_default_timezone_set('Europe/Berlin');
+    
+           
+    
+            if (Auth::guard('admins')->check()) {
+                $pendingcnt = 0;
+                $opencnt = 0;
+                $done = 0;
+                $tasks = null;
+                $pendencies = [];
+                if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
+                    $pendencies = family::where('status', 'Submited')->get();
+                    
+                    $morethan30 = '';
+                    $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
+    
+                }
+    
+    if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
+        $tasks = lead::where('completed',0)->get();
+    
+                    $pendingcnt = DB::table('family_person')
+                    ->join('pendencies','family_person.id','=','pendencies.family_id')
+                    ->where('pendencies.done','=',0)
+                    ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+                    ->count();
             }
-
-if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
-    $tasks = lead::where('completed',0)->get();
-
+            elseif(Auth::guard('admins')->user()->hasRole('fs')){
+             $tasks = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('completed',0)->get();
                 $pendingcnt = DB::table('family_person')
                 ->join('pendencies','family_person.id','=','pendencies.family_id')
                 ->where('pendencies.done','=',0)
+                ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
                 ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
                 ->count();
         }
-        elseif(Auth::guard('admins')->user()->hasRole('fs')){
-         $tasks = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('completed',0)->get();
-            $pendingcnt = DB::table('family_person')
-            ->join('pendencies','family_person.id','=','pendencies.family_id')
-            ->where('pendencies.done','=',0)
-            ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
-            ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
-            ->count();
-    }
-
-        for ($i = 0; $i < count($tasks); $i++) {
-                if ($tasks[$i]->status_task == 'Open') {
-                    $opencnt++;
-                }
-                if ($tasks[$i]->status_task == 'Done') {
-                    $done++;
-                }
-        }
-
-            $percnt = 0;
-            $taskcnt = count($tasks);
-            if($taskcnt != 0){
-                $percnt = (100 / $taskcnt) * $done;
+    
+            for ($i = 0; $i < count($tasks); $i++) {
+                    if ($tasks[$i]->status_task == 'Open') {
+                        $opencnt++;
+                    }
+                    if ($tasks[$i]->status_task == 'Done') {
+                        $done++;
+                    }
             }
-
-            $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
-            $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-            if(Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
-            if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('dashboard', compact('pendencies','morethan30'));
-            if(Auth::guard('admins')->user()->hasRole('admin')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
+    
+                $percnt = 0;
+                $taskcnt = count($tasks);
+                if($taskcnt != 0){
+                    $percnt = (100 / $taskcnt) * $done;
+                }
+             
+                $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
+                $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+                if(Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
+                if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('dashboard', compact('pendencies','morethan30'));
+                if(Auth::guard('admins')->user()->hasRole('admin')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
+            }
         }
-    }
+    
     public function addnewuser()
     {
         if (Auth::guard('admins')->user()->hasRole('admin')) {

@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\family;
 use App\Models\FamilyPerson;
 use App\Models\lead;
+use App\Models\data;
+use App\Models\LeadDataKK;
 use App\Models\Pendency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Throwable;
+
 class FamilyPersonsController extends Controller
 {
     public function family_persons($id){
@@ -15,9 +19,12 @@ class FamilyPersonsController extends Controller
         $cnt1 = 0;
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
             $lead = family::find($id);
-            $pend = Pendency::where('admin_id',Auth::guard('admins')->user()->id)->where('family_id',$id)->get();
-
+            try{
+           $data = LeadDataKK::where('person_id','=',$id)->firstOrFail();
+           return redirect()->route('acceptdata',$id);}
+           catch(Throwable $e){
             return view('documentsform',compact('lead'));
+           }
          } 
          else {
                 return redirect()->back();
