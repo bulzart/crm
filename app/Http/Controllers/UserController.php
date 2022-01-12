@@ -275,11 +275,12 @@ class UserController extends Controller
 
                 $user->pin = $pin;
 
-                // $role = Role::where('name',$req->input('auth'))->get();
-                // $rolee = $user->getRoleNames();
-                // if($user->hasAnyRole()){
-                // $user->removeRole($rolee[0]);}
-                // $user->assignRole($role);
+                $role = Role::where('name',$req->input('auth'))->get();
+                $rolee = $user->getRoleNames();
+                if($user->hasAnyRole()){
+                $user->removeRole($rolee[0]);}
+                $user->assignRole($role);
+            
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
                 //  'from' => 'VONAGE APIs',
@@ -453,7 +454,7 @@ class UserController extends Controller
             }
             elseif(Auth::guard('admins')->user()->hasRole('fs')){
              $tasks = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('completed',0)->get();
-                $pendingcnt = DB::table('family_person')
+            $pendingcnt = DB::table('family_person')
                 ->join('pendencies','family_person.id','=','pendencies.family_id')
                 ->where('pendencies.done','=',0)
                 ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
