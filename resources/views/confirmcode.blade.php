@@ -141,7 +141,7 @@
         }
         input.addEventListener("keyup", function () {
             if (input.value) {
-                if (key === 3) {
+                if (key === 4) {
                     // Last one tadaa
                     const userCode = [...inputs].map((input) => input.value).join("");
                     codeBlock.classList.remove("hidden");

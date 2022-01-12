@@ -44,7 +44,7 @@
                 </svg>
               </i>
             </span>
-            <input type="email" id="typeEmailX-2" name="email" class="form-control form-control-lg"/>
+            <input type="email" id="typeEmailX-2" name="email" class="form-control form-control-sm"/>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text bg-white pw_div__" id="basic-addon1" style="border: none;border-bottom: 1px solid #D3CDCD; border-radius: 0;">
@@ -64,7 +64,7 @@
                 </svg>
               </i>
             </span>
-            <input type="password" id="typePasswordX-2" name="password" class="form-control form-control-lg" />
+            <input type="password" id="typePasswordX-2" name="password" class="form-control form-control-sm" />
             <span class="input-group-text bg-white" style="border: none; border-bottom: 1px solid #D3CDCD; border-radius: 0;">
               <i onclick="showpw();return false;" class="far fa-eye mt-3 mx-1" style="cursor:pointer;" id="show"></i>
             </span>
