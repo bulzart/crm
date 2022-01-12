@@ -30,6 +30,7 @@ use Musonza\Chat\Chat;
 use function GuzzleHttp\Promise\task;
 
 route::prefix('')->group(function(){
+   route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
 // =====================================
    route::get('hyr',function(){
       Auth::guard('admins')->loginUsingId(2);
@@ -52,7 +53,7 @@ route::prefix('')->group(function(){
    });
 
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
-    route::post('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
+    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
 
     Route::group(['middleware' => 'json.response'], function () {
@@ -83,7 +84,6 @@ route::prefix('')->group(function(){
          return redirect()->back();
       }
    })->name('leadfamily');
-    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');

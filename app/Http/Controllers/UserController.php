@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\LeadImport;
 use App\Imports\LeadsImport;
+use App\Imports\TestImport;
 use App\Models\Admins;
 use App\Models\Deletedlead;
 use App\Models\rejectedlead;
@@ -22,18 +24,14 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Maatwebsite\Excel\Excel;
 use Nexmo;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
-use App\Http\Requests\CompleteAppRequest;
-use App\Http\Requests\DeleteLeadRequest;
 use DB;
 use Illuminate\Auth\Access\Response;
-use Session;
-use Excel;
-use File;
 
 class UserController extends Controller
 {
@@ -85,17 +83,6 @@ class UserController extends Controller
         $campaign = campaigns::where('name', $campaign)->get();
 
         return view('getlead', compact('campaign'));
-    }
-    public function addappointmentfile(Request $request){
-        $this->validate($request,[
-            'file' => 'required'
-        ]);
-
-        $path = $request->file('file')->getRealPath();
-        $path1 = $request->file('file')->getClientOriginalName();
-
-        $data = Excel::load($path);
-
     }
 
     public function addappointment(Request $req)
@@ -170,7 +157,7 @@ class UserController extends Controller
         $leads = lead::find($id);
         return view('deletedlead', compact('leads'));
     }
-    public function deletedlead(DeleteLeadRequest $request, $id)
+    public function deletedlead(Request $request, $id)
     {
         $leads = lead::find($id);
 
@@ -192,7 +179,15 @@ class UserController extends Controller
         }
     }
 
+    public function addappointmentfile(Request $request){
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv'
+        ]);
+        $file = $request->file('file');
 
+       \Maatwebsite\Excel\Facades\Excel::import(new LeadImport,$file);
+
+    }
 
 
     public function insertappointment()
@@ -211,7 +206,6 @@ class UserController extends Controller
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
                 $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
                 $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
-
 
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
                     $leads = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('assigned',0)->get();
@@ -347,7 +341,7 @@ class UserController extends Controller
         $cnt = $lead->number_of_persons;
         for ($i = 1; $i <= $cnt; $i++) {
             $family = new family();
-            $family->first_name = filter_var($req->input('fname' . $i));  
+            $family->first_name = filter_var($req->input('fname' . $i));
             $family->birthdate = filter_var($req->input('birthday' . $i));
             $family->last_name = filter_var($req->input('lname' . $i));
             $family->leads_id = (int) $id;
@@ -511,13 +505,6 @@ class UserController extends Controller
             return redirect()->back()->with('success','User Register Successfuly');
         }else{
             return redirect()->back()->with('fail','User Faild To Register');
-
-
-            if(Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
-            if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('dashboard', compact('pendencies','morethan30'));
-            if(Auth::guard('admins')->user()->hasRole('admin')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
-
         }
     }
 }
-

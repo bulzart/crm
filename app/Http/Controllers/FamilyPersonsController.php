@@ -10,6 +10,8 @@ use App\Models\LeadDataKK;
 use App\Models\Pendency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Throwable;
+
 class FamilyPersonsController extends Controller
 {
     public function family_persons($id){
@@ -17,14 +19,12 @@ class FamilyPersonsController extends Controller
         $cnt1 = 0;
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
             $lead = family::find($id);
-           $data = LeadDataKK::where('person_id',$id)->get();
-           if($data == null){
-            return view('documentsform',compact('lead'));}
-            else{
-                $data = new data();
-                $data->getdata($id);
-                return redirect()->route('acceptdata',$id);
-            }
+            try{
+           $data = LeadDataKK::where('person_id','=',$id)->firstOrFail();
+           return redirect()->route('acceptdata',$id);}
+           catch(Throwable $e){
+            return view('documentsform',compact('lead'));
+           }
          } 
          else {
                 return redirect()->back();
