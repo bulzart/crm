@@ -261,7 +261,7 @@ $retor = Pendency::where('family_id',$id)->get();
 
         $answered = [];
         $opened = [];
-        
+
         foreach ($pend as $p) {
             $answered[$cnt] = $p;
             $cnt++;
@@ -271,9 +271,9 @@ $retor = Pendency::where('family_id',$id)->get();
             $opened[$cnt] = $p;
             $cnt++;
         }
- 
 
- 
+
+
 
     }
     if (Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')) {
@@ -350,7 +350,7 @@ if(Auth::guard('admins')->user()->hasRole('admin')){
       }
     }
   }
-  
+
 if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('tasks',compact('answered','pend','opened'));
 if(Auth::guard('admins')->user()->hasRole('fs')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks'));
 if(Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact('opencnt', 'pendingcnt', 'realopen', 'pending', 'birthdays', 'tasks','answered','pend','opened'));
@@ -386,7 +386,7 @@ if(Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact
   }
   public function dates()
   {
-   
+
 
   }
 }

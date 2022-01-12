@@ -364,16 +364,16 @@ a:link {
 /* login.css */
 
 .section_{
-    display:flex; 
+    display:flex;
     justify-content: center;
     width: 100%;
 }
 
 .div_{
-    border-radius: 39px; 
-    width: 380px; 
-    position: absolute; 
-    top: 27%; 
+    border-radius: 39px;
+    width: 380px;
+    position: absolute;
+    top: 20%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -386,13 +386,13 @@ a:link {
 }
 
 .btn_anmelden__{
-    background-color: #3CD598; 
-    border-radius: 14px; 
+    background-color: #3CD598;
+    border-radius: 14px;
     color: #fff;
 }
 
 .forgot__{
-    color: #ACACAC; 
+    color: #ACACAC;
     font-size: 13px;
 }
 

@@ -5388,6 +5388,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -10896,7 +10897,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.scroll-2 {\n    height: 300px;\n    overflow-y: scroll;\n    overflow-x: hidden !important;\n    padding-left: 3px;\n    padding-right: 3px;\n}\n.scroll-2::-webkit-scrollbar {\n    width: 4px !important;\n}\n/* Track */\n.scroll-2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n/* Handle */\n.scroll-2::-webkit-scrollbar-thumb {\n    background: #91dfa1;\n    border-radius: 10px;\n}\n/* Handle on hover */\n.scroll-2::-webkit-scrollbar-thumb:hover {\n    background: #91dfa1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dateee {\n    border-radius: 15px;\n    border: #4CC590 1px solid;\n    color: #000;\n    background-color: #fff;\n}\n.dateee:hover {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.dateee:focus {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.scroll-2 {\n    height: 300px;\n    overflow-y: scroll;\n    overflow-x: hidden !important;\n    padding-left: 3px;\n    padding-right: 3px;\n}\n.scroll-2::-webkit-scrollbar {\n    width: 4px !important;\n}\n/* Track */\n.scroll-2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n/* Handle */\n.scroll-2::-webkit-scrollbar-thumb {\n    background: #91dfa1;\n    border-radius: 10px;\n}\n/* Handle on hover */\n.scroll-2::-webkit-scrollbar-thumb:hover {\n    background: #91dfa1;\n}\n.person-box-1 {\n    background-color: #fff;\n    border-radius: 15px;\n}\n.person-box {\n    color: #fff;\n    font-weight: 600;\n    border-radius: 15px;\n    background-color: #4EC590;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29102,7 +29103,7 @@ var render = function () {
           _c(
             "div",
             {
-              staticClass: "dayy this-month",
+              staticClass: "dayy this-month dateee mx-2",
               staticStyle: { cursor: "pointer" },
               on: {
                 click: function ($event) {
@@ -29114,7 +29115,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "monthh p-0",
+                  staticClass: "monthh p-0 ",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[0].date)
@@ -29133,7 +29134,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black text-center",
+                  staticClass: "not-this-month  text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[0].date)
@@ -29141,42 +29142,15 @@ var render = function () {
                   },
                 },
                 [
+                  _vm._v(_vm._s(_vm.lista[0].dayn)),
+                  _c("br"),
                   _vm._v(
-                    _vm._s(_vm.lista[0].day) +
-                      "," +
-                      _vm._s(_vm.lista[0].dayn) +
-                      "\n                    "
+                    _vm._s(_vm.lista[0].day) + "\n                        "
                   ),
                 ]
               ),
               _vm._v(" "),
               _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "dot no-event" }, [
-                _c(
-                  "svg",
-                  {
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "6",
-                      height: "6",
-                      viewBox: "0 0 6 6",
-                    },
-                  },
-                  [
-                    _c("circle", {
-                      attrs: {
-                        id: "Ellipse_55",
-                        "data-name": "Ellipse 55",
-                        cx: "3",
-                        cy: "3",
-                        r: "3",
-                        fill: "#a3dda7",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
             ]
           ),
         ]),
@@ -29185,7 +29159,7 @@ var render = function () {
           _c(
             "div",
             {
-              staticClass: "dayy this-month",
+              staticClass: "dayy this-month dateee mx-2",
               staticStyle: { cursor: "pointer" },
               on: {
                 click: function ($event) {
@@ -29216,7 +29190,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black text-center",
+                  staticClass: "not-this-month  text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[1].date)
@@ -29224,42 +29198,15 @@ var render = function () {
                   },
                 },
                 [
+                  _vm._v(_vm._s(_vm.lista[1].dayn)),
+                  _c("br"),
                   _vm._v(
-                    _vm._s(_vm.lista[1].day) +
-                      "," +
-                      _vm._s(_vm.lista[1].dayn) +
-                      "\n                    "
+                    _vm._s(_vm.lista[1].day) + "\n                        "
                   ),
                 ]
               ),
               _vm._v(" "),
               _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "dot no-event" }, [
-                _c(
-                  "svg",
-                  {
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "6",
-                      height: "6",
-                      viewBox: "0 0 6 6",
-                    },
-                  },
-                  [
-                    _c("circle", {
-                      attrs: {
-                        id: "Ellipse_55",
-                        "data-name": "Ellipse 55",
-                        cx: "3",
-                        cy: "3",
-                        r: "3",
-                        fill: "#a3dda7",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
             ]
           ),
         ]),
@@ -29268,7 +29215,7 @@ var render = function () {
           _c(
             "div",
             {
-              staticClass: "dayy this-month",
+              staticClass: "dayy this-month dateee mx-2",
               staticStyle: { cursor: "pointer" },
             },
             [
@@ -29294,7 +29241,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black text-center",
+                  staticClass: "not-this-month  text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[2].date)
@@ -29302,42 +29249,15 @@ var render = function () {
                   },
                 },
                 [
+                  _vm._v(_vm._s(_vm.lista[2].dayn)),
+                  _c("br"),
                   _vm._v(
-                    _vm._s(_vm.lista[2].day) +
-                      "," +
-                      _vm._s(_vm.lista[2].dayn) +
-                      "\n                    "
+                    _vm._s(_vm.lista[2].day) + "\n                        "
                   ),
                 ]
               ),
               _vm._v(" "),
               _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "dot no-event" }, [
-                _c(
-                  "svg",
-                  {
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "6",
-                      height: "6",
-                      viewBox: "0 0 6 6",
-                    },
-                  },
-                  [
-                    _c("circle", {
-                      attrs: {
-                        id: "Ellipse_55",
-                        "data-name": "Ellipse 55",
-                        cx: "3",
-                        cy: "3",
-                        r: "3",
-                        fill: "#a3dda7",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
             ]
           ),
         ]),
@@ -29346,7 +29266,7 @@ var render = function () {
           _c(
             "div",
             {
-              staticClass: "dayy this-month",
+              staticClass: "dayy this-month dateee mx-2",
               staticStyle: { cursor: "pointer" },
             },
             [
@@ -29362,7 +29282,10 @@ var render = function () {
                 },
                 [
                   _vm._v(
-                    _vm._s(_vm.lista[3].month) + "," + _vm._s(_vm.lista[3].year)
+                    _vm._s(_vm.lista[3].month) +
+                      "," +
+                      _vm._s(_vm.lista[3].year) +
+                      "\n                          "
                   ),
                 ]
               ),
@@ -29372,7 +29295,7 @@ var render = function () {
               _c(
                 "span",
                 {
-                  staticClass: "not-this-month text-black text-center",
+                  staticClass: "not-this-month  text-center",
                   on: {
                     click: function ($event) {
                       return _vm.searchapp(_vm.lista[3].date)
@@ -29380,77 +29303,119 @@ var render = function () {
                   },
                 },
                 [
+                  _vm._v(_vm._s(_vm.lista[3].dayn)),
+                  _c("br"),
                   _vm._v(
-                    _vm._s(_vm.lista[3].day) +
-                      "," +
-                      _vm._s(_vm.lista[3].dayn) +
-                      "\n                    "
+                    _vm._s(_vm.lista[3].day) + "\n                        "
                   ),
                 ]
               ),
               _vm._v(" "),
               _c("br"),
-              _vm._v(" "),
-              _c("span", { staticClass: "dot no-event" }, [
-                _c(
-                  "svg",
-                  {
-                    attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
-                      width: "6",
-                      height: "6",
-                      viewBox: "0 0 6 6",
-                    },
-                  },
-                  [
-                    _c("circle", {
-                      attrs: {
-                        id: "Ellipse_55",
-                        "data-name": "Ellipse 55",
-                        cx: "3",
-                        cy: "3",
-                        r: "3",
-                        fill: "#a3dda7",
-                      },
-                    }),
-                  ]
-                ),
-              ]),
             ]
           ),
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-12 row text-center" }, [
-        _c("div", { staticClass: "col-6 col-md-6" }, [
-          _c("i", {
-            staticClass: "fas fa-caret-left text-dark",
-            staticStyle: { "font-size": "23px", cursor: "pointer" },
-            on: {
-              click: function ($event) {
-                return _vm.searchfor()
+      _c("div", { staticClass: "col-12 row text-center my-2" }, [
+        _c(
+          "div",
+          {
+            staticClass: "col-6 col-md-6 g-0",
+            staticStyle: { color: "#4CC590" },
+          },
+          [
+            _c(
+              "i",
+              {
+                staticClass: "dateee px-1 pb-1",
+                staticStyle: {
+                  cursor: "pointer",
+                  "border-radius": "50px !important",
+                },
+                on: {
+                  click: function ($event) {
+                    return _vm.searchfor()
+                  },
+                },
               },
-            },
-          }),
-        ]),
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-chevron-left fw-bold",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "18",
+                      height: "18",
+                      fill: "currentColor",
+                      viewBox: "0 0 16 16",
+                    },
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d: "M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z",
+                      },
+                    }),
+                  ]
+                ),
+              ]
+            ),
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-6 col-md-6" }, [
-          _c("i", {
-            staticClass: "fas fa-caret-right text-dark",
-            staticStyle: { "font-size": "23px", cursor: "pointer" },
-            on: {
-              click: function ($event) {
-                return _vm.searchfor2()
+        _c(
+          "div",
+          { staticClass: "col-6 col-md-6", staticStyle: { color: "#4CC590" } },
+          [
+            _c(
+              "i",
+              {
+                staticClass: "dateee px-1 pb-1",
+                staticStyle: {
+                  cursor: "pointer",
+                  "border-radius": "50px !important",
+                },
+                on: {
+                  click: function ($event) {
+                    return _vm.searchfor2()
+                  },
+                },
               },
-            },
-          }),
-        ]),
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-chevron-right fw-bold",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "18",
+                      height: "18",
+                      fill: "currentColor",
+                      viewBox: "0 0 16 16",
+                    },
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d: "M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z",
+                      },
+                    }),
+                  ]
+                ),
+              ]
+            ),
+          ]
+        ),
       ]),
       _vm._v(" "),
       _c(
         "div",
         {
-          staticClass: "mt-4 scroll-2",
+          staticClass: "mt-1 scroll-2",
           staticStyle: {
             height: "250px",
             "overflow-y": "scroll",
@@ -29485,42 +29450,63 @@ var render = function () {
                         },
                       },
                       [
-                        _c("div", { staticClass: "row" }, [
-                          _c(
-                            "div",
-                            { staticClass: "col-md-11 col-6 col-xs-10" },
-                            [
+                        _c(
+                          "div",
+                          { staticClass: "person-box py-2 px-2 my-2" },
+                          [
+                            _c("div", { staticClass: "mx-3 my-auto" }, [
+                              _c("div", { staticClass: "fs-5" }, [
+                                _vm._v(
+                                  "\n                               " +
+                                    _vm._s(tod.first_name) +
+                                    "\n                           "
+                                ),
+                              ]),
+                              _vm._v(" "),
                               _c(
-                                "span",
+                                "div",
                                 {
-                                  staticClass: "d-flex",
                                   staticStyle: {
-                                    "margin-left": "9px",
-                                    "font-size": "20px",
+                                    "font-weight": "normal !important",
                                   },
                                 },
                                 [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass: "bi bi-geo-alt",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "16",
+                                        height: "16",
+                                        fill: "currentColor",
+                                        viewBox: "0 0 16 16",
+                                      },
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d: "M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z",
+                                        },
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        attrs: {
+                                          d: "M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
+                                        },
+                                      }),
+                                    ]
+                                  ),
                                   _vm._v(
-                                    _vm._s(tod.name) + " " + _vm._s(tod.lname)
+                                    "\n                                " +
+                                      _vm._s(tod.address) +
+                                      "\n                            "
                                   ),
                                 ]
                               ),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-map-marker-alt",
-                                staticStyle: {
-                                  "margin-left": "9px",
-                                  "font-size": "14px",
-                                },
-                              }),
-                              _vm._v(
-                                "\n                        " +
-                                  _vm._s(tod.address) +
-                                  "\n                    "
-                              ),
-                            ]
-                          ),
-                        ]),
+                            ]),
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -29656,7 +29642,7 @@ var staticRenderFns = [
           staticClass: "btn btn-primary",
           attrs: { type: "button", "data-bs-dismiss": "modal" },
         },
-        [_vm._v("Undertood\n                                ")]
+        [_vm._v("Undertood\n                                    ")]
       ),
     ])
   },
