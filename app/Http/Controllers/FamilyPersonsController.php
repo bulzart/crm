@@ -17,8 +17,9 @@ class FamilyPersonsController extends Controller
     public function family_persons($id){
         $cnt = 0;
         $cnt1 = 0;
-        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
-            $lead = family::find($id);
+        $lead = family::find($id);
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $lead->assign_to_id){
+  
             try{
            $data = LeadDataKK::where('person_id','=',$id)->firstOrFail();
            return redirect()->route('acceptdata',$id);}
@@ -51,7 +52,6 @@ class FamilyPersonsController extends Controller
 
     public function updateleadfamilyperson( Request $request, $id){
         family::where('id',$id)->update(['first_name' => $request->familyfirstname, 'last_name' => $request->familylastname]);
-
         return redirect()->back()->with('success','Update successfuly');
     }
 }

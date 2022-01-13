@@ -37,7 +37,7 @@
             <div class="collapse" id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($pending as $task)
-                    <a href="{{route('leadfamily',$task->id)}}" style="text-decoration:none;">
+                    <a href="{{route('leadfamilyperson',$task->id)}}" style="text-decoration:none;">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
                         </div>
@@ -85,7 +85,7 @@
             <div id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($answered as $task)
-                    <a href="{{route('leadfamily',$task->id)}}" style="text-decoration:none;">
+                    <a href="{{route('acceptdata',$task->id)}}" style="text-decoration:none;">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
 

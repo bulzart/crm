@@ -27,7 +27,7 @@ use Illuminate\Contracts\Session\Session;
 use Musonza\Chat\Chat;
 
 
-use function GuzzleHttp\Promise\task;
+
 
 
 route::prefix('')->middleware('confirmcode')->group(function(){
@@ -84,6 +84,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
          return redirect()->back();
       }
    })->name('leadfamily');
+   route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
@@ -141,20 +142,19 @@ route::get('permission', function(){
    $user->assignRole($role);
   return $user->getRoleNames();
 });
-
-route::get('acceptdata/{id}',[LeadDataController::class,'acceptdata'])->name('acceptdata');
-
-
-});
-route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
+Route::get('login',[UserController::class,'rnlogin'])->name('rnlogin')->withoutMiddleware([confirmedcode::class]);
+route::post('trylogin',[UserController::class,'trylogin'])->name('trylogin')->withoutMiddleware([confirmedcode::class]);
+route::any('acceptdata/{id}/{accept?}',[LeadDataController::class,'acceptdata'])->name('acceptdata');
+route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation')->withoutMiddleware([confirmedcode::class]);
 route::get('smsconfirm',function (){
     $Admin = Admins::find(12);
     return view('confirm_sms');
-})->name('smsconfirm');
-route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
-route::get('logout',[UserController::class,'logout'])->name('logout');
-Route::get('login',[UserController::class,'rnlogin'])->name('rnlogin');
-route::post('trylogin',[UserController::class,'trylogin'])->name('trylogin');
+})->name('smsconfirm')->withoutMiddleware([confirmedcode::class]);
+route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode')->withoutMiddleware([confirmedcode::class]);
+route::get('logout',[UserController::class,'logout'])->name('logout')->withoutMiddleware([confirmedcode::class]);
+});
+
+
 
 
 
