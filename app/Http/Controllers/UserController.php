@@ -162,8 +162,9 @@ class UserController extends Controller
 
     public function deletedlead(Request $request, $id)
     {
+        
         $leads = lead::find($id);
-
+if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $leads->assign_to_id == Auth::guard('admins')->user()-id){
         $deletedlead = new Deletedlead();
         $deletedlead->name = $leads->first_name;
         $deletedlead->address = $leads->address;
@@ -180,6 +181,10 @@ class UserController extends Controller
         } else {
             return redirect()->route('leads')->with('fail', 'Lead Deleted Fail');
         }
+    }
+    else{
+        return redirect()->back();
+    }
     }
 
     public function addappointmentfile(Request $request)
@@ -277,7 +282,7 @@ class UserController extends Controller
         if (Auth::guard('admins')->attempt(['email' => $email, 'password' => $password], $remember)) {
             $req->session()->regenerate();
             $pin = random_int(1000, 9999);
-            $user = Admins::find(Auth::guard('admins')->user()->id);
+            $user = Auth::guard('admins')->user();
             $user->confirmed = 0;
 
 
@@ -285,9 +290,10 @@ class UserController extends Controller
 
                 $role = Role::where('name',$req->input('auth'))->get();
                 $rolee = $user->getRoleNames();
-                if($user->hasAnyRole()){
-                $user->removeRole($rolee[0]);}
-                $user->assignRole($role);
+             
+              if($rolee[0] != null){
+                $user->removeRole($rolee[0]);
+                $user->assignRole($role);}
             
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',

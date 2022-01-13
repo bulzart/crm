@@ -18,16 +18,22 @@ use Illuminate\Support\Facades\Auth;
 class LeadDataController extends Controller
 {
     use FileManagerTrait;
-    public function acceptdata($id){
+    public function acceptdata($id,$accept = false){
+        if(!$accept){
       $data = new data();
       $lead = family::find($id);
       $data->getdata($id);
-
-      return view('updatedocument',compact('data','lead'));
+      return view('updatedocument',compact('data','lead'));}
+      else{
+          $pend = Pendency::where('family_id',$id)->delete();
+          family::where('id',$id)->update(['status' => 'Done']);
+          return redirect()->route('acceptdata',['id' => $id]);
+      }
     }
 
     public function createLeadDataKK($leadId, $personId, Request $request,$pendency = false)
     {
+       
         LeadDataKK::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -105,10 +111,9 @@ class LeadDataController extends Controller
         $family = family::where('id', $personId)->first();
         $status = ['status' => 'Submited'];
         $family->update($status);
-        $pend = Pendency::where('family_id',$personId)->where('admin_id',Auth::guard('admins')->user()->id)->first();
-            if($pend){
-            $pend->done = 1;
-            $pend->save();}
+        $pend = Pendency::where('family_id',$personId)->first();
+        $pend->done = 1;
+        $pend->save();
             return redirect()->back()->with('success','Successfully submitted and will be waiting for the backoffice!');
     }
 
@@ -219,6 +224,7 @@ class LeadDataController extends Controller
         if($existingLeadDataPrevention){
             $existingLeadDataPrevention->update($leadDataPrevention);
         }
+        return redirect()->route('acceptdata',$personId);
     }
 
     public function getAllLeadDataById($leadId, $personId)
