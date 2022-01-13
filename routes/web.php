@@ -127,7 +127,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('addnumber',[TodoController::class,'addnumber']);
    route::get('deletenumber',[TodoController::class,'deletenumber']);
    route::get('numbers',[TodoController::class,'numbers']);
-   route::get('calendar',[CalendarController::class,'calendar'])->name('calendar');
+   route::get('calendar',[CalendarController::class,'calendar'])->name('calendar')->middleware('role:admin|fs|salesmanager|management,admins');
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 

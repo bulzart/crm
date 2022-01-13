@@ -128,6 +128,7 @@ $retor = Pendency::where('family_id',$id)->get();
   }
   public function costumers(Request $request)
   {
+    
       $cnt = 0;
       $date1 = date('Y-m-d', strtotime($request->searchdate1));
       $n = date('Y-m-d', strtotime($request->searchdate2));

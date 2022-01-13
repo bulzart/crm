@@ -28,7 +28,12 @@ class TodoController extends Controller
       public function deletenumber(Request $req){
         if(Auth::guard('admins')->check()){
             $id = (int) $req->id;
-            todo::find($id)->delete();
+            $todo = todo::find($id);
+            if($todo->admin_id == Auth::guard('admins')->user()->id){
+            todo::find($id)->delete();}
+            else{
+                return redirect()->back();
+            }
         }
     }
 
