@@ -1465,7 +1465,7 @@ body {font-family: 'Montserrat', sans-serif;}
   <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1z"/>
 </svg>
                           </button>
-                          <button class="px-5 py-2" id="submitt1" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept">
+                          <button class="px-5 py-2" id="submitt1" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept" onclick="accept();">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-check-circle" viewBox="0 0 16 16">
                               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                               <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
@@ -1724,7 +1724,8 @@ body {font-family: 'Montserrat', sans-serif;}
 document.getElementById('forma').submit();
     }
       function accept(){
-
+        document.getElementById('forma').action = "<?php echo route('acceptdata',['id' => $lead->id,'accept' => true])?>";
+document.getElementById('forma').submit();
     }
  
  
