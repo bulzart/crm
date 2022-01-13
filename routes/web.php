@@ -116,6 +116,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
    route::get('chat',[ChatController::class,'chat']);
+    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
 
    Route::group(['middleware' => 'json.response'], function () {
       route::get('addtodo',[TodoController::class,'addtodo']);
