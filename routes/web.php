@@ -30,7 +30,7 @@ use Musonza\Chat\Chat;
 
 
 
-route::prefix('')->middleware('confirmcode')->group(function(){
+route::prefix('')->group(function(){
 
 // =====================================
    route::get('hyr',function(){
