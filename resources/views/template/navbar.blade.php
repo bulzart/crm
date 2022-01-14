@@ -16,12 +16,18 @@
 </head>
 <style>
     .nav-itemsss {
-        overflow-y: auto !important;
-        /*overflow-x: auto !important;*/
-        height: 500px !important;
+        height: 100% !important;
+        overflow-y: scroll !important;
+
+        /* overflow-x: hidden !important; */
     }
+    .nav-link {
+        padding-right: 1.8rem !important;
+        padding-left: 1.8rem !important;
+    }
+
     .nav-itemsss a:hover {
-        background-color: #c9cad8;
+        background-color: #e0e1e6;
         color: #000;
     }
 
@@ -36,83 +42,88 @@
         }
 
         .navvv {
-            width: 80px !important;
+            width: fit-content !important;
             text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
+        /* .user-drop {
+            position: fixed !important;
+            bottom: 0;
+            width: fit-content !important;
+        } */
 
     }
+    .dateee {
+        border-radius: 15px;
+        border: #4CC590 1px solid;
+        color: #000;
+        background-color: #fff;
+    }
 
+    .dateee:hover {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .dateee:focus {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .box-1 {
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='18' ry='18' stroke='black' stroke-width='1' stroke-dasharray='7%2c 11' stroke-dashoffset='63' stroke-linecap='square'/%3e%3c/svg%3e");
+        border-radius: 18px;
+    }
+
+    /* overflow 1 */
+    .overflow-div1::-webkit-scrollbar {
+        width: 3px !important;
+    }
+
+    /* Track */
+    .overflow-div1::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .overflow-div1::-webkit-scrollbar-thumb {
+        background: #c9cad8;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .overflow-div1::-webkit-scrollbar-thumb:hover {
+        background: #707070;
+        border-radius: 10px;
+    }
 </style>
-
 <body>
-
 <div class="row">
-    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
-        <div class="flex-column flex-shrink-0 p-3 bg-light navvv"
-             style="height: 100% !important; position: fixed;">
-{{--            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">--}}
-{{--                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 100 67">--}}
-{{--                    <g id="Group_620" data-name="Group 620" transform="translate(-1350 -165)">--}}
-{{--                        <g id="Polygon_4" data-name="Polygon 4" transform="translate(1450 228) rotate(180)" fill="#e2e2e2">--}}
-{{--                            <path--}}
-{{--                                d="M 43.0809211730957 33.5 L 0.9190800189971924 33.5 L 22 0.9203982949256897 L 43.0809211730957 33.5 Z"--}}
-{{--                                stroke="none" />--}}
-{{--                            <path--}}
-{{--                                d="M 22 1.840770721435547 L 1.838142395019531 33 L 42.16185760498047 33 L 22 1.840770721435547 M 22 3.814697265625e-06 L 44 34 L 0 34 L 22 3.814697265625e-06 Z"--}}
-{{--                                stroke="none" fill="#707070" />--}}
-{{--                        </g>--}}
-{{--                        <g id="Path_316" data-name="Path 316" transform="translate(1374 190)" fill="#707070">--}}
-{{--                            <path d="M 50.2048454284668 41 L 1.795153379440308 41 L 26 1.899863123893738 L 50.2048454284668 41 Z"--}}
-{{--                                  stroke="none" />--}}
-{{--                            <path--}}
-{{--                                d="M 26 3.799720764160156 L 3.590301513671875 40 L 48.40969848632813 40 L 26 3.799720764160156 M 26 0 L 52 42 L 0 42 L 26 0 Z"--}}
-{{--                                stroke="none" fill="#707070" />--}}
-{{--                        </g>--}}
-{{--                        <g id="Polygon_5" data-name="Polygon 5" transform="translate(1394 228) rotate(180)" fill="#e2e2e2">--}}
-{{--                            <path--}}
-{{--                                d="M 43.0809211730957 33.5 L 0.9190800189971924 33.5 L 22 0.9203982949256897 L 43.0809211730957 33.5 Z"--}}
-{{--                                stroke="none" />--}}
-{{--                            <path--}}
-{{--                                d="M 22 1.840770721435547 L 1.838142395019531 33 L 42.16185760498047 33 L 22 1.840770721435547 M 22 3.814697265625e-06 L 44 34 L 0 34 L 22 3.814697265625e-06 Z"--}}
-{{--                                stroke="none" fill="#707070" />--}}
-{{--                        </g>--}}
-{{--                        <g id="Ellipse_35" data-name="Ellipse 35" transform="translate(1389 165)" fill="#e2e2e2" stroke="#707070"--}}
-{{--                           stroke-width="1">--}}
-{{--                            <circle cx="11" cy="11" r="11" stroke="none" />--}}
-{{--                            <circle cx="11" cy="11" r="10.5" fill="none" />--}}
-{{--                        </g>--}}
-{{--                        <g id="Ellipse_36" data-name="Ellipse 36" transform="translate(1419 173)" fill="#707070" stroke="#707070"--}}
-{{--                           stroke-width="2">--}}
-{{--                            <ellipse cx="9" cy="8.5" rx="9" ry="8.5" stroke="none" />--}}
-{{--                            <ellipse cx="9" cy="8.5" rx="8" ry="7.5" fill="none" />--}}
-{{--                        </g>--}}
-{{--                        <g id="Ellipse_37" data-name="Ellipse 37" transform="translate(1363 173)" fill="#707070" stroke="#707070"--}}
-{{--                           stroke-width="2">--}}
-{{--                            <ellipse cx="9" cy="8.5" rx="9" ry="8.5" stroke="none" />--}}
-{{--                            <ellipse cx="9" cy="8.5" rx="8" ry="7.5" fill="none" />--}}
-{{--                        </g>--}}
-{{--                    </g>--}}
-{{--                </svg>--}}
-{{--                <span class="fs-5 nav-texttt">DL FINANCE</span>--}}
-{{--            </a>--}}
-{{--            <hr>--}}
+<div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
+    <div class="d-flex navvv bg-light" style="height: 100% !important; position: fixed;">
+        <div class="nav-header">
 
-            <ul class="nav nav-pills flex-column mb-auto  nav-itemsss">
-                <li class="nav-item">
-                    <a href="{{route('dashboard')}}" class="nav-link link-dark lh-1" aria-current="page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
-                             viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                            <path fill-rule="evenodd"
-                                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-                        </svg>
-                        <span class="ps-2 nav-texttt">Home</span>
-                    </a>
-                </li>
-                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
-                <li>
-                    <a href="{{route('tasks')}}" class="nav-link link-dark">
+        </div>
+        <div class="nav-itemsss overflow-div1 bg-light">
+            <div class="">
+                <a href="{{route('dashboard')}}" class="nav-link link-dark rounded" aria-current="page" style="border-radius: 9px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                         viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                        <path fill-rule="evenodd"
+                              d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                    </svg>
+                    <span class="ps-1 nav-texttt">Home</span>
+                </a>
+            </div>
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="{{route('tasks')}}" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-speedometer2" viewBox="0 0 16 16">
                             <path
@@ -120,13 +131,13 @@
                             <path fill-rule="evenodd"
                                   d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Tasks</span>
+                        <span class="ps-1 nav-texttt">Tasks</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
-                <li>
-                    <a href="{{route('leads')}}" class="nav-link link-dark">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
+                <div class="">
+                    <a href="{{route('leads')}}" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3"
                              viewBox="0 0 16 16">
                             <path
@@ -134,23 +145,23 @@
                             <path
                                 d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Leads</span>
+                        <span class="ps-1 nav-texttt">Leads</span>
                     </a>
-                </li>
-                @endif
-                <li>
-                    <a href="#" class="nav-link link-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
-                             viewBox="0 0 16 16">
-                            <path
-                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
-                        </svg>
-                        <span class="ps-2 nav-texttt">Finance</span>
-                    </a>
-                </li>
-                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-                <li>
-                    <a href="#" class="nav-link link-dark">
+                </div>
+            @endif
+            <div class="">
+                <a href="#" class="nav-link link-dark rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+                         viewBox="0 0 16 16">
+                        <path
+                            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+                    </svg>
+                    <span class="ps-1 nav-texttt">Finance</span>
+                </a>
+            </div>
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-clipboard-data" viewBox="0 0 16 16">
                             <path
@@ -160,26 +171,26 @@
                             <path
                                 d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Status</span>
+                        <span class="ps-1 nav-texttt">Status</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->check())
-                <li>
-                    <a href="{{route('costumers')}}" class="nav-link link-dark">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->check())
+                <div class="">
+                    <a href="{{route('costumers')}}" class="nav-link link-dark rounded" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path fill-rule="evenodd"
                                   d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Costumers</span>
+                        <span class="ps-1 nav-texttt">Costumers</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-                <li>
-                    <a href="#" class="nav-link link-dark">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin"
                              viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
@@ -189,13 +200,13 @@
                                 d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
                             <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Deposit</span>
+                        <span class="ps-1 nav-texttt">Deposit</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-                <li>
-                    <a href="#" class="nav-link link-dark">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square"
                              viewBox="0 0 16 16">
                             <path
@@ -203,13 +214,13 @@
                             <path
                                 d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Cancelations</span>
+                        <span class="ps-1 nav-texttt">Cancelations</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
-                <li>
-                    <a href="{{route('calendar')}}" class="nav-link link-dark">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="{{route('calendar')}}" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-calendar-check" viewBox="0 0 16 16">
                             <path
@@ -217,13 +228,13 @@
                             <path
                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Calendar</span>
+                        <span class="ps-1 nav-texttt">Calendar</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
-                <li>
-                    <a href="{{route('dates')}}" class="nav-link link-dark">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="{{route('dates')}}" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-calendar-date" viewBox="0 0 16 16">
                             <path
@@ -231,93 +242,93 @@
                             <path
                                 d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Dates</span>
+                        <span class="ps-1 nav-texttt">Dates</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
-                <li>
-                    <a href="#" class="nav-link link-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-people-fill" viewBox="0 0 16 16">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill"
+                             viewBox="0 0 16 16">
                             <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                             <path fill-rule="evenodd"
                                   d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
                             <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Employees</span>
+                        <span class="ps-1 nav-texttt">Employees</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
-                <li>
-                    <a href="#" class="nav-link link-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-people-fill" viewBox="0 0 16 16">
-                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                            <path fill-rule="evenodd"
-                                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                        </svg>
-                        <span class="ps-2 nav-texttt">Commisions</span>
-                    </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
-                <li class="">
-                    <a href="#" class="nav-link link-dark">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                   d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Prov.system</span>
+                        <span class="ps-1 nav-texttt">Commisions</span>
                     </a>
-                </li>
-                @endif
-                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
-                <li class="">
-                    <a href="#" class="nav-link link-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
-                            <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Statistics</span>
+                        <span class="ps-1 nav-texttt">Prov.system</span>
                     </a>
-                </li>
-                    @endif
-                @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
-                <li class="">
-                    <a href="#" class="nav-link link-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
-                            <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark  rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Trust</span>
+                        <span class="ps-1 nav-texttt">Statistics</span>
                     </a>
-                </li>
-                    @endif
-            </ul>
-            <hr>
-            <div class="dropdown profile-div">
-                <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-                   id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Trust</span>
+                    </a>
+                </div>
+            @endif
+        </div>
+        <hr>
+        <div class="dropdown user-drop bg-light w-100 py-3 d-flex justify-content-center" style="position: absolute; bottom:0; left:0; border: none; border-top: 1px #c4c4c4 solid;">
 
-                    <strong>mdo</strong>
-                </a>
-                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                    @if(Auth::guard('admins')->user()->hasRole('admin'))<li><a class="dropdown-item" href="{{route('addnewuser')}}">Add New User</a></li>@endif
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
-                </ul>
-            </div>
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                @if(Auth::guard('admins')->user()->hasRole('admin'))<li><a class="dropdown-item" href="{{route('addnewuser')}}">Add New User</a></li>@endif
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
+            </ul>
         </div>
     </div>
+</div>
 
-
-<div class="container-fluid col" id="app">
+    <div class="container-fluid col " id="app">
     @if(\Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -333,6 +344,7 @@
 @yield('content')
 
 <div class="form-group container text-center pt-4">
+</div>
 </div>
 </div>
 <script type="text/javascript">
