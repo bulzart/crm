@@ -14,7 +14,7 @@
               crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">
 
-        <title>Dashboard</title>
+        <title>Home</title>
 
     </head>
 

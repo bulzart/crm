@@ -44,6 +44,7 @@
                                 <div class="input"><input type="text" name="location" required="required"> <span>Location</span>
                                 </div>
                                 <div>
+                                    <label>Birthdate</label>
                                     <input type="date" name="appbirthdate" class="form-control">
                                 </div>
                                 <div class="input"><input type="text" name="country" required="required">

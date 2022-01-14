@@ -1,5 +1,10 @@
 @extends('template.navbar')
 @section('content')
+    <head>
+        <title>
+            Tasks
+        </title>
+    </head>
 @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
 <div class="row justify-content-center">
     <div class="col-md-4 col-12 mb-3">
@@ -79,7 +84,7 @@
                     </form>
                     <span>Answered <span class="text-danger">{{count($answered)}}</span></span>
                 </div>
-                
+
             </div>
             <br>
             <div id="collapse__">
@@ -108,7 +113,7 @@
                     </form>
                     <span>Open <span class="text-danger">{{count($opened)}}</span></span>
                 </div>
-                
+
             </div>
             <br>
             <div id="first_collapse">
