@@ -52,26 +52,55 @@ $retor = Pendency::where('family_id',$id)->get();
     $today = Carbon::now()->format("Y-m-d");
     if ($req->date != null) {
       if ($admin->hasRole('admin')) {
-
-        $data = lead::where('wantsonline', 0)->where('appointment_date', $req->date)->get();
+        $data = DB::table('leads')
+        ->where('wantsonline', 0)
+        ->where('appointment_date', $req->date)
+        ->whereNotNull('assign_to_id')
+        ->select('leads.first_name','leads.last_name','leads.address')
+        ->paginate(15);
       } elseif ($admin->hasRole('fs')) {
-        $data = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('wantsonline', 0)->where('appointment_date', $req->date)->get();
+        $data = DB::table('leads')
+        ->where('assign_to_id', Auth::guard('admins')->user()->id)
+        ->where('wantsonline', 0)
+        ->where('appointment_date', $req->date)
+        ->select('leads.first_name','leads.last_name','leads.address')
+        ->paginate(15);
       }
     } else {
       if ($admin->hasRole('admin')) {
         if ($now > 2300) {
-          $data = lead::where('wantsonline', 0)->where('appointment_date', Carbon::now()->addDays()->toDateString())->get();
+          $data = DB::table('leads')
+          ->where('wantsonline', 0)
+          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+          ->whereNotNull('assign_to_id')
+          ->select('leads.first_name','leads.last_name','leads.address')
+          ->paginate(15);
         } else {
 
-          $data = lead::where('wantsonline', 0)->where('appointment_date', Carbon::now()->toDateString())->get();
+          $data = DB::table('leads')
+          ->where('wantsonline', 0)
+          ->where('appointment_date', Carbon::now()->toDateString())
+          ->whereNotNull('assign_to_id')
+          ->select('leads.first_name','leads.last_name','leads.address')
+          ->paginate(15);
         }
       }
       if ($admin->hasRole('fs')) {
 
         if ($now > 2300) {
-          $data = lead::where('assign_to_id', $admin->id)->where('wantsonline', 0)->where('appointment_date', Carbon::now()->addDays()->toDateString())->get();
+          $data = DB::table('leads')
+          ->where('assign_to_id', $admin->id)
+          ->where('wantsonline', 0)
+          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+          ->select('leads.first_name','leads.last_name','leads.address')
+          ->paginate(15);
         } else {
-          $data = lead::where('assign_to_id', $admin->id)->where('wantsonline', 0)->where('appointment_date', Carbon::now()->toDateString())->get();
+          $data = DB::table('leads')
+          ->where('assign_to_id', $admin->id)
+          ->where('wantsonline', 0)
+          ->where('appointment_date', Carbon::now()->toDateString())
+          ->select('leads.first_name','leads.last_name','leads.address')
+          ->paginate(15);
         }
       }
     }
@@ -129,6 +158,7 @@ $retor = Pendency::where('family_id',$id)->get();
   }
   public function costumers(Request $request)
   {
+    
       $cnt = 0;
       $date1 = date('Y-m-d', strtotime($request->searchdate1));
       $n = date('Y-m-d', strtotime($request->searchdate2));
@@ -233,7 +263,7 @@ $retor = Pendency::where('family_id',$id)->get();
                 ->where('pendencies.done', '=', 1)
                 ->where('family_person.first_name', 'like', '%' . $req->searchpend . '%')
                 ->orderBy('family_person.first_name', 'asc')
-                ->get();
+                ->paginate(20);
 
         } else {
             $pend = DB::table('family_person')
@@ -241,7 +271,7 @@ $retor = Pendency::where('family_id',$id)->get();
                 ->where('pendencies.done', '=', 1)
                 ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
-                ->get();
+                ->paginate(20);
         }
         if (isset($req->searchopen)) {
             $open = DB::table('family_person')
@@ -250,37 +280,36 @@ $retor = Pendency::where('family_id',$id)->get();
                 ->where('family_person.first_name', 'like', '%' . $req->searchopen . '%')
                 ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
-                ->get();
+                ->paginate(20);
         } else {
             $open = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 0)
                 ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
-                ->get();
+                ->paginate(20);
         }
 
         $answered = [];
         $opened = [];
 
-        foreach ($pend as $p) {
-            $answered[$cnt] = $p;
-            $cnt++;
-        }
-        $cnt = 0;
-        foreach ($open as $p) {
-            $opened[$cnt] = $p;
-            $cnt++;
-        }
-
-
-
-
+        $answered = $pend;
+ 
+   
+            $opened = $open;
     }
     if (Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')) {
 if(Auth::guard('admins')->user()->hasRole('admin')){
-      $tasks = lead::where('completed', 0)->get();
-      $tasks2 = [];
+      $tasks = DB::table('leads')
+      ->where('completed','=','0')
+      ->where('status_contract','!=','Done')
+      ->orWhereNull('status_contract')
+      ->where('status_task','!=','Done')
+      ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
+      ->paginate(20);
+       
+
+
       $cntt = 0;
 
       $realopen = [];
@@ -288,26 +317,27 @@ if(Auth::guard('admins')->user()->hasRole('admin')){
       $opencnt = 0;
       $pendingcnt = 0;
 
-      for ($i = 0; $i < count($tasks); $i++) {
-          $tasks2[$cntt] = $tasks[$i];
-          $cntt++;
-      }
-      foreach ($tasks2 as $task) {
-        if ($task->status_task == 'Open') {
-          $realopen[$cnt1] = $task;
-          $cnt1++;
-          $opencnt++;
-        }
+
+     
+          $opencnt = $tasks->total();
+        
       $pending = DB::table('family_person')
       ->join('pendencies','family_person.id','=','pendencies.family_id')
       ->where('pendencies.done','=',0)
       ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
-      ->get();
-      }
+      ->paginate(20);
+      
     }
     else{
-      $tasks = lead::where('completed', 0)->where('assign_to_id',Auth::guard('admins')->user()->id)->get();
-      $tasks2 = [];
+      $tasks = DB::table('leads')
+      ->where('completed','=','0')
+      ->where('status_contract','!=','Done')
+      ->orWhereNull('status_contract')
+      ->where('status_task','!=','Done')
+      ->where('assign_to_id',Auth::guard('admins')->user()->id)
+      ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
+      ->paginate(20);    
+       $tasks2 = [];
       $cntt = 0;
 
       $realopen = [];
@@ -315,23 +345,17 @@ if(Auth::guard('admins')->user()->hasRole('admin')){
       $opencnt = 0;
       $pendingcnt = 0;
 
-      for ($i = 0; $i < count($tasks); $i++) {
-          $tasks2[$cntt] = $tasks[$i];
-          $cntt++;
-      }
-      foreach ($tasks2 as $task) {
-        if ($task->status_task == 'Open') {
-          $realopen[$cnt1] = $task;
-          $cnt1++;
-          $opencnt++;
-        }
+  
+ 
+       $opencnt = $tasks->total();
+      
       $pending = DB::table('family_person')
       ->join('pendencies','family_person.id','=','pendencies.family_id')
       ->where('pendencies.done','=',0)
       ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
       ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
-      ->get();
-      }
+      ->paginate(20);
+      
     }
     $cnt = 0;
     $costumers = family::all();

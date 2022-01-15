@@ -58,7 +58,7 @@
                                         <div class="text-end">
                                             <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -115,7 +115,7 @@
                                         <div class="text-end">
                                             <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -172,7 +172,7 @@
                                         <div class="text-end">
                                             <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -225,15 +225,15 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                                    74%
+                                                    {{round($percnt,2)}}
                                                 </span>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="text-end">
-                                            <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
+                                            <svg  style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -519,8 +519,9 @@
                          aria-labelledby="flush-heading3" data-bs-parent="#accordionFlush3">
                         <div class="accordion-body p-0 mx-2 py-2 overflow-div2"
                              style="background-color: #4EC590; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                             @if(!empty($pendencies))
                             @foreach($pendencies as $pendency)
-                            <a style="text-decoration: none" href="{{route('leadfamilyperson',$pendency->lead->id)}}">
+                            <a style="text-decoration: none" href="{{route('leadfamilyperson',$pendency->family_id)}}">
                             <div class="py-2 my-2 mx-2"
                                  style="background-color: #fff; border-radius: 15px; color: #000;">
 
@@ -537,6 +538,7 @@
                             </div>
                                 </a>
                             @endforeach
+                            @endif
 
                         </div>
                     </div>
@@ -556,8 +558,9 @@
                      aria-labelledby="flush-heading5" data-bs-parent="#accordionFlush5">
                     <div class="accordion-body p-0 mx-2 py-2 overflow-div4"
                          style="background-color: #FFEBE5; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
-                        @foreach($morethan30 as $pendency)
-                        <a style="text-decoration: none;" href="{{route('leadfamilyperson',$pendency->lead->id)}}">
+                         @if(!empty($morethan30))
+                         @foreach($morethan30 as $pendency)
+                        <a style="text-decoration: none;" href="{{route('leadfamilyperson',$pendency->family_id)}}">
                         <div class="py-2 my-2 mx-2"
                              style="background-color: #fff; border-radius: 15px; color: #000;">
                             <div class="mx-3 ">
@@ -572,6 +575,7 @@
                         </div>
                         </a>
                         @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

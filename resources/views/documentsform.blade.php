@@ -18,43 +18,7 @@
 
 <body>
 
-  <!-- <section>
-    <div class="px-4">
-      <div class="row">
-        <div class="col">
-          <img src="assets/images/logo.png" class="img-fluid" style="height: 66px;">
-        </div>
-        <div class="col text-right my-2 ">
-          <div class="pull-right text-end">
-            <button class="border-0 px-2 pt-1 pb-2 me-2" style="background-color: #C4C6D2; border-radius: 12px;">
-              <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width="" height="22px"
-                viewBox="0 0 32.504 28.358">
-                <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(0)" fill="none" stroke="#fff"
-                  stroke-linecap="round" stroke-width="2">
-                  <ellipse cx="12.438" cy="12.438" rx="12.438" ry="12.438" stroke="none" />
-                  <ellipse cx="12.438" cy="12.438" rx="11.438" ry="11.438" fill="none" />
-                </g>
-                <line id="Line_4" data-name="Line 4" x2="8.532" y2="7.141" transform="translate(22.563 19.808)"
-                  fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2" />
-              </svg>
-            </button>
-            <button class="border-0 px-2 pt-1 pb-2" style="background-color: #C4C6D2; border-radius: 12px;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="" height="22px" viewBox="0 0 28.063 28.637">
-                <g id="Group_2" data-name="Group 2" transform="translate(1 1)">
-                  <circle id="Ellipse_3" data-name="Ellipse 3" cx="6.803" cy="6.803" r="6.803"
-                    transform="translate(6.229)" fill="none" stroke="#fff" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
-                  <path id="Path_1" data-name="Path 1" d="M2,102.218a13.032,13.032,0,0,1,26.063,0"
-                    transform="translate(-2 -75.581)" fill="none" stroke="#fff" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
-                </g>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
+  <
 
   <style>
     .nav-itemsss a:hover {

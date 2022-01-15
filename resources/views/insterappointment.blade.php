@@ -129,7 +129,7 @@
             </div>
             <form action="{{route('addappointmentfile')}}" method="post" enctype="multipart/form-data">                @csrf
                 <div class="input-group">
-                    <input type="file" class="form-control" name="file">
+                    <input type="file" class="formgit -control" name="file">
                     <input type="submit" value="Submit" class="btn btn-secondary">
                 </div>
             </form>

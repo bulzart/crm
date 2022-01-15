@@ -14,7 +14,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>Login</title>
+    <title>Users</title>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                            aria-describedby="basic-addon1" id="password" autocomplete="off">
                 </div>
                 <div>
-                    <select name="role_name" class="py-2 w-100" style="border: none !important; ">
+                    <select name="role_name" class="form-control py-2 w-100">
                         @foreach($roles as $role)
                         <option>{{$role->name}}</option>
                         @endforeach
