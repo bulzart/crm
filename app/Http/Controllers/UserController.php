@@ -502,6 +502,8 @@ $taskcnt = 0;
 
 
         else{
+            $taskcnt = lead::count();
+   
             foreach($tasks = DB::table('leads')
             ->where('completed','=','0')
             ->where('status_contract','!=','Done')
