@@ -71,9 +71,9 @@
                 </div>
             </div>
 
-            <div class="mt-1 scroll-2" style="height: 250px; overflow-y: scroll; overflow-x:hidden !important;">
+            <div class="mt-1 scroll-2" id="appscroll" style="height: 250px; overflow-y: scroll; overflow-x:hidden !important;">
                 <div class="text-center" v-if="today == null">No appointments for today</div>
-                <a style="text-decoration: none" v-if="today != null" v-for="tod in today"  :href="'acceptappointment/'+tod.id"><div  class="mb-2 text-white"
+                <a style="text-decoration: none" v-if="today != null" v-for="tod in today.data"  :href="'acceptappointment/'+tod.id"><div  class="mb-2 text-white"
                      style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: pointer;"
                      >
 
@@ -89,7 +89,7 @@
                     <div class="person-box py-2 px-2 my-2">
                         <div class="mx-3 my-auto">
                            <div class="fs-5">
-                               {{tod.first_name}}
+                               {{tod.first_name}} {{tod.last_name}}
                            </div>
                             <div style="font-weight: normal !important;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
@@ -137,6 +137,9 @@
                 </div>
                 </a>
             </div>
+            <div class="mt-1 text-center p-2" style="background: #F8F8F8; border-radius: 20px; cursor: pointer;" @click="loadmore()">
+                Load more <i class="fas fa-caret-down"></i>
+                </div>
         </div>
 
     </div>
@@ -150,8 +153,10 @@
 
         mounted() {
 
+
     var a = new Date();
     this.sod = a.getDay();
+
 
 
 
@@ -160,11 +165,7 @@ this.date_function();
   axios.get('vuedate?page=' + this.lpage).then(
         (response) => { this.lista = response.data;}
       );
-
-
-
-
-  axios.get('todayappointments').then(
+  axios.get('todayappointments?page=' + this.apage).then(
         (response) => { this.today = response.data;}
       );
 
@@ -184,6 +185,7 @@ this.date_function();
                 lista: null,
                 cnt: 1,
                 lpage: 4,
+                apage:1
 
             }
         },
@@ -202,7 +204,6 @@ this.date_function();
 
         },
 
-
         searchfor2(){
       this.lpage += 4;
         axios.get('vuedate?page=' + this.lpage).then(
@@ -216,8 +217,17 @@ this.date_function();
       );
         },
         searchapp(vall){
-          axios.get('todayappointments?date=' + vall).then(
+          axios.get('todayappointments?date=' + vall + '?page=' + this.apage).then(
         (response) => { this.today = response.data;}
+      );
+        },
+        loadmore:function(){
+this.apage++;
+  axios.get('todayappointments?page=' + this.apage).then(
+        (response) => {      
+            console.log(response.data.data.length);
+            for (let i = 0; i < response.data.data.length; i++) {this.today.data.push(response.data.data[i]);} 
+                }
       );
         }
         }

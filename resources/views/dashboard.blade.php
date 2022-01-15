@@ -58,7 +58,7 @@
                                         <div class="text-end">
                                             <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -115,7 +115,7 @@
                                         <div class="text-end">
                                             <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -175,7 +175,7 @@
                                         <div class="text-end">
                                             <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -224,15 +224,15 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                                    74%
+                                                    {{round($percnt,2)}}
                                                 </span>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="text-end">
-                                            <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
+                                            <svg  style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink" width="" height=""
+                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
                                                 <defs>
                                                     <clipPath id="clip-path">
@@ -574,6 +574,7 @@
                         </div>
                         </a>
                         @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

@@ -24,7 +24,7 @@
                 <div class="pull-right text-end">
                     <button class="border-0 px-2 pt-1 pb-2 me-2"
                             style="background-color: #C4C6D2; border-radius: 12px;">
-                        <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width=""
+                        <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" 
                              height="22px" viewBox="0 0 32.504 28.358">
                             <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(0)" fill="none"
                                stroke="#fff" stroke-linecap="round" stroke-width="2">
@@ -37,7 +37,7 @@
                         </svg>
                     </button>
                     <button class="border-0 px-2 pt-1 pb-2" style="background-color: #C4C6D2; border-radius: 12px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="" height="22px" viewBox="0 0 28.063 28.637">
+                        <svg xmlns="http://www.w3.org/2000/svg"height="22px" viewBox="0 0 28.063 28.637">
                             <g id="Group_2" data-name="Group 2" transform="translate(1 1)">
                                 <circle id="Ellipse_3" data-name="Ellipse 3" cx="6.803" cy="6.803" r="6.803"
                                         transform="translate(6.229)" fill="none" stroke="#fff" stroke-linecap="round"
