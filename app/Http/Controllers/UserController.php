@@ -189,6 +189,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function addappointmentfile(Request $request)
     {
+        dd($request->file('file'));
         $request->validate([
             'file' => 'required|mimes:xlsx,xls,csv'
         ]);
@@ -455,24 +456,14 @@ $taskcnt = 0;
                 $tasks = null;
                 $pendencies = [];
                 if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
-                    foreach(DB::table('leads')->where('completed','=',0)->select('leads.status_task')->get() as $task){
-                        if($task->status_task == 'Open'){
-                            $opencnt++;
-                        }
-                        if($task->status_task == 'Done'){
-$done++;
-                        }
-                        $taskcnt++;
-                    }
+                    
                     $pendencies = DB::table('family_person')
                     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                     ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                     ->where('pendencies.done', '=', 1)
                     ->orderBy('family_person.first_name', 'asc')
                     ->get();
-                    
 
-                    $morethan30 = '';
                     $morethan30 = DB::table('family_person')
                     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                     ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
@@ -480,9 +471,6 @@ $done++;
                     ->orderBy('family_person.first_name', 'asc')
                     ->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))
                     ->get();
-
-                
-      
 
                     $pendingcnt = DB::table('family_person')
                     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
@@ -492,8 +480,8 @@ $done++;
                     ->count();
             }
             elseif(Auth::guard('admins')->user()->hasRole('fs')){
-                foreach(DB::table('leads')->where('leads.completed','=',0)->where('leads.status_task','=',Auth::guard('admins')->user()->id)->select('leads.completed')->get() as $task){
-                    if($task->status_task == 'Open'){
+                foreach(DB::table('leads')->where('leads.completed','=','0')->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)->select('leads.completed','leads.status_task')->get() as $task){
+                    if($task->status_task == 'Open' || $task->status_task == 'Submited' || $task->status_task == null){
                         $opencnt++;
                     }
                     if($task->status_task == 'Done'){
@@ -516,7 +504,8 @@ $done++;
                     $percnt = (100 / $taskcnt) * $done;
                 }
 
-                $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
+                $leadscount = DB::table('leads')->where('assign_to_id', null)->where('assigned', 0)->count();
+                
           
                 if(Auth::guard('admins')->user()->hasRole('fs')) {
                 $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count(); return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));}

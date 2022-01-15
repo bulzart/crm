@@ -5389,6 +5389,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -5399,7 +5402,7 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('vuedate?page=' + this.lpage).then(function (response) {
       _this.lista = response.data;
     });
-    axios.get('todayappointments').then(function (response) {
+    axios.get('todayappointments?page=' + this.apage).then(function (response) {
       _this.today = response.data;
     });
   },
@@ -5416,7 +5419,8 @@ __webpack_require__.r(__webpack_exports__);
       sod: null,
       lista: null,
       cnt: 1,
-      lpage: 4
+      lpage: 4,
+      apage: 1
     };
   },
   methods: {
@@ -5447,8 +5451,20 @@ __webpack_require__.r(__webpack_exports__);
     searchapp: function searchapp(vall) {
       var _this4 = this;
 
-      axios.get('todayappointments?date=' + vall).then(function (response) {
+      axios.get('todayappointments?date=' + vall + '?page=' + this.apage).then(function (response) {
         _this4.today = response.data;
+      });
+    },
+    loadmore: function loadmore() {
+      var _this5 = this;
+
+      this.apage++;
+      axios.get('todayappointments?page=' + this.apage).then(function (response) {
+        console.log(response.data.data.length);
+
+        for (var i = 0; i < response.data.data.length; i++) {
+          _this5.today.data.push(response.data.data[i]);
+        }
       });
     }
   }
@@ -10897,7 +10913,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dateee {\n    border-radius: 15px;\n    border: #4CC590 1px solid;\n    color: #000;\n    background-color: #fff;\n}\n.dateee:hover {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.dateee:focus {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.scroll-2 {\n    height: 300px;\n    overflow-y: scroll;\n    overflow-x: hidden !important;\n    padding-left: 3px;\n    padding-right: 3px;\n}\n.scroll-2::-webkit-scrollbar {\n    width: 4px !important;\n}\n/* Track */\n.scroll-2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n/* Handle */\n.scroll-2::-webkit-scrollbar-thumb {\n    background: #91dfa1;\n    border-radius: 10px;\n}\n/* Handle on hover */\n.scroll-2::-webkit-scrollbar-thumb:hover {\n    background: #91dfa1;\n}\n.person-box-1 {\n    background-color: #fff;\n    border-radius: 15px;\n}\n.person-box {\n    color: #fff;\n    font-weight: 600;\n    border-radius: 15px;\n    background-color: #4EC590;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dateee {\r\n    border-radius: 15px;\r\n    border: #4CC590 1px solid;\r\n    color: #000;\r\n    background-color: #fff;\n}\n.dateee:hover {\r\n    background-color: #4CC590;\r\n    border-radius: 15px;\r\n    color: #fff;\n}\n.dateee:focus {\r\n    background-color: #4CC590;\r\n    border-radius: 15px;\r\n    color: #fff;\n}\n.scroll-2 {\r\n    height: 300px;\r\n    overflow-y: scroll;\r\n    overflow-x: hidden !important;\r\n    padding-left: 3px;\r\n    padding-right: 3px;\n}\n.scroll-2::-webkit-scrollbar {\r\n    width: 4px !important;\n}\r\n/* Track */\n.scroll-2::-webkit-scrollbar-track {\r\n    background: transparent !important;\r\n    border-radius: 10px;\n}\r\n/* Handle */\n.scroll-2::-webkit-scrollbar-thumb {\r\n    background: #91dfa1;\r\n    border-radius: 10px;\n}\r\n/* Handle on hover */\n.scroll-2::-webkit-scrollbar-thumb:hover {\r\n    background: #91dfa1;\n}\n.person-box-1 {\r\n    background-color: #fff;\r\n    border-radius: 15px;\n}\n.person-box {\r\n    color: #fff;\r\n    font-weight: 600;\r\n    border-radius: 15px;\r\n    background-color: #4EC590;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10921,7 +10937,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.text-color123 {\n    color: grey;\n}\n\n/* overflow 1 */\n.overflow-div1::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div1::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div1::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div1::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n    border-radius: 10px;\n}\n\n/* ........................................................... */\n/* overflow 2 */\n.overflow-div2::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div2::-webkit-scrollbar-thumb {\n    background: #fff;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div2::-webkit-scrollbar-thumb:hover {\n    background: #fff1ff;\n    border-radius: 10px;\n}\n\n/* ........................................................... */\n/* overflow 3 */\n.overflow-div3::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div3::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div3::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div3::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n}\n\n/* ...................................................... */\n/* overflow 4 */\n.overflow-div4::-webkit-scrollbar {\n    width: 8px;\n}\n\n/* Track */\n.overflow-div4::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-div4::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-div4::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n}\n\n\n/* ................................................. */\n.collapsed .d-btnn {\n    background-color: #c8ddd1;\n    opacity: 0.4;\n}\n.d-btnn {\n    opacity: 1;\n}\n.form-control:focus {\n    border-color: #ced4da;\n    box-shadow: none;\n}\n.accordion-button {\n    color: #7DBF9A;\n    font-weight: bold;\n    border-radius: 15px !important;\n}\n.accordion-item {\n    border-radius: 15px !important;\n}\n.hr-style {\n    color: #fff !important;\n    height: 3px !important;\n    border-radius: 50px;\n    opacity: 1;\n    display: none;\n}\n.border-left-div {\n    border: none !important;\n    border-left: 3px solid #fff !important;\n}\n@media (max-width: 991.98px) {\n.hr-style {\n        display: block;\n}\n.border-left-div {\n        border: none !important;\n        border-left: none !important;\n}\n}\n.accepted-section {\n    background-color: #7DBF9A;\n    border-radius: 19px;\n}\n.decline-btn {\n    border: 2px solid #FF0D13;\n    border-radius: 13px !important;\n    background-color: #fff;\n    color: #FF0D13;\n}\n.decline-btn:hover {\n    background-color: #FF0D13;\n    color: #fff !important;\n}\n.accept-btn {\n    border: 2px solid #63D4A4;\n    border-radius: 13px !important;\n    background-color: #fff;\n    color: #63D4A4 !important;\n}\n.accept-btn:hover {\n    border: 2px solid #63D4A4;\n    background-color: #63D4A4;\n    color: #fff !important;\n}\n.text-color-header1 {\n    color: #fff;\n}\n.people-icon-div {\n    background-color: #525353;\n    margin: 3px;\n}\n.static-btn1 {\n    background-color: #fff !important;\n    border-radius: 8px !important;\n}\n.people-svg-span {\n    border-radius: 8px;\n}\n.accordion-button:not(.collapsed) {\n    color: #7DBF9A;\n    background-color: #fff;\n    box-shadow: none;\n}\n.accordion-button:not(.collapsed)::after {\n    background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e\");\n    background-color: transparent !important;\n}\n.accordion-button:focus {\n    border-color: transparent !important;\n    border: none !important;\n    box-shadow: none !important;\n}\n.priority-spnn {\n    background-color: #ad2b2b;\n    border-radius: 35px;\n    color: #fff;\n}\n.open-task-box {\n    border-radius: 35px !important;\n    background-color: #fff;\n    border: #707070 1px solid;\n}\n.pendzen-box {\n    border-radius: 35px !important;\n    background-color: #EAECF0;\n    border: none;\n}\n.third-box {\n    border-radius: 35px !important;\n    background-color: #fff;\n    border: #707070 1px solid;\n}\n.task-box {\n    background-color: #F7F7F7;\n    border-radius: 12px;\n}\n.name-spnnnn {\n    font-weight: 600;\n}\n.fw-600 {\n    font-weight: 600;\n}\n.spn-muted {\n    color: #707070;\n    font-weight: 600;\n    font-size: 14px !important;\n}\n.spn-normal {\n    font-weight: 600;\n    font-size: 14px !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.text-color123 {\r\n    color: grey;\n}\r\n\r\n/* overflow 1 */\n.overflow-div1::-webkit-scrollbar {\r\n    width: 8px;\n}\r\n\r\n/* Track */\n.overflow-div1::-webkit-scrollbar-track {\r\n    background: transparent !important;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle */\n.overflow-div1::-webkit-scrollbar-thumb {\r\n    background: #c9cad8;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n.overflow-div1::-webkit-scrollbar-thumb:hover {\r\n    background: #707070;\r\n    border-radius: 10px;\n}\r\n\r\n/* ........................................................... */\r\n/* overflow 2 */\n.overflow-div2::-webkit-scrollbar {\r\n    width: 8px;\n}\r\n\r\n/* Track */\n.overflow-div2::-webkit-scrollbar-track {\r\n    background: transparent !important;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle */\n.overflow-div2::-webkit-scrollbar-thumb {\r\n    background: #fff;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n.overflow-div2::-webkit-scrollbar-thumb:hover {\r\n    background: #fff1ff;\r\n    border-radius: 10px;\n}\r\n\r\n/* ........................................................... */\r\n/* overflow 3 */\n.overflow-div3::-webkit-scrollbar {\r\n    width: 8px;\n}\r\n\r\n/* Track */\n.overflow-div3::-webkit-scrollbar-track {\r\n    background: transparent !important;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle */\n.overflow-div3::-webkit-scrollbar-thumb {\r\n    background: #c9cad8;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n.overflow-div3::-webkit-scrollbar-thumb:hover {\r\n    background: #707070;\n}\r\n\r\n/* ...................................................... */\r\n/* overflow 4 */\n.overflow-div4::-webkit-scrollbar {\r\n    width: 8px;\n}\r\n\r\n/* Track */\n.overflow-div4::-webkit-scrollbar-track {\r\n    background: transparent !important;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle */\n.overflow-div4::-webkit-scrollbar-thumb {\r\n    background: #c9cad8;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n.overflow-div4::-webkit-scrollbar-thumb:hover {\r\n    background: #707070;\n}\r\n\r\n\r\n/* ................................................. */\n.collapsed .d-btnn {\r\n    background-color: #c8ddd1;\r\n    opacity: 0.4;\n}\n.d-btnn {\r\n    opacity: 1;\n}\n.form-control:focus {\r\n    border-color: #ced4da;\r\n    box-shadow: none;\n}\n.accordion-button {\r\n    color: #7DBF9A;\r\n    font-weight: bold;\r\n    border-radius: 15px !important;\n}\n.accordion-item {\r\n    border-radius: 15px !important;\n}\n.hr-style {\r\n    color: #fff !important;\r\n    height: 3px !important;\r\n    border-radius: 50px;\r\n    opacity: 1;\r\n    display: none;\n}\n.border-left-div {\r\n    border: none !important;\r\n    border-left: 3px solid #fff !important;\n}\n@media (max-width: 991.98px) {\n.hr-style {\r\n        display: block;\n}\n.border-left-div {\r\n        border: none !important;\r\n        border-left: none !important;\n}\n}\n.accepted-section {\r\n    background-color: #7DBF9A;\r\n    border-radius: 19px;\n}\n.decline-btn {\r\n    border: 2px solid #FF0D13;\r\n    border-radius: 13px !important;\r\n    background-color: #fff;\r\n    color: #FF0D13;\n}\n.decline-btn:hover {\r\n    background-color: #FF0D13;\r\n    color: #fff !important;\n}\n.accept-btn {\r\n    border: 2px solid #63D4A4;\r\n    border-radius: 13px !important;\r\n    background-color: #fff;\r\n    color: #63D4A4 !important;\n}\n.accept-btn:hover {\r\n    border: 2px solid #63D4A4;\r\n    background-color: #63D4A4;\r\n    color: #fff !important;\n}\n.text-color-header1 {\r\n    color: #fff;\n}\n.people-icon-div {\r\n    background-color: #525353;\r\n    margin: 3px;\n}\n.static-btn1 {\r\n    background-color: #fff !important;\r\n    border-radius: 8px !important;\n}\n.people-svg-span {\r\n    border-radius: 8px;\n}\n.accordion-button:not(.collapsed) {\r\n    color: #7DBF9A;\r\n    background-color: #fff;\r\n    box-shadow: none;\n}\n.accordion-button:not(.collapsed)::after {\r\n    background-image: url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e\");\r\n    background-color: transparent !important;\n}\n.accordion-button:focus {\r\n    border-color: transparent !important;\r\n    border: none !important;\r\n    box-shadow: none !important;\n}\n.priority-spnn {\r\n    background-color: #ad2b2b;\r\n    border-radius: 35px;\r\n    color: #fff;\n}\n.open-task-box {\r\n    border-radius: 35px !important;\r\n    background-color: #fff;\r\n    border: #707070 1px solid;\n}\n.pendzen-box {\r\n    border-radius: 35px !important;\r\n    background-color: #EAECF0;\r\n    border: none;\n}\n.third-box {\r\n    border-radius: 35px !important;\r\n    background-color: #fff;\r\n    border: #707070 1px solid;\n}\n.task-box {\r\n    background-color: #F7F7F7;\r\n    border-radius: 12px;\n}\n.name-spnnnn {\r\n    font-weight: 600;\n}\n.fw-600 {\r\n    font-weight: 600;\n}\n.spn-muted {\r\n    color: #707070;\r\n    font-weight: 600;\r\n    font-size: 14px !important;\n}\n.spn-normal {\r\n    font-weight: 600;\r\n    font-size: 14px !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29421,6 +29437,7 @@ var render = function () {
             "overflow-y": "scroll",
             "overflow-x": "hidden !important",
           },
+          attrs: { id: "appscroll" },
         },
         [
           _vm.today == null
@@ -29429,7 +29446,7 @@ var render = function () {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm._l(_vm.today, function (tod) {
+          _vm._l(_vm.today.data, function (tod) {
             return _vm.today != null
               ? _c(
                   "a",
@@ -29459,6 +29476,8 @@ var render = function () {
                                 _vm._v(
                                   "\n                               " +
                                     _vm._s(tod.first_name) +
+                                    " " +
+                                    _vm._s(tod.last_name) +
                                     "\n                           "
                                 ),
                               ]),
@@ -29606,6 +29625,27 @@ var render = function () {
           }),
         ],
         2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "mt-1 text-center p-2",
+          staticStyle: {
+            background: "#F8F8F8",
+            "border-radius": "20px",
+            cursor: "pointer",
+          },
+          on: {
+            click: function ($event) {
+              return _vm.loadmore()
+            },
+          },
+        },
+        [
+          _vm._v("\n                Load more "),
+          _c("i", { staticClass: "fas fa-caret-down" }),
+        ]
       ),
     ]),
   ])
@@ -42505,7 +42545,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\Kutiza\\\\crm"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\Kutiza\\\\crm","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 
