@@ -191,7 +191,6 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function addappointmentfile(Request $request)
     {
-
         $request->validate([
             'file' => 'required|mimes:xlsx,xls,csv'
         ]);
