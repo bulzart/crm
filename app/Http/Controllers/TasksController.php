@@ -17,6 +17,7 @@ use PhpParser\Node\Name\FullyQualified;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
+use Livewire\Component;
 
 class TasksController extends Controller
 {

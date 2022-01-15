@@ -53,7 +53,6 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    });
 
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
-    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
 
     Route::group(['middleware' => 'json.response'], function () {
@@ -116,8 +115,8 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
    route::get('chat',[ChatController::class,'chat']);
-    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
-
+   route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
+   route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
    Route::group(['middleware' => 'json.response'], function () {
       route::get('addtodo',[TodoController::class,'addtodo']);
    });

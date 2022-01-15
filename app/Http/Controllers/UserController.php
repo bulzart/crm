@@ -99,8 +99,8 @@ class UserController extends Controller
             'address' => 'required',
             'postal' => 'required',
             'location' => 'required',
-
             'count' => 'min:1',
+            'appdate' => 'required',
             'apptime' => 'required',
             'appbirthdate' => 'required'
         ]);
@@ -113,6 +113,7 @@ class UserController extends Controller
         $lead->postal_code = filter_var($req->input('postal'), FILTER_SANITIZE_STRING);
         $lead->city = filter_var($req->input('location'), FILTER_SANITIZE_STRING);
         $lead->nationality = filter_var($req->input('country'), FILTER_SANITIZE_STRING);
+        $lead->appointment_date = filter_var($req->input('appdate'), FILTER_SANITIZE_STRING);
         $lead->time = filter_var($req->input('apptime'), FILTER_SANITIZE_STRING);
         $lead->birthdate = filter_var($req->input('appbirthdate'), FILTER_SANITIZE_STRING);
         $lead->number_of_persons = (int)$req->input('count');
@@ -123,6 +124,7 @@ class UserController extends Controller
             $lead->assigned = 1;
         } else {
             $lead->wantsonline = 0;
+            $lead->assign_to_id = $req->input('admin');
         }
         $address = [];
 
@@ -146,7 +148,7 @@ class UserController extends Controller
             $lead->slug = Str::slug($req->input('first_name')) . '-' . $lead->id;
 
             $lead->save();
-            return redirect()->back()->with('joined', 'You joined successfully, our team will try to contact you as soon as possible!');
+            return redirect()->back()->with('success', 'You joined successfully, our team will try to contact you as soon as possible!');
         } else {
             return redirect()->route('getlead')->with('fail', 'Your joined fail');
         }
@@ -162,7 +164,7 @@ class UserController extends Controller
 
     public function deletedlead(Request $request, $id)
     {
-        
+
         $leads = lead::find($id);
 if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $leads->assign_to_id == Auth::guard('admins')->user()-id){
         $deletedlead = new Deletedlead();
@@ -189,6 +191,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function addappointmentfile(Request $request)
     {
+        dd($request->input('file'));
         $request->validate([
             'file' => 'required|mimes:xlsx,xls,csv'
         ]);
@@ -291,11 +294,11 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
                 $role = Role::where('name',$req->input('auth'))->get();
                 $rolee = $user->getRoleNames();
-             
+
               if($rolee[0] != null){
                 $user->removeRole($rolee[0]);
                 $user->assignRole($role);}
-            
+
                 //  Nexmo::message()->send([
                 //  'to' => '38345626643',
                 //  'from' => 'VONAGE APIs',

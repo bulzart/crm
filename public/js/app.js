@@ -5378,17 +5378,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     var _this = this;
@@ -10897,7 +10886,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.dateee {\n    border-radius: 15px;\n    border: #4CC590 1px solid;\n    color: #000;\n    background-color: #fff;\n}\n.dateee:hover {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.dateee:focus {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.scroll-2 {\n    height: 300px;\n    overflow-y: scroll;\n    overflow-x: hidden !important;\n    padding-left: 3px;\n    padding-right: 3px;\n}\n.scroll-2::-webkit-scrollbar {\n    width: 4px !important;\n}\n/* Track */\n.scroll-2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n/* Handle */\n.scroll-2::-webkit-scrollbar-thumb {\n    background: #91dfa1;\n    border-radius: 10px;\n}\n/* Handle on hover */\n.scroll-2::-webkit-scrollbar-thumb:hover {\n    background: #91dfa1;\n}\n.person-box-1 {\n    background-color: #fff;\n    border-radius: 15px;\n}\n.person-box {\n    color: #fff;\n    font-weight: 600;\n    border-radius: 15px;\n    background-color: #4EC590;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.dateee {\n    border-radius: 15px;\n    border: #4CC590 1px solid;\n    color: #000;\n    background-color: #fff;\n}\n.dateee:hover {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.dateee:focus {\n    background-color: #4CC590;\n    border-radius: 15px;\n    color: #fff;\n}\n.scroll-2 {\n    height: 300px;\n    overflow-y: scroll;\n    overflow-x: hidden !important;\n    padding-left: 3px;\n    padding-right: 3px;\n}\n.scroll-2::-webkit-scrollbar {\n    width: 4px !important;\n}\n\n/* Track */\n.scroll-2::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.scroll-2::-webkit-scrollbar-thumb {\n    background: #91dfa1;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.scroll-2::-webkit-scrollbar-thumb:hover {\n    background: #91dfa1;\n}\n.person-box-1 {\n    background-color: #fff;\n    border-radius: 15px;\n}\n.person-box {\n    color: #fff;\n    font-weight: 600;\n    border-radius: 15px;\n    background-color: #4EC590;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29144,9 +29133,7 @@ var render = function () {
                 [
                   _vm._v(_vm._s(_vm.lista[0].dayn)),
                   _c("br"),
-                  _vm._v(
-                    _vm._s(_vm.lista[0].day) + "\n                        "
-                  ),
+                  _vm._v(_vm._s(_vm.lista[0].day) + "\n                    "),
                 ]
               ),
               _vm._v(" "),
@@ -29200,9 +29187,7 @@ var render = function () {
                 [
                   _vm._v(_vm._s(_vm.lista[1].dayn)),
                   _c("br"),
-                  _vm._v(
-                    _vm._s(_vm.lista[1].day) + "\n                        "
-                  ),
+                  _vm._v(_vm._s(_vm.lista[1].day) + "\n                    "),
                 ]
               ),
               _vm._v(" "),
@@ -29251,9 +29236,7 @@ var render = function () {
                 [
                   _vm._v(_vm._s(_vm.lista[2].dayn)),
                   _c("br"),
-                  _vm._v(
-                    _vm._s(_vm.lista[2].day) + "\n                        "
-                  ),
+                  _vm._v(_vm._s(_vm.lista[2].day) + "\n                    "),
                 ]
               ),
               _vm._v(" "),
@@ -29285,7 +29268,7 @@ var render = function () {
                     _vm._s(_vm.lista[3].month) +
                       "," +
                       _vm._s(_vm.lista[3].year) +
-                      "\n                          "
+                      "\n                      "
                   ),
                 ]
               ),
@@ -29305,9 +29288,7 @@ var render = function () {
                 [
                   _vm._v(_vm._s(_vm.lista[3].dayn)),
                   _c("br"),
-                  _vm._v(
-                    _vm._s(_vm.lista[3].day) + "\n                        "
-                  ),
+                  _vm._v(_vm._s(_vm.lista[3].day) + "\n                    "),
                 ]
               ),
               _vm._v(" "),
@@ -29457,9 +29438,11 @@ var render = function () {
                             _c("div", { staticClass: "mx-3 my-auto" }, [
                               _c("div", { staticClass: "fs-5" }, [
                                 _vm._v(
-                                  "\n                               " +
+                                  "\n                                " +
                                     _vm._s(tod.first_name) +
-                                    "\n                           "
+                                    " " +
+                                    _vm._s(tod.last_name) +
+                                    "\n                            "
                                 ),
                               ]),
                               _vm._v(" "),
