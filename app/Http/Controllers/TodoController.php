@@ -18,12 +18,15 @@ class TodoController extends Controller
     }
 
     public function addnumber(Request $req){
+        if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
+        {
         $todo = new todo();
         $todo->text = filter_var($req->number,FILTER_SANITIZE_STRING);
         $todo->admin_id = Auth::guard('admins')->user()->id;
         $todo->number = 1;
         $todo->save();
       }
+    }
 
       public function deletenumber(Request $req){
         if(Auth::guard('admins')->check()){
@@ -46,23 +49,32 @@ class TodoController extends Controller
     }
     public function todos(){
         if(Auth::guard('admins')->check()){
+            if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
         $data['costumers'] = family::where('status','Submited')->get();
         $role = 'admin';
         $role = Role::where('name','fs')->orWhere('name','digital')->get();
         $data['admins'] = Admins::role($role)->get();
         return $data;
+            }
         }
     }
     public function deletetodo(Request $req){
         if(Auth::guard('admins')->check()){
             $id = (int) $req->id;
-            todo::find($id)->delete();
+            $todo = todo::find($id);
+            if($todo->admin_id == Auth::guard('admins')->user()->id){
+            todo::find($id)->delete();}
+            else{
+                return redirect()->back();
+            }
         }
     }
     public function donetodo(Request $req){
         if(Auth::guard('admins')->check()){
             $id = (int) $req->id;
-            todo::where('id',$id)->update(['done' => 1]);
+            $todo = todo::where('id',$id)->get();
+            if($todo->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
+            $todo->update(['done' => 1]);}
         }
     }
 }

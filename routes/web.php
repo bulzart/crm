@@ -75,14 +75,21 @@ route::prefix('')->middleware('confirmcode')->group(function(){
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
-      $data = family::where('leads_id',$id)->get();
+      try
+      {$data = family::where('leads_id',$id)->get();
+                     if(!empty($data[0])){
 
-      if($data != null)
-      {
-      return view('leadfamily',compact('data'));}
-      else{
-         return redirect()->back();
+                        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
+                     }
+                     else{
+                        return redirect()->route('dealclosed',$id);
+                     }
+                     
+                  }
+      catch(Throwable $e){
+          return redirect()->back();
       }
+    
    })->name('leadfamily');
    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
@@ -154,6 +161,7 @@ route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmc
 route::get('logout',[UserController::class,'logout'])->name('logout')->withoutMiddleware([confirmedcode::class]);
 });
 
+route::get('status',[StatusController::class,'status']);
 
 
 

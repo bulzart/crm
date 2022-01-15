@@ -518,8 +518,9 @@
                          aria-labelledby="flush-heading3" data-bs-parent="#accordionFlush3">
                         <div class="accordion-body p-0 mx-2 py-2 overflow-div2"
                              style="background-color: #4EC590; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                             @if(!empty($pendencies))
                             @foreach($pendencies as $pendency)
-                            <a style="text-decoration: none" href="{{route('leadfamilyperson',$pendency->lead->id)}}">
+                            <a style="text-decoration: none" href="{{route('leadfamilyperson',$pendency->family_id)}}">
                             <div class="py-2 my-2 mx-2"
                                  style="background-color: #fff; border-radius: 15px; color: #000;">
 
@@ -536,6 +537,7 @@
                             </div>
                                 </a>
                             @endforeach
+                            @endif
 
                         </div>
                     </div>
@@ -555,8 +557,9 @@
                      aria-labelledby="flush-heading5" data-bs-parent="#accordionFlush5">
                     <div class="accordion-body p-0 mx-2 py-2 overflow-div4"
                          style="background-color: #FFEBE5; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
-                        @foreach($morethan30 as $pendency)
-                        <a style="text-decoration: none;" href="{{route('leadfamilyperson',$pendency->lead->id)}}">
+                         @if(!empty($morethan30))
+                         @foreach($morethan30 as $pendency)
+                        <a style="text-decoration: none;" href="{{route('leadfamilyperson',$pendency->family_id)}}">
                         <div class="py-2 my-2 mx-2"
                              style="background-color: #fff; border-radius: 15px; color: #000;">
                             <div class="mx-3 ">
