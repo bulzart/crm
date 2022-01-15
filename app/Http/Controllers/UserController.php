@@ -32,12 +32,13 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
 use DB;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Route;
 
 class UserController extends Controller
 {
-    // public function __construct(){
-    //     $this->middleware(confirmedcode::class);
-    // }
+    public function __construct(){
+        $this->middleware(confirmedcode::class);
+    }
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
@@ -78,7 +79,7 @@ class UserController extends Controller
     public function notifications()
     {
         $not = notification::where('receiver_id', Auth::guard('admins')->user()->id)->where('done', 0)->get();
-        $notcnt = notification::where('receiver_id', Auth::guard('admins')->user()->id)->where('done', 0)->get()->count();
+        $not['cnt'] = notification::where('receiver_id', Auth::guard('admins')->user()->id)->where('done', 0)->get()->count();
         return $not;
     }
 
@@ -91,7 +92,6 @@ class UserController extends Controller
 
     public function addappointment(Request $req)
     {
-
         $req->validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -164,7 +164,7 @@ class UserController extends Controller
     {
         
         $leads = lead::find($id);
-if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $leads->assign_to_id == Auth::guard('admins')->user()-id){
+if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $leads->assign_to_id == Auth::guard('admins')->user()->id){
         $deletedlead = new Deletedlead();
         $deletedlead->name = $leads->first_name;
         $deletedlead->address = $leads->address;
@@ -442,7 +442,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     }
             $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
-
+$taskcnt = 0;
 
             date_default_timezone_set('Europe/Berlin');
 
@@ -455,24 +455,52 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
                 $tasks = null;
                 $pendencies = [];
                 if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
-                    $pendencies = family::where('status', 'Submited')->get();
+                    foreach(DB::table('leads')->where('completed','=',0)->select('leads.status_task')->get() as $task){
+                        if($task->status_task == 'Open'){
+                            $opencnt++;
+                        }
+                        if($task->status_task == 'Done'){
+$done++;
+                        }
+                        $taskcnt++;
+                    }
+                    $pendencies = DB::table('family_person')
+                    ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+                    ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                    ->where('pendencies.done', '=', 1)
+                    ->orderBy('family_person.first_name', 'asc')
+                    ->get();
+                    
 
                     $morethan30 = '';
-                    $morethan30 = family::where('status','Submited')->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))->get();
+                    $morethan30 = DB::table('family_person')
+                    ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+                    ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                    ->where('pendencies.done', '=', 1)
+                    ->orderBy('family_person.first_name', 'asc')
+                    ->where('status_updated_at','<',Carbon::now()->subDays(29)->format('Y-m-d'))
+                    ->get();
 
-                }
-
-    if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
-        $tasks = lead::where('completed',0)->get();
+                
+      
 
                     $pendingcnt = DB::table('family_person')
-                    ->join('pendencies','family_person.id','=','pendencies.family_id')
-                    ->where('pendencies.done','=',0)
-                    ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+                    ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
+                    ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                    ->where('pendencies.done', '=', 0)
+                    ->orderBy('family_person.first_name', 'asc')
                     ->count();
             }
             elseif(Auth::guard('admins')->user()->hasRole('fs')){
-             $tasks = lead::where('assign_to_id',Auth::guard('admins')->user()->id)->where('completed',0)->get();
+                foreach(DB::table('leads')->where('leads.completed','=',0)->where('leads.status_task','=',Auth::guard('admins')->user()->id)->select('leads.completed')->get() as $task){
+                    if($task->status_task == 'Open'){
+                        $opencnt++;
+                    }
+                    if($task->status_task == 'Done'){
+$done++;
+                    }
+                    $taskcnt++;
+                }
              $pendingcnt = DB::table('family_person')
                 ->join('pendencies','family_person.id','=','pendencies.family_id')
                 ->where('pendencies.done','=',0)
@@ -481,26 +509,21 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
                 ->count();
         }
 
-            for ($i = 0; $i < count($tasks); $i++) {
-                    if ($tasks[$i]->status_task == 'Open') {
-                        $opencnt++;
-                    }
-                    if ($tasks[$i]->status_task == 'Done') {
-                        $done++;
-                    }
-            }
 
                 $percnt = 0;
-                $taskcnt = count($tasks);
+              
                 if($taskcnt != 0){
                     $percnt = (100 / $taskcnt) * $done;
                 }
 
                 $leadscount = lead::where('assign_to_id', null)->where('assigned', 0)->get()->count();
-                $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-                if(Auth::guard('admins')->user()->hasRole('fs')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));
+          
+                if(Auth::guard('admins')->user()->hasRole('fs')) {
+                $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count(); return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt'));}
                 if(Auth::guard('admins')->user()->hasRole('backoffice')) return view('dashboard', compact('pendencies','morethan30'));
-                if(Auth::guard('admins')->user()->hasRole('admin')) return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));
+                if(Auth::guard('admins')->user()->hasRole('admin')) {
+                    $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->get()->count();
+                    return view('dashboard', compact('leadscount', 'todayAppointCount', 'opencnt', 'pendingcnt', 'percnt','pendencies','morethan30'));}
             }
         }
 

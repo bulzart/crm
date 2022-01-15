@@ -59,10 +59,10 @@ $retor = Pendency::where('family_id',$id)->get();
     } else {
       if ($admin->hasRole('admin')) {
         if ($now > 2300) {
-          $data = lead::where('wantsonline', 0)->where('appointment_date', Carbon::now()->addDays()->toDateString())->get();
+          $data = DB::table('leads')->where('wantsonline', 0)->where('appointment_date', Carbon::now()->addDays()->toDateString())->get();
         } else {
 
-          $data = lead::where('wantsonline', 0)->where('appointment_date', Carbon::now()->toDateString())->get();
+          $data = DB::table('leads')->where('wantsonline', 0)->where('appointment_date', Carbon::now()->toDateString())->get();
         }
       }
       if ($admin->hasRole('fs')) {
@@ -128,6 +128,7 @@ $retor = Pendency::where('family_id',$id)->get();
   }
   public function costumers(Request $request)
   {
+    
       $cnt = 0;
       $date1 = date('Y-m-d', strtotime($request->searchdate1));
       $n = date('Y-m-d', strtotime($request->searchdate2));

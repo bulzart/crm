@@ -22,6 +22,7 @@ class LeadDataController extends Controller
         if(!$accept){
       $data = new data();
       $lead = family::find($id);
+     
       $data->getdata($id);
       return view('updatedocument',compact('data','lead'));}
       else{

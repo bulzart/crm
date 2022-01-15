@@ -18,6 +18,9 @@ class family extends Model
         'leads_id',
         'status'
     ];
+    public function pendency(){
+return $this->belongsTo(Pendency::class,'id','family_id');
+    }
 
     public function lead()
     {

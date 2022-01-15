@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'json.response' => \App\Http\Middleware\JsonResponse::class,
         'confirmcode' => \App\Http\Middleware\confirmedcode::class,
+        'cansee' => \App\Http\Middleware\cansee::class,
     ];
 }
