@@ -131,7 +131,7 @@
                             <path fill-rule="evenodd"
                                   d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
                         </svg>
-                        <span class="ps-1 nav-texttt">Taskss</span>
+                        <span class="ps-1 nav-texttt">Tasks</span>
                     </a>
                 </div>
             @endif
@@ -263,10 +263,8 @@
             @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
                 <div class="">
                     <a href="#" class="nav-link link-dark rounded" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-percent" viewBox="0 0 16 16">
+                            <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                         </svg>
                         <span class="ps-1 nav-texttt">Commisions</span>
                     </a>
@@ -287,10 +285,8 @@
             @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
                 <div class="">
                     <a href="#" class="nav-link link-dark  rounded">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                            <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
                         </svg>
                         <span class="ps-1 nav-texttt">Statistics</span>
                     </a>
@@ -312,10 +308,10 @@
         <hr>
         <div class="dropdown user-drop bg-light w-100 py-3 d-flex justify-content-center" style="position: absolute; bottom:0; left:0; border: none; border-top: 1px #c4c4c4 solid;">
 
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="bi bi-chevron-up"></i>
             </a>
-            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+            <ul class="dropdown-menu dropup text-small shadow" aria-labelledby="dropdownUser2">
                 @if(Auth::guard('admins')->user()->hasRole('admin'))<li><a class="dropdown-item" href="{{route('addnewuser')}}">Add New User</a></li>@endif
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -330,15 +326,15 @@
 
     <div class="container-fluid col " id="app">
     @if(\Session::has('success'))
-        <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            {!! \Session::get('success') !!}
-        </div>
+            <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+                <strong>{!! \Session::get('success') !!}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
     @endif
         @if(\Session::has('fail'))
-            <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                {!! \Session::get('fail') !!}
+            <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+                <strong>{!! \Session::get('fail') !!}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
 @yield('content')

@@ -149,7 +149,9 @@
                                   stroke-width="0.5"/>
                           </svg>
                         </span>
+                          @if($lead->campaign != null)
                         {{ucfirst($lead->campaign->name)}}
+                              @endif
                       </span>
                                             </div>
                                         </div>
@@ -167,9 +169,10 @@
                                             </div>
                                             <div class="modal-body">
                                                 <span class="fw-bold">Herkunft vom lead</span><br>
-
+                                                @if($lead->campaign != null)
                                                 <span>Platform: {{$lead->campaign->name}}</span><br>
                                                 <span>Kampgne: {{$lead->campaign->name}}</span><br>
+                                                @endif
                                                 <span>Grund: {{$lead->addres}}</span><br>
                                                 <span>Teilnahme: {{$lead->created_at}}</span><br>
                                                 <span class="fw-bold">Herkunft vom lead</span><br>
