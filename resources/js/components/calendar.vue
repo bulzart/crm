@@ -224,9 +224,9 @@ this.date_function();
         loadmore:function(){
 this.apage++;
   axios.get('todayappointments?page=' + this.apage).then(
-        (response) => {      
+        (response) => {
             console.log(response.data.data.length);
-            for (let i = 0; i < response.data.data.length; i++) {this.today.data.push(response.data.data[i]);} 
+            for (let i = 0; i < response.data.data.length; i++) {this.today.data.push(response.data.data[i]);}
                 }
       );
         }
@@ -266,7 +266,7 @@ this.apage++;
 .scroll-2::-webkit-scrollbar-track {
     background: transparent !important;
     border-radius: 10px;
-}
+}p
 /* Handle */
 .scroll-2::-webkit-scrollbar-thumb {
     background: #91dfa1;
