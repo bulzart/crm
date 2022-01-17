@@ -83,12 +83,12 @@ route::prefix('')->group(function(){
                      else{
                         return redirect()->route('dealclosed',$id);
                      }
-                     
+
                   }
       catch(Throwable $e){
           return redirect()->back();
       }
-    
+
    })->name('leadfamily');
    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
@@ -159,9 +159,10 @@ route::get('smsconfirm',function (){
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode')->withoutMiddleware([confirmedcode::class]);
 route::get('logout',[UserController::class,'logout'])->name('logout')->withoutMiddleware([confirmedcode::class]);
 });
-
-route::get('status',[StatusController::class,'status']);
-
+// Status
+route::get('status',[StatusController::class,'status'])->name('status');
+route::get('editclientdata/{id}',[StatusController::class,'editclientdata'])->name('editclientdata');
+route::post('editclientform/{id}',[StatusController::class,'editclientform'])->name('editclientform');
 
 
 
