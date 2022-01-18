@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\family;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StatusController extends Controller
 {
     public function status(){
-        $clients = family::all();
-        return view('status',compact('clients'));
+        if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
+            $clients = family::all();
+            return view('status', compact('clients'));
+        }
     }
     public function editclientdata($id){
-        $client = family::find($id);
-        return view('editclientdata',compact('client'));
+        if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
+            $client = family::find($id);
+            return view('editclientdata', compact('client'));
+        }
     }
     public function editclientform(Request $request,$id){
         $first_name = $request->first_name;
