@@ -25,6 +25,8 @@ use App\Models\lead;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Session\Session;
 use Musonza\Chat\Chat;
+use Illuminate\Support\Facades\Storage;
+
 
 
 
@@ -52,7 +54,7 @@ route::prefix('')->group(function(){
       route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
    });
 
-    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
+    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment')->middleware('role:admin,fs,backoffice');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
 
     Route::group(['middleware' => 'json.response'], function () {
@@ -158,13 +160,18 @@ route::get('smsconfirm',function (){
 })->name('smsconfirm')->withoutMiddleware([confirmedcode::class]);
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode')->withoutMiddleware([confirmedcode::class]);
 route::get('logout',[UserController::class,'logout'])->name('logout')->withoutMiddleware([confirmedcode::class]);
-});
-// Status
 route::get('status',[StatusController::class,'status'])->name('status');
 route::get('editclientdata/{id}',[StatusController::class,'editclientdata'])->name('editclientdata');
 route::post('editclientform/{id}',[StatusController::class,'editclientform'])->name('editclientform');
-
-
+route::get('file/{file?}',function($file = null){
+        if(Storage::disk('img')->exists($file)){
+           return Storage::disk('img')->download($file);
+        }
+        else{
+           return redirect()->back();
+        }
+})->middleware('role:admin|backoffice|salesmanager|management,admins')->name('showfile');
+});
 
 
 

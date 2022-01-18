@@ -182,6 +182,7 @@ export default {
         this.fetchnumbers();
         this.fetchtasks();
         this.defaultvalue();
+       
     },
 
 
@@ -208,8 +209,8 @@ export default {
             val.value = "";
         },
         defaultvalue: function () {
-            console.log(this.todos.admins[0].id);
-            this.admin = this.todos.admins[0].id;
+      
+
             this.costumer = this.todos.costumers[0].id;
         },
         assignpendency: function () {
@@ -229,10 +230,13 @@ export default {
         },
         fetchtasks: function () {
             axios.get('todos').then((response) => {
-                this.todos = response.data
+                this.todos = response.data,
+                this.admin = response.data.admins[0].id,
+                this.costumer = response.data.costumers[0].id
             });
         }
-    }
+    },
+
 }
 
 </script>
