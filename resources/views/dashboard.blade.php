@@ -156,15 +156,12 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                         <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
-                            <div class="third-box"
-                                 style="background-color: #FEC278; border-radius: 25px; border:none; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                            <div class="second-box"
+                                 style="background-color: #f8ce79; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
                                 <div class="row">
                                     <div class="col g-0 my-auto">
-                                        <div class=" ps-4">
+                                        <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
                                                     {{round($percnt,2)}}%
                                                 </span>
@@ -216,6 +213,10 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+
                         <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0">
                             <div class="fourth-box"
                                  style="background-color: #FF6262;  border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
