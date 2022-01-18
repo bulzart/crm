@@ -1,3 +1,4 @@
+@if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
 @extends('template.navbar')
 @section('content')
     <div class="" style="margin-top: 20vh">
@@ -52,3 +53,4 @@
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 </style>
+@endif
