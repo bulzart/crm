@@ -44,7 +44,7 @@
                 </svg>
               </i>
             </span>
-            <input type="email" id="typeEmailX-2" name="email" class="form-control text-center form-control-lg"/>
+            <input type="email" id="typeEmailX-2" name="email" class="form-control form-control-sm"/>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text bg-white pw_div__" id="basic-addon1" style="border: none;border-bottom: 1px solid #D3CDCD; border-radius: 0;">
@@ -64,16 +64,24 @@
                 </svg>
               </i>
             </span>
-            <input type="password" id="typePasswordX-2" name="password" class="form-control text-center form-control-lg" />
+            <input type="password" id="typePasswordX-2" name="password" class="form-control form-control-sm" />
             <span class="input-group-text bg-white" style="border: none; border-bottom: 1px solid #D3CDCD; border-radius: 0;">
               <i onclick="showpw();return false;" class="far fa-eye mt-3 mx-1" style="cursor:pointer;" id="show"></i>
             </span>
           </div>
-          <select class="form-control" name="auth">
-            @foreach($roles as $role)
-            <option value="{{$role->name}}">{{$role->name}}</option>
-             @endforeach
-          </select>
+
+
+<select class="form-control" name="auth">
+  @foreach($roles as $role)
+  <option value="{{$role->name}}">{{$role->name}}</option>
+  @endforeach
+</select>
+          <div class="mb-2 mt-2 form-check">
+    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+    <label class="form-check-label" for="remember">Remember me</label>
+  </div>
+
+
           <div class="pt-2">
             <button type="submit" class="py-2 w-100 border-0 fw-bold btn_anmelden__">
               Anmelden
@@ -111,3 +119,8 @@
 </body>
 
 </html>
+<style>
+    body{
+        padding: 0 !important;
+    }
+</style>

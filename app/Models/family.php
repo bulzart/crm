@@ -10,6 +10,18 @@ class family extends Model
     protected $table = 'family_person';
     public $datas;
     use HasFactory;
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'birthdate',
+        'leads_id',
+        'status'
+    ];
+    public function pendency(){
+return $this->belongsTo(Pendency::class,'id','family_id');
+    }
+
     public function lead()
     {
         return $this->belongsTo(lead::class, 'leads_id');

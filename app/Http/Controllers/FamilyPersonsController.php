@@ -5,36 +5,33 @@ namespace App\Http\Controllers;
 use App\Models\family;
 use App\Models\FamilyPerson;
 use App\Models\lead;
+use App\Models\data;
+use App\Models\LeadDataKK;
+use App\Models\Pendency;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Throwable;
+
 class FamilyPersonsController extends Controller
 {
-
     public function family_persons($id){
         $cnt = 0;
         $cnt1 = 0;
-      
-        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs')){
-            $tasks = family::where('leads_id', $id)->get();
-            //dd($tasks);
-            $tasks2 = [];
-            $cntt= 0;
-            for ($i = 0; $i< count($tasks);$i++){
-                if ($tasks[$i]->lead->assign_to_id == Auth::guard('admins')->user()->id){
-                    $tasks2[$cntt] = $tasks[$i];
-                    $cntt++;
-                }
-            
-            return view('documentsform',compact('tasks2'));
+        $lead = family::find($id);
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $lead->lead->assign_to_id){
+            try{
+           $data = LeadDataKK::where('person_id','=',$id)->firstOrFail();
+           return redirect()->route('acceptdata',$id);}
+           catch(Exception $e){
+            return view('documentsform',compact('lead'));
+           }
+         } 
+         else {
+                return redirect()->back();
+            }
         }
-
-        }
-        else{
-            return redirect()->back();
-        } 
-  
     
-    }
 
     public function getAllFamilyPersonsOfLead($id)
     {
@@ -44,13 +41,26 @@ class FamilyPersonsController extends Controller
 
     public function updateFamilyPerson($id, Request $request)
     {
-        $updatedPerson = family::where('id', $id)->update($request->all());
-    
+        $family =  family::where('id', $id)->get();
+           if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') ||  $family->lead->assign_to_id == Auth::guard('admins')->user()->id)
+{
+       $family->update($request->all());
         return redirect()->back()->with('message', 'Family person was updated');
+}
+else{
+    return redirect()->back();
+}
     }
 
     public function deleteFamilyPerson($id, $leadId)
     {
-        $updatedPerson = family::where('id', $id)->where('leads_id', $leadId)->delete();
+        $family = family::where('id', $id)->where('leads_id', $leadId)->get();
+        if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $family->lead->id){
+        $family->delete();}
+    }
+
+    public function updateleadfamilyperson( Request $request, $id){
+        family::where('id',$id)->update(['first_name' => $request->familyfirstname, 'last_name' => $request->familylastname]);
+        return redirect()->back()->with('success','Update successfuly');
     }
 }

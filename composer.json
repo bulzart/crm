@@ -19,9 +19,11 @@
         "laravel/ui": "^3.4",
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
+        "musonza/chat": "^4.6",
         "nesbot/carbon": "^2.54",
         "nexmo/client": "^2.4",
         "nexmo/laravel": "^2.4",
+        "sentry/sentry-laravel": "^2.10",
         "spatie/laravel-permission": "^5.4",
         "vonage/client": "^2.4"
     },

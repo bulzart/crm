@@ -10,136 +10,665 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/style.css">
 
-    
+
+
 </head>
+<style>
+    .nav-itemsss {
+        height: 100% !important;
+        overflow-y: scroll !important;
 
-<body id="body-pd">
-    
+        /* overflow-x: hidden !important; */
+    }
+    .nav-link {
+        padding-right: 1.8rem !important;
+        padding-left: 1.8rem !important;
+    }
+
+    .nav-itemsss a:hover {
+        background-color: #e0e1e6;
+        color: #000;
+    }
+
+    .nav-itemsss a:focus {
+        background-color: #474747;
+        color: #fff;
+    }
+
+    @media (max-width: 999.98px) {
+        .nav-texttt {
+            display: none;
+        }
+
+        .navvv {
+            width: fit-content !important;
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        /* .user-drop {
+            position: fixed !important;
+            bottom: 0;
+            width: fit-content !important;
+        } */
+
+    }
+    .dateee {
+        border-radius: 15px;
+        border: #4CC590 1px solid;
+        color: #000;
+        background-color: #fff;
+    }
+
+    .dateee:hover {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .dateee:focus {
+        background-color: #4CC590;
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    .box-1 {
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='18' ry='18' stroke='black' stroke-width='1' stroke-dasharray='7%2c 11' stroke-dashoffset='63' stroke-linecap='square'/%3e%3c/svg%3e");
+        border-radius: 18px;
+    }
+
+    /* overflow 1 */
+    .overflow-div1::-webkit-scrollbar {
+        width: 3px !important;
+    }
+
+    /* Track */
+    .overflow-div1::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .overflow-div1::-webkit-scrollbar-thumb {
+        background: #c9cad8;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .overflow-div1::-webkit-scrollbar-thumb:hover {
+        background: #707070;
+        border-radius: 10px;
+    }
+  
+.dateee {
+    border-radius: 15px;
+    border: #4CC590 1px solid;
+    color: #000;
+    background-color: #fff;
+}
+
+.dateee:hover {
+    background-color: #4CC590;
+    border-radius: 15px;
+    color: #fff;
+}
+
+.dateee:focus {
+    background-color: #4CC590;
+    border-radius: 15px;
+    color: #fff;
+}
+.scroll-2 {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.scroll-2::-webkit-scrollbar {
+    width: 4px !important;
+}
+/* Track */
+.scroll-2::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+/* Handle */
+.scroll-2::-webkit-scrollbar-thumb {
+    background: #91dfa1;
+    border-radius: 10px;
+}
+/* Handle on hover */
+.scroll-2::-webkit-scrollbar-thumb:hover {
+    background: #91dfa1;
+}
+.person-box-1 {
+    background-color: #fff;
+    border-radius: 15px;
+}
+.person-box {
+    color: #fff;
+    font-weight: 600;
+    border-radius: 15px;
+    background-color: #4EC590;
+}
+
+.text-color123 {
+    color: grey;
+}
+
+/* overflow 1 */
+.overflow-div1::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.overflow-div1::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+
+/* Handle */
+.overflow-div1::-webkit-scrollbar-thumb {
+    background: #c9cad8;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.overflow-div1::-webkit-scrollbar-thumb:hover {
+    background: #707070;
+    border-radius: 10px;
+}
+
+/* ........................................................... */
+/* overflow 2 */
+
+.overflow-div2::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.overflow-div2::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+
+/* Handle */
+.overflow-div2::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.overflow-div2::-webkit-scrollbar-thumb:hover {
+    background: #fff1ff;
+    border-radius: 10px;
+}
+
+/* ........................................................... */
+/* overflow 3 */
+
+.overflow-div3::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.overflow-div3::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+
+/* Handle */
+.overflow-div3::-webkit-scrollbar-thumb {
+    background: #c9cad8;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.overflow-div3::-webkit-scrollbar-thumb:hover {
+    background: #707070;
+}
+
+/* ...................................................... */
+/* overflow 4 */
+
+.overflow-div4::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+.overflow-div4::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+
+/* Handle */
+.overflow-div4::-webkit-scrollbar-thumb {
+    background: #c9cad8;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.overflow-div4::-webkit-scrollbar-thumb:hover {
+    background: #707070;
+}
+
+
+/* ................................................. */
+
+.collapsed .d-btnn {
+    background-color: #c8ddd1;
+    opacity: 0.4;
+}
+
+.d-btnn {
+    opacity: 1;
+}
+
+.form-control:focus {
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
+.accordion-button {
+    color: #7DBF9A;
+    font-weight: bold;
+    border-radius: 15px !important;
+}
+
+.accordion-item {
+    border-radius: 15px !important;
+}
+
+.hr-style {
+    color: #fff !important;
+    height: 3px !important;
+    border-radius: 50px;
+    opacity: 1;
+    display: none;
+}
+
+.border-left-div {
+    border: none !important;
+    border-left: 3px solid #fff !important;
+
+}
+
+@media (max-width: 991.98px) {
+    .hr-style {
+        display: block;
+    }
+
+    .border-left-div {
+        border: none !important;
+        border-left: none !important;
+    }
+}
+
+
+.accepted-section {
+    background-color: #7DBF9A;
+    border-radius: 19px;
+}
+
+.decline-btn {
+    border: 2px solid #FF0D13;
+    border-radius: 13px !important;
+    background-color: #fff;
+    color: #FF0D13;
+
+}
+
+.decline-btn:hover {
+    background-color: #FF0D13;
+    color: #fff !important;
+}
+
+.accept-btn {
+    border: 2px solid #63D4A4;
+    border-radius: 13px !important;
+    background-color: #fff;
+    color: #63D4A4 !important;
+}
+
+.accept-btn:hover {
+    border: 2px solid #63D4A4;
+    background-color: #63D4A4;
+    color: #fff !important;
+}
+
+.text-color-header1 {
+    color: #fff;
+}
+
+.people-icon-div {
+    background-color: #525353;
+    margin: 3px;
+}
+
+.static-btn1 {
+    background-color: #fff !important;
+    border-radius: 8px !important;
+}
+
+.people-svg-span {
+    border-radius: 8px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #7DBF9A;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-color: transparent !important;
+}
+
+.accordion-button:focus {
+    border-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.priority-spnn {
+    background-color: #ad2b2b;
+    border-radius: 35px;
+    color: #fff;
+}
+
+.open-task-box {
+    border-radius: 35px !important;
+    background-color: #fff;
+    border: #707070 1px solid;
+
+}
+
+.pendzen-box {
+    border-radius: 35px !important;
+    background-color: #EAECF0;
+    border: none;
+
+}
+
+.third-box {
+    border-radius: 35px !important;
+    background-color: #fff;
+    border: #707070 1px solid;
+
+}
+
+.task-box {
+    background-color: #F7F7F7;
+    border-radius: 12px;
+}
+
+.name-spnnnn {
+    font-weight: 600;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.spn-muted {
+    color: #707070;
+    font-weight: 600;
+    font-size: 14px !important;
+}
+
+.spn-normal {
+    font-weight: 600;
+    font-size: 14px !important;
+}
+
+</style>
+<body>
 <div class="row">
-        <div class="col-md-2 col-lg-2 col-xs-2 col-sm-2">
-        <header class="header" id="header">
-        <div class="header_toggle" id="qele"><i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> </div>
-    </header>
-    <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div>
-                <div class="nav_list">
-                    <a style="text-decoration: none;" href="{{route('dashboard')}}" class="nav_link active"> 
-                        <i class='bx bx-grid-alt nav_icon text-black'></i> <span class="nav_name text-black">Home</span> 
-                    </a>
-                    @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
-                        <a style="text-decoration: none;" href="{{route('calendar')}}" class="nav_link"> 
-                            <i class='bi bi-calendar nav_icon text-black'></i> 
-                            <span class="nav_name text-black">Calendar</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->check())
-                        <a style="text-decoration: none;" href="{{route('costumers')}}" class="nav_link"> 
-                            <i class='bx bx-user nav_icon text-black'></i> 
-                            <span class="nav_name text-black">Costumers</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-                        <a style="text-decoration: none;" href="#" class="nav_link"> 
-                            <i class='bx bx-user nav_icon text-black'></i> 
-                            <span class="nav_name text-black">Cancellations</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
-                        <a href="{{route('tasks')}}" style="text-decoration: none;" class="nav_link"> 
-                            <i class='bx bx-task text-black'></i> 
-                            <span class="nav_name text-black">Tasks</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) 
-                        <a href="#" style="text-decoration: none;" class="nav_link"> 
-                            <i class='bx bxs-check-square text-black'></i> 
-                            <span class="nav_name text-black">Status</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
-                        <a style="text-decoration: none;" href="#" class="nav_link"> 
-                            <i class='bx bx-user nav_icon text-black'></i> 
-                            <span class="nav_name text-black">Trust</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
-                        <a style="text-decoration: none;" href="#" class="nav_link"> 
-                            <i class='bx bx-user nav_icon text-black'></i> 
-                            <span class="nav_name text-black">Commisions</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->check())
-                        <a href="#" style="text-decoration: none;" class="nav_link">
-                            <i class='bx bx-money text-black'></i>
-                            <span class="nav_name text-black">Finance</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) 
-                        <a href="#" style="text-decoration: none;" class="nav_link">
-                            <i class="far fa-window-close text-black"></i>
-                            <span class="nav_name text-black">Deposit</span> 
-                        </a> 
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
-                        <a href="{{route('leads')}}" style="text-decoration: none;" class="nav_link">
-                            <i class="fas fa-newspaper text-black"></i>
-                            <span class="nav_name text-black">Leads</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
-                        <a href="{{route('dates')}}" style="text-decoration: none;" class="nav_link">
-                            <i class='bi bi-calendar-date text-black'></i>
-                            <span class="nav_name text-black">Dates</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment'))
-                        <a href="#" style="text-decoration: none;" class="nav_link">
-                            <i class="far fa-calendar-alt text-black"></i>
-                            <span class="nav_name text-black">Employees</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
-                        <a href="#" style="text-decoration: none;" class="nav_link">
-                            <i class="fas fa-sliders-h text-black"></i>
-                            <span class="nav_name text-black">Prov.system</span> 
-                        </a>
-                    @endif
-                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
-                        <a href="#" style="text-decoration: none;" class="nav_link">
-                            <i class="fas fa-chart-pie text-black"></i>
-                            <span class="nav_name text-black">Statistics</span> 
-                        </a>
-                    @endif
-                </div> 
-                <a href="{{route('logout')}}" style="text-decoration: none;" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name text-black">LogOut</span> </a>
-            </div>
-        </nav>
-    </div>
-    <!--Container Main start-->
+<div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
+    <div class="d-flex navvv bg-light" style="height: 100% !important; position: fixed;">
+        <div class="nav-header">
 
+        </div>
+        <div class="nav-itemsss overflow-div1 bg-light">
+            <div class="">
+                <a href="{{route('dashboard')}}" class="nav-link link-dark rounded" aria-current="page" style="border-radius: 9px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                         viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                        <path fill-rule="evenodd"
+                              d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                    </svg>
+                    <span class="ps-1 nav-texttt">Home</span>
+                </a>
+            </div>
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="{{route('tasks')}}" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-speedometer2" viewBox="0 0 16 16">
+                            <path
+                                d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                            <path fill-rule="evenodd"
+                                  d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Taskss</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
+                <div class="">
+                    <a href="{{route('leads')}}" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3"
+                             viewBox="0 0 16 16">
+                            <path
+                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                            <path
+                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Leads</span>
+                    </a>
+                </div>
+            @endif
+            <div class="">
+                <a href="#" class="nav-link link-dark rounded">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+                         viewBox="0 0 16 16">
+                        <path
+                            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+                    </svg>
+                    <span class="ps-1 nav-texttt">Finance</span>
+                </a>
+            </div>
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                            <path
+                                d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                            <path
+                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                            <path
+                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Status</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->check())
+                <div class="">
+                    <a href="{{route('costumers')}}" class="nav-link link-dark rounded" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd"
+                                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Costumers</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin"
+                             viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
+                            <path
+                                d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
+                            <path
+                                d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
+                            <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Deposit</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square"
+                             viewBox="0 0 16 16">
+                            <path
+                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Cancelations</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="{{route('calendar')}}" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-calendar-check" viewBox="0 0 16 16">
+                            <path
+                                d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                            <path
+                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Calendar</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="{{route('dates')}}" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-calendar-date" viewBox="0 0 16 16">
+                            <path
+                                d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z" />
+                            <path
+                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Dates</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill"
+                             viewBox="0 0 16 16">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            <path fill-rule="evenodd"
+                                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Employees</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Commisions</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Prov.system</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <div class="">
+                    <a href="#" class="nav-link link-dark  rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Statistics</span>
+                    </a>
+                </div>
+            @endif
+            @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
+                <div class="">
+                    <a href="#" class="nav-link link-dark rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        </svg>
+                        <span class="ps-1 nav-texttt">Trust</span>
+                    </a>
+                </div>
+            @endif
+        </div>
+        <hr>
+        <div class="dropdown user-drop bg-light w-100 py-3 d-flex justify-content-center" style="position: absolute; bottom:0; left:0; border: none; border-top: 1px #c4c4c4 solid;">
+
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+
+            </a>
+            <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                @if(Auth::guard('admins')->user()->hasRole('admin'))<li><a class="dropdown-item" href="{{route('addnewuser')}}">Add New User</a></li>@endif
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
-
-<div class="container-fluid col-md-10 col-lg-10 col-xs-10 col-sm-10 mt-4" id="app">
+    <div class="container-fluid col " id="app">
     @if(\Session::has('success'))
         <div class="alert alert-success alert-dismissible fade show col-12" role="alert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             {!! \Session::get('success') !!}
         </div>
     @endif
         @if(\Session::has('fail'))
             <div class="alert alert-danger alert-dismissible fade show col-12" role="alert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 {!! \Session::get('fail') !!}
             </div>
         @endif
 @yield('content')
 
 <div class="form-group container text-center pt-4">
+</div>
 </div>
 </div>
 <script type="text/javascript">
@@ -183,749 +712,6 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 });
 </script>
 <script>
-    cnt = 1;
-    vehcnt = 1;
-    counte = 1;
-    newre = 1;
-    chsc = 1;
-    count = 1;
-    function openHealth() {
-        document.getElementById("health").style.display = "block";
-        document.getElementById("car").style.display = "none";
-        document.getElementById("finance").style.display = "none";
-        document.getElementById("more").style.display = "none";
-    }
-
-    function openCar() {
-        document.getElementById('health').style.display = "none";
-        document.getElementById('car').style.display = "block";
-        document.getElementById("finance").style.display = "none";
-        document.getElementById("more").style.display = "none";
-
-    }
-
-    function openFinance() {
-        document.getElementById('health').style.display = "none";
-        document.getElementById('car').style.display = "none";
-        document.getElementById("finance").style.display = "block";
-        document.getElementById("more").style.display = "none";
-    }
-
-    function openMore() {
-        document.getElementById('health').style.display = "none";
-        document.getElementById('car').style.display = "none";
-        document.getElementById("finance").style.display = "none";
-        document.getElementById("more").style.display = "block";
-    }
-
-    function openCounterOffer() {
-
-
-        if(cnt % 2 == 1)
-        document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))' +
-'	<input class="form-control" type="file" name="uploadpolice" value=""> ' +
-'@else ' +
-'	<input class="form-control" type="file" name="uploadpolice">   ' +
-'@endif ' +
-'	<input type="text" name="comment" placeholder="Comment">';
-        else
-        document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))' +
-'	<input class="form-control" type="file" name="uploadpolice" value=""> ' +
-'@else ' +
-'	<input class="form-control" type="file" name="uploadpolice">   ' +
-'@endif 	' +
-'	<input type="text" name="comment" placeholder="Comment" value="">';
-
-
-        if(cnt % 2 == 1){
-        document.getElementById('counteroffer').innerHTML = '';
-        }
-        else{
-        document.getElementById('counteroffer').innerHTML = "";
-        }
-
-        cnt++;
-        vehcnt = 1;
-        document.getElementById('newVehicle').innerHTML = "";
-        document.getElementById('anotherNewVehicle').innerHTML = '';
-    }
-
-    function openNewVehicle() {
-        if(vehcnt % 2 == 1){
-        document.getElementById('newVehicle').innerHTML =
-            '<label>Upload vehicle ID</label> ' +
-            '	@if(isset($data->uploadvehicleid)) ' +
-            '		<input class="form-control" type="file" name="uploadvehicleid" value=""> ' +
-            '	@else ' +
-            '		<input class="form-control" type="file" name="uploadvehicleid"> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	<h6>Lesing</h6> ' +
-            '	<input onclick="openYesCheckBox()" type="radio" name="leasing" id="yes" value="Yes"> ' +
-            '	<label for="yes">Yes</label> <div class="hide" id="leasingname"> ' +
-            '	<input type="text" name="leasingname" placeholder="Lesaing Name"> ' +
-            '</div> ' +
-            '<input type="radio" name="leasing" id="no" value="No"> ' +
-            '	<label for="no">No</label> ' +
-            '</div> ' +
-            '<br> ' +
-            '<hr> ' +
-            '<h4>Vahicle Information</h4> ' +
-            '<div> ' +
-            '	<span>Purchase Year</span> ' +
-            '	<select name="yearpurchase"> ' +
-            '		@for($i = \Carbon\Carbon::now()->format("Y");$i>=1950;$i--) ' +
-            '		<option value="{{$i}}">{{$i}}</option> ' +
-            '		@endfor ' +
-            '	</select> ' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>First Commissioning</label> ' +
-            '	@if(isset($data->firstcommissioning)) ' +
-            '		<input type="date" class="form-control" name="firstcommissioning" value="{{$data->firstcommissioning}}"> ' +
-            '	@else ' +
-            '		<input type="date" class="form-control" name="firstcommissioning"> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>Start Insurance</label> ' +
-            '	@if(isset($data->startinsurance)) ' +
-            '		<input type="date" class="form-control" name="startinsurance" value="{{$data->startinsurance}}"> ' +
-            '	@else ' +
-            '		<input type="date" class="form-control" name="startinsurance">  ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>Kanton:</label> ' +
-            '	<select name="kanton"> ' +
-            '		@if(isset($data->kanton))' +
-            '            <option selected value="{{$data->kanton}}">{{$data->kanton}}</option> ' +
-            '        @endif' +
-            '		<option>Zürich</option> ' +
-            '		<option>Bern / Berne</option> ' +
-            '		<option>Luzern</option> ' +
-            '		<option>Uri</option> ' +
-            '		<option>Schwyz</option> ' +
-            '		<option>Unterwalden</option> ' +
-            '		<option>Glarus</option> ' +
-            '		<option>Zug</option> ' +
-            '		<option>Freiburg / Fribourg</option> ' +
-            '		<option>Solothurn</option> ' +
-            '		<option>Basel</option> ' +
-            '		<option>Schaffhausen</option> ' +
-            '		<option>Appenzell</option> ' +
-            '		<option>Sankt Gallen</option> ' +
-            '		<option>Graubünden</option> ' +
-            '		<option>Aargau</option> ' +
-            '		<option>Thurgau</option> ' +
-            '		<option>Ticino</option> ' +
-            '		<option>Vaud</option> ' +
-            '		<option>Valais / Wallis</option> ' +
-            '		<option>Neuchâtel</option> ' +
-            '		<option>Genève</option> ' +
-            '		<option>Jura</option> ' +
-            '	</select> ' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>KM-Stand</label> ' +
-            '	@if(isset($data->kmstand)) ' +
-            '		<input class="form-control" type="number" name="kmstand" value="{{$data->kmstand}}"> ' +
-            '	@else ' +
-            '		<input class="form-control" type="number" name="kmstand"> ' +
-            '	@endif' +
-            '</div> ' +
-            '<hr> ' +
-            '<h4>Driver Information</h4> ' +
-            '<div> ' +
-            '	<label>Date of issue of drivers license</label> ' +
-            '	@if(isset($data->dateofissueofdriverslicense)) ' +
-            '		<input class="form-control" type="date" name="dateofissueofdriverslicense" value="{{$data->dateofissueofdriverslicense}}">  ' +
-            '	@else ' +
-            '		<input class="form-control" type="date" name="dateofissueofdriverslicense"> ' +
-            '	@endif' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>Nationality: </label> ' +
-            '	@if(isset($data->nationality)) ' +
-            '		<input class="form-control" type="text" name="nationality" value="{{$data->nationality}}"> ' +
-            '	@else ' +
-            '		<input class="form-control" type="text" name="nationality">  ' +
-            '	@endif' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>Lenker? </label> ' +
-            '	<select name="lenker"> ' +
-            '		@if(isset($data->lenker))' +
-            '            <option selected value="{{$data->lenker}}">{{$data->lenker}}</option> ' +
-            '        @endif' +
-            '		<option>Yes</option> ' +
-            '		<option>No</option> ' +
-            '	</select> ' +
-            '</div> ' +
-            '<hr> ' +
-            '	<h4>Desired Coverage</h4> ' +
-            '<div> ' +
-            '	<label>Insurance</label> ' +
-            '	<select name="insurance"> ' +
-            '		@if(isset($data->insurance))' +
-            '            <option selected value="{{$data->insurance}}">{{$data->insurance}}</option> ' +
-            '        @endif' +
-            '		<option>300</option> ' +
-            '		<option>500</option> ' +
-            '		<option>1000 (drivers under 25 years)</option> ' +
-            '	</select> ' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>Deduction Part: </label> ' +
-            '	<select name="deductionpart"> ' +
-            '		@for($i = 1000;$i<=20000;$i+=1000) ' +
-            '		@if(isset($data->deductionpart))' +
-            '            <option selected value="{{$data->deductionpart}}">{{$data->deductionpart}}</option> ' +
-            '        @endif' +
-            '		<option>{{$i}}</option> ' +
-            '		@endfor ' +
-            '	</select>	' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>Things Carried: </label> ' +
-            '	@if(isset($data->thingscarried)) ' +
-            '		<input type="text" class="form-control" name="thingscarried" value="{{$data->thingscarried}}"> ' +
-            '	@else ' +
-            '		<input type="text" class="form-control" name="thingscarried"> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	@if(isset($data->partnergarage)) ' +
-            '		@if($data->partnergarage == "Parter Garage") ' +
-            '			<label>Repair Shop: </label>' +
-            '			<br> ' +
-            '			<input type="radio" name="partnergarage" value="Parter Garage" checked> ' +
-            '			<label for="partnergarage">Partener Garage</label> ' +
-            '		@else ' +
-            '			<input type="radio" name="partnergarage" value="Free Choice" checked> ' +
-            '			<label for="partnergarage">Free Choice</label> ' +
-            '		@endif ' +
-            '		<label>Repair Shop: </label>' +
-            '		<br> ' +
-            '		<input type="radio" name="partnergarage" value="Parter Garage"> ' +
-            '		<label for="partnergarage">Partener Garage</label> ' +
-            '		<input type="radio" name="partnergarage" value="Free Choice"> ' +
-            '		<label for="partnergarage">Free Choice</label> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	@if(isset($data->accidentcoverage)) ' +
-            '		@if($data->accidentcoverage == "Yes") ' +
-            '			<label>Accident Coverage: </label>' +
-            '			<br> ' +
-            '			<input type="radio" name="accidentcoverage" value="Yes" checked> ' +
-            '			<label for="accidentcoverage">Yes</label> ' +
-            '		@else ' +
-            '			<input type="radio" name="accidentcoverage" value="No" checked> ' +
-            '			<label for="accidentcoverage">No</label> ' +
-            '		@endif ' +
-            '		<label>Accident Coverage: </label>' +
-            '		<br> ' +
-            '		<input type="radio" name="accidentcoverage" value="Yes"> ' +
-            '		<label for="accidentcoverage">Yes</label> ' +
-            '		<input type="radio" name="accidentcoverage" value="No"> ' +
-            '		<label for="accidentcoverage">No</label> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	@if(isset($data->trafficrightsprotection)) ' +
-            '		@if($data->trafficrightsprotection == "Yes") ' +
-            '			<label>Traffic Rights Protection: </label>' +
-            '			<br> ' +
-            '			<input type="radio" name="trafficrightsprotection" value="Yes" checked> ' +
-            '			<label for="trafficrightsprotection">Yes</label> ' +
-            '		@else ' +
-            '			<input type="radio" name="trafficrightsprotection" value="No" checked> ' +
-            '			<label for="trafficrightsprotection">No</label> ' +
-            '	@endif ' +
-            '		<label>Traffic Rights Protection: </label>' +
-            '		<br> ' +
-            '		<input type="radio" name="trafficrightsprotection" value="Yes"> ' +
-            '		<label for="trafficrightsprotection">Yes</label> ' +
-            '		<input type="radio" name="trafficrightsprotection" value="No"> ' +
-            '		<label for="trafficrightsprotection">No</label> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	@if(isset($data->grossnegligenceprotection)) ' +
-            '		@if($data->grossnegligenceprotection == "Yes") ' +
-            '			<label>Gross Negligence Protection: </label>' +
-            '			<br> ' +
-            '			<input type="radio" name="grossnegligenceprotection" value="Yes" checked> ' +
-            '			<label for="grossnegligenceprotection">Yes</label> ' +
-            '		@else ' +
-            '			<input type="radio" name="grossnegligenceprotection" value="No" checked> ' +
-            '			<label for="grossnegligenceprotection">No</label> ' +
-            '		@endif ' +
-            '		<label>Gross Negligence Protection: </label>' +
-            '		<br> ' +
-            '		<input type="radio" name="grossnegligenceprotection" value="Yes"> ' +
-            '		<label for="grossnegligenceprotection">Yes</label> ' +
-            '		<input type="radio" name="grossnegligenceprotection" value="No">' +
-            '		<label for="grossnegligenceprotection">No</label> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	@if(isset($data->glassprotection)) ' +
-            '		@if($data->glassprotection == "Yes") ' +
-            '			<label>Glass Protection: </label>' +
-            '			<br> ' +
-            '			<input type="radio" name="glassprotection" value="Yes" checked> ' +
-            '			<label for="glassprotection">Yes</label> ' +
-            '		@else ' +
-            '			<input type="radio" name="glassprotection" value="No" checked> ' +
-            '			<label for="glassprotection">No</label> ' +
-            '		@endif ' +
-            '		<label>Glass Protection: </label>' +
-            '		<br> ' +
-            '		<input type="radio" name="glassprotection" value="Yes"> ' +
-            '		<label for="glassprotection">Yes</label> ' +
-            '		<input type="radio" name="glassprotection" value="No"> ' +
-            '		<label for="glassprotection">No</label> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	@if(isset($data->parkingdamage)) ' +
-            '		@if($data->parkingdamage == "Yes") ' +
-            '			<label>Parking Damage: </label>' +
-            '			<br> ' +
-            '			<input type="radio" name="parkingdamage" value="Yes" checked> ' +
-            '			<label for="parkingdamage">Yes</label> ' +
-            '		@else ' +
-            '			<input type="radio" name="parkingdamage" value="No" checked> ' +
-            '			<label for="parkingdamage">No</label> ' +
-            '		@endif ' +
-            '		<label>Parking Damage: </label>' +
-            '		<br> ' +
-            '		<input type="radio" name="parkingdamage" value="Yes"> ' +
-            '		<label for="parkingdamage">Yes</label> ' +
-            '		<input type="radio" name="parkingdamage" value="No"> ' +
-            '		<label for="parkingdamage">No</label> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	@if(isset($data->roadsideassistance)) ' +
-            '		@if($data->roadsideassistance == "Yes") ' +
-            '			<label>24H Roadside Assistance: </label>' +
-            '			<br> ' +
-            '			<input type="radio" name="roadsideassistance" value="Yes" checked> ' +
-            '			<label for="roadsideassistance">Yes</label> ' +
-            '		@else ' +
-            '			<input type="radio" name="roadsideassistance" value="No" checked> ' +
-            '			<label for="roadsideassistance">No</label> ' +
-            '		@endif ' +
-            '		<label>24H Roadside Assistance: </label>' +
-            '		<br> ' +
-            '		<input type="radio" name="roadsideassistance" value="Yes" >' +
-            '		<label for="roadsideassistance">Yes</label> ' +
-            '		<input type="radio" name="roadsideassistance" value="No" > ' +
-            '		<label for="roadsideassistance">No</label> ' +
-            '	@endif ' +
-            '</div> ' +
-            '<div> ' +
-            '	<label>Car Comment</label>' +
-            '	@if(isset($data->carcomment)) ' +
-            '		<input type="text" class="form-control" name="carcomment" value="{{$data->carcomment}}"> ' +
-            '	@else ' +
-            '		<input type="text" class="form-control" name="carcomment"> ' +
-            '	@endif	' +
-            '	<br> ' +
-            '	<input type="button" class="btn btn-info" onClick="openAnotherNewVehicle()" value="Add Another One">' +
-            '</div>';
-        }
-        else{
-        document.getElementById('newVehicle').innerHTML = "";}
-        vehcnt++;
-        cnt = 1;
-        document.getElementById('counteroffer').innerHTML = "";
-        document.getElementById('anotherNewVehicle').innerHTML = '';
-
-    }
-
-    function openYesCheckBox() {
-        document.getElementById('leasingname').classList.toggle('hide');
-    }
-
-    function openCounteroffered() {
-        if(counte % 2 == 1){
-        document.getElementById('counteroffered').innerHTML =
-            '<h4>Counteroffer</h4>  ' +
-            '<div>' +
-            '      <label>Upload Police</label>' +
-            '	  @if(isset($data->uploadpolice2))' +
-            '	  <input type="file" name="uploadpolice2" class="form-control" value="{{$data->uploadpolice2}}">' +
-            '	  @else' +
-            '	  <input type="file" name="uploadpolice2" class="form-control">' +
-            '	  @endif' +
-            '	  <label>Comment At Police: </label>' +
-            '	  @if(isset($data->commentatpolice))' +
-            '	  <input type="text" name="commentatpolice" value="{{$data->commentatpolice}}">   ' +
-            '	  @else' +
-            '	  <input type="text" name="commentatpolice"> @endif' +
-            '</div>';
-        }
-        else{
-            document.getElementById('counteroffered').innerHTML = '';
-        }
-        counte++;
-        document.getElementById('newrequest').innerHTML = "";
-        document.getElementById('choosesociety').innerHTML = "";
-        document.getElementById('anotherNewVehicle').innerHTML = '';
-        newre = 1;
-        chsc = 1;
-    }
-
-    function openNewPropertyInsurance() {
-        if(newre % 2 == 1){
-            document.getElementById('newrequest').innerHTML = '<h4>New Request</h4>' +
-'<div>' +
-'	<label>Number Of People</label>' +
-'	<select name="numberofpeople">' +
-'		@for($i = 1;$i<=30;$i++)' +
-'			@if(isset($data->numberofpeople))' +
-'				<option selected value="{{$data->numberofpeople}}">{{$data->numberofpeople}}</option>' +
-'			@endif' +
-'			<option>{{$i}}</option>' +
-'		@endfor' +
-'	</select>' +
-'</div>' +
-'<div>' +
-'	<label>Number Of Rooms</label>' +
-'	<select name="numberofrooms">' +
-'		@for($i = 1;$i<=30;$i++)' +
-'			@if(isset($data->numberofrooms))' +
-'				<option selected value="{{$data->numberofrooms}}">{{$data->numberofrooms}}</option>' +
-'			@endif' +
-'			<option>{{$i}}</option>' +
-'		@endfor' +
-'	</select>' +
-'</div>' +
-'<div>' +
-'	<label>Insuranceamount: </label>' +
-'		@if(isset($data->insuranceamount))' +
-'		<input type="number" name="insuranceamount" class="form-control" value="{{$data->insuranceamount}}">' +
-'		@else' +
-'		<input type="number" name="insuranceamount" class="form-control">' +
-'		@endif' +
-'</div>' +
-'<div>' +
-'	<label>Wished Additional Things: </label>' +
-'		@if(isset($data->wishedadditionalthings))' +
-'		<input type="text" name="wishedadditionalthings" class="form-control" value="{{$data->wishedadditionalthings}}">' +
-'		@else' +
-'		<input type="text" name="wishedadditionalthings" class="form-control">' +
-'		@endif' +
-'</div>' +
-'<div>' +
-'	<label>Private Liability: </label>' +
-'	<br>' +
-'	@if(isset($data->privateliability))  ' +
-'		@if($data->privateliability == "Yes")' +
-'			<input type="radio" name="privateliability" value="Yes" checked>' +
-'			<label for="privateliability">Yes</label>' +
-'		@else' +
-'			<input type="radio" name="privateliability" value="No" checked>' +
-'			<label for="privateliability">No</label>' +
-'		@endif ' +
-'	@else' +
-'		<input type="radio" name="privateliability" value="Yes" >' +
-'		<label for="privateliability">Yes</label>' +
-'		<input type="radio" name="privateliability" value="No" >' +
-'		<label for="privateliability">No</label>' +
-'	@endif ' +
-'</div>';
-        }else{
-            document.getElementById('newrequest').innerHTML = "";
-        }
-        newre++;
-        document.getElementById('counteroffered').innerHTML = '';
-        document.getElementById('choosesociety').innerHTML = "";
-        document.getElementById('anotherNewVehicle').innerHTML = '';
-        counte = 1;
-        chsc = 1;
-    }
-
-    function openChoiceSociety() {
-        if(chsc % 2 == 1) {
-            document.getElementById('choosesociety').innerHTML =
-            '<div> ' +
-'	<h4>Legal Protection Insurance</h4> ' +
-'	<div> ' +
-'		<label>Society</label> ' +
-'		@if(isset($data->society))' +
-'		<input type="text" name="society" class="form-control" value="{{$data->society}}"> ' +
-'		@else' +
-'		<input type="text" name="society" class="form-control"> ' +
-'		@endif' +
-'	</div> ' +
-'	<div> ' +
-'		<label>Number Of People at Insurance</label> ' +
-'		<select name="numberofpeopleinsurance">' +
-'			@for($i = 1;$i<=30;$i++)' +
-'				@if(isset($data->numberofpeopleinsurance))' +
-'					<option selected value="{{$data->numberofpeopleinsurance}}">{{$data->numberofpeopleinsurance}}</option> ' +
-'				@endif' +
-'				<option>{{$i}}</option>' +
-'			@endfor' +
-'		</select>' +
-'	</div> ' +
-'</div>';
-        }else{
-            document.getElementById('choosesociety').innerHTML = "";
-        }
-        chsc++;
-        document.getElementById('counteroffered').innerHTML = "";
-        document.getElementById('newrequest').innerHTML = "";
-        document.getElementById('anotherNewVehicle').innerHTML = '';
-        counte = 1;
-        newre = 1;
-    }
-
-    function openAnotherNewVehicle(){
-
-        document.getElementById('anotherNewVehicle').innerHTML += '<div id="counter' + count +'"></div>';
-        document.getElementById('counter'+ count).innerHTML +=
-        '<label>Upload vehicle ID</label> ' +
-'@if(isset($data->uploadvehicleid)) ' +
-'<input class="form-control" type="file" name="uploadvehicleid'+ count+ '" value="{{$data->uploadvehicleid}}"> ' +
-'@else ' +
-'<input class="form-control" type="file" name="uploadvehicleid'+ count+ '"> ' +
-'@endif ' +
-'</div>' +
-'<div>' +
-'  <h6>Lesing</h6>' +
-'  <input onclick="openYesCheckBox()" type="radio" name="leasing'+ count+ '" id="yes" value="Yes">' +
-'  <label for="yes">Yes</label>' +
-'  <div class="hide" id="leasingname">' +
-'    <input type="text" name="leasingname'+ count+ '" placeholder="Lesaing Name">' +
-'  </div>' +
-'  <input type="radio" name="leasing'+ count+ '" id="no" value="No">' +
-'  <label for="no">No</label>' +
-'</div>' +
-'<br>' +
-'<hr>' +
-'<h4>Vahicle Information</h4>' +
-'<div>' +
-'  <span>Purchase Year</span>' +
-'  <select name="yearpurchase'+ count+ '"> @for($i = \Carbon\Carbon::now()->format("Y");$i>=1950;$i--) <option value="{{$i}}">{{$i}}</option> @endfor </select>' +
-'</div>' +
-'<div>' +
-'  <label>First Commissioning</label>' +
-'	@if(isset($data->firstcommissioning)) ' +
-'	<input type="date" class="form-control" name="firstcommissioning'+ count+ '" value="{{$data->firstcommissioning}}">' +
-'	@else ' +
-'	<input type="date" class="form-control" name="firstcommissioning'+ count+ '"> ' +
-'	@endif' +
-'</div>' +
-'<div>' +
-'  <label>Start Insurance</label>' +
-'	@if(isset($data->startinsurance)) ' +
-'	<input type="date" class="form-control" name="startinsurance'+ count+ '" value="{{$data->startinsurance}}">' +
-'	@else ' +
-'	<input type="date" class="form-control" name="startinsurance'+ count+ '">' +
-'	@endif' +
-'</div>' +
-'<div>' +
-'  <label>Kanton:</label>' +
-'  <select name="kanton">' +
-'	@if(isset($data->kanton))' +
-'        <option selected value="{{$data->kanton}}">{{$data->kanton}}</option>' +
-'	@endif' +
-'    <option>Zürich</option>' +
-'    <option>Bern / Berne</option>' +
-'    <option>Luzern</option>' +
-'    <option>Uri</option>' +
-'    <option>Schwyz</option>' +
-'    <option>Unterwalden</option>' +
-'    <option>Glarus</option>' +
-'    <option>Zug</option>' +
-'    <option>Freiburg / Fribourg</option>' +
-'    <option>Solothurn</option>' +
-'    <option>Basel</option>' +
-'    <option>Schaffhausen</option>' +
-'    <option>Appenzell</option>' +
-'    <option>Sankt Gallen</option>' +
-'    <option>Graubünden</option>' +
-'    <option>Aargau</option>' +
-'    <option>Thurgau</option>' +
-'    <option>Ticino</option>' +
-'    <option>Vaud</option>' +
-'    <option>Valais / Wallis</option>' +
-'    <option>Neuchâtel</option>' +
-'    <option>Genève</option>' +
-'    <option>Jura</option>' +
-'  </select>' +
-'</div>' +
-'<div>' +
-'  <label>KM-Stand</label>' +
-'	@if(isset($data->kmstand)) ' +
-'	<input class="form-control" type="number" name="kmstand'+ count+ '" value="{{$data->kmstand}}">' +
-'	@else ' +
-'	<input class="form-control" type="number" name="kmstand'+ count+ '">' +
-'	@endif' +
-'</div>' +
-'<hr>' +
-'<h4>Driver Information</h4>' +
-'<div>' +
-'  <label>Date of issue of drivers license</label>' +
-'	@if(isset($data->dateofissueofdriverslicense)) ' +
-'	<input class="form-control" type="date" name="dateofissueofdriverslicense'+ count+ '" value="{{$data->dateofissueofdriverslicense}}">' +
-'	@else ' +
-'	<input class="form-control" type="date" name="dateofissueofdriverslicense'+ count+ '">' +
-'	@endif' +
-'</div>' +
-'<div>' +
-'  <label>Nationality: </label>' +
-'	@if(isset($data->nationality)) ' +
-'	<input class="form-control" type="text" name="nationality'+ count+ '" value="{{$data->nationality}}">' +
-'	@else ' +
-'	<input class="form-control" type="text" name="nationality'+ count+ '">' +
-'	@endif' +
-'</div>' +
-'<div>' +
-'  <label>Lenker? </label>' +
-'  <select name="lenker'+ count+ '">' +
-'	@if(isset($data->lenker))' +
-'        <option selected value="{{$data->lenker}}">{{$data->lenker}}</option>' +
-'	@endif' +
-'    <option>Yes</option>' +
-'    <option>No</option>' +
-'  </select>' +
-'</div>' +
-'<hr>' +
-'<h4>Desired Coverage</h4>' +
-'<div>' +
-'  <label>Insurance</label>' +
-'  <select name="insurance'+ count+ '">' +
-'	@if(isset($data->insurance))' +
-'        <option selected value="{{$data->insurance}}">{{$data->insurance}}</option>' +
-'	@endif' +
-'    <option>300</option>' +
-'    <option>500</option>' +
-'    <option>1000 (drivers under 25 years)</option>' +
-'  </select>' +
-'</div>' +
-'<div>' +
-'  <label>Deduction Part: </label>' +
-'  <select name="deductionpart'+ count+ '"> ' +
-'	@for($i = 1000;$i<=20000;$i+=1000) ' +
-'		@if(isset($data->deductionpart))' +
-'			<option selected value="{{$data->deductionpart}}">{{$data->deductionpart}}</option>' +
-'		@endif' +
-'      <option>{{$i}}</option> ' +
-'	@endfor ' +
-'  </select>' +
-'</div>' +
-'<div>' +
-'  <label>Things Carried: </label>' +
-'	@if(isset($data->thingscarried)) ' +
-'	<input type="text" class="form-control" name="thingscarried'+ count+ '" value="{{$data->thingscarried}}">' +
-'	@else ' +
-'	<input type="text" class="form-control" name="thingscarried'+ count+ '">' +
-'	@endif' +
-'</div>' +
-'<div> @if(isset($data->partnergarage)) @if($data->partnergarage == "Parter Garage") <label>Repair Shop: </label>' +
-'  <br>' +
-'  <input type="radio" name="partnergarage'+ count+ '" value="Parter Garage" checked>' +
-'  <label for="partnergarage">Partener Garage</label> @else <input type="radio" name="partnergarage'+ count+ '" value="Free Choice" checked>' +
-'  <label for="partnergarage">Free Choice</label> @endif <label>Repair Shop: </label>' +
-'  <br>' +
-'  <input type="radio" name="partnergarage'+ count+ '" value="Parter Garage">' +
-'  <label for="partnergarage">Partener Garage</label>' +
-'  <input type="radio" name="partnergarage'+ count+ '" value="Free Choice">' +
-'  <label for="partnergarage">Free Choice</label> @endif' +
-'</div>' +
-'<div> @if(isset($data->accidentcoverage)) @if($data->accidentcoverage == "Yes") <label>Accident Coverage: </label>' +
-'  <br>' +
-'  <input type="radio" name="accidentcoverage'+ count+ '" value="Yes" checked>' +
-'  <label for="accidentcoverage">Yes</label> @else <input type="radio" name="accidentcoverage'+ count+ '" value="No" checked>' +
-'  <label for="accidentcoverage">No</label> @endif <label>Accident Coverage: </label>' +
-'  <br>' +
-'  <input type="radio" name="accidentcoverage'+ count+ '" value="Yes">' +
-'  <label for="accidentcoverage">Yes</label>' +
-'  <input type="radio" name="accidentcoverage'+ count+ '" value="No">' +
-'  <label for="accidentcoverage">No</label> @endif' +
-'</div>' +
-'<div> @if(isset($data->trafficrightsprotection)) @if($data->trafficrightsprotection == "Yes") <label>Traffic Rights Protection: </label>' +
-'  <br>' +
-'  <input type="radio" name="trafficrightsprotection'+ count+ '" value="Yes" checked>' +
-'  <label for="trafficrightsprotection">Yes</label> @else <input type="radio" name="trafficrightsprotection'+ count+ '" value="No" checked>' +
-'  <label for="trafficrightsprotection">No</label> @endif <label>Traffic Rights Protection: </label>' +
-'  <br>' +
-'  <input type="radio" name="trafficrightsprotection'+ count+ '" value="Yes">' +
-'  <label for="trafficrightsprotection">Yes</label>' +
-'  <input type="radio" name="trafficrightsprotection'+ count+ '" value="No">' +
-'  <label for="trafficrightsprotection">No</label> @endif' +
-'</div>' +
-'<div> @if(isset($data->grossnegligenceprotection)) @if($data->grossnegligenceprotection == "Yes") <label>Gross Negligence Protection: </label>' +
-'  <br>' +
-'  <input type="radio" name="grossnegligenceprotection'+ count+ '" value="Yes" checked>' +
-'  <label for="grossnegligenceprotection">Yes</label> @else <input type="radio" name="grossnegligenceprotection'+ count+ '" value="No" checked>' +
-'  <label for="grossnegligenceprotection">No</label> @endif <label>Gross Negligence Protection: </label>' +
-'  <br>' +
-'  <input type="radio" name="grossnegligenceprotection'+ count+ '" value="Yes">' +
-'  <label for="grossnegligenceprotection">Yes</label>' +
-'  <input type="radio" name="grossnegligenceprotection'+ count+ '" value="No">' +
-'  <label for="grossnegligenceprotection">No</label> @endif' +
-'</div>' +
-'<div> @if(isset($data->glassprotection)) @if($data->glassprotection == "Yes") <label>Glass Protection: </label>' +
-'  <br>' +
-'  <input type="radio" name="glassprotection'+ count+ '" value="Yes" checked>' +
-'  <label for="glassprotection">Yes</label> @else <input type="radio" name="glassprotection'+ count+ '" value="No" checked>' +
-'  <label for="glassprotection">No</label> @endif <label>Glass Protection: </label>' +
-'  <br>' +
-'  <input type="radio" name="glassprotection'+ count+ '" value="Yes">' +
-'  <label for="glassprotection">Yes</label>' +
-'  <input type="radio" name="glassprotection'+ count+ '" value="No">' +
-'  <label for="glassprotection">No</label> @endif' +
-'</div>' +
-'<div> @if(isset($data->parkingdamage)) @if($data->parkingdamage == "Yes") <label>Parking Damage: </label>' +
-'  <br>' +
-'  <input type="radio" name="parkingdamage'+ count+ '" value="Yes" checked>' +
-'  <label for="parkingdamage">Yes</label> @else <input type="radio" name="parkingdamage'+ count+ '" value="No" checked>' +
-'  <label for="parkingdamage">No</label> @endif <label>Parking Damage: </label>' +
-'  <br>' +
-'  <input type="radio" name="parkingdamage'+ count+ '" value="Yes">' +
-'  <label for="parkingdamage">Yes</label>' +
-'  <input type="radio" name="parkingdamage'+ count+ '" value="No">' +
-'  <label for="parkingdamage">No</label> @endif' +
-'</div>' +
-'<div> @if(isset($data->roadsideassistance)) @if($data->roadsideassistance == "Yes") <label>24H Roadside Assistance: </label>' +
-'  <br>' +
-'  <input type="radio" name="roadsideassistance'+ count+ '" value="Yes" checked>' +
-'  <label for="roadsideassistance">Yes</label> @else <input type="radio" name="roadsideassistance'+ count+ '" value="No" checked>' +
-'  <label for="roadsideassistance">No</label> @endif <label>24H Roadside Assistance: </label>' +
-'  <br>' +
-'  <input type="radio" name="roadsideassistance'+ count+ '" value="Yes">' +
-'  <label for="roadsideassistance">Yes</label>' +
-'  <input type="radio" name="roadsideassistance'+ count+ '" value="No">' +
-'  <label for="roadsideassistance">No</label> @endif' +
-'</div>' +
-'<div>' +
-'  <label>Car Comment</label>' +
-'	@if(isset($data->carcomment)) ' +
-'	<input type="text" class="form-control" name="carcomment'+ count+ '" value="{{$data->carcomment}}">' +
-'	@else ' +
-'	<input type="text" class="form-control" name="carcomment'+ count+ '">' +
-'	@endif' +
-'  <br>' +
-'  <input type="button" class="btn btn-info" onClick="openAnotherNewVehicle()" value="Add Another One">' +
-'  <input type="button" class="btn btn-danger" onClick="deleteAnotherNewVehicle()" value="Delete">' +
-'</div>';
-        count++;
-        document.getElementById('count').value = count;
-    }
-
-    function deleteAnotherNewVehicle(){
-        document.getElementById('counter'+ --count).innerHTML = '';
-        document.getElementById('count').value = count;
-    }
 
     var Offene_Aufgaben__bool = false;
 
@@ -956,302 +742,21 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
             }
         });
     });
+    var Pending__bool1 = false;
+
+$(document).ready(function(){
+    $("#Pending__1").click(function(){
+        $("#collapse__").collapse('toggle');
+        if(Pending__bool1 == false){
+            $("#Pending_arrow__1").addClass("bi bi-caret-down-fill bi-caret-up-fill");
+            Pending__bool1 = true;
+        }else{
+            $("#Pending_arrow__1").removeClass("bi bi-caret-up-fill");
+            Pending__bool1 = false;
+        }
+    });
+});
 </script>
 
 
-<style>
-    * {
-        font-family: 'Poppins';font-size: 17px;
 
-    }
-    .hide {
-            display: none;
-        }
-    :root {
-        --header-height: 3rem;
-        --nav-width: 68px;
-        --first-color: #fff;
-        --first-color-light: #AFA5D9;
-        --white-color: #F7F6FB;
-        --body-font: 'Nunito', sans-serif;
-        --normal-font-size: 1rem;
-        --z-fixed: 100
-    }
-
-    *,
-    ::before,
-    ::after {
-        box-sizing: border-box
-    }
-
-    body {
-        position: relative;
-        margin: var(--header-height) 0 0 0;
-        padding: 0 1rem;
-        font-family: var(--body-font);
-        font-size: var(--normal-font-size);
-        transition: .5s
-    }
-
-    a {
-        text-decoration: none
-    }
-
-    .header {
-        width: 100%;
-        height: 0px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 1rem;
-        background-color: var(--white-color);
-        z-index: var(--z-fixed);
-        transition: .5s
-    }
-
-    .header_toggle {
-        color: var(--first-color);
-        font-size: 1.5rem;
-        cursor: pointer
-    }
-
-    .header_img {
-        width: 35px;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        border-radius: 50%;
-        overflow: hidden
-    }
-
-    .header_img img {
-        width: 40px
-    }
-
-    .l-navbar {
-        position: fixed;
-        top: 0;
-        left: -30%;
-        width: var(--nav-width);
-        height: 100vh;
-        background-color: var(--first-color);
-        padding: .5rem 1rem 0 0;
-        transition: .7s;
-        z-index: var(--z-fixed)
-    }
-
-    .nav {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow: hidden
-    }
-
-    .nav_logo,
-    .nav_link {
-        display: grid;
-        grid-template-columns: max-content max-content;
-        align-items: center;
-        column-gap: 1rem;
-        padding: .5rem 0 .5rem 1.5rem
-    }
-
-    .nav_logo {
-        margin-bottom: 2rem
-    }
-
-    .nav_logo-icon {
-        font-size: 1.25rem;
-        color: var(--white-color)
-    }
-
-    .nav_logo-name {
-        color: var(--white-color);
-        font-weight: 700
-    }
-
-    .nav_link {
-        position: relative;
-        color: var(--first-color-light);
-        margin-bottom: 1.5rem;
-        transition: .3s
-    }
-
-    .nav_link:hover {
-        color: var(--white-color)
-    }
-
-    .nav_icon {
-        font-size: 1.25rem
-    }
-
-    /* .show {
-        left: 0
-    } */
-
-    .body-pd {
-        padding-left: 0;
-    }
-
-    .active {
-        color: var(--white-color)
-    }
-
-    .active::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 2px;
-        height: 32px;
-        background-color: var(--white-color)
-    }
-
-    .height-100 {
-        height: 100vh
-    }
-    #body-pd{
-        margin: 0;
-    }
-    @media screen and (min-width: 880px) {
-        body {
-            margin: calc(var(--header-height) + 1rem) 0 0 0;
-            padding-left: calc(var(--nav-width) + 2rem)
-        }
-
-        .header {
-
-            height: 0px;
-            padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
-        }
-
-        .header_img {
-            width: 40px;
-            height: 40px
-        }
-
-        .header_img img {
-            width: 45px
-        }
-
-        .l-navbar {
-            left: 0;
-            padding: 1rem 1rem 0 0
-        }
-
-        /* .show {
-            width: calc(var(--nav-width) - 30px)
-        } */
-        .nav_link{
-            text-decoration: none;
-        }
-
-        .body-pd {
-            padding-left: calc(var(--nav-width))
-        }
-
-        .card {
-        width: 350px;
-        padding: 10px;
-        border-radius: 20px;
-        background: #fff;
-        border: none;
-        height: 350px;
-        position: relative
-    }
-
-    .container {
-        height: 100vh
-    }
-
-
-    .mobile-text {
-        color: #989696b8;
-        font-size: 15px
-    }
-
-    .form-control {
-        margin-right: 12px
-    }
-
-    .form-control:focus {
-        color: #495057;
-        background-color: #fff;
-        border-color: #ff8880;
-        outline: 0;
-        box-shadow: none
-    }
-
-    .cursor {
-        cursor: pointer
-    }
-    #nav-bar{
-        min-width: 200px;
-    }
-
-    }
-    a:link{
-        text-decoration: none;
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
-    .card {
-        width: 300px;
-        border: none;
-        border-radius: 15px
-    }
-
-    .adiv {
-        background: #04CB28;
-        border-radius: 15px;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-        font-size: 12px;
-        height: 46px
-    }
-
-    .chat {
-        border: none;
-        background: #E2FFE8;
-        font-size: 10px;
-        border-radius: 20px
-    }
-
-    .bg-white {
-        border: 1px solid #E7E7E9;
-        font-size: 10px;
-        border-radius: 20px
-    }
-
-    .myvideo img {
-        border-radius: 20px
-    }
-
-    .dot {
-        font-weight: bold
-    }
-
-    .form-control {
-        border-radius: 12px;
-        border: 1px solid #F0F0F0;
-        font-size: 8px
-    }
-
-    .form-control:focus {
-        box-shadow: none
-    }
-
-    .form-control::placeholder {
-        font-size: 8px;
-        color: #C4C4C4
-    }
-    .calendarspan span{
-        font-size: 12px;
-    }
-    #alrt{
-        display: none;
-    }
-</style>

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Nexmo;
 use Illuminate\Support\Str;
+use DB;
 
 class CalendarController extends Controller
 {
@@ -31,11 +32,10 @@ class CalendarController extends Controller
         $maps = null;
 
         if(Auth::guard('admins')->user()->hasRole('admin')){
-            $maps = lead::where('appointment_date',Carbon::now()->format('Y-m-d'))->get(); 
-        }else{ 
-            $maps = lead::where('assign_to_id',auth::guard('admins')->user()->id)->where('appointment_date',Carbon::now()->format('Y-m-d'))->get();
+            $maps = DB::table('leads')->where('appointment_date',Carbon::now()->format('Y-m-d'))->select('leads.first_name','leads.last_name','leads.latitude','leads.longitude')->get();
+        }else{
+            $maps = DB::table('leads')->where('appointment_date',Carbon::now()->format('Y-m-d'))->where('assign_to_id',Auth::guard('admins')->user()->id)->select('leads.first_name','leads.last_name','leads.latitude','leads.longitude')->get();
         }
-
         return view('calendar',compact('maps'));
     }
 }

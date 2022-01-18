@@ -16,9 +16,9 @@ class FamilyPerson extends Migration
         //
         Schema::create('family_person',function(Blueprint $table){
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->date('birthdate');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('birthdate')->nullable();
             $table->integer('leads_id'); //Foreign Key
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

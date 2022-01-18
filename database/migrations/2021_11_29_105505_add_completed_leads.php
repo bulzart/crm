@@ -14,7 +14,7 @@ class AddCompletedLeads extends Migration
     public function up()
     {
         Schema::table('leads', function (Blueprint $table) {
-            $table->integer('completed')->default('0');
+           
         });
     }
 

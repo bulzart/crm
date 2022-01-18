@@ -1,1603 +1,1817 @@
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-@extends('template.navbar')
-@section('content')
-<div class="form-group ">
-    <a class="btn btn-info" onclick="openHealth()">KK</a>
-    <a class="btn btn-info" onclick="openCar()">A</a>
-    <a class="btn btn-info" onclick="openFinance()">S</a>
-    <a class="btn btn-info" onclick="openMore()">S</a>
-    <form method="POST" action="{{route('documentform',$id)}}" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="count" id="count">
-        <div style="display: none" id="health">
-            <div>
-            <label>Preinsurer</label>
-                @if(isset($data->preinsurer))
-                    <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}" target="_blank">{{$data->preinsurer}}</a>
 
-                    <input class="form-control" type="file" value="{{$data->preinsurer}}" name="preinsurer">
-                @else
-                <input class="form-control" type="file" name="idnecessary">
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <
+
+  <style>
+    .nav-itemsss a:hover {
+      background-color: #c9cad8;
+      color: #000;
+    }
+
+    .nav-itemsss a:focus {
+      background-color: #474747;
+      color: #fff;
+    }
+
+    @media (max-width: 999.98px) {
+      .nav-texttt {
+        display: none;
+      }
+
+      .navvv {
+        width: 80px !important;
+        text-align: center !important;
+      }
+
+    }
+  </style>
+<form action="{{route('createLeadDataKK',['leadId'=> $lead->lead->id,'personId' => $lead->id])}}" method="post" enctype="multipart/form-data">
+  @csrf
+  <div class="row">
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
+    <ul class="nav nav-pills flex-column mb-auto  nav-itemsss">
+                <li class="nav-item">
+                    <a href="{{route('dashboard')}}" class="nav-link link-dark lh-1" aria-current="page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house"
+                             viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                            <path fill-rule="evenodd"
+                                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Home</span>
+                    </a>
+                </li>
+                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
+                <li>
+                    <a href="{{route('tasks')}}" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-speedometer2" viewBox="0 0 16 16">
+                            <path
+                                d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
+                            <path fill-rule="evenodd"
+                                  d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Tasks</span>
+                    </a>
+                </li>
                 @endif
-            </div>
-            <div>
-
-
-                        <a href="{{\Storage::disk('img')->url(substr($data->preinsurer,4))}}"
-                           target="_blank">{{$data->preinsurer}}</a>
-
-                <label>Id necessary</label>
-                @if(isset($data->idnecessary))
-                    <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}" target="_blank">{{$data->idnecessary}}</a>
-
-
-                    <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
-                @else
-                <input class="form-control" type="file" name="idnecessary">
+                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
+                <li>
+                    <a href="{{route('leads')}}" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3"
+                             viewBox="0 0 16 16">
+                            <path
+                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                            <path
+                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Leads</span>
+                    </a>
+                </li>
                 @endif
-            </div>
-            <div>
-                <label>Notice By</label>
-                @if(isset($data->noticeby))
-                <input class="form-control" type="file" value="{{$data->noticeby}}" name="noticeby">
-                @else
-                <input class="form-control" type="file" name="noticeby">
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+                             viewBox="0 0 16 16">
+                            <path
+                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Finance</span>
+                    </a>
+                </li>
+                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-clipboard-data" viewBox="0 0 16 16">
+                            <path
+                                d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                            <path
+                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                            <path
+                                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Status</span>
+                    </a>
+                </li>
                 @endif
-            </div>
-            <div>
-                <label>Power of attorney</label>
-                @if(isset($data->powerofattorney))
-                <input class="form-control" type="file" name="powerofattorney" value="{{$data->powerofattorney}}">
-                @else
-                    <input class="form-control" type="file" name="powerofattorney">
-                    @endif
-
-            </div>
-        </div>
-
-
-                        <a href="{{\Storage::disk('img')->url(substr($data->idnecessary,4))}}"
-                           target="_blank">{{$data->idnecessary}}</a>
-
-                        <input class="form-control" type="file" value="{{$data->idnecessary}}" name="idnecessary">
-                    @else
-                        <input class="form-control" type="file" name="idnecessary">
-                    @endif
-                </div>
-                <div>
-                    <label>Notice By</label>
-                    @if(isset($data->noticeby))
-                        <input class="form-control" type="file" value="{{$data->noticeby}}" name="noticeby">
-                    @else
-                        <input class="form-control" type="file" name="noticeby">
-                    @endif
-                </div>
-                <div>
-                    <label>Power of attorney</label>
-                    @if(isset($data->powerofattorney))
-                        <input class="form-control" type="file" name="powerofattorney"
-                               value="{{$data->powerofattorney}}">
-                    @else
-                        <input class="form-control" type="file" name="powerofattorney">
-                    @endif
-
-        <br>
-        <div style="display: none" id="car">
-            <input onclick="openCounterOffer()" class="btn btn-primary" type="button" value="Counter">
-            <input onclick="openNewVehicle()" class="btn btn-secondary" type="button" value="New Vehicle">
-            <hr>
-
-
-            <div  id="counteroffer">
-
-            </div>
-
-            <div  id="newVehicle">
-
-
-
-                <div class="" id="counteroffer">
-
-                </div>
-
-                <div id="newVehicle">
-
-
-            </div>
-            <div id="anotherNewVehicle">
-
-
-            </div>
-
-        </div>
-
-
-        <div style="display: none" id="finance">
-            <hr>
-            <h4>3a/3b Request</h4>
-            <div>
-                <label>Nationality</label>
-                <select name="nationalityfinance">
-                 @if(isset($data->nationalityfinance))
-                     <option value="{{$data->nationalityfinance}}" selected>{{$data->nationalityfinance}}</option>
-                     @endif
-                    <option value="afghan">Afghan</option>
-                    <option value="albanian">Albanian</option>
-                    <option value="algerian">Algerian</option>
-                    <option value="american">American</option>
-                    <option value="andorran">Andorran</option>
-                    <option value="angolan">Angolan</option>
-                    <option value="antiguans">Antiguans</option>
-                    <option value="argentinean">Argentinean</option>
-                    <option value="armenian">Armenian</option>
-                    <option value="australian">Australian</option>
-                    <option value="austrian">Austrian</option>
-                    <option value="azerbaijani">Azerbaijani</option>
-                    <option value="bahamian">Bahamian</option>
-                    <option value="bahraini">Bahraini</option>
-                    <option value="bangladeshi">Bangladeshi</option>
-                    <option value="barbadian">Barbadian</option>
-                    <option value="barbudans">Barbudans</option>
-                    <option value="batswana">Batswana</option>
-                    <option value="belarusian">Belarusian</option>
-                    <option value="belgian">Belgian</option>
-                    <option value="belizean">Belizean</option>
-                    <option value="beninese">Beninese</option>
-                    <option value="bhutanese">Bhutanese</option>
-                    <option value="bolivian">Bolivian</option>
-                    <option value="bosnian">Bosnian</option>
-                    <option value="brazilian">Brazilian</option>
-                    <option value="british">British</option>
-                    <option value="bruneian">Bruneian</option>
-                    <option value="bulgarian">Bulgarian</option>
-                    <option value="burkinabe">Burkinabe</option>
-                    <option value="burmese">Burmese</option>
-                    <option value="burundian">Burundian</option>
-                    <option value="cambodian">Cambodian</option>
-                    <option value="cameroonian">Cameroonian</option>
-                    <option value="canadian">Canadian</option>
-                    <option value="cape verdean">Cape Verdean</option>
-                    <option value="central african">Central African</option>
-                    <option value="chadian">Chadian</option>
-                    <option value="chilean">Chilean</option>
-                    <option value="chinese">Chinese</option>
-                    <option value="colombian">Colombian</option>
-                    <option value="comoran">Comoran</option>
-                    <option value="congolese">Congolese</option>
-                    <option value="costa rican">Costa Rican</option>
-                    <option value="croatian">Croatian</option>
-                    <option value="cuban">Cuban</option>
-                    <option value="cypriot">Cypriot</option>
-                    <option value="czech">Czech</option>
-                    <option value="danish">Danish</option>
-                    <option value="djibouti">Djibouti</option>
-                    <option value="dominican">Dominican</option>
-                    <option value="dutch">Dutch</option>
-                    <option value="east timorese">East Timorese</option>
-                    <option value="ecuadorean">Ecuadorean</option>
-                    <option value="egyptian">Egyptian</option>
-                    <option value="emirian">Emirian</option>
-                    <option value="equatorial guinean">Equatorial Guinean</option>
-                    <option value="eritrean">Eritrean</option>
-                    <option value="estonian">Estonian</option>
-                    <option value="ethiopian">Ethiopian</option>
-                    <option value="fijian">Fijian</option>
-                    <option value="filipino">Filipino</option>
-                    <option value="finnish">Finnish</option>
-                    <option value="french">French</option>
-                    <option value="gabonese">Gabonese</option>
-                    <option value="gambian">Gambian</option>
-                    <option value="georgian">Georgian</option>
-                    <option value="german">German</option>
-                    <option value="ghanaian">Ghanaian</option>
-                    <option value="greek">Greek</option>
-                    <option value="grenadian">Grenadian</option>
-                    <option value="guatemalan">Guatemalan</option>
-                    <option value="guinea-bissauan">Guinea-Bissauan</option>
-                    <option value="guinean">Guinean</option>
-                    <option value="guyanese">Guyanese</option>
-                    <option value="haitian">Haitian</option>
-                    <option value="herzegovinian">Herzegovinian</option>
-                    <option value="honduran">Honduran</option>
-                    <option value="hungarian">Hungarian</option>
-                    <option value="icelander">Icelander</option>
-                    <option value="indian">Indian</option>
-                    <option value="indonesian">Indonesian</option>
-                    <option value="iranian">Iranian</option>
-                    <option value="iraqi">Iraqi</option>
-                    <option value="irish">Irish</option>
-                    <option value="israeli">Israeli</option>
-                    <option value="italian">Italian</option>
-                    <option value="ivorian">Ivorian</option>
-                    <option value="jamaican">Jamaican</option>
-                    <option value="japanese">Japanese</option>
-                    <option value="jordanian">Jordanian</option>
-                    <option value="kazakhstani">Kazakhstani</option>
-                    <option value="kenyan">Kenyan</option>
-                    <option value="kittian and nevisian">Kittian and Nevisian</option>
-                    <option value="kuwaiti">Kuwaiti</option>
-                    <option value="kyrgyz">Kyrgyz</option>
-                    <option value="laotian">Laotian</option>
-                    <option value="latvian">Latvian</option>
-                    <option value="lebanese">Lebanese</option>
-                    <option value="liberian">Liberian</option>
-                    <option value="libyan">Libyan</option>
-                    <option value="liechtensteiner">Liechtensteiner</option>
-                    <option value="lithuanian">Lithuanian</option>
-                    <option value="luxembourger">Luxembourger</option>
-                    <option value="macedonian">Macedonian</option>
-                    <option value="malagasy">Malagasy</option>
-                    <option value="malawian">Malawian</option>
-                    <option value="malaysian">Malaysian</option>
-                    <option value="maldivan">Maldivan</option>
-                    <option value="malian">Malian</option>
-                    <option value="maltese">Maltese</option>
-                    <option value="marshallese">Marshallese</option>
-                    <option value="mauritanian">Mauritanian</option>
-                    <option value="mauritian">Mauritian</option>
-                    <option value="mexican">Mexican</option>
-                    <option value="micronesian">Micronesian</option>
-                    <option value="moldovan">Moldovan</option>
-                    <option value="monacan">Monacan</option>
-                    <option value="mongolian">Mongolian</option>
-                    <option value="moroccan">Moroccan</option>
-                    <option value="mosotho">Mosotho</option>
-                    <option value="motswana">Motswana</option>
-                    <option value="mozambican">Mozambican</option>
-                    <option value="namibian">Namibian</option>
-                    <option value="nauruan">Nauruan</option>
-                    <option value="nepalese">Nepalese</option>
-                    <option value="new zealander">New Zealander</option>
-                    <option value="ni-vanuatu">Ni-Vanuatu</option>
-                    <option value="nicaraguan">Nicaraguan</option>
-                    <option value="nigerien">Nigerien</option>
-                    <option value="north korean">North Korean</option>
-                    <option value="northern irish">Northern Irish</option>
-                    <option value="norwegian">Norwegian</option>
-                    <option value="omani">Omani</option>
-                    <option value="pakistani">Pakistani</option>
-                    <option value="palauan">Palauan</option>
-                    <option value="panamanian">Panamanian</option>
-                    <option value="papua new guinean">Papua New Guinean</option>
-                    <option value="paraguayan">Paraguayan</option>
-                    <option value="peruvian">Peruvian</option>
-                    <option value="polish">Polish</option>
-                    <option value="portuguese">Portuguese</option>
-                    <option value="qatari">Qatari</option>
-                    <option value="romanian">Romanian</option>
-                    <option value="russian">Russian</option>
-                    <option value="rwandan">Rwandan</option>
-                    <option value="saint lucian">Saint Lucian</option>
-                    <option value="salvadoran">Salvadoran</option>
-                    <option value="samoan">Samoan</option>
-                    <option value="san marinese">San Marinese</option>
-                    <option value="sao tomean">Sao Tomean</option>
-                    <option value="saudi">Saudi</option>
-                    <option value="scottish">Scottish</option>
-                    <option value="senegalese">Senegalese</option>
-                    <option value="serbian">Serbian</option>
-                    <option value="seychellois">Seychellois</option>
-                    <option value="sierra leonean">Sierra Leonean</option>
-                    <option value="singaporean">Singaporean</option>
-                    <option value="slovakian">Slovakian</option>
-                    <option value="slovenian">Slovenian</option>
-                    <option value="solomon islander">Solomon Islander</option>
-                    <option value="somali">Somali</option>
-                    <option value="south african">South African</option>
-                    <option value="south korean">South Korean</option>
-                    <option value="spanish">Spanish</option>
-                    <option value="sri lankan">Sri Lankan</option>
-                    <option value="sudanese">Sudanese</option>
-                    <option value="surinamer">Surinamer</option>
-                    <option value="swazi">Swazi</option>
-                    <option value="swedish">Swedish</option>
-                    <option value="swiss">Swiss</option>
-                    <option value="syrian">Syrian</option>
-                    <option value="taiwanese">Taiwanese</option>
-                    <option value="tajik">Tajik</option>
-                    <option value="tanzanian">Tanzanian</option>
-                    <option value="thai">Thai</option>
-                    <option value="togolese">Togolese</option>
-                    <option value="tongan">Tongan</option>
-                    <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
-                    <option value="tunisian">Tunisian</option>
-                    <option value="turkish">Turkish</option>
-                    <option value="tuvaluan">Tuvaluan</option>
-                    <option value="ugandan">Ugandan</option>
-                    <option value="ukrainian">Ukrainian</option>
-                    <option value="uruguayan">Uruguayan</option>
-                    <option value="uzbekistani">Uzbekistani</option>
-                    <option value="venezuelan">Venezuelan</option>
-                    <option value="vietnamese">Vietnamese</option>
-                    <option value="welsh">Welsh</option>
-                    <option value="yemenite">Yemenite</option>
-                    <option value="zambian">Zambian</option>
-                    <option value="zimbabwean">Zimbabwean</option>
-                </select>
-            </div>
-            <div>
-                <label>Residence Permit</label>
-                @if(isset($data->residencepermit))
-                <input type="text" class="form-control" name="residencepermit" value="{{$data->residencepermit }}">
-                @else
-                <input type="text" class="form-control" name="residencepermit">
+                @if(Auth::guard('admins')->check())
+                <li>
+                    <a href="{{route('costumers')}}" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd"
+                                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Costumers</span>
+                    </a>
+                </li>
                 @endif
-            </div>
-            <div>
-                <label>Phone Number: </label>
-                <div class="d-inline">
-
-                    <select name="countryCode">
-
-                        <option data-countryCode="GB" value="44" selected>UK (+44)</option>
-                        <option data-countryCode="US" value="1">USA (+1)</option>
-                        <optgroup label="Other countries">
-                            <option data-countryCode="DZ" value="213">Algeria (+213)</option>
-                            <option data-countryCode="AD" value="376">Andorra (+376)</option>
-                            <option data-countryCode="AO" value="244">Angola (+244)</option>
-                            <option data-countryCode="AI" value="1264">Anguilla (+1264)</option>
-                            <option data-countryCode="AG" value="1268">Antigua &amp; Barbuda (+1268)</option>
-                            <option data-countryCode="AR" value="54">Argentina (+54)</option>
-                            <option data-countryCode="AM" value="374">Armenia (+374)</option>
-                            <option data-countryCode="AW" value="297">Aruba (+297)</option>
-                            <option data-countryCode="AU" value="61">Australia (+61)</option>
-                            <option data-countryCode="AT" value="43">Austria (+43)</option>
-                            <option data-countryCode="AZ" value="994">Azerbaijan (+994)</option>
-                            <option data-countryCode="BS" value="1242">Bahamas (+1242)</option>
-                            <option data-countryCode="BH" value="973">Bahrain (+973)</option>
-                            <option data-countryCode="BD" value="880">Bangladesh (+880)</option>
-                            <option data-countryCode="BB" value="1246">Barbados (+1246)</option>
-                            <option data-countryCode="BY" value="375">Belarus (+375)</option>
-                            <option data-countryCode="BE" value="32">Belgium (+32)</option>
-                            <option data-countryCode="BZ" value="501">Belize (+501)</option>
-                            <option data-countryCode="BJ" value="229">Benin (+229)</option>
-                            <option data-countryCode="BM" value="1441">Bermuda (+1441)</option>
-                            <option data-countryCode="BT" value="975">Bhutan (+975)</option>
-                            <option data-countryCode="BO" value="591">Bolivia (+591)</option>
-                            <option data-countryCode="BA" value="387">Bosnia Herzegovina (+387)</option>
-                            <option data-countryCode="BW" value="267">Botswana (+267)</option>
-                            <option data-countryCode="BR" value="55">Brazil (+55)</option>
-                            <option data-countryCode="BN" value="673">Brunei (+673)</option>
-                            <option data-countryCode="BG" value="359">Bulgaria (+359)</option>
-                            <option data-countryCode="BF" value="226">Burkina Faso (+226)</option>
-                            <option data-countryCode="BI" value="257">Burundi (+257)</option>
-                            <option data-countryCode="KH" value="855">Cambodia (+855)</option>
-                            <option data-countryCode="CM" value="237">Cameroon (+237)</option>
-                            <option data-countryCode="CA" value="1">Canada (+1)</option>
-                            <option data-countryCode="CV" value="238">Cape Verde Islands (+238)</option>
-                            <option data-countryCode="KY" value="1345">Cayman Islands (+1345)</option>
-                            <option data-countryCode="CF" value="236">Central African Republic (+236)</option>
-                            <option data-countryCode="CL" value="56">Chile (+56)</option>
-                            <option data-countryCode="CN" value="86">China (+86)</option>
-                            <option data-countryCode="CO" value="57">Colombia (+57)</option>
-                            <option data-countryCode="KM" value="269">Comoros (+269)</option>
-                            <option data-countryCode="CG" value="242">Congo (+242)</option>
-                            <option data-countryCode="CK" value="682">Cook Islands (+682)</option>
-                            <option data-countryCode="CR" value="506">Costa Rica (+506)</option>
-                            <option data-countryCode="HR" value="385">Croatia (+385)</option>
-                            <option data-countryCode="CU" value="53">Cuba (+53)</option>
-                            <option data-countryCode="CY" value="90392">Cyprus North (+90392)</option>
-                            <option data-countryCode="CY" value="357">Cyprus South (+357)</option>
-                            <option data-countryCode="CZ" value="42">Czech Republic (+42)</option>
-                            <option data-countryCode="DK" value="45">Denmark (+45)</option>
-                            <option data-countryCode="DJ" value="253">Djibouti (+253)</option>
-                            <option data-countryCode="DM" value="1809">Dominica (+1809)</option>
-                            <option data-countryCode="DO" value="1809">Dominican Republic (+1809)</option>
-                            <option data-countryCode="EC" value="593">Ecuador (+593)</option>
-                            <option data-countryCode="EG" value="20">Egypt (+20)</option>
-                            <option data-countryCode="SV" value="503">El Salvador (+503)</option>
-                            <option data-countryCode="GQ" value="240">Equatorial Guinea (+240)</option>
-                            <option data-countryCode="ER" value="291">Eritrea (+291)</option>
-                            <option data-countryCode="EE" value="372">Estonia (+372)</option>
-                            <option data-countryCode="ET" value="251">Ethiopia (+251)</option>
-                            <option data-countryCode="FK" value="500">Falkland Islands (+500)</option>
-                            <option data-countryCode="FO" value="298">Faroe Islands (+298)</option>
-                            <option data-countryCode="FJ" value="679">Fiji (+679)</option>
-                            <option data-countryCode="FI" value="358">Finland (+358)</option>
-                            <option data-countryCode="FR" value="33">France (+33)</option>
-                            <option data-countryCode="GF" value="594">French Guiana (+594)</option>
-                            <option data-countryCode="PF" value="689">French Polynesia (+689)</option>
-                            <option data-countryCode="GA" value="241">Gabon (+241)</option>
-                            <option data-countryCode="GM" value="220">Gambia (+220)</option>
-                            <option data-countryCode="GE" value="7880">Georgia (+7880)</option>
-                            <option data-countryCode="DE" value="49">Germany (+49)</option>
-                            <option data-countryCode="GH" value="233">Ghana (+233)</option>
-                            <option data-countryCode="GI" value="350">Gibraltar (+350)</option>
-                            <option data-countryCode="GR" value="30">Greece (+30)</option>
-                            <option data-countryCode="GL" value="299">Greenland (+299)</option>
-                            <option data-countryCode="GD" value="1473">Grenada (+1473)</option>
-                            <option data-countryCode="GP" value="590">Guadeloupe (+590)</option>
-                            <option data-countryCode="GU" value="671">Guam (+671)</option>
-                            <option data-countryCode="GT" value="502">Guatemala (+502)</option>
-                            <option data-countryCode="GN" value="224">Guinea (+224)</option>
-                            <option data-countryCode="GW" value="245">Guinea - Bissau (+245)</option>
-                            <option data-countryCode="GY" value="592">Guyana (+592)</option>
-                            <option data-countryCode="HT" value="509">Haiti (+509)</option>
-                            <option data-countryCode="HN" value="504">Honduras (+504)</option>
-                            <option data-countryCode="HK" value="852">Hong Kong (+852)</option>
-                            <option data-countryCode="HU" value="36">Hungary (+36)</option>
-                            <option data-countryCode="IS" value="354">Iceland (+354)</option>
-                            <option data-countryCode="IN" value="91">India (+91)</option>
-                            <option data-countryCode="ID" value="62">Indonesia (+62)</option>
-                            <option data-countryCode="IR" value="98">Iran (+98)</option>
-                            <option data-countryCode="IQ" value="964">Iraq (+964)</option>
-                            <option data-countryCode="IE" value="353">Ireland (+353)</option>
-                            <option data-countryCode="IL" value="972">Israel (+972)</option>
-                            <option data-countryCode="IT" value="39">Italy (+39)</option>
-                            <option data-countryCode="JM" value="1876">Jamaica (+1876)</option>
-                            <option data-countryCode="JP" value="81">Japan (+81)</option>
-                            <option data-countryCode="JO" value="962">Jordan (+962)</option>
-                            <option data-countryCode="KZ" value="7">Kazakhstan (+7)</option>
-                            <option data-countryCode="KE" value="254">Kenya (+254)</option>
-                            <option data-countryCode="KI" value="686">Kiribati (+686)</option>
-                            <option data-countryCode="KP" value="850">Korea North (+850)</option>
-                            <option data-countryCode="KR" value="82">Korea South (+82)</option>
-                            <option data-countryCode="KW" value="965">Kuwait (+965)</option>
-                            <option data-countryCode="KG" value="996">Kyrgyzstan (+996)</option>
-                            <option data-countryCode="LA" value="856">Laos (+856)</option>
-                            <option data-countryCode="LV" value="371">Latvia (+371)</option>
-                            <option data-countryCode="LB" value="961">Lebanon (+961)</option>
-                            <option data-countryCode="LS" value="266">Lesotho (+266)</option>
-                            <option data-countryCode="LR" value="231">Liberia (+231)</option>
-                            <option data-countryCode="LY" value="218">Libya (+218)</option>
-                            <option data-countryCode="LI" value="417">Liechtenstein (+417)</option>
-                            <option data-countryCode="LT" value="370">Lithuania (+370)</option>
-                            <option data-countryCode="LU" value="352">Luxembourg (+352)</option>
-                            <option data-countryCode="MO" value="853">Macao (+853)</option>
-                            <option data-countryCode="MK" value="389">Macedonia (+389)</option>
-                            <option data-countryCode="MG" value="261">Madagascar (+261)</option>
-                            <option data-countryCode="MW" value="265">Malawi (+265)</option>
-                            <option data-countryCode="MY" value="60">Malaysia (+60)</option>
-                            <option data-countryCode="MV" value="960">Maldives (+960)</option>
-                            <option data-countryCode="ML" value="223">Mali (+223)</option>
-                            <option data-countryCode="MT" value="356">Malta (+356)</option>
-                            <option data-countryCode="MH" value="692">Marshall Islands (+692)</option>
-                            <option data-countryCode="MQ" value="596">Martinique (+596)</option>
-                            <option data-countryCode="MR" value="222">Mauritania (+222)</option>
-                            <option data-countryCode="YT" value="269">Mayotte (+269)</option>
-                            <option data-countryCode="MX" value="52">Mexico (+52)</option>
-                            <option data-countryCode="FM" value="691">Micronesia (+691)</option>
-                            <option data-countryCode="MD" value="373">Moldova (+373)</option>
-                            <option data-countryCode="MC" value="377">Monaco (+377)</option>
-                            <option data-countryCode="MN" value="976">Mongolia (+976)</option>
-                            <option data-countryCode="MS" value="1664">Montserrat (+1664)</option>
-                            <option data-countryCode="MA" value="212">Morocco (+212)</option>
-                            <option data-countryCode="MZ" value="258">Mozambique (+258)</option>
-                            <option data-countryCode="MN" value="95">Myanmar (+95)</option>
-                            <option data-countryCode="NA" value="264">Namibia (+264)</option>
-                            <option data-countryCode="NR" value="674">Nauru (+674)</option>
-                            <option data-countryCode="NP" value="977">Nepal (+977)</option>
-                            <option data-countryCode="NL" value="31">Netherlands (+31)</option>
-                            <option data-countryCode="NC" value="687">New Caledonia (+687)</option>
-                            <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
-                            <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
-                            <option data-countryCode="NE" value="227">Niger (+227)</option>
-                            <option data-countryCode="NG" value="234">Nigeria (+234)</option>
-                            <option data-countryCode="NU" value="683">Niue (+683)</option>
-                            <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
-                            <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
-                            <option data-countryCode="NO" value="47">Norway (+47)</option>
-                            <option data-countryCode="OM" value="968">Oman (+968)</option>
-                            <option data-countryCode="PW" value="680">Palau (+680)</option>
-                            <option data-countryCode="PA" value="507">Panama (+507)</option>
-                            <option data-countryCode="PG" value="675">Papua New Guinea (+675)</option>
-                            <option data-countryCode="PY" value="595">Paraguay (+595)</option>
-                            <option data-countryCode="PE" value="51">Peru (+51)</option>
-                            <option data-countryCode="PH" value="63">Philippines (+63)</option>
-                            <option data-countryCode="PL" value="48">Poland (+48)</option>
-                            <option data-countryCode="PT" value="351">Portugal (+351)</option>
-                            <option data-countryCode="PR" value="1787">Puerto Rico (+1787)</option>
-                            <option data-countryCode="QA" value="974">Qatar (+974)</option>
-                            <option data-countryCode="RE" value="262">Reunion (+262)</option>
-                            <option data-countryCode="RO" value="40">Romania (+40)</option>
-                            <option data-countryCode="RU" value="7">Russia (+7)</option>
-                            <option data-countryCode="RW" value="250">Rwanda (+250)</option>
-                            <option data-countryCode="SM" value="378">San Marino (+378)</option>
-                            <option data-countryCode="ST" value="239">Sao Tome &amp; Principe (+239)</option>
-                            <option data-countryCode="SA" value="966">Saudi Arabia (+966)</option>
-                            <option data-countryCode="SN" value="221">Senegal (+221)</option>
-                            <option data-countryCode="CS" value="381">Serbia (+381)</option>
-                            <option data-countryCode="SC" value="248">Seychelles (+248)</option>
-                            <option data-countryCode="SL" value="232">Sierra Leone (+232)</option>
-                            <option data-countryCode="SG" value="65">Singapore (+65)</option>
-                            <option data-countryCode="SK" value="421">Slovak Republic (+421)</option>
-                            <option data-countryCode="SI" value="386">Slovenia (+386)</option>
-                            <option data-countryCode="SB" value="677">Solomon Islands (+677)</option>
-                            <option data-countryCode="SO" value="252">Somalia (+252)</option>
-                            <option data-countryCode="ZA" value="27">South Africa (+27)</option>
-                            <option data-countryCode="ES" value="34">Spain (+34)</option>
-                            <option data-countryCode="LK" value="94">Sri Lanka (+94)</option>
-                            <option data-countryCode="SH" value="290">St. Helena (+290)</option>
-                            <option data-countryCode="KN" value="1869">St. Kitts (+1869)</option>
-                            <option data-countryCode="SC" value="1758">St. Lucia (+1758)</option>
-                            <option data-countryCode="SD" value="249">Sudan (+249)</option>
-                            <option data-countryCode="SR" value="597">Suriname (+597)</option>
-                            <option data-countryCode="SZ" value="268">Swaziland (+268)</option>
-                            <option data-countryCode="SE" value="46">Sweden (+46)</option>
-                            <option data-countryCode="CH" value="41">Switzerland (+41)</option>
-                            <option data-countryCode="SI" value="963">Syria (+963)</option>
-                            <option data-countryCode="TW" value="886">Taiwan (+886)</option>
-                            <option data-countryCode="TJ" value="7">Tajikstan (+7)</option>
-                            <option data-countryCode="TH" value="66">Thailand (+66)</option>
-                            <option data-countryCode="TG" value="228">Togo (+228)</option>
-                            <option data-countryCode="TO" value="676">Tonga (+676)</option>
-                            <option data-countryCode="TT" value="1868">Trinidad &amp; Tobago (+1868)</option>
-                            <option data-countryCode="TN" value="216">Tunisia (+216)</option>
-                            <option data-countryCode="TR" value="90">Turkey (+90)</option>
-                            <option data-countryCode="TM" value="7">Turkmenistan (+7)</option>
-                            <option data-countryCode="TM" value="993">Turkmenistan (+993)</option>
-                            <option data-countryCode="TC" value="1649">Turks &amp; Caicos Islands (+1649)</option>
-                            <option data-countryCode="TV" value="688">Tuvalu (+688)</option>
-                            <option data-countryCode="UG" value="256">Uganda (+256)</option>
-                            <option data-countryCode="GB" value="44">UK (+44)</option>
-                            <option data-countryCode="UA" value="380">Ukraine (+380)</option>
-                            <option data-countryCode="AE" value="971">United Arab Emirates (+971)</option>
-                            <option data-countryCode="UY" value="598">Uruguay (+598)</option>
-                            <option data-countryCode="US" value="1">USA (+1)</option>
-                            <option data-countryCode="UZ" value="7">Uzbekistan (+7)</option>
-                            <option data-countryCode="VU" value="678">Vanuatu (+678)</option>
-                            <option data-countryCode="VA" value="379">Vatican City (+379)</option>
-                            <option data-countryCode="VE" value="58">Venezuela (+58)</option>
-                            <option data-countryCode="VN" value="84">Vietnam (+84)</option>
-                            <option data-countryCode="VG" value="84">Virgin Islands - British (+1284)</option>
-                            <option data-countryCode="VI" value="84">Virgin Islands - US (+1340)</option>
-                            <option data-countryCode="WF" value="681">Wallis &amp; Futuna (+681)</option>
-                            <option data-countryCode="YE" value="969">Yemen (North)(+969)</option>
-                            <option data-countryCode="YE" value="967">Yemen (South)(+967)</option>
-                            <option data-countryCode="ZM" value="260">Zambia (+260)</option>
-                            <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
-                        </optgroup>
-                    </select>
-                    @if(isset($data->phone))
-                    <input type="number" name="phonenumber" value="{{$data->phone}}">
-                    @else
-                    <input type="number" name="phonenumber">
+                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash-coin"
+                             viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
+                            <path
+                                d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
+                            <path
+                                d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
+                            <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Deposit</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square"
+                             viewBox="0 0 16 16">
+                            <path
+                                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Cancelations</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
+                <li>
+                    <a href="{{route('calendar')}}" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-calendar-check" viewBox="0 0 16 16">
+                            <path
+                                d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                            <path
+                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Calendar</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
+                <li>
+                    <a href="{{route('dates')}}" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-calendar-date" viewBox="0 0 16 16">
+                            <path
+                                d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z" />
+                            <path
+                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Dates</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment'))
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            <path fill-rule="evenodd"
+                                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Employees</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
+                <li>
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            <path fill-rule="evenodd"
+                                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Commisions</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <li class="">
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
+                        </svg>
+                        <span class="ps-2 nav-texttt">Prov.system</span>
+                    </a>
+                </li>
+                @endif
+                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                <li class="">
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
+                            <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                        </svg>
+                        <span class="ps-2 nav-texttt">Statistics</span>
+                    </a>
+                </li>
                     @endif
-                    
-                </div>
-                <div>
-                    <label>Email: </label>
-                    @if(isset($data->email))
-                    <input type="email" name="email" class="form-contorl" value="{{$data->email}}">
-                    @else
-                    <input type="email" name="email" class="form-contorl">
+                @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
+                <li class="">
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wallet2" viewBox="0 0 16 16">
+                            <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                        </svg>
+                        <span class="ps-2 nav-texttt">Trust</span>
+                    </a>
+                </li>
                     @endif
-                    
-                </div>
-                <div>
-                    <label>Marital Status</label>
-                    <select name="martialstatus">
-                            @if(isset($data->martialstatus))
-                            <option selected value="{{$data->martialstatus}}">{{$data->martialstatus}}</option>
-                            @endif
-                        
-                        <option>Married</option>
-                        <option>Widowed</option>
-                        <option>Separated</option>
-                        <option>Divorced</option>
-                        <option>Single</option>
-                    </select>
-                </div>
-
-                <div id="anotherNewVehicle">
-
-
-                    <div>
-                        <label>Employment Relationship: </label>
-                        <select name="employmentrelationship">
-                            @if(isset($data->employmentrelationship))
-                                <option selected
-                                        value="{{$data->employmentrelationship}}">{{$data->employmentrelationship}}</option> @endif
-                            <option>Coworkers</option>
-                            <option>Team Members</option>
-                            <option>Work Friends</option>
-                            <option>Manager/Direct Report</option>
-                            <option>Office Spouse</option>
-                            <option>Mentor/Mentee</option>
-                            <option>Life Friends</option>
-                        </select>
-                    </div>
-                    <div>
-                        @if(isset($data->job))
-                            <label>Job: </label>
-                            <input type="text" name="job" class="form-control" value="{{$data->job}}">
-                        @else
-                            <input type="text" name="job" class="form-control">
-                        @endif
-
-                    </div>
-
-                </div>
-
-
-                <div style="display: none" id="finance">
-                    <hr>
-                    <h4>3a/3b Request</h4>
-                    <div>
-
-                        <label>Nationality</label>
-                        <select name="nationalityfinance">
-
-                            @if(isset($data->nationalityfinance))
-                                <option value="{{$data->nationalityfinance}}"
-                                        selected>{{$data->nationalityfinance}}</option>@endif
-                            <option value="afghan">Afghan</option>
-                            <option value="albanian">Albanian</option>
-                            <option value="algerian">Algerian</option>
-                            <option value="american">American</option>
-                            <option value="andorran">Andorran</option>
-                            <option value="angolan">Angolan</option>
-                            <option value="antiguans">Antiguans</option>
-                            <option value="argentinean">Argentinean</option>
-                            <option value="armenian">Armenian</option>
-                            <option value="australian">Australian</option>
-                            <option value="austrian">Austrian</option>
-                            <option value="azerbaijani">Azerbaijani</option>
-                            <option value="bahamian">Bahamian</option>
-                            <option value="bahraini">Bahraini</option>
-                            <option value="bangladeshi">Bangladeshi</option>
-                            <option value="barbadian">Barbadian</option>
-                            <option value="barbudans">Barbudans</option>
-                            <option value="batswana">Batswana</option>
-                            <option value="belarusian">Belarusian</option>
-                            <option value="belgian">Belgian</option>
-                            <option value="belizean">Belizean</option>
-                            <option value="beninese">Beninese</option>
-                            <option value="bhutanese">Bhutanese</option>
-                            <option value="bolivian">Bolivian</option>
-                            <option value="bosnian">Bosnian</option>
-                            <option value="brazilian">Brazilian</option>
-                            <option value="british">British</option>
-                            <option value="bruneian">Bruneian</option>
-                            <option value="bulgarian">Bulgarian</option>
-                            <option value="burkinabe">Burkinabe</option>
-                            <option value="burmese">Burmese</option>
-                            <option value="burundian">Burundian</option>
-                            <option value="cambodian">Cambodian</option>
-                            <option value="cameroonian">Cameroonian</option>
-                            <option value="canadian">Canadian</option>
-                            <option value="cape verdean">Cape Verdean</option>
-                            <option value="central african">Central African</option>
-                            <option value="chadian">Chadian</option>
-                            <option value="chilean">Chilean</option>
-                            <option value="chinese">Chinese</option>
-                            <option value="colombian">Colombian</option>
-                            <option value="comoran">Comoran</option>
-                            <option value="congolese">Congolese</option>
-                            <option value="costa rican">Costa Rican</option>
-                            <option value="croatian">Croatian</option>
-                            <option value="cuban">Cuban</option>
-                            <option value="cypriot">Cypriot</option>
-                            <option value="czech">Czech</option>
-                            <option value="danish">Danish</option>
-                            <option value="djibouti">Djibouti</option>
-                            <option value="dominican">Dominican</option>
-                            <option value="dutch">Dutch</option>
-                            <option value="east timorese">East Timorese</option>
-                            <option value="ecuadorean">Ecuadorean</option>
-                            <option value="egyptian">Egyptian</option>
-                            <option value="emirian">Emirian</option>
-                            <option value="equatorial guinean">Equatorial Guinean</option>
-                            <option value="eritrean">Eritrean</option>
-                            <option value="estonian">Estonian</option>
-                            <option value="ethiopian">Ethiopian</option>
-                            <option value="fijian">Fijian</option>
-                            <option value="filipino">Filipino</option>
-                            <option value="finnish">Finnish</option>
-                            <option value="french">French</option>
-                            <option value="gabonese">Gabonese</option>
-                            <option value="gambian">Gambian</option>
-                            <option value="georgian">Georgian</option>
-                            <option value="german">German</option>
-                            <option value="ghanaian">Ghanaian</option>
-                            <option value="greek">Greek</option>
-                            <option value="grenadian">Grenadian</option>
-                            <option value="guatemalan">Guatemalan</option>
-                            <option value="guinea-bissauan">Guinea-Bissauan</option>
-                            <option value="guinean">Guinean</option>
-                            <option value="guyanese">Guyanese</option>
-                            <option value="haitian">Haitian</option>
-                            <option value="herzegovinian">Herzegovinian</option>
-                            <option value="honduran">Honduran</option>
-                            <option value="hungarian">Hungarian</option>
-                            <option value="icelander">Icelander</option>
-                            <option value="indian">Indian</option>
-                            <option value="indonesian">Indonesian</option>
-                            <option value="iranian">Iranian</option>
-                            <option value="iraqi">Iraqi</option>
-                            <option value="irish">Irish</option>
-                            <option value="israeli">Israeli</option>
-                            <option value="italian">Italian</option>
-                            <option value="ivorian">Ivorian</option>
-                            <option value="jamaican">Jamaican</option>
-                            <option value="japanese">Japanese</option>
-                            <option value="jordanian">Jordanian</option>
-                            <option value="kazakhstani">Kazakhstani</option>
-                            <option value="kenyan">Kenyan</option>
-                            <option value="kittian and nevisian">Kittian and Nevisian</option>
-                            <option value="kuwaiti">Kuwaiti</option>
-                            <option value="kyrgyz">Kyrgyz</option>
-                            <option value="laotian">Laotian</option>
-                            <option value="latvian">Latvian</option>
-                            <option value="lebanese">Lebanese</option>
-                            <option value="liberian">Liberian</option>
-                            <option value="libyan">Libyan</option>
-                            <option value="liechtensteiner">Liechtensteiner</option>
-                            <option value="lithuanian">Lithuanian</option>
-                            <option value="luxembourger">Luxembourger</option>
-                            <option value="macedonian">Macedonian</option>
-                            <option value="malagasy">Malagasy</option>
-                            <option value="malawian">Malawian</option>
-                            <option value="malaysian">Malaysian</option>
-                            <option value="maldivan">Maldivan</option>
-                            <option value="malian">Malian</option>
-                            <option value="maltese">Maltese</option>
-                            <option value="marshallese">Marshallese</option>
-                            <option value="mauritanian">Mauritanian</option>
-                            <option value="mauritian">Mauritian</option>
-                            <option value="mexican">Mexican</option>
-                            <option value="micronesian">Micronesian</option>
-                            <option value="moldovan">Moldovan</option>
-                            <option value="monacan">Monacan</option>
-                            <option value="mongolian">Mongolian</option>
-                            <option value="moroccan">Moroccan</option>
-                            <option value="mosotho">Mosotho</option>
-                            <option value="motswana">Motswana</option>
-                            <option value="mozambican">Mozambican</option>
-                            <option value="namibian">Namibian</option>
-                            <option value="nauruan">Nauruan</option>
-                            <option value="nepalese">Nepalese</option>
-                            <option value="new zealander">New Zealander</option>
-                            <option value="ni-vanuatu">Ni-Vanuatu</option>
-                            <option value="nicaraguan">Nicaraguan</option>
-                            <option value="nigerien">Nigerien</option>
-                            <option value="north korean">North Korean</option>
-                            <option value="northern irish">Northern Irish</option>
-                            <option value="norwegian">Norwegian</option>
-                            <option value="omani">Omani</option>
-                            <option value="pakistani">Pakistani</option>
-                            <option value="palauan">Palauan</option>
-                            <option value="panamanian">Panamanian</option>
-                            <option value="papua new guinean">Papua New Guinean</option>
-                            <option value="paraguayan">Paraguayan</option>
-                            <option value="peruvian">Peruvian</option>
-                            <option value="polish">Polish</option>
-                            <option value="portuguese">Portuguese</option>
-                            <option value="qatari">Qatari</option>
-                            <option value="romanian">Romanian</option>
-                            <option value="russian">Russian</option>
-                            <option value="rwandan">Rwandan</option>
-                            <option value="saint lucian">Saint Lucian</option>
-                            <option value="salvadoran">Salvadoran</option>
-                            <option value="samoan">Samoan</option>
-                            <option value="san marinese">San Marinese</option>
-                            <option value="sao tomean">Sao Tomean</option>
-                            <option value="saudi">Saudi</option>
-                            <option value="scottish">Scottish</option>
-                            <option value="senegalese">Senegalese</option>
-                            <option value="serbian">Serbian</option>
-                            <option value="seychellois">Seychellois</option>
-                            <option value="sierra leonean">Sierra Leonean</option>
-                            <option value="singaporean">Singaporean</option>
-                            <option value="slovakian">Slovakian</option>
-                            <option value="slovenian">Slovenian</option>
-                            <option value="solomon islander">Solomon Islander</option>
-                            <option value="somali">Somali</option>
-                            <option value="south african">South African</option>
-                            <option value="south korean">South Korean</option>
-                            <option value="spanish">Spanish</option>
-                            <option value="sri lankan">Sri Lankan</option>
-                            <option value="sudanese">Sudanese</option>
-                            <option value="surinamer">Surinamer</option>
-                            <option value="swazi">Swazi</option>
-                            <option value="swedish">Swedish</option>
-                            <option value="swiss">Swiss</option>
-                            <option value="syrian">Syrian</option>
-                            <option value="taiwanese">Taiwanese</option>
-                            <option value="tajik">Tajik</option>
-                            <option value="tanzanian">Tanzanian</option>
-                            <option value="thai">Thai</option>
-                            <option value="togolese">Togolese</option>
-                            <option value="tongan">Tongan</option>
-                            <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
-                            <option value="tunisian">Tunisian</option>
-                            <option value="turkish">Turkish</option>
-                            <option value="tuvaluan">Tuvaluan</option>
-                            <option value="ugandan">Ugandan</option>
-                            <option value="ukrainian">Ukrainian</option>
-                            <option value="uruguayan">Uruguayan</option>
-                            <option value="uzbekistani">Uzbekistani</option>
-                            <option value="venezuelan">Venezuelan</option>
-                            <option value="vietnamese">Vietnamese</option>
-                            <option value="welsh">Welsh</option>
-                            <option value="yemenite">Yemenite</option>
-                            <option value="zambian">Zambian</option>
-                            <option value="zimbabwean">Zimbabwean</option>
-
-                            <label>Payment Rhythm</label>
-                            <select name="paymentrhythm">
-                                @if(isset($data->paymentrhythm))
-                                    <option selected
-                                            value="{{$data->paymentrhythm}}">{{$data->paymentrhythm}}</option>@endif
-                                <option>Weekly</option>
-                                <option>Mounth</option>
-                                <option>Year</option>
-
-                            </select>
-                    </div>
-                    <div>
-                        <label>Residence Permit</label>
-                        @if(isset($data->residencepermit))
-                            <input type="text" class="form-control" name="residencepermit"
-                                   value="{{$data->residencepermit }}">
-                        @else
-                            <input type="text" class="form-control" name="residencepermit">
-                        @endif
-
-                    </div>
-                    <div>
-                        <label>Phone Number: </label>
-                        <div class="d-inline">
-
-                            <select name="countryCode">
-
-                                <option data-countryCode="GB" value="44" selected>UK (+44)</option>
-                                <option data-countryCode="US" value="1">USA (+1)</option>
-                                <optgroup label="Other countries">
-                                    <option data-countryCode="DZ" value="213">Algeria (+213)</option>
-                                    <option data-countryCode="AD" value="376">Andorra (+376)</option>
-                                    <option data-countryCode="AO" value="244">Angola (+244)</option>
-                                    <option data-countryCode="AI" value="1264">Anguilla (+1264)</option>
-                                    <option data-countryCode="AG" value="1268">Antigua &amp; Barbuda (+1268)</option>
-                                    <option data-countryCode="AR" value="54">Argentina (+54)</option>
-                                    <option data-countryCode="AM" value="374">Armenia (+374)</option>
-                                    <option data-countryCode="AW" value="297">Aruba (+297)</option>
-                                    <option data-countryCode="AU" value="61">Australia (+61)</option>
-                                    <option data-countryCode="AT" value="43">Austria (+43)</option>
-                                    <option data-countryCode="AZ" value="994">Azerbaijan (+994)</option>
-                                    <option data-countryCode="BS" value="1242">Bahamas (+1242)</option>
-                                    <option data-countryCode="BH" value="973">Bahrain (+973)</option>
-                                    <option data-countryCode="BD" value="880">Bangladesh (+880)</option>
-                                    <option data-countryCode="BB" value="1246">Barbados (+1246)</option>
-                                    <option data-countryCode="BY" value="375">Belarus (+375)</option>
-                                    <option data-countryCode="BE" value="32">Belgium (+32)</option>
-                                    <option data-countryCode="BZ" value="501">Belize (+501)</option>
-                                    <option data-countryCode="BJ" value="229">Benin (+229)</option>
-                                    <option data-countryCode="BM" value="1441">Bermuda (+1441)</option>
-                                    <option data-countryCode="BT" value="975">Bhutan (+975)</option>
-                                    <option data-countryCode="BO" value="591">Bolivia (+591)</option>
-                                    <option data-countryCode="BA" value="387">Bosnia Herzegovina (+387)</option>
-                                    <option data-countryCode="BW" value="267">Botswana (+267)</option>
-                                    <option data-countryCode="BR" value="55">Brazil (+55)</option>
-                                    <option data-countryCode="BN" value="673">Brunei (+673)</option>
-                                    <option data-countryCode="BG" value="359">Bulgaria (+359)</option>
-                                    <option data-countryCode="BF" value="226">Burkina Faso (+226)</option>
-                                    <option data-countryCode="BI" value="257">Burundi (+257)</option>
-                                    <option data-countryCode="KH" value="855">Cambodia (+855)</option>
-                                    <option data-countryCode="CM" value="237">Cameroon (+237)</option>
-                                    <option data-countryCode="CA" value="1">Canada (+1)</option>
-                                    <option data-countryCode="CV" value="238">Cape Verde Islands (+238)</option>
-                                    <option data-countryCode="KY" value="1345">Cayman Islands (+1345)</option>
-                                    <option data-countryCode="CF" value="236">Central African Republic (+236)</option>
-                                    <option data-countryCode="CL" value="56">Chile (+56)</option>
-                                    <option data-countryCode="CN" value="86">China (+86)</option>
-                                    <option data-countryCode="CO" value="57">Colombia (+57)</option>
-                                    <option data-countryCode="KM" value="269">Comoros (+269)</option>
-                                    <option data-countryCode="CG" value="242">Congo (+242)</option>
-                                    <option data-countryCode="CK" value="682">Cook Islands (+682)</option>
-                                    <option data-countryCode="CR" value="506">Costa Rica (+506)</option>
-                                    <option data-countryCode="HR" value="385">Croatia (+385)</option>
-                                    <option data-countryCode="CU" value="53">Cuba (+53)</option>
-                                    <option data-countryCode="CY" value="90392">Cyprus North (+90392)</option>
-                                    <option data-countryCode="CY" value="357">Cyprus South (+357)</option>
-                                    <option data-countryCode="CZ" value="42">Czech Republic (+42)</option>
-                                    <option data-countryCode="DK" value="45">Denmark (+45)</option>
-                                    <option data-countryCode="DJ" value="253">Djibouti (+253)</option>
-                                    <option data-countryCode="DM" value="1809">Dominica (+1809)</option>
-                                    <option data-countryCode="DO" value="1809">Dominican Republic (+1809)</option>
-                                    <option data-countryCode="EC" value="593">Ecuador (+593)</option>
-                                    <option data-countryCode="EG" value="20">Egypt (+20)</option>
-                                    <option data-countryCode="SV" value="503">El Salvador (+503)</option>
-                                    <option data-countryCode="GQ" value="240">Equatorial Guinea (+240)</option>
-                                    <option data-countryCode="ER" value="291">Eritrea (+291)</option>
-                                    <option data-countryCode="EE" value="372">Estonia (+372)</option>
-                                    <option data-countryCode="ET" value="251">Ethiopia (+251)</option>
-                                    <option data-countryCode="FK" value="500">Falkland Islands (+500)</option>
-                                    <option data-countryCode="FO" value="298">Faroe Islands (+298)</option>
-                                    <option data-countryCode="FJ" value="679">Fiji (+679)</option>
-                                    <option data-countryCode="FI" value="358">Finland (+358)</option>
-                                    <option data-countryCode="FR" value="33">France (+33)</option>
-                                    <option data-countryCode="GF" value="594">French Guiana (+594)</option>
-                                    <option data-countryCode="PF" value="689">French Polynesia (+689)</option>
-                                    <option data-countryCode="GA" value="241">Gabon (+241)</option>
-                                    <option data-countryCode="GM" value="220">Gambia (+220)</option>
-                                    <option data-countryCode="GE" value="7880">Georgia (+7880)</option>
-                                    <option data-countryCode="DE" value="49">Germany (+49)</option>
-                                    <option data-countryCode="GH" value="233">Ghana (+233)</option>
-                                    <option data-countryCode="GI" value="350">Gibraltar (+350)</option>
-                                    <option data-countryCode="GR" value="30">Greece (+30)</option>
-                                    <option data-countryCode="GL" value="299">Greenland (+299)</option>
-                                    <option data-countryCode="GD" value="1473">Grenada (+1473)</option>
-                                    <option data-countryCode="GP" value="590">Guadeloupe (+590)</option>
-                                    <option data-countryCode="GU" value="671">Guam (+671)</option>
-                                    <option data-countryCode="GT" value="502">Guatemala (+502)</option>
-                                    <option data-countryCode="GN" value="224">Guinea (+224)</option>
-                                    <option data-countryCode="GW" value="245">Guinea - Bissau (+245)</option>
-                                    <option data-countryCode="GY" value="592">Guyana (+592)</option>
-                                    <option data-countryCode="HT" value="509">Haiti (+509)</option>
-                                    <option data-countryCode="HN" value="504">Honduras (+504)</option>
-                                    <option data-countryCode="HK" value="852">Hong Kong (+852)</option>
-                                    <option data-countryCode="HU" value="36">Hungary (+36)</option>
-                                    <option data-countryCode="IS" value="354">Iceland (+354)</option>
-                                    <option data-countryCode="IN" value="91">India (+91)</option>
-                                    <option data-countryCode="ID" value="62">Indonesia (+62)</option>
-                                    <option data-countryCode="IR" value="98">Iran (+98)</option>
-                                    <option data-countryCode="IQ" value="964">Iraq (+964)</option>
-                                    <option data-countryCode="IE" value="353">Ireland (+353)</option>
-                                    <option data-countryCode="IL" value="972">Israel (+972)</option>
-                                    <option data-countryCode="IT" value="39">Italy (+39)</option>
-                                    <option data-countryCode="JM" value="1876">Jamaica (+1876)</option>
-                                    <option data-countryCode="JP" value="81">Japan (+81)</option>
-                                    <option data-countryCode="JO" value="962">Jordan (+962)</option>
-                                    <option data-countryCode="KZ" value="7">Kazakhstan (+7)</option>
-                                    <option data-countryCode="KE" value="254">Kenya (+254)</option>
-                                    <option data-countryCode="KI" value="686">Kiribati (+686)</option>
-                                    <option data-countryCode="KP" value="850">Korea North (+850)</option>
-                                    <option data-countryCode="KR" value="82">Korea South (+82)</option>
-                                    <option data-countryCode="KW" value="965">Kuwait (+965)</option>
-                                    <option data-countryCode="KG" value="996">Kyrgyzstan (+996)</option>
-                                    <option data-countryCode="LA" value="856">Laos (+856)</option>
-                                    <option data-countryCode="LV" value="371">Latvia (+371)</option>
-                                    <option data-countryCode="LB" value="961">Lebanon (+961)</option>
-                                    <option data-countryCode="LS" value="266">Lesotho (+266)</option>
-                                    <option data-countryCode="LR" value="231">Liberia (+231)</option>
-                                    <option data-countryCode="LY" value="218">Libya (+218)</option>
-                                    <option data-countryCode="LI" value="417">Liechtenstein (+417)</option>
-                                    <option data-countryCode="LT" value="370">Lithuania (+370)</option>
-                                    <option data-countryCode="LU" value="352">Luxembourg (+352)</option>
-                                    <option data-countryCode="MO" value="853">Macao (+853)</option>
-                                    <option data-countryCode="MK" value="389">Macedonia (+389)</option>
-                                    <option data-countryCode="MG" value="261">Madagascar (+261)</option>
-                                    <option data-countryCode="MW" value="265">Malawi (+265)</option>
-                                    <option data-countryCode="MY" value="60">Malaysia (+60)</option>
-                                    <option data-countryCode="MV" value="960">Maldives (+960)</option>
-                                    <option data-countryCode="ML" value="223">Mali (+223)</option>
-                                    <option data-countryCode="MT" value="356">Malta (+356)</option>
-                                    <option data-countryCode="MH" value="692">Marshall Islands (+692)</option>
-                                    <option data-countryCode="MQ" value="596">Martinique (+596)</option>
-                                    <option data-countryCode="MR" value="222">Mauritania (+222)</option>
-                                    <option data-countryCode="YT" value="269">Mayotte (+269)</option>
-                                    <option data-countryCode="MX" value="52">Mexico (+52)</option>
-                                    <option data-countryCode="FM" value="691">Micronesia (+691)</option>
-                                    <option data-countryCode="MD" value="373">Moldova (+373)</option>
-                                    <option data-countryCode="MC" value="377">Monaco (+377)</option>
-                                    <option data-countryCode="MN" value="976">Mongolia (+976)</option>
-                                    <option data-countryCode="MS" value="1664">Montserrat (+1664)</option>
-                                    <option data-countryCode="MA" value="212">Morocco (+212)</option>
-                                    <option data-countryCode="MZ" value="258">Mozambique (+258)</option>
-                                    <option data-countryCode="MN" value="95">Myanmar (+95)</option>
-                                    <option data-countryCode="NA" value="264">Namibia (+264)</option>
-                                    <option data-countryCode="NR" value="674">Nauru (+674)</option>
-                                    <option data-countryCode="NP" value="977">Nepal (+977)</option>
-                                    <option data-countryCode="NL" value="31">Netherlands (+31)</option>
-                                    <option data-countryCode="NC" value="687">New Caledonia (+687)</option>
-                                    <option data-countryCode="NZ" value="64">New Zealand (+64)</option>
-                                    <option data-countryCode="NI" value="505">Nicaragua (+505)</option>
-                                    <option data-countryCode="NE" value="227">Niger (+227)</option>
-                                    <option data-countryCode="NG" value="234">Nigeria (+234)</option>
-                                    <option data-countryCode="NU" value="683">Niue (+683)</option>
-                                    <option data-countryCode="NF" value="672">Norfolk Islands (+672)</option>
-                                    <option data-countryCode="NP" value="670">Northern Marianas (+670)</option>
-                                    <option data-countryCode="NO" value="47">Norway (+47)</option>
-                                    <option data-countryCode="OM" value="968">Oman (+968)</option>
-                                    <option data-countryCode="PW" value="680">Palau (+680)</option>
-                                    <option data-countryCode="PA" value="507">Panama (+507)</option>
-                                    <option data-countryCode="PG" value="675">Papua New Guinea (+675)</option>
-                                    <option data-countryCode="PY" value="595">Paraguay (+595)</option>
-                                    <option data-countryCode="PE" value="51">Peru (+51)</option>
-                                    <option data-countryCode="PH" value="63">Philippines (+63)</option>
-                                    <option data-countryCode="PL" value="48">Poland (+48)</option>
-                                    <option data-countryCode="PT" value="351">Portugal (+351)</option>
-                                    <option data-countryCode="PR" value="1787">Puerto Rico (+1787)</option>
-                                    <option data-countryCode="QA" value="974">Qatar (+974)</option>
-                                    <option data-countryCode="RE" value="262">Reunion (+262)</option>
-                                    <option data-countryCode="RO" value="40">Romania (+40)</option>
-                                    <option data-countryCode="RU" value="7">Russia (+7)</option>
-                                    <option data-countryCode="RW" value="250">Rwanda (+250)</option>
-                                    <option data-countryCode="SM" value="378">San Marino (+378)</option>
-                                    <option data-countryCode="ST" value="239">Sao Tome &amp; Principe (+239)</option>
-                                    <option data-countryCode="SA" value="966">Saudi Arabia (+966)</option>
-                                    <option data-countryCode="SN" value="221">Senegal (+221)</option>
-                                    <option data-countryCode="CS" value="381">Serbia (+381)</option>
-                                    <option data-countryCode="SC" value="248">Seychelles (+248)</option>
-                                    <option data-countryCode="SL" value="232">Sierra Leone (+232)</option>
-                                    <option data-countryCode="SG" value="65">Singapore (+65)</option>
-                                    <option data-countryCode="SK" value="421">Slovak Republic (+421)</option>
-                                    <option data-countryCode="SI" value="386">Slovenia (+386)</option>
-                                    <option data-countryCode="SB" value="677">Solomon Islands (+677)</option>
-                                    <option data-countryCode="SO" value="252">Somalia (+252)</option>
-                                    <option data-countryCode="ZA" value="27">South Africa (+27)</option>
-                                    <option data-countryCode="ES" value="34">Spain (+34)</option>
-                                    <option data-countryCode="LK" value="94">Sri Lanka (+94)</option>
-                                    <option data-countryCode="SH" value="290">St. Helena (+290)</option>
-                                    <option data-countryCode="KN" value="1869">St. Kitts (+1869)</option>
-                                    <option data-countryCode="SC" value="1758">St. Lucia (+1758)</option>
-                                    <option data-countryCode="SD" value="249">Sudan (+249)</option>
-                                    <option data-countryCode="SR" value="597">Suriname (+597)</option>
-                                    <option data-countryCode="SZ" value="268">Swaziland (+268)</option>
-                                    <option data-countryCode="SE" value="46">Sweden (+46)</option>
-                                    <option data-countryCode="CH" value="41">Switzerland (+41)</option>
-                                    <option data-countryCode="SI" value="963">Syria (+963)</option>
-                                    <option data-countryCode="TW" value="886">Taiwan (+886)</option>
-                                    <option data-countryCode="TJ" value="7">Tajikstan (+7)</option>
-                                    <option data-countryCode="TH" value="66">Thailand (+66)</option>
-                                    <option data-countryCode="TG" value="228">Togo (+228)</option>
-                                    <option data-countryCode="TO" value="676">Tonga (+676)</option>
-                                    <option data-countryCode="TT" value="1868">Trinidad &amp; Tobago (+1868)</option>
-                                    <option data-countryCode="TN" value="216">Tunisia (+216)</option>
-                                    <option data-countryCode="TR" value="90">Turkey (+90)</option>
-                                    <option data-countryCode="TM" value="7">Turkmenistan (+7)</option>
-                                    <option data-countryCode="TM" value="993">Turkmenistan (+993)</option>
-                                    <option data-countryCode="TC" value="1649">Turks &amp; Caicos Islands (+1649)
-                                    </option>
-                                    <option data-countryCode="TV" value="688">Tuvalu (+688)</option>
-                                    <option data-countryCode="UG" value="256">Uganda (+256)</option>
-                                    <option data-countryCode="GB" value="44">UK (+44)</option>
-                                    <option data-countryCode="UA" value="380">Ukraine (+380)</option>
-                                    <option data-countryCode="AE" value="971">United Arab Emirates (+971)</option>
-                                    <option data-countryCode="UY" value="598">Uruguay (+598)</option>
-                                    <option data-countryCode="US" value="1">USA (+1)</option>
-                                    <option data-countryCode="UZ" value="7">Uzbekistan (+7)</option>
-                                    <option data-countryCode="VU" value="678">Vanuatu (+678)</option>
-                                    <option data-countryCode="VA" value="379">Vatican City (+379)</option>
-                                    <option data-countryCode="VE" value="58">Venezuela (+58)</option>
-                                    <option data-countryCode="VN" value="84">Vietnam (+84)</option>
-                                    <option data-countryCode="VG" value="84">Virgin Islands - British (+1284)</option>
-                                    <option data-countryCode="VI" value="84">Virgin Islands - US (+1340)</option>
-                                    <option data-countryCode="WF" value="681">Wallis &amp; Futuna (+681)</option>
-                                    <option data-countryCode="YE" value="969">Yemen (North)(+969)</option>
-                                    <option data-countryCode="YE" value="967">Yemen (South)(+967)</option>
-                                    <option data-countryCode="ZM" value="260">Zambia (+260)</option>
-                                    <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
-                                </optgroup>
-                            </select>
-                            @if(isset($data->phone))
-                                <input type="number" name="phonenumber" value="{{$data->phone}}">
-                            @else
-                                <input type="number" name="phonenumber">
-                            @endif
-                        </div>
-                        <div>
-                            <label>Email: </label>
-                            @if(isset($data->email))
-                                <input type="email" name="email" class="form-contorl" value="{{$data->email}}">
-                            @else
-                                <input type="email" name="email" class="form-contorl">
-                            @endif
-                        </div>
-                        <div>
-                            <label>Marital Status</label>
-                            <select name="martialstatus">
-                                @if(isset($data->martialstatus))
-                                    <option selected value="{{$data->martialstatus}}">{{$data->martialstatus}}</option>
-                                @endif
-                                <option>Married</option>
-                                <option>Widowed</option>
-                                <option>Separated</option>
-                                <option>Divorced</option>
-                                <option>Single</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Employment Relationship: </label>
-                            <select name="employmentrelationship">
-                                @if(isset($data->employmentrelationship))
-                                    <option selected
-                                            value="{{$data->employmentrelationship}}">{{$data->employmentrelationship}}</option> @endif
-                                <option>Coworkers</option>
-                                <option>Team Members</option>
-                                <option>Work Friends</option>
-                                <option>Manager/Direct Report</option>
-                                <option>Office Spouse</option>
-                                <option>Mentor/Mentee</option>
-                                <option>Life Friends</option>
-                            </select>
-                        </div>
-                        <div>
-                            @if(isset($data->job))
-                                <label>Job: </label>
-                                <input type="text" name="job" class="form-control" value="{{$data->job}}">
-                            @else
-                                <input type="text" name="job" class="form-control">
-                            @endif
-                        </div>
-                        <div>
-                            <label>Payment Rhythm</label>
-                            <select name="paymentrhythm">
-                                @if(isset($data->paymentrhythm))
-                                    <option selected
-                                            value="{{$data->paymentrhythm}}">{{$data->paymentrhythm}}</option>@endif
-                                <option>Weekly</option>
-                                <option>Mounth</option>
-                                <option>Year</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Amount Per Month</label>
-                            @if(isset($data->amountpermonth))
-                                <input type="number" name="amountpermonth" class="form-control"
-                                       value="{{$data->amountpermonth}}">
-                            @else
-                                <input type="number" name="amountpermonth" class="form-control">
-                            @endif
-
-                        </div>
-                        <div>
-                            <label>Share Guarantee/Fund</label>
-                            <select name="shareguaranteefund">
-                                @php
-                                    $j = 100;
-                                @endphp
-                                @for($i = 1;$i<=100;$i++)
-                                    {{--                           <option selected value="{{$data->shareguaranteefund}}">{{$data->shareguaranteefund}}</option>--}}
-                                    <option>{{$i."/".--$j}}</option>
-                                @endfor
-
-                            </select>
-
-                        </div>
-                        <div>
-                            <label>Contract Start Date: </label>
-                            @if(isset($data->contractstartdate))
-                                <input type="date" name="contractstartdate" class="form-control"
-                                       value="{{$data->contractstartdate}}">
-                            @else
-                                <input type="date" name="contractstartdate" class="form-control">
-                            @endif
-                        </div>
-                        <div>
-                            @if(isset($data->premiumwaiver))
-                                @if($data->premiumwaiver == 'Yes')
-                                    <label>Premium Waiver: </label><br>
-                                    <input type="radio" name="premiumwaiver" value="Yes" checked>
-                                    <label for="premiumwaiver">Yes</label>
-                                @else
-                                    <input type="radio" name="premiumwaiver" value="No" checked>
-                                    <label for="premiumwaiver">No</label>
-                                @endif
-                                <label>Premium Waiver: </label><br>
-                                <input type="radio" name="premiumwaiver" value="Yes">
-                                <label for="premiumwaiver">Yes</label>
-                                <input type="radio" name="premiumwaiver" value="No">
-                                <label for="premiumwaiver">No</label>
-                            @endif
-                        </div>
-                        <div>
-                            @if(isset($data->eupension))
-                                @if($data->eupension == 'Yes')
-                                    <label>Eu Pension: </label><br>
-                                    <input type="radio" name="eupension" value="Yes" checked>
-                                    <label for="eupension">Yes</label>
-                                @else
-                                    <input type="radio" name="eupension" value="No" checked>
-                                    <label for="eupension">No</label>
-                                @endif
-                                <label>Eu Pension: </label><br>
-                                <input type="radio" name="eupension" value="Yes">
-                                <label for="eupension">Yes</label>
-                                <input type="radio" name="eupension" value="No">
-                                <label for="eupension">No</label>
-                            @endif
-                        </div>
-                        <div>
-                            @if(isset($data->deathcapital))
-                                @if($data->deathcapital == 'Yes')
-                                    <label>Death Capital: </label><br>
-                                    <input type="radio" name="deathcapital" value="Yes" checked>
-                                    <label for="deathcapital">Yes</label>
-                                @else
-                                    <input type="radio" name="deathcapital" value="No" checked>
-                                    <label for="deathcapital">No</label>
-                                @endif
-                                <label>Death Capital: </label><br>
-                                <input type="radio" name="deathcapital" value="Yes">
-                                <label for="deathcapital">Yes</label>
-                                <input type="radio" name="deathcapital" value="No">
-                                <label for="deathcapital">No</label>
-                            @endif
-                        </div>
-                        <div>
-
-                            @if(isset($data->smoker))
-                                @if($data->smoker == 'Yes')
-                                    <label>Smoker: </label><br>
-                                    <input type="radio" name="smoker" value="Yes" checked>
-                                    <label for="smoker">Yes</label>
-                                @else
-                                    <input type="radio" name="smoker" value="No" checked>
-                                    <label for="smoker">No</label>
-                                @endif
-                                <label>Smoker: </label><br>
-                                <input type="radio" name="smoker" value="Yes">
-                                <label for="smoker">Yes</label>
-                                <input type="radio" name="smoker" value="No">
-                                <label for="smoker">No</label>
-                            @endif
-                        </div>
-                        <div>
-                            <label>Which Companies Should Make An Offer</label>
-                            @if(isset($data->whichcompaniesshouldmakeanoffer))
-                                <input type="text" name="whichcompaniesshouldmakeanoffer" class="form-control"
-                                       value="{{$data->whichcompaniesshouldmakeanoffer}}">
-                            @else
-                                <input type="text" name="whichcompaniesshouldmakeanoffer" class="form-control">
-                            @endif
-                        </div>
-
-                    </div>
-                </div>
-
-
-                <div style="display: none" id="more">
-                    <h4>Household Contents And Personal Liability</h4>
-
-                    <input onclick="openCounteroffered()" type="button" value="Counteroffered" class="btn btn-primary">
-                    <input onclick="openNewPropertyInsurance()" type="button" value="New Property Insurance"
-                           class="btn btn-primary">
-                    <input onclick="openChoiceSociety()" type="button" value="Choose Society" class="btn btn-primary">
-
-                    <div id="counteroffered">
-
-                    </div>
-
-                    <div id="newrequest">
-
-                    </div>
-                    <div id="choosesociety">
-
-                <div>
-                    <label>Employment Relationship: </label>
-                    <select name="employmentrelationship">
-                        @if(isset($data->employmentrelationship))
-                        <option selected value="{{$data->employmentrelationship}}">{{$data->employmentrelationship}}</option>
-                        @endif
-                        <option>Coworkers</option>
-                        <option>Team Members</option>
-                        <option>Work Friends</option>
-                        <option>Manager/Direct Report</option>
-                        <option>Office Spouse</option>
-                        <option>Mentor/Mentee</option>
-                        <option>Life Friends</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Job: </label>
-                    @if(isset($data->job))
-                    <input type="text" name="job" class="form-control" value="{{$data->job}}">
-                    @else
-                    <input type="text" name="job" class="form-control">
-                    @endif
-                    
-                </div>
-                <div>
-                    <label>Payment Rhythm</label>
-                    <select name="paymentrhythm">
-                        @if(isset($data->paymentrhythm))
-                        <option selected value="{{$data->paymentrhythm}}">{{$data->paymentrhythm}}</option>
-                        @endif
-                        
-                        <option>Weekly</option>
-                        <option>Mounth</option>
-                        <option>Year</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Amount Per Month</label>
-                    @if(isset($data->amountpermonth))
-                    <input type="number" name="amountpermonth" class="form-control" value="{{$data->amountpermonth}}">
-                    @else
-                    <input type="number" name="amountpermonth" class="form-control">
-                    @endif
-                    
-                </div>
-                <div>
-                    <label>Share Guarantee/Fund</label>
-                    <select name="shareguaranteefund">
-                        @php
-                        $j = 100;
-                        @endphp
-                        @for($i = 1;$i<=100;$i++)
-{{--                           <option selected value="{{$data->shareguaranteefund}}">{{$data->shareguaranteefund}}</option>--}}
-                            <option>{{$i."/".--$j}}</option>
-                            @endfor
-
-                    </select>
-
-                </div>
-                <div>
-                    <label>Contract Start Date: </label>
-                    @if(isset($data->contractstartdate))
-                    <input type="date" name="contractstartdate" class="form-control" value="{{$data->contractstartdate}}">
-                    @else
-                    <input type="date" name="contractstartdate" class="form-control">
-                    @endif
-                    
-                </div>
-                <div>
-                    @if(isset($data->premiumwaiver))
-                        @if($data->premiumwaiver == 'Yes')
-                            <label>Premium Waiver: </label><br>
-                            <input type="radio" name="premiumwaiver" value="Yes" checked>
-                            <label for="premiumwaiver">Yes</label>
-                        @else
-                            <input type="radio" name="premiumwaiver" value="No" checked>
-                            <label for="premiumwaiver">No</label>
-                        @endif
-                            <label>Premium Waiver: </label><br>
-                            <input type="radio" name="premiumwaiver" value="Yes" >
-                            <label for="premiumwaiver">Yes</label>
-                            <input type="radio" name="premiumwaiver" value="No" >
-                            <label for="premiumwaiver">No</label>
-                        @endif
-                </div>
-                <div>
-                    @if(isset($data->eupension))
-                        @if($data->eupension == 'Yes')
-                            <label>Eu Pension: </label><br>
-                            <input type="radio" name="eupension" value="Yes" checked>
-                            <label for="eupension">Yes</label>
-                        @else
-                            <input type="radio" name="eupension" value="No" checked>
-                            <label for="eupension">No</label>
-                        @endif
-                            <label>Eu Pension: </label><br>
-                            <input type="radio" name="eupension" value="Yes">
-                            <label for="eupension">Yes</label>
-                            <input type="radio" name="eupension" value="No">
-                            <label for="eupension">No</label>
-                        @endif
-                </div>
-                <div>
-                    @if(isset($data->deathcapital))
-                        @if($data->deathcapital == 'Yes')
-                            <label>Death Capital: </label><br>
-                            <input type="radio" name="deathcapital" value="Yes" checked>
-                            <label for="deathcapital">Yes</label>
-                        @else
-                            <input type="radio" name="deathcapital" value="No" checked>
-                            <label for="deathcapital">No</label>
-                        @endif
-                            <label>Death Capital: </label><br>
-                            <input type="radio" name="deathcapital" value="Yes" >
-                            <label for="deathcapital">Yes</label>
-                            <input type="radio" name="deathcapital" value="No" >
-                            <label for="deathcapital">No</label>
-                        @endif
-                </div>
-                <div>
-
-                    @if(isset($data->smoker))
-                        @if($data->smoker == 'Yes')
-                             <label>Smoker: </label><br>
-                            <input type="radio" name="smoker" value="Yes" checked>
-                            <label for="smoker">Yes</label>
-                        @else
-                            <input type="radio" name="smoker" value="No" checked>
-                            <label for="smoker">No</label>
-                        @endif
-                            <label>Smoker: </label><br>
-                            <input type="radio" name="smoker" value="Yes">
-                            <label for="smoker">Yes</label>
-                            <input type="radio" name="smoker" value="No">
-                            <label for="smoker">No</label>
-                        @endif
-                </div>
-                <div>
-                    <label>Which Companies Should Make An Offer</label>
-                    @if(isset($data->whichcompaniesshouldmakeanoffer))
-                    <input type="text" name="whichcompaniesshouldmakeanoffer" class="form-control" value="{{$data->whichcompaniesshouldmakeanoffer}}">
-                    @else
-                    <input type="text" name="whichcompaniesshouldmakeanoffer" class="form-control">
-                    @endif
-                    
-                </div>
-
-            </div>
-        </div>
-
-
-        <div style="display: none" id="more">
-            <h4>Household Contents And Personal Liability</h4>
-
-            <input onclick="openCounteroffered()" type="button" value="Counteroffered" class="btn btn-primary">
-            <input onclick="openNewPropertyInsurance()" type="button" value="New Property Insurance" class="btn btn-primary">
-            <input onclick="openChoiceSociety()" type="button" value="Choose Society" class="btn btn-primary">
-
-            <div id="counteroffered">
-
-            </div>
-
-            <div id="newrequest">
-
-            </div>
-            <div id="choosesociety">
-
-
-                    </div>
-                </div>
-
-        <input type="submit" class="mt-3 btn btn-primary" value="Save">
-    </form>
-</div>
-
-
-      
+            </ul>
     </div>
+    <div class="col">
+      <div class="my-5 mx-4">
+        <div class="" style="background-color: #EFEFEF;border-radius: 22px;">
+          <div class="py-4 px-3">
+            <span class="fs-4">
+              {{$lead->first_name}}
+            </span><br>
+            <span class="fs-6 text-muted">
+              {{$lead->address}}
+            </span>
+          </div>
+          <div class="row mx-4">
+            <nav class="g-0">
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active col krankenkasse-btn" id="nav-home-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                  aria-selected="true" onclick="changecnt(0)">Krankenkasse</button>
+                <button class="nav-link col auto-btn" id="nav-profile-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                  aria-selected="false" onclick="changecnt(1)">Auto</button>
+                <button class="nav-link  col sachen-btn" id="nav-contact-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                  aria-selected="false" onclick="changecnt(2)">Sachen</button>
+                <button class="nav-link  col vorsorge-btn" id="nav-fourth-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-fourth" type="button" role="tab" aria-controls="nav-fourth"
+                  aria-selected="false" onclick="changecnt(3)">Vorsorge</button>
+              </div>
+            </nav>
+          </div>
+          <div class="tab-content mx-4 pb-3" id="nav-tabContent">
+            <div class="tab-pane fade show active krankenkasse-content mb-3" id="nav-home" role="tabpanel"
+              aria-labelledby="nav-home-tab">
+              <div class="row mx-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
+                <div class="" style="background-color: #EFEFEF; border-radius: 13px;">
+                    <div class="py-2 px-2">
+                      <div class="row mx-2">
+                        <div class="col-7 d-flex g-0">
+                          <div class="">
+                            <span class="fw-bold" style=" font-size: 12px;">
+                            Vorversicherer
+                            </span>
+                          </div>
+                        </div>
+                        <!-- <div class="col g-0 d-flex justify-content-end">
+                          <div class="select-div text-end">
+                            <select name="pre_insurer" class="fw-bold" id=""  style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                              <option selected>Select</option>
+                              <option value="1">Ja</option>
+                              <option value="2">Nein</option>
+                            </select>
+                          </div>
+                        </div> -->
+                      </div>
+                      <div class="upload-box mx-1 my-2">
+                        <div class="mx-1 my-2 p-4 text-center">
+                          <label for="file-input-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+                              <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
+                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
+                                  transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                <g id="Group_326" data-name="Group 326" transform="translate(95.656 31.893)">
+                                  <path id="Path_234" data-name="Path 234"
+                                    d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                    transform="translate(0 1.82)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                  <path id="Path_235" data-name="Path 235"
+                                    d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                    transform="translate(0.92 0)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                </g>
+                              </g>
+                            </svg>
+                          </label>
+                          <input type="file" name="pre_insurer" id="file-input-0" class="svg-div w-100 border-0  g-0" onchange="upload(this)">
+               
+                          <input type="text" class="form-control text-center" id="file-input-0c" disabled style="background:none; border:none;">
+                    
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
+                  <div class="" style="background-color: #EFEFEF; border-radius: 13px;">
+                    <div class="py-2 px-2">
+                      <div class="row mx-2">
+                        <div class="col-7 d-flex g-0">
+                          <div class="">
+                            <span class="fw-bold" style="font-size: 12px;">
+                              ID Notwending
+                            </span>
+                          </div>
+                        </div>
+                        <!-- <div class="col g-0 d-flex justify-content-end">
+                          <div class="select-div text-end">
+                            <select name="id_required" class="fw-bold" id=""
+                              style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                              <option selected>Select</option>
+                              <option value="1">Ja</option>
+                              <option value="2">Nein</option>
+                            </select>
+                          </div>
+                        </div> -->
+                      </div>
+                      <div class="upload-box mx-1 my-2">
+                        <div class="mx-1 my-2 p-4 text-center">
+                          <label for="file-input-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+                              <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
+                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
+                                  transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                <g id="Group_326" data-name="Group 326" transform="translate(95.656 31.893)">
+                                  <path id="Path_234" data-name="Path 234"
+                                    d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                    transform="translate(0 1.82)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                  <path id="Path_235" data-name="Path 235"
+                                    d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                    transform="translate(0.92 0)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                </g>
+                              </g>
+                            </svg>
+                          </label>
+                          <input type="file" id="file-input-1" class="svg-div w-100 border-0  g-0" onchange="upload(this);" name="id_required">
+                          <input type="text" class="form-control text-center" id="file-input-1c" disabled style="background:none; border:none;"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
+                  <div class="" style="background-color: #EFEFEF; border-radius: 13px;">
+                    <div class="py-2 px-2">
+                      <div class="row mx-2">
+                        <div class="col-8 g-0 d-flex">
+                          <div class="text-nowrap">
+                            <span class="fw-bold" style=" font-size: 12px;">
+                              Kundingung durch
+                            </span>
+                          </div>
+                        </div>
+                        <!-- <div class="col g-0 d-flex justify-content-end">
+                          <div class="select-div text-end">
+                            <select name="noname" class="fw-bold" id=""
+                              style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                              <option selected>Select</option>
+                              <option value="1">Ja</option>
+                              <option value="2">Nein</option>
+                            </select>
+                          </div>
+                        </div> -->
+                      </div>
+                      <div class="upload-box mx-1 my-2">
+                        <div class="mx-1 my-2 p-4 text-center">
+                          <label for="file-input-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+                              <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
+                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
+                                  transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                <g id="Group_326" data-name="Group 326" transform="translate(95.656 31.893)">
+                                  <path id="Path_234" data-name="Path 234"
+                                    d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                    transform="translate(0 1.82)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                  <path id="Path_235" data-name="Path 235"
+                                    d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                    transform="translate(0.92 0)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                </g>
+                              </g>
+                            </svg>
+                          </label>
+                          <input type="file" id="file-input-2" class="svg-div w-100 border-0  g-0" onchange="upload(this);" name="notice_by">
+                          <input type="text" class="form-control text-center" id="file-input-2c" disabled style="background:transparent; border:none;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
+                  <div class="" style="background-color: #EFEFEF; border-radius: 13px;">
+                    <div class="py-2 px-2">
+                      <div class="row mx-2">
+                        <div class="col-7 d-flex g-0">
+                          <div class="">
+                            <span class="fw-bold" style=" font-size: 12px;">
+                              Vollmacht
+                            </span>
+                          </div>
+                        </div>
+                        <!-- <div class="col g-0 d-flex justify-content-end">
+                          <div class="select-div text-end ">
+                            <select name="power_of_attorney" class="fw-bold" id=""
+                              style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                              <option selected>Select</option>
+                              <option value="1">Ja</option>
+                              <option value="2">Nein</option>
+                            </select>
+                          </div>
+                        </div> -->
+                      </div>
+                      <div class="upload-box mx-1 my-2">
+                        <div class="mx-1 my-2 p-4 text-center">
+                          <label for="file-input-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+                              <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
+                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
+                                  transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                <g id="Group_326" data-name="Group 326" transform="translate(95.656 31.893)">
+                                  <path id="Path_234" data-name="Path 234"
+                                    d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                    transform="translate(0 1.82)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                  <path id="Path_235" data-name="Path 235"
+                                    d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                    transform="translate(0.92 0)" fill="#fff" stroke="#fff" stroke-width="0.5" />
+                                </g>
+                              </g>
+                            </svg>
+                          </label>
+                          <input type="file" id="file-input-3" class="svg-div w-100 border-0  g-0" onchange="upload(this);" name="power_of_attorney">
+                          <input type="text" class="form-control text-center" id="file-input-3c" disabled style="background:transparent; border:none;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center mt-3 pb-3">
+                <div class="row">
+                  <div class="col g-0 text-end my-auto">
+                    <div class="">
+                      <span class="pe-2" style="color: #9F9F9F;">
+                        
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col g-0 text-start">
+                    <div id="buton">
+                      <button class="px-5 py-2" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" id="nextonee__" onclick="nextonee()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
+                          viewBox="0 0 58.155 19.159">
+                          <g id="Group_453" data-name="Group 453" transform="translate(0.004)">
+                            <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)"
+                              fill="none" stroke="#3fd599" stroke-width="2" />
+                            <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z"
+                              transform="translate(58.151 0) rotate(90)" fill="#3fd599" />
+                          </g>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade auto-content" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <div class="row mx-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 my-4 ">
+                  <div class="accordion accordion-flush" id="accordionFlushExample1">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingOne">
+                        <button id="button1" class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          onclick="hideSpan();" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                          aria-controls="flush-collapseOne"
+                          style="background-color: #EFEFEF !important; border-radius: 10px;">
+                          <div class="d-block">
+                            <div class="">
+                              <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                Gegenofferte?
+                              </span>
+                            </div>
+                            <div class="lh-1 " id="bastelle-span">
+                              <span class="" style="font-size: 13px;">
+                                Bestelle eine Gegenofferte
+                                für eine bestehende Autoversicherung
+                              </span>
+                            </div>
+                          </div>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample1">
+                        <div class="accordion-body"
+                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                          <div class="">
+                            <div class="">
+                              <span class="" style="font-size: 13px;">
+                                Police Hochladen:
+                              </span>
+                            </div>
+                            <div class="">
+                              <div class="upload-box mx-1 my-2">
+                                <div class="mx-1 my-2 p-4 text-center">
+                                  <label for="file-input-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+                                      <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
+                                        <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
+                                          transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                        <g id="Group_326" data-name="Group 326" transform="translate(95.656 31.893)">
+                                          <path id="Path_234" data-name="Path 234"
+                                            d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                            transform="translate(0 1.82)" fill="#fff" stroke="#fff"
+                                            stroke-width="0.5" />
+                                          <path id="Path_235" data-name="Path 235"
+                                            d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                            transform="translate(0.92 0)" fill="#fff" stroke="#fff"
+                                            stroke-width="0.5" />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </label>
+                                  <input type="file" id="file-input-4" class="svg-div w-100 border-0  g-0" onchange="upload(this);" name="upload_police">
+                          <input type="text" class="form-control text-center" id="file-input-4c" disabled style="background:transparent; border:none;">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="">
+                              <div class="row mx-2">
+                                <div class="col-5 d-flex g-0">
+                                  <div class="text-nowrap">
+                                    <span class="fw-bold" style=" font-size: 12px;">
+                                      Vergleichsart:
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="col g-0 d-flex justify-content-end">
+                                  <div class="select-div text-end ">
+                                    <select name="comparison_type" class="fw-bold" id=""
+                                      style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                                  
+                                      <option selected>Select</option>
+                                      <option value="1">1:1 Deckung</option>
+                                      <option value="2">1:1 Deckung</option>
+                                      
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="">
+                              <div class="mb-3 mt-3">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                  style="font-size: 13px;">Kommentar</label>
+                                <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 my-4">
+                  <div class="accordion accordion-flush" id="accordionFlushExample2">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseOne"
+                          style="background-color: #EFEFEF !important; border-radius: 10px;">
+                          <div class="d-block">
+                            <div class="">
+                              <span class="fs-6" id="title-span" style="font-weight: 600;">
+                              Neues Fahrzeug
+                              </span>
+                            </div>
+                            <div class="lh-1 " id="bastelle-span">
+                              <span class="" style="font-size: 13px;">
+                                Bestelle eine Offerte für ein neu einzulösendes Fahrzeug.
+                              </span>
+                            </div>
+                          </div>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample2">
+                        <div class="accordion-body"
+                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                          <div class="">
+                            <div class="row">
+                              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="my-3">
+                                  <div class="">
+                                    <div class="">
+                                      <span class="">
+                                        Fahrzeugausweis hochladen
+                                      </span>
+                                    </div>
+                                    <div class="upload-box mx-1 my-2">
+                                      <div class="mx-1 my-2 p-4 text-center">
+                                        <label for="file-input-5">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53"
+                                            viewBox="0 0 53 53">
+                                            <g id="Group_621" data-name="Group 621"
+                                              transform="translate(-78.283 -14.777)">
+                                              <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5"
+                                                r="26.5" transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                              <g id="Group_326" data-name="Group 326"
+                                                transform="translate(95.656 31.893)">
+                                                <path id="Path_234" data-name="Path 234"
+                                                  d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                                  transform="translate(0 1.82)" fill="#fff" stroke="#fff"
+                                                  stroke-width="0.5" />
+                                                <path id="Path_235" data-name="Path 235"
+                                                  d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                                  transform="translate(0.92 0)" fill="#fff" stroke="#fff"
+                                                  stroke-width="0.5" />
+                                              </g>
+                                            </g>
+                                          </svg>
+                                        </label>
+                                        <input type="file" id="file-input-5" class="svg-div w-100 border-0  g-0" onchange="upload(this);" name="vehicle_id">
+                          <input type="text" class="form-control text-center" id="file-input-5c" disabled style="background:transparent; border:none;">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="">
+                                  <div class="row">
+                                    <div class="col">
+                                      <div class="">
+                                        <span>
+                                          Leasing:
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="col">
+                                      <div class="btn-group w-100" role="group"
+                                        aria-label="Basic radio toggle button group">
+                                 
+                                        <input type="radio" class="btn-check" value="Ja" name="leasing" id="btnradio1"
+                                          autocomplete="off">
+                                        <label class="btn btn-outline-secondary w-100 g-0" value="Ja" for="btnradio1">Ja</label>
+                                        <input type="radio" class="btn-check" name="leasing" value="Nein"  id="btnradio2"
+                                          autocomplete="off">
+                                        <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2">Nein</label>
+                               
+                                      </div>
+                                      <div class="">
+                                        <select name="leasing_name" class="w-100 slct1" id="">
+                                   
+                                          <option value="Gesellschaft">Gesellschaft</option>
+                                
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="my-3">
+                              <div class="row">
+                                <div class="col">
+                                  <div class="">
+                                    <div class="">
+                                      <span class="fw-bold">
+                                        Fahrzeuginformationen
+                                      </span>
+                                    </div>
+                                    <div class="select-div text-end d-flex my-2">
+                                      <div class="text-nowrap">
+                                        <span class="fw-normal">
+                                          Kaufjahr
+                                        </span>
+                                      </div>
+                                      <select name="year_of_purchase" class="fw-normal" id="" style="background-color: #EFEFEF;">
+                                
+                                        <option value="2021" selected>2021</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2019">2019</option>
+                                  
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="date-input-div mb-2">
+                                    <div class="">
+                                      <span>
+                                        Este inverkehrssetzung:
+                                      </span>
+                                    </div>
+                            
+                                  <input name="placing_on_the_market" type="date" class="py-1 border-0">
+                           
+                                  </div>
+                                  <div class="date-input-div mb-2">
+                                    <div class="">
+                                      <span>
+                                        Beginn Versicherung:
+                                      </span>
+                                    </div>
+                           
+                                    <input name="insurance_date" type="date" class="py-1 border-0">
+                              
+                                  </div>
+                                  <div class="input-select-div mb-2">
+                                    <div class="">
+                                      <span class="">
+                                      Eingelöster Kanton:
+                                      </span>
+                                    </div>
+                                    <select name="noname" class="form-select w-75" aria-label="Default select example">
+                                      <option selected></option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                                  </div>
+                                  <div class="input-div1 mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        KM - Stand:
+                                      </span>
+                                    </div>
+                        
+                                    <input name="km_stood" class="py-1" type="text" id="">
+                           
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="">
+                                    <div class="">
+                                      <span class="fw-bold">
+                                        Lenkerinformation
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="date-input-div mb-2">
+                                    <div class="">
+                                      <span>
+                                        Erste inverkehrssetzung:
+                                      </span>
+                                    </div>
+                               
+                                  <input name="placing_on_the_market" type="date" class="py-1 border-0">
+                    
+                                  </div>
+                                  <div class="input-select-div mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        Nationalitat:
+                                      </span>
+                                    </div>
+                                    <select name="nationality" class="form-select w-75" aria-label="Default select example">
+                         
+                          
+                                      <option selected></option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                           
+                                    </select>
+                                  </div>
+                                  <div class="input-select-div mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        Häufigster Lenker?
+                                      </span>
+                                    </div>
+                                    <select name="most_common" class="form-select w-75" aria-label="Default select example">
+                                      <option selected></option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="my-3">
+                              <div class="row">
+                                <div class="col">
+                                  <div class="">
+                                    <span class="fw-normal fs-5">
+                                      Gewünschte Deckung
+                                    </span>
+                                  </div>
+                                  <div class="input-select-div mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        Versischerung:
+                                      </span>
+                                    </div>
+                                    
+                                    <select name="insurance" class="form-select w-75" aria-label="Default select example">
+                                      <option selected></option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                                  </div>
+                                  <div class="input-select-div mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        Selbstbehalt Teilkasko:
+                                      </span>
+                                    </div>
+                                    <select name="deductible" class="form-select w-75" aria-label="Default select example">
+                                
+                                      <option selected></option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                                    </select>
+                                  </div>
+                                  <div class="input-select-div mb-2">
+                                    <div class="">
+                                      <span class="">
+                                      Mitgeführte Sachen:
+                                      </span>
+                                    </div>
+                                    <select name="carried" class="form-select w-75" aria-label="Default select example">
+                         
+                                      <option selected></option>
+                                      <option value="1">One</option>
+                                      <option value="2">Two</option>
+                                      <option value="3">Three</option>
+                              
+                                    </select>
+                                  </div>
+                                  <div class="">
+                                    <span>
+                                    Reparaturwerkstatt:
+                                    </span>
+                                    <!-- <div class="input-group mb-2">
+                                      <input name="noname" type="text" placeholder="Partnergarage" class="form-control" aria-label=""
+                                        aria-describedby="basic-addon1">
+                                      <input name="noname" type="text" placeholder="Freie Wahl" class="form-control" aria-label=""
+                                        aria-describedby="basic-addon1">
+                                    </div> -->
+                                    <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
+ 
+                                        <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" value="Specific garage"checked>
+                                        <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1_">Specific garage</label>
+                                        <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_">
+                                        <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2_">Freie Wahl</label>
+                            
+                                    </div>
+                                  </div>
+                                  <div class="input-div1 mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        + Unfalldeckung:
+                                      </span>
+                                    </div>
+                                    <input name="accident_coverage" class="py-1" type="text"  id="">
+                                  </div>
+                                </div>
+                                <div class="col">
+                                  <div class="input-div1 mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        + Verkehrsrechtsschutz:
+                                      </span>
+                                    </div>
+                                    <input name="traffic_legal_protection" class="py-1" type="text" id="">
+                                  </div>
+                                  <div class="input-div1 mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        + Grobfahrlässigkeitschutz:
+                                      </span>
+                                    </div>
+                                    <input name="grossly" class="py-1" type="text" id="">
+                                  </div>
+                                  <div class="input-div1 mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        + Glasschutz:
+                                      </span>
+                                    </div>
+                                    <input name="glass_protection" class="py-1" type="text"  id="">
+                                  </div>
+                                  <div class="input-div1 mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        + Parkschaden:
+                                      </span>
+                                    </div>
+                                    <input name="parking_damage" class="py-1" type="text"  id="">
+                                  </div>
+                                  <div class="input-div1 mb-2">
+                                    <div class="">
+                                      <span class="">
+                                        + 24h Pannenhilfe:
+                                      </span>
+                                    </div>
+                                    <input name="hour_breakdown_assistance" class="py-1" type="text"  id="">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="buton" class="py-2 text-center">
+                      <button class="px-5 py-2" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" id="nextonee__" onclick="nextonee()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
+                          viewBox="0 0 58.155 19.159">
+                          <g id="Group_453" data-name="Group 453" transform="translate(0.004)">
+                            <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)"
+                              fill="none" stroke="#3fd599" stroke-width="2" />
+                            <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z"
+                              transform="translate(58.151 0) rotate(90)" fill="#3fd599" />
+                          </g>
+                        </svg>
+                      </button>
+                    </div>
+              </div>
+            </div>
+
+
+
+            <div class="tab-pane fade  sachen-content" id="nav-contact" role="tabpanel"
+              aria-labelledby="nav-contact-tab">
+              <div class="row">
+                <div class="col-12">
+                  <div class="my-3 mx-3" style="color:#434343; background-color: #EFEFEF; border-radius: 13px;">
+                    <div class="mx-3 py-3">
+                      <div class=" my-2">
+                        <span class="fs-5 fw-bold">
+                          3a/3b Anfragen
+                        </span>
+                      </div>
+                      <div class="row ">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xd-4">
+                          <div class="">
+                            <div class="input-div1 mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Nationalitat:
+                                </span>
+                              </div>
+                              <input name="nationality_sachen" class="py-1" type="text"  id="">
+                            </div>
+                            <div class="input-select-div mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                Aufenthaltsgenehmigung
+                                </span>
+                              </div>
+                              <select name="residence_permit" class="form-select w-75" aria-label="Default select example">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                            <div class=" mb-2">
+                              <label for="telephone_nr">Telefonnumer </label> <br>
+                              <div class="input-group">
+                                <input name="telephone_nr" id="int-tel" type="tel" class="form-control">
+                              </div>
+                            </div>
+                            <div class="input-div1 mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Email
+                                </span>
+                              </div>
+                              <input name="email" class="py-1" type="email" id="">
+                            </div>
+                            <div class="input-select-div mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Zivilstand
+                                </span>
+                              </div>
+                              <select name="zivilstand" class="form-select w-75" aria-label="Default select example">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                            <div class="input-select-div mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Arbeitsverhältnis
+                                </span>
+                              </div>
+                              <select name="employment_relationship" class="form-select w-75" aria-label="Default select example">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xd-4">
+                          <div class="">
+                            <div class="input-div1 mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Beruf:
+                                </span>
+                              </div>
+                              <input name="job" class="py-1" type="text" id="">
+                            </div>
+                            <div class="input-select-div mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Zahlungsrythmus:
+                                </span>
+                              </div>
+                              <select name="payment_frequency" class="form-select w-75" aria-label="Default select example">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                            <!-- input groupd here asap -->
+                            <div class="input-div1 mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Betrag pro Monat:
+                                </span>
+                              </div>
+                              <input name="amount_per_month" class="py-1" type="email"  id="">
+                            </div>
+                            <div class="input-select-div mb-2">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Anteli Garantie/Fond:
+                                </span>
+                              </div>
+                              <select name="share_guarantee" class="form-select w-75" aria-label="Default select example">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                            <div class="date-input-div mb-2">
+                              <div class="">
+                                <span style="font-size: 15px;">
+                                  Vertragsbeginn ab:
+                                </span>
+                              </div>
+                              <input name="start_of_contract" type="date" class="py-1 border-0">
+                            </div>
+                            <div class="group-button-div mb-2">
+                              <div class="">
+                                <span style="font-size: 15px;">
+                                  Pramienbefreiung:
+                                </span>
+                              </div>
+                              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="premium_exemption" value="Ja" id="btnradio3" autocomplete="off"
+                                  checked>
+                                <label class="btn btn-outline-secondary" for="btnradio3">Ja</label>
+
+                                <input type="radio" class="btn-check" name="premium_exemption" value="Nein" id="btnradio4"
+                                  autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="btnradio4">Nein</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xd-4">
+                          <div class="">
+                            <div class="group-button-div mb-2">
+                              <div class="">
+                                <span style="font-size: 15px;">
+                                  EU - Rente:
+                                </span>
+                              </div>
+                              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="eu_pension" value="Ja" id="btnradio5" autocomplete="off"
+                                  checked>
+                                <label class="btn btn-outline-secondary" for="btnradio5">Ja</label>
+
+                                <input type="radio" class="btn-check" name="eu_pension" value="Nein" id="btnradio6"
+                                  autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="btnradio6">Nein</label>
+                              </div>
+                            </div>
+                            <div class="group-button-div mb-2">
+                              <div class="">
+                                <span style="font-size: 15px;">
+                                  Todesfalkapital:
+                                </span>
+                              </div>
+                              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="death_benefit" value="Ja" id="btnradio7" autocomplete="off"
+                                  checked>
+                                <label class="btn btn-outline-secondary" for="btnradio7">Ja</label>
+
+                                <input type="radio" class="btn-check" name="death_benefit" value="Nein" id="btnradio8"
+                                  autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="btnradio8">Nein</label>
+                              </div>
+                            </div>
+                            <div class="group-button-div mb-2">
+                              <div class="">
+                                <span style="font-size: 15px;">
+                                  Raucher:
+                                </span>
+                              </div>
+                              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="smoker" value="Ja" id="btnradio9" autocomplete="off"
+                                  checked>
+                                <label class="btn btn-outline-secondary" for="btnradio9">Ja</label>
+
+                                <input type="radio" class="btn-check" name="smoker" value="Nein" id="btnradio10"
+                                  autocomplete="off">
+                                <label class="btn btn-outline-secondary" for="btnradio10">Nein</label>
+                              </div>
+                            </div>
+                            <div class="mb-2">
+                              <label for="exampleFormControlTextarea2" class="form-label">Gewünschte
+                                Gesellschaften:</label>
+                              <textarea name="desired" class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center  pb-3">
+                <div class="row">
+                  <div class="col g-0 text-end my-auto">
+                    <div class="">
+                      <span class="pe-2" style="color: #9F9F9F;">
+                        
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col g-0 text-start">
+                    <div class="">
+                      <button class="px-5 py-2" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" onclick="nextonee()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
+                          viewBox="0 0 58.155 19.159">
+                          <g id="Group_453" data-name="Group 453" transform="translate(0.004)">
+                            <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)"
+                              fill="none" stroke="#3fd599" stroke-width="2" />
+                            <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z"
+                              transform="translate(58.151 0) rotate(90)" fill="#3fd599" />
+                          </g>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade  vorsorge-content" id="nav-fourth" role="tabpanel"
+              aria-labelledby="nav-fourth-tab">
+              <div class="row mx-4">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3 ">
+                  <div class="mb-2">
+                    <span class="fw-bold fs-6">
+                      Hausrat- & Privathaftpflicht
+                    </span>
+                  </div>
+                  <div class="accordion accordion-flush" id="accordionFlushExample3">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseOne"
+                          style="background-color: #EFEFEF !important; border-radius: 10px;">
+                          <div class="d-block">
+                            <div class="">
+                              <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                Gegenofferte?
+                              </span>
+                            </div>
+                            <div class="lh-1 " id="bastelle-span">
+                              <span class="" style="font-size: 13px;">
+                                Bestelle eine Gegenofferte für eine bestehende Hausrat- / Prifathaftlichtversicherung.
+                              </span>
+                            </div>
+                          </div>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample3">
+                        <div class="accordion-body"
+                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                          <div class="">
+                            <div class="">
+                              <span class="" style="font-size: 13px;">
+                                Police Hochladen:
+                              </span>
+                            </div>
+                            <div class="">
+                              <div class="upload-box mx-1 my-2">
+                                <div class="mx-1 my-2 p-4 text-center">
+                                  <label for="file-input-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
+                                      <g id="Group_621" data-name="Group 621" transform="translate(-78.283 -14.777)">
+                                        <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5" cy="26.5" r="26.5"
+                                          transform="translate(78.283 14.777)" fill="#5f5f5f" />
+                                        <g id="Group_326" data-name="Group 326" transform="translate(95.656 31.893)">
+                                          <path id="Path_234" data-name="Path 234"
+                                            d="M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6"
+                                            transform="translate(0 1.82)" fill="#fff" stroke="#fff"
+                                            stroke-width="0.5" />
+                                          <path id="Path_235" data-name="Path 235"
+                                            d="M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z"
+                                            transform="translate(0.92 0)" fill="#fff" stroke="#fff"
+                                            stroke-width="0.5" />
+                                        </g>
+                                      </g>
+                                    </svg>
+                                  </label>
+                                  <input type="file" id="file-input-6" class="svg-div w-100 border-0  g-0" onchange="upload(this);" name="upload_police2">
+                          <input type="text" class="form-control text-center" id="file-input-6c" disabled style="background:transparent;border:none;">
+                                </div> 
+                              </div>
+                            </div>
+                            <div class="">
+                              <div class="row mx-2">
+                                <div class="col-5 d-flex g-0">
+                                  <div class="text-nowrap">
+                                    <span class="fw-bold" style=" font-size: 12px;">
+                                      Vergleichsart:
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="col g-0 d-flex justify-content-end">
+                                  <div class="select-div text-end ">
+                                    <select  name="comparison_type" class="fw-bold" id=""
+                                      style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                                      <option selected>Select</option>
+                                      <option value="1">1:1 Deckung</option>
+                                      <option value="2">1:1 Deckung</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="">
+                              <div class="mb-3 mt-3">
+                                <label for="exampleFormControlTextarea2" class="form-label" style="font-size: 13px;">Kommentar</label>
+                                <textarea name="comment__" class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3 ">
+                  <div class="mb-2">
+                    <span class="fw-bold fs-6">
+                      Hausrat- & Privathaftpflicht
+                    </span>
+                  </div>
+                  <div class="accordion accordion-flush" id="accordionFlushExample4">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color: #EFEFEF !important; border-radius: 10px;">
+                          <div class="d-block">
+                            <div class="">
+                              <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                Neue Sachversicherung
+                              </span>
+                            </div>
+                            <div class="lh-1 " id="bastelle-span">
+                              <span class="" style="font-size: 13px;">
+                                Bestelle eine Offerte für eine neue Hausrat- / Haftpflichtversicherung.
+                              </span>
+                            </div>
+                          </div>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseFour" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body"
+                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                          <div class="">
+                            <div class="row mx-2">
+                              <div class="col-5 d-flex g-0">
+                                <div class="text-nowrap">
+                                  <span class="fw-bold" style=" font-size: 15px;">
+                                    Neue Anfarge
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="col g-0 d-flex justify-content-end">
+                                <div class="select-div text-end ">
+                                  <select name="noname" class="fw-bold" id="" style="background-color: #EFEFEF; font-size: 15px;color:#9F9F9F;">
+                                    <option selected>Select</option>
+                                    <option value="1">Ja</option>
+                                    <option value="2">Nein</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="my-2">
+                              <div class="input-select-div">
+                                <div class="">
+                                  <span class="" style="font-size: 15px;">
+                                    Anzahl Personen
+                                  </span>
+                                </div>
+                                <select name="number_of_people" class="form-select w-50" aria-label="Default select example">
+                                  <option selected></option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                              </div>
+                              <div class="input-select-div">
+                                <div class="">
+                                  <span class="" style="font-size: 15px;">
+                                  Anzahl Zimmer
+                                  </span>
+                                </div>
+                                <select name="number_of_rooms" class="form-select w-50" aria-label="Default select example">
+                                  <option selected></option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                              </div>
+                              <div class="input-div1">
+                                <div class="">
+                                  <span class="" style="font-size: 15px;">
+                                    Versicherungsumme
+                                  </span>
+                                </div>
+                                <input name="sum_insured" class="py-1" type="text" id="">
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleFormControlTextarea4" class="form-label"
+                                  style="font-size: 15px;">Gewünschte Zusatzdeckung:</label>
+                                <textarea name="desired_additional_coverag" class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                              </div>
+                              <div class="input-select-div">
+                                <div class="">
+                                  <span class="" style="font-size: 15px;">
+                                    Pricathaftpflicht?
+                                  </span>
+                                </div>
+                                <select name="personal_liability" class="form-select w-50" aria-label="Default select example">
+                                  <option selected></option>
+                                  <option value="1">One</option>
+                                  <option value="2">Two</option>
+                                  <option value="3">Three</option>
+                                </select>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3">
+                  <div class="mb-2">
+                    <span class="fw-bold fs-6">
+                      Rechtsschutzversicherung
+                    </span>
+                  </div>
+                  <div class="accordion accordion-flush" id="accordionFlushExample5">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseOne"
+                          style="background-color: #EFEFEF !important; border-radius: 10px;">
+                          <div class="d-block">
+                            <div class="">
+                              <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                Gesellschaft wählen?
+                              </span>
+                            </div>
+                            <div class="lh-1 " id="bastelle-span">
+                              <span class="" style="font-size: 13px;">
+                                Bestelle eine Offerte für eine neue Hausrat- / Haftpflichtversicherung.
+                              </span>
+                            </div>
+                          </div>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseFive" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExampleFive">
+                        <div class="accordion-body"
+                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                          <div class="">
+                            <div class="row mx-2">
+                              <div class="col-5 d-flex g-0">
+                                <div class="text-nowrap">
+                                  <span class="fw-bold" style=" font-size: 15px;">
+                                    Neue Anfarge
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="col g-0 d-flex justify-content-end">
+                                <div class="select-div text-end ">
+                                  <select name="noname" class="fw-bold" id=""
+                                    style="background-color: #EFEFEF; font-size: 15px;color:#9F9F9F;">
+                                    <option selected>Select</option>
+                                    <option value="1">Ja</option>
+                                    <option value="2">Nein</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="input-div1">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Gesellschaft
+                                </span>
+                              </div>
+                              <input name="society" class="py-1" type="text"  id="">
+                            </div>
+                            <div class="input-select-div">
+                              <div class="">
+                                <span class="" style="font-size: 15px;">
+                                  Anzahl Personen
+                                </span>
+                              </div>
+                              <select name="noname" class="form-select w-50" aria-label="Default select example">
+                                <option selected></option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-3 pb-3">
+                  <div class="row">
+                    <div class="col g-0 text-end my-auto">
+                      <div class="">
+                        <span class="pe-2" style="color: #9F9F9F;">
+                          
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col g-0 text-start">
+                      <div class="">
+                        <button class="px-5 py-2" id="submitt" type="button" style="border: none; border-radius: 9px; background-color:#285F52;">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
+                            viewBox="0 0 58.155 19.159">
+                            <g id="Group_453" data-name="Group 453" transform="translate(0.004)">
+                              <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)"
+                                fill="none" stroke="#3fd599" stroke-width="2" />
+                              <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z"
+                                transform="translate(58.151 0) rotate(90)" fill="#3fd599" />
+                            </g>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script>
-        cnt = 1;
-        vehcnt = 1;
-        counte = 1;
-        newre = 1;
-        chsc = 1;
-        count = 1;
+  </div>
+  </form>
+  <style>
+    .btn-group label {
+      box-shadow: none !important;
+    }
 
-        function openHealth() {
-            document.getElementById("health").style.display = "block";
-            document.getElementById("car").style.display = "none";
-            document.getElementById("finance").style.display = "none";
-            document.getElementById("more").style.display = "none";
-        }
+    .input-group .form-control:focus {
+      border-color: #ced4da !important;
+      box-shadow: none !important;
+    }
 
-        function openCar() {
-            document.getElementById('health').style.display = "none";
-            document.getElementById('car').style.display = "block";
-            document.getElementById("finance").style.display = "none";
-            document.getElementById("more").style.display = "none";
+    .slct1 {
+      border: none !important;
+      border-bottom-right-radius: 5px !important;
+      border-bottom-left-radius: 5px !important;
+    }
 
+    .slct1:focus-visible {
+      outline: none;
+    }
 
-            function openNewVehicle() {
-                if (vehcnt % 2 == 1) {
-                    document.getElementById('newVehicle').innerHTML = ' <label>Upload vehicle ID</label> @if(isset($data->uploadvehicleid)) <input class="form-control" type="file" name="uploadvehicleid" value="{{$data->uploadvehicleid}}"> @else <input class="form-control" type="file" name="uploadvehicleid"> @endif </div> <div> <h6>Lesing</h6> <input onclick="openYesCheckBox()" type="radio" name="leasing" id="yes" value="Yes"> <label for="yes">Yes</label> <div class="hide" id="leasingname"> <input type="text" name="leasingname" placeholder="Lesaing Name"> </div> <input type="radio" name="leasing" id="no" value="No"> <label for="no">No</label> </div> <br> <hr> <h4>Vahicle Information</h4> <div> <span>Purchase Year</span> <select name="yearpurchase"> @for($i = \Carbon\Carbon::now()->format("Y");$i>=1950;$i--) <option value="{{$i}}">{{$i}}</option> @endfor </select> </div> <div> <label>First Commissioning</label> @if(isset($data->firstcommissioning)) <input type="date" class="form-control" name="firstcommissioning" value="{{$data->firstcommissioning}}"> @else <input type="date" class="form-control" name="firstcommissioning"> @endif  </div> <div> <label>Start Insurance</label> @if(isset($data->startinsurance)) <input type="date" class="form-control" name="startinsurance" value="{{$data->startinsurance}}"> @else <input type="date" class="form-control" name="startinsurance"> @endif </div> <div> <label>Kanton:</label> <select name="kanton"> @if(isset($data->kanton)) <option selected value="{{$data->kanton}}">{{$data->kanton}}</option> @endif <option>Zürich</option> <option>Bern / Berne</option> <option>Luzern</option> <option>Uri</option> <option>Schwyz</option> <option>Unterwalden</option> <option>Glarus</option> <option>Zug</option> <option>Freiburg / Fribourg</option> <option>Solothurn</option> <option>Basel</option> <option>Schaffhausen</option> <option>Appenzell</option> <option>Sankt Gallen</option> <option>Graubünden</option> <option>Aargau</option> <option>Thurgau</option> <option>Ticino</option> <option>Vaud</option> <option>Valais / Wallis</option> <option>Neuchâtel</option> <option>Genève</option> <option>Jura</option> </select> </div> <div> <label>KM-Stand</label> @if(isset($data->kmstand)) <input class="form-control" type="number" name="kmstand" value="{{$data->kmstand}}"> @else <input class="form-control" type="number" name="kmstand"> @endif </div> <hr> <h4>Driver Information</h4> <div> <label>Date of issue of drivers license</label> @if(isset($data->dateofissueofdriverslicense)) <input class="form-control" type="date" name="dateofissueofdriverslicense" value="{{$data->dateofissueofdriverslicense}}"> @else <input class="form-control" type="date" name="dateofissueofdriverslicense"> @endif </div> <div> <label>Nationality: </label> @if(isset($data->nationality)) <input class="form-control" type="text" name="nationality" value="{{$data->nationality}}"> @else <input class="form-control" type="text" name="nationality"> @endif </div> <div> <label>Lenker? </label> <select name="lenker"> @if(isset($data->lenker)) <option selected value="{{$data->lenker}}">{{$data->lenker}}</option> @endif <option>Yes</option> <option>No</option> </select> </div> <hr> <h4>Desired Coverage</h4> <div> <label>Insurance</label> <select name="insurance"> @if(isset($data->insurance)) <option selected value="{{$data->insurance}}">{{$data->insurance}}</option> @endif <option>300</option> <option>500</option> <option>1000 (drivers under 25 years)</option> </select> </div> <div> <label>Deduction Part: </label> <select name="deductionpart">@if(isset($data->deductionpart)) <option value="{{$data->deductionpart}}">{{$data->deductionpart}}</option> @endif @for($i = 1000;$i<=20000;$i+=1000) <option>{{$i}}</option> @endfor </select> </div> <div> <label>Things Carried: </label> @if(isset($data->thingscarried)) <input type="text" class="form-control" name="thingscarried" value="{{$data->thingscarried}}"> @else <input type="text" class="form-control" name="thingscarried"> @endif </div> <div> @if(isset($data->partnergarage)) @if($data->partnergarage == "Parter Garage") <label>Repair Shop: </label><br> <input type="radio" name="partnergarage" value="Parter Garage" checked> <label for="partnergarage">Partener Garage</label> @else <input type="radio" name="partnergarage" value="Free Choice" checked> <label for="partnergarage">Free Choice</label> @endif <label>Repair Shop: </label><br> <input type="radio" name="partnergarage" value="Parter Garage"> <label for="partnergarage">Partener Garage</label> <input type="radio" name="partnergarage" value="Free Choice"> <label for="partnergarage">Free Choice</label> @endif </div> <div> @if(isset($data->accidentcoverage)) @if($data->accidentcoverage == "Yes") <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage" value="Yes" checked> <label for="accidentcoverage">Yes</label> @else <input type="radio" name="accidentcoverage" value="No" checked> <label for="accidentcoverage">No</label> @endif <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage" value="Yes"> <label for="accidentcoverage">Yes</label> <input type="radio" name="accidentcoverage" value="No"> <label for="accidentcoverage">No</label> @endif </div> <div> @if(isset($data->trafficrightsprotection)) @if($data->trafficrightsprotection == "Yes") <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection" value="Yes" checked> <label for="trafficrightsprotection">Yes</label> @else <input type="radio" name="trafficrightsprotection" value="No" checked> <label for="trafficrightsprotection">No</label> @endif <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection" value="Yes"> <label for="trafficrightsprotection">Yes</label> <input type="radio" name="trafficrightsprotection" value="No"> <label for="trafficrightsprotection">No</label> @endif </div> <div> @if(isset($data->grossnegligenceprotection)) @if($data->grossnegligenceprotection == "Yes") <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection" value="Yes" checked> <label for="grossnegligenceprotection">Yes</label> @else <input type="radio" name="grossnegligenceprotection" value="No" checked> <label for="grossnegligenceprotection">No</label> @endif <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection" value="Yes"> <label for="grossnegligenceprotection">Yes</label> <input type="radio" name="grossnegligenceprotection" value="No"> <label for="grossnegligenceprotection">No</label> @endif </div> <div> @if(isset($data->glassprotection)) @if($data->glassprotection == "Yes") <label>Glass Protection: </label><br> <input type="radio" name="glassprotection" value="Yes" checked> <label for="glassprotection">Yes</label> @else <input type="radio" name="glassprotection" value="No" checked> <label for="glassprotection">No</label> @endif <label>Glass Protection: </label><br> <input type="radio" name="glassprotection" value="Yes"> <label for="glassprotection">Yes</label> <input type="radio" name="glassprotection" value="No"> <label for="glassprotection">No</label> @endif </div> <div> @if(isset($data->parkingdamage)) @if($data->parkingdamage == "Yes") <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage" value="Yes" checked> <label for="parkingdamage">Yes</label> @else <input type="radio" name="parkingdamage" value="No" checked> <label for="parkingdamage">No</label> @endif <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage" value="Yes"> <label for="parkingdamage">Yes</label> <input type="radio" name="parkingdamage" value="No"> <label for="parkingdamage">No</label> @endif </div> <div> @if(isset($data->roadsideassistance)) @if($data->roadsideassistance == "Yes") <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance" value="Yes" checked> <label for="roadsideassistance">Yes</label> @else <input type="radio" name="roadsideassistance" value="No" checked> <label for="roadsideassistance">No</label> @endif <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance" value="Yes" > <label for="roadsideassistance">Yes</label> <input type="radio" name="roadsideassistance" value="No" > <label for="roadsideassistance">No</label> @endif </div> <div> <label>Car Comment</label> @if(isset($data->carcomment)) <input type="text" class="form-control" name="carcomment" value="{{$data->carcomment}}"> @else <input type="text" class="form-control" name="carcomment"> @endif <br> <input type="button" class="btn btn-info" onClick="openAnotherNewVehicle()" value="Add Another One">';
+    .date-input-div input[type="date"]:focus-visible {
+      outline: none;
+    }
 
-                }
+    .ja-group-btn {
+      width: 85px;
+      font-size: 14px;
+      border: none;
+      background-color: #fff;
+      border-bottom-left-radius: 12px;
+      border-top-left-radius: 12px;
+      border-right: 1px #9F9F9F solid !important;
+    }
 
-                function openFinance() {
-                    document.getElementById('health').style.display = "none";
-                    document.getElementById('car').style.display = "none";
-                    document.getElementById("finance").style.display = "block";
-                    document.getElementById("more").style.display = "none";
-                }
+    .ja-group-btn:hover {
+      background-color: #dfdbdb;
+    }
 
-                function openMore() {
-                    document.getElementById('health').style.display = "none";
-                    document.getElementById('car').style.display = "none";
-                    document.getElementById("finance").style.display = "none";
-                    document.getElementById("more").style.display = "block";
-                }
+    .ja-group-btn:focus {
+      background-color: #a3a3a3;
+      color: #fff;
+    }
 
-                function openCounterOffer() {
+    .ja-group-btn1 {
+      font-size: 14px;
+      border: none;
+      border-bottom: #C4C6D2 1px solid;
+      background-color: #fff;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 12px;
+      border-right: 1px #9F9F9F solid !important;
+    }
 
+    .ja-group-btn1:hover {
+      background-color: #dfdbdb;
+    }
 
-                    if (cnt % 2 == 1)
-                        document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))<input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}"> @else <input class="form-control" type="file" name="uploadpolice">   @endif @if(isset($data->comment)) <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}"> @else <input type="text" name="comment" placeholder="Comment"> @endif';
-                    else
-                        document.getElementById('counteroffer').innerHTML = "";
+    .ja-group-btn1:focus {
+      background-color: #a3a3a3;
+      color: #fff;
+    }
 
+    .nein-group-btn {
+      width: 85px;
+      font-size: 14px;
+      border: none;
+      background-color: #fff;
+      border-bottom-right-radius: 12px;
+      border-top-right-radius: 12px;
+      border-left: 1px #c9c8c8 solid !important;
+    }
 
-                    if (cnt % 2 == 1) {
-                        document.getElementById('counteroffer').innerHTML = '@if(isset($data->uploadpolice))<input class="form-control" type="file" name="uploadpolice" value="{{$data->uploadpolice}}"> @else <input class="form-control" type="file" name="uploadpolice">   @endif @if(isset($data->comment)) <input type="text" name="comment" placeholder="Comment" value="{{$data->comment}}"> @else <input type="text" name="comment" placeholder="Comment"> @endif';
-                    } else {
-                        document.getElementById('counteroffer').innerHTML = "";
-                    }
+    .nein-group-btn:hover {
+      background-color: #dfdbdb;
+    }
 
-                    cnt++;
-                    vehcnt = 1;
-                    document.getElementById('newVehicle').innerHTML = "";
-                    document.getElementById('anotherNewVehicle').innerHTML = '';
-                }
+    .nein-group-btn:focus {
+      background-color: #a3a3a3;
+      color: #fff;
+    }
 
-                function openNewVehicle() {
-                    if (vehcnt % 2 == 1) {
-                        document.getElementById('newVehicle').innerHTML = ' <label>Upload vehicle ID</label> @if(isset($data->uploadvehicleid)) <input class="form-control" type="file" name="uploadvehicleid" value="{{$data->uploadvehicleid}}"> @else <input class="form-control" type="file" name="uploadvehicleid"> @endif </div> <div> <h6>Lesing</h6> <input onclick="openYesCheckBox()" type="radio" name="leasing" id="yes" value="Yes"> <label for="yes">Yes</label> <div class="hide" id="leasingname"> <input type="text" name="leasingname" placeholder="Lesaing Name"> </div> <input type="radio" name="leasing" id="no" value="No"> <label for="no">No</label> </div> <br> <hr> <h4>Vahicle Information</h4> <div> <span>Purchase Year</span> <select name="yearpurchase"> @for($i = \Carbon\Carbon::now()->format("Y");$i>=1950;$i--) <option value="{{$i}}">{{$i}}</option> @endfor </select> </div> <div> <label>First Commissioning</label> @if(isset($data->firstcommissioning)) <input type="date" class="form-control" name="firstcommissioning" value="{{$data->firstcommissioning}}"> @else <input type="date" class="form-control" name="firstcommissioning"> @endif  </div> <div> <label>Start Insurance</label> @if(isset($data->startinsurance)) <input type="date" class="form-control" name="startinsurance" value="{{$data->startinsurance}}"> @else <input type="date" class="form-control" name="startinsurance"> @endif </div> <div> <label>Kanton:</label> <select name="kanton"> @if(isset($data->kanton)) <option selected value="{{$data->kanton}}">{{$data->kanton}}</option> @endif <option>Zürich</option> <option>Bern / Berne</option> <option>Luzern</option> <option>Uri</option> <option>Schwyz</option> <option>Unterwalden</option> <option>Glarus</option> <option>Zug</option> <option>Freiburg / Fribourg</option> <option>Solothurn</option> <option>Basel</option> <option>Schaffhausen</option> <option>Appenzell</option> <option>Sankt Gallen</option> <option>Graubünden</option> <option>Aargau</option> <option>Thurgau</option> <option>Ticino</option> <option>Vaud</option> <option>Valais / Wallis</option> <option>Neuchâtel</option> <option>Genève</option> <option>Jura</option> </select> </div> <div> <label>KM-Stand</label> @if(isset($data->kmstand)) <input class="form-control" type="number" name="kmstand" value="{{$data->kmstand}}"> @else <input class="form-control" type="number" name="kmstand"> @endif </div> <hr> <h4>Driver Information</h4> <div> <label>Date of issue of drivers license</label> @if(isset($data->dateofissueofdriverslicense)) <input class="form-control" type="date" name="dateofissueofdriverslicense" value="{{$data->dateofissueofdriverslicense}}"> @else <input class="form-control" type="date" name="dateofissueofdriverslicense"> @endif </div> <div> <label>Nationality: </label> @if(isset($data->nationality)) <input class="form-control" type="text" name="nationality" value="{{$data->nationality}}"> @else <input class="form-control" type="text" name="nationality"> @endif </div> <div> <label>Lenker? </label> <select name="lenker"> @if(isset($data->lenker)) <option selected value="{{$data->lenker}}">{{$data->lenker}}</option> @endif <option>Yes</option> <option>No</option> </select> </div> <hr> <h4>Desired Coverage</h4> <div> <label>Insurance</label> <select name="insurance"> @if(isset($data->insurance)) <option selected value="{{$data->insurance}}">{{$data->insurance}}</option> @endif <option>300</option> <option>500</option> <option>1000 (drivers under 25 years)</option> </select> </div> <div> <label>Deduction Part: </label> <select name="deductionpart">@if(isset($data->deductionpart)) <option value="{{$data->deductionpart}}">{{$data->deductionpart}}</option> @endif @for($i = 1000;$i<=20000;$i+=1000) <option>{{$i}}</option> @endfor </select> </div> <div> <label>Things Carried: </label> @if(isset($data->thingscarried)) <input type="text" class="form-control" name="thingscarried" value="{{$data->thingscarried}}"> @else <input type="text" class="form-control" name="thingscarried"> @endif </div> <div> @if(isset($data->partnergarage)) @if($data->partnergarage == "Parter Garage") <label>Repair Shop: </label><br> <input type="radio" name="partnergarage" value="Parter Garage" checked> <label for="partnergarage">Partener Garage</label> @else <input type="radio" name="partnergarage" value="Free Choice" checked> <label for="partnergarage">Free Choice</label> @endif <label>Repair Shop: </label><br> <input type="radio" name="partnergarage" value="Parter Garage"> <label for="partnergarage">Partener Garage</label> <input type="radio" name="partnergarage" value="Free Choice"> <label for="partnergarage">Free Choice</label> @endif </div> <div> @if(isset($data->accidentcoverage)) @if($data->accidentcoverage == "Yes") <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage" value="Yes" checked> <label for="accidentcoverage">Yes</label> @else <input type="radio" name="accidentcoverage" value="No" checked> <label for="accidentcoverage">No</label> @endif <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage" value="Yes"> <label for="accidentcoverage">Yes</label> <input type="radio" name="accidentcoverage" value="No"> <label for="accidentcoverage">No</label> @endif </div> <div> @if(isset($data->trafficrightsprotection)) @if($data->trafficrightsprotection == "Yes") <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection" value="Yes" checked> <label for="trafficrightsprotection">Yes</label> @else <input type="radio" name="trafficrightsprotection" value="No" checked> <label for="trafficrightsprotection">No</label> @endif <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection" value="Yes"> <label for="trafficrightsprotection">Yes</label> <input type="radio" name="trafficrightsprotection" value="No"> <label for="trafficrightsprotection">No</label> @endif </div> <div> @if(isset($data->grossnegligenceprotection)) @if($data->grossnegligenceprotection == "Yes") <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection" value="Yes" checked> <label for="grossnegligenceprotection">Yes</label> @else <input type="radio" name="grossnegligenceprotection" value="No" checked> <label for="grossnegligenceprotection">No</label> @endif <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection" value="Yes"> <label for="grossnegligenceprotection">Yes</label> <input type="radio" name="grossnegligenceprotection" value="No"> <label for="grossnegligenceprotection">No</label> @endif </div> <div> @if(isset($data->glassprotection)) @if($data->glassprotection == "Yes") <label>Glass Protection: </label><br> <input type="radio" name="glassprotection" value="Yes" checked> <label for="glassprotection">Yes</label> @else <input type="radio" name="glassprotection" value="No" checked> <label for="glassprotection">No</label> @endif <label>Glass Protection: </label><br> <input type="radio" name="glassprotection" value="Yes"> <label for="glassprotection">Yes</label> <input type="radio" name="glassprotection" value="No"> <label for="glassprotection">No</label> @endif </div> <div> @if(isset($data->parkingdamage)) @if($data->parkingdamage == "Yes") <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage" value="Yes" checked> <label for="parkingdamage">Yes</label> @else <input type="radio" name="parkingdamage" value="No" checked> <label for="parkingdamage">No</label> @endif <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage" value="Yes"> <label for="parkingdamage">Yes</label> <input type="radio" name="parkingdamage" value="No"> <label for="parkingdamage">No</label> @endif </div> <div> @if(isset($data->roadsideassistance)) @if($data->roadsideassistance == "Yes") <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance" value="Yes" checked> <label for="roadsideassistance">Yes</label> @else <input type="radio" name="roadsideassistance" value="No" checked> <label for="roadsideassistance">No</label> @endif <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance" value="Yes" > <label for="roadsideassistance">Yes</label> <input type="radio" name="roadsideassistance" value="No" > <label for="roadsideassistance">No</label> @endif </div> <div> <label>Car Comment</label> @if(isset($data->carcomment)) <input type="text" class="form-control" name="carcomment" value="{{$data->carcomment}}"> @else <input type="text" class="form-control" name="carcomment"> @endif <br> <input type="button" class="btn btn-info" onClick="openAnotherNewVehicle()" value="Add Another One">';
-                    } else {
-                        document.getElementById('newVehicle').innerHTML = "";
-                    }
-                    vehcnt++;
-                    cnt = 1;
-                    document.getElementById('counteroffer').innerHTML = "";
-                    document.getElementById('anotherNewVehicle').innerHTML = '';
+    .nein-group-btn1 {
+      font-size: 14px;
+      border: none;
+      border-bottom: #C4C6D2 1px solid;
+      background-color: #fff;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 12px;
+      border-left: 1px #c9c8c8 solid !important;
+    }
 
-                }
+    .nein-group-btn1:hover {
+      background-color: #dfdbdb;
+    }
 
-                function openYesCheckBox() {
-                    document.getElementById('leasingname').classList.toggle('hide');
-                }
+    .nein-group-btn1:focus {
+      background-color: #a3a3a3;
+      color: #fff;
+    }
 
+    .input-select-div select:focus {
+      outline: none;
+      box-shadow: none;
+      border-color: #fff;
+    }
 
-                function openCounteroffered() {
-                    if (counte % 2 == 1) {
-                        document.getElementById('counteroffered').innerHTML = ' <h4>Counteroffer</h4>  <div>      <label>Upload Police</label> @if(isset($data->uploadpolice2))<input type="file" name="uploadpolice2" class="form-control" value="{{$data->uploadpolice2}}">@else  <input type="file" name="uploadpolice2" class="form-control">@endif{{-- Vergleischart--}}   <label>Comment At Police: </label>       @if(isset($data->commentatpolice)) <input type="text" name="commentatpolice" value="{{$data->commentatpolice}}"> @else  <input type="text" name="commentatpolice"> @endif  </div>';
-                    } else {
-                        document.getElementById('counteroffered').innerHTML = '';
-                    }
-                    counte++;
-                    document.getElementById('newrequest').innerHTML = "";
-                    document.getElementById('choosesociety').innerHTML = "";
-                    document.getElementById('anotherNewVehicle').innerHTML = '';
-                    newre = 1;
-                    chsc = 1;
-                }
+    .input-select-div select {
+      border-radius: 7px !important;
 
-                function openNewPropertyInsurance() {
-                    if (newre % 2 == 1) {
-                        document.getElementById('newrequest').innerHTML = '<h4>New Request</h4><div><label>Number Of People</label><select name="numberofpeople"> @if(isset($data->numberofpeople)) <option selected value="{{$data->numberofpeople}}">{{$data->numberofpeople}}</option> @endif @for($i = 1;$i<=30;$i++)<option>{{$i}}</option>@endfor</select></div><div><label>Number Of Rooms</label><select name="numberofrooms"> @if(isset($data->numberofrooms)) <option selected value="{{$data->numberofrooms}}">{{$data->numberofrooms}}</option> @endif @for($i = 1;$i<=30;$i++)<option>{{$i}}</option>@endfor</select></div><div><label>Insuranceamount: </label> @if(isset($data->insurance)) <input type="number" name="insuranceamount" class="form-control" value="{{$data->insuranceamount}}"> @else <input type="number" name="insuranceamount" class="form-control"> @endif </div><div><label>Wished Additional Things: </label>     @if(isset($data->wishedadditionalthings))  <input type="text" name="wishedadditionalthings" class="form-control" value="{{$data->wishedadditionalthings}}"> @else <input type="text" name="wishedadditionalthings" class="form-control"> @endif </div><div><label>Private Liability: </label><br>@if(isset($data->privateliability))  @if($data->privateliability == "Yes")<input type="radio" name="privateliability" value="Yes" checked><label for="privateliability">Yes</label>@else<input type="radio" name="privateliability" value="No" checked><label for="privateliability">No</label>@endif @else<input type="radio" name="privateliability" value="Yes" ><label for="privateliability">Yes</label><input type="radio" name="privateliability" value="No" ><label for="privateliability">No</label>@endif </div>';
-                    } else {
-                        document.getElementById('newrequest').innerHTML = "";
-                    }
-                    newre++;
-                    document.getElementById('counteroffered').innerHTML = '';
+    }
 
-                    function openNewPropertyInsurance() {
-                        if (newre % 2 == 1) {
-                            document.getElementById('newrequest').innerHTML = '<h4>New Request</h4><div><label>Number Of People</label><select name="numberofpeople"> @if(isset($data->numberofpeople)) <option selected value="{{$data->numberofpeople}}">{{$data->numberofpeople}}</option> @endif @for($i = 1;$i<=30;$i++)<option>{{$i}}</option>@endfor</select></div><div><label>Number Of Rooms</label><select name="numberofrooms"> @if(isset($data->numberofrooms)) <option selected value="{{$data->numberofrooms}}">{{$data->numberofrooms}}</option> @endif @for($i = 1;$i<=30;$i++)<option>{{$i}}</option>@endfor</select></div><div><label>Insuranceamount: </label> @if(isset($data->insurance)) <input type="number" name="insuranceamount" class="form-control" value="{{$data->insuranceamount}}"> @else <input type="number" name="insuranceamount" class="form-control"> @endif </div><div><label>Wished Additional Things: </label>     @if(isset($data->wishedadditionalthings))  <input type="text" name="wishedadditionalthings" class="form-control" value="{{$data->wishedadditionalthings}}"> @else <input type="text" name="wishedadditionalthings" class="form-control"> @endif </div><div><label>Private Liability: </label><br>@if(isset($data->privateliability))  @if($data->privateliability == "Yes")<input type="radio" name="privateliability" value="Yes" checked><label for="privateliability">Yes</label>@else<input type="radio" name="privateliability" value="No" checked><label for="privateliability">No</label>@endif @else<input type="radio" name="privateliability" value="Yes" ><label for="privateliability">Yes</label><input type="radio" name="privateliability" value="No" ><label for="privateliability">No</label>@endif </div>';
-                        } else {
-                            document.getElementById('newrequest').innerHTML = "";
-                        }
-                        newre++;
-                        document.getElementById('counteroffered').innerHTML = '';
-                        document.getElementById('choosesociety').innerHTML = "";
-                        document.getElementById('anotherNewVehicle').innerHTML = '';
-                        counte = 1;
-                        chsc = 1;
-                    }
+    .input-div1 input {
+      border: none;
+      border-radius: 5px;
+    }
 
-                    function openChoiceSociety() {
-                        if (chsc % 2 == 1) {
-                            document.getElementById('choosesociety').innerHTML = '<div> <h4>Legal Protection Insurance</h4> <div> <label>Society</label> @if(isset($data->society)) <input type="text" name="society" class="form-control" value="{{$data->society}}"> @else <input type="text" name="society" class="form-control"> @endif </div> <div> <label>Number Of People at Insurance</label> <select name="numberofpeopleinsurance"> @if(isset($data->numberofpeopleinsurance)) <option selected value="{{$data->numberofpeopleinsurance}}">{{$data->numberofpeopleinsurance}}</option> @endif @for($i = 1;$i<=30;$i++) <option>{{$i}}</option>@endfor</select> </div> </div>'
-                        } else {
+    .input-div1 input:focus-visible {
+      outline: none;
+    }
 
-                            document.getElementById('choosesociety').innerHTML = "";
-                            document.getElementById('anotherNewVehicle').innerHTML = '';
-                            counte = 1;
-                            chsc = 1;
-                        }
+    .accordion-button:focus {
+      background-color: #fff !important;
+      color: #434343;
+      box-shadow: none;
+      border-color: #434343;
+    }
 
-                        function openChoiceSociety() {
-                            if (chsc % 2 == 1) {
-                                document.getElementById('choosesociety').innerHTML = '<div> <h4>Legal Protection Insurance</h4> <div> <label>Society</label> @if(isset($data->society)) <input type="text" name="society" class="form-control" value="{{$data->society}}"> @else <input type="text" name="society" class="form-control"> @endif </div> <div> <label>Number Of People at Insurance</label> <select name="numberofpeopleinsurance"> @if(isset($data->numberofpeopleinsurance)) <option selected value="{{$data->numberofpeopleinsurance}}">{{$data->numberofpeopleinsurance}}</option> @endif @for($i = 1;$i<=30;$i++) <option>{{$i}}</option>@endfor</select> </div> </div>'
-                            } else {
-                                document.getElementById('choosesociety').innerHTML = "";
-                            }
-                            chsc++;
-                            document.getElementById('counteroffered').innerHTML = "";
-                            document.getElementById('newrequest').innerHTML = "";
-                            document.getElementById('anotherNewVehicle').innerHTML = '';
-                            counte = 1;
-                            newre = 1;
-                        }
+    .accordion-button:not(.collapsed) {
+      color: #434343;
+      background-color: #fff;
+      box-shadow: none;
+    }
 
-                        function openAnotherNewVehicle() {
+    .select-div select {
+      border: none;
+    }
 
-                            document.getElementById('anotherNewVehicle').innerHTML += '<div id="counter' + count + '"></div>';
+    .select-div select:focus-visible {
+      outline: none;
+    }
 
-                            document.getElementById('counter' + count).innerHTML += ' <label>Upload vehicle ID</label> @if(isset($data->uploadvehicleid)) <input class="form-control" type="file" name="uploadvehicleid' + count + '" value="{{$data->uploadvehicleid}}"> @else <input class="form-control" type="file" name="uploadvehicleid' + count + '"> @endif </div> <div> <h6>Lesing</h6> <input onclick="openYesCheckBox()" type="radio" name="leasing' + count + '" id="yes" value="Yes"> <label for="yes">Yes</label> <div class="hide" id="leasingname"> <input type="text" name="leasingname' + count + '" placeholder="Lesaing Name"> </div> <input type="radio" name="leasing' + count + '" id="no" value="No"> <label for="no">No</label> </div> <br> <hr> <h4>Vahicle Information</h4> <div> <span>Purchase Year</span> <select name="yearpurchase' + count + '"> @for($i = \Carbon\Carbon::now()->format("Y");$i>=1950;$i--) <option value="{{$i}}">{{$i}}</option> @endfor </select> </div> <div> <label>First Commissioning</label>  <input type="date" class="form-control" name="firstcommissioning' + count + '">  </div> <div> <label>Start Insurance</label> <input type="date" class="form-control" name="startinsurance' + count + '"> </div> <div> <label>Kanton:</label> <select name="kanton"> @if(isset($data->kanton)) <option selected value="{{$data->kanton}}">{{$data->kanton}}</option> @endif <option>Zürich</option> <option>Bern / Berne</option> <option>Luzern</option> <option>Uri</option> <option>Schwyz</option> <option>Unterwalden</option> <option>Glarus</option> <option>Zug</option> <option>Freiburg / Fribourg</option> <option>Solothurn</option> <option>Basel</option> <option>Schaffhausen</option> <option>Appenzell</option> <option>Sankt Gallen</option> <option>Graubünden</option> <option>Aargau</option> <option>Thurgau</option> <option>Ticino</option> <option>Vaud</option> <option>Valais / Wallis</option> <option>Neuchâtel</option> <option>Genève</option> <option>Jura</option> </select> </div> <div> <label>KM-Stand</label> @if(isset($data->kmstand)) <input class="form-control" type="number" name="kmstand' + count + '" value="{{$data->kmstand}}' + count + '"> </div> <hr> <h4>Driver Information</h4> <div> <label>Date of issue of drivers license</label> <input class="form-control" type="date" name="dateofissueofdriverslicense' + count + '" value="{{$data->dateofissueofdriverslicense}}"> </div> <div> <label>Nationality: </label>  <input class="form-control" type="text" name="nationality' + count + '" value="{{$data->nationality}}"> </div> <div> <label>Lenker? </label> <select name="lenker' + count + '"> <option selected value="{{$data->lenker}}">{{$data->lenker}}</option> <option>Yes</option> <option>No</option> </select> </div> <hr> <h4>Desired Coverage</h4> <div> <label>Insurance</label> <select name="insurance' + count + '"> <option selected value="{{$data->insurance}}">{{$data->insurance}}</option> <option>300</option> <option>500</option> <option>1000 (drivers under 25 years)</option> </select> </div> <div> <label>Deduction Part: </label> <select name="deductionpart' + count + '"> @for($i = 1000;$i<=20000;$i+=1000) <option selected value="{{$data->deductionpart}}">{{$data->deductionpart}}</option> <option>{{$i}}</option> @endfor </select> </div> <div> <label>Things Carried: </label> <input type="text" class="form-control" name="thingscarried' + count + '" value="{{$data->thingscarried}}"> </div> <div> @if(isset($data->partnergarage)) @if($data->partnergarage == "Parter Garage") <label>Repair Shop: </label><br> <input type="radio" name="partnergarage' + count + '" value="Parter Garage" checked> <label for="partnergarage">Partener Garage</label> @else <input type="radio" name="partnergarage' + count + '" value="Free Choice" checked> <label for="partnergarage">Free Choice</label> @endif <label>Repair Shop: </label><br> <input type="radio" name="partnergarage' + count + '" value="Parter Garage"> <label for="partnergarage">Partener Garage</label> <input type="radio" name="partnergarage' + count + '" value="Free Choice"> <label for="partnergarage">Free Choice</label> @endif </div> <div> @if(isset($data->accidentcoverage)) @if($data->accidentcoverage == "Yes") <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage' + count + '" value="Yes" checked> <label for="accidentcoverage">Yes</label> @else <input type="radio" name="accidentcoverage' + count + '" value="No" checked> <label for="accidentcoverage">No</label> @endif <label>Accident Coverage: </label><br> <input type="radio" name="accidentcoverage' + count + '" value="Yes"> <label for="accidentcoverage">Yes</label> <input type="radio" name="accidentcoverage' + count + '" value="No"> <label for="accidentcoverage">No</label> @endif </div> <div> @if(isset($data->trafficrightsprotection)) @if($data->trafficrightsprotection == "Yes") <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection' + count + '" value="Yes" checked> <label for="trafficrightsprotection">Yes</label> @else <input type="radio" name="trafficrightsprotection' + count + '" value="No" checked> <label for="trafficrightsprotection">No</label> @endif <label>Traffic Rights Protection: </label><br> <input type="radio" name="trafficrightsprotection' + count + '" value="Yes"> <label for="trafficrightsprotection">Yes</label> <input type="radio" name="trafficrightsprotection' + count + '" value="No"> <label for="trafficrightsprotection">No</label> @endif </div> <div> @if(isset($data->grossnegligenceprotection)) @if($data->grossnegligenceprotection == "Yes") <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection' + count + '" value="Yes" checked> <label for="grossnegligenceprotection">Yes</label> @else <input type="radio" name="grossnegligenceprotection' + count + '" value="No" checked> <label for="grossnegligenceprotection">No</label> @endif <label>Gross Negligence Protection: </label><br> <input type="radio" name="grossnegligenceprotection' + count + '" value="Yes"> <label for="grossnegligenceprotection">Yes</label> <input type="radio" name="grossnegligenceprotection' + count + '" value="No"> <label for="grossnegligenceprotection">No</label> @endif </div> <div> @if(isset($data->glassprotection)) @if($data->glassprotection == "Yes") <label>Glass Protection: </label><br> <input type="radio" name="glassprotection' + count + '" value="Yes" checked> <label for="glassprotection">Yes</label> @else <input type="radio" name="glassprotection' + count + '" value="No" checked> <label for="glassprotection">No</label> @endif <label>Glass Protection: </label><br> <input type="radio" name="glassprotection' + count + '" value="Yes"> <label for="glassprotection">Yes</label> <input type="radio" name="glassprotection' + count + '" value="No"> <label for="glassprotection">No</label> @endif </div> <div> @if(isset($data->parkingdamage)) @if($data->parkingdamage == "Yes") <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage' + count + '" value="Yes" checked> <label for="parkingdamage">Yes</label> @else <input type="radio" name="parkingdamage' + count + '" value="No" checked> <label for="parkingdamage">No</label> @endif <label>Parking Damage: </label><br> <input type="radio" name="parkingdamage' + count + '" value="Yes"> <label for="parkingdamage">Yes</label> <input type="radio" name="parkingdamage' + count + '" value="No"> <label for="parkingdamage">No</label> @endif </div> <div> @if(isset($data->roadsideassistance)) @if($data->roadsideassistance == "Yes") <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance' + count + '" value="Yes" checked> <label for="roadsideassistance">Yes</label> @else <input type="radio" name="roadsideassistance' + count + '" value="No" checked> <label for="roadsideassistance">No</label> @endif <label>24H Roadside Assistance: </label><br> <input type="radio" name="roadsideassistance' + count + '" value="Yes" > <label for="roadsideassistance">Yes</label> <input type="radio" name="roadsideassistance' + count + '" value="No" > <label for="roadsideassistance">No</label> @endif </div> <div> <label>Car Comment</label> <input type="text" class="form-control" name="carcomment' + count + '" value="{{$data->carcomment}}"> <br> <input type="button" class="btn btn-info" onClick="openAnotherNewVehicle()" value="Add Another One"><input type="button" class="btn btn-danger" onClick="deleteAnotherNewVehicle()" value="Delete">';
+    .upload-box input[type="file"] {
+      display: none;
+    }
 
-                            count++;
-                            document.getElementById('count').value = count;
-                        }
+    .krankenkasse-content {
+      background-color: #fff;
+      border-bottom-left-radius: 17px !important;
+      border-bottom-right-radius: 17px !important;
+      border-top-right-radius: 17px !important;
+    }
 
-                        function deleteAnotherNewVehicle() {
+    .auto-content {
+      background-color: #fff;
+      border-bottom-left-radius: 17px !important;
+      border-bottom-right-radius: 17px !important;
+      border-top-right-radius: 17px !important;
+      border-top-left-radius: 17px !important;
+    }
 
-                            document.getElementById('counter' + --count).innerHTML = '';
-                            document.getElementById('count').value = count;
-                        }
-    </script>
-    <style>
-        .hide {
-            display: none;
-        }
-    </style>
-@endsection
+    .sachen-content {
+      background-color: #fff;
+      border-bottom-left-radius: 17px !important;
+      border-bottom-right-radius: 17px !important;
+      border-top-right-radius: 17px !important;
+      border-top-left-radius: 17px !important;
+    }
+
+    .vorsorge-content {
+      background-color: #fff;
+      border-bottom-left-radius: 17px !important;
+      border-bottom-right-radius: 17px !important;
+      border-top-left-radius: 17px !important;
+    }
+
+    .krankenkasse-btn {
+      color: black;
+      font-weight: 600;
+      border: none !important;
+      border-top-left-radius: 15px !important;
+      border-top-right-radius: 15px !important;
+    }
+
+    .krankenkasse-btn:hover {
+      color: black;
+    }
+
+    .auto-btn {
+      color: black;
+      font-weight: 600;
+      border: none !important;
+      border-top-left-radius: 15px !important;
+      border-top-right-radius: 15px !important;
+    }
+
+    .auto-btn:hover {
+      color: black;
+    }
+
+    .sachen-btn {
+      color: black;
+      font-weight: 600;
+      border: none !important;
+      border-top-left-radius: 15px !important;
+      border-top-right-radius: 15px !important;
+    }
+
+    .sachen-btn:hover {
+      color: black;
+    }
+
+    .vorsorge-btn {
+      color: black;
+      font-weight: 600;
+      border: none !important;
+      border-top-left-radius: 15px !important;
+      border-top-right-radius: 15px !important;
+    }
+
+    .vorsorge-btn:hover {
+      color: black;
+    }
+
+    .upload-box {
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='9' ry='9' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+      border-radius: 9px;
+    }
+  </style>
+  <script>
+    var cntt = 0;
+  let position = [
+    '<button class="nav-link col krankenkasse-btn active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159" viewBox="0 0 58.155 19.159">  <g id="Group_453" data-name="Group 453" transform="translate(0.004)"> <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)" fill="none" stroke="#3fd599" stroke-width="2"></line>  <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z" transform="translate(58.151 0) rotate(90)" fill="#3fd599"></path> </g></svg></button>',
+  '<button class="nav-link col auto-btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159" viewBox="0 0 58.155 19.159"><g id="Group_453" data-name="Group 453" transform="translate(0.004)">    <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)" fill="none" stroke="#3fd599" stroke-width="2"></line>  <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z" transform="translate(58.151 0) rotate(90)" fill="#3fd599"></path>   </g>    </svg></button>',
+'<button class="nav-link col sachen-btn" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159" viewBox="0 0 58.155 19.159">  <g id="Group_453" data-name="Group 453" transform="translate(0.004)">      <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)" fill="none" stroke="#3fd599" stroke-width="2"></line>    <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z" transform="translate(58.151 0) rotate(90)" fill="#3fd599"></path></g></svg></button>',
+'<button class="nav-link  col vorsorge-btn" id="nav-fourth-tab" data-bs-toggle="tab" data-bs-target="#nav-fourth" type="button" role="tab" aria-controls="nav-fourth" aria-selected="false"><svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159" viewBox="0 0 58.155 19.159">  <g id="Group_453" data-name="Group 453" transform="translate(0.004)">     <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2" transform="translate(0 9.287)" fill="none" stroke="#3fd599" stroke-width="2"></line>   <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z" transform="translate(58.151 0) rotate(90)" fill="#3fd599"></path></g> </svg></button>'];
+function upload(x){
+  var fullPath = x.value;
+if (fullPath) {
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+    var filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+        filename = filename.substring(1);
+    }
+  
+document.getElementById(x.id + 'c').value = filename;
+}
+}
+function changecnt(x){
+  cntt = x;
+  if(x == 3){
+    document.getElementById("submitt").type = "submit";
+  }
+}
+function nextonee(){
+  if(cntt < 5 && cntt> -1){
+    if(cntt == 0){
+      $('#nav-profile').addClass('active show');
+      $('#nav-home').removeClass('active show');
+      $('#nav-profile-tab').addClass('active');
+      $('#nav-home-tab').removeClass('active');
+    }
+    if(cntt == 1){
+      $('#nav-contact').addClass('active show');
+      $('#nav-profile').removeClass('active show');
+      $('#nav-contact-tab').addClass('active');
+      $('#nav-profile-tab').removeClass('active');
+    }
+    if(cntt == 2){
+      $('#nav-fourth').addClass('active show');
+      $('#nav-contact').removeClass('active show');
+      $('#nav-fourth-tab').addClass('active');
+      $('#nav-contact-tab').removeClass('active');
+      document.getElementById("submitt").type = "submit";
+    }
+     if(cntt == 3){
+      document.getElementById("submitt").type = "submit";
+     }
+    cntt++;
+    }
+  }
+
+    function hideSpan() {
+      if (document.getElementById("bastelle-span").style.display === "none") {
+        document.getElementById("bastelle-span").style.display = "block";
+        document.getElementById("button1").style.setProperty("border-bottom-left-radius", "10px", "important");
+        document.getElementById("button1").style.setProperty("border-bottom-right-radius", "10px", "important");
+      }
+      else {
+        document.getElementById("bastelle-span").style.display = "none";
+        document.getElementById("button1").style.setProperty("border-bottom-left-radius", "0px", "important");
+        document.getElementById("button1").style.setProperty("border-bottom-right-radius", "0px", "important");
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</body>
 
 </html>

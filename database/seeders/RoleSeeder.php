@@ -17,13 +17,10 @@ class RoleSeeder extends Seeder
         $roles = [
             1 => 'fs',
             2 => 'backoffice',
-            3 => 'team Leader',
-            4 => 'sales Manager',
-            5 => 'management',
-            6 => 'it administrator',
-            7 => 'it development',
-            8 => 'finance',
-            9 => 'admin'
+            3 => 'salesmanager',
+            4 => 'management',
+            5 => 'finance',
+            6 => 'admin'
         ];
 
 

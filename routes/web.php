@@ -8,7 +8,6 @@ use App\Http\Middleware\confirmedcode;
 use App\Mail\confirmcode as MailConfirmcode;
 use Carbon\Carbon;
 use App\Http\Controllers\TasksController;
-use App\Models\appointment;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
@@ -21,86 +20,128 @@ use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\TeamController;
+use App\Models\lead;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Session\Session;
+use Musonza\Chat\Chat;
 
-use function GuzzleHttp\Promise\task;
+
+
+
 
 route::prefix('')->group(function(){
+
+// =====================================
+   route::get('hyr',function(){
+      Auth::guard('admins')->loginUsingId(2);
+   });
+//==========================================
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
     route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
     route::get('/',[UserController::class,'dashboard'])->name('dashboard');
-    route::get('logout',[UserController::class,'logout'])->name('logout');
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
     route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
-    route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
+
+    Route::group(['middleware' => 'json.response'], function () {
+      route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
+   });
+
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
+    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
-    route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
+
+    Route::group(['middleware' => 'json.response'], function () {
+      route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
+   });
+
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
+    route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
+    route::get('acceptappointment/{id}',function ($id){
+        $lead = lead::find($id);
+        return view('acceptappointment',compact('lead'));
+    })->name('acceptappointment');
+    route::get('acceptleadinfo/{id}',function ($id){
+        $app = lead::find($id)->update(['assigned' => 1]);
+        return redirect()->back();
+    })->name('acceptleadinfo');
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
-      $data = \App\Models\lead::find($id);
-      $data = $data->family;
+      try
+      {$data = family::where('leads_id',$id)->get();
+                     if(!empty($data[0])){
 
-   
-      return view('leadfamily',compact('data'));
-   })->name('leadfamily');
+                        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
+                     }
+                     else{
+                        return redirect()->route('dealclosed',$id);
+                     }
+                     
+                  }
+      catch(Throwable $e){
+          return redirect()->back();
+      }
     
-    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
+   })->name('leadfamily');
+   route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
+    route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
     route::post('deleteFamilyPerson/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson'])->name('deleteFamilyPerson');
     route::post('createLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'createLeadDataKK'])->name('createLeadDataKK');
-    route::post('createLeadDataCounteroffered/{leadId}/{personId}',[LeadDataController::class,'createleadDataACounteroffered'])->name('createleadDataACounteroffered');
-    route::post('createLeadDataFahrzeug/{leadId}/{personId}',[LeadDataController::class,'createLeadDataFahrzeug'])->name('createLeadDataFahrzeug');
-    route::post('createLeadDataThings/{leadId}/{personId}',[LeadDataController::class,'createLeadDataThings'])->name('createLeadDataThings');
     route::post('updateLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataKK'])->name('updateLeadDataKK');
     route::post('updateleadDataACounteroffered/{leadId}/{personId}',[LeadDataController::class,'updateleadDataACounteroffered'])->name('updateleadDataACounteroffered');
     route::post('updateLeadDataFahrzeug/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataFahrzeug'])->name('updateLeadDataFahrzeug');
     route::post('updateLeadDataThings/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataThings'])->name('updateLeadDataThings');
     route::post('createLeadDataPrevention/{leadId}/{personId}',[LeadDataController::class,'createLeadDataPrevention'])->name('createLeadDataPrevention');
     route::get('getAllLeadDataById/{leadId}/{personId}',[LeadDataController::class,'getAllLeadDataById'])->name('getAllLeadDataById');
-
+    route::post('deleteLeadDataKK/{dataId}',[LeadDataController::class,'deleteLeadDataKK'])->name('deleteLeadDataKK');
+    route::post('deleteLeadDataCounteroffered/{dataId}',[LeadDataController::class,'deleteLeadDataCounteroffered'])->name('deleteLeadDataCounteroffered');
+    route::post('deleteLeadDataFahrzeug/{dataId}',[LeadDataController::class,'deleteLeadDataFahrzeug'])->name('deleteLeadDataFahrzeug');
+    route::post('deleteLeadDataThings/{dataId}',[LeadDataController::class,'deleteLeadDataThings'])->name('deleteLeadDataThings');
+    route::post('deleteLeadDataPrevention/{dataId}',[LeadDataController::class,'deleteLeadDataPrevention'])->name('deleteLeadDataPrevention');
+    route::post('deleteTeam/{teamId}',[TeamController::class,'deleteTeam'])->name('deleteTeam');
+    route::get('showTeamById/{teamId}',[TeamController::class,'showTeamById'])->name('showTeamById');
+    route::get('updateTeam/{teamId}',[TeamController::class,'updateTeam'])->name('updateTeam');
+    Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
+      route::post('create',[TeamController::class,'createTeam'])->name('createTeam');
+  });
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
-   route::get('tasks',[TasksController::class,'tasks'])->name('tasks');
-
+   route::any('tasks',[TasksController::class,'tasks'])->name('tasks');
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
-   route::get('costumers',function (){
-        $data = \App\Models\family::all();
-       return view('costumers',compact('data'));
-   })->name('costumers');
+   route::any('costumers',[TasksController::class,'costumers'])->name('costumers');
+   route::any('search',[TasksController::class,'costumers'])->name('search');
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
    route::get('chat',[ChatController::class,'chat']);
+    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
 
-   route::get('addtodo',[TodoController::class,'addtodo']);
+   Route::group(['middleware' => 'json.response'], function () {
+      route::get('addtodo',[TodoController::class,'addtodo']);
+   });
+
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);
    route::get('donetodo',[TodoController::class,'donetodo']);
    route::get('addnumber',[TodoController::class,'addnumber']);
    route::get('deletenumber',[TodoController::class,'deletenumber']);
    route::get('numbers',[TodoController::class,'numbers']);
-   route::get('calendar',[CalendarController::class,'calendar'])->name('calendar');
+   route::get('calendar',[CalendarController::class,'calendar'])->name('calendar')->middleware('role:admin|fs|salesmanager|management,admins');
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
-});
-route::get('assignpendency/{admin}/{id}',[TasksController::class,'assignpendency']);
-   route::get('smsconfirm',function (){
-      $Admin = Admins::find(12);
-      return view('confirm_sms');
-   })->name('smsconfirm');
-   Route::get('login',[UserController::class,'rnlogin'])->name('rnlogin');
-   route::post('trylogin',[UserController::class,'trylogin'])->name('trylogin');
+
+route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
+
    route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
-   route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation');
-   route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode');
    route::get('add',[TasksController::class,'adddata']);
 route::get('permission', function(){
    $role = Role::find(2);
@@ -108,12 +149,19 @@ route::get('permission', function(){
    $user->assignRole($role);
   return $user->getRoleNames();
 });
+Route::get('login',[UserController::class,'rnlogin'])->name('rnlogin')->withoutMiddleware([confirmedcode::class]);
+route::post('trylogin',[UserController::class,'trylogin'])->name('trylogin')->withoutMiddleware([confirmedcode::class]);
+route::any('acceptdata/{id}/{accept?}',[LeadDataController::class,'acceptdata'])->name('acceptdata');
+route::get('smsverification',[UserController::class,'smsconfirmation'])->name('smsconfirmation')->withoutMiddleware([confirmedcode::class]);
+route::get('smsconfirm',function (){
+    $Admin = Admins::find(12);
+    return view('confirm_sms');
+})->name('smsconfirm')->withoutMiddleware([confirmedcode::class]);
+route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode')->withoutMiddleware([confirmedcode::class]);
+route::get('logout',[UserController::class,'logout'])->name('logout')->withoutMiddleware([confirmedcode::class]);
+});
+
 route::get('status',[StatusController::class,'status']);
-
-
-
-
-
 
 
 

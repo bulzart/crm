@@ -11,7 +11,7 @@ class LeadFactory extends Factory
      *
      * @return array
      */
-   
+
     public function randomm():string{
         $num = random_int(1,50);
         $status = "";
@@ -51,7 +51,7 @@ $status = "Done";
             'slug' => $this->faker->slug(),
             'completed' => random_int(0,1),
             'campaign_id' => random_int(1,3),
-            'appointment_date' => Carbon::now()->addDay(random_int(0,7))->format('Y-m-d'),
+            'appointment_date' => Carbon::now()->addDay(random_int(0,14))->format('Y-m-d'),
             'assign_to_id' => random_int(0,10),
             'status_task' => $this->randomm(),
             'assigned' => random_int(0,1)
