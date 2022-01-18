@@ -140,7 +140,7 @@
             </div>
             <br>
             <div style="display: none" class="w-100" id="picture">
-                <img src="img/exceExample.png" alt="pic" class="img-fluid">
+                <img src="exceExample.png" alt="pic" class="img-fluid">
             </div>
         </div>
     </div>

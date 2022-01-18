@@ -22,7 +22,6 @@ class LeadDataController extends Controller
         if(!$accept){
       $data = new data();
       $lead = family::find($id);
-     
       $data->getdata($id);
       return view('updatedocument',compact('data','lead'));}
       else{
@@ -113,8 +112,9 @@ class LeadDataController extends Controller
         $status = ['status' => 'Submited'];
         $family->update($status);
         $pend = Pendency::where('family_id',$personId)->first();
+        if($pend){
         $pend->done = 1;
-        $pend->save();
+        $pend->save();}
             return redirect()->back()->with('success','Successfully submitted and will be waiting for the backoffice!');
     }
 

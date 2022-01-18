@@ -391,10 +391,7 @@ if(Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact
 
 
 
-  public function documentform(Request $req, $id)
-  {
-
-  }
+ 
 
 
   public function isdone($object): bool

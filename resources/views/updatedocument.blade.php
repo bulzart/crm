@@ -21,7 +21,43 @@
 
 <body>
 
-
+<!-- <section>
+  <div class="px-4">
+    <div class="row">
+      <div class="col">
+        <img src="assets/images/logo.png" class="img-fluid" style="height: 66px;">
+      </div>
+      <div class="col text-right my-2 ">
+        <div class="pull-right text-end">
+          <button class="border-0 px-2 pt-1 pb-2 me-2" style="background-color: #C4C6D2; border-radius: 12px;">
+            <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" width="" height="22px"
+              viewBox="0 0 32.504 28.358">
+              <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(0)" fill="none" stroke="#fff"
+                stroke-linecap="round" stroke-width="2">
+                <ellipse cx="12.438" cy="12.438" rx="12.438" ry="12.438" stroke="none" />
+                <ellipse cx="12.438" cy="12.438" rx="11.438" ry="11.438" fill="none" />
+              </g>
+              <line id="Line_4" data-name="Line 4" x2="8.532" y2="7.141" transform="translate(22.563 19.808)"
+                fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2" />
+            </svg>
+          </button>
+          <button class="border-0 px-2 pt-1 pb-2" style="background-color: #C4C6D2; border-radius: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="" height="22px" viewBox="0 0 28.063 28.637">
+              <g id="Group_2" data-name="Group 2" transform="translate(1 1)">
+                <circle id="Ellipse_3" data-name="Ellipse 3" cx="6.803" cy="6.803" r="6.803"
+                  transform="translate(6.229)" fill="none" stroke="#fff" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+                <path id="Path_1" data-name="Path 1" d="M2,102.218a13.032,13.032,0,0,1,26.063,0"
+                  transform="translate(-2 -75.581)" fill="none" stroke="#fff" stroke-linecap="round"
+                  stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" />
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 
 <style>
     .nav-itemsss a:hover {
@@ -53,7 +89,7 @@
 </style>
 <form method="post" enctype="multipart/form-data" id="forma">
     @csrf
-    <div class="row" disabled>
+    <div class="row">
         <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
             <ul class="nav nav-pills flex-column mb-auto  nav-itemsss">
                 <li class="nav-item">
@@ -350,7 +386,7 @@
                                                                value="{{$data->datakk[0]->pre_insurer}}"
                                                                id="file-input-0" class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this)">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->pre_insurer)}}"><input
+                                                        <a href="{{route('showfile',$data->datakk[0]->pre_insurer)}}"><input
                                                                 type="text" class="form-control text-center"
                                                                 id="file-input-0c" disabled
                                                                 style="background:none; border:none;"
@@ -422,7 +458,7 @@
                                                                onchange="upload(this);"
                                                                value="{{$data->datakk[0]->id_required}}"
                                                                name="id_required">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->id_required)}}">
+                                                        <a href="{{route('showfile',$data->datakk[0]->id_required)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-1c" disabled
                                                                    style="background:none; border:none;"
@@ -492,7 +528,7 @@
                                                                class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this);" name="notice_by"
                                                                value="{{$data->datakk[0]->notice_by}}">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->notice_by)}}">
+                                                        <a href="{{route('showfile',$data->datakk[0]->notice_by)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-2c" disabled
                                                                    style="background:transparent; border:none;"
@@ -562,7 +598,7 @@
                                                                class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this);" name="power_of_attorney"
                                                                value="{{$data->datakk[0]->power_of_attorney}}">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->power_of_attorney)}}">
+                                                        <a href="{{route('showfile',$data->datakk[0]->power_of_attorney)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-3c" disabled
                                                                    style="background:transparent; border:none;"
@@ -690,7 +726,7 @@
                                                                                onchange="upload(this);"
                                                                                value="{{$data->prevention[0]->upload_police}}"
                                                                                name="upload_police">
-                                                                        <a href="{{Storage::disk('img')->url($data->prevention[0]->upload_police)}}">
+                                                                        <a href="{{route('showfile',$data->prevention[0]->upload_police)}}">
                                                                             <input type="text"
                                                                                    class="form-control text-center"
                                                                                    id="file-input-4a" disabled
@@ -1916,7 +1952,7 @@
                                                                            onchange="upload(this);"
                                                                            name="upload_police__"
                                                                            value="{{$data->prevention[0]->upload_police__}}">
-                                                                        <a href="{{Storage::disk('img')->url($data->prevention[0]->upload_police__)}}">
+                                                                        <a href="{{route('showfile',$data->prevention[0]->upload_police__)}}">
                                                                     <input type="text" class="form-control text-center"
                                                                            id="file-input-6c" disabled
                                                                            style="background:transparent;border:none;"
@@ -2241,9 +2277,8 @@
   <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1z"/>
 </svg>
                           </button>
-           @if($lead->pendency->done == 1)
-          
-                          <button class="px-5 py-2" id="submitt1" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept" onclick="accept();">
+           @if($lead->status == 'Submited')
+                                     <button class="px-5 py-2" id="submitt1" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept" onclick="accept();">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-check-circle" viewBox="0 0 16 16">
                               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                               <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
@@ -2502,11 +2537,11 @@
     }
 
       function accept(){
-          <?php if($lead->pendency->done == 0) 
-          {
-           echo 'document.getElemenyById("forma").action ="' . route('acceptdata',$lead->id,true) .";";   
+        <?php 
+        
+           echo 'document.getElementById("forma").action ="' . route('acceptdata',[$lead->id,true]) .'";';   
            echo 'document.getElementById("forma").submit();';
-          }?>
+           ?>
 
     }
 
