@@ -207,23 +207,27 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     }
 
 
-    public function leads()
+    public function leads(Request $req)
     {
+
         if (!Auth::guard('admins')->check()) {
             return abort('403');
         } else {
             $asigned = [];
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
-                $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
-                $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
+                $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->paginate(25);
+                $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->paginate(25);
+
 
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->get();
+                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->paginate(25);
             }
 
-            $insta = lead::where('campaign_id', 1)->get()->count();
-            $facebook = lead::where('campaign_id', 3)->get()->count();
-            $sana = lead::where('campaign_id', 2)->get()->count();
+            $insta = DB::table('leads')->where('campaign_id', 1)->count();
+         
+            $facebook = DB::table('leads')->where('campaign_id', 3)->count();
+            $sana = DB::table('leads')->where('campaign_id', 2)->count();
+
             $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
             return view('leads', compact('leads', 'total', 'asigned'));
 

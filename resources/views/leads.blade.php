@@ -62,7 +62,6 @@
 
                             <div class="info-content" style="height: 200px;overflow-y: scroll;overflow-x: hidden">
                                 <div class="tasks-divv py-2 px-1">
-
                                     @foreach($asigned as $assign)
                                         <div class="row my- mx-3">
                                             <div class="col-3 g-0">
@@ -186,12 +185,29 @@
                                     </div>
                                 </div>
                             @endforeach
+   
                         </div>
 
                     </div>
 
                 </div>
+                <div class="mt-4">
+
+    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center"><nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">
+        @if($leads->currentPage() > 1)
+        <span> <a href="{{route('leads',['page' => $leads->currentPage() -1 ])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"></span>
+            @endif
+                    « Previous
+                </span> <a href="{{route('leads',['page' => $leads->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                    Next »
+                </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
+                
+                </p></div> <div></div></div></nav></div>
+             
+</div>
             </div>
+            
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-3">
                 <div class="statistics-div">
                     <div class="statistics-header mx-4 py-3">
@@ -217,6 +233,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
 @endsection
 <style>
     .statistics-div {
@@ -267,7 +284,6 @@
 
 
 </body>
-
 </html>
 
 {{--@extends('template.navbar')--}}

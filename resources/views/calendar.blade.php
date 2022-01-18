@@ -87,7 +87,7 @@
         var locations = [
             <?php
             foreach ($maps as $row3) {
-                echo '["' . $row3['name'] . '", ' . $row3['latitude'] . ', ' . $row3['longitude'] . '],';
+                echo '["' . $row3->first_name . '", ' . $row3->latitude . ', ' . $row3->longitude . '],';
             }
             ?>
         ];
