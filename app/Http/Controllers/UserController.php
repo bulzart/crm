@@ -208,23 +208,27 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     }
 
 
-    public function leads()
+    public function leads(Request $req)
     {
+
         if (!Auth::guard('admins')->check()) {
             return abort('403');
         } else {
             $asigned = [];
-            if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')) {
-                $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->get();
-                $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->get();
+            if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
+                $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->paginate(25);
+                $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->paginate(25);
+
 
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->get();
+                $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->paginate(25);
             }
 
-            $insta = lead::where('campaign_id', 1)->get()->count();
-            $facebook = lead::where('campaign_id', 3)->get()->count();
-            $sana = lead::where('campaign_id', 2)->get()->count();
+            $insta = DB::table('leads')->where('campaign_id', 1)->count();
+         
+            $facebook = DB::table('leads')->where('campaign_id', 3)->count();
+            $sana = DB::table('leads')->where('campaign_id', 2)->count();
+
             $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
             return view('leads', compact('leads', 'total', 'asigned'));
 
@@ -480,15 +484,18 @@ $taskcnt = 0;
                     ->orderBy('family_person.first_name', 'asc')
                     ->count();
             }
-            elseif(Auth::guard('admins')->user()->hasRole('fs')){
-                foreach(DB::table('leads')->where('leads.completed','=','0')->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)->select('leads.completed','leads.status_task')->get() as $task){
-                    if($task->status_task == 'Open' || $task->status_task == 'Submited' || $task->status_task == null){
-                        $opencnt++;
-                    }
-                    if($task->status_task == 'Done'){
-$done++;
-                    }
-                    $taskcnt++;
+            if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')){
+                if(Auth::guard('admins')->user()->hasRole('fs'))
+                {foreach($tasks = DB::table('leads')
+                ->where('completed','=','0')
+                ->where('status_contract','!=','Done')
+                ->orWhereNull('status_contract')
+                ->where('status_task','!=','Done')
+                ->where('assign_to_id',Auth::guard('admins')->user()->id)
+                ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
+                
+                ->get() as $task){
+     $opencnt++;
                 }
              $pendingcnt = DB::table('family_person')
                 ->join('pendencies','family_person.id','=','pendencies.family_id')
@@ -498,6 +505,33 @@ $done++;
                 ->count();
         }
 
+
+        else{
+            $taskcnt = lead::count();
+   
+            foreach($tasks = DB::table('leads')
+            ->where('completed','=','0')
+            ->where('status_contract','!=','Done')
+            ->orWhereNull('status_contract')
+            ->where('status_task','!=','Done')
+            ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
+            
+            ->get() as $task){
+                    $opencnt++;
+            }
+            $done = DB::table('leads')
+            ->where('status_contract','Done')
+            ->count();
+          
+         $pendingcnt = DB::table('family_person')
+            ->join('pendencies','family_person.id','=','pendencies.family_id')
+            ->where('pendencies.done','=',0)
+            ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
+            ->count();
+        }
+       
+    }
+   
 
                 $percnt = 0;
 

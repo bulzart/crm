@@ -233,6 +233,9 @@ this.apage++;
         }
     }
 </script>
+<<<<<<< HEAD
+
+=======
 <style>
 .dateee {
     border-radius: 15px;
@@ -287,3 +290,4 @@ this.apage++;
     background-color: #4EC590;
 }
 </style>
+>>>>>>> 08b471852d00bf21fcddab20b3131499238868c8

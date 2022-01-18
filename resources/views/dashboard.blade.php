@@ -2,7 +2,6 @@
 @extends('template.navbar')
 @section('content')
     <html lang="en">
-
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -775,4 +774,3 @@
 
 
 </style>
-
