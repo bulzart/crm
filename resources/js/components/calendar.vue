@@ -73,7 +73,7 @@
 
             <div class="mt-1 scroll-2" id="appscroll" style="height: 250px; overflow-y: scroll; overflow-x:hidden !important;">
                 <div class="text-center" v-if="today == null">No appointments for today</div>
-                <a style="text-decoration: none" v-if="today != null" v-for="tod in today.data"  :href="'acceptappointment/'+tod.id"><div  class="mb-2 text-white"
+                <a style="text-decoration: none" v-if="today != null" v-for="tod in today"  :href="'acceptappointment/'+tod.id"><div  class="mb-2 text-white"
                      style="background: #00c78c; border-radius: 9px; min-height: 60px;cursor: pointer;"
                      >
 

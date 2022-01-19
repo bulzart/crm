@@ -29377,7 +29377,7 @@ var render = function () {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm._l(_vm.today.data, function (tod) {
+          _vm._l(_vm.today, function (tod) {
             return _vm.today != null
               ? _c(
                   "a",
