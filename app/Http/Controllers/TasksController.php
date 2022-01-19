@@ -12,12 +12,12 @@ use App\Models\Pendency;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Name\FullyQualified;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
-use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
 
 class TasksController extends Controller
@@ -44,118 +44,118 @@ $retor = Pendency::where('family_id',$id)->firstOrFail();
     notification::where('receiver_id', Auth::guard('admins')->user()->id)->where('done', 0)->update(['done' => 1]);
   }
   public function today(Request $req)
-    {
-      $some_date = Carbon::now()->format('H:i');
-      $now = (int) str_replace(':', '', $some_date);
-  
-  
-      $admin = Auth::guard('admins')->user();
-      $today = Carbon::now()->format("Y-m-d");
-      $data = null;
-      $cnt = 0;
-      if ($req->date != null) {
-        if ($admin->hasRole('admin')) {
+  {
+    $some_date = Carbon::now()->format('H:i');
+    $now = (int) str_replace(':', '', $some_date);
+
+
+    $admin = Auth::guard('admins')->user();
+    $today = Carbon::now()->format("Y-m-d");
+    $data = null;
+    $cnt = 0;
+    if ($req->date != null) {
+      if ($admin->hasRole('admin')) {
+        foreach (DB::table('leads')
+        ->where('wantsonline', 0)
+        ->where('appointment_date', $req->date)
+        ->whereNotNull('assign_to_id')
+        ->orderBy('time','desc')
+        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+        ->paginate(15) as $d){
+            $data[$cnt] = $d;
+            $val = (int) $d->id;
+            $data[$cnt]->id = Crypt::encrypt($val * 1244);
+            $cnt++;
+
+        }
+
+
+      } elseif ($admin->hasRole('fs')) {
           foreach (DB::table('leads')
-          ->where('wantsonline', 0)
-          ->where('appointment_date', $req->date)
-          ->whereNotNull('assign_to_id')
-          ->orderBy('time','desc')
-          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
-          ->paginate(15) as $d){
+                       ->where('wantsonline', 0)
+                       ->where('appointment_date', $req->date)
+                       ->whereNotNull('assign_to_id')
+                       ->orderBy('time','desc')
+              ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->paginate(15) as $d){
               $data[$cnt] = $d;
               $val = (int) $d->id;
               $data[$cnt]->id = Crypt::encrypt($val * 1244);
               $cnt++;
-  
+
           }
-  
-  
-        } elseif ($admin->hasRole('fs')) {
+
+
+      }
+    } else {
+      if ($admin->hasRole('admin')) {
+        if ($now > 2300) {
             foreach (DB::table('leads')
                          ->where('wantsonline', 0)
-                         ->where('appointment_date', $req->date)
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
-                ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                         ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+                         ->paginate(15) as $d){
+                $data[$cnt] = $d;
+                $val = (int) $d->id;
+                $data[$cnt]->id = Crypt::encrypt($val * 1244);
+                $cnt++;
+
+            }
+        } else {
+
+            foreach (DB::table('leads')
+                         ->where('wantsonline', 0)
+                         ->whereNotNull('assign_to_id')
+                         ->orderBy('time','desc')
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->paginate(15) as $d){
                 $data[$cnt] = $d;
                 $val = (int) $d->id;
                 $data[$cnt]->id = Crypt::encrypt($val * 1244);
                 $cnt++;
-  
+
             }
-  
-  
-        }
-      } else {
-        if ($admin->hasRole('admin')) {
-          if ($now > 2300) {
-              foreach (DB::table('leads')
-                           ->where('wantsonline', 0)
-                           ->whereNotNull('assign_to_id')
-                           ->orderBy('time','desc')
-                           ->select('leads.first_name','leads.last_name','leads.address','leads.id')
-                           ->where('appointment_date', Carbon::now()->addDays()->toDateString())
-                           ->paginate(15) as $d){
-                  $data[$cnt] = $d;
-                  $val = (int) $d->id;
-                  $data[$cnt]->id = Crypt::encrypt($val * 1244);
-                  $cnt++;
-  
-              }
-          } else {
-  
-              foreach (DB::table('leads')
-                           ->where('wantsonline', 0)
-                           ->whereNotNull('assign_to_id')
-                           ->orderBy('time','desc')
-                           ->select('leads.first_name','leads.last_name','leads.address','leads.id')
-                           ->paginate(15) as $d){
-                  $data[$cnt] = $d;
-                  $val = (int) $d->id;
-                  $data[$cnt]->id = Crypt::encrypt($val * 1244);
-                  $cnt++;
-  
-              }
-          }
-        }
-        if ($admin->hasRole('fs')) {
-  
-          if ($now > 2300) {
-              foreach (DB::table('leads')
-                           ->where('wantsonline', 0)
-                           ->whereNotNull('assign_to_id')
-                           ->orderBy('time','desc')
-                           ->select('leads.first_name','leads.last_name','leads.address','leads.id')
-                           ->where('appointment_date', Carbon::now()->addDays()->toDateString())
-                           ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
-                           ->paginate(15) as $d){
-                  $data[$cnt] = $d;
-                  $val = (int) $d->id;
-                  $data[$cnt]->id = Crypt::encrypt($val * 1244);
-                  $cnt++;
-  
-              }
-          } else {
-              foreach (DB::table('leads')
-                           ->where('wantsonline', 0)
-                           ->whereNotNull('assign_to_id')
-                           ->orderBy('time','desc')
-                           ->select('leads.first_name','leads.last_name','leads.address','leads.id')
-                           ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
-                           ->paginate(15) as $d){
-                  $data[$cnt] = $d;
-                  $val = (int) $d->id;
-                  $data[$cnt]->id = Crypt::encrypt($val * 1244);
-                  $cnt++;
-  
-              }
-          }
         }
       }
-      return $data;
+      if ($admin->hasRole('fs')) {
+
+        if ($now > 2300) {
+            foreach (DB::table('leads')
+                         ->where('wantsonline', 0)
+                         ->whereNotNull('assign_to_id')
+                         ->orderBy('time','desc')
+                         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                         ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+                         ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                         ->paginate(15) as $d){
+                $data[$cnt] = $d;
+                $val = (int) $d->id;
+                $data[$cnt]->id = Crypt::encrypt($val * 1244);
+                $cnt++;
+
+            }
+        } else {
+            foreach (DB::table('leads')
+                         ->where('wantsonline', 0)
+                         ->whereNotNull('assign_to_id')
+                         ->orderBy('time','desc')
+                         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                         ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                         ->paginate(15) as $d){
+                $data[$cnt] = $d;
+                $val = (int) $d->id;
+                $data[$cnt]->id = Crypt::encrypt($val * 1244);
+                $cnt++;
+
+            }
+        }
+      }
     }
+    return $data;
+  }
 
   public function vuedate(Request $req)
   {
@@ -435,7 +435,7 @@ if(Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact
 
 
 
- 
+
 
 
   public function isdone($object): bool

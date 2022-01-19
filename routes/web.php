@@ -67,11 +67,13 @@ route::prefix('')->group(function(){
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
         $lead = lead::find($id);
-        
+
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
-        $app = lead::find($id)->update(['assigned' => 1]);
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+        $app = lead::find($idd)->update(['assigned' => 1]);
         return redirect()->back();
     })->name('acceptleadinfo');
 
@@ -184,6 +186,7 @@ Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->
 
 route::get('sendcode',function(){
                 \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,10000)));
+
 });
 route::get('nr/{nr}',function($nr){
    $key = 15;
@@ -195,3 +198,4 @@ $nr++;
    echo $val;
    return Auth::user();
 });
+
