@@ -191,12 +191,13 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function addappointmentfile(Request $request)
     {
-        $request->validate([
-            'file' => 'required|mimes:xlsx,xls,csv'
-        ]);
-        $file = $request->file('file');
+        if($file = $request->file('file')){}
 
-        \Maatwebsite\Excel\Facades\Excel::import(new LeadImport, $file);
+        if(\Maatwebsite\Excel\Facades\Excel::import(new LeadImport, $file)){
+            return redirect()->back()->with('success' ,'Successfuly Inserted');
+        }else{
+            return redirect()->back()->with('fail' ,'Fail To Insert');
+        }
 
     }
 
@@ -225,7 +226,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             }
 
             $insta = DB::table('leads')->where('campaign_id', 1)->count();
-         
+
             $facebook = DB::table('leads')->where('campaign_id', 3)->count();
             $sana = DB::table('leads')->where('campaign_id', 2)->count();
 
@@ -493,7 +494,7 @@ $taskcnt = 0;
                 ->where('status_task','!=','Done')
                 ->where('assign_to_id',Auth::guard('admins')->user()->id)
                 ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
-                
+
                 ->get() as $task){
      $opencnt++;
                 }
@@ -508,30 +509,30 @@ $taskcnt = 0;
 
         else{
             $taskcnt = lead::count();
-   
+
             foreach($tasks = DB::table('leads')
             ->where('completed','=','0')
             ->where('status_contract','!=','Done')
             ->orWhereNull('status_contract')
             ->where('status_task','!=','Done')
             ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
-            
+
             ->get() as $task){
                     $opencnt++;
             }
             $done = DB::table('leads')
             ->where('status_contract','Done')
             ->count();
-          
+
          $pendingcnt = DB::table('family_person')
             ->join('pendencies','family_person.id','=','pendencies.family_id')
             ->where('pendencies.done','=',0)
             ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
             ->count();
         }
-       
+
     }
-   
+
 
                 $percnt = 0;
 

@@ -85,6 +85,10 @@
                             </div>
                         </div>
 
+{{--                       @php--}}
+{{--                       $leadss = $lead->id * 14;--}}
+{{--                       $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);--}}
+{{--                       @endphp--}}
                         <div class="py-3">
                             <div class="input-group">
                                 <a href="{{route('dealnotclosed',$lead->id)}}" style="text-decoration: none;cursor: pointer" class="my-auto decline-btn m-2 my-auto py-2 px-5">
