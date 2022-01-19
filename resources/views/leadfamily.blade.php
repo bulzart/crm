@@ -5,8 +5,14 @@
 <div class="row justify-content-center">
     <div class="col-8" style="background: #7DBF9A; border-radius: 19px; padding: 5%;">
         @foreach($data as $task)
-                <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
-                    <div class="accordion-item my-1">
+                <div class="accordion accordion-flush mx-3" id="accordionFlushExample">
+                    @if($task->status == 'Open')
+                    <div class="accordion-item my-1 bg-danger">
+                        @elseif($task->status == 'Submited')
+                        <div class="accordion-item my-1 bg-warning">
+                            @else
+                            <div class="accordion-item my-1 bg-success">
+                            @endif
                         <h2 class="accordion-header" id="flush-headingFivve">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseFivve" aria-expanded="false" aria-controls="flush-collapseFivve">

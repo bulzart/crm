@@ -22,7 +22,7 @@ use Livewire\Component;
 class TasksController extends Controller
 {
 public function assignpendency($admin,$id,$desc = null){
-$retor = Pendency::where('family_id',$id)->get();
+$retor = Pendency::where('family_id',$id)->firstOrFail();
   if($retor != null){
     $pendency = new Pendency();
   $pendency->admin_id = (int) $admin;
@@ -57,16 +57,20 @@ $retor = Pendency::where('family_id',$id)->get();
         ->where('appointment_date', $req->date)
         ->whereNotNull('assign_to_id')
         ->orderBy('time','desc')
-        ->select('leads.first_name','leads.last_name','leads.address')
+        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
         ->paginate(15);
+
+     
       } elseif ($admin->hasRole('fs')) {
         $data = DB::table('leads')
         ->where('assign_to_id', Auth::guard('admins')->user()->id)
         ->where('wantsonline', 0)
         ->where('appointment_date', $req->date)
         ->orderBy('time','desc')
-        ->select('leads.first_name','leads.last_name','leads.address')
+        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
         ->paginate(15);
+       
+
       }
     } else {
       if ($admin->hasRole('admin')) {
@@ -76,7 +80,7 @@ $retor = Pendency::where('family_id',$id)->get();
           ->where('appointment_date', Carbon::now()->addDays()->toDateString())
           ->whereNotNull('assign_to_id')
           ->orderBy('time','desc')
-          ->select('leads.first_name','leads.last_name','leads.address')
+          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
           ->paginate(15);
         } else {
 
@@ -85,7 +89,7 @@ $retor = Pendency::where('family_id',$id)->get();
           ->where('appointment_date', Carbon::now()->toDateString())
           ->whereNotNull('assign_to_id')
           ->orderBy('time','desc')
-          ->select('leads.first_name','leads.last_name','leads.address')
+          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
           ->paginate(15);
         }
       }
@@ -97,7 +101,7 @@ $retor = Pendency::where('family_id',$id)->get();
           ->where('wantsonline', 0)
           ->where('appointment_date', Carbon::now()->addDays()->toDateString())
           ->orderBy('time','desc')
-          ->select('leads.first_name','leads.last_name','leads.address')
+          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
           ->paginate(15);
         } else {
           $data = DB::table('leads')
@@ -105,7 +109,7 @@ $retor = Pendency::where('family_id',$id)->get();
           ->where('wantsonline', 0)
           ->where('appointment_date', Carbon::now()->toDateString())
           ->orderBy('time','desc')
-          ->select('leads.first_name','leads.last_name','leads.address')
+          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
           ->paginate(15);
         }
       }

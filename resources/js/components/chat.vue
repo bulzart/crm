@@ -1,7 +1,6 @@
 <template>
 <section style="background-color: #eee;">
-  <div class="container py-5">
-
+  <div class="container">
     <div class="row d-flex justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-4">
 

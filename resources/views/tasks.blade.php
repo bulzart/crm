@@ -64,9 +64,23 @@
                     </a>
                     <br>
                 @endforeach
+                <div class="mt-4">
+@if($pending->count() > 1)
+    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center"><nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">
+        @if($pending->currentPage() > 1)
+        <span> <a href="{{route('tasks',['page' => $pending->currentPage() -1 ])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"></span>
+            @endif
+                    « Previous
+                </span> <a href="{{route('tasks',['page' => $pending->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                    Next »
+                </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
                 
+                </p></div> <div></div></div></nav></div>
+                @endif
 </div>
-{{$pending->links()}}
+</div>
+
             </div>
         </div>
     </div>

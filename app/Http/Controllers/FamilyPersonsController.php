@@ -15,23 +15,41 @@ use Throwable;
 
 class FamilyPersonsController extends Controller
 {
-    public function family_persons($id){
+    public function family_persons($id)
+    {
         $cnt = 0;
         $cnt1 = 0;
         $lead = family::find($id);
-        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $lead->lead->assign_to_id){
-            try{
-           $data = LeadDataKK::where('person_id','=',$id)->firstOrFail();
-           return redirect()->route('acceptdata',$id);}
-           catch(Exception $e){
-            return view('documentsform',compact('lead'));
-           }
-         } 
-         else {
-                return redirect()->back();
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $lead->lead->assign_to_id) {
+            if (Auth::user()->hasRole('fs')) {
+                if (Auth::user()->id == $lead->assign_to_id) {
+                    try {
+                        $data = LeadDataKK::where('person_id', '=', $id)->firstOrFail();
+                        return redirect()->route('acceptdata', $id);
+                    } 
+                    catch (Exception $e) {
+                        return view('documentsform', compact('lead'));
+                    }
+                } 
+                else {
+                    return redirect()->back();
+                }
+            } 
+            else {
+                try {
+                    $data = LeadDataKK::where('person_id', '=', $id)->firstOrFail();
+                    return redirect()->route('acceptdata', $id);
+                } 
+                catch (Exception $e) {
+                    return view('documentsform', compact('lead'));
+                }
             }
+        } 
+        else {
+            return redirect()->back();
         }
-    
+    }
+
 
     public function getAllFamilyPersonsOfLead($id)
     {
@@ -42,25 +60,25 @@ class FamilyPersonsController extends Controller
     public function updateFamilyPerson($id, Request $request)
     {
         $family =  family::where('id', $id)->get();
-           if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') ||  $family->lead->assign_to_id == Auth::guard('admins')->user()->id)
-{
-       $family->update($request->all());
-        return redirect()->back()->with('message', 'Family person was updated');
-}
-else{
-    return redirect()->back();
-}
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') ||  $family->lead->assign_to_id == Auth::guard('admins')->user()->id) {
+            $family->update($request->all());
+            return redirect()->back()->with('message', 'Family person was updated');
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function deleteFamilyPerson($id, $leadId)
     {
         $family = family::where('id', $id)->where('leads_id', $leadId)->get();
-        if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $family->lead->id){
-        $family->delete();}
+        if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $family->lead->id) {
+            $family->delete();
+        }
     }
 
-    public function updateleadfamilyperson( Request $request, $id){
-        family::where('id',$id)->update(['first_name' => $request->familyfirstname, 'last_name' => $request->familylastname]);
-        return redirect()->back()->with('success','Update successfuly');
+    public function updateleadfamilyperson(Request $request, $id)
+    {
+        family::where('id', $id)->update(['first_name' => $request->familyfirstname, 'last_name' => $request->familylastname]);
+        return redirect()->back()->with('success', 'Update successfuly');
     }
 }
