@@ -225,69 +225,10 @@ this.date_function();
 this.apage++;
   axios.get('todayappointments?page=' + this.apage).then(
         (response) => {
-            console.log(response.data.data.length);
-            for (let i = 0; i < response.data.data.length; i++) {this.today.data.push(response.data.data[i]);}
+            for (let i = 0; i < response.data.length; i++) {this.today.push(response.data[i]);}
                 }
       );
         }
         }
     }
 </script>
-<<<<<<< HEAD
-
-=======
-<style>
-.dateee {
-    border-radius: 15px;
-    border: #4CC590 1px solid;
-    color: #000;
-    background-color: #fff;
-}
-
-.dateee:hover {
-    background-color: #4CC590;
-    border-radius: 15px;
-    color: #fff;
-}
-
-.dateee:focus {
-    background-color: #4CC590;
-    border-radius: 15px;
-    color: #fff;
-}
-.scroll-2 {
-    height: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden !important;
-    padding-left: 3px;
-    padding-right: 3px;
-}
-.scroll-2::-webkit-scrollbar {
-    width: 4px !important;
-}
-/* Track */
-.scroll-2::-webkit-scrollbar-track {
-    background: transparent !important;
-    border-radius: 10px;
-}p
-/* Handle */
-.scroll-2::-webkit-scrollbar-thumb {
-    background: #91dfa1;
-    border-radius: 10px;
-}
-/* Handle on hover */
-.scroll-2::-webkit-scrollbar-thumb:hover {
-    background: #91dfa1;
-}
-.person-box-1 {
-    background-color: #fff;
-    border-radius: 15px;
-}
-.person-box {
-    color: #fff;
-    font-weight: 600;
-    border-radius: 15px;
-    background-color: #4EC590;
-}
-</style>
->>>>>>> 08b471852d00bf21fcddab20b3131499238868c8

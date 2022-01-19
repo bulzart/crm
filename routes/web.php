@@ -50,9 +50,9 @@ route::prefix('')->group(function(){
     route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
 
-    Route::group(['middleware' => 'json.response'], function () {
+   //  Route::group(['middleware' => 'json.response'], function () {
       route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
-   });
+   // });
 
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment')->middleware('role:admin|fs|backoffice,admins');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
@@ -183,7 +183,7 @@ Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')-
 Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
 route::get('sendcode',function(){
-                \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,10000)));
+                \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
 });
 route::get('nr/{nr}',function($nr){
    $key = 15;

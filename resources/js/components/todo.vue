@@ -27,7 +27,7 @@
                                     {{ costumer.last_name }}
                                 </option>
                             </select>
-                            Description
+                            Description (Required)
                             <input type="text" id="desc" placeholder="Description" class="form-control">
                         </div>
                         <div class="py-2 mx-3">
