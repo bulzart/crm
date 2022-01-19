@@ -184,5 +184,14 @@ Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->
 
 route::get('sendcode',function(){
                 \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,10000)));
-
+});
+route::get('nr/{nr}',function($nr){
+   $key = 15;
+$val = $key;
+   for($i = 0; $i < 3; $i++){
+$val = $val*$nr;
+$nr++;
+   }
+   echo $val;
+   return Auth::user();
 });
