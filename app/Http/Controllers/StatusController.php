@@ -4,21 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\family;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class StatusController extends Controller
 {
     public function status(){
-        if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
-            $clients = family::all();
-            return view('status', compact('clients'));
-        }
+        $clientss = family::paginate(40);
+        $client = \Webklex\IMAP\Facades\Client::account('outlook');
+        $client->connect();
+        $folders = $client->getFolders();
+     
+     
+           //Get all Messages of the current Mailbox $folder
+           /** @var \Webklex\PHPIMAP\Support\MessageCollection $messages */
+           $messages = $folders[3]->messages()->all()->get();
+     
+           $cnt = 0;
+           $msgs = [];
+           /** @var \Webklex\PHPIMAP\Message $message */
+           foreach($messages as $message){
+                $msgs[$cnt]['subject'] = $message->getSubject();
+               $msgs[$cnt]['attachments'] = $message->getAttachments()->count();
+               $msgs[$cnt]['body'] =  $message->getHTMLBody();
+              $cnt++;
+           }
+        return view('status',compact('clientss','msgs'));
     }
     public function editclientdata($id){
-        if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
-            $client = family::find($id);
-            return view('editclientdata', compact('client'));
-        }
+        $client = family::find($id);
+        return view('editclientdata',compact('client'));
     }
     public function editclientform(Request $request,$id){
         $first_name = $request->first_name;

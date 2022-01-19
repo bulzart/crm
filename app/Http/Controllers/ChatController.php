@@ -8,7 +8,8 @@ use Musonza\Chat\Chat;
 
 class ChatController extends Controller
 {
- public function chat($admin1,$admin2,$pid){
-    
+ public function chat(){
+    return view('chat');
  }
+
 }

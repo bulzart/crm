@@ -36,7 +36,7 @@ route::prefix('')->group(function(){
 
 // =====================================
    route::get('hyr',function(){
-      Auth::guard('admins')->loginUsingId(2);
+      Auth::guard('admins')->loginUsingId(6);
    });
 //==========================================
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
@@ -54,7 +54,7 @@ route::prefix('')->group(function(){
       route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
    });
 
-    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment')->middleware('role:admin,fs,backoffice');
+    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment')->middleware('role:admin|fs|backoffice,admins');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
 
     Route::group(['middleware' => 'json.response'], function () {
@@ -67,6 +67,7 @@ route::prefix('')->group(function(){
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
         $lead = lead::find($id);
+        
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
@@ -79,7 +80,6 @@ route::prefix('')->group(function(){
       try
       {$data = family::where('leads_id',$id)->get();
                      if(!empty($data[0])){
-
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }
                      else{
@@ -165,7 +165,10 @@ route::get('editclientdata/{id}',[StatusController::class,'editclientdata'])->na
 route::post('editclientform/{id}',[StatusController::class,'editclientform'])->name('editclientform');
 route::get('file/{file?}',function($file = null){
         if(Storage::disk('img')->exists($file)){
-           return Storage::disk('img')->download($file);
+           $file = Storage::disk('img')->get($file);
+           $response = Response::make($file, 200);
+         $response->header('Content-Type', 'image/jpg');
+           return $response;
         }
         else{
            return redirect()->back();
@@ -173,5 +176,13 @@ route::get('file/{file?}',function($file = null){
 })->middleware('role:admin|backoffice|salesmanager|management,admins')->name('showfile');
 });
 
+// Route::get('Appointments', array('as' => 'route.index', 'Appointments' => 'App\Http\Controllers\AppointmentsController@index'));
+// route::get('Appointments',[AppointmentsController::class,'Appointments']);
 
+Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')->name('Appointments');
+Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
+route::get('sendcode',function(){
+                \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,10000)));
+
+});
