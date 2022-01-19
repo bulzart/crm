@@ -49,7 +49,7 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4">
                                                 <span class="fs-2 fw-bold text-white ">
-                                                    {{$opencnt}}
+                                                  
                                                 </span>
                                         </div>
                                     </div>
@@ -105,7 +105,11 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                                    {{$pendingcnt}}
+                                                
+
+
+
+
                                                 </span>
                                         </div>
                                     </div>
@@ -162,7 +166,12 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                                  {{$recorded}}
+                                 
+
+
+
+
+
                                                 </span>
                                         </div>
                                     </div>
