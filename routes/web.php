@@ -47,7 +47,6 @@ route::prefix('')->group(function(){
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
-    route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
 
     Route::group(['middleware' => 'json.response'], function () {
@@ -66,7 +65,9 @@ route::prefix('')->group(function(){
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
-        $lead = lead::find($id);
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+        $lead = lead::find($idd);
 
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
@@ -79,8 +80,13 @@ route::prefix('')->group(function(){
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
-      try
-      {$data = family::where('leads_id',$id)->get();
+
+//        $idd = Crypt::decrypt($id);
+//        $idd /= 1244;
+
+        try {
+
+          $data = family::where('leads_id',$id)->get();
                      if(!empty($data[0])){
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }

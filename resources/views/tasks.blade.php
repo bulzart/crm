@@ -20,6 +20,10 @@
                 <span>Open pendencies</span>
 <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($tasks as $task)
+{{--                @php--}}
+{{--                    $leadss = $task->id * 1244;--}}
+{{--                    $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);--}}
+{{--                @endphp--}}
                     <a  href="{{route('leadfamily',$task->id)}}" style="text-decoration:none;">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
@@ -39,7 +43,7 @@
                 </span> <a href="{{route('tasks',['page' => $tasks->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                     Next »
                 </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
-                
+
                 </p></div> <div></div></div></nav></div>
                 @endif
 </div>
@@ -57,6 +61,10 @@
             <div class="collapse" id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($pending as $task)
+{{--                    @php--}}
+{{--                        $leadss = $task->id * 1244;--}}
+{{--                        $taskkId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);--}}
+{{--                    @endphp--}}
                     <a href="{{route('leadfamilyperson',$task->id)}}" style="text-decoration:none;">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
@@ -75,7 +83,7 @@
                 </span> <a href="{{route('tasks',['page' => $pending->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                     Next »
                 </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
-                
+
                 </p></div> <div></div></div></nav></div>
                 @endif
 </div>
@@ -108,6 +116,7 @@
         <div style="background: #ffebe5; border-radius: 25px; padding: 5%;">
             <div class="row">
                 <div class="col-12" style="cursor: pointer;" >
+
                     <form action="{{route('tasks')}}" method="post">
                         @csrf
                         <input type="text" name="searchpend" placeholder="Search by name">
@@ -121,6 +130,10 @@
             <div id="collapse__">
             <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
                 @foreach($answered as $task)
+{{--                    @php--}}
+{{--                        $leadss = $task->id * 1244;--}}
+{{--                        $taskkkId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);--}}
+{{--                    @endphp--}}
                     <a href="{{route('leadfamilyperson',$task->id)}}" style="text-decoration:none;">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
