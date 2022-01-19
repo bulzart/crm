@@ -26,13 +26,18 @@
                         <span class="fs-4 fw-600 header-text">Mails</span>
                     </div>
                     <div class="assigned-leads">
-                        <div class="assigned-leads-header ">
-                            <div class="">
+                        <div class="assigned-leads-header text-center" style="overflow-y: scroll; height: 550px;">
                                 <span class="fw-600 fs-5 header-text">Mailbox</span>
-                            </div>
+                                @foreach($msgs as $msg)
+{!!$msg['subject']!!}<br>
+ @if($msg['attachments'] != 0){!!$msg['attachments']!!}<br>@endif
+{!!$msg['body']!!}
+<hr class="hr">
+@endforeach
+
+
                         </div>
                         <div class="assigned-leads-content">
-
 
                         </div>
                     </div>
@@ -48,7 +53,7 @@
                     </div>
 
                     <div class="statistics-content mx-4 overflow-div2">
-                        @foreach($clients as $client)
+                        @foreach($clientss as $client)
                         <div class="py-2 my-2" style="background-color: #4EC590; border-radius: 15px; color: #fff;">
                             <div class="mx-3 ">
                                 <div class="row">
@@ -96,6 +101,21 @@
                         </div>
                         @endforeach
                     </div>
+                    <div class="mt-4">
+
+<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center"><nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">
+    @if($clientss->currentPage() > 1)
+    <span> <a href="{{route('status',['page' => $clientss->currentPage() -1 ])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"></span>
+        @endif
+                « Previous
+            </span> <a href="{{route('status',['page' => $clientss->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+                Next »
+            </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
+            
+            </p></div> <div></div></div></nav></div>
+         
+</div>
 
                 </div>
             </div>

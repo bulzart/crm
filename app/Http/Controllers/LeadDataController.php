@@ -19,21 +19,42 @@ class LeadDataController extends Controller
 {
     use FileManagerTrait;
     public function acceptdata($id,$accept = false){
+if(Auth::user()->hasRole('fs')){
+    if(Auth::user()->id == family::find($id)->lead->assign_to_id){
         if(!$accept){
-      $data = new data();
-      $lead = family::find($id);
-      $data->getdata($id);
-      return view('updatedocument',compact('data','lead'));}
-      else{
-          $pend = Pendency::where('family_id',$id)->delete();
-          family::where('id',$id)->update(['status' => 'Done']);
-          return redirect()->route('acceptdata',['id' => $id]);
-      }
+            $data = new data();
+            $lead = family::find($id);
+            $data->getdata($id);
+            return view('updatedocument',compact('data','lead'));}
+            else{
+                $pend = Pendency::where('family_id',$id)->delete();
+                family::where('id',$id)->update(['status' => 'Done']);
+                return redirect()->route('acceptdata',['id' => $id]);
+            }
+    }
+    else{
+        return redirect()->back();
+    }
+}
+else{
+    if(!$accept){
+        $data = new data();
+        $lead = family::find($id);
+        $data->getdata($id);
+        return view('updatedocument',compact('data','lead'));}
+        else{
+            $pend = Pendency::where('family_id',$id)->delete();
+            family::where('id',$id)->update(['status' => 'Done']);
+            return redirect()->route('acceptdata',['id' => $id]);
+        }
+}
+        
     }
 
     public function createLeadDataKK($leadId, $personId, Request $request,$pendency = false)
     {
-       
+       $person = family::find($personId);
+       if($person->lead->assign_to_id == Auth::user()->id || Auth::user()->hasRole('admin') || Auth::user()->hasRole('backoffice') || Auth::user()->hasRole('salesmanager')){
         LeadDataKK::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -114,9 +135,14 @@ class LeadDataController extends Controller
         $pend = Pendency::where('family_id',$personId)->first();
         if($pend){
         $pend->done = 1;
-        $pend->save();}
+        $pend->save();
+    }
             return redirect()->back()->with('success','Successfully submitted and will be waiting for the backoffice!');
     }
+    else{
+        return redirect()->back();
+    }
+}
 
 
     public function updateLeadDataKK($leadId, $personId, Request $request)

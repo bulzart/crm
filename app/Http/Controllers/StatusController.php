@@ -8,8 +8,26 @@ use Illuminate\Http\Request;
 class StatusController extends Controller
 {
     public function status(){
-        $clients = family::all();
-        return view('status',compact('clients'));
+        $clientss = family::paginate(40);
+        $client = \Webklex\IMAP\Facades\Client::account('outlook');
+        $client->connect();
+        $folders = $client->getFolders();
+     
+     
+           //Get all Messages of the current Mailbox $folder
+           /** @var \Webklex\PHPIMAP\Support\MessageCollection $messages */
+           $messages = $folders[3]->messages()->all()->get();
+     
+           $cnt = 0;
+           $msgs = [];
+           /** @var \Webklex\PHPIMAP\Message $message */
+           foreach($messages as $message){
+                $msgs[$cnt]['subject'] = $message->getSubject();
+               $msgs[$cnt]['attachments'] = $message->getAttachments()->count();
+               $msgs[$cnt]['body'] =  $message->getHTMLBody();
+              $cnt++;
+           }
+        return view('status',compact('clientss','msgs'));
     }
     public function editclientdata($id){
         $client = family::find($id);

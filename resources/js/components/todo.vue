@@ -2,7 +2,7 @@
     <div class="row my-2">
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0">
             <div class="to-do-div">
-                <div class="accordion accordion-flush mx-3 " id="accordionFlush1">
+                <div class="accordion accordion-flush mx-3" id="accordionFlush1">
                     <div class="accordion-item my-1 py-2" style="background-color: #F7F7F7;">
                         <div class="p-3">
                                 <span style="background-color: #F7F7F7;" class="col text-dark fw-bold fs-5">
@@ -10,6 +10,8 @@
                                  </span>
                             <hr class="text-black">
                         </div>
+                        <div id="alrt">
+                            </div>
 
                         <div class="mx-3">
                             Admin
@@ -216,7 +218,7 @@ export default {
         assignpendency: function () {
             axios.get('assignpendency/' + this.admin + '/' + this.costumer + '/' + document.getElementById('desc').value);
             document.getElementById('alrt').innerHTML = "";
-            document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert" id="alrt"> Pendency was assigned successfully</div>';
+            document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert"> Pendency was assigned successfully</div>';
         },
         fetchnumbers() {
             axios.get('numbers').then((response) => {

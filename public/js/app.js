@@ -5737,6 +5737,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
     this.fetchnumbers();
@@ -5769,7 +5771,7 @@ __webpack_require__.r(__webpack_exports__);
     assignpendency: function assignpendency() {
       axios.get('assignpendency/' + this.admin + '/' + this.costumer + '/' + document.getElementById('desc').value);
       document.getElementById('alrt').innerHTML = "";
-      document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert" id="alrt"> Pendency was assigned successfully</div>';
+      document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert"> Pendency was assigned successfully</div>';
     },
     fetchnumbers: function fetchnumbers() {
       var _this = this;
@@ -29646,7 +29648,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("section", { staticStyle: { "background-color": "#eee" } }, [
-      _c("div", { staticClass: "container py-5" }, [
+      _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row d-flex justify-content-center" }, [
           _c("div", { staticClass: "col-md-8 col-lg-6 col-xl-4" }, [
             _c(
@@ -29988,7 +29990,7 @@ var render = function () {
         _c(
           "div",
           {
-            staticClass: "accordion accordion-flush mx-3 ",
+            staticClass: "accordion accordion-flush mx-3",
             attrs: { id: "accordionFlush1" },
           },
           [
@@ -30000,6 +30002,8 @@ var render = function () {
               },
               [
                 _vm._m(0),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "alrt" } }),
                 _vm._v(" "),
                 _c("div", { staticClass: "mx-3" }, [
                   _vm._v(
