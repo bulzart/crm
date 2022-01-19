@@ -159,15 +159,20 @@ class UserController extends Controller
     public function dlead($id)
     {
         //   lead::where('id',$id)->delete();
-        $leads = lead::find($id);
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+
+        $leads = lead::find($idd);
         return view('deletedlead', compact('leads'));
     }
 
     public function deletedlead(Request $request, $id)
     {
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
 
-        $leads = lead::find($id);
-if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $leads->assign_to_id == Auth::guard('admins')->user()->id){
+        $leads = lead::find($idd);
+        if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $leads->assign_to_id == Auth::guard('admins')->user()->id){
         $deletedlead = new Deletedlead();
         $deletedlead->name = $leads->first_name;
         $deletedlead->address = $leads->address;
@@ -272,12 +277,15 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function alead($id)
     {
-        if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+
+        if (lead::find($idd)->assigned == 1 && lead::find($idd)->assign_to_id != null) {
             return redirect()->back();
         } else {
             $role = Role::find(1);
             $admins = Admins::role($role)->get();
-            $lead = lead::find($id);
+            $lead = lead::find($idd);
             return view('alead', compact('admins', 'lead'));
         }
     }
@@ -413,12 +421,17 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function rejectedleads(Request $request)
     {
+        $lid = $request->leadsid;
+
+        $idd = Crypt::decrypt($lid);
+        $idd /= 1244;
+
         $request->validate([
             'leadsid' => 'required',
             'reason' => 'required',
             'image' => 'required'
         ]);
-        $leads_id = $request->leadsid;
+        $leads_id = $idd;
         lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
 
 
@@ -501,8 +514,8 @@ $taskcnt = 0;
       ->orWhereNull('status_contract')
       ->where('status_task','!=','Done')
       ->count();
-    
- 
+
+
 
       $done = DB::table('leads')
       ->where('completed','=','0')
