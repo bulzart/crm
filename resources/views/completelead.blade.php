@@ -130,7 +130,12 @@
                         <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
                             <div class="border-left-div">
                                 <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
-                                <form action="{{route('completeapp',$app->id)}}" method="post">
+
+                                    @php
+                                        $leadss = $app->id * 1244;
+                                        $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                                    @endphp
+                                <form action="{{route('completeapp',$appId)}}" method="post">
                         @csrf
                                     <div class="accordion-item my-1">
                                         <h2 class="accordion-header" id="flush-headingOne">
