@@ -294,9 +294,9 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
                 $role = Role::where('name',$req->input('auth'))->get();
                 $rolee = $user->getRoleNames();
 
-              if($rolee[0] != null){
-                $user->removeRole($rolee[0]);
-                $user->assignRole($role);}
+             // if($rolee[0] != null){
+               // $user->removeRole($rolee[0]);
+                //$user->assignRole($role);}
 
                 //  Nexmo::message()->send([
                 //  'to' => '38345917726',
