@@ -22,16 +22,15 @@ use Livewire\Component;
 
 class TasksController extends Controller
 {
-public function assignpendency($admin,$id,$desc = null){
-$retor = Pendency::where('family_id',$id)->firstOrFail();
-  if($retor != null){
+public function assignpendency(Request $req){
+  $id = (int) $req->id;
     $pendency = new Pendency();
-  $pendency->admin_id = (int) $admin;
-  $pendency->family_id = (int) $id;
-  $pendency->description = filter_var($desc,FILTER_SANITIZE_STRING);
+  $pendency->admin_id = (int) $req->admin;
+  $pendency->family_id = (int) $req->id;
+  $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
   $family = DB::table('family_person')->where('id','=',$id)->update(['status' => 'Open']);
   $pendency->save();
-}
+
 }
   public function accepttask($id)
   {
@@ -311,6 +310,7 @@ $retor = Pendency::where('family_id',$id)->firstOrFail();
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->where('pendencies.done', '=', 1)
+                ->where('pendencies.completed',0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchpend . '%')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
@@ -319,6 +319,7 @@ $retor = Pendency::where('family_id',$id)->firstOrFail();
             $pend = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 1)
+                ->where('pendencies.completed',0)
                 ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);

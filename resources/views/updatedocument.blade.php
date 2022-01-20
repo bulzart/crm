@@ -381,16 +381,16 @@
                                                         </svg>
                                                     </label>
 
-                                                    @if(isset($data->datakk[0]->pre_insurer))
+                                                    @if(isset($data->datakk->pre_insurer))
                                                         <input type="file" name="pre_insurer"
-                                                               value="{{$data->datakk[0]->pre_insurer}}"
+                                                               value="{{$data->datakk->pre_insurer}}"
                                                                id="file-input-0" class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this)">
-                                                        <a href="{{route('showfile',$data->datakk[0]->pre_insurer)}}"><input
+                                                        <a href="{{route('showfile',$data->datakk->pre_insurer)}}"><input
                                                                 type="text" class="form-control text-center"
                                                                 id="file-input-0c" disabled
                                                                 style="background:none; border:none;"
-                                                                value="{{$data->datakk[0]->pre_insurer}}"></a>
+                                                                value="{{$data->datakk->pre_insurer}}"></a>
                                                     @else
                                                         <input type="file" name="pre_insurer" id="file-input-0"
                                                                class="svg-div w-100 border-0  g-0"
@@ -452,17 +452,17 @@
                                                         </svg>
                                                     </label>
 
-                                                    @if(isset($data->datakk[0]->id_required))
+                                                    @if(isset($data->datakk->id_required))
                                                         <input type="file" id="file-input-1"
                                                                class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this);"
-                                                               value="{{$data->datakk[0]->id_required}}"
+                                                               value="{{$data->datakk->id_required}}"
                                                                name="id_required">
-                                                        <a href="{{route('showfile',$data->datakk[0]->id_required)}}">
+                                                        <a href="{{route('showfile',$data->datakk->id_required)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-1c" disabled
                                                                    style="background:none; border:none;"
-                                                                   value="{{$data->datakk[0]->id_required}}"></a>
+                                                                   value="{{$data->datakk->id_required}}"></a>
                                                     @else
                                                         <input type="file" id="file-input-1"
                                                                class="svg-div w-100 border-0  g-0"
@@ -523,16 +523,16 @@
                                                             </g>
                                                         </svg>
                                                     </label>
-                                                    @if(isset($data->datakk[0]->notice_by))
+                                                    @if(isset($data->datakk->notice_by))
                                                         <input type="file" id="file-input-2"
                                                                class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this);" name="notice_by"
-                                                               value="{{$data->datakk[0]->notice_by}}">
-                                                        <a href="{{route('showfile',$data->datakk[0]->notice_by)}}">
+                                                               value="{{$data->datakk->notice_by}}">
+                                                        <a href="{{route('showfile',$data->datakk->notice_by)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-2c" disabled
                                                                    style="background:transparent; border:none;"
-                                                                   value="{{$data->datakk[0]->notice_by}}"></a>
+                                                                   value="{{$data->datakk->notice_by}}"></a>
                                                     @else
                                                         <input type="file" id="file-input-2"
                                                                class="svg-div w-100 border-0  g-0"
@@ -593,16 +593,16 @@
                                                             </g>
                                                         </svg>
                                                     </label>
-                                                    @if(isset($data->datakk[0]->power_of_attorney))
+                                                    @if(isset($data->datakk->power_of_attorney))
                                                         <input type="file" id="file-input-3"
                                                                class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this);" name="power_of_attorney"
-                                                               value="{{$data->datakk[0]->power_of_attorney}}">
-                                                        <a href="{{route('showfile',$data->datakk[0]->power_of_attorney)}}">
+                                                               value="{{$data->datakk->power_of_attorney}}">
+                                                        <a href="{{route('showfile',$data->datakk->power_of_attorney)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-3c" disabled
                                                                    style="background:transparent; border:none;"
-                                                                   value="{{$data->datakk[0]->power_of_attorney}}"></a>
+                                                                   value="{{$data->datakk->power_of_attorney}}"></a>
                                                     @else
                                                         <input type="file" id="file-input-3"
                                                                class="svg-div w-100 border-0  g-0"
@@ -720,18 +720,18 @@
                                                                             </g>
                                                                         </svg>
                                                                     </label>
-                                                                    @if(isset($data->prevention[0]->upload_police))
+                                                                    @if(isset($data->prevention->upload_police))
                                                                         <input type="file" id="file-input-4"
                                                                                class="svg-div w-100 border-0  g-0"
                                                                                onchange="upload(this);"
-                                                                               value="{{$data->prevention[0]->upload_police}}"
+                                                                               value="{{$data->prevention->upload_police}}"
                                                                                name="upload_police">
-                                                                        <a href="{{route('showfile',$data->prevention[0]->upload_police)}}">
+                                                                        <a href="{{route('showfile',$data->prevention->upload_police)}}">
                                                                             <input type="text"
                                                                                    class="form-control text-center"
                                                                                    id="file-input-4a" disabled
                                                                                    style="background:transparent; border:none;"
-                                                                                   value="{{$data->prevention[0]->upload_police}}"></a>
+                                                                                   value="{{$data->prevention->upload_police}}"></a>
                                                                     @else
                                                                         <input type="file" id="file-input-4a"
                                                                                class="svg-div w-100 border-0  g-0"
@@ -759,10 +759,10 @@
                                                                         <select name="comparison_type" class="fw-bold"
                                                                                 id=""
                                                                                 style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                                            @if(isset($data->counter[0]->comparison_type))
+                                                                            @if(isset($data->counter->comparison_type))
                                                                                 <option
-                                                                                    value="{{$data->counter[0]->comparison_type}}"
-                                                                                    selected>{{$data->counter[0]->comparison_type}}</option>
+                                                                                    value="{{$data->counter->comparison_type}}"
+                                                                                    selected>{{$data->counter->comparison_type}}</option>
                                                                             @else
                                                                                 <option selected>Select</option>
                                                                                 <option value="1">1:1 Deckung</option>
@@ -777,10 +777,10 @@
                                                             <div class="mb-3 mt-3">
                                                                 <label for="exampleFormControlTextarea1"
                                                                        class="form-label" style="font-size: 13px;">Kommentar</label>
-                                                                @if(isset($data->counter[0]->comment))
+                                                                @if(isset($data->counter->comment))
                                                                     <textarea name="comment" class="form-control"
                                                                               id="exampleFormControlTextarea1"
-                                                                              rows="3">{{$data->counter[0]->comment}}</textarea>
+                                                                              rows="3">{{$data->counter->comment}}</textarea>
                                                                 @else
                                                                     <textarea name="comment" class="form-control"
                                                                               id="exampleFormControlTextarea1"
@@ -894,8 +894,8 @@
                                                                         <div class="col">
                                                                             <div class="btn-group w-100" role="group"
                                                                                  aria-label="Basic radio toggle button group">
-                                                                                @if(isset($data->fahrzeug[0]->comparison_type))
-                                                                                    @if($data->fahrzeug[0]->comparison_type == 'Ja')
+                                                                                @if(isset($data->fahrzeug->comparison_type))
+                                                                                    @if($data->fahrzeug->comparison_type == 'Ja')
                                                                                         <input type="radio"
                                                                                                class="btn-check"
                                                                                                value="Ja"
@@ -959,9 +959,9 @@
                                                                             <div class="">
                                                                                 <select name="leasing_name"
                                                                                         class="w-100 slct1" id="">
-                                                                                    @if(isset($data->fahrzeug[0]->leasing_name))
+                                                                                    @if(isset($data->fahrzeug->leasing_name))
                                                                                         <option
-                                                                                            value="{{$data->fahrzeug[0]->leasing_name}}">{{$data->fahrzeug[0]->leasing_name}}</option>
+                                                                                            value="{{$data->fahrzeug->leasing_name}}">{{$data->fahrzeug->leasing_name}}</option>
                                                                                     @else
                                                                                         <option value="Gesellschaft">
                                                                                             Gesellschaft
@@ -992,10 +992,10 @@
                                                                             <select name="year_of_purchase"
                                                                                     class="fw-normal" id=""
                                                                                     style="background-color: #EFEFEF;">
-                                                                                @if(isset($data->fahrzeug[0]->year_of_purchase))
+                                                                                @if(isset($data->fahrzeug->year_of_purchase))
                                                                                     <option
-                                                                                        value="{{$data->fahrzeug[0]->year_of_purchase}}"
-                                                                                        selected>{{$data->fahrzeug[0]->year_of_purchase}}</option>
+                                                                                        value="{{$data->fahrzeug->year_of_purchase}}"
+                                                                                        selected>{{$data->fahrzeug->year_of_purchase}}</option>
                                                                                 @else
                                                                                     <option value="2021" selected>2021
                                                                                     </option>
@@ -1011,10 +1011,10 @@
                                           Este inverkehrssetzung:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->year_of_purchase))
+                                                                        @if(isset($data->fahrzeug->year_of_purchase))
                                                                             <input name="placing_on_the_market"
                                                                                    type="date"
-                                                                                   value="{{$data->fahrzeug[0]->year_of_purchase}}"
+                                                                                   value="{{$data->fahrzeug->year_of_purchase}}"
                                                                                    class="py-1 border-0">
                                                                         @else
                                                                             <input name="placing_on_the_market"
@@ -1027,10 +1027,10 @@
                                           Beginn Versicherung:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->insurance_date))
+                                                                        @if(isset($data->fahrzeug->insurance_date))
                                                                             <input name="insurance_date" type="date"
                                                                                    class="py-1 border-0"
-                                                                                   value="{{$data->fahrzeug[0]->insurance_date}}">
+                                                                                   value="{{$data->fahrzeug->insurance_date}}">
                                                                         @else
                                                                             <input name="insurance_date" type="date"
                                                                                    class="py-1 border-0">
@@ -1056,10 +1056,10 @@
                                           KM - Stand:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->km_stood))
+                                                                        @if(isset($data->fahrzeug->km_stood))
                                                                             <input name="km_stood" class="py-1"
                                                                                    type="text"
-                                                                                   value="{{$data->fahrzeug[0]->km_stood}}">
+                                                                                   value="{{$data->fahrzeug->km_stood}}">
                                                                         @else
                                                                             <input name="km_stood" class="py-1"
                                                                                    type="text" id="">
@@ -1080,10 +1080,10 @@
                                           Erste inverkehrssetzung:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->placing_on_the_market))
+                                                                        @if(isset($data->fahrzeug->placing_on_the_market))
                                                                             <input name="placing_on_the_market"
                                                                                    type="date" class="py-1 border-0"
-                                                                                   value="{{$data->fahrzeug[0]->placing_on_the_market}}">
+                                                                                   value="{{$data->fahrzeug->placing_on_the_market}}">
                                                                         @else
                                                                             <input name="placing_on_the_market"
                                                                                    type="date" class="py-1 border-0">
@@ -1098,9 +1098,9 @@
                                                                         <select name="nationality"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->nationality))
+                                                                            @if(isset($data->fahrzeug->nationality))
                                                                                 <option selected
-                                                                                        value="{{$data->fahrzeug[0]->nationality}}">{{$data->fahrzeug[0]->nationality}}</option>
+                                                                                        value="{{$data->fahrzeug->nationality}}">{{$data->fahrzeug->nationality}}</option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1118,10 +1118,10 @@
                                                                         <select name="most_common"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->most_common))
+                                                                            @if(isset($data->fahrzeug->most_common))
                                                                                 <option
-                                                                                    value="{{$data->fahrzeug[0]->most_common}}"
-                                                                                    selected>{{$data->fahrzeug[0]->most_common}}</option>
+                                                                                    value="{{$data->fahrzeug->most_common}}"
+                                                                                    selected>{{$data->fahrzeug->most_common}}</option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1151,9 +1151,9 @@
                                                                         <select name="insurance"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->insurance))
+                                                                            @if(isset($data->fahrzeug->insurance))
                                                                                 <option
-                                                                                    selected>{{$data->fahrzeug[0]->insurance}}</option>
+                                                                                    selected>{{$data->fahrzeug->insurance}}</option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1171,9 +1171,9 @@
                                                                         <select name="deductible"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->deductible))
+                                                                            @if(isset($data->fahrzeug->deductible))
                                                                                 <option selected
-                                                                                        value="{{$data->fahrzeug[0]->deductible}}"></option>
+                                                                                        value="{{$data->fahrzeug->deductible}}"></option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1190,10 +1190,10 @@
                                                                         </div>
                                                                         <select name="carried" class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->carried))
+                                                                            @if(isset($data->fahrzeug->carried))
                                                                                 <option
-                                                                                    value="{{$data->fahrzeug[0]->carried}}"
-                                                                                    selected>{{$data->fahrzeug[0]->carried}}</option>
+                                                                                    value="{{$data->fahrzeug->carried}}"
+                                                                                    selected>{{$data->fahrzeug->carried}}</option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1214,24 +1214,24 @@
                                                                       </div> -->
                                                                         <div class="btn-group w-100" role="group"
                                                                              aria-label="Basic radio toggle button group">
-                                                                            @if(isset($data->fahrzeug[0]->repair_shop))
+                                                                            @if(isset($data->fahrzeug->repair_shop))
                                                                                 <input type="radio" class="btn-check "
                                                                                        name="repair_shop"
                                                                                        id="btnradio1_"
-                                                                                       value="{{$data->fahrzeug[0]->repair_shop}}"
+                                                                                       value="{{$data->fahrzeug->repair_shop}}"
                                                                                        checked>
                                                                                 <label
                                                                                     class="btn btn-outline-secondary w-100 g-0"
-                                                                                    for="btnradio1_">{{$data->fahrzeug[0]->repair_shop}}</label>
+                                                                                    for="btnradio1_">{{$data->fahrzeug->repair_shop}}</label>
                                                                             @else
                                                                                 <input type="radio" class="btn-check "
                                                                                        name="repair_shop"
                                                                                        id="btnradio1_"
-                                                                                       value="{{$data->fahrzeug[0]->repair_shop}}"
+                                                                                       value="{{$data->fahrzeug->repair_shop}}"
                                                                                        checked>
                                                                                 <label
                                                                                     class="btn btn-outline-secondary w-100 g-0"
-                                                                                    for="btnradio1_">{{$data->fahrzeug[0]->repair_shop}}</label>
+                                                                                    for="btnradio1_">{{$data->fahrzeug->repair_shop}}</label>
                                                                                 <input type="radio" class="btn-check"
                                                                                        name="repair_shop"
                                                                                        value="Freie Wahl"
@@ -1248,8 +1248,8 @@
                                           + Unfalldeckung:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->accident_coverage))
-                                                                        <input value="{{$data->fahrzeug[0]->accident_coverage}}" name="accident_coverage" class="py-1"
+                                                                        @if(isset($data->fahrzeug->accident_coverage))
+                                                                        <input value="{{$data->fahrzeug->accident_coverage}}" name="accident_coverage" class="py-1"
                                                                                type="text" id="">
                                                                         @else
                                                                             <input name="accident_coverage" class="py-1"
@@ -1264,8 +1264,8 @@
                                           + Verkehrsrechtsschutz:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->traffic_legal_protection))
-                                                                            <input value="{{$data->fahrzeug[0]->traffic_legal_protection}}" name="traffic_legal_protection"
+                                                                        @if(isset($data->fahrzeug->traffic_legal_protection))
+                                                                            <input value="{{$data->fahrzeug->traffic_legal_protection}}" name="traffic_legal_protection"
                                                                                    class="py-1" type="text" id="">
                                                                             @else
                                                                             <input name="traffic_legal_protection"
@@ -1278,8 +1278,8 @@
                                           + Grobfahrlässigkeitschutz:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->grossly))
-                                                                            <input value="{{$data->fahrzeug[0]->grossly}}" name="grossly" class="py-1" type="text"
+                                                                        @if(isset($data->fahrzeug->grossly))
+                                                                            <input value="{{$data->fahrzeug->grossly}}" name="grossly" class="py-1" type="text"
                                                                                    id="">
                                                                             @else
                                                                             <input name="grossly" class="py-1" type="text"
@@ -1292,8 +1292,8 @@
                                           + Glasschutz:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->glass_protection))
-                                                                            <input value="{{$data->fahrzeug[0]->glass_protection}}" name="glass_protection" class="py-1"
+                                                                        @if(isset($data->fahrzeug->glass_protection))
+                                                                            <input value="{{$data->fahrzeug->glass_protection}}" name="glass_protection" class="py-1"
                                                                                    type="text" id="">
                                                                             @else
                                                                             <input name="glass_protection" class="py-1"
@@ -1307,8 +1307,8 @@
                                           + Parkschaden:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->parking_damage))
-                                                                            <input value="{{$data->fahrzeug[0]->parking_damag}}" name="parking_damage" class="py-1"
+                                                                        @if(isset($data->fahrzeug->parking_damage))
+                                                                            <input value="{{$data->fahrzeug->parking_damag}}" name="parking_damage" class="py-1"
                                                                                    type="text" id="">
                                                                             @else
                                                                             <input name="parking_damage" class="py-1"
@@ -1321,8 +1321,8 @@
                                           + 24h Pannenhilfe:
                                         </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->hour_breakdown_assistance))
-                                                                            <input value="{{$data->fahrzeug[0]->hour_breakdown_assistance}}" name="hour_breakdown_assistance"
+                                                                        @if(isset($data->fahrzeug->hour_breakdown_assistance))
+                                                                            <input value="{{$data->fahrzeug->hour_breakdown_assistance}}" name="hour_breakdown_assistance"
                                                                                    class="py-1" type="text" id="">
                                                                             @else
                                                                             <input name="hour_breakdown_assistance"
@@ -1380,8 +1380,8 @@
                                     Nationalitat:
                                   </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->nationality_sachen))
-                                                                <input value="{{$data->things[0]->nationality_sachen}}" name="nationality_sachen" class="py-1" type="text"
+                                                            @if(isset($data->things->nationality_sachen))
+                                                                <input value="{{$data->things->nationality_sachen}}" name="nationality_sachen" class="py-1" type="text"
                                                                        id="">
                                                                 @else
                                                                 <input name="nationality_sachen" class="py-1" type="text"
@@ -1396,10 +1396,10 @@
                                                             </div>
                                                             <select name="residence_permit" class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->residence_permit))
+                                                                @if(isset($data->things->residence_permit))
                                                                     <option
-                                                                        value="{{$data->things[0]->carried}}"
-                                                                        selected>{{$data->things[0]->carried}}</option>
+                                                                        value="{{$data->things->carried}}"
+                                                                        selected>{{$data->things->carried}}</option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1411,8 +1411,8 @@
                                                         <div class=" mb-2">
                                                             <label for="telephone_nr">Telefonnumer </label> <br>
                                                             <div class="input-group">
-                                                                @if(isset($data->things[0]->telephone_nr))
-                                                                    <input value="{{$data->things[0]->telephone_nr}}" name="telephone_nr" id="int-tel" type="tel"
+                                                                @if(isset($data->things->telephone_nr))
+                                                                    <input value="{{$data->things->telephone_nr}}" name="telephone_nr" id="int-tel" type="tel"
                                                                            class="form-control">
                                                                 @else
                                                                     <input name="telephone_nr" id="int-tel" type="tel"
@@ -1426,8 +1426,8 @@
                                     Email
                                   </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->email))
-                                                                <input value="{{$data->things[0]->email}}" name="email" class="py-1" type="email" id="">
+                                                            @if(isset($data->things->email))
+                                                                <input value="{{$data->things->email}}" name="email" class="py-1" type="email" id="">
                                                             @else
                                                                 <input name="email" class="py-1" type="email" id="">
                                                             @endif
@@ -1440,10 +1440,10 @@
                                                             </div>
                                                             <select name="zivilstand" class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->zivilstand))
+                                                                @if(isset($data->things->zivilstand))
                                                                     <option
-                                                                        value="{{$data->things[0]->zivilstand}}"
-                                                                        selected>{{$data->things[0]->zivilstand}}</option>
+                                                                        value="{{$data->things->zivilstand}}"
+                                                                        selected>{{$data->things->zivilstand}}</option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1461,10 +1461,10 @@
                                                             <select name="employment_relationship"
                                                                     class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->employment_relationship))
+                                                                @if(isset($data->things->employment_relationship))
                                                                     <option
-                                                                        value="{{$data->things[0]->employment_relationship}}"
-                                                                        selected>{{$data->things[0]->employment_relationship}}</option>
+                                                                        value="{{$data->things->employment_relationship}}"
+                                                                        selected>{{$data->things->employment_relationship}}</option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1483,8 +1483,8 @@
                                     Beruf:
                                   </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->job))
-                                                                <input value="{{$data->things[0]->job}}" name="job" class="py-1" type="text" id="">
+                                                            @if(isset($data->things->job))
+                                                                <input value="{{$data->things->job}}" name="job" class="py-1" type="text" id="">
                                                             @else
                                                                 <input name="job" class="py-1" type="text" id="">
                                                             @endif
@@ -1497,10 +1497,10 @@
                                                             </div>
                                                             <select name="payment_frequency" class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->payment_frequency))
+                                                                @if(isset($data->things->payment_frequency))
                                                                     <option
-                                                                        value="{{$data->things[0]->payment_frequency}}"
-                                                                        selected>{{$data->things[0]->payment_frequency}}</option>
+                                                                        value="{{$data->things->payment_frequency}}"
+                                                                        selected>{{$data->things->payment_frequency}}</option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1516,8 +1516,8 @@
                                     Betrag pro Monat:
                                   </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->email))
-                                                                <input value="{{$data->things[0]->email}}" name="amount_per_month" class="py-1" type="email"
+                                                            @if(isset($data->things->email))
+                                                                <input value="{{$data->things->email}}" name="amount_per_month" class="py-1" type="email"
                                                                        id="">
                                                                 @else
                                                                 <input name="amount_per_month" class="py-1" type="email"
@@ -1532,10 +1532,10 @@
                                                             </div>
                                                             <select name="share_guarantee" class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->share_guarantee))
+                                                                @if(isset($data->things->share_guarantee))
                                                                     <option
-                                                                        value="{{$data->things[0]->share_guarantee}}"
-                                                                        selected>{{$data->things[0]->share_guarantee}}</option>
+                                                                        value="{{$data->things->share_guarantee}}"
+                                                                        selected>{{$data->things->share_guarantee}}</option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1550,8 +1550,8 @@
                                     Vertragsbeginn ab:
                                   </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->start_of_contract))
-                                                                <input value="{{$data->things[0]->start_of_contract}}" name="start_of_contract" type="date"
+                                                            @if(isset($data->things->start_of_contract))
+                                                                <input value="{{$data->things->start_of_contract}}" name="start_of_contract" type="date"
                                                                        class="py-1 border-0">
                                                                 @else
                                                                 <input name="start_of_contract" type="date"
@@ -1566,8 +1566,8 @@
                                                             </div>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->premium_exemption))
-                                                                    @if($data->things[0]->premium_exemption == 'Ja')
+                                                                @if(isset($data->things->premium_exemption))
+                                                                    @if($data->things->premium_exemption == 'Ja')
                                                                     <input type="radio" class="btn-check"
                                                                            name="premium_exemption"
                                                                            value="Ja"
@@ -1632,8 +1632,8 @@
                                                             </div>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->eu_pension))
-                                                                    @if($data->things[0]->eu_pension == 'Ja')
+                                                                @if(isset($data->things->eu_pension))
+                                                                    @if($data->things->eu_pension == 'Ja')
                                                                 <input type="radio" class="btn-check"
                                                                        name="eu_pension"
                                                                        value="Ja"
@@ -1696,8 +1696,8 @@
                                                             </div>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->death_benefit))
-                                                                    @if($data->things[0]->death_benefit == 'Ja')
+                                                                @if(isset($data->things->death_benefit))
+                                                                    @if($data->things->death_benefit == 'Ja')
                                                                     <input type="radio" class="btn-check"
                                                                            name="death_benefit"
                                                                            value="Ja"
@@ -1759,8 +1759,8 @@
                                                             </div>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->smoker))
-                                                                    @if($data->things[0]->smoker == 'Ja')
+                                                                @if(isset($data->things->smoker))
+                                                                    @if($data->things->smoker == 'Ja')
                                                                     <input type="radio"
                                                                            class="btn-check"
                                                                            name="smoker"
@@ -1823,10 +1823,10 @@
                                                         <div class="mb-2">
                                                             <label for="exampleFormControlTextarea2" class="form-label">Gewünschte
                                                                 Gesellschaften:</label>
-                                                            @if(isset($data->things[0]->desired))
+                                                            @if(isset($data->things->desired))
                                                                 <textarea name="desired" class="form-control"
                                                                           id="exampleFormControlTextarea2"
-                                                                          rows="3">{{$data->things[0]->desired}}</textarea>
+                                                                          rows="3">{{$data->things->desired}}</textarea>
                                                                 @else
                                                                 <textarea name="desired" class="form-control"
                                                                           id="exampleFormControlTextarea2"
@@ -1946,17 +1946,17 @@
                                                                             </g>
                                                                         </svg>
                                                                     </label>
-                                                                    @if(isset($data->prevention[0]->upload_police__))
+                                                                    @if(isset($data->prevention->upload_police__))
                                                                     <input type="file" id="file-input-6"
                                                                            class="svg-div w-100 border-0  g-0"
                                                                            onchange="upload(this);"
                                                                            name="upload_police__"
-                                                                           value="{{$data->prevention[0]->upload_police__}}">
-                                                                        <a href="{{route('showfile',$data->prevention[0]->upload_police__)}}">
+                                                                           value="{{$data->prevention->upload_police__}}">
+                                                                        <a href="{{route('showfile',$data->prevention->upload_police__)}}">
                                                                     <input type="text" class="form-control text-center"
                                                                            id="file-input-6c" disabled
                                                                            style="background:transparent;border:none;"
-                                                                           value="{{$data->prevention[0]->upload_police__}}">
+                                                                           value="{{$data->prevention->upload_police__}}">
                                                                     @else
                                                                     <input type="file" id="file-input-6"
                                                                            class="svg-div w-100 border-0  g-0"
@@ -1983,10 +1983,10 @@
                                                                         <select name="comparison_type" class="fw-bold"
                                                                                 id=""
                                                                                 style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                                            @if(isset($data->prevention[0]->comparison_type))
+                                                                            @if(isset($data->prevention->comparison_type))
                                                                                 <option
-                                                                                    value="{{$data->prevention[0]->comparison_type}}"
-                                                                                    selected>{{$data->prevention[0]->comparison_type}}</option>
+                                                                                    value="{{$data->prevention->comparison_type}}"
+                                                                                    selected>{{$data->prevention->comparison_type}}</option>
                                                                             @else
                                                                                 <option selected>Select</option>
                                                                                 <option value="1">1:1 Deckung</option>
@@ -2073,10 +2073,10 @@
                                                                 </div>
                                                                 <select name="number_of_people" class="form-select w-50"
                                                                         aria-label="Default select example">
-                                                                    @if(isset($data->prevention[0]->number_of_people))
+                                                                    @if(isset($data->prevention->number_of_people))
                                                                         <option
-                                                                            value="{{$data->prevention[0]->number_of_people}}"
-                                                                            selected>{{$data->prevention[0]->number_of_people}}</option>
+                                                                            value="{{$data->prevention->number_of_people}}"
+                                                                            selected>{{$data->prevention->number_of_people}}</option>
                                                                     @else
                                                                         <option selected></option>
                                                                         <option value="1">One</option>
@@ -2093,10 +2093,10 @@
                                                                 </div>
                                                                 <select name="number_of_rooms" class="form-select w-50"
                                                                         aria-label="Default select example">
-                                                                    @if(isset($data->prevention[0]->number_of_rooms))
+                                                                    @if(isset($data->prevention->number_of_rooms))
                                                                         <option
-                                                                            value="{{$data->prevention[0]->number_of_rooms}}"
-                                                                            selected>{{$data->prevention[0]->number_of_rooms}}</option>
+                                                                            value="{{$data->prevention->number_of_rooms}}"
+                                                                            selected>{{$data->prevention->number_of_rooms}}</option>
                                                                     @else
                                                                         <option selected></option>
                                                                         <option value="1">One</option>
@@ -2111,8 +2111,8 @@
                                       Versicherungsumme
                                     </span>
                                                                 </div>
-                                                                @if(isset($data->prevention[0]->sum_insured))
-                                                                    <input value="{{$data->prevention[0]->sum_insured}}" name="sum_insured" class="py-1" type="text"
+                                                                @if(isset($data->prevention->sum_insured))
+                                                                    <input value="{{$data->prevention->sum_insured}}" name="sum_insured" class="py-1" type="text"
                                                                            id="">
                                                                     @else
                                                                     <input name="sum_insured" class="py-1" type="text"
@@ -2123,11 +2123,11 @@
                                                                 <label for="exampleFormControlTextarea4"
                                                                        class="form-label" style="font-size: 15px;">Gewünschte
                                                                     Zusatzdeckung:</label>
-                                                                @if(isset($data->prevention[0]->desired_additional_coverag))
+                                                                @if(isset($data->prevention->desired_additional_coverag))
                                                                     <textarea name="desired_additional_coverag"
                                                                               class="form-control"
                                                                               id="exampleFormControlTextarea4"
-                                                                              rows="3">{{$data->prevention[0]->desired_additional_coverag}}</textarea>
+                                                                              rows="3">{{$data->prevention->desired_additional_coverag}}</textarea>
                                                                     @else
                                                                     <textarea name="desired_additional_coverag"
                                                                               class="form-control"
@@ -2144,10 +2144,10 @@
                                                                 <select name="personal_liability"
                                                                         class="form-select w-50"
                                                                         aria-label="Default select example">
-                                                                    @if(isset($data->prevention[0]->personal_liability))
+                                                                    @if(isset($data->prevention->personal_liability))
                                                                         <option
-                                                                            value="{{$data->prevention[0]->personal_liability}}"
-                                                                            selected>{{$data->prevention[0]->personal_liability}}</option>
+                                                                            value="{{$data->prevention->personal_liability}}"
+                                                                            selected>{{$data->prevention->personal_liability}}</option>
                                                                     @else
                                                                         <option selected></option>
                                                                         <option value="1">One</option>
@@ -2222,8 +2222,8 @@
                                     Gesellschaft
                                   </span>
                                                             </div>
-                                                            @if(isset($data->prevention[0]->society))
-                                                                <input value="{{$data->prevention[0]->society}}" name="society" class="py-1" type="text" id="">
+                                                            @if(isset($data->prevention->society))
+                                                                <input value="{{$data->prevention->society}}" name="society" class="py-1" type="text" id="">
                                                                 @else
                                                                 <input name="society" class="py-1" type="text" id="">
                                                                 @endif
@@ -2277,14 +2277,14 @@
   <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1z"/>
 </svg>
                           </button>
-           @if($lead->status == 'Submited')
+           
                                      <button class="px-5 py-2" id="submitt1" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept" onclick="accept();">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-check-circle" viewBox="0 0 16 16">
                               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                               <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
                             </svg>
                           </button>
-                          @endif
+            
                         
                       </div>
 
