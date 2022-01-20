@@ -32,11 +32,15 @@ use Illuminate\Support\Facades\Storage;
 
 
 
-route::prefix('')->group(function(){
-
+route::prefix('')->middleware('confirmcode')->group(function(){
+   route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
 // =====================================
    route::get('hyr',function(){
       Auth::guard('admins')->loginUsingId(6);
+   });
+   route::get('clear',function(){
+      \Artisan::call('optimize');
+      return \Artisan::call('route:clear');
    });
 //==========================================
    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
@@ -49,16 +53,16 @@ route::prefix('')->group(function(){
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
 
-    Route::group(['middleware' => 'json.response'], function () {
+   //  Route::group(['middleware' => 'json.response'], function () {
       route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
-   });
+   // });
 
-    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment')->middleware('role:admin|fs|backoffice,admins');
+    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
 
-    Route::group(['middleware' => 'json.response'], function () {
+   //  Route::group(['middleware' => 'json.response'], function () {
       route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
-   });
+   // });
 
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
     route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
@@ -120,9 +124,9 @@ route::prefix('')->group(function(){
     route::post('deleteTeam/{teamId}',[TeamController::class,'deleteTeam'])->name('deleteTeam');
     route::get('showTeamById/{teamId}',[TeamController::class,'showTeamById'])->name('showTeamById');
     route::get('updateTeam/{teamId}',[TeamController::class,'updateTeam'])->name('updateTeam');
-    Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
+   //  Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
       route::post('create',[TeamController::class,'createTeam'])->name('createTeam');
-  });
+//   });
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::any('tasks',[TasksController::class,'tasks'])->name('tasks');
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
@@ -134,9 +138,9 @@ route::prefix('')->group(function(){
    route::get('chat',[ChatController::class,'chat']);
    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
-   Route::group(['middleware' => 'json.response'], function () {
+   // Route::group(['middleware' => 'json.response'], function () {
       route::get('addtodo',[TodoController::class,'addtodo']);
-   });
+   // });
 
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);
@@ -148,7 +152,7 @@ route::prefix('')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 
-route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
+
 
    route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
    route::get('add',[TasksController::class,'adddata']);
@@ -191,7 +195,8 @@ Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')-
 Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
 route::get('sendcode',function(){
-                \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,10000)));
+
+                \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
 
 });
 route::get('nr/{nr}',function($nr){

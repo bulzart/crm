@@ -49,13 +49,13 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4">
                                                 <span class="fs-2 fw-bold text-white ">
-                                                  
+                                                  {{$tasks}}
                                                 </span>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="text-end">
-                                            <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
+                                            <svg onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
                                                  xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
@@ -94,7 +94,8 @@
                                 </div>
                                 <div class="py-3 ps-3">
                                         <span class="text-white fw-bolder">
-                                        Anträge offen                                        </span>
+                                        Anträge offen 
+                                     </span>
                                 </div>
                             </div>
                         </div>
@@ -105,17 +106,13 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                                
-
-
-
-
+                                                {{$done}}
                                                 </span>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="text-end">
-                                            <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
+                                            <svg onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
                                                  xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
@@ -166,18 +163,13 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                 
-
-
-
-
-
+                         {{$pending}}
                                                 </span>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="text-end">
-                                            <svg onclick="window.location.href='{{'tasks'}}'" style="cursor: pointer;"
+                                            <svg onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;"
                                                  xmlns="http://www.w3.org/2000/svg"
                                                  xmlns:xlink="http://www.w3.org/1999/xlink"
                                                  viewBox="0 0 92.259 71.213">
@@ -232,7 +224,7 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                                    {{round($percnt,2)}}%
+                                                    {{round($percnt,4)}}%
                                                 </span>
                                         </div>
                                     </div>
@@ -389,7 +381,7 @@
                                             </div>
                                             <div class="py-2">
                                                     <span class="fw-bold fs-5 text-white">
-                                                        {{$opencnt}}
+
                                                     </span>
                                                 <br>
                                                 <span class="fw-bold fs-5 text-white">
@@ -629,7 +621,7 @@
                                 </div>
                                 <div class="py-2">
                                                     <span class="fw-bold fs-5 text-white">
-                                                        {{$opencnt}}
+                                                     
                                                     </span>
                                     <br>
                                     <span class="fw-bold fs-5 text-white">

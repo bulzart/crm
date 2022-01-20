@@ -22,8 +22,10 @@ class FamilyPersonsController extends Controller
         $cnt1 = 0;
         $lead = family::find($id);
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $lead->lead->assign_to_id) {
-            if (Auth::guard('admins')->user()->hasRole('fs')) {
-                if (Auth::user()->id == $lead->assign_to_id) {
+            if (Auth::user()->hasRole('fs')) {
+                if (Auth::user()->id == $lead->lead->assign_to_id) {
+               
+
                     try {
                         $data = LeadDataKK::where('person_id', '=', $id)->firstOrFail();
                         return redirect()->route('acceptdata', $id);
