@@ -18,17 +18,19 @@ class FamilyPersonsController extends Controller
 {
     public function family_persons($id)
     {
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+
         $cnt = 0;
         $cnt1 = 0;
-        $lead = family::find($id);
+        $lead = family::find($idd);
         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->id == $lead->lead->assign_to_id) {
-            if (Auth::user()->hasRole('fs')) {
-                if (Auth::user()->id == $lead->lead->assign_to_id) {
-               
+            if (Auth::guard('admins')->user()->hasRole('fs')) {
+                if (Auth::guard('admins')->user()->id == $lead->lead->assign_to_id) {
 
                     try {
-                        $data = LeadDataKK::where('person_id', '=', $id)->firstOrFail();
-                        return redirect()->route('acceptdata', $id);
+                        $data = LeadDataKK::where('person_id', '=', $idd)->firstOrFail();
+                        return redirect()->route('acceptdata', $idd);
                     }
                     catch (Exception $e) {
                         return view('documentsform', compact('lead'));
@@ -40,8 +42,8 @@ class FamilyPersonsController extends Controller
             }
             else {
                 try {
-                    $data = LeadDataKK::where('person_id', '=', $id)->firstOrFail();
-                    return redirect()->route('acceptdata', $id);
+                    $data = LeadDataKK::where('person_id', '=', $idd)->firstOrFail();
+                    return redirect()->route('acceptdata', $idd);
                 }
                 catch (Exception $e) {
                     return view('documentsform', compact('lead'));

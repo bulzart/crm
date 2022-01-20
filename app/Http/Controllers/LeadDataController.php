@@ -14,12 +14,13 @@ use App\Models\Pendency;
 use App\Traits\FileManagerTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class LeadDataController extends Controller
 {
     use FileManagerTrait;
     public function acceptdata($id,$accept = false){
-if(Auth::user()->hasRole('fs')){
+if(Auth::guard('admins')->user()->hasRole('fs')){
     if(Auth::user()->id == family::find($id)->lead->assign_to_id){
         if(!$accept){
             $data = new data();
@@ -48,13 +49,19 @@ else{
             return redirect()->route('acceptdata',['id' => $id]);
         }
 }
-        
+
     }
 
-    public function createLeadDataKK($leadId, $personId, Request $request,$pendency = false)
+    public function createLeadDataKK($leadIdd, $personIdd, Request $request,$pendency = false)
     {
+        $leadId = Crypt::decrypt($leadIdd);
+        $leadId /= 1244;
+
+        $personId = Crypt::decrypt($personIdd);
+        $personId /= 1244;
+
        $person = family::find($personId);
-       if($person->lead->assign_to_id == Auth::user()->id || Auth::user()->hasRole('admin') || Auth::user()->hasRole('backoffice') || Auth::user()->hasRole('salesmanager')){
+       if($person->lead->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('salesmanager')){
         LeadDataKK::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -170,7 +177,7 @@ else{
             'comment' => $request->comment
         ];
 
-        
+
         if($existingLeadDataCounterOffered){
             $existingLeadDataCounterOffered->update($leadDataCounteroffered);
         }
@@ -201,7 +208,7 @@ else{
             'hour_breakdown_assistance' => $request->hour_breakdown_assistance,
             'comment' => $request->comment
         ];
-        
+
         if($existingLeadDataFahrzeug){
             $existingLeadDataFahrzeug->update($leadDataFahrzeug);
         }
@@ -247,7 +254,7 @@ else{
             'n_of_p_legal_protection' => $request->n_of_p_legal_protection,
         ];
 
-        
+
         if($existingLeadDataPrevention){
             $existingLeadDataPrevention->update($leadDataPrevention);
         }

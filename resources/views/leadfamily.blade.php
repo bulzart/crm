@@ -24,6 +24,7 @@
                             @php
                                 $leadss = $task->id * 1244;
                                 $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+
                             @endphp
                             <form method="POST" action="{{route('updateleadfamilyperson',$taskId)}}">
                                 @csrf
@@ -56,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            <a href="{{route('leadfamilyperson',$task->id)}}" class="btn btn-success">+</a>
+            <a href="{{route('leadfamilyperson',$taskId)}}" class="btn btn-success">+</a>
 
             <br>
         @endforeach

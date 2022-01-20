@@ -18,7 +18,7 @@
 
 <body>
 
-  
+
 
   <style>
     .nav-itemsss a:hover {
@@ -43,7 +43,14 @@
 
     }
   </style>
-<form action="{{route('createLeadDataKK',['leadId'=> $lead->lead->id,'personId' => $lead->id])}}" method="post" enctype="multipart/form-data">
+  @php
+      $leadid = $lead->lead->id * 1244;
+      $leadleadid = \Illuminate\Support\Facades\Crypt::encrypt($leadid);
+
+      $person = $lead->id * 1244;
+      $personId = \Illuminate\Support\Facades\Crypt::encrypt($person);
+  @endphp
+<form action="{{route('createLeadDataKK',['leadIdd'=> $leadleadid,'personIdd' => $personId])}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="row">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
@@ -320,9 +327,9 @@
                             </svg>
                           </label>
                           <input type="file" name="pre_insurer" id="file-input-0" class="svg-div w-100 border-0  g-0" onchange="upload(this)">
-               
+
                           <input type="text" class="form-control text-center" id="file-input-0c" disabled style="background:none; border:none;">
-                    
+
                         </div>
                       </div>
                     </div>
@@ -475,7 +482,7 @@
                   <div class="col g-0 text-end my-auto">
                     <div class="">
                       <span class="pe-2" style="color: #9F9F9F;">
-                        
+
                       </span>
                     </div>
                   </div>
@@ -572,11 +579,11 @@
                                   <div class="select-div text-end ">
                                     <select name="comparison_type" class="fw-bold" id=""
                                       style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                  
+
                                       <option selected>Select</option>
                                       <option value="1">1:1 Deckung</option>
                                       <option value="2">1:1 Deckung</option>
-                                      
+
                                     </select>
                                   </div>
                                 </div>
@@ -673,20 +680,20 @@
                                     <div class="col">
                                       <div class="btn-group w-100" role="group"
                                         aria-label="Basic radio toggle button group">
-                                 
+
                                         <input type="radio" class="btn-check" value="Ja" name="leasing" id="btnradio1"
                                           autocomplete="off">
                                         <label class="btn btn-outline-secondary w-100 g-0" value="Ja" for="btnradio1">Ja</label>
                                         <input type="radio" class="btn-check" name="leasing" value="Nein"  id="btnradio2"
                                           autocomplete="off">
                                         <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2">Nein</label>
-                               
+
                                       </div>
                                       <div class="">
                                         <select name="leasing_name" class="w-100 slct1" id="">
-                                   
+
                                           <option value="Gesellschaft">Gesellschaft</option>
-                                
+
                                         </select>
                                       </div>
                                     </div>
@@ -710,11 +717,11 @@
                                         </span>
                                       </div>
                                       <select name="year_of_purchase" class="fw-normal" id="" style="background-color: #EFEFEF;">
-                                
+
                                         <option value="2021" selected>2021</option>
                                         <option value="2020">2020</option>
                                         <option value="2019">2019</option>
-                                  
+
                                       </select>
                                     </div>
                                   </div>
@@ -724,9 +731,9 @@
                                         Este inverkehrssetzung:
                                       </span>
                                     </div>
-                            
+
                                   <input name="placing_on_the_market" type="date" class="py-1 border-0">
-                           
+
                                   </div>
                                   <div class="date-input-div mb-2">
                                     <div class="">
@@ -734,9 +741,9 @@
                                         Beginn Versicherung:
                                       </span>
                                     </div>
-                           
+
                                     <input name="insurance_date" type="date" class="py-1 border-0">
-                              
+
                                   </div>
                                   <div class="input-select-div mb-2">
                                     <div class="">
@@ -757,9 +764,9 @@
                                         KM - Stand:
                                       </span>
                                     </div>
-                        
+
                                     <input name="km_stood" class="py-1" type="text" id="">
-                           
+
                                   </div>
                                 </div>
                                 <div class="col">
@@ -776,9 +783,9 @@
                                         Erste inverkehrssetzung:
                                       </span>
                                     </div>
-                               
+
                                   <input name="placing_on_the_market" type="date" class="py-1 border-0">
-                    
+
                                   </div>
                                   <div class="input-select-div mb-2">
                                     <div class="">
@@ -787,13 +794,13 @@
                                       </span>
                                     </div>
                                     <select name="nationality" class="form-select w-75" aria-label="Default select example">
-                         
-                          
+
+
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
                                       <option value="3">Three</option>
-                           
+
                                     </select>
                                   </div>
                                   <div class="input-select-div mb-2">
@@ -826,7 +833,7 @@
                                         Versischerung:
                                       </span>
                                     </div>
-                                    
+
                                     <select name="insurance" class="form-select w-75" aria-label="Default select example">
                                       <option selected></option>
                                       <option value="1">One</option>
@@ -841,7 +848,7 @@
                                       </span>
                                     </div>
                                     <select name="deductible" class="form-select w-75" aria-label="Default select example">
-                                
+
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
@@ -855,12 +862,12 @@
                                       </span>
                                     </div>
                                     <select name="carried" class="form-select w-75" aria-label="Default select example">
-                         
+
                                       <option selected></option>
                                       <option value="1">One</option>
                                       <option value="2">Two</option>
                                       <option value="3">Three</option>
-                              
+
                                     </select>
                                   </div>
                                   <div class="">
@@ -874,12 +881,12 @@
                                         aria-describedby="basic-addon1">
                                     </div> -->
                                     <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
- 
+
                                         <input type="radio" class="btn-check " name="repair_shop" id="btnradio1_" value="Specific garage"checked>
                                         <label class="btn btn-outline-secondary w-100 g-0" for="btnradio1_">Specific garage</label>
                                         <input type="radio" class="btn-check" name="repair_shop" value="Freie Wahl"  id="btnradio2_">
                                         <label class="btn btn-outline-secondary w-100 g-0 " for="btnradio2_">Freie Wahl</label>
-                            
+
                                     </div>
                                   </div>
                                   <div class="input-div1 mb-2">
@@ -1174,7 +1181,7 @@
                   <div class="col g-0 text-end my-auto">
                     <div class="">
                       <span class="pe-2" style="color: #9F9F9F;">
-                        
+
                       </span>
                     </div>
                   </div>
@@ -1259,7 +1266,7 @@
                                   </label>
                                   <input type="file" id="file-input-6" class="svg-div w-100 border-0  g-0" onchange="upload(this);" name="upload_police2">
                           <input type="text" class="form-control text-center" id="file-input-6c" disabled style="background:transparent;border:none;">
-                                </div> 
+                                </div>
                               </div>
                             </div>
                             <div class="">
@@ -1485,7 +1492,7 @@
                     <div class="col g-0 text-end my-auto">
                       <div class="">
                         <span class="pe-2" style="color: #9F9F9F;">
-                          
+
                         </span>
                       </div>
                     </div>
@@ -1757,7 +1764,7 @@ if (fullPath) {
     if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
         filename = filename.substring(1);
     }
-  
+
 document.getElementById(x.id + 'c').value = filename;
 }
 }
