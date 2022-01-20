@@ -26,6 +26,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Session\Session;
 use Musonza\Chat\Chat;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 
 
@@ -85,17 +86,17 @@ route::prefix('')->middleware('confirmcode')->group(function(){
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
 
-//        $idd = Crypt::decrypt($id);
-//        $idd /= 1244;
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
 
         try {
 
-          $data = family::where('leads_id',$id)->get();
+          $data = family::where('leads_id',$idd)->get();
                      if(!empty($data[0])){
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }
                      else{
-                        return redirect()->route('dealclosed',$id);
+                        return redirect()->route('dealclosed',$idd);
                      }
 
                   }
@@ -109,7 +110,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
     route::post('deleteFamilyPerson/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson'])->name('deleteFamilyPerson');
-    route::post('createLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'createLeadDataKK'])->name('createLeadDataKK');
+    route::post('createLeadDataKK/{leadIdd}/{personIdd}',[LeadDataController::class,'createLeadDataKK'])->name('createLeadDataKK');
     route::post('updateLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataKK'])->name('updateLeadDataKK');
     route::post('updateleadDataACounteroffered/{leadId}/{personId}',[LeadDataController::class,'updateleadDataACounteroffered'])->name('updateleadDataACounteroffered');
     route::post('updateLeadDataFahrzeug/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataFahrzeug'])->name('updateLeadDataFahrzeug');
