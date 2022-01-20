@@ -1,6 +1,10 @@
 @extends('template.navbar')
 @section('content')
-<form action="{{route('asignlead',$lead->id)}}" method="post">
+    @php
+        $leadss = $lead->id * 1244;
+        $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+    @endphp
+<form action="{{route('asignlead',$leadId)}}" method="post">
     @csrf
 <div class="form-group container text-center pt-4">
   <fieldset disabled>

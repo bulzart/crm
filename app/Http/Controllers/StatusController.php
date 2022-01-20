@@ -12,12 +12,12 @@ class StatusController extends Controller
         $client = \Webklex\IMAP\Facades\Client::account('outlook');
         $client->connect();
         $folders = $client->getFolders();
-     
-     
+
+
            //Get all Messages of the current Mailbox $folder
            /** @var \Webklex\PHPIMAP\Support\MessageCollection $messages */
            $messages = $folders[3]->messages()->all()->get();
-     
+
            $cnt = 0;
            $msgs = [];
            /** @var \Webklex\PHPIMAP\Message $message */
@@ -30,16 +30,24 @@ class StatusController extends Controller
         return view('status',compact('clientss','msgs'));
     }
     public function editclientdata($id){
-        $client = family::find($id);
+
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+
+        $client = family::find($idd);
         return view('editclientdata',compact('client'));
     }
     public function editclientform(Request $request,$id){
+
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+
         $first_name = $request->first_name;
         $last_name = $request->last_name;
         $birthdate = $request->birthdate;
         $status = $request->status;
 
-        if(family::find($id)->update([
+        if(family::find($idd)->update([
             'first_name'=> $first_name,
             'last_name'=>$last_name,
             'birthdate'=>$birthdate,

@@ -178,17 +178,21 @@
                                                 <a href="tel:{{$lead->telephone}}"><i class="fas fa-phone-square-alt"
                                                                                       style="font-size: 58px;"></i></a>
                                             </div>
+                                            @php
+                                                $leadss = $lead->id * 1244;
+                                                $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                                            @endphp
                                             <div class="modal-footer">
-                                                <a href="{{route('dlead',$lead->id)}}" type="button"
+                                                <a href="{{route('dlead',$leadId)}}" type="button"
                                                    class="btn btn-danger">X</a>
-                                                <a href="{{route('alead',$lead->id)}}" type="button"
+                                                <a href="{{route('alead',$leadId)}}" type="button"
                                                    class="btn btn-success">Go</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-   
+
                         </div>
 
                     </div>
@@ -205,12 +209,12 @@
                 </span> <a href="{{route('leads',['page' => $leads->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                     Next »
                 </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
-                
+
                 </p></div> <div></div></div></nav></div>
-             
+
 </div>
             </div>
-            
+
             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-3">
                 <div class="statistics-div">
                     <div class="statistics-header mx-4 py-3">

@@ -51,7 +51,6 @@ route::prefix('')->middleware('confirmcode')->group(function(){
     route::get('leads',[UserController::class,'leads'])->name('leads');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
-    route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
 
    //  Route::group(['middleware' => 'json.response'], function () {
@@ -70,19 +69,28 @@ route::prefix('')->middleware('confirmcode')->group(function(){
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
-        $lead = lead::find($id);
-        
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+        $lead = lead::find($idd);
+
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
-        $app = lead::find($id)->update(['assigned' => 1]);
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+        $app = lead::find($idd)->update(['assigned' => 1]);
         return redirect()->back();
     })->name('acceptleadinfo');
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
-      try
-      {$data = family::where('leads_id',$id)->get();
+
+//        $idd = Crypt::decrypt($id);
+//        $idd /= 1244;
+
+        try {
+
+          $data = family::where('leads_id',$id)->get();
                      if(!empty($data[0])){
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }
@@ -187,7 +195,9 @@ Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')-
 Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
 route::get('sendcode',function(){
+
                 \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
+
 });
 route::get('nr/{nr}',function($nr){
    $key = 15;
@@ -199,3 +209,4 @@ $nr++;
    echo $val;
    return Auth::user();
 });
+

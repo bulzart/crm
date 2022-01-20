@@ -9,7 +9,11 @@
                 Edit Client
              </span>
         </div>
-        <form class="py-4 px-4" method="post" action="{{route('editclientform',$client->id)}}">
+        @php
+            $leadss = $client->id * 1244;
+            $clientId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+        @endphp
+        <form class="py-4 px-4" method="post" action="{{route('editclientform',$clientId)}}">
             @csrf
             <div class="py-2">
                 <input class="form-control" type="text" name="first_name" value="{{$client->first_name}}">

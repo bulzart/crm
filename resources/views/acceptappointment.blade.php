@@ -85,13 +85,13 @@
                             </div>
                         </div>
 
-{{--                       @php--}}
-{{--                       $leadss = $lead->id * 14;--}}
-{{--                       $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);--}}
-{{--                       @endphp--}}
+                       @php
+                       $leadss = $lead->id * 1244;
+                       $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                       @endphp
                         <div class="py-3">
                             <div class="input-group">
-                                <a href="{{route('dealnotclosed',$lead->id)}}" style="text-decoration: none;cursor: pointer" class="my-auto decline-btn m-2 my-auto py-2 px-5">
+                                <a href="{{route('dealnotclosed',$leadId)}}" style="text-decoration: none;cursor: pointer" class="my-auto decline-btn m-2 my-auto py-2 px-5">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25.145" height="25.524"
                                          viewBox="0 0 33.145 33.524">
                                         <g id="Group_620" data-name="Group 620"
@@ -105,7 +105,7 @@
                                         </g>
                                     </svg>
                                 </a>
-                                <a href="{{route('dealclosed',$lead->id)}}" style="text-decoration: none;cursor: pointer" class="accept-btn m-2 my-auto py-1 px-5">
+                                <a href="{{route('dealclosed',$leadId)}}" style="text-decoration: none;cursor: pointer" class="accept-btn m-2 my-auto py-1 px-5">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="33.232" height="33.805"
                                          viewBox="0 0 46.232 33.805">
                                         <path id="Path_277" data-name="Path 277"
@@ -119,8 +119,12 @@
                         </div>
                     </div>
                     @elseif($lead->assigned != 1)
+                        @php
+                            $leadss = $lead->id * 1244;
+                            $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                        @endphp
                         <div class="input-group">
-                        <a href="{{route('acceptleadinfo',$lead->id)}}" style="text-decoration: none;cursor: pointer;" class="accept-btn2 m-2 my-auto py-1 px-5">
+                        <a href="{{route('acceptleadinfo',$leadId)}}" style="text-decoration: none;cursor: pointer;" class="accept-btn2 m-2 my-auto py-1 px-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="33.232" height="33.805"
                                  viewBox="0 0 46.232 33.805">
                                 <path id="Path_277" data-name="Path 277"
