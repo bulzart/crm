@@ -3,9 +3,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <div class="row justify-content-center">
+
     <div class="col-8" style="background: #7DBF9A; border-radius: 19px; padding: 5%;">
+        <div class="">
+            <a href="{{route('tasks')}}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="accordion accordion-flush mx-3" id="accordionFlushExample">
+
         @foreach($data as $task)
-                <div class="accordion accordion-flush mx-3" id="accordionFlushExample">
+
                     @if($task->status == 'Open')
                     <div class="accordion-item my-1 bg-danger">
                         @elseif($task->status == 'Submited')
@@ -13,6 +23,7 @@
                             @else
                             <div class="accordion-item my-1 bg-success">
                             @endif
+
                         <h2 class="accordion-header" id="flush-headingFivve">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseFivve" aria-expanded="false" aria-controls="flush-collapseFivve">

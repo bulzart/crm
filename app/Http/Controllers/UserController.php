@@ -33,6 +33,7 @@ use App\Http\Middleware\confirmedcode;
 use DB;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -42,7 +43,6 @@ class UserController extends Controller
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
-
     }
 
     public function acceptapp($id)
@@ -301,7 +301,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             $user = Auth::guard('admins')->user();
             $user->confirmed = 0;
             $user->pin = $pin;
-             
+
 
              // if($rolee[0] != null){
                // $user->removeRole($rolee[0]);
@@ -357,7 +357,10 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function completeapp(Request $req, $id)
     {
-        $lead = lead::find($id);
+
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+        $lead = lead::find($idd);
 
         $cnt = $lead->number_of_persons;
         for ($i = 1; $i <= $cnt; $i++) {
@@ -365,7 +368,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             $family->first_name = filter_var($req->input('fname' . $i));
             $family->birthdate = filter_var($req->input('birthday' . $i));
             $family->last_name = filter_var($req->input('lname' . $i));
-            $family->leads_id = (int)$id;
+            $family->leads_id = (int)$idd;
             $family->save();
         }
         $lead->status_task = "open";
@@ -458,7 +461,6 @@ $taskcnt = 0;
                 $morethan30 = [];
                 $pendencies = [];
                 $taskcnt = 0;
-
                 $tasks = null;
 
                 if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
@@ -484,9 +486,11 @@ $taskcnt = 0;
                     ->count();
 
             }
-            if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')){
+            if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')){
+
                 if(Auth::guard('admins')->user()->hasRole('fs'))
                 {
+
                     $pending = DB::table('family_person')
                     ->join('pendencies','family_person.id','=','pendencies.family_id')
                     ->where('pendencies.done','=',0)
@@ -539,11 +543,23 @@ $taskcnt = 0;
 
             }
                 if(Auth::guard('admins')->user()->hasRole('fs')) {
-                $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count(); return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt'));}
-                if(Auth::guard('admins')->user()->hasRole('backoffice')) {return view('dashboard', compact('pendencies','morethan30'));}
-                if(Auth::guard('admins')->user()->hasRole('admin')) {
+                $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count(); return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt'));
+                }
+                elseif(Auth::guard('admins')->user()->hasRole('backoffice')) {
+                    return view('dashboard', compact('pendencies','morethan30'));
+                }
+                elseif (Auth::guard('admins')->user()->hasRole('salesmanager')){
+
+
+
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));}
+                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+
+                }
+                elseif(Auth::guard('admins')->user()->hasRole('admin')) {
+                    $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
+                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                }
 
         }
     }

@@ -44,12 +44,12 @@ route::prefix('')->middleware('confirmcode')->group(function(){
       return \Artisan::call('route:clear');
    });
 //==========================================
-   route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
+    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
     route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
     route::get('/',[UserController::class,'dashboard'])->name('dashboard');
-    route::get('leads',[UserController::class,'leads'])->name('leads');
+    route::get('leads',[UserController::class,'leads'])->name('leads')->middleware('role:admin|fs|salesmanager,admins');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
@@ -70,16 +70,12 @@ route::prefix('')->middleware('confirmcode')->group(function(){
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
-<<<<<<< HEAD
-       $id = Crypt::decrypt($id) / 1244;
-        $lead = lead::find($id);
-        
-=======
+
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
+
         $lead = lead::find($idd);
 
->>>>>>> 564d957e7d59ef55f595b2b5efebdeb0c6708a5a
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
@@ -202,18 +198,7 @@ Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')-
 Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
 route::get('sendcode',function(){
-
-                \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
-
+    \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
 });
-route::get('nr/{nr}',function($nr){
-   $key = 15;
-$val = $key;
-   for($i = 0; $i < 3; $i++){
-$val = $val*$nr;
-$nr++;
-   }
-   echo $val;
-   return Auth::user();
-});
+
 
