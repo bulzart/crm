@@ -90,9 +90,13 @@
                         <label for="admin" class="fw-600">Assign To:</label>
                         <br>
                         <select name="admin" class="form-control">
+                            @if(Auth::guard('admins')->user()->hasRole('fs'))
+                                    <option value="{{$admins->id}}">{{$admins->name}}</option>
+                            @else
                             @foreach($admins as $admin)
-                                <option value="{{$admin->id}}">{{$admin->name}}</option>
-                            @endforeach
+                                    <option value="{{$admin->id}}">{{$admin->name}}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                 </div>

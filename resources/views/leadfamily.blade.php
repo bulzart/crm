@@ -21,7 +21,12 @@
                         </h2>
                         <div id="flush-collapseFivve" class="accordion-collapse collapse show" aria-labelledby="flush-headingFivve"
                              data-bs-parent="#accordionFlushExample">
-                            <form method="POST" action="{{route('updateleadfamilyperson',$task->id)}}">
+                            @php
+                                $leadss = $task->id * 1244;
+                                $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+
+                            @endphp
+                            <form method="POST" action="{{route('updateleadfamilyperson',$taskId)}}">
                                 @csrf
                             <div class="accordion-body p-0 mx-2 py-2">
 
@@ -52,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-            <a href="{{route('leadfamilyperson',$task->id)}}" class="btn btn-success">+</a>
+            <a href="{{route('leadfamilyperson',$taskId)}}" class="btn btn-success">+</a>
 
             <br>
         @endforeach

@@ -114,7 +114,11 @@
                     <div class="declined-items py-3 col-12 col-sm-12 col-md-12 col-lg col-xl g-0 ">
                         <form method="post" action="{{route('rejectedleads')}}" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" name="leadsid" value="{{$leads->id}}">
+                            @php
+                                $leadss = $leads->id * 1244;
+                                $leadsId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                            <input type="hidden" name="leadsid" value="{{$leadsId}}">
                         <div class="border-left-div">
                             <div class="termin-div mx-3 py-3">
 

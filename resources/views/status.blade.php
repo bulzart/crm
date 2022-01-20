@@ -63,9 +63,13 @@
                                                 {{$client->first_name}} {{$client->last_name}}
                                             </span>
                                     </div>
+                                    @php
+                                        $leadss = $client->id * 1244;
+                                        $clientId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                                    @endphp
                                     <div class="col-2 text-end">
                                             <span>
-                                                <a href="{{route('editclientdata',$client->id)}}" style="cursor: pointer">
+                                                <a href="{{route('editclientdata',$clientId)}}" style="cursor: pointer">
                                                 <svg id="Group_641" data-name="Group 641"
                                                      xmlns="http://www.w3.org/2000/svg"
                                                      xmlns:xlink="http://www.w3.org/1999/xlink" width="15.505"
@@ -113,9 +117,9 @@
             </span> <a href="{{route('status',['page' => $clientss->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
                 Next »
             </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
-            
+
             </p></div> <div></div></div></nav></div>
-         
+
 </div>
 
                 </div>

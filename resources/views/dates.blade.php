@@ -12,15 +12,19 @@
 
     </tr>
 @foreach($datesforconversation as $l)
+
 <tr>
     <td>{{$l->id}}<td>
     <td>{{$l->name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td>{{$l->count}}&nbsp;<td>
         <td>@if($l->campaign != null){{$l->campaign->name}}
         @else Registered @endif</td>
+        @php
+            $leadss = $l->id * 1244;
+            $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+        @endphp
 
-
-       <td><a href="{{route('alead',$l->id)}}" class="btn text-light" style="background-color: #4D3FD3;">Join</a><td>
+       <td><a href="{{route('alead',$leadId)}}" class="btn text-light" style="background-color: #4D3FD3;">Join</a><td>
 
 </tr>
 @endforeach
