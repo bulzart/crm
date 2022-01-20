@@ -28,7 +28,7 @@ if(Auth::guard('admins')->user()->hasRole('fs')){
             $data->getdata($id);
             return view('updatedocument',compact('data','lead'));}
             else{
-                $pend = Pendency::where('family_id',$id)->delete();
+                $pend = Pendency::where('family_id',$id)->update(['completed' => 1]);
                 family::where('id',$id)->update(['status' => 'Done']);
                 return redirect()->route('acceptdata',['id' => $id]);
             }
@@ -44,7 +44,7 @@ else{
         $data->getdata($id);
         return view('updatedocument',compact('data','lead'));}
         else{
-            $pend = Pendency::where('family_id',$id)->delete();
+            $pend = Pendency::where('family_id',$id)->update(['completed' => 1]);
             family::where('id',$id)->update(['status' => 'Done']);
             return redirect()->route('acceptdata',['id' => $id]);
         }
@@ -144,6 +144,13 @@ else{
         $pend->done = 1;
         $pend->save();
     }
+    else{
+    $pend = new Pendency();
+    $pend->admin_id = Auth::user()->id;
+    $pend->family_id = $personId;
+    $pend->done = 1;
+    $pend->save();
+    }
             return redirect()->back()->with('success','Successfully submitted and will be waiting for the backoffice!');
     }
     else{
@@ -154,7 +161,7 @@ else{
 
     public function updateLeadDataKK($leadId, $personId, Request $request)
     {
-        $existingLeadDataKK = LeadDataKK::where('leads_id', $leadId)->where('person_id', $personId)->first();
+        $existingLeadDataKK = LeadDataKK::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
         $leadDataKK = [
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -167,7 +174,7 @@ else{
         if($existingLeadDataKK){
             $existingLeadDataKK->update($leadDataKK);
         }
-        $existingLeadDataCounterOffered = LeadDataCounteroffered::where('leads_id', $leadId)->where('person_id', $personId)->first();
+        $existingLeadDataCounterOffered = LeadDataCounteroffered::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
 
         $leadDataCounteroffered = [
             'leads_id' => $leadId,
@@ -182,7 +189,7 @@ else{
             $existingLeadDataCounterOffered->update($leadDataCounteroffered);
         }
 
-        $existingLeadDataFahrzeug = LeadDataFahrzeug::where('leads_id', $leadId)->where('person_id', $personId)->first();
+        $existingLeadDataFahrzeug = LeadDataFahrzeug::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
         $leadDataFahrzeug = [
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -232,13 +239,13 @@ else{
             'desired' => $request->desired,
         ];
 
-        $existingLeadDataThings = LeadDataThings::where('leads_id', $leadId)->where('person_id', $personId)->first();
+        $existingLeadDataThings = LeadDataThings::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
 
         if($existingLeadDataThings){
             $existingLeadDataThings->update($leadDataThings);
         }
 
-        $existingLeadDataPrevention = LeadDataPrevention::where('leads_id', $leadId)->where('person_id', $personId)->first();
+        $existingLeadDataPrevention = LeadDataPrevention::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
         $leadDataPrevention = [
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -258,6 +265,22 @@ else{
         if($existingLeadDataPrevention){
             $existingLeadDataPrevention->update($leadDataPrevention);
         }
+        $lpend = Pendency::where('family_id',$personId)->first();
+       
+            if($lpend){
+                $lpend->completed = 0;
+                $lpend->done = 1;
+                $lpend->save();
+            }
+            else{
+                $pend = new Pendency();
+                $pend->family_id = $personId;
+                $pend->admin_id = Auth::user()->id;
+                $pend->done = 1;
+                $pend->save();
+                }
+        
+        
         return redirect()->route('acceptdata',$personId);
     }
 

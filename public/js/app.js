@@ -5767,7 +5767,7 @@ __webpack_require__.r(__webpack_exports__);
       this.costumer = this.todos.costumers[0].id;
     },
     assignpendency: function assignpendency() {
-      axios.get('assignpendency/' + this.admin + '/' + this.costumer + '/' + document.getElementById('desc').value);
+      axios.get('assignpendency?admin=' + this.admin + '&id=' + this.costumer + '&desc=' + document.getElementById('desc').value);
       document.getElementById('alrt').innerHTML = "";
       document.getElementById('alrt').innerHTML += ' <div class="alert alert-success" role="alert"> Pendency was assigned successfully</div>';
     },

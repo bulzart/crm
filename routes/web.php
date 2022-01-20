@@ -34,10 +34,10 @@ use Illuminate\Support\Facades\Crypt;
 
 
 route::prefix('')->middleware('confirmcode')->group(function(){
-   route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
+   route::get('assignpendency',[TasksController::class,'assignpendency']);
 // =====================================
    route::get('hyr',function(){
-      Auth::guard('admins')->loginUsingId(6);
+      Auth::guard('admins')->loginUsingId(2);
    });
    route::get('clear',function(){
       \Artisan::call('optimize');
@@ -70,10 +70,16 @@ route::prefix('')->middleware('confirmcode')->group(function(){
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
+<<<<<<< HEAD
+       $id = Crypt::decrypt($id) / 1244;
+        $lead = lead::find($id);
+        
+=======
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
         $lead = lead::find($idd);
 
+>>>>>>> 564d957e7d59ef55f595b2b5efebdeb0c6708a5a
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
@@ -180,7 +186,7 @@ route::get('file/{file?}',function($file = null){
         if(Storage::disk('img')->exists($file)){
            $file = Storage::disk('img')->get($file);
            $response = Response::make($file, 200);
-         $response->header('Content-Type', 'image/jpg');
+         $response->header('Content-Type', 'file');
            return $response;
         }
         else{

@@ -224,7 +224,7 @@
                                     <div class="col g-0 my-auto">
                                         <div class=" ps-4 ">
                                                 <span class="fs-2 fw-bold text-white">
-                                                    {{round($percnt,4)}}%
+                                                    {{round($percnt,2)}}%
                                                 </span>
                                         </div>
                                     </div>

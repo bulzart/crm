@@ -301,8 +301,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             $user = Auth::guard('admins')->user();
             $user->confirmed = 0;
             $user->pin = $pin;
-                $role = Role::where('name',$req->input('auth'))->get();
-                $rolee = $user->getRoleNames();
+             
 
              // if($rolee[0] != null){
                // $user->removeRole($rolee[0]);
@@ -523,10 +522,9 @@ $taskcnt = 0;
       ->orWhereNull('status_contract')
       ->where('status_task','!=','Done')
       ->count();
-      $done = DB::table('leads')
-      ->where('completed',1)
-      ->where('status_contract','Done')
-      ->where('status_task','Done')
+      $done = DB::table('family_person')
+      ->join('pendencies','family_person.id','pendencies.family_id')
+      ->where('pendencies.completed',1)
       ->count();
 
     }

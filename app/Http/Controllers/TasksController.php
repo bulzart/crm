@@ -22,16 +22,15 @@ use Livewire\Component;
 
 class TasksController extends Controller
 {
-public function assignpendency($admin,$id,$desc = null){
-$retor = Pendency::where('family_id',$id)->firstOrFail();
-  if($retor != null){
+public function assignpendency(Request $req){
+  $id = (int) $req->id;
     $pendency = new Pendency();
-  $pendency->admin_id = (int) $admin;
-  $pendency->family_id = (int) $id;
-  $pendency->description = filter_var($desc,FILTER_SANITIZE_STRING);
+  $pendency->admin_id = (int) $req->admin;
+  $pendency->family_id = (int) $req->id;
+  $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
   $family = DB::table('family_person')->where('id','=',$id)->update(['status' => 'Open']);
   $pendency->save();
-}
+
 }
   public function accepttask($id)
   {
@@ -311,6 +310,7 @@ $retor = Pendency::where('family_id',$id)->firstOrFail();
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->where('pendencies.done', '=', 1)
+                ->where('pendencies.completed',0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchpend . '%')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
@@ -319,6 +319,7 @@ $retor = Pendency::where('family_id',$id)->firstOrFail();
             $pend = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 1)
+                ->where('pendencies.completed',0)
                 ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
@@ -432,20 +433,6 @@ if(Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact
 
   }
 
-
-
-
-
-
-
-  public function isdone($object): bool
-  {
-
-    if ($object['job'] != null && $object['email'] != null && $object['lenker'] != null && $object['lenker'] != '' && $object['comment'] != null && $object['comment'] != '' && $object['kmstand'] != null && $object['kmstand'] != "" && $object['society'] != null && $object['socity'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['insurance'] != null && $object['insurance'] != '' && $object['carcomment'] != null && $object['carcomment'] != '' && $object['preinsurer'] != null && $object['preinsurer'] != '' && $object['idnecessary'] != null && $object['idnecessary'] != '' && $object['leasingname'] != null && $object['leasingname'] != '' && $object['nationality'] != null && $object['nationality'] != '' && $object['nationality'] != '' && $object['nationality'] != null && $object['uploadpolice'] != null && $object['uploadpolice'] != '' && $object['yearpurchase'] != null && $object['yearpurchase'] != '' && $object['thingscarried'] != null && $object['thingscarried'] != '' && $object['startinsurance'] != null && $object['startinsurance'] != '' && $object['commentatpolice'] != null && $object['commentatpolice'] != '' && $object['powerofattorney'] != null && $object['powerofattorney'] != '' && $object['insuranceamount'] != null && $object['insuranceamount'] != '' && $object['residencepermit'] != null && $object['residencepermit'] != '' && $object['uploadvehicleid'] != null && $object['uploadvehicleid'] != '' && $object['contractstartdate'] != null && $object['contractstartdate'] != '' && $object['firstcommissioning'] != null && $object['firstcommissioning'] != '' &&  $object['nationalityfinance'] != null && $object['nationalityfinance'] != '' && $object['wishedadditionalthings'] != null && $object['wishedadditionalthings'] != '' && $object['dateofissueofdriverslicense'] != null && $object['dateofissueofdriverslicense'] != '' && $object['whichcompaniesshouldmakeanoffer'] != null && $object['whichcompaniesshouldmakeanoffer'] != '') {
-      return true;
-    }
-    return false;
-  }
   public function confirmsms(Request $request)
   {
     $user_id = Auth::guard('admins')->user()->id;
