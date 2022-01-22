@@ -2,9 +2,15 @@
 @extends('template.navbar')
 @section('content')
     <head>
-        <title>
-            Calendar
-        </title>
+        @if(Auth::guard('admins')->user()->hasRole('salesmanager'))
+            <title>
+                Dates
+            </title>
+        @else
+            <title>
+                Calendar
+            </title>
+        @endif
     </head>
         <div class="col-12 col-sm-12 col-md-12  g-0">
             <calendar class="calendar-divider p-3 my-2 "></calendar>
