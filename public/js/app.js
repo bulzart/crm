@@ -5470,6 +5470,159 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/chat.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/chat.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      messages: [],
+      pag: 1,
+      url: "http://127.0.0.1:8000/",
+      cnt: 0
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.getmessages();
+    setInterval(function () {
+      _this.getmessages();
+    }, 400);
+  },
+  methods: {
+    sendmessage: function sendmessage() {
+      axios.get(this.url + "sendmessage/" + this.u1 + "/" + this.u2 + "?text=" + document.getElementById("text").value).then(document.getElementById("text").value = "");
+      {
+        this.getmessages();
+      }
+    },
+    getmessages: function getmessages() {
+      var _this2 = this;
+
+      axios.get(this.url + "getchat/" + this.u1 + "/" + this.u2 + "?page=" + this.pag).then(function (response) {
+        _this2.messages = [];
+        _this2.cnt = response.data.total;
+        var cntt = 0; // if(this.messages.length == 0){
+
+        for (var i = 0; i < _this2.cnt; i++) {
+          _this2.messages.push(response.data.data[i]);
+
+          _this2.messages[i].created_at = new Date(_this2.messages[i].created_at);
+        }
+      });
+    }
+  },
+  props: {
+    u1: {
+      "default": function _default() {
+        return parseInt(window.data.u1);
+      }
+    },
+    u2: {
+      "default": function _default() {
+        return parseInt(window.data.u2);
+      }
+    },
+    admin: {
+      "default": function _default() {
+        return window.data.admin;
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/notifications.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/notifications.vue?vue&type=script&lang=js& ***!
@@ -5801,9 +5954,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
@@ -5827,7 +5977,6 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 var app = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
   el: '#app'
 });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
 
@@ -28380,15 +28529,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _chat_vue_vue_type_template_id_151b8bba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chat.vue?vue&type=template&id=151b8bba& */ "./resources/js/components/chat.vue?vue&type=template&id=151b8bba&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _chat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chat.vue?vue&type=script&lang=js& */ "./resources/js/components/chat.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _chat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _chat_vue_vue_type_template_id_151b8bba___WEBPACK_IMPORTED_MODULE_0__.render,
   _chat_vue_vue_type_template_id_151b8bba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
@@ -28496,6 +28647,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./calendar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/calendar.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/chat.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/chat.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_chat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./chat.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/chat.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_chat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -29214,206 +29381,235 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticStyle: { "background-color": "#eee" } }, [
+  return _c("html", [
+    _c("body", [
       _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row d-flex justify-content-center" }, [
-          _c("div", { staticClass: "col-md-8 col-lg-6 col-xl-4" }, [
-            _c(
-              "div",
-              {
-                staticClass: "card",
-                staticStyle: { "border-radius": "15px" },
-                attrs: { id: "chat1" },
-              },
-              [
+        _c("h3", { staticClass: "text-center" }, [_vm._v("Messaging")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "messaging" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "inbox_msg text-center justify-content-center d-flex",
+            },
+            [
+              _c("div", { staticClass: "mesgs" }, [
                 _c(
                   "div",
-                  {
-                    staticClass:
-                      "card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0",
-                    staticStyle: {
-                      "border-top-left-radius": "15px",
-                      "border-top-right-radius": "15px",
-                    },
-                  },
+                  { staticClass: "msg_history" },
                   [
-                    _c("i", { staticClass: "fas fa-angle-left" }),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "mb-0 fw-bold" }, [
-                      _vm._v("Live chat"),
-                    ]),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fas fa-times" }),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "d-flex flex-row justify-content-start mb-4",
-                    },
-                    [
-                      _c("img", {
-                        staticStyle: { width: "45px", height: "100%" },
-                        attrs: {
-                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp",
-                          alt: "avatar 1",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "p-3 ms-3",
-                          staticStyle: {
-                            "border-radius": "15px",
-                            "background-color": "rgba(57, 192, 237,.2)",
-                          },
-                        },
-                        [
-                          _c("p", { staticClass: "small mb-0" }, [
-                            _vm._v(
-                              "Hello and thank you for visiting MDBootstrap. Please click the video below."
-                            ),
-                          ]),
-                        ]
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "d-flex flex-row justify-content-end mb-4" },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "p-3 me-3 border",
-                          staticStyle: {
-                            "border-radius": "15px",
-                            "background-color": "#fbfbfb",
-                          },
-                        },
-                        [
-                          _c("p", { staticClass: "small mb-0" }, [
-                            _vm._v("Thank you, I really like your product."),
-                          ]),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("img", {
-                        staticStyle: { width: "45px", height: "100%" },
-                        attrs: {
-                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp",
-                          alt: "avatar 1",
-                        },
-                      }),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "d-flex flex-row justify-content-start mb-4",
-                    },
-                    [
-                      _c("img", {
-                        staticStyle: { width: "45px", height: "100%" },
-                        attrs: {
-                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp",
-                          alt: "avatar 1",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "ms-3",
-                          staticStyle: { "border-radius": "15px" },
-                        },
-                        [
-                          _c("div", { staticClass: "bg-image" }, [
-                            _c("img", {
-                              staticStyle: { "border-radius": "15px" },
-                              attrs: {
-                                src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/screenshot1.webp",
-                                alt: "video",
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c("a", { attrs: { href: "#!" } }, [
-                              _c("div", { staticClass: "mask" }),
+                    _vm._l(_vm.messages, function (msg) {
+                      return _c("div", [
+                        msg.messageable_id == _vm.admin
+                          ? _c("div", [
+                              _c("div", { staticClass: "outgoing_msg" }, [
+                                _c("div", { staticClass: "sent_msg" }, [
+                                  _c("p", [_vm._v(_vm._s(msg.body))]),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "time_date" }, [
+                                    _vm._v(
+                                      _vm._s(
+                                        msg.created_at.toString().slice(0, 15)
+                                      )
+                                    ),
+                                  ]),
+                                ]),
+                              ]),
+                            ])
+                          : _c("div", [
+                              _c("div", { staticClass: "incoming_msg" }, [
+                                _c("div", { staticClass: "received_msg" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "received_withd_msg" },
+                                    [
+                                      _c("p", [_vm._v(_vm._s(msg.body))]),
+                                      _vm._v(" "),
+                                      _c("span", { staticClass: "time_date" }, [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(
+                                              msg.created_at
+                                                .toString()
+                                                .slice(0, 15)
+                                            ) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]
+                                  ),
+                                ]),
+                              ]),
                             ]),
-                          ]),
-                        ]
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "d-flex flex-row justify-content-start mb-4",
-                    },
-                    [
-                      _c("img", {
-                        staticStyle: { width: "45px", height: "100%" },
-                        attrs: {
-                          src: "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp",
-                          alt: "avatar 1",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "p-3 ms-3",
-                          staticStyle: {
-                            "border-radius": "15px",
-                            "background-color": "rgba(57, 192, 237,.2)",
-                          },
-                        },
-                        [
-                          _c("p", { staticClass: "small mb-0" }, [
-                            _vm._v("..."),
-                          ]),
-                        ]
-                      ),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-outline" }, [
-                    _c("textarea", {
-                      staticClass: "form-control",
-                      attrs: { id: "textAreaExample", rows: "4" },
+                      ])
                     }),
                     _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label",
-                        attrs: { for: "textAreaExample" },
-                      },
-                      [_vm._v("Type your message")]
-                    ),
-                  ]),
-                ]),
-              ]
-            ),
-          ]),
+                    _c("div", { staticClass: "type_msg" }, [
+                      _c("div", { staticClass: "input_msg_write" }, [
+                        _c("input", {
+                          staticClass: "write_msg",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Type a message",
+                            id: "text",
+                          },
+                          on: {
+                            keyup: function ($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.sendmessage.apply(null, arguments)
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "upload-box mx-1 my-2" }, [
+                          _c(
+                            "div",
+                            { staticClass: "mx-1 my-2 p-4 text-center" },
+                            [
+                              _c("label", { attrs: { for: "file-input-0" } }, [
+                                _c(
+                                  "svg",
+                                  {
+                                    attrs: {
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      width: "53",
+                                      height: "53",
+                                      viewBox: "0 0 53 53",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "g",
+                                      {
+                                        attrs: {
+                                          id: "Group_621",
+                                          "data-name": "Group 621",
+                                          transform:
+                                            "translate(-78.283 -14.777)",
+                                        },
+                                      },
+                                      [
+                                        _c("circle", {
+                                          attrs: {
+                                            id: "Ellipse_31",
+                                            "data-name": "Ellipse 31",
+                                            cx: "26.5",
+                                            cy: "26.5",
+                                            r: "26.5",
+                                            transform:
+                                              "translate(78.283 14.777)",
+                                            fill: "#5f5f5f",
+                                          },
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "g",
+                                          {
+                                            attrs: {
+                                              id: "Group_326",
+                                              "data-name": "Group 326",
+                                              transform:
+                                                "translate(95.656 31.893)",
+                                            },
+                                          },
+                                          [
+                                            _c("path", {
+                                              attrs: {
+                                                id: "Path_234",
+                                                "data-name": "Path 234",
+                                                d: "M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6",
+                                                transform: "translate(0 1.82)",
+                                                fill: "#fff",
+                                                stroke: "#fff",
+                                                "stroke-width": "0.5",
+                                              },
+                                            }),
+                                            _vm._v(" "),
+                                            _c("path", {
+                                              attrs: {
+                                                id: "Path_235",
+                                                "data-name": "Path 235",
+                                                d: "M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z",
+                                                transform: "translate(0.92 0)",
+                                                fill: "#fff",
+                                                stroke: "#fff",
+                                                "stroke-width": "0.5",
+                                              },
+                                            }),
+                                          ]
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "svg-div w-100 border-0  g-0",
+                                attrs: {
+                                  type: "file",
+                                  name: "pre_insurer",
+                                  id: "file-input-0",
+                                  onchange: "upload(this)",
+                                },
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control text-center",
+                                staticStyle: {
+                                  background: "none",
+                                  border: "none",
+                                },
+                                attrs: {
+                                  type: "text",
+                                  id: "file-input-0c",
+                                  disabled: "",
+                                },
+                              }),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "msg_send_btn",
+                            attrs: { type: "button" },
+                            on: { click: _vm.sendmessage },
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-paper-plane-o",
+                              attrs: { "aria-hidden": "true" },
+                            }),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                  ],
+                  2
+                ),
+              ]),
+            ]
+          ),
         ]),
       ]),
-    ])
-  },
-]
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

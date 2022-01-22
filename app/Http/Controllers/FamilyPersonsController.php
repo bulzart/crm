@@ -18,8 +18,7 @@ class FamilyPersonsController extends Controller
 {
     public function family_persons($id)
     {
-        $idd = Crypt::decrypt($id);
-        $idd /= 1244;
+        $idd = $id;
 
         $cnt = 0;
         $cnt1 = 0;

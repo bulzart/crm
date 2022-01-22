@@ -37,8 +37,8 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('assignpendency',[TasksController::class,'assignpendency']);
 // =====================================
    route::get('hyr',function(){
-      Auth::guard('admins')->loginUsingId(2);
-   });
+      Auth::guard('admins')->loginUsingId(1);
+   })->withoutMiddleware(confirmcode::class);
    route::get('clear',function(){
       \Artisan::call('optimize');
       return \Artisan::call('route:clear');
@@ -70,16 +70,10 @@ route::prefix('')->middleware('confirmcode')->group(function(){
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
-<<<<<<< HEAD
-       $id = Crypt::decrypt($id) / 1244;
-        $lead = lead::find($id);
-        
-=======
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
         $lead = lead::find($idd);
 
->>>>>>> 564d957e7d59ef55f595b2b5efebdeb0c6708a5a
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
@@ -142,7 +136,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
-   route::get('chat',[ChatController::class,'chat']);
+   route::get('chat/{u1}/{u2}',[ChatController::class,'chat']);
    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
    // Route::group(['middleware' => 'json.response'], function () {
@@ -216,4 +210,5 @@ $nr++;
    echo $val;
    return Auth::user();
 });
-
+route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
+route::get('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
