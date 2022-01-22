@@ -167,12 +167,14 @@
                         $leadss = $task->id * 1244;
                         $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
-                    <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;">
+             
                         <div class="p-1" style="background: red; border-radius: 12px;">
-                            <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
+                        <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;"> <span style="font-size: 18px;" class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</span></a>
+
+<span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span>
 
                         </div>
-                    </a>
+               
                     <br>
                 @endforeach
 </div>

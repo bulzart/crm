@@ -29449,7 +29449,15 @@ var render = function () {
                                                 _vm.url + "file/" + msg.body,
                                             },
                                           },
-                                          [_c("p", [_vm._v(_vm._s(msg.body))])]
+                                          [
+                                            _c("p", [
+                                              _c("i", {
+                                                staticClass:
+                                                  "bi bi-file-earmark-arrow-down",
+                                              }),
+                                              _vm._v(" " + _vm._s(msg.body)),
+                                            ]),
+                                          ]
                                         ),
                                       ]),
                                   _vm._v(" "),
@@ -29464,7 +29472,7 @@ var render = function () {
                                     [
                                       _vm._v(
                                         _vm._s(
-                                          msg.created_at.toString().slice(0, 15)
+                                          msg.created_at.toString().slice(8, 21)
                                         )
                                       ),
                                     ]
@@ -29498,7 +29506,11 @@ var render = function () {
                                             },
                                             [
                                               _c("p", [
-                                                _vm._v(_vm._s(msg.body)),
+                                                _c("i", {
+                                                  staticClass:
+                                                    "bi bi-file-earmark-arrow-down",
+                                                }),
+                                                _vm._v(" " + _vm._s(msg.body)),
                                               ]),
                                             ]
                                           ),
@@ -29519,7 +29531,7 @@ var render = function () {
                                           _vm._s(
                                             msg.created_at
                                               .toString()
-                                              .slice(0, 15)
+                                              .slice(8, 21)
                                           )
                                         ),
                                       ]

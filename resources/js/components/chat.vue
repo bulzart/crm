@@ -16,12 +16,12 @@
                         </div>
                           <div v-else>
                             <a :href="url + 'file/' + msg.body">
-                             <p>{{ msg.body }}</p>
+                             <p> <i class="bi bi-file-earmark-arrow-down"></i> {{ msg.body }}</p>
                             </a>
                           
                       </div>
                       <span class="time_date" style="word-break: break-word;">{{
-                          msg.created_at.toString().slice(0, 15)
+                          msg.created_at.toString().slice(8, 21)
                         }}</span>
                   </div>
                     </div>
@@ -35,13 +35,13 @@
                       </div>
                       <div v-else>
                             <a :href="url + 'file/' + msg.body">
-                             <p>{{ msg.body }}</p>
+                             <p> <i class="bi bi-file-earmark-arrow-down"></i> {{ msg.body }}</p>
                             </a>
                             <div>
                               </div>
                       </div>
                         <span class="time_date" style="word-break: break-word;">{{
-                          msg.created_at.toString().slice(0, 15)
+                          msg.created_at.toString().slice(8, 21)
                         }}</span>
                         </div>
                       </div>

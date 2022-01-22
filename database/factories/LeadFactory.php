@@ -54,7 +54,8 @@ $status = "Done";
             'appointment_date' => Carbon::now()->addDay(random_int(0,14))->format('Y-m-d'),
             'assign_to_id' => random_int(0,10),
             'status_task' => $this->randomm(),
-            'assigned' => random_int(0,1)
+            'assigned' => random_int(0,1),
+            'time' => $this->faker->time('H:i')
         ];
     }
 }
