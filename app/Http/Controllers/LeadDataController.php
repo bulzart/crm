@@ -161,6 +161,7 @@ else{
 
     public function updateLeadDataKK($leadId, $personId, Request $request)
     {
+        dd($request);
         $existingLeadDataKK = LeadDataKK::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
         $leadDataKK = [
             'leads_id' => $leadId,

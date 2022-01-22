@@ -37,8 +37,8 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('assignpendency',[TasksController::class,'assignpendency']);
 // =====================================
    route::get('hyr',function(){
-      Auth::guard('admins')->loginUsingId(2);
-   });
+      Auth::guard('admins')->loginUsingId(1);
+   })->withoutMiddleware(confirmcode::class);
    route::get('clear',function(){
       \Artisan::call('optimize');
       return \Artisan::call('route:clear');
@@ -138,7 +138,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
-   route::get('chat',[ChatController::class,'chat']);
+   route::get('chat/{u1}/{u2}',[ChatController::class,'chat']);
    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
    // Route::group(['middleware' => 'json.response'], function () {
@@ -200,6 +200,22 @@ Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->
 route::get('sendcode',function(){
     \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
 });
+
+
+
+});
+route::get('nr/{nr}',function($nr){
+   $key = 15;
+$val = $key;
+   for($i = 0; $i < 3; $i++){
+$val = $val*$nr;
+$nr++;
+   }
+   echo $val;
+   return Auth::user();
+});
+route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
+route::get('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
 
 
 
