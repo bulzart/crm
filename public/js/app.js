@@ -5562,6 +5562,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5581,9 +5602,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sendmessage: function sendmessage() {
-      axios.get(this.url + "sendmessage/" + this.u1 + "/" + this.u2 + "?text=" + document.getElementById("text").value).then(document.getElementById("text").value = "");
-      {
-        this.getmessages();
+      if (document.getElementById('file-input-0').value == '' || document.getElementById('file-input-0').value == null) {
+        axios.get(this.url + "sendmessage/" + this.u1 + "/" + this.u2 + "?text=" + document.getElementById("text").value).then(document.getElementById("text").value = "");
+      } else {
+        var formdata = new FormData();
+        var file = document.getElementById('file-input-0').files[0];
+        formdata.append('file', file);
+        axios.post(this.url + 'sendmessage/' + this.u1 + '/' + this.u2, formdata, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then(document.getElementById('file-input-0').value = "");
       }
     },
     getmessages: function getmessages() {
@@ -29398,209 +29427,256 @@ var render = function () {
                 _c(
                   "div",
                   { staticClass: "msg_history" },
-                  [
-                    _vm._l(_vm.messages, function (msg) {
-                      return _c("div", [
-                        msg.messageable_id == _vm.admin
-                          ? _c("div", [
-                              _c("div", { staticClass: "outgoing_msg" }, [
-                                _c("div", { staticClass: "sent_msg" }, [
-                                  _c("p", [_vm._v(_vm._s(msg.body))]),
-                                  _vm._v(" "),
-                                  _c("span", { staticClass: "time_date" }, [
-                                    _vm._v(
-                                      _vm._s(
-                                        msg.created_at.toString().slice(0, 15)
-                                      )
-                                    ),
-                                  ]),
-                                ]),
-                              ]),
-                            ])
-                          : _c("div", [
-                              _c("div", { staticClass: "incoming_msg" }, [
-                                _c("div", { staticClass: "received_msg" }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "received_withd_msg" },
-                                    [
-                                      _c("p", [_vm._v(_vm._s(msg.body))]),
-                                      _vm._v(" "),
-                                      _c("span", { staticClass: "time_date" }, [
-                                        _vm._v(
-                                          " " +
-                                            _vm._s(
-                                              msg.created_at
-                                                .toString()
-                                                .slice(0, 15)
-                                            ) +
-                                            " "
+                  _vm._l(_vm.messages, function (msg) {
+                    return _c("div", [
+                      msg.messageable_id == _vm.admin
+                        ? _c("div", [
+                            _c("div", { staticClass: "outgoing_msg" }, [
+                              _c(
+                                "div",
+                                { staticClass: "sent_msg text-center" },
+                                [
+                                  msg.type == "text"
+                                    ? _c("div", [
+                                        _c("p", [_vm._v(_vm._s(msg.body))]),
+                                      ])
+                                    : _c("div", [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href:
+                                                _vm.url + "file/" + msg.body,
+                                            },
+                                          },
+                                          [_c("p", [_vm._v(_vm._s(msg.body))])]
                                         ),
                                       ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "time_date",
+                                      staticStyle: {
+                                        "word-break": "break-word",
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          msg.created_at.toString().slice(0, 15)
+                                        )
+                                      ),
                                     ]
                                   ),
-                                ]),
-                              ]),
+                                ]
+                              ),
                             ]),
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "type_msg" }, [
-                      _c("div", { staticClass: "input_msg_write" }, [
-                        _c("input", {
-                          staticClass: "write_msg",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Type a message",
-                            id: "text",
-                          },
-                          on: {
-                            keyup: function ($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              return _vm.sendmessage.apply(null, arguments)
-                            },
-                          },
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "upload-box mx-1 my-2" }, [
-                          _c(
-                            "div",
-                            { staticClass: "mx-1 my-2 p-4 text-center" },
-                            [
-                              _c("label", { attrs: { for: "file-input-0" } }, [
+                          ])
+                        : _c("div", [
+                            _c("div", { staticClass: "incoming_msg" }, [
+                              _c("div", { staticClass: "received_msg" }, [
                                 _c(
-                                  "svg",
+                                  "div",
                                   {
-                                    attrs: {
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      width: "53",
-                                      height: "53",
-                                      viewBox: "0 0 53 53",
-                                    },
+                                    staticClass:
+                                      "received_withd_msg text-center",
                                   },
                                   [
+                                    msg.type == "text"
+                                      ? _c("div", [
+                                          _c("p", [_vm._v(_vm._s(msg.body))]),
+                                        ])
+                                      : _c("div", [
+                                          _c(
+                                            "a",
+                                            {
+                                              attrs: {
+                                                href:
+                                                  _vm.url + "file/" + msg.body,
+                                              },
+                                            },
+                                            [
+                                              _c("p", [
+                                                _vm._v(_vm._s(msg.body)),
+                                              ]),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div"),
+                                        ]),
+                                    _vm._v(" "),
                                     _c(
-                                      "g",
+                                      "span",
                                       {
-                                        attrs: {
-                                          id: "Group_621",
-                                          "data-name": "Group 621",
-                                          transform:
-                                            "translate(-78.283 -14.777)",
+                                        staticClass: "time_date",
+                                        staticStyle: {
+                                          "word-break": "break-word",
                                         },
                                       },
                                       [
-                                        _c("circle", {
-                                          attrs: {
-                                            id: "Ellipse_31",
-                                            "data-name": "Ellipse 31",
-                                            cx: "26.5",
-                                            cy: "26.5",
-                                            r: "26.5",
-                                            transform:
-                                              "translate(78.283 14.777)",
-                                            fill: "#5f5f5f",
-                                          },
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "g",
-                                          {
-                                            attrs: {
-                                              id: "Group_326",
-                                              "data-name": "Group 326",
-                                              transform:
-                                                "translate(95.656 31.893)",
-                                            },
-                                          },
-                                          [
-                                            _c("path", {
-                                              attrs: {
-                                                id: "Path_234",
-                                                "data-name": "Path 234",
-                                                d: "M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6",
-                                                transform: "translate(0 1.82)",
-                                                fill: "#fff",
-                                                stroke: "#fff",
-                                                "stroke-width": "0.5",
-                                              },
-                                            }),
-                                            _vm._v(" "),
-                                            _c("path", {
-                                              attrs: {
-                                                id: "Path_235",
-                                                "data-name": "Path 235",
-                                                d: "M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z",
-                                                transform: "translate(0.92 0)",
-                                                fill: "#fff",
-                                                stroke: "#fff",
-                                                "stroke-width": "0.5",
-                                              },
-                                            }),
-                                          ]
+                                        _vm._v(
+                                          _vm._s(
+                                            msg.created_at
+                                              .toString()
+                                              .slice(0, 15)
+                                          )
                                         ),
                                       ]
                                     ),
                                   ]
                                 ),
                               ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                staticClass: "svg-div w-100 border-0  g-0",
-                                attrs: {
-                                  type: "file",
-                                  name: "pre_insurer",
-                                  id: "file-input-0",
-                                  onchange: "upload(this)",
+                            ]),
+                          ]),
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "type_msg" }, [
+                  _c("div", { staticClass: "input_msg_write" }, [
+                    _c("input", {
+                      staticClass: "write_msg",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Type a message",
+                        id: "text",
+                      },
+                      on: {
+                        keyup: function ($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          return _vm.sendmessage.apply(null, arguments)
+                        },
+                      },
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "upload-box mx-1 my-2" }, [
+                      _c("div", { staticClass: "mx-1 my-2 p-4 text-center" }, [
+                        _c("label", { attrs: { for: "file-input-0" } }, [
+                          _c(
+                            "svg",
+                            {
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "53",
+                                height: "53",
+                                viewBox: "0 0 53 53",
+                              },
+                            },
+                            [
+                              _c(
+                                "g",
+                                {
+                                  attrs: {
+                                    id: "Group_621",
+                                    "data-name": "Group 621",
+                                    transform: "translate(-78.283 -14.777)",
+                                  },
                                 },
-                              }),
-                              _vm._v(" "),
-                              _c("input", {
-                                staticClass: "form-control text-center",
-                                staticStyle: {
-                                  background: "none",
-                                  border: "none",
-                                },
-                                attrs: {
-                                  type: "text",
-                                  id: "file-input-0c",
-                                  disabled: "",
-                                },
-                              }),
+                                [
+                                  _c("circle", {
+                                    attrs: {
+                                      id: "Ellipse_31",
+                                      "data-name": "Ellipse 31",
+                                      cx: "26.5",
+                                      cy: "26.5",
+                                      r: "26.5",
+                                      transform: "translate(78.283 14.777)",
+                                      fill: "#5f5f5f",
+                                    },
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "g",
+                                    {
+                                      attrs: {
+                                        id: "Group_326",
+                                        "data-name": "Group 326",
+                                        transform: "translate(95.656 31.893)",
+                                      },
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path_234",
+                                          "data-name": "Path 234",
+                                          d: "M.6,8.9a.6.6,0,0,1,.6.6v3.011a1.2,1.2,0,0,0,1.2,1.2H16.863a1.2,1.2,0,0,0,1.2-1.2V9.5a.6.6,0,1,1,1.2,0v3.011a2.408,2.408,0,0,1-2.409,2.409H2.409A2.408,2.408,0,0,1,0,12.514V9.5a.6.6,0,0,1,.6-.6",
+                                          transform: "translate(0 1.82)",
+                                          fill: "#fff",
+                                          stroke: "#fff",
+                                          "stroke-width": "0.5",
+                                        },
+                                      }),
+                                      _vm._v(" "),
+                                      _c("path", {
+                                        attrs: {
+                                          id: "Path_235",
+                                          "data-name": "Path 235",
+                                          d: "M8.29.177a.6.6,0,0,1,.852,0h0l3.613,3.613a.6.6,0,1,1-.853.853L9.318,2.057V12.648a.6.6,0,1,1-1.2,0V2.057L5.529,4.643a.6.6,0,0,1-.853-.853Z",
+                                          transform: "translate(0.92 0)",
+                                          fill: "#fff",
+                                          stroke: "#fff",
+                                          "stroke-width": "0.5",
+                                        },
+                                      }),
+                                    ]
+                                  ),
+                                ]
+                              ),
                             ]
                           ),
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "msg_send_btn",
-                            attrs: { type: "button" },
-                            on: { click: _vm.sendmessage },
+                        _c("input", {
+                          staticClass: "svg-div w-100 border-0  g-0",
+                          attrs: {
+                            type: "file",
+                            name: "pre_insurer",
+                            id: "file-input-0",
+                            onchange: "upload(this)",
                           },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-paper-plane-o",
-                              attrs: { "aria-hidden": "true" },
-                            }),
-                          ]
-                        ),
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control text-center",
+                          staticStyle: { background: "none", border: "none" },
+                          attrs: {
+                            type: "text",
+                            id: "file-input-0c",
+                            disabled: "",
+                          },
+                        }),
                       ]),
                     ]),
-                  ],
-                  2
-                ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "msg_send_btn",
+                        attrs: { type: "button" },
+                        on: { click: _vm.sendmessage },
+                      },
+                      [
+                        _c("i", {
+                          staticClass: "fa fa-paper-plane-o",
+                          attrs: { "aria-hidden": "true" },
+                        }),
+                      ]
+                    ),
+                  ]),
+                ]),
               ]),
             ]
           ),

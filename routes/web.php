@@ -211,4 +211,4 @@ $nr++;
    return Auth::user();
 });
 route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
-route::get('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
+route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);

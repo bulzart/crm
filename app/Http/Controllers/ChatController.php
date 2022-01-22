@@ -39,18 +39,22 @@ else{
   }
 
  public function sendmessage($u1,$u2,Request $req){
+   $type = "";
+   if($req->hasFile('file')) { $type = "file"; $text = $this->storeFile($req->file('file'),'img');}
+   else{
+     $type = 'text'; $text = filter_var($req->text,FILTER_SANITIZE_STRING);
+   }
   $conversation = Chat::conversations()->between(Admins::find($u1),Admins::find($u2));
   if($u1 == Auth::user()->id || $u2 == Auth::user()->id){
-  $file = $req->hasFile($req->file('file')) ? $req->file('file')->getClientOriginalName() : null;
+
   if($conversation){
     $participants = $conversation->getParticipants();
 if($participants->contains('id',Auth::user()->id)){
-    $message = Chat::message(filter_var($req->text,FILTER_SANITIZE_STRING))
-		->type('file')
+    $message = Chat::message($text)
+		->type($type)
 		->from(Auth::user())
 		->to($conversation)
 		->send();
-
   }
   else{
   return redirect()->back();
@@ -73,21 +77,21 @@ if($participants->contains('id',Auth::user()->id)){
 
   $admin1 = Admins::find($u1);
   $admin2 = Admins::find($u2);
+ 
+
 
 
   $data = DB::table('chat_participation')
   ->join('chat_messages','chat_participation.id','chat_messages.participation_id')
   ->where('chat_participation.messageable_id',$admin1->id)
   ->orWhere('chat_participation.messageable_id',$admin2->id)
+  ->orderBy('chat_participation.created_at','asc')
   ->select('chat_messages.*','chat_participation.messageable_id')
   ->paginate(50);
 
 
 
 
-
-
-// $data = array_merge($msg1->items(),$msg2->items());
 
 
 $data['cnt'] = count($data->items()); 

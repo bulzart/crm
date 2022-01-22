@@ -10,23 +10,43 @@
                 <div v-for="msg in messages">
                   <div v-if="msg.messageable_id == admin">
                     <div class="outgoing_msg">
-                      <div class="sent_msg">
-                        <p>{{ msg.body }}</p>
-                        <span class="time_date">{{
+                      <div class="sent_msg text-center">
+                        <div v-if="msg.type == 'text'">
+                          <p>{{ msg.body }}</p>
+                        </div>
+                          <div v-else>
+                            <a :href="url + 'file/' + msg.body">
+                             <p>{{ msg.body }}</p>
+                            </a>
+                          
+                      </div>
+                      <span class="time_date" style="word-break: break-word;">{{
                           msg.created_at.toString().slice(0, 15)
                         }}</span>
-                      </div>
-                    </div>
                   </div>
+                    </div>
+                     </div>
                   <div v-else>
                     <div class="incoming_msg">
                       <div class="received_msg">
-                        <div class="received_withd_msg">
+                        <div class="received_withd_msg text-center">
+                         <div v-if="msg.type == 'text'">
                           <p>{{ msg.body }}</p>
-                          <span class="time_date"> {{ msg.created_at.toString().slice(0, 15) }} </span>
+                      </div>
+                      <div v-else>
+                            <a :href="url + 'file/' + msg.body">
+                             <p>{{ msg.body }}</p>
+                            </a>
+                            <div>
+                              </div>
+                      </div>
+                        <span class="time_date" style="word-break: break-word;">{{
+                          msg.created_at.toString().slice(0, 15)
+                        }}</span>
                         </div>
                       </div>
                     </div>
+                  </div>
                   </div>
                 </div>
                 <div class="type_msg">
@@ -71,10 +91,11 @@
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
+              
+           
           </div>
         </div>
+      </div>
       </div>
     </body>
   </html>
@@ -97,6 +118,7 @@ export default {
   },
   methods: {
     sendmessage() {
+      if(document.getElementById('file-input-0').value == '' || document.getElementById('file-input-0').value == null){
       axios
         .get(
           this.url +
@@ -108,9 +130,21 @@ export default {
             document.getElementById("text").value
         )
         .then((document.getElementById("text").value = ""));
-      {
-        this.getmessages();
+  
       }
+      else{
+ 
+        var formdata = new FormData();
+        var file = document.getElementById('file-input-0').files[0];
+        formdata.append('file',file);
+        axios.post(this.url + 'sendmessage/' + this.u1 + '/' + this.u2,
+        formdata,{
+headers:{
+       'Content-Type' : 'multipart/form-data'
+}
+        }).then((document.getElementById('file-input-0').value = ""));
+      }
+      
     },
     getmessages() {
       axios
