@@ -202,8 +202,6 @@ route::get('sendcode',function(){
 });
 
 
-
-});
 route::get('nr/{nr}',function($nr){
    $key = 15;
 $val = $key;
@@ -216,6 +214,10 @@ $nr++;
 });
 route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
 route::get('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
+
+route::get('test',function(){
+  return Crypt::decrypt('eyJpdiI6Ild1aytOeEJVdXNpWmgzT1cyVXYrNVE9PSIsInZhbHVlIjoiRnhkMXYzMFpjSHNIVDVYdXd6d09pZz09IiwibWFjIjoiYzRiZDg0MGIxYmY4ZDQ4Njk3YzU0YjEzNjk2ZWJkYWJlMzYwMzEyMTcyOGY1MzhlN2YyY2NmMTYzZWEzNjdkMCIsInRhZyI6IiJ9');
+});
 
 
 
