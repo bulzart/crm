@@ -13,6 +13,7 @@
               crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">
 
+
         <title>Home</title>
 
     </head>
@@ -521,8 +522,12 @@
                                  style="background-color: #4EC590; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
                                 @if(!empty($pendencies))
                                     @foreach($pendencies as $pendency)
+                                        @php
+                                            $crypt = $pendency->family_id * 1244;
+                                            $familyId = \Illuminate\Support\Facades\Crypt::encrypt($crypt);
+                                        @endphp
                                         <a style="text-decoration: none"
-                                           href="{{route('leadfamilyperson',$pendency->family_id)}}">
+                                           href="{{route('leadfamilyperson',$familyId)}}">
                                             <div class="py-2 my-2 mx-2"
                                                  style="background-color: #fff; border-radius: 15px; color: #000;">
 
@@ -561,8 +566,12 @@
                                  style="background-color: #FFEBE5; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
                                 @if(!empty($morethan30))
                                     @foreach($morethan30 as $pendency)
+                                        @php
+                                            $crypt = $pendency->family_id * 1244;
+                                            $familyId = \Illuminate\Support\Facades\Crypt::encrypt($crypt);
+                                        @endphp
                                         <a style="text-decoration: none;"
-                                           href="{{route('leadfamilyperson',$pendency->family_id)}}">
+                                           href="{{route('leadfamilyperson',$familyId)}}">
                                             <div class="py-2 my-2 mx-2"
                                                  style="background-color: #fff; border-radius: 15px; color: #000;">
                                                 <div class="mx-3 ">
@@ -589,6 +598,10 @@
                 <section class="my-5">
                     <div class="row my-2 mx-2">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0">
+
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0">
                             <div class="personal-apponitments-div pb-2">
                                 <div class="accordion accordion-flush mx-3 " id="accordionFlush1">
                                     <div class="accordion-item my-1 py-2" style="background-color: #F7F7F7;">
@@ -601,157 +614,96 @@
                                                 <div class="col text-dark">
                                                     Personal Apponitments
                                                 </div>
-                                                <div class="col text-end pe-3 text-danger">
-                                                    3
-                                                </div>
+
                                             </button>
                                         </h2>
                                         <div id="flush-collapse1" class="accordion-collapse collapse show"
                                              aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush1">
+
                                             <div class="accordion-body p-0 mx-2 py-2 overflow-div1"
                                                  style="background-color: #F7F7F7; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
-                                                <div class="py-2 my-2 mx-2"
-                                                     style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                    <div class="mx-3 ">
-                                                        <div class="row">
-                                                            <div class="col">
+                                                @foreach($personalApp as $perApp)
+                                                    <div class="py-2 my-2 mx-2"
+                                                         style="background-color: #fff; border-radius: 15px; color: #000;">
+                                                        <div class="mx-3 ">
+                                                            <div class="row">
+                                                                <div class="col">
                                                     <span class="fw-bold fs-5">
-                                                        Markus Jurgen
+                                                        {{$perApp->title}}
                                                     </span>
+                                                                </div>
+                                                                <div class="col-1 text-end">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="5"
+                                                                         height="13"
+                                                                         viewBox="0 0 5 13">
+                                                                        <g id="Group_528" data-name="Group 528"
+                                                                           transform="translate(-0.239 0)">
+                                                                            <circle id="Ellipse_6" data-name="Ellipse 6"
+                                                                                    cx="2.5"
+                                                                                    cy="2.5" r="2.5"
+                                                                                    transform="translate(0.239 0)"
+                                                                                    fill="#000"/>
+                                                                            <circle id="Ellipse_7" data-name="Ellipse 7"
+                                                                                    cx="2.5"
+                                                                                    cy="2.5" r="2.5"
+                                                                                    transform="translate(0.239 8)"
+                                                                                    fill="#000"/>
+                                                                        </g>
+                                                                    </svg>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-1 text-end">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                     height="13"
-                                                                     viewBox="0 0 5 13">
-                                                                    <g id="Group_528" data-name="Group 528"
-                                                                       transform="translate(-0.239 0)">
-                                                                        <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 0)"
-                                                                                fill="#000"/>
-                                                                        <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 8)"
-                                                                                fill="#000"/>
-                                                                    </g>
-                                                                </svg>
+                                                            <div class="">
+                                                                <span>
+                                                                    Address: {{$perApp->address}}
+                                                                </span>
                                                             </div>
-                                                        </div>
-                                                        <div class="">
-                                                <span>
-                                                    Kommentar: Ausweise fehlen
-                                                </span>
+                                                            <div class="">
+                                                                <span>
+                                                                    Time: {{$perApp->time}}
+                                                                </span>
+                                                            </div>
+                                                            <div class="">
+                                                                <span>
+                                                                    Comment: {{$perApp->comment}}
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="py-2 my-2 mx-2"
-                                                     style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                    <div class="mx-3 ">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                    <span class="fw-bold fs-5">
-                                                        Markus Jurgen
-                                                    </span>
-                                                            </div>
-                                                            <div class="col-1 text-end">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                     height="13"
-                                                                     viewBox="0 0 5 13">
-                                                                    <g id="Group_528" data-name="Group 528"
-                                                                       transform="translate(-0.239 0)">
-                                                                        <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 0)"
-                                                                                fill="#000"/>
-                                                                        <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 8)"
-                                                                                fill="#000"/>
-                                                                    </g>
-                                                                </svg>
-                                                            </div>
+                                                @endforeach
+                                            </div>
+
+                                            <div class="text-center py-2">
+                                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                +
+                                            </button>
+                                            </div>
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Add Personal Appointment</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="">
-                                                <span>
-                                                    Kommentar: Ausweise fehlen
-                                                </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="py-2 my-2 mx-2"
-                                                     style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                    <div class="mx-3 ">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                    <span class="fw-bold fs-5">
-                                                        Markus Jurgen
-                                                    </span>
-                                                            </div>
-                                                            <div class="col-1 text-end">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                     height="13"
-                                                                     viewBox="0 0 5 13">
-                                                                    <g id="Group_528" data-name="Group 528"
-                                                                       transform="translate(-0.239 0)">
-                                                                        <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 0)"
-                                                                                fill="#000"/>
-                                                                        <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 8)"
-                                                                                fill="#000"/>
-                                                                    </g>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                <span>
-                                                    Kommentar: Ausweise fehlen
-                                                </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="py-2 my-2 mx-2"
-                                                     style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                    <div class="mx-3 ">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                    <span class="fw-bold fs-5">
-                                                        Markus Jurgen
-                                                    </span>
-                                                            </div>
-                                                            <div class="col-1 text-end">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                     height="13"
-                                                                     viewBox="0 0 5 13">
-                                                                    <g id="Group_528" data-name="Group 528"
-                                                                       transform="translate(-0.239 0)">
-                                                                        <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 0)"
-                                                                                fill="#000"/>
-                                                                        <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                cx="2.5"
-                                                                                cy="2.5" r="2.5"
-                                                                                transform="translate(0.239 8)"
-                                                                                fill="#000"/>
-                                                                    </g>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                        <div class="">
-                                                <span>
-                                                    Kommentar: Ausweise fehlen
-                                                </span>
-                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form class="" action="{{route('addPersonalAppointment')}}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="apporconId" value="1">
+                                                                <div class="px-2">
+                                                                    <label>Title</label>
+                                                                    <input type="text" name="title" class="form-control" required>
+                                                                    <label>Time</label>
+                                                                    <input type="time" name="time" class="form-control" required>
+                                                                    <label>Address</label>
+                                                                    <input type="text" name="address" class="form-control" required>
+                                                                    <label>Comment</label>
+                                                                    <textarea type="text" name="comment" class="form-control" required></textarea>
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <input type="submit" class="btn btn-success" value="Save">
+                                                                </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -759,9 +711,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0">
                             <div class="consultations-div pb-2">
                                 <div class="">
                                     <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
@@ -775,165 +724,112 @@
                                                     <div class="col text-dark">
                                                         Consultations
                                                     </div>
-                                                    <div class="col text-end pe-3 text-danger">
-                                                        3
-                                                    </div>
                                                 </button>
                                             </h2>
                                             <div id="flush-collapse5" class="accordion-collapse collapse show"
                                                  aria-labelledby="flush-heading5" data-bs-parent="#accordionFlush5">
                                                 <div class="accordion-body p-0 mx-2 py-2 overflow-div4"
                                                      style="background-color: #FFEBE5; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
-                                                    <div class="py-2 my-2 mx-2"
-                                                         style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                        <div class="mx-3 ">
-                                                            <div class="row">
-                                                                <div class="col">
+                                                    @foreach($consultation as $consult)
+                                                        <div class="py-2 my-2 mx-2"
+                                                             style="background-color: #fff; border-radius: 15px; color: #000;">
+                                                            <div class="mx-3 ">
+                                                                <div class="row">
+                                                                    <div class="col">
                                                         <span class="fw-bold fs-5">
-                                                            Markus Jurgen
+                                                            {{$consult->title}}
                                                         </span>
+                                                                    </div>
+                                                                    <div class="col-1 text-end">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="5"
+                                                                             height="13"
+                                                                             viewBox="0 0 5 13">
+                                                                            <g id="Group_528" data-name="Group 528"
+                                                                               transform="translate(-0.239 0)">
+                                                                                <circle id="Ellipse_6"
+                                                                                        data-name="Ellipse 6"
+                                                                                        cx="2.5"
+                                                                                        cy="2.5" r="2.5"
+                                                                                        transform="translate(0.239 0)"
+                                                                                        fill="#000"/>
+                                                                                <circle id="Ellipse_7"
+                                                                                        data-name="Ellipse 7"
+                                                                                        cx="2.5"
+                                                                                        cy="2.5" r="2.5"
+                                                                                        transform="translate(0.239 8)"
+                                                                                        fill="#000"/>
+                                                                            </g>
+                                                                        </svg>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-1 text-end">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                         height="13"
-                                                                         viewBox="0 0 5 13">
-                                                                        <g id="Group_528" data-name="Group 528"
-                                                                           transform="translate(-0.239 0)">
-                                                                            <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 0)"
-                                                                                    fill="#000"/>
-                                                                            <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 8)"
-                                                                                    fill="#000"/>
-                                                                        </g>
-                                                                    </svg>
+                                                                <div class="">
+                                                                <span>
+                                                                    Address: {{$consult->address}}
+                                                                </span>
                                                                 </div>
-                                                            </div>
-                                                            <div class="">
-                                                    <span>
-                                                        Kommentar: Ausweise fehlen
-                                                    </span>
+                                                                <div class="">
+                                                                <span>
+                                                                    Time: {{$consult->time}}
+                                                                </span>
+                                                                </div>
+                                                                <div class="">
+                                                                <span>
+                                                                    Comment: {{$consult->comment}}
+                                                                </span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="py-2 my-2 mx-2"
-                                                         style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                        <div class="mx-3 ">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                        <span class="fw-bold fs-5">
-                                                            Markus Jurgen
-                                                        </span>
-                                                                </div>
-                                                                <div class="col-1 text-end">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                         height="13"
-                                                                         viewBox="0 0 5 13">
-                                                                        <g id="Group_528" data-name="Group 528"
-                                                                           transform="translate(-0.239 0)">
-                                                                            <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 0)"
-                                                                                    fill="#000"/>
-                                                                            <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 8)"
-                                                                                    fill="#000"/>
-                                                                        </g>
-                                                                    </svg>
-                                                                </div>
+                                                    @endforeach
+                                                </div>
+                                                <div class="text-center py-2">
+                                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#consultmodal">
+                                                        +
+                                                    </button>
+                                                </div>
+                                                <div class="modal fade" id="consultmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Add Consultation</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="">
-                                                    <span>
-                                                        Kommentar: Ausweise fehlen
-                                                    </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-2 my-2 mx-2"
-                                                         style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                        <div class="mx-3 ">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                        <span class="fw-bold fs-5">
-                                                            Markus Jurgen
-                                                        </span>
-                                                                </div>
-                                                                <div class="col-1 text-end">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                         height="13"
-                                                                         viewBox="0 0 5 13">
-                                                                        <g id="Group_528" data-name="Group 528"
-                                                                           transform="translate(-0.239 0)">
-                                                                            <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 0)"
-                                                                                    fill="#000"/>
-                                                                            <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 8)"
-                                                                                    fill="#000"/>
-                                                                        </g>
-                                                                    </svg>
-                                                                </div>
-                                                            </div>
-                                                            <div class="">
-                                                    <span>
-                                                        Kommentar: Ausweise fehlen
-                                                    </span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="py-2 my-2 mx-2"
-                                                         style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                        <div class="mx-3 ">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                        <span class="fw-bold fs-5">
-                                                            Markus Jurgen
-                                                        </span>
-                                                                </div>
-                                                                <div class="col-1 text-end">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                         height="13"
-                                                                         viewBox="0 0 5 13">
-                                                                        <g id="Group_528" data-name="Group 528"
-                                                                           transform="translate(-0.239 0)">
-                                                                            <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 0)"
-                                                                                    fill="#000"/>
-                                                                            <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                                    cx="2.5"
-                                                                                    cy="2.5" r="2.5"
-                                                                                    transform="translate(0.239 8)"
-                                                                                    fill="#000"/>
-                                                                        </g>
-                                                                    </svg>
-                                                                </div>
-                                                            </div>
-                                                            <div class="">
-                                                    <span>
-                                                        Kommentar: Ausweise fehlen
-                                                    </span>
+                                                            <div class="modal-body">
+                                                                <form class="" action="{{route('addPersonalAppointment')}}" method="post">
+                                                                    @csrf
+                                                                    <input type="hidden" name="apporconId" value="2">
+                                                                    <div class="px-2">
+                                                                        <label>Title</label>
+                                                                        <input type="text" name="title" class="form-control" required>
+                                                                        <label>Time</label>
+                                                                        <input type="time" name="time" class="form-control" required>
+                                                                        <label>Address</label>
+                                                                        <input type="text" name="address" class="form-control" required>
+                                                                        <label>Comment</label>
+                                                                        <textarea type="text" name="comment" class="form-control" required></textarea>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <input type="submit" class="btn btn-success" value="Save">
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+{{--                                                <div class="text-center py-2">--}}
+{{--                                                    <a href="{{route('insertPersonalAppointmant',2)}}"--}}
+{{--                                                       class="btn btn-light">--}}
+{{--                                                        +--}}
+{{--                                                    </a>--}}
+{{--                                                </div>--}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="my-3">
@@ -995,8 +891,8 @@
                                         </svg>
                                     </div>
                                     <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
-                                                                            {{$pendingcnt}}
+                                        <span class="fw-bold fs-5 text-white">
+                                           {{$pendingcnt}}
                                                                         </span>
                                         <br>
                                         <span class="fw-bold fs-5 text-white">
@@ -1088,6 +984,8 @@
 
                 </section>
 
+
+
             @endif
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -1098,6 +996,9 @@
     </body>
 
     </html>
+    <script>
+
+    </script>
 @endsection
 <style>
     .dateee {
@@ -1228,7 +1129,6 @@
     }
 
 
-
     /* ................................................. */
 
     .collapsed .d-btnn {
@@ -1254,10 +1154,6 @@
     .accordion-item {
         border-radius: 15px !important;
     }
-
-
-
-
 
 
     .accordion-button:not(.collapsed) {
