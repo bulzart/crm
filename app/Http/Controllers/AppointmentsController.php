@@ -13,6 +13,7 @@ use Carbon\Carbon;
 
 class AppointmentsController extends Controller
 {   
+
     public function index()
     {
 		//Appointments = Appointment:selct("*")->
@@ -22,12 +23,13 @@ class AppointmentsController extends Controller
 			->where('model_has_roles.role_id',1)
 			->get();
 			$appointments_events = lead::select('*')->where('assign_to_id',0)->where('appointment_date',Carbon::now()->format('Y-m-d'))->get();
-			$appointments = lead::select('*')->where('assign_to_id','<>',0)->where('assigned',1)->where('appointment_date',Carbon::now()->format('Y-m-d'))->where('wantsonline',0)->get();
+			$appointments = lead::select('*','leads.id as id')->join('model_has_roles', 'model_has_roles.model_id', '=', 'leads.assign_to_id')
+			->where('model_has_roles.role_id',1)->where('leads.assign_to_id','<>',0)->where('leads.assigned',1)->whereNotNull('leads.appointment_date')->get(); 
 			
 			return view('appointment')->with('users',$users)->with('appointments_events',$appointments_events)->with('appointments',$appointments);
 		}else{
 			$users="";$appointments_events ="";
-			$appointments = lead::select('*')->where('assign_to_id',auth::guard('admins')->user()->id)->where('appointment_date',Carbon::now()->format('Y-m-d'))->where('wantsonline',0)->get();
+			$appointments = lead::select('*')->where('assign_to_id',auth::guard('admins')->user()->id)->whereNotNull('appointment_date')->get();
 			
 			return view('appointment')->with('users',$users)->with('appointments_events',$appointments_events)->with('appointments',$appointments);
 			
@@ -48,5 +50,13 @@ class AppointmentsController extends Controller
 		
 	//echo("ajax OK == ".$id_lead."-----".$input['id_user']);	
 		
+	}
+	public function changeTS(Request $request){
+		echo "hello";
+		$input = $request->all();
+		$appointment = lead::where('id', $input['id_lead_input'])
+              ->update(['appointment_date' =>  $input['date_new'],'assign_to_id' => $input['ts_id'] ,'time' => $input['time_new']]);
+			  
+		if($appointment){session(['msg' => 'Success !!!!']);  return redirect()->back();} else {return "ERROR !!!";}
 	}
 }

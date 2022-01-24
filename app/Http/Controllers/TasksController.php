@@ -308,7 +308,7 @@ public function assignpendency(Request $req){
         if (isset($req->searchpend)) {
             $pend = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name','pendencies.admin_id', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->where('pendencies.done', '=', 1)
                 ->where('pendencies.completed',0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchpend . '%')
@@ -320,7 +320,7 @@ public function assignpendency(Request $req){
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 1)
                 ->where('pendencies.completed',0)
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         }
@@ -329,14 +329,14 @@ public function assignpendency(Request $req){
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchopen . '%')
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         } else {
             $open = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 0)
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         }

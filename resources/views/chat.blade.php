@@ -146,6 +146,8 @@ img{ max-width:100%;}
       display: none;
     }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
 </head>
 <body>
 <script>window.data = @json(compact('u1','u2','admin'))</script>

@@ -60,6 +60,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
 
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
+    Route::get('changeTS', 'App\Http\Controllers\AppointmentsController@changeTS')->name('changeTS');
 
    //  Route::group(['middleware' => 'json.response'], function () {
       route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
@@ -138,7 +139,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
-   route::get('chat/{u1}/{u2}',[ChatController::class,'chat']);
+   route::get('chat/{u1}/{u2}',[ChatController::class,'chat'])->name('chat');
    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
    // Route::group(['middleware' => 'json.response'], function () {
@@ -202,6 +203,7 @@ route::get('sendcode',function(){
 });
 
 
+
 route::get('nr/{nr}',function($nr){
    $key = 15;
 $val = $key;
@@ -213,11 +215,5 @@ $nr++;
    return Auth::user();
 });
 route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
-route::get('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
-
-route::get('test',function(){
-  return Crypt::decrypt('eyJpdiI6Ild1aytOeEJVdXNpWmgzT1cyVXYrNVE9PSIsInZhbHVlIjoiRnhkMXYzMFpjSHNIVDVYdXd6d09pZz09IiwibWFjIjoiYzRiZDg0MGIxYmY4ZDQ4Njk3YzU0YjEzNjk2ZWJkYWJlMzYwMzEyMTcyOGY1MzhlN2YyY2NmMTYzZWEzNjdkMCIsInRhZyI6IiJ9');
-});
-
-
+route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
 
