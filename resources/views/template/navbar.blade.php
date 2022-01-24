@@ -587,7 +587,7 @@
                     </div>
                 @else
                     <div class="">
-                        <a href="{{route('dates')}}" class="nav-link link-dark rounded">
+                        <a href="{{route('Appointments')}}" class="nav-link link-dark rounded">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-calendar-date" viewBox="0 0 16 16">
                                 <path

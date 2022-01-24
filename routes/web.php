@@ -204,7 +204,6 @@ route::get('sendcode',function(){
 
 
 
-
 route::get('nr/{nr}',function($nr){
    $key = 15;
 $val = $key;
@@ -217,3 +216,4 @@ $nr++;
 });
 route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
 route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
+
