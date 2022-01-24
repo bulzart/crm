@@ -167,14 +167,21 @@
                         $leadss = $task->id * 1244;
                         $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
-             
+
                         <div class="p-1" style="background: red; border-radius: 12px;">
                         <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;"> <span style="font-size: 18px;" class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</span></a>
+                    @php
+                        $leadss = $task->admin_id * 1244;
+                        $taskAdminId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
 
-<a href="{{route('chat',[$task->admin_id,Auth::user()->id])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
+                        $leadss = Auth::user()->id * 1244;
+                        $authUserId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+
+                    @endphp
+<a href="{{route('chat',[$taskAdminId,$authUserId])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
 
                         </div>
-               
+
                     <br>
                 @endforeach
 </div>
