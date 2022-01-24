@@ -17,6 +17,8 @@ class ChatController extends Controller
   use FileManagerTrait;
 
  public function chat($u1,$u2){
+   $u1 = Crypt::decrypt($u1) / 1244;
+   $u2 = Crypt::decrypt($u2) / 1244;
   if($u1 == Auth::user()->id || $u2 == Auth::user()->id){
   $conversation = Chat::conversations()->between(Admins::find($u1),Admins::find($u2));
   if($conversation){

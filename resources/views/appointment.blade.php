@@ -90,16 +90,19 @@
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'resourceTimeGridDay,dayGridMonth'
+        right: 'resourceTimeGridDay,timeGridWeek,dayGridMonth'
       },
 	  views: {
 			 dayGridMonth: {
 			   eventMaxStack: 3
 			 },
+			 timeGridWeek: {
+			   eventMaxStack: 3
+			 },
 			 
 		 },
 		 
-		slotLabelFormat: {hour: 'numeric', minute: '2-digit', hour12: false},
+	  slotLabelFormat: {hour: 'numeric', minute: '2-digit', hour12: false},
 
 	  height: 600,
       initialView: 'resourceTimeGridDay',
@@ -315,7 +318,7 @@
 	  
       <br><h4> Appointments liste ({!! count($appointments_events) !!}) </h4><hr>
 	  @foreach ( $appointments_events as $appointment )
-      <div class='fc-event' style="margin: 10px 0; cursor: pointer; border: 1px solid #ccc;   font-size: 12px;  background: #f8deca;">{!! $appointment["id"] !!}-{!! $appointment['first_name'] !!} {!! $appointment['last_name'] !!}<br><B style="color: #5e0b0b">{!! date("d/M/Y h:i:s", strtotime($appointment["appointment_date"]." ".$appointment["time"])) !!}({!! $appointment["number_of_persons"] !!} persons)</B><br>@if($appointment["assigned"] == '0')<a href="{{route('acceptappointment',Crypt::encrypt($appointment['id'] * 1244) )}}" style="color:red">Not assigned</a>@endif</div>
+      <div class='fc-event' style="margin: 10px 0; cursor: pointer; border: 1px solid #ccc;   font-size: 12px;  background: #f8deca;">{!! $appointment["id"] !!}-{!! $appointment['first_name'] !!} {!! $appointment['last_name'] !!}<br><B style="color: #5e0b0b">{!! date("d/M/Y h:i:s", strtotime($appointment["appointment_date"]." ".$appointment["time"])) !!}({!! $appointment["number_of_persons"] !!} persons)</B><br>@if($appointment["assigned"] == '0')<a href="{{route('acceptappointment',Crypt::encrypt($appointment['id'] * 1244))}}" style="color:red">Pending</a>@endif</div>
 	  @endforeach
       
       

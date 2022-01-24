@@ -248,6 +248,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function asignlead(Request $req, $id)
     {
+        $id = Crypt::decrypt($id) /1244;
         $req->validate([
             'admin' => "required|exists:admins,id",
         ]);
@@ -278,6 +279,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function alead($id)
     {
+        $id = Crypt::decrypt($id) / 1244;
         if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
             return redirect()->back();
         } else {
@@ -393,6 +395,8 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function dealclosed($id)
     {
+        $id = Crypt::decrypt($id) / 1244;
+
         $app = lead::where('id', $id)->first();
         if ($app->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('completelead', compact('app'));
