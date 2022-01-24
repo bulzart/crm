@@ -7,6 +7,7 @@ use App\Imports\LeadsImport;
 use App\Imports\TestImport;
 use App\Models\Admins;
 use App\Models\Deletedlead;
+use App\Models\PersonalAppointment;
 use App\Models\rejectedlead;
 use App\Models\Trainings;
 use App\Models\User;
@@ -554,10 +555,11 @@ $taskcnt = 0;
                 }
                 elseif (Auth::guard('admins')->user()->hasRole('salesmanager')){
 
-
+                    $personalApp = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',1)->get();
+                    $consultation = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',2)->get();
 
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                    return view('dashboard', compact('personalApp','consultation','done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
 
                 }
                 elseif(Auth::guard('admins')->user()->hasRole('admin')) {

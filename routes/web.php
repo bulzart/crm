@@ -156,7 +156,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 
-
+   route::post('addPersonalAppointment',[\App\Http\Controllers\PersonalAppointmentController::class,'addPersonalAppointment'])->name('addPersonalAppointment');
 
    route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
    route::get('add',[TasksController::class,'adddata']);
@@ -219,4 +219,3 @@ route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
 route::get('getadmin',function (){
    return Auth::guard('admins')->user()->id;
 });
-
