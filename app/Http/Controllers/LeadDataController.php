@@ -20,8 +20,9 @@ class LeadDataController extends Controller
 {
     use FileManagerTrait;
     public function acceptdata($id,$accept = false){
+$id = Crypt::decrypt($id) / 1244;
 if(Auth::guard('admins')->user()->hasRole('fs')){
-    if(Auth::user()->id == family::find($id)->lead->assign_to_id){
+    if(Auth::user()->id == family::find($id)->lead->assign_to_id || Pendency::where('family_id',$id)->first()->admin_id == Auth::user()->id){
         if(!$accept){
             $data = new data();
             $lead = family::find($id);
@@ -30,7 +31,7 @@ if(Auth::guard('admins')->user()->hasRole('fs')){
             else{
                 $pend = Pendency::where('family_id',$id)->update(['completed' => 1]);
                 family::where('id',$id)->update(['status' => 'Done']);
-                return redirect()->route('acceptdata',['id' => $id]);
+                return redirect()->route('acceptdata',['id' => Crypt::encrypt($id * 1244)]);
             }
     }
     else{
@@ -61,7 +62,7 @@ else{
         $personId /= 1244;
 
        $person = family::find($personId);
-       if($person->lead->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('salesmanager')){
+       if($person->lead->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('salesmanager') || Pendency::where('family_id',$personId)->first()->admin_id == Auth::user()->id){
         LeadDataKK::create([
             'leads_id' => $leadId,
             'person_id' => $personId,
@@ -161,7 +162,9 @@ else{
 
     public function updateLeadDataKK($leadId, $personId, Request $request)
     {
-        dd($request);
+    $leadId = Crypt::decrypt($leadId) / 1244;
+    $personId = Crypt::decrypt($personId) / 1244;
+
         $existingLeadDataKK = LeadDataKK::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
         $leadDataKK = [
             'leads_id' => $leadId,
@@ -175,6 +178,7 @@ else{
         if($existingLeadDataKK){
             $existingLeadDataKK->update($leadDataKK);
         }
+
         $existingLeadDataCounterOffered = LeadDataCounteroffered::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
 
         $leadDataCounteroffered = [
@@ -282,7 +286,7 @@ else{
                 }
         
         
-        return redirect()->route('acceptdata',$personId);
+        return redirect()->route('acceptdata',Crypt::encrypt($personId * 1244));
     }
 
     public function getAllLeadDataById($leadId, $personId)

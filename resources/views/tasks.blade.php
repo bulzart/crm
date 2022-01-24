@@ -171,7 +171,7 @@
                         <div class="p-1" style="background: red; border-radius: 12px;">
                         <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;"> <span style="font-size: 18px;" class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</span></a>
 
-<a href="{{route('chat',[$task->admin_id,Auth::user()->id])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
+<a href="{{route('chat',[Crypt::encrypt($task->admin_id * 1244),Crypt::encrypt(Auth::user()->id * 1244)])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
 
                         </div>
                

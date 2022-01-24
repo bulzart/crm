@@ -50,7 +50,7 @@
       $person = $lead->id * 1244;
       $personId = \Illuminate\Support\Facades\Crypt::encrypt($person);
   @endphp
-<form action="{{route('createLeadDataKK',['leadIdd'=> $leadleadid,'personIdd' => $personId])}}" method="post" enctype="multipart/form-data">
+<form action="{{route('createLeadDataKK',['leadIdd'=> Crypt::encrypt($leadleadid * 1244),'personIdd' => Crypt::encrypt($personId * 1244)])}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="row">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">

@@ -2532,14 +2532,14 @@
     ];
 
     function edit() {
-        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [$lead->lead->id, $lead->id])?>";
+        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [Crypt::encrypt($lead->lead->id * 1244), Crypt::encrypt($lead->id * 1244)])?>";
         document.getElementById('forma').submit();
     }
 
       function accept(){
         <?php 
         
-           echo 'document.getElementById("forma").action ="' . route('acceptdata',[$lead->id,true]) .'";';   
+           echo 'document.getElementById("forma").action ="' . route('acceptdata',[Crypt::encrypt($lead->id * 1244),true]) .'";';   
            echo 'document.getElementById("forma").submit();';
            ?>
 

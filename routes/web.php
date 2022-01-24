@@ -99,7 +99,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }
                      else{
-                        return redirect()->route('dealclosed',$idd);
+                        return redirect()->route('dealclosed',Crypt::encrypt($idd * 1244));
                      }
 
                   }
@@ -189,7 +189,7 @@ route::get('file/{file?}',function($file = null){
         else{
            return redirect()->back();
         }
-})->middleware('role:admin|backoffice|salesmanager|management,admins')->name('showfile');
+})->middleware('role:admin|backoffice|salesmanager|management|fs,admins')->name('showfile');
 });
 
 // Route::get('Appointments', array('as' => 'route.index', 'Appointments' => 'App\Http\Controllers\AppointmentsController@index'));
