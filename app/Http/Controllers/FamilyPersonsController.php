@@ -21,6 +21,7 @@ class FamilyPersonsController extends Controller
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
 
+
         $cnt = 0;
         $cnt1 = 0;
         $lead = family::find($idd);
