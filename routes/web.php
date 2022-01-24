@@ -216,4 +216,7 @@ $nr++;
 });
 route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
 route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
+route::get('getadmin',function (){
+   return Auth::guard('admins')->user()->id;
+});
 

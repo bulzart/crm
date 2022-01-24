@@ -12,20 +12,26 @@ use DB;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use PharIo\Manifest\Author;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Crypt;
 
 class ChatController extends Controller
 {
   use FileManagerTrait;
 
  public function chat($u1,$u2){
+
    $u1 = Crypt::decrypt($u1) / 1244;
+
    $u2 = Crypt::decrypt($u2) / 1244;
+
+
   if($u1 == Auth::user()->id || $u2 == Auth::user()->id){
+
   $conversation = Chat::conversations()->between(Admins::find($u1),Admins::find($u2));
   if($conversation){
     $participants = $conversation->getParticipants();
     if($participants->contains('id', Auth::user()->id)){
-      return view('chat')->with('u1',$u1)->with('u2',$u2)->with('admin',Auth::user()->id);
+      return view('chat')->with('u1',Crypt::encrypt($u1*1244))->with('u2',Crypt::encrypt($u2*1244))->with('admin',Crypt::encrypt(Auth::user()->id*1244));
     }
     else{
       return redirect()->back();
@@ -33,7 +39,7 @@ class ChatController extends Controller
   }
   else{
     Chat::createConversation([Admins::find($u1),Admins::find($u2)]);
-    return view('chat')->with('u1',$u1)->with('u2',$u2)->with('admin',Auth::user()->id);
+      return view('chat')->with('u1',Crypt::encrypt($u1*1244))->with('u2',Crypt::encrypt($u2*1244))->with('admin',Crypt::encrypt(Auth::user()->id*1244));
 }
 }
 else{
@@ -44,6 +50,7 @@ else{
  public function sendmessage($u1,$u2,Request $req){
   $u1 = Crypt::decrypt($u1) / 1244;
   $u2 = Crypt::decrypt($u2) / 1244;
+
    $type = "";
    if($req->hasFile('file')) { $type = "file"; $text = $this->storeFile($req->file('file'),'img');}
    else{
@@ -80,9 +87,12 @@ if($participants->contains('id',Auth::user()->id)){
 }
  public function getchat($u1,$u2,Request $req){
 
-  $admin1 = Admins::find($u1);
-  $admin2 = Admins::find($u2);
- 
+     $u1 = Crypt::decrypt($u1) / 1244;
+     $u2 = Crypt::decrypt($u2) / 1244;
+
+    $admin1 = Admins::find($u1);
+    $admin2 = Admins::find($u2);
+
 
 
 
@@ -99,13 +109,13 @@ if($participants->contains('id',Auth::user()->id)){
 
 
 
-$data['cnt'] = count($data->items()); 
+$data['cnt'] = count($data->items());
 
 
 return $data;
 
-             
-        
+
+
  }
 
 }
