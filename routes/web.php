@@ -183,6 +183,15 @@ route::prefix('')->middleware('confirmcode')->group(function(){
       route::get('addtodo',[TodoController::class,'addtodo']);
    // });
 
+    route::get('costumer_form/{id}',function ($id){
+        $id = Crypt::decrypt($id) / 1244;
+
+        $costumer = family::findOrFail($id);
+        return view('costumer_form')->with(compact('costumer'));
+    })->name('costumer_form');
+
+    route::post('save_costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'save_costumer_form'])->name('save_costumer_form');
+
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);
    route::get('donetodo',[TodoController::class,'donetodo']);
@@ -193,7 +202,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 
-
+   route::post('addPersonalAppointment',[\App\Http\Controllers\PersonalAppointmentController::class,'addPersonalAppointment'])->name('addPersonalAppointment');
 
    route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
    route::get('add',[TasksController::class,'adddata']);

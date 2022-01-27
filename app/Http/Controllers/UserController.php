@@ -7,6 +7,7 @@ use App\Imports\LeadsImport;
 use App\Imports\TestImport;
 use App\Models\Admins;
 use App\Models\Deletedlead;
+use App\Models\PersonalAppointment;
 use App\Models\rejectedlead;
 use App\Models\Trainings;
 use App\Models\User;
@@ -428,6 +429,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function dealclosed($id)
     {
+
         $id = Crypt::decrypt($id) / 1244;
 
         $app = lead::where('id', $id)->first();
@@ -611,17 +613,20 @@ $taskcnt = 0;
                 elseif(Auth::guard('admins')->user()->hasRole('backoffice')) {
                     return view('dashboard', compact('pendencies','morethan30'));
                 }
-                elseif (Auth::guard('admins')->user()->hasRole('salesmanager')){
+                elseif (Auth::guard('admins')->user()->hasRole('salesmanager') ){
 
-
+                    $personalApp = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',1)->get();
+                    $consultation = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',2)->get();
 
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                    return view('dashboard', compact('personalApp','consultation','done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
 
                 }
                 elseif(Auth::guard('admins')->user()->hasRole('admin')) {
+                    $personalApp = PersonalAppointment::where('AppOrCon',1)->where('assignfrom',Auth::user()->id)->get();
+                    $admins = Admins::all();
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                    return view('dashboard', compact('done','admins','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
                 }
 
         }
