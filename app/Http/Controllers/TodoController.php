@@ -7,6 +7,7 @@ use App\Models\Admins;
 use App\Models\family;
 use Illuminate\Http\Request;
 use App\Models\todo;
+use Illuminate\Support\Facades\Crypt;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
@@ -50,7 +51,7 @@ class TodoController extends Controller
     public function todos(){
         if(Auth::guard('admins')->check()){
             if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
-        $data['costumers'] = family::where('status','Submited')->get();
+        $data['costumers'] = family::all();
         $role = 'admin';
         $role = Role::where('name','fs')->orWhere('name','digital')->get();
         $data['admins'] = Admins::role($role)->get();

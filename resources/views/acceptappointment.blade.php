@@ -91,7 +91,7 @@
                        @endphp
                         <div class="py-3">
                             <div class="input-group">
-                                <a href="{{route('dealnotclosed',$leadId)}}" style="text-decoration: none;cursor: pointer" class="my-auto decline-btn m-2 my-auto py-2 px-5">
+                                <a href="{{route('dealnotclosed',Crypt::decrypt($leadId) / 1244)}}" style="text-decoration: none;cursor: pointer" class="my-auto decline-btn m-2 my-auto py-2 px-5">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25.145" height="25.524"
                                          viewBox="0 0 33.145 33.524">
                                         <g id="Group_620" data-name="Group 620"

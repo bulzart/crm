@@ -1,21 +1,28 @@
 @extends('template.navbar')
 @section('content')
-    @php
-        $leadss = $lead->id * 1244;
-        $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-    @endphp
-<form action="{{route('asignlead',$leadId)}}" method="post">
+@if($errors->any())
+<div class="text-center">
+    {!! implode('<br />', $errors->all(':message')) !!} 
+</div>
+@endif
+<form action="{{route('asignlead',$lead->id)}}" method="post">
     @csrf
 <div class="form-group container text-center pt-4">
-  <fieldset disabled>
+  <fieldset>
       <label for="disabledTextInput">Name</label>
-      <input type="text" id="disabledTextInput" class="form-control" value="{{$lead->first_name}}">
+      <input type="text" name="name" id="disabledTextInput" class="form-control text-center" value="{{$lead->first_name}}">
 
     <div class="form-group">
       <label for="disabledSelect">People</label>
-      <input type="number" value="{{$lead->number_of_persons}}" class="form-control">
-      <label>Came from</label>
-      <input type="text" value="{{$lead->campaign->name}}" class="form-control">
+      <input type="number" value="{{$lead->number_of_persons}}" name="count" class="form-control text-center">
+      <label>Source</label>
+      <input type="text" value="{{$lead->campaign->name}}" name="source" class="form-control text-center">
+      <label>Telephone</label>
+      <input type="text" value="{{$lead->telephone}}" name="telephone" class="form-control text-center">
+      <label>Address</label>
+      <input type="text" value="{{$lead->address}}" name="address" class="form-control text-center">
+      <label>Zip</label>
+      <input type="text" value="{{$lead->postal_code}}" name="zip" class="form-control text-center">
     </div>
 
   </fieldset>
@@ -30,14 +37,10 @@
   <i class="fas fa-filter" style="cursor: pointer;" title="Filter" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
 </div>
 <br>
-  <select name="admin" class="form-control">
-      @foreach($admins as $admin)
-      <option value="{{$admin['id']}}">{{$admin->name}}</option>
-      @endforeach
-  </select>
 
 
-  <input type="submit" class="btn btn-primary mt-2" value="Appointment">
+
+  <input type="submit" class="btn btn-primary mt-2" value="Accept">
 </form>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

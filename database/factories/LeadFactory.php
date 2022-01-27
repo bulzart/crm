@@ -55,7 +55,8 @@ $status = "Done";
             'assign_to_id' => random_int(0,10),
             'status_task' => $this->randomm(),
             'assigned' => random_int(0,1),
-            'time' => $this->faker->time('H:i')
+            'time' => $this->faker->time('H:i'),
+            'wantsonline' => random_int(0,1)
         ];
     }
 }

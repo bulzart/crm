@@ -6,8 +6,8 @@
         </title>
     </head>
 @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
-<div class="row justify-content-center">
-    <div class="col-md-4 col-12 mb-3">
+<div class="row container">
+    <div class="col-md-7 col-12 mb-3">
         <div style="background: #f7f7f7; border-radius: 25px; padding: 5%;">
             <div class="row" >
                 <div class="col-12" style="cursor: pointer;" id="Offene_Aufgaben__" >
@@ -24,7 +24,7 @@
                     $leadss = $task->id * 1244;
                     $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                 @endphp
-                    <a  href="{{route('leadfamily',$taskId)}}" style="text-decoration:none;">
+                    <a  href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
                         </div>
@@ -50,7 +50,23 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-12 mb-3">
+   
+    <div class="col-md-5 col-12 mb-3">
+        <div style="border-radius: 25px; padding: 5%;">
+            <p class="text-center">Costumer birthdays today:</p>
+            <br>
+            @foreach($birthdays as $birth)
+                <div class="p-1" style="background: #f7f7f7; border-radius: 12px;">
+                    <i class="fas fa-birthday-cake" style="font-size: 33px;"></i>
+                    <span class="h5">{{$birth['name']}} {{$birth['lname']}}</span>
+                    <br>
+                    {{$birth['birthday']}} ({{$birth['age']}} Jahre)
+                </div>
+                <br>
+            @endforeach
+        </div>
+    </div>
+    <div class="col-md-12 col-12 mb-3">
         <div style="background: #ffebe5; border-radius: 25px; padding: 5%;">
             <div class="row">
                 <div class="col-12" style="cursor: pointer;" id="Pending__" >
@@ -68,8 +84,10 @@
                     <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;">
                         <div class="p-1" style="background: white; border-radius: 12px;">
                             <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
+                            <span>{{$task->description}}
                         </div>
                     </a>
+                    
                     <br>
                 @endforeach
                 <div class="mt-4">
@@ -90,21 +108,6 @@
 </div>
 
             </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-12 mb-3">
-        <div style="border-radius: 25px; padding: 5%;">
-            <p class="text-center">Costumer birthdays today:</p>
-            <br>
-            @foreach($birthdays as $birth)
-                <div class="p-1" style="background: #f7f7f7; border-radius: 12px;">
-                    <i class="fas fa-birthday-cake" style="font-size: 33px;"></i>
-                    <span class="h5">{{$birth['name']}} {{$birth['lname']}}</span>
-                    <br>
-                    {{$birth['birthday']}} ({{$birth['age']}} Jahre)
-                </div>
-                <br>
-            @endforeach
         </div>
     </div>
 </div>
@@ -167,14 +170,21 @@
                         $leadss = $task->id * 1244;
                         $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
-             
+
                         <div class="p-1" style="background: red; border-radius: 12px;">
                         <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;"> <span style="font-size: 18px;" class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</span></a>
+                    @php
+                        $leadss = $task->admin_id * 1244;
+                        $taskAdminId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
 
-<a href="{{route('chat',[Crypt::encrypt($task->admin_id * 1244),Crypt::encrypt(Auth::user()->id * 1244)])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
+                        $leadss = Auth::user()->id * 1244;
+                        $authUserId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+
+                    @endphp
+<a href="{{route('chat',[$taskAdminId,$authUserId])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
 
                         </div>
-               
+
                     <br>
                 @endforeach
 </div>

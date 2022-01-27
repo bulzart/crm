@@ -18,7 +18,6 @@
                             <a :href="url + 'file/' + msg.body">
                              <p> <i class="bi bi-file-earmark-arrow-down"></i> {{ msg.body }}</p>
                             </a>
-                          
                       </div>
                       <span class="time_date" style="word-break: break-word;">{{
                           msg.created_at.toString().slice(8, 21)
@@ -85,14 +84,11 @@
                     <button
                       class="msg_send_btn"
                       @click="sendmessage"
-                      type="button"
-                    >
+                      type="button">
                       <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                     </button>
                   </div>
                 </div>
-              
-           
           </div>
         </div>
       </div>
@@ -106,8 +102,9 @@ export default {
     return {
       messages: [],
       pag: 1,
-      url: "https://crm.kutiza.com/public/",
+      url: "http://127.0.0.1:8000/",
       cnt: 0,
+        admin: null
     };
   },
   mounted() {
@@ -115,6 +112,7 @@ export default {
     setInterval(() => {
       this.getmessages();
     }, 400);
+    axios.get(this.url + 'getadmin').then((response) => { this.admin = response.data;});
   },
   methods: {
     sendmessage() {
@@ -130,10 +128,10 @@ export default {
             document.getElementById("text").value
         )
         .then((document.getElementById("text").value = ""));
-  
+
       }
       else{
- 
+
         var formdata = new FormData();
         var file = document.getElementById('file-input-0').files[0];
         formdata.append('file',file);
@@ -144,7 +142,7 @@ headers:{
 }
         }).then((document.getElementById('file-input-0').value = ""));
       }
-      
+
     },
     getmessages() {
       axios
@@ -167,13 +165,10 @@ headers:{
 
   props: {
     u1: {
-      default: () => parseInt(window.data.u1),
+      default: () => window.data.u1,
     },
     u2: {
-      default: () => parseInt(window.data.u2),
-    },
-    admin: {
-      default: () => window.data.admin,
+      default: () => window.data.u2,
     },
   },
 };

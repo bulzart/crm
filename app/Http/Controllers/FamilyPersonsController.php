@@ -20,23 +20,20 @@ class FamilyPersonsController extends Controller
     {
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> a3bb5ba8d3ef1663e7746d4c52335f54164be081
         $cnt = 0;
         $cnt1 = 0;
         $lead = family::find($idd);
 
             if (Auth::guard('admins')->user()->hasRole('fs')) {
-        
+  
              
                 if (Auth::guard('admins')->user()->id == $lead->lead->assign_to_id || Pendency::where('family_id',$idd)->first()->admin_id == Auth::user()->id) {
 
                     try {
+                
                         $data = LeadDataKK::where('person_id', '=', $idd)->firstOrFail();
-                        return redirect()->route('acceptdata', Crypt::encrypt($idd*1244));
+                   
+                        return redirect()->route('acceptdata', [Crypt::encrypt($idd*1244),'accept' => false]);
                     }
                     catch (Exception $e) {
                         return view('documentsform', compact('lead'));
@@ -49,7 +46,7 @@ class FamilyPersonsController extends Controller
             else {
                 try {
                     $data = LeadDataKK::where('person_id', '=', $idd)->firstOrFail();
-                    return redirect()->route('acceptdata', $idd);
+                    return redirect()->route('acceptdata', [Crypt::encrypt($idd*1244),'accept' => false]);
                 }
                 catch (Exception $e) {
                     return view('documentsform', compact('lead'));

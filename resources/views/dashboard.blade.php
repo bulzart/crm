@@ -19,7 +19,7 @@
 
     <body>
 
-    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs'))
+    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('digital'))
         <section>
             <div class="mx-4">
                 <div class="py-3">

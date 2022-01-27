@@ -6,7 +6,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+
 <style>
     .container{max-width:1170px; margin:auto;}
 img{ max-width:100%;}
@@ -145,6 +145,224 @@ img{ max-width:100%;}
 .upload-box input[type="file"] {
       display: none;
     }
+
+    .modal-section-1 {
+        display: none;
+        position: fixed;
+        z-index: 2;
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        overflow: unset;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin-top: 3%;
+        /* height: 70vh; */
+        /* width: 450px; */
+        border: none;
+        border-radius: 25px;
+
+    }
+
+    /* .dropdown-menu {
+        width:400px !important; 
+    } */
+    .appointments-sm-div {
+        background-color: #EFEFEF !important;
+        border-radius: 25px;
+    }
+
+    /* overflow 1 */
+    .overflow-div1::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    .overflow-div1::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .overflow-div1::-webkit-scrollbar-thumb {
+        background: #c9cad8;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .overflow-div1::-webkit-scrollbar-thumb:hover {
+        background: #707070;
+        border-radius: 10px;
+    }
+
+    /* ........................................................... */
+    /* overflow 2 */
+
+    .overflow-div2::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    .overflow-div2::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .overflow-div2::-webkit-scrollbar-thumb {
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .overflow-div2::-webkit-scrollbar-thumb:hover {
+        background: #fff1ff;
+        border-radius: 10px;
+    }
+
+    /* ........................................................... */
+    /* overflow 3 */
+
+    .overflow-div3::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    .overflow-div3::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .overflow-div3::-webkit-scrollbar-thumb {
+        background: #c9cad8;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .overflow-div3::-webkit-scrollbar-thumb:hover {
+        background: #707070;
+    }
+
+    /* ...................................................... */
+    /* overflow 4 */
+
+    .overflow-div4::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    .overflow-div4::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .overflow-div4::-webkit-scrollbar-thumb {
+        background: #c9cad8;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .overflow-div4::-webkit-scrollbar-thumb:hover {
+        background: #707070;
+    }
+
+
+
+    /* ................................................. */
+
+    .collapsed .d-btnn {
+        background-color: #c8ddd1;
+        opacity: 0.4;
+    }
+
+    .d-btnn {
+        opacity: 1;
+    }
+
+    .form-control:focus {
+        border-color: #ced4da;
+        box-shadow: none;
+    }
+
+    .accordion-button {
+        color: #7DBF9A;
+        font-weight: bold;
+        border-radius: 15px !important;
+    }
+
+    .accordion-item {
+        border-radius: 15px !important;
+    }
+
+
+
+
+
+
+    .accordion-button:not(.collapsed) {
+        color: #7DBF9A;
+        background-color: #fff;
+        box-shadow: none;
+    }
+
+    .accordion-button:not(.collapsed)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23df4759'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        /* background-color: transparent !important; */
+    }
+
+    .accordion-button:not(.show)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23df4759'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        /* background-color: transparent !important; */
+    }
+
+    .accordion-button.green-acc:not(.collapsed)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        /* background-color: transparent !important; */
+    }
+
+    .accordion-button.green-acc:not(.show)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        /* background-color: transparent !important; */
+    }
+
+    .accordion-button:focus {
+        border-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    .name-spnnnn {
+        font-weight: 600;
+    }
+
+    .fw-600 {
+        font-weight: 600;
+    }
+
+    .spn-muted {
+        color: #707070;
+        font-weight: 600;
+        font-size: 14px !important;
+    }
+
+    .spn-normal {
+        font-weight: 600;
+        font-size: 14px !important;
+    }
+
+    .text-color {
+        color: #525353;
+    }
+
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
@@ -153,6 +371,7 @@ img{ max-width:100%;}
 <script>window.data = @json(compact('u1','u2','admin'))</script>
 <script>
 function upload(x){
+
   var fullPath = x.value;
 if (fullPath) {
     var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
