@@ -551,6 +551,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-6 col-sm-12 col-md-12 col-lg-6 g-0">
                 <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
                     <div class="accordion-item my-1 py-2" style="background-color: #FFEBE5;">
@@ -587,6 +588,129 @@
                                         </a>
                                     @endforeach
                                 @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-12 col-md-12 col-lg-6 g-0">
+                <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
+                    <div class="accordion-item my-1 py-2" style="background-color: #ececec;">
+                        <div class="p-3">
+                                <span class="col text-black fw-bold fs-5">
+                                Add Persoals Appointment
+                                 </span>
+                            <hr class="text-black">
+                        </div>
+                        </h2>
+                        <div id="flush-collapse1" class="accordion-collapse collapse show"
+                             aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush1">
+
+                            <div class="accordion-body p-0 mx-2 py-2 overflow-div1"
+                                 style="background-color: #F7F7F7; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                                @foreach($personalApp as $perApp)
+                                    <div class="py-2 my-2 mx-2"
+                                         style="background-color: #fff; border-radius: 15px; color: #000;">
+                                        <div class="mx-3 ">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <span class="fw-bold fs-5">
+                                                        {{$perApp->title}}
+                                                    </span>
+                                                </div>
+                                                <div class="col-1 text-end">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="5"
+                                                         height="13"
+                                                         viewBox="0 0 5 13">
+                                                        <g id="Group_528" data-name="Group 528"
+                                                           transform="translate(-0.239 0)">
+                                                            <circle id="Ellipse_6" data-name="Ellipse 6"
+                                                                    cx="2.5"
+                                                                    cy="2.5" r="2.5"
+                                                                    transform="translate(0.239 0)"
+                                                                    fill="#000"/>
+                                                            <circle id="Ellipse_7" data-name="Ellipse 7"
+                                                                    cx="2.5"
+                                                                    cy="2.5" r="2.5"
+                                                                    transform="translate(0.239 8)"
+                                                                    fill="#000"/>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                                <span>
+                                                                    Address: {{$perApp->address}}
+                                                                </span>
+                                            </div>
+                                            <div class="">
+                                                                <span>
+                                                                    Time: {{$perApp->time}}
+                                                                </span>
+                                            </div>
+                                            <div class="">
+                                                                <span>
+                                                                    Comment: {{$perApp->comment}}
+                                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            <div class="text-center py-2">
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                    +
+                                </button>
+                            </div>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add Personals
+                                                Appointment</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="" action="{{route('addPersonalAppointment')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="apporconId" value="1">
+                                                <div class="px-2">
+                                                    <label>Title</label>
+                                                    <input type="text" name="title" class="form-control" required>
+                                                    <label>Time</label>
+                                                    <input type="time" name="time" class="form-control" required>
+                                                    <label>Address</label>
+                                                    <input type="text" name="address" class="form-control" required>
+                                                    <label>Comment</label>
+                                                    <textarea type="text" name="comment" class="form-control"
+                                                              required>
+                                                </textarea>
+                                                    <label>Assign To</label>
+
+                                                    <select class="form-control mb-2" name="roleid">
+                                                        @foreach($admins as $admin)
+
+                                                            <option value="{{$admin->id}}">{{$admin->name}}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <input type="submit" class="btn btn-success" value="Save">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -673,314 +797,349 @@
                                             </div>
 
                                             <div class="text-center py-2">
-                                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                +
-                                            </button>
+                                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">
+                                                    +
+                                                </button>
                                             </div>
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add Personal Appointment</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Add Personal
+                                                                Appointment</h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form class="" action="{{route('addPersonalAppointment')}}" method="post">
+                                                            <form class="" action="{{route('addPersonalAppointment')}}"
+                                                                  method="post">
                                                                 @csrf
                                                                 <input type="hidden" name="apporconId" value="1">
                                                                 <div class="px-2">
                                                                     <label>Title</label>
-                                                                    <input type="text" name="title" class="form-control" required>
+                                                                    <input type="text" name="title" class="form-control"
+                                                                           required>
                                                                     <label>Time</label>
-                                                                    <input type="time" name="time" class="form-control" required>
+                                                                    <input type="time" name="time" class="form-control"
+                                                                           required>
                                                                     <label>Address</label>
-                                                                    <input type="text" name="address" class="form-control" required>
+                                                                    <input type="text" name="address"
+                                                                           class="form-control"
+                                                                           required>
                                                                     <label>Comment</label>
-                                                                    <textarea type="text" name="comment" class="form-control" required></textarea>
+                                                                    <textarea type="text" name="comment"
+                                                                              class="form-control"
+                                                                              required></textarea>
                                                                 </div>
 
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <input type="submit" class="btn btn-success" value="Save">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Close
+                                                                    </button>
+                                                                    <input type="submit" class="btn btn-success"
+                                                                           value="Save">
                                                                 </div>
-                                                        </form>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="consultations-div pb-2">
-                                <div class="">
-                                    <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
-                                        <div class="accordion-item my-1 py-2" style="background-color: #FFEBE5;">
-                                            <h2 class="accordion-header" id="flush-heading5">
-                                                <button class="accordion-button collapsed d-btnn "
-                                                        style="background-color: #FFEBE5;" type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#flush-collapse5" aria-expanded="false"
-                                                        aria-controls="flush-collapse5">
-                                                    <div class="col text-dark">
-                                                        Consultations
-                                                    </div>
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapse5" class="accordion-collapse collapse show"
-                                                 aria-labelledby="flush-heading5" data-bs-parent="#accordionFlush5">
-                                                <div class="accordion-body p-0 mx-2 py-2 overflow-div4"
-                                                     style="background-color: #FFEBE5; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
-                                                    @foreach($consultation as $consult)
-                                                        <div class="py-2 my-2 mx-2"
-                                                             style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                            <div class="mx-3 ">
-                                                                <div class="row">
-                                                                    <div class="col">
+                                <div class="consultations-div pb-2">
+                                    <div class="">
+                                        <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
+                                            <div class="accordion-item my-1 py-2" style="background-color: #FFEBE5;">
+                                                <h2 class="accordion-header" id="flush-heading5">
+                                                    <button class="accordion-button collapsed d-btnn "
+                                                            style="background-color: #FFEBE5;" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapse5" aria-expanded="false"
+                                                            aria-controls="flush-collapse5">
+                                                        <div class="col text-dark">
+                                                            Consultations
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div id="flush-collapse5" class="accordion-collapse collapse show"
+                                                     aria-labelledby="flush-heading5" data-bs-parent="#accordionFlush5">
+                                                    <div class="accordion-body p-0 mx-2 py-2 overflow-div4"
+                                                         style="background-color: #FFEBE5; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                                                        @foreach($consultation as $consult)
+                                                            <div class="py-2 my-2 mx-2"
+                                                                 style="background-color: #fff; border-radius: 15px; color: #000;">
+                                                                <div class="mx-3 ">
+                                                                    <div class="row">
+                                                                        <div class="col">
                                                         <span class="fw-bold fs-5">
                                                             {{$consult->title}}
                                                         </span>
+                                                                        </div>
+                                                                        <div class="col-1 text-end">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                 width="5"
+                                                                                 height="13"
+                                                                                 viewBox="0 0 5 13">
+                                                                                <g id="Group_528" data-name="Group 528"
+                                                                                   transform="translate(-0.239 0)">
+                                                                                    <circle id="Ellipse_6"
+                                                                                            data-name="Ellipse 6"
+                                                                                            cx="2.5"
+                                                                                            cy="2.5" r="2.5"
+                                                                                            transform="translate(0.239 0)"
+                                                                                            fill="#000"/>
+                                                                                    <circle id="Ellipse_7"
+                                                                                            data-name="Ellipse 7"
+                                                                                            cx="2.5"
+                                                                                            cy="2.5" r="2.5"
+                                                                                            transform="translate(0.239 8)"
+                                                                                            fill="#000"/>
+                                                                                </g>
+                                                                            </svg>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-1 text-end">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="5"
-                                                                             height="13"
-                                                                             viewBox="0 0 5 13">
-                                                                            <g id="Group_528" data-name="Group 528"
-                                                                               transform="translate(-0.239 0)">
-                                                                                <circle id="Ellipse_6"
-                                                                                        data-name="Ellipse 6"
-                                                                                        cx="2.5"
-                                                                                        cy="2.5" r="2.5"
-                                                                                        transform="translate(0.239 0)"
-                                                                                        fill="#000"/>
-                                                                                <circle id="Ellipse_7"
-                                                                                        data-name="Ellipse 7"
-                                                                                        cx="2.5"
-                                                                                        cy="2.5" r="2.5"
-                                                                                        transform="translate(0.239 8)"
-                                                                                        fill="#000"/>
-                                                                            </g>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="">
+                                                                    <div class="">
                                                                 <span>
                                                                     Address: {{$consult->address}}
                                                                 </span>
-                                                                </div>
-                                                                <div class="">
+                                                                    </div>
+                                                                    <div class="">
                                                                 <span>
                                                                     Time: {{$consult->time}}
                                                                 </span>
-                                                                </div>
-                                                                <div class="">
+                                                                    </div>
+                                                                    <div class="">
                                                                 <span>
                                                                     Comment: {{$consult->comment}}
                                                                 </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="text-center py-2">
+                                                        <button type="button" class="btn btn-light"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#consultmodal">
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal fade" id="consultmodal" tabindex="-1"
+                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Add
+                                                                        Consultation</h5>
+                                                                    <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form class=""
+                                                                          action="{{route('addPersonalAppointment')}}"
+                                                                          method="post">
+                                                                        @csrf
+                                                                        <input type="hidden" name="apporconId"
+                                                                               value="2">
+                                                                        <div class="px-2">
+                                                                            <label>Title</label>
+                                                                            <input type="text" name="title"
+                                                                                   class="form-control"
+                                                                                   required>
+                                                                            <label>Time</label>
+                                                                            <input type="time" name="time"
+                                                                                   class="form-control"
+                                                                                   required>
+                                                                            <label>Address</label>
+                                                                            <input type="text" name="address"
+                                                                                   class="form-control" required>
+                                                                            <label>Comment</label>
+                                                                            <textarea type="text" name="comment"
+                                                                                      class="form-control"
+                                                                                      required></textarea>
+                                                                        </div>
+
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-bs-dismiss="modal">Close
+                                                                            </button>
+                                                                            <input type="submit" class="btn btn-success"
+                                                                                   value="Save">
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @endforeach
-                                                </div>
-                                                <div class="text-center py-2">
-                                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#consultmodal">
-                                                        +
-                                                    </button>
-                                                </div>
-                                                <div class="modal fade" id="consultmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Add Consultation</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form class="" action="{{route('addPersonalAppointment')}}" method="post">
-                                                                    @csrf
-                                                                    <input type="hidden" name="apporconId" value="2">
-                                                                    <div class="px-2">
-                                                                        <label>Title</label>
-                                                                        <input type="text" name="title" class="form-control" required>
-                                                                        <label>Time</label>
-                                                                        <input type="time" name="time" class="form-control" required>
-                                                                        <label>Address</label>
-                                                                        <input type="text" name="address" class="form-control" required>
-                                                                        <label>Comment</label>
-                                                                        <textarea type="text" name="comment" class="form-control" required></textarea>
-                                                                    </div>
-
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <input type="submit" class="btn btn-success" value="Save">
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
                                                     </div>
+                                                    {{--                                                <div class="text-center py-2">--}}
+                                                    {{--                                                    <a href="{{route('insertPersonalAppointmant',2)}}"--}}
+                                                    {{--                                                       class="btn btn-light">--}}
+                                                    {{--                                                        +--}}
+                                                    {{--                                                    </a>--}}
+                                                    {{--                                                </div>--}}
                                                 </div>
-{{--                                                <div class="text-center py-2">--}}
-{{--                                                    <a href="{{route('insertPersonalAppointmant',2)}}"--}}
-{{--                                                       class="btn btn-light">--}}
-{{--                                                        +--}}
-{{--                                                    </a>--}}
-{{--                                                </div>--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <div class="row mx-2">
+                                <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                                    <div class="text-center"
+                                         style="background-color: #8A8BF9; border-radius: 18px;  margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                        <div class="pt-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                                 fill="#fff" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="py-2">
+                                                                        <span class="fw-bold fs-5 text-white">
+                                                                            {{$leadscount}}
+                                                                        </span>
+                                            <br>
+                                            <span class="fw-bold fs-5 text-white">
+                                                                            New Leads
+                                                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                                    <div class="text-center"
+                                         style="background-color: #F88DC4; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                        <div class="pt-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                                 fill="#fff" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="py-2">
+                                                                        <span class="fw-bold fs-5 text-white">
+
+                                                                        </span>
+                                            <br>
+                                            <span class="fw-bold fs-5 text-white">
+                                                                            Open Tasks
+                                                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                                    <div class="text-center"
+                                         style="background-color: #4EC590; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                        <div class="pt-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                                 fill="#fff" class="bi bi-exclamation-octagon-fill"
+                                                 viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="py-2">
+                                        <span class="fw-bold fs-5 text-white">
+                                           {{$pendingcnt}}
+                                                                        </span>
+                                            <br>
+                                            <span class="fw-bold fs-5 text-white">
+                                                                            Pendencies
+                                                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                                    <div class="text-center"
+                                         style="background-color: #4e5ec5; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                        <div class="pt-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                                 fill="#fff" class="bi bi-exclamation-octagon-fill"
+                                                 viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="py-2">
+                                                                        <span class="fw-bold fs-5 text-white">
+                                                                            {{$todayAppointCount}}
+                                                                        </span>
+                                            <br>
+                                            <span class="fw-bold fs-5 text-white">
+                                                                            Today App
+                                                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                                    <div class="text-center"
+                                         style="background-color: #c7cb81; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                        <div class="pt-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
+                                                 fill="#fff" class="bi bi-exclamation-octagon-fill"
+                                                 viewBox="0 0 16 16">
+                                                <path
+                                                    d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="py-2">
+                                                                        <span class="fw-bold fs-5 text-white">
+                                                                            0
+                                                                        </span>
+                                            <br>
+                                            <span class="fw-bold fs-5 text-white">
+                                                                            HR Comm
+                                                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
+                                    <div class="text-center box-1 "
+                                         style="margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
+                                        <div class="py-4 ">
+                                            <div class="py-2">
+                                                <svg id="Group_549" data-name="Group 549"
+                                                     xmlns="http://www.w3.org/2000/svg" width="29.713"
+                                                     height="29.713" viewBox="0 0 29.713 29.713">
+                                                    <rect id="Rectangle_9" data-name="Rectangle 9"
+                                                          width="29.713" height="29.713" rx="14.857"
+                                                          transform="translate(0)" fill="#4ec590"/>
+                                                    <g id="Group_42" data-name="Group 42"
+                                                       transform="translate(10.03 10.03)">
+                                                        <line id="Line_11" data-name="Line 11" y2="9.437"
+                                                              transform="translate(4.719 0)" fill="none"
+                                                              stroke="#fff" stroke-linecap="round"
+                                                              stroke-width="2"/>
+                                                        <line id="Line_12" data-name="Line 12" x1="9.437"
+                                                              transform="translate(0 4.441)" fill="none"
+                                                              stroke="#fff" stroke-linecap="round"
+                                                              stroke-width="2"/>
+                                                    </g>
+                                                </svg>
+
+                                            </div>
+                                            <div class="py-1">
+                                                                            <span class="text-muted">
+                                                                                Add New One
+                                                                            </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
-                    <div class="my-3">
-                        <div class="row mx-2">
-                            <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
-                                <div class="text-center"
-                                     style="background-color: #8A8BF9; border-radius: 18px;  margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                    <div class="pt-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
-                                             fill="#fff" class="bi bi-people-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                            <path fill-rule="evenodd"
-                                                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
-                                                                            {{$leadscount}}
-                                                                        </span>
-                                        <br>
-                                        <span class="fw-bold fs-5 text-white">
-                                                                            New Leads
-                                                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
-                                <div class="text-center"
-                                     style="background-color: #F88DC4; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                    <div class="pt-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
-                                             fill="#fff" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
-
-                                                                        </span>
-                                        <br>
-                                        <span class="fw-bold fs-5 text-white">
-                                                                            Open Tasks
-                                                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
-                                <div class="text-center"
-                                     style="background-color: #4EC590; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                    <div class="pt-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
-                                             fill="#fff" class="bi bi-exclamation-octagon-fill"
-                                             viewBox="0 0 16 16">
-                                            <path
-                                                d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="py-2">
-                                        <span class="fw-bold fs-5 text-white">
-                                           {{$pendingcnt}}
-                                                                        </span>
-                                        <br>
-                                        <span class="fw-bold fs-5 text-white">
-                                                                            Pendencies
-                                                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
-                                <div class="text-center"
-                                     style="background-color: #4e5ec5; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                    <div class="pt-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
-                                             fill="#fff" class="bi bi-exclamation-octagon-fill"
-                                             viewBox="0 0 16 16">
-                                            <path
-                                                d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
-                                                                            {{$todayAppointCount}}
-                                                                        </span>
-                                        <br>
-                                        <span class="fw-bold fs-5 text-white">
-                                                                            Today App
-                                                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
-                                <div class="text-center"
-                                     style="background-color: #c7cb81; border-radius: 18px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                    <div class="pt-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33"
-                                             fill="#fff" class="bi bi-exclamation-octagon-fill"
-                                             viewBox="0 0 16 16">
-                                            <path
-                                                d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995A.905.905 0 0 1 8 4zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
-                                                                            0
-                                                                        </span>
-                                        <br>
-                                        <span class="fw-bold fs-5 text-white">
-                                                                            HR Comm
-                                                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-xs-6 col-sm-4 col-md-3 col-lg g-0">
-                                <div class="text-center box-1 "
-                                     style="margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                    <div class="py-4 ">
-                                        <div class="py-2">
-                                            <svg id="Group_549" data-name="Group 549"
-                                                 xmlns="http://www.w3.org/2000/svg" width="29.713"
-                                                 height="29.713" viewBox="0 0 29.713 29.713">
-                                                <rect id="Rectangle_9" data-name="Rectangle 9"
-                                                      width="29.713" height="29.713" rx="14.857"
-                                                      transform="translate(0)" fill="#4ec590"/>
-                                                <g id="Group_42" data-name="Group 42"
-                                                   transform="translate(10.03 10.03)">
-                                                    <line id="Line_11" data-name="Line 11" y2="9.437"
-                                                          transform="translate(4.719 0)" fill="none"
-                                                          stroke="#fff" stroke-linecap="round"
-                                                          stroke-width="2"/>
-                                                    <line id="Line_12" data-name="Line 12" x1="9.437"
-                                                          transform="translate(0 4.441)" fill="none"
-                                                          stroke="#fff" stroke-linecap="round"
-                                                          stroke-width="2"/>
-                                                </g>
-                                            </svg>
-
-                                        </div>
-                                        <div class="py-1">
-                                                                            <span class="text-muted">
-                                                                                Add New One
-                                                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </section>
 

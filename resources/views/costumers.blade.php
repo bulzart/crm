@@ -178,6 +178,11 @@
             <div class="mx-3 my-2 ">
                 <div class="scroll-1" style="font-size: 14px;">
                     @foreach($data as $dat)
+                        @php
+                            $leadss = $dat->id * 1244;
+                            $datId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                        @endphp
+                        <a style="text-decoration: none; color: black" href="{{route('costumer_form',$datId)}}">
                         <div class="row my-1 mx-3">
                             <div class="col g-0">
                                 <div class="">
@@ -229,6 +234,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row my-1 mx-3">
                             <div class="col g-0">
                                 <div class="">
@@ -382,6 +388,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                         <hr>
                     @endforeach
                 </div>
