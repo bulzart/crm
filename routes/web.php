@@ -45,10 +45,10 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    });
    route::get('getleads',function(){
       if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
-         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->orderBy('updated_at','asc')->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug')->paginate(200);
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->orderBy('updated_at','asc')->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
          $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->paginate(200);
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug')->paginate(200);
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
    }
   
      $leads['admins'] = Admins::role(['fs','digital'])->get();
@@ -104,7 +104,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    // });
 
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
-    route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::post('rejectedleads/{status?}',[UserController::class,'rejectedleads'])->name('rejectedleads');
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
@@ -268,12 +268,11 @@ route::get('getadmin',function (){
 route::get('pendingreject/{id}/{where}',function($id,$where){
    $leads = lead::find($id);
   if($where == 0){
-
-   return view('pendingreject')->with('pojo',false)->with('leads',lead::find($id));
+   return view('pendingreject')->with('pojo',0)->with('leads',lead::find($id));
   }
   else{
 
-   return view('pendingreject')->with('pojo',true)->with('leads',lead::find($id));
+   return view('pendingreject')->with('pojo',1)->with('leads',lead::find($id));
   }
 });
 

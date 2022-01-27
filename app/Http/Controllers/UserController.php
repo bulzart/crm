@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RejectLead;
 use App\Imports\LeadImport;
 use App\Imports\LeadsImport;
 use App\Imports\TestImport;
@@ -31,14 +32,18 @@ use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
+use App\Models\lead_history;
+use App\Traits\FileManagerTrait;
 use DB;
 use Faker;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
+    use FileManagerTrait;
     public function __construct(){
         $this->middleware(confirmedcode::class);
     }
@@ -451,37 +456,49 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         }
     }
 
-    public function rejectedleads(Request $request)
+    public function rejectedleads(Request $request,$status = null)
     {
-        $request->validate([
-            'leadsid' => 'required',
-            'reason' => 'required',
-            'image' => 'required'
-        ]);
-        $leads_id = $request->leadsid;
+
+        $leads_id = (int) $request->leadsid;
         lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
 
 
         $user_id = Auth::user()->id;
 
-        $rejectedlead = new rejectedlead();
+     
+    $status = (int) $status;
+if($status == 0) $reason = 'Rejected';
+else{
+    $reason = 'Pending';
+}
 
-        $rejectedlead->leads_id = $request->leadsid;
-        $rejectedlead->reason = $request->reason;
-        $rejectedlead->image = 'img/' . $request->file('image')->getClientOriginalName();
+     
 
-        if ($rejectedlead->save()) {
 
-          Storage::disk('img')->putFileAs('',$request->file('image'),$rejectedlead->image);
-            return redirect()->back()->with('success', 'Action was done successfully');
-        } else {
-            return redirect()->back()->with('fail', 'Action failed');
-        }
+          $image = $request->hasFile('image') ? $this->storeFile($req->input('image'),'img') : null;
+
+          $credss = [];
+          $rejectedlead = new lead_history();
+
+          $rejectedlead->leads_id = $leads_id;
+          $rejectedlead->reason = $reason;
+          $rejectedlead->image = $image;
+          $rejectedlead->admin_id = Auth::user()->id;
+          if($rejectedlead->save()){
+              return redirect()->back()->with('success','Action was done succesfully');
+          }
+          else{
+            return redirect()->back()->with('success','Action failed');
+          }
+
+  
+
+
+       
     }
 
     public function dashboard(Request $req)
     {
-
     if(!Auth::guard('admins')->check()){
        return redirect()->route('rnlogin');
     }
