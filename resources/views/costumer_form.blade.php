@@ -12,7 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <title>Costumer Form</title>
+    <title>Costumer Kundenportfolio</title>
 </head>
 
 
@@ -344,7 +344,9 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Grundversicherung
                                                         </span>
                                                     </div>
@@ -385,6 +387,7 @@
                                                                 </span>
                                                             </div>
                                                             <select class="form-select" aria-label="Default select example" name="statusG">
+                                                                <option selected value="notselected">Not Selected</option>
                                                                 <option value="Offen">Offen</option>
                                                                 <option value="Aufgenomen">Aufgenomen</option>
                                                                 <option value="Provisionert">Provisionert</option>
@@ -443,9 +446,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Vorsorge
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -484,6 +491,7 @@
                                                                 </span>
                                                             </div>
                                                             <select class="form-select" aria-label="Default select example" name="statusV">
+                                                                <option selected value="notselected">Not Selected</option>
                                                                 <option value="Offen">Offen</option>
                                                                 <option value="Aufgenomen">Aufgenomen</option>
                                                                 <option value="Provisionert">Provisionert</option>
@@ -544,9 +552,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Zusatzversicherung
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -585,6 +597,7 @@
                                                                 </span>
                                                             </div>
                                                             <select class="form-select" aria-label="Default select example" name="statusZ">
+                                                                <option selected value="notselected">Not Selected</option>
                                                                 <option value="Offen">Offen</option>
                                                                 <option value="Aufgenomen">Aufgenomen</option>
                                                                 <option value="Provisionert">Provisionert</option>
@@ -643,9 +656,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Hausrat
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -684,6 +701,7 @@
                                                                 </span>
                                                             </div>
                                                             <select class="form-select" aria-label="Default select example" name="statusH">
+                                                                <option selected value="notselected">Not Selected</option>
                                                                 <option value="Offen">Offen</option>
                                                                 <option value="Aufgenomen">Aufgenomen</option>
                                                                 <option value="Provisionert">Provisionert</option>
@@ -742,9 +760,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Reschtsschutz
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -783,6 +805,7 @@
                                                                 </span>
                                                             </div>
                                                             <select class="form-select" aria-label="Default select example" name="statusR">
+                                                                <option selected value="notselected">Not Selected</option>
                                                                 <option value="Offen">Offen</option>
                                                                 <option value="Aufgenomen">Aufgenomen</option>
                                                                 <option value="Provisionert">Provisionert</option>
@@ -888,9 +911,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Grundversicherung
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -939,7 +966,12 @@
                                                                     Status
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="text" name="status_PG" id="">
+                                                            <select class="form-select" aria-label="Default select example" name="status_PG">
+                                                                <option selected value="notselected">Not Selected</option>
+                                                                <option value="Offen">Offen</option>
+                                                                <option value="Aufgenomen">Aufgenomen</option>
+                                                                <option value="Provisionert">Provisionert</option>
+                                                            </select>
                                                         </div>
 
                                                     </div>
@@ -961,7 +993,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="text" name="total_commisions" id="">
+                                                            <input class="py-1 form-control " type="text" name="total_commisions_PG" id="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -981,9 +1013,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Autoversicherung
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -1014,9 +1050,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Zusatzversicherung
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -1089,7 +1129,12 @@
                                                                     Status:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="text" name="status_PZ" id="">
+                                                            <select class="form-select" aria-label="Default select example" name="status_PZ">
+                                                                <option selected value="notselected">Not Selected</option>
+                                                                <option value="Offen">Offen</option>
+                                                                <option value="Aufgenomen">Aufgenomen</option>
+                                                                <option value="Provisionert">Provisionert</option>
+                                                            </select>
                                                         </div>
 
                                                     </div>
@@ -1156,7 +1201,12 @@
                                                                     Status:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="text" name="status_PZ2" id="">
+                                                            <select class="form-select" aria-label="Default select example" name="status_PZ2">
+                                                                <option selected value="notselected">Not Selected</option>
+                                                                <option value="Offen">Offen</option>
+                                                                <option value="Aufgenomen">Aufgenomen</option>
+                                                                <option value="Provisionert">Provisionert</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
@@ -1206,9 +1256,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Hausrat
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -1239,9 +1293,13 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Rechtsschutz
                                                         </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -1290,7 +1348,12 @@
                                                                     Status:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="text" name="status_PR" id="">
+                                                            <select class="form-select" aria-label="Default select example" name="status_PR">
+                                                                <option selected value="notselected">Not Selected</option>
+                                                                <option value="Offen">Offen</option>
+                                                                <option value="Aufgenomen">Aufgenomen</option>
+                                                                <option value="Provisionert">Provisionert</option>
+                                                            </select>
                                                         </div>
 
                                                     </div>
@@ -1332,9 +1395,14 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
 
                                                     <div class="col">
-                                                        <span class="fs-6" id="title-span" style="font-weight: 600;">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                               <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Vorsorge
                                                         </span>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </button>
                                             </h2>
@@ -1429,7 +1497,12 @@
                                                                     Status:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="text" name="status_PV" id="">
+                                                            <select class="form-select" aria-label="Default select example" name="status_PV">
+                                                                <option selected value="notselected">Not Selected</option>
+                                                                <option value="Offen">Offen</option>
+                                                                <option value="Aufgenomen">Aufgenomen</option>
+                                                                <option value="Provisionert">Provisionert</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">

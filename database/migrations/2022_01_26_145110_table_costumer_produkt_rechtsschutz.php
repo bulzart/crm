@@ -22,6 +22,7 @@ class TableCostumerProduktRechtsschutz extends Migration
             $table->string('status_PR')->nullable();
             $table->date('last_adjustment_PR')->nullable();
             $table->string('total_commisions_PR')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
         });
     }

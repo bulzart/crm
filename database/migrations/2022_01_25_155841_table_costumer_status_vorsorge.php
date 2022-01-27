@@ -22,6 +22,7 @@ class TableCostumerStatusVorsorge extends Migration
             $table->date('modification_dateV')->nullable();
             $table->string('provisionV')->nullable();
             $table->string('cidV')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
         });
     }
