@@ -15,7 +15,14 @@ class PersonalAppointmentController extends Controller
         $personalApp->time = $request->time;
         $personalApp->address = $request->address;
         $personalApp->comment = $request->comment;
-        $personalApp->user_id = Auth::user()->id;
+        if(Auth::guard('admins')->user()->hasRole('admin')){
+            $personalApp->user_id = $request->roleid;
+            $personalApp->assignfrom = Auth::user()->id;
+
+        }else {
+            $personalApp->user_id = Auth::user()->id;
+            $personalApp->assignfrom = Auth::user()->id;
+        }
         $personalApp->AppOrCon = $request->apporconId;
 
         if($personalApp->save()){

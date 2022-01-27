@@ -99,7 +99,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }
                      else{
-                        return redirect()->route('dealclosed',$idd);
+                        return redirect()->route('dealclosed',Crypt::encrypt($idd*1244));
                      }
 
                   }
@@ -145,6 +145,15 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    // Route::group(['middleware' => 'json.response'], function () {
       route::get('addtodo',[TodoController::class,'addtodo']);
    // });
+
+    route::get('costumer_form/{id}',function ($id){
+        $id = Crypt::decrypt($id) / 1244;
+
+        $costumer = family::findOrFail($id);
+        return view('costumer_form')->with(compact('costumer'));
+    })->name('costumer_form');
+
+    route::post('save_costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'save_costumer_form'])->name('save_costumer_form');
 
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);

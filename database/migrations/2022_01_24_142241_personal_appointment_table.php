@@ -21,6 +21,7 @@ class PersonalAppointmentTable extends Migration
            $table->string('comment');
            $table->integer('user_id');
            $table->integer('AppOrCon');
+           $table->integer('assignfrom');
            $table->timestamps();
         });
     }
