@@ -35,6 +35,7 @@ class TableCostumerProduktZusatzversicherung extends Migration
             $table->string('provision_PZ2')->nullable();
 
             $table->string('total_commisions_PZ')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
 
         });

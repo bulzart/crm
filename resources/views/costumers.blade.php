@@ -1,6 +1,6 @@
 @extends('template.navbar')
-    @section('content')
-<!doctype html>
+@section('content')
+    <!doctype html>
 <html lang="en">
 
 <head>
@@ -32,9 +32,9 @@
                             </span>
                         <form method="post" action="{{route('search')}}">
                             @csrf
-                        <input type="text" class="form-control search-bar-one" name="searchname"
-                               placeholder="Suche (Kundenname,Vertragsnummer)" aria-label="Username"
-                               aria-describedby="basic-addon1">
+                            <input type="text" class="form-control search-bar-one" name="searchname"
+                                   placeholder="Suche (Kundenname,Vertragsnummer)" aria-label="Username"
+                                   aria-describedby="basic-addon1">
                         </form>
                     </div>
                 </div>
@@ -177,220 +177,325 @@
             </div>
             <div class="mx-3 my-2 ">
                 <div class="scroll-1" style="font-size: 14px;">
-                    @foreach($data as $dat)
+                    @for($i = 0; $i < count($data); $i++)
                         @php
-                            $leadss = $dat->id * 1244;
+                            $leadss = $data[$i]->id * 1244;
                             $datId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                         @endphp
                         <a style="text-decoration: none; color: black" href="{{route('costumer_form',$datId)}}">
-                        <div class="row my-1 mx-3">
-                            <div class="col g-0">
-                                <div class="">
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
-                                    {{$dat->id}}
+                                    {{$data[$i]->id}}
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
-                                    {{$dat->first_name}}
+                                    {{$data[$i]->first_name}}
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
-                                    {{$dat->last_name}}
+                                    {{$data[$i]->last_name}}
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
-                                    {{$dat->status}}
+                                    {{$data[$i]->status}}
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+
+
+                                <div class="col g-0">
+                                    @if(empty($grundversicherungP[$i]))
+                                        <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                        </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+
+                                <div class="col g-0">
+                                    <div class=" ">
+                                    </div>
+                                    @endif
+                                    @if(!empty($grundversicherungP[$i]))
+                                    <div class="">
                                 <span class="spn-normal">
                                     Grundversicherung
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
-                                    251.00 CHF
+                                    {{$grundversicherungP[$i]->total_commisions_PG}} CHF
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class=" ">
-                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
-                                        AUFGENOMMEN
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row my-1 mx-3">
-                            <div class="col g-0">
-                                <div class="">
-                                <span class="spn-normal">
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($grundversicherungP[$i]->status_PG == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($grundversicherungP[$i]->status_PG)}}
+                                            </button>
+                                        @endif
+                                        @if($grundversicherungP[$i]->status_PG == 'Aufgenomen')
+                                        <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                            {{strtoupper($grundversicherungP[$i]->status_PG)}}
+                                        </button>
+                                        @endif
+                                        @if($grundversicherungP[$i]->status_PG == 'Offen')
+                                                <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                    {{strtoupper($grundversicherungP[$i]->status_PG)}}
+                                                </button>
+                                        @endif
+                                        @if($grundversicherungP[$i]->status_PG == 'Provisionert')
+                                                <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                    {{strtoupper($grundversicherungP[$i]->status_PG)}}
+                                                </button>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
 
-                                </span>
-                                </div>
                             </div>
-                            <div class="col g-0">
-                                <div class="">
-                                <span class="spn-normal">
 
-                                </span>
-                                </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
-                                <span class="spn-normal">
-
-                                </span>
-                                </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
-                                <span class="spn-normal">
-
-                                </span>
-                                </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
-                                <span class="spn-normal">
-                                    Zusatversicherung
-                                </span>
-                                </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
-                                <span class="spn-normal">
-                                    45.00 CHF
-                                </span>
-                                </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class=" ">
-                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
-                                        AUFGENOMMEN
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row my-1 mx-3">
-                            <div class="col g-0">
-                                <div class="">
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+
+                                <div class="col g-0">
+                                    @if(!empty($retchsschutzP[$i]))
+                                    <div class="">
                                 <span class="spn-normal">
-                                    Autoversicherung
+                                    Rechtsschutz
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
-                                    2250.00 CHF
+                                    {{$retchsschutzP[$i]->total_commisions_PR}} CHF
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class=" ">
-                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
-                                        PROVISIONERT
-                                    </button>
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($retchsschutzP[$i]->status_PR == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($retchsschutzP[$i]->status_PR)}}
+                                            </button>
+                                        @endif
+                                        @if($retchsschutzP[$i]->status_PR == 'Aufgenomen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                                {{strtoupper($retchsschutzP[$i]->status_PR)}}
+                                            </button>
+                                        @endif
+                                        @if($retchsschutzP[$i]->status_PR == 'Offen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                {{strtoupper($retchsschutzP[$i]->status_PR)}}
+                                            </button>
+                                        @endif
+                                        @if($retchsschutzP[$i]->status_PR == 'Provisionert')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                {{strtoupper($retchsschutzP[$i]->status_PR)}}
+                                            </button>
+                                        @endif
+                                    </div>
+                                    @endif
                                 </div>
+
                             </div>
-                        </div>
-                        <div class="row my-1 mx-3">
-                            <div class="col g-0">
-                                <div class="">
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
 
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+
+                                <div class="col g-0">
+                                    @if(!empty($vorsorgeP[$i]))
+                                    <div class="">
                                 <span class="spn-normal">
-                                    Lebensversicherung
+                                    Vorsorge
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class="">
+                                <div class="col g-0">
+                                    <div class="">
                                 <span class="spn-normal">
-                                    250.00 CHF
+                                    {{$vorsorgeP[$i]->total_commisions_PV}} CHF
                                 </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col g-0">
-                                <div class=" ">
-                                    <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
-                                        OFFEN
-                                    </button>
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($vorsorgeP[$i]->status_PV == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($vorsorgeP[$i]->status_PV)}}
+                                            </button>
+                                        @endif
+                                        @if($vorsorgeP[$i]->status_PV == 'Aufgenomen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                                {{strtoupper($vorsorgeP[$i]->status_PV)}}
+                                            </button>
+                                        @endif
+                                        @if($vorsorgeP[$i]->status_PV == 'Offen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                {{strtoupper($vorsorgeP[$i]->status_PV)}}
+                                            </button>
+                                        @endif
+                                        @if($vorsorgeP[$i]->status_PV == 'Provisionert')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                {{strtoupper($vorsorgeP[$i]->status_PV)}}
+                                            </button>
+                                        @endif
+                                    </div>
+                                    @endif
                                 </div>
+
                             </div>
-                        </div>
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+
+                                <div class="col g-0">
+                                    @if(!empty($zusatzversicherungP[$i]))
+                                    <div class="">
+                                <span class="spn-normal">
+                                    Zusatzversicherung
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+                                    {{$zusatzversicherungP[$i]->total_commisions_PZ}} CHF
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($zusatzversicherungP[$i]->status_PZ == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($zusatzversicherungP[$i]->status_PZ)}}
+                                            </button>
+                                        @endif
+                                        @if($zusatzversicherungP[$i]->status_PZ == 'Aufgenomen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                                {{strtoupper($zusatzversicherungP[$i]->status_PZ)}}
+                                            </button>
+                                        @endif
+                                        @if($zusatzversicherungP[$i]->status_PZ == 'Offen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                {{strtoupper($zusatzversicherungP[$i]->status_PZ)}}
+                                            </button>
+                                        @endif
+                                        @if($zusatzversicherungP[$i]->status_PZ == 'Provisionert')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                {{strtoupper($zusatzversicherungP[$i]->status_PZ)}}
+                                            </button>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
+
+                            </div>
                         </a>
                         <hr>
-                    @endforeach
+                    @endfor
                 </div>
 
             </div>

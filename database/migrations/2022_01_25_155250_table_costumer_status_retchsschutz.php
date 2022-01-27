@@ -22,6 +22,7 @@ class TableCostumerStatusRetchsschutz extends Migration
             $table->date('modification_dateR')->nullable();
             $table->string('provisionR')->nullable();
             $table->string('cidR')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
         });
     }

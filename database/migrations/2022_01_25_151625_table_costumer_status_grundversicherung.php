@@ -22,6 +22,7 @@ class TableCostumerStatusGrundversicherung extends Migration
             $table->date('modification_dateG')->nullable();
             $table->string('provisionG')->nullable();
             $table->string('cidG')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
         });
     }

@@ -1,6 +1,15 @@
 <?php
 
 use App\Events\SendNotification;
+use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktRechtsschutz;
+use App\Models\CostumerProduktVorsorge;
+use App\Models\CostumerProduktZusatzversicherung;
+use App\Models\CostumerStatusGrundversicherung;
+use App\Models\CostumerStatusHausrat;
+use App\Models\CostumerStatusRetchsschutz;
+use App\Models\CostumerStatusVorsorge;
+use App\Models\CostumerStatusZusatzversicherung;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
@@ -50,7 +59,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
       $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug')->paginate(200);
    }
-  
+
      $leads['admins'] = Admins::role(['fs','digital'])->get();
      $leads['admin'] = Auth::user()->getRoleNames();
 
@@ -185,12 +194,35 @@ route::prefix('')->middleware('confirmcode')->group(function(){
 
     route::get('costumer_form/{id}',function ($id){
         $id = Crypt::decrypt($id) / 1244;
+        $family = family::where('id',$id)->first();
+        if ($family->kundportfolio == 0) {
+            $costumer = family::findOrFail($id);
+            return view('costumer_form')->with(compact('costumer'));
+        }else{
+            $grundversicherung = CostumerStatusGrundversicherung::where('person_idG',$id)->first();
+            $hausrat = CostumerStatusHausrat::where('person_idH',$id)->first();
+            $retchsschutz = CostumerStatusRetchsschutz::where('person_idR',$id)->first();
+            $vorsorge = CostumerStatusVorsorge::where('person_idV',$id)->first();
+            $zusatzversicherung = CostumerStatusZusatzversicherung::where('person_idZ',$id)->first();
+            $grundversicherungP = CostumerProduktGrundversicherung::where('person_id_PG',$id)->first();
+            $retchsschutzP = CostumerProduktRechtsschutz::where('person_id_PR',$id)->first();
+            $vorsorgeP = CostumerProduktVorsorge::where('person_id_PV',$id)->first();
+            $zusatzversicherungP = CostumerProduktZusatzversicherung::where('person_id_PZ',$id)->first();
+            $costumer = family::findOrFail($id);
+            return view('edit_costumer_form')
+                ->with(compact('costumer', 'grundversicherung',
+                    'hausrat', 'retchsschutz', 'vorsorge',
+                    'zusatzversicherung', 'grundversicherungP',
+                    'retchsschutzP', 'vorsorgeP', 'zusatzversicherungP'));
+        }
 
-        $costumer = family::findOrFail($id);
-        return view('costumer_form')->with(compact('costumer'));
     })->name('costumer_form');
 
+
+
     route::post('save_costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'save_costumer_form'])->name('save_costumer_form');
+    route::post('edit_costumer_kundportfolio/{id}',[\App\Http\Controllers\CostumerFormController::class,'edit_costumer_kundportfolio'])->name('edit_costumer_kundportfolio');
+
 
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
+use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktRechtsschutz;
+use App\Models\CostumerProduktVorsorge;
+use App\Models\CostumerProduktZusatzversicherung;
 use App\Models\family;
 use App\Models\lead;
 use App\Models\notification;
@@ -216,7 +220,7 @@ public function assignpendency(Request $req){
               $cnt++;
 
           }
-     
+
       }
       }
     }
@@ -313,24 +317,33 @@ public function assignpendency(Request $req){
         return view('costumers', compact('data'));
 
     }else {
-        if (Auth::guard('admins')->check()){
-            $data = family::where('status','Done')->get();
+        if (Auth::guard('admins')->check()) {
+            $data = family::where('status', 'Done')->get();
         }
         if ($searchname != null) {
             $data = family::where('last_name', 'like', '%' . $searchname . '%')
                 ->orWhere('first_name', 'like', '%' . $searchname . '%')
-                ->where('status','Done')
+                ->where('status', 'Done')
                 ->get();
         }
         if (isset($request->searchdate1) && isset($request->searchdate2)) {
-            $data = family::where('status','Done')
-            ->whereBetween('created_at', [$date1, $date2])->get();
+            $data = family::where('status', 'Done')
+                ->whereBetween('created_at', [$date1, $date2])->get();
         }
         $contracts = [];
         $datcnt = 0;
-    
+        $cnt = 0;
+        foreach ($data as $dat) {
+            $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
 
-        return view('costumers', compact('data', 'contracts'));
+
+            $cnt++;
+        }
+
+        return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
     }
   }
 
