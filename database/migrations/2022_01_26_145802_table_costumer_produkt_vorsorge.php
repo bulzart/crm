@@ -27,6 +27,7 @@ class TableCostumerProduktVorsorge extends Migration
             $table->string('status_PV')->nullable();
             $table->date('last_adjustment_PV')->nullable();
             $table->string('total_commisions_PV')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
         });
     }

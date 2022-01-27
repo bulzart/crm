@@ -22,6 +22,7 @@ class TableCostumerStatusZusatzversicherung extends Migration
             $table->date('modification_dateZ')->nullable();
             $table->string('provisionZ')->nullable();
             $table->string('cidZ')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
         });
     }

@@ -22,6 +22,7 @@ class TableCostumerStatusHausrat extends Migration
             $table->date('modification_dateH')->nullable();
             $table->string('provisionH')->nullable();
             $table->string('cidH')->nullable();
+            $table->integer('selected')->default(0);
             $table->timestamps();
         });
     }
