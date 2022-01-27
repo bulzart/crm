@@ -48,11 +48,8 @@ else{
   }
 
  public function sendmessage($u1,$u2,Request $req){
-
-     $u1 = Crypt::decrypt($u1) / 1244;
-
-     $u2 = Crypt::decrypt($u2) / 1244;
-
+  $u1 = Crypt::decrypt($u1) / 1244;
+  $u2 = Crypt::decrypt($u2) / 1244;
 
    $type = "";
    if($req->hasFile('file')) { $type = "file"; $text = $this->storeFile($req->file('file'),'img');}
