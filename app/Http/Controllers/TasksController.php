@@ -24,12 +24,25 @@ class TasksController extends Controller
 {
 public function assignpendency(Request $req){
   $id = (int) $req->id;
+
+  $pendency = Pendency::where('family_id',(int)$req->id)->first();
+  if(!$pendency){
     $pendency = new Pendency();
   $pendency->admin_id = (int) $req->admin;
   $pendency->family_id = (int) $req->id;
   $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
-  $family = DB::table('family_person')->where('id','=',$id)->update(['status' => 'Open']);
+
   $pendency->save();
+  }
+  else{
+    $pendency->admin_id = (int) $req->admin;
+    $pendency->done = 0;
+    $pendency->completed = 0;
+    $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
+    $pendency->save();
+
+  }
+  $family = DB::table('family_person')->where('id','=',$id)->update(['status' => 'Open']);
 
 }
   public function accepttask($id)
@@ -53,12 +66,13 @@ public function assignpendency(Request $req){
     $data = null;
     $cnt = 0;
     if ($req->date != null) {
-      if ($admin->hasRole('admin')) {
+      if ($admin->hasRole('admin') || Auth::user()->hasRole('salesmanager')) {
         foreach (DB::table('leads')
         ->where('wantsonline', 0)
         ->where('appointment_date', $req->date)
         ->whereNotNull('assign_to_id')
         ->orderBy('time','desc')
+        ->where('assigned',1)
         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
         ->paginate(15) as $d){
             $data[$cnt] = $d;
@@ -75,6 +89,7 @@ public function assignpendency(Request $req){
                        ->where('appointment_date', $req->date)
                        ->whereNotNull('assign_to_id')
                        ->orderBy('time','desc')
+                       ->where('assigned',1)
               ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->paginate(15) as $d){
@@ -87,13 +102,29 @@ public function assignpendency(Request $req){
 
 
       }
+      elseif(Auth::user()->hasRole('digital')) {
+        foreach (DB::table('leads')
+                       ->where('wantsonline', 1)
+                       ->where('appointment_date', $req->date)
+                       ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                       ->orderBy('time','desc')
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->paginate(15) as $d){
+              $data[$cnt] = $d;
+              $val = (int) $d->id;
+              $data[$cnt]->id = Crypt::encrypt($val * 1244);
+              $cnt++;
+
+          }
+      }
     } else {
-      if ($admin->hasRole('admin')) {
+      if ($admin->hasRole('admin') || Auth::user()->hasRole('salesmanager')) {
         if ($now > 2300) {
             foreach (DB::table('leads')
                          ->where('wantsonline', 0)
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
+                         ->where('assigned',1)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                          ->paginate(15) as $d){
@@ -109,6 +140,7 @@ public function assignpendency(Request $req){
                          ->where('wantsonline', 0)
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
+                         ->where('assigned',1)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->paginate(15) as $d){
                 $data[$cnt] = $d;
@@ -126,6 +158,7 @@ public function assignpendency(Request $req){
                          ->where('wantsonline', 0)
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
+                         ->where('assigned',1)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                          ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
@@ -141,6 +174,7 @@ public function assignpendency(Request $req){
                          ->where('wantsonline', 0)
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
+                         ->where('assigned',1)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                          ->paginate(15) as $d){
@@ -151,6 +185,39 @@ public function assignpendency(Request $req){
 
             }
         }
+      }
+      elseif(Auth::user()->hasRole('digital')){
+
+        if ($now > 2300) {
+          foreach (DB::table('leads')
+                       ->where('wantsonline', 1)
+                       ->whereNotNull('assign_to_id')
+                       ->orderBy('time','desc')
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+                       ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                       ->paginate(15) as $d){
+              $data[$cnt] = $d;
+              $val = (int) $d->id;
+              $data[$cnt]->id = Crypt::encrypt($val * 1244);
+              $cnt++;
+
+          }
+      } else {
+          foreach (DB::table('leads')
+                       ->where('wantsonline', 1)
+                       ->orderBy('time','desc')
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                       ->paginate(15) as $d){
+              $data[$cnt] = $d;
+              $val = (int) $d->id;
+              $data[$cnt]->id = Crypt::encrypt($val * 1244);
+              $cnt++;
+
+          }
+     
+      }
       }
     }
     return $data;
@@ -191,17 +258,18 @@ public function assignpendency(Request $req){
 
   public function searchword()
   {
-      if(Auth::guard('admins')->user()->hasRole('fs')){
+      if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('fs')){
           $data = DB::table('family_person')
               ->join('leads','family_person.leads_id','=','leads.id')
               ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+              ->where('family_person.status','Done')
               ->select('family_person.*')
               ->orderBy('family_person.first_name','asc')
               ->get();
           return view('costumers', compact('data'));
 
       }else{
-          $data = family::orderBy('first_name','asc')->get();
+          $data = family::where('status','Done')->orderBy('first_name','asc')->get();
           return view('costumers', compact('data'));
       }
   }
@@ -213,10 +281,11 @@ public function assignpendency(Request $req){
       $n = date('Y-m-d', strtotime($request->searchdate2));
       $date2 = date('Y-m-d', strtotime($n . "+1 days"));
       $searchname = $request->searchname;
-    if(Auth::guard('admins')->user()->hasRole('fs')){
+    if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('digital')){
         $data = DB::table('family_person')
             ->join('leads','family_person.leads_id','=','leads.id')
             ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+            ->where('family_person.status','Done')
             ->select('family_person.*')
             ->get();
         if ($searchname != ''){
@@ -225,6 +294,7 @@ public function assignpendency(Request $req){
                 ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
                 ->where('family_person.first_name','like','%'.$searchname.'%')
                 ->orWhere('family_person.last_name','like','%'.$searchname.'%')
+                ->where('family_person.status','Done')
                 ->select('family_person.*')
                 ->get();
 
@@ -233,6 +303,7 @@ public function assignpendency(Request $req){
             $data = DB::table('family_person')
                 ->join('leads','family_person.leads_id','=','leads.id')
                 ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+                ->where('family_person.status','Done')
                 ->whereBetween('family_person.created_at', [$date1, $date2])
                 ->select('family_person.*')
                 ->get();
@@ -243,29 +314,21 @@ public function assignpendency(Request $req){
 
     }else {
         if (Auth::guard('admins')->check()){
-            $data = family::all();
+            $data = family::where('status','Done')->get();
         }
         if ($searchname != null) {
             $data = family::where('last_name', 'like', '%' . $searchname . '%')
-                ->orWhere('first_name', 'like', '%' . $searchname . '%')->get();
+                ->orWhere('first_name', 'like', '%' . $searchname . '%')
+                ->where('status','Done')
+                ->get();
         }
         if (isset($request->searchdate1) && isset($request->searchdate2)) {
-            $data = family::whereBetween('created_at', [$date1, $date2])->get();
+            $data = family::where('status','Done')
+            ->whereBetween('created_at', [$date1, $date2])->get();
         }
         $contracts = [];
         $datcnt = 0;
-        foreach ($data as $dat) {
-
-            if (Auth::guard('admins')->user()->hasRole('fs') && $dat->assign_to_id != Auth::guard('admins')->user()->id) {
-                unset($data[$datcnt]);
-                $datcnt++;
-            }
-
-
-            if ($dat->contracts != null) {
-                $contracts[$dat->id] = json_decode($dat->contracts);
-            }
-        }
+    
 
         return view('costumers', compact('data', 'contracts'));
     }
@@ -351,12 +414,10 @@ public function assignpendency(Request $req){
     }
     if (Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')) {
 if(Auth::guard('admins')->user()->hasRole('admin')){
-      $tasks = DB::table('leads')
-      ->where('completed','=','0')
-      ->where('status_contract','!=','Done')
-      ->orWhereNull('status_contract')
-      ->where('status_task','!=','Done')
-      ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
+      $tasks = DB::table('family_person')
+      ->join('leads','family_person.leads_id','=','leads.id')
+      ->where('status','!=','Done')
+      ->select('family_person.*')
       ->paginate(20);
 
 
@@ -380,14 +441,13 @@ if(Auth::guard('admins')->user()->hasRole('admin')){
 
     }
     else{
-      $tasks = DB::table('leads')
-      ->where('completed','=','0')
-      ->where('status_contract','!=','Done')
-      ->orWhereNull('status_contract')
-      ->where('status_task','!=','Done')
-      ->where('assign_to_id',Auth::guard('admins')->user()->id)
-      ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
+      $tasks = DB::table('family_person')
+      ->join('leads','family_person.leads_id','=','leads.id')
+      ->where('status','!=','Done')
+      ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+      ->select('family_person.*')
       ->paginate(20);
+
        $tasks2 = [];
       $cntt = 0;
 

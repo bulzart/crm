@@ -41,7 +41,6 @@ class Admins extends Authenticatable
         'online',
         'confirmed',
         'firsttime',
-        'id',
         'created_at',
         'updated_at',
         'email_verified_at'

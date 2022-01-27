@@ -15,13 +15,14 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $roles = [
-            1 => 'fs',
+            1 => 'admin',
             2 => 'backoffice',
             3 => 'salesmanager',
             4 => 'management',
             5 => 'finance',
-            6 => 'admin'
-        ];
+            6 => 'digital',
+            7 => 'fs'
+         ];
 
 
 

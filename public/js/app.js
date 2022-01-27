@@ -5647,6 +5647,337 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      leads: null,
+      admin: null,
+      admins: null,
+      array: [],
+      role: null
+    };
+  },
+  mounted: function mounted() {
+    this.getleads();
+  },
+  methods: {
+    getleads: function getleads() {
+      var _this = this;
+
+      axios.get("getleads").then(function (response) {
+        _this.leads = response.data.leads.data;
+        _this.admins = response.data.admins;
+        _this.admin = response.data.admins[0].id;
+        _this.role = response.data.admin[0];
+      });
+    },
+    getit: function getit(event) {
+      if (event.target.checked) {
+        this.array.push(parseInt(event.target.value));
+      } else {
+        this.array.pop(parseInt(event.target.value));
+      }
+    },
+    assign: function assign() {
+      axios.get("assigntofs" + "/" + this.admin + "?array=" + this.array.toString()).then(this.getleads());
+    },
+    changeadmin: function changeadmin(event) {
+      this.admin = parseInt(event.target.value);
+    },
+    arrpush: function arrpush(val) {
+      this.array.push(val);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/notifications.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/notifications.vue?vue&type=script&lang=js& ***!
@@ -5991,6 +6322,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('notifications', (__webpac
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('calendar', (__webpack_require__(/*! ./components/calendar.vue */ "./resources/js/components/calendar.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('chat', (__webpack_require__(/*! ./components/chat.vue */ "./resources/js/components/chat.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('todo', (__webpack_require__(/*! ./components/todo.vue */ "./resources/js/components/todo.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('leads', (__webpack_require__(/*! ./components/leads.vue */ "./resources/js/components/leads.vue")["default"]));
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
@@ -28580,6 +28912,45 @@ component.options.__file = "resources/js/components/chat.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/leads.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/leads.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./leads.vue?vue&type=template&id=c010fc48& */ "./resources/js/components/leads.vue?vue&type=template&id=c010fc48&");
+/* harmony import */ var _leads_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leads.vue?vue&type=script&lang=js& */ "./resources/js/components/leads.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _leads_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.render,
+  _leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/leads.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/notifications.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/notifications.vue ***!
@@ -28690,6 +29061,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/leads.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/leads.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/notifications.vue?vue&type=script&lang=js&":
 /*!****************************************************************************!*\
   !*** ./resources/js/components/notifications.vue?vue&type=script&lang=js& ***!
@@ -28752,6 +29139,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_chat_vue_vue_type_template_id_151b8bba___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_chat_vue_vue_type_template_id_151b8bba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./chat.vue?vue&type=template&id=151b8bba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/chat.vue?vue&type=template&id=151b8bba&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/leads.vue?vue&type=template&id=c010fc48&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/leads.vue?vue&type=template&id=c010fc48& ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=template&id=c010fc48& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48&");
 
 
 /***/ }),
@@ -29693,6 +30097,878 @@ var render = function () {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "appointments-sm-div" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "appointments-content py-3" }, [
+        _c(
+          "div",
+          {
+            staticClass: "overflow-div1",
+            staticStyle: {
+              height: "43vh !important",
+              "overflow-y": "scroll",
+              "overflow-x": "hidden !important",
+            },
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "row mx-1" },
+              _vm._l(_vm.leads, function (lead) {
+                return _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-6 col-xs-6 col-sm-6 col-md-4 col-lg-6 g-0",
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: {
+                          id: lead.slug + "r",
+                          "data-bs-backdrop": "static",
+                          "data-bs-keyboard": "false",
+                          tabindex: "-1",
+                          "aria-labelledby": "staticBackdropLabel",
+                          "aria-hidden": "true",
+                        },
+                      },
+                      [_vm._m(1, true)]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-1 pe-0 my-auto text-end" },
+                        [
+                          _vm.role != "fs"
+                            ? _c("div", [
+                                _c("input", {
+                                  attrs: { type: "checkbox" },
+                                  domProps: { value: lead.id },
+                                  on: {
+                                    change: function ($event) {
+                                      return _vm.getit($event)
+                                    },
+                                  },
+                                }),
+                              ])
+                            : _vm._e(),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col ps-0" }, [
+                        _vm.role != "fs"
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "py-1 my-2 mx-1",
+                                staticStyle: {
+                                  "background-color": "#4EC590",
+                                  "border-radius": "15px",
+                                  color: "#fff",
+                                },
+                                attrs: {
+                                  "data-bs-toggle": "modal",
+                                  "data-bs-target": "asign",
+                                },
+                              },
+                              [
+                                _c("div", { staticClass: "row mx-2" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-12 col-sm-12 col-md-12 col-lg-12 g-0 py-1 text-center",
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "text-center" },
+                                        [
+                                          lead.wantsonline == 1
+                                            ? _c(
+                                                "span",
+                                                {
+                                                  staticClass: "fw-bold fs-5",
+                                                  staticStyle: {
+                                                    color: "#ffc04d",
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                               " +
+                                                      _vm._s(lead.first_name) +
+                                                      " " +
+                                                      _vm._s(lead.last_name) +
+                                                      "\n                                                            "
+                                                  ),
+                                                ]
+                                              )
+                                            : _c(
+                                                "span",
+                                                { staticClass: "fw-bold fs-5" },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                                 " +
+                                                      _vm._s(lead.first_name) +
+                                                      " " +
+                                                      _vm._s(lead.last_name) +
+                                                      "\n                                                            "
+                                                  ),
+                                                ]
+                                              ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                              ]
+                            )
+                          : _c(
+                              "div",
+                              {
+                                staticClass: "py-1 my-2 mx-1",
+                                staticStyle: {
+                                  "background-color": "#4EC590",
+                                  "border-radius": "15px",
+                                  color: "#fff",
+                                },
+                                attrs: {
+                                  "data-bs-toggle": "modal",
+                                  "data-bs-target": "#" + lead.slug,
+                                },
+                              },
+                              [
+                                _c("div", { staticClass: "row mx-2" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-7 col-sm-12 col-md-12 col-lg-7 g-0 py-1 text-center",
+                                    },
+                                    [
+                                      _c("div", {}, [
+                                        _c(
+                                          "span",
+                                          { staticClass: "fw-bold fs-5" },
+                                          [
+                                            _vm._v(
+                                              "\n                                                               " +
+                                                _vm._s(lead.first_name) +
+                                                "\n                                                            "
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._m(2, true),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "modal fade",
+                                    attrs: {
+                                      id: lead.slug,
+                                      tabindex: "-1",
+                                      "aria-labelledby": "exampleModalLabel",
+                                      "aria-hidden": "true",
+                                    },
+                                  },
+                                  [
+                                    _c("div", { staticClass: "modal-dialog" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "modal-content" },
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "modal-header" },
+                                            [
+                                              _c(
+                                                "h5",
+                                                {
+                                                  staticClass: "modal-title",
+                                                  attrs: {
+                                                    id: "exampleModalLabel",
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(lead.first_name)
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("button", {
+                                                staticClass: "btn-close",
+                                                attrs: {
+                                                  type: "button",
+                                                  "data-bs-dismiss": "modal",
+                                                  "aria-label": "Close",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "modal-body" },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass: "mb-3 mt-2 mx-2",
+                                                },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    { staticClass: "text-end" },
+                                                    [
+                                                      _c(
+                                                        "button",
+                                                        {
+                                                          staticClass:
+                                                            "bg-white border-0 fs-5 fw-bold",
+                                                          attrs: {
+                                                            type: "button",
+                                                            id: "closeButton",
+                                                          },
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "svg",
+                                                            {
+                                                              attrs: {
+                                                                xmlns:
+                                                                  "http://www.w3.org/2000/svg",
+                                                                width: "21.123",
+                                                                height:
+                                                                  "21.352",
+                                                                viewBox:
+                                                                  "0 0 21.123 21.352",
+                                                              },
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "g",
+                                                                {
+                                                                  attrs: {
+                                                                    id: "Group_500",
+                                                                    "data-name":
+                                                                      "Group 500",
+                                                                    transform:
+                                                                      "translate(-210.779 -966.838)",
+                                                                  },
+                                                                },
+                                                                [
+                                                                  _c("line", {
+                                                                    attrs: {
+                                                                      id: "Line_24",
+                                                                      "data-name":
+                                                                        "Line 24",
+                                                                      y1: "18.295",
+                                                                      x2: "18.295",
+                                                                      transform:
+                                                                        "translate(212.193 968.252)",
+                                                                      fill: "none",
+                                                                      stroke:
+                                                                        "#ff0d13",
+                                                                      "stroke-linecap":
+                                                                        "round",
+                                                                      "stroke-width":
+                                                                        "2",
+                                                                    },
+                                                                  }),
+                                                                  _vm._v(" "),
+                                                                  _c("line", {
+                                                                    attrs: {
+                                                                      id: "Line_25",
+                                                                      "data-name":
+                                                                        "Line 25",
+                                                                      x2: "18.295",
+                                                                      y2: "18.295",
+                                                                      transform:
+                                                                        "translate(212.193 968.481)",
+                                                                      fill: "none",
+                                                                      stroke:
+                                                                        "#ff0d13",
+                                                                      "stroke-linecap":
+                                                                        "round",
+                                                                      "stroke-width":
+                                                                        "2",
+                                                                    },
+                                                                  }),
+                                                                ]
+                                                              ),
+                                                            ]
+                                                          ),
+                                                        ]
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("div", {}, [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "container pb-5",
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "row  mx-4",
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "col-5  py-3 g-0",
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "mx-3",
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "span",
+                                                                  {
+                                                                    staticClass:
+                                                                      "fs-3 fw-bold text-dark",
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "\n                                           " +
+                                                                        _vm._s(
+                                                                          lead.first_name
+                                                                        ) +
+                                                                        "\n                                        "
+                                                                    ),
+                                                                  ]
+                                                                ),
+                                                              ]
+                                                            ),
+                                                            _vm._v(" "),
+                                                            _vm._m(3, true),
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "col py-3",
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "d-flex justify-content-center",
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "a",
+                                                                  {
+                                                                    staticClass:
+                                                                      "btn fw-bold fs-5 py-3 w-100",
+                                                                    staticStyle:
+                                                                      {
+                                                                        "background-color":
+                                                                          "#4EC590",
+                                                                        color:
+                                                                          "#fff",
+                                                                        "border-radius":
+                                                                          "10px",
+                                                                      },
+                                                                    attrs: {
+                                                                      href:
+                                                                        "tel:" +
+                                                                        lead.telephone,
+                                                                    },
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      "\n                                            Call\n                                        "
+                                                                    ),
+                                                                  ]
+                                                                ),
+                                                              ]
+                                                            ),
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "col py-3",
+                                                          },
+                                                          [
+                                                            _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "d-flex justify-content-start",
+                                                              },
+                                                              [
+                                                                _c(
+                                                                  "a",
+                                                                  {
+                                                                    attrs: {
+                                                                      href:
+                                                                        "pendingreject/" +
+                                                                        lead.id +
+                                                                        "/1",
+                                                                    },
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "button",
+                                                                      {
+                                                                        staticClass:
+                                                                          "btn fw-bold fs-5 py-3  w-100",
+                                                                        staticStyle:
+                                                                          {
+                                                                            "background-color":
+                                                                              "#E50A10",
+                                                                            color:
+                                                                              "#fff",
+                                                                            "border-radius":
+                                                                              "10px",
+                                                                          },
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          "\n                                            Reject\n                                        "
+                                                                        ),
+                                                                      ]
+                                                                    ),
+                                                                  ]
+                                                                ),
+                                                              ]
+                                                            ),
+                                                          ]
+                                                        ),
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("hr"),
+                                                    _vm._v(" "),
+                                                    _vm._m(4, true),
+                                                  ]
+                                                ),
+                                              ]),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "modal-footer" },
+                                            [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-secondary",
+                                                  attrs: {
+                                                    type: "button",
+                                                    "data-bs-dismiss": "modal",
+                                                  },
+                                                },
+                                                [_vm._v("Close")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  attrs: {
+                                                    href:
+                                                      "pendingreject/" +
+                                                      lead.id +
+                                                      "/0",
+                                                  },
+                                                },
+                                                [
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "btn fw-bold fs-6",
+                                                      staticStyle: {
+                                                        "background-color":
+                                                          "#FF860D",
+                                                        color: "#fff",
+                                                        "border-radius": "10px",
+                                                      },
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                Pending\n                                            "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn fw-bold fs-6 ",
+                                                  staticStyle: {
+                                                    "background-color":
+                                                      "#E50A10",
+                                                    color: "#fff",
+                                                    "border-radius": "10px",
+                                                  },
+                                                  attrs: {
+                                                    "data-bs-toggle": "modal",
+                                                    "data-bs-target":
+                                                      "#" + lead.slug + "r",
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                Reject\n                                            "
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticClass:
+                                                    "btn fw-bold fs-6  ",
+                                                  staticStyle: {
+                                                    "background-color":
+                                                      "#4EC590",
+                                                    color: "#fff",
+                                                    "border-radius": "10px",
+                                                  },
+                                                  attrs: {
+                                                    href: "alead/" + lead.id,
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                Go\n                                            "
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                  ]
+                                ),
+                              ]
+                            ),
+                      ]),
+                    ]),
+                  ]
+                )
+              }),
+              0
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex justify-content-center py-2" }, [
+          _vm.role != "fs"
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn px-4 fw-bold fs-5",
+                  staticStyle: {
+                    "background-color": "#4EC590",
+                    color: "#fff",
+                    "border-radius": "10px",
+                  },
+                  attrs: {
+                    "data-bs-toggle": "modal",
+                    "data-bs-target": "#asign",
+                  },
+                },
+                [
+                  _vm._v(
+                    "\n                                Assign\n                            "
+                  ),
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: "asign",
+                tabindex: "-1",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true",
+              },
+            },
+            [
+              _c("div", { staticClass: "modal-dialog" }, [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control",
+                        on: {
+                          change: function ($event) {
+                            return _vm.changeadmin($event)
+                          },
+                        },
+                      },
+                      _vm._l(_vm.admins, function (admin) {
+                        return _c("option", { domProps: { value: admin.id } }, [
+                          _vm._v(_vm._s(admin.name)),
+                        ])
+                      }),
+                      0
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.assign.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [_vm._v("Assign")]
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]
+          ),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row pt-4 pb-2" }, [
+      _c("div", { staticClass: "col-5 header-title g-0" }, [
+        _c("div", { staticClass: "text-start ps-5" }, [
+          _c("span", { staticClass: "fw-600 text-color fs-5" }, [
+            _vm._v(
+              "\n                                    Leads\n                                "
+            ),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "col appointment-filter my-auto text-end g-0 pe-5",
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-dialog" }, [
+      _c("div", { staticClass: "modal-content" }, [
+        _c("div", { staticClass: "modal-header" }, [
+          _c(
+            "h5",
+            {
+              staticClass: "modal-title",
+              attrs: { id: "staticBackdropLabel" },
+            },
+            [_vm._v("Modal title")]
+          ),
+          _vm._v(" "),
+          _c("button", {
+            staticClass: "btn-close",
+            attrs: {
+              type: "button",
+              "data-bs-dismiss": "modal",
+              "aria-label": "Close",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-body" }, [
+          _c("select", { staticClass: "form-control" }, [
+            _c("option", { attrs: { value: "Falsche nummer" } }, [
+              _vm._v("Falsche nummer"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Hat schon gewechselt" } }, [
+              _vm._v("Hat schon gewechselt"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Kein interesse" } }, [
+              _vm._v("Kein interesse"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Krank" } }, [_vm._v("Krank")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Kunde bereits terminiert" } }, [
+              _vm._v("Kunde bereits terminiert"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Nicht Brauchbar" } }, [
+              _vm._v("Nicht Brauchbar"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Nicht erreicht" } }, [
+              _vm._v("Nicht erreicht"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Online Offerte" } }, [
+              _vm._v("Online Offerte"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Spater Anrufen" } }, [
+              _vm._v("Spater Anrufen"),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Terminiert" } }, [
+              _vm._v("Terminiert"),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-footer" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary",
+              attrs: { type: "button", "data-bs-dismiss": "modal" },
+            },
+            [_vm._v("Close")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "button" } },
+            [_vm._v("Save")]
+          ),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col g-0 my-auto" }, [
+      _c("div", {}, [_c("span")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mx-3" }, [
+      _c("span", { staticClass: "fs-6 text-dark" }, [
+        _vm._v(
+          "\n                                            Raumweg 23, 3700 Thun\n                                        "
+        ),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mx-4" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("div", {}, [
+          _c("div", { staticClass: "d-flex justify-content-center my-2" }),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Modal title")]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -42331,7 +43607,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\Kutiza\\\\crm"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\Kutiza\\\\crm","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 

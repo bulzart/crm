@@ -1,4 +1,6 @@
 <?php
+
+use App\Events\SendNotification;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
@@ -21,12 +23,15 @@ use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TeamController;
+use App\Listeners\SendNotificationListener;
+use App\Models\campaigns;
 use App\Models\lead;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Session\Session;
 use Musonza\Chat\Chat;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Arr;
 
 
 
@@ -34,6 +39,38 @@ use Illuminate\Support\Facades\Crypt;
 
 
 route::prefix('')->middleware('confirmcode')->group(function(){
+   route::get('addlead',function(){
+      $campaigns = campaigns::all();
+      return view('addlead',compact('campaigns'));
+   });
+   route::get('getleads',function(){
+      if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->orderBy('updated_at','asc')->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug')->paginate(200);
+         $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->paginate(200);
+     } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug')->paginate(200);
+   }
+  
+     $leads['admins'] = Admins::role(['fs','digital'])->get();
+     $leads['admin'] = Auth::user()->getRoleNames();
+
+     return $leads;
+   });
+   route::post('addslead',[UserController::class,'addslead'])->name('addslead');
+   route::get('assigntofs/{admin}',function($admin = null,Request $req){
+      $array = $req->array;
+      $array = explode(",",$array);
+      if(Admins::find($admin)->hasRole('fs')){
+        foreach($array as $arr){
+       lead::find($arr)->update(['assign_to_id' => $admin,'updated_at' => Carbon::now()->format('Y-m-d')]);
+        }
+      }
+      else{
+         foreach($array as $arr){
+            lead::find($arr)->update(['assign_to_id' => $admin,'updated_at' => Carbon::now()->format('Y-m-d'),'assigned' => 1]);
+             }
+      }
+   })->name('assigntofs');
    route::get('assignpendency',[TasksController::class,'assignpendency']);
 // =====================================
    route::get('hyr',function(){
@@ -99,7 +136,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }
                      else{
-                        return redirect()->route('dealclosed',Crypt::encrypt($idd*1244));
+                        return redirect()->route('dealclosed',Crypt::encrypt($idd * 1244));
                      }
 
                   }
@@ -228,3 +265,15 @@ route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
 route::get('getadmin',function (){
    return Auth::guard('admins')->user()->id;
 });
+route::get('pendingreject/{id}/{where}',function($id,$where){
+   $leads = lead::find($id);
+  if($where == 0){
+
+   return view('pendingreject')->with('pojo',false)->with('leads',lead::find($id));
+  }
+  else{
+
+   return view('pendingreject')->with('pojo',true)->with('leads',lead::find($id));
+  }
+});
+

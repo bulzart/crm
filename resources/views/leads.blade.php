@@ -1,5 +1,6 @@
 @extends('template.navbar')
 @section('content')
+
     <!doctype html>
 <html lang="en">
 
@@ -97,7 +98,7 @@
                     @endif
 
 
-                    <div class="assigned-leads py-3">
+                    <div class="assigned-leads py-3" id="app">
                         <div class="assigned-leads-header row">
                             <div class="col">
                                 <span class="fw-600 fs-5 header-text">Assigned Leads</span>
@@ -119,88 +120,13 @@
                   </span>
                             </div>
                         </div>
-
-                        <div class="assigned-leads-content">
-                            @foreach($leads as $lead)
-                                <a class="text-decoration-none" style="cursor: pointer" data-bs-toggle="modal"
-                                   data-bs-target="#{{$lead->slug}}">
-                                    <div class="py-2 my-2"
-                                         style="background-color: #4EC590; border-radius: 15px; color: #fff;">
-                                        <div class="mx-3 ">
-                                            <div class="">
-                      <span class="fw-bold fs-5">
-                        {{$lead->first_name}}
-                      </span>
-                                            </div>
-                                            <div class="">
-                      <span>
-                        {{$lead->number_of_persons}} Personon
-                      </span>
-                                            </div>
-                                            <div class="">
-                      <span style="font-size: 12px;">
-                        <span class="">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12.587" height="16.243"
-                               viewBox="0 0 8.587 12.243">
-                            <path id="Path_170" data-name="Path 170"
-                                  d="M1507.522,2353.695l.285-.4c.45-.637.916-1.3,1.32-1.908a17.1,17.1,0,0,0,1.607-2.977,3.3,3.3,0,0,0,.287-1.836,3.541,3.541,0,0,0-3.492-2.981,3.5,3.5,0,0,0-2.866,1.494,3.146,3.146,0,0,0-.606,2.37,6.507,6.507,0,0,0,.733,1.932,32.418,32.418,0,0,0,2.511,4.006c.072.1.145.2.22.3m.009-9.063h.024a2.481,2.481,0,0,1-.023,4.963h-.028a2.486,2.486,0,0,1-2.446-2.508,2.475,2.475,0,0,1,2.474-2.455m0,9.964c-.23-.312-.449-.6-.66-.9a32.713,32.713,0,0,1-2.552-4.072,7.013,7.013,0,0,1-.785-2.091,3.7,3.7,0,0,1,.695-2.752,4.05,4.05,0,0,1,7.31,1.7,3.861,3.861,0,0,1-.319,2.12,17.67,17.67,0,0,1-1.656,3.068C1508.941,2352.621,1508.181,2353.663,1507.534,2354.6Zm0-9.438a1.955,1.955,0,0,0-.021,3.91h.023a1.955,1.955,0,0,0,.018-3.91Z"
-                                  transform="translate(-1503.243 -2342.783)" fill="#fff" stroke="#fff"
-                                  stroke-width="0.5"/>
-                          </svg>
-                        </span>
-                          @if($lead->campaign != null)
-                        {{ucfirst($lead->campaign->name)}}
-                              @endif
-                      </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <div class="modal fade" id="{{$lead->slug}}" tabindex="-1"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title"
-                                                    id="exampleModalLabel">{{$lead->first_name}}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <span class="fw-bold">Herkunft vom lead</span><br>
-                                                @if($lead->campaign != null)
-                                                <span>Platform: {{$lead->campaign->name}}</span><br>
-                                                <span>Kampgne: {{$lead->campaign->name}}</span><br>
-                                                @endif
-                                                <span>Grund: {{$lead->addres}}</span><br>
-                                                <span>Teilnahme: {{$lead->created_at}}</span><br>
-                                                <span class="fw-bold">Herkunft vom lead</span><br>
-                                                <a href="tel:{{$lead->telephone}}"><i class="fas fa-phone-square-alt"
-                                                                                      style="font-size: 58px;"></i></a>
-                                            </div>
-                                            @php
-                                                $leadss = $lead->id * 1244;
-                                                $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                                            @endphp
-                                            <div class="modal-footer">
-                                                <a href="{{route('dlead',$leadId)}}" type="button"
-                                                   class="btn btn-danger">X</a>
-                                                <a href="{{route('alead',$leadId)}}" type="button"
-                                                   class="btn btn-success">Go</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-
-                        </div>
-
-                    </div>
-
+<leads></leads>
                 </div>
+           
+                
                 <div class="mt-4">
 
-    <div class="d-flex justify-content-center">
+    
     <div class="d-flex justify-content-center"><nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">
         @if($leads->currentPage() > 1)
         <span> <a href="{{route('leads',['page' => $leads->currentPage() -1 ])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"></span>
@@ -262,7 +188,19 @@
     .fw-600 {
         font-weight: 600;
     }
-
+    .gmap_canvas {
+                                                        overflow: hidden;
+                                                        background: none !important;
+                                                        height: auto;
+                                                        width: 100%;
+                                                        border-radius: 21px !important;
+                                                        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                                                    }
+                                                    .mapouter {
+                                                        position: relative;
+                                                        text-align: right;
+                                                        width: 100%;
+                                                    }
     .spn-muted {
         color: #707070;
         font-weight: 600;
@@ -287,101 +225,43 @@
     body {
         overflow-x: hidden !important;
     }
+    <style>
+                                                    .mapouter {
+                                                        position: relative;
+                                                        text-align: right;
+                                                        width: 100%;
+                                                    }
+                                                </style>
+                                                <style>
+                                                    .gmap_canvas {
+                                                        overflow: hidden;
+                                                        background: none !important;
+                                                        height: auto;
+                                                        width: 100%;
+                                                        border-radius: 21px !important;
+                                                        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                                                    }
+                                                </style>
 </style>
 
 
 </body>
 </html>
 
-{{--@extends('template.navbar')--}}
-{{--@section('content')--}}
-{{--    @if(\Session::has('success'))--}}
-{{--        <div class="alert alert-success alert-dismissible fade show col-12" role="alert">--}}
 
-{{--            {!! \Session::get('success') !!}--}}
-{{--        </div>--}}
-{{--    @endif--}}
-{{--<head>--}}
-{{--    <!-- CSS only -->--}}
-{{--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">--}}
-{{--</head>--}}
-
-{{--<div class="row">--}}
-{{--<div class="col-md-8 col-lg-8 col-sm-12 col-xs-8 col-12">--}}
-{{--<div class="text-center">--}}
-{{--    <h5 class="h5">Open leads</h5>--}}
-{{--</div>--}}
-{{--<table>--}}
-{{--    <tr>--}}
-{{--        <th colspan="2">ID</th>--}}
-{{--    <th>Name</th>--}}
-
-{{--    <th colspan="2">People&nbsp;</th>--}}
-{{--    <th>Came from</th>--}}
-
-{{--    </tr>--}}
-{{--@foreach($leads as $l)--}}
-{{--<tr>--}}
-{{--    <td>{{$l->id}}<td>--}}
-{{--    <td>{{$l->name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>--}}
-{{--    <td>{{$l->count}}&nbsp;<td>--}}
-{{--        <td>@if($l->campaign != null){{$l->campaign->name}}@else Registered @endif</td>--}}
+<script>
+    var ids = [];
+    var cnt = 0;
+function getid(x){
+      ids[cnt] = x.value;
+      cnt++;
+}
+function callModalFunct() {
+            document.getElementById("mod01").style.display = "block";
+        }
+        function callModalFunct1() {
+            document.getElementById("mod02").style.display = "block";
+        }
 
 
-{{--       <td><button  class="btn btn-primary text-light" data-bs-toggle="modal" data-bs-target="#{{$l->slug}}">Appointment</button><td>--}}
-{{--        <div class="modal fade" id="{{$l->slug}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
-{{--            <div class="modal-dialog">--}}
-{{--                <div class="modal-content">--}}
-{{--                    <div class="modal-header">--}}
-{{--                        <h5 class="modal-title" id="exampleModalLabel">{{$l->name}}</h5>--}}
-{{--                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--}}
-{{--                    </div>--}}
-{{--                    <div class="modal-body">--}}
-{{--                        <span class="fw-bold">Herkunft vom lead</span><br>--}}
-
-{{--                        <span>Platform: {{$l->campaign->name}}</span><br>--}}
-{{--                        <span>Kampgne: {{$l->campaign->name}}</span><br>--}}
-{{--                        <span>Grund: {{$l->addres}}</span><br>--}}
-{{--                        <span>Teilnahme: {{$l->created_at}}</span><br>--}}
-{{--                        <span class="fw-bold">Herkunft vom lead</span><br>--}}
-{{--                        <a href="tel:{{$l->telephone}}"><i class="fas fa-phone-square-alt" style="font-size: 58px;"></i></a>--}}
-{{--                    </div>--}}
-{{--                    <div class="modal-footer">--}}
-{{--                        <a href="{{route('dlead',$l->id)}}" type="button" class="btn btn-danger">X</a>--}}
-{{--                        <a href="{{route('alead',$l->id)}}" type="button" class="btn btn-success">Go</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-
-{{--</tr>--}}
-
-{{--@endforeach--}}
-{{--</table>--}}
-{{--@if($leads->count() > 1)--}}
-{{--    <div class="d-flex justify-content-center mt-4"><nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">--}}
-{{--        @if($leads->currentPage() > 1)--}}
-{{--        <span> <a href="{{route('leads',['page' => $leads->currentPage() -1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"></span>--}}
-{{--        « Previous--}}
-{{--            @endif--}}
-
-{{--                </span> <a href="{{route('leads',['page' => $leads->currentPage() +1 ,])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">--}}
-{{--                    Next »--}}
-{{--                </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">--}}
-
-{{--                </p></div> <div></div></div></nav>--}}
-{{--                @endif--}}
-{{--</div>--}}
-{{--<div class="col-md-4 col-lg-4 col-sm-12 col-xs-4 col-12 text-center">--}}
-{{--Statistics--}}
-{{--    <div>--}}
-{{--        <span>Instagram: {{$total['instagram']}}</span><br>--}}
-{{--        <span>Facebook: {{$total['facebook']}}</span><br>--}}
-{{--        <span>Sanascout: {{$total['sana']}}</span>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
-{{--</div>--}}
-{{--@endsection--}}
-
+</script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\family;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class StatusController extends Controller
 {
