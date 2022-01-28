@@ -192,36 +192,10 @@ route::prefix('')->middleware('confirmcode')->group(function(){
       route::get('addtodo',[TodoController::class,'addtodo']);
    // });
 
-    route::get('costumer_form/{id}',function ($id){
-        $id = Crypt::decrypt($id) / 1244;
-        $family = family::where('id',$id)->first();
-        if ($family->kundportfolio == 0) {
-            $costumer = family::findOrFail($id);
-            return view('costumer_form')->with(compact('costumer'));
-        }else{
-            $grundversicherung = CostumerStatusGrundversicherung::where('person_idG',$id)->first();
-            $hausrat = CostumerStatusHausrat::where('person_idH',$id)->first();
-            $retchsschutz = CostumerStatusRetchsschutz::where('person_idR',$id)->first();
-            $vorsorge = CostumerStatusVorsorge::where('person_idV',$id)->first();
-            $zusatzversicherung = CostumerStatusZusatzversicherung::where('person_idZ',$id)->first();
-            $grundversicherungP = CostumerProduktGrundversicherung::where('person_id_PG',$id)->first();
-            $retchsschutzP = CostumerProduktRechtsschutz::where('person_id_PR',$id)->first();
-            $vorsorgeP = CostumerProduktVorsorge::where('person_id_PV',$id)->first();
-            $zusatzversicherungP = CostumerProduktZusatzversicherung::where('person_id_PZ',$id)->first();
-            $costumer = family::findOrFail($id);
-            return view('edit_costumer_form')
-                ->with(compact('costumer', 'grundversicherung',
-                    'hausrat', 'retchsschutz', 'vorsorge',
-                    'zusatzversicherung', 'grundversicherungP',
-                    'retchsschutzP', 'vorsorgeP', 'zusatzversicherungP'));
-        }
-
-    })->name('costumer_form');
-
-
+    route::get('costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'costumer_form'])->name('costumer_form');
 
     route::post('save_costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'save_costumer_form'])->name('save_costumer_form');
-    route::post('edit_costumer_kundportfolio/{id}',[\App\Http\Controllers\CostumerFormController::class,'edit_costumer_kundportfolio'])->name('edit_costumer_kundportfolio');
+    route::post('edit_costumer_kundportfolio/{id}',[\App\Http\Controllers\CostumerFormController::class,'edit_costumer_kundportfolio'])->name('edit_costumer_kundportfolio')->middleware('role:admin|backoffice,admins');
 
 
    route::get('todos',[TodoController::class,'todos']);
