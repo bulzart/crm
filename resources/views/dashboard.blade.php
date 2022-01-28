@@ -608,6 +608,7 @@
 
                             <div class="accordion-body p-0 mx-2 py-2 overflow-div1"
                                  style="background-color: #F7F7F7; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                                @if(!Auth::guard('admins')->user()->hasRole('backoffice'))
                                 @foreach($personalApp as $perApp)
                                     <div class="py-2 my-2 mx-2"
                                          style="background-color: #fff; border-radius: 15px; color: #000;">
@@ -656,6 +657,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                @endif
                             </div>
 
                             <div class="text-center py-2">
@@ -692,10 +694,12 @@
                                                     <label>Assign To</label>
 
                                                     <select class="form-control mb-2" name="roleid">
+                                                        @if(!Auth::guard('admins')->user()->hasRole('backoffice'))
                                                         @foreach($admins as $admin)
 
                                                             <option value="{{$admin->id}}">{{$admin->name}}</option>
                                                         @endforeach
+                                                        @endif
                                                     </select>
 
                                                 </div>
