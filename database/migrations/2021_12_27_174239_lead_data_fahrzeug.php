@@ -18,6 +18,7 @@ class LeadDataFahrzeug extends Migration
             $table->id();
             $table->integer('leads_id'); //Foreign Key
             $table->integer('person_id'); //Foreign Key
+            $table->string('upload_police')->nullable();
             $table->string('vehicle_id')->nullable();
             $table->string('leasing')->nullable();
             $table->string('leasing_name')->nullable();

@@ -403,7 +403,7 @@
                                                                     Anderung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control" value="{{$grundversicherung->modification_dateG}}" type="date" name="modification_dateG" id="">
+                                                                <input class="py-1 form-control" value="{{$grundversicherung->modification_dateG}}" type="date" name="modification_dateG" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -503,7 +503,7 @@
                                                                     Anderung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$vorsorge->modification_dateV}}" type="date" name="modification_dateV" id="">
+                                                                <input class="py-1 form-control " value="{{$vorsorge->modification_dateV}}" type="date" name="modification_dateV" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -605,7 +605,7 @@
                                                                     Anderung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherung->modification_dateZ}}" type="date" name="modification_dateZ" id="">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherung->modification_dateZ}}" type="date"  min="1900-01-01" max="9999-12-31" name="modification_dateZ" id="">
                                                             </div>
 
                                                         </div>
@@ -705,7 +705,7 @@
                                                                     Anderung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$hausrat->modification_dateH}}" type="date" name="modification_dateH" id="">
+                                                                <input class="py-1 form-control " value="{{$hausrat->modification_dateH}}" type="date" name="modification_dateH" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -805,7 +805,7 @@
                                                                     Anderung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$retchsschutz->modification_dateR}}" type="date" name="modification_dateR" id="">
+                                                                <input class="py-1 form-control " value="{{$retchsschutz->modification_dateR}}" type="date" name="modification_dateR" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -893,7 +893,7 @@
                                         </div>
                                         <div class="my-1">
                                             <label for="">Geburtstag:</label>
-                                            <input type="date" name="" class="form-control" id="">
+                                            <input type="date" name="" class="form-control" id="" min="1900-01-01" max="9999-12-31">
                                         </div>
                                     </div>
                                 </div>
@@ -910,7 +910,7 @@
                                         </div>
                                         <div class="my-1">
                                             <label for="">Geburtstag:</label>
-                                            <input type="date" name="" class="form-control" id="">
+                                            <input type="date" name="" class="form-control" id="" min="1900-01-01" max="9999-12-31">
                                         </div>
                                     </div>
                                     <div class="angaben-content p-3 ">
@@ -1029,7 +1029,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$grundversicherungP->graduation_date_PG}}" type="date" name="graduation_date_PG" id="">
+                                                                <input class="py-1 form-control " value="{{$grundversicherungP->graduation_date_PG}}" type="date" name="graduation_date_PG" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1078,7 +1078,7 @@
                                                                     Letze Anpassung
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$grundversicherungP->last_adjustment_PG}}" type="date" name="last_adjustment_PG" id="">
+                                                                <input class="py-1 form-control " value="{{$grundversicherungP->last_adjustment_PG}}" type="date" name="last_adjustment_PG" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1160,7 +1160,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->graduation_date_PZ}}" type="date" name="graduation_date_PZ" id="">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->graduation_date_PZ}}" type="date" name="graduation_date_PZ" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1204,9 +1204,9 @@
                                                                 </span>
                                                                 </div>
                                                                 <label for="from">From</label>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_from_PZ}}" type="date" name="duration_from_PZ" id="from">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_from_PZ}}" type="date" name="duration_from_PZ" id="from" min="1900-01-01" max="9999-12-31">
                                                                 <label for="to">To</label>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_to_PZ}}" type="date" name="duration_to_PZ" id="to">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_to_PZ}}" type="date" name="duration_to_PZ" id="to" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1233,7 +1233,7 @@
                                                                     Letze Anpassung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->last_adjustment_PZ}}" type="date" name="last_adjustment_PZ" id="">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->last_adjustment_PZ}}" type="date" name="last_adjustment_PZ" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1277,9 +1277,9 @@
                                                                 </span>
                                                                 </div>
                                                                 <label for="from1">From</label>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_from_PZ2}}" type="date" name="duration_from_PZ2" id="from1">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_from_PZ2}}" type="date" name="duration_from_PZ2" id="from1" min="1900-01-01" max="9999-12-31">
                                                                 <label for="to1">To</label>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_to_PZ2}}" type="date" name="duration_to_PZ2" id="to1">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->duration_to_PZ2}}" type="date" name="duration_to_PZ2" id="to1" min="1900-01-01" max="9999-12-31">
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
@@ -1304,7 +1304,7 @@
                                                                     Letzte Anpassung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->last_adjustment_PZ2}}" type="date" name="last_adjustment_PZ2" id="">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->last_adjustment_PZ2}}" type="date" name="last_adjustment_PZ2" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
@@ -1395,7 +1395,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$retchsschutzP->graduation_date_PR}}" type="date" name="graduation_date_PR" id="">
+                                                                <input class="py-1 form-control " value="{{$retchsschutzP->graduation_date_PR}}" type="date" name="graduation_date_PR" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1444,7 +1444,7 @@
                                                                     Letze Anpassung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$retchsschutzP->last_adjustment_PR}}" type="date" name="last_adjustment_PR" id="">
+                                                                <input class="py-1 form-control " value="{{$retchsschutzP->last_adjustment_PR}}" type="date" name="last_adjustment_PR" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1493,7 +1493,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$vorsorgeP->graduation_date_PV}}" type="date" name="graduation_date_PV" id="">
+                                                                <input class="py-1 form-control " value="{{$vorsorgeP->graduation_date_PV}}" type="date" name="graduation_date_PV" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1504,7 +1504,7 @@
                                                                     Beginn:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$vorsorgeP->begin_PV}}" type="date" name="begin_PV" id="">
+                                                                <input class="py-1 form-control " value="{{$vorsorgeP->begin_PV}}" type="date" name="begin_PV" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
 
                                                         </div>
@@ -1549,9 +1549,9 @@
                                                                 </span>
                                                                 </div>
                                                                 <label for="from2">From</label>
-                                                                <input class="py-1 form-control " value="{{$vorsorgeP->duration_from_PV}}" type="date" name="duration_from_PV" id="from2">
+                                                                <input class="py-1 form-control " value="{{$vorsorgeP->duration_from_PV}}" type="date" name="duration_from_PV" id="from2" min="1900-01-01" max="9999-12-31">
                                                                 <label for="to2">To</label>
-                                                                <input class="py-1 form-control " value="{{$vorsorgeP->duration_to_PV}}" type="date" name="duration_to_PV" id="to2">
+                                                                <input class="py-1 form-control " value="{{$vorsorgeP->duration_to_PV}}" type="date" name="duration_to_PV" id="to2" min="1900-01-01" max="9999-12-31">
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">
@@ -1586,7 +1586,7 @@
                                                                     Letze Anpassung:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$vorsorgeP->last_adjustment_PV}}" type="date" name="last_adjustment_PV" id="">
+                                                                <input class="py-1 form-control " value="{{$vorsorgeP->last_adjustment_PV}}" type="date" name="last_adjustment_PV" id="" min="1900-01-01" max="9999-12-31">
                                                             </div>
                                                         </div>
                                                         <div class="mb-3">

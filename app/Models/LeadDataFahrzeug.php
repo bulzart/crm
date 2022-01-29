@@ -14,6 +14,7 @@ class LeadDataFahrzeug extends Model
     protected $fillable = [
         'leads_id',
         'person_id',
+        'upload_police',
         'vehicle_id',
         'leasing',
         'leasing_name',

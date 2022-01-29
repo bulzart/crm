@@ -404,7 +404,7 @@
                                                                     Anderung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="modification_dateG" id="">
+                                                            <input class="py-1 form-control " type="date" name="modification_dateG" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -508,7 +508,7 @@
                                                                     Anderung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="modification_dateV" id="">
+                                                            <input class="py-1 form-control " type="date" name="modification_dateV" id=""  min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -614,7 +614,7 @@
                                                                     Anderung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="modification_dateZ" id="">
+                                                            <input class="py-1 form-control " type="date" name="modification_dateZ" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -718,7 +718,7 @@
                                                                     Anderung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="modification_dateH" id="">
+                                                            <input class="py-1 form-control " type="date" name="modification_dateH" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -822,7 +822,7 @@
                                                                     Anderung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="modification_dateR" id="">
+                                                            <input class="py-1 form-control " type="date" name="modification_dateR" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -912,7 +912,7 @@
                                     </div>
                                     <div class="my-1">
                                         <label for="">Geburtstag:</label>
-                                        <input type="date" name="" class="form-control" id="">
+                                        <input type="date" name="" class="form-control" id="" min="1900-01-01" max="9999-12-31">
                                     </div>
                                 </div>
                             </div>
@@ -929,7 +929,7 @@
                                     </div>
                                     <div class="my-1">
                                         <label for="">Geburtstag:</label>
-                                        <input type="date" name="" class="form-control" id="">
+                                        <input type="date" name="" class="form-control" id="" min="1900-01-01" max="9999-12-31">
                                     </div>
                                 </div>
                                 <div class="angaben-content p-3 ">
@@ -1051,7 +1051,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="graduation_date_PG" id="">
+                                                            <input class="py-1 form-control " type="date" name="graduation_date_PG" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1100,7 +1100,7 @@
                                                                     Letze Anpassung
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PG" id="">
+                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PG" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1190,7 +1190,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="graduation_date_PZ" id="">
+                                                            <input class="py-1 form-control " type="date" name="graduation_date_PZ" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1234,9 +1234,9 @@
                                                                 </span>
                                                             </div>
                                                             <label for="from">From</label>
-                                                            <input class="py-1 form-control " type="date" name="duration_from_PZ" id="from">
+                                                            <input class="py-1 form-control " type="date" name="duration_from_PZ" id="from" min="1900-01-01" max="9999-12-31">
                                                             <label for="to">To</label>
-                                                            <input class="py-1 form-control " type="date" name="duration_to_PZ" id="to">
+                                                            <input class="py-1 form-control " type="date" name="duration_to_PZ" id="to" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1263,7 +1263,7 @@
                                                                     Letze Anpassung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PZ" id="">
+                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PZ" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1307,9 +1307,9 @@
                                                                 </span>
                                                             </div>
                                                             <label for="from1">From</label>
-                                                            <input class="py-1 form-control " type="date" name="duration_from_PZ2" id="from1">
+                                                            <input class="py-1 form-control " type="date" name="duration_from_PZ2" id="from1" min="1900-01-01" max="9999-12-31">
                                                             <label for="to1">To</label>
-                                                            <input class="py-1 form-control " type="date" name="duration_to_PZ2" id="to1">
+                                                            <input class="py-1 form-control " type="date" name="duration_to_PZ2" id="to1" min="1900-01-01" max="9999-12-31">
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
@@ -1334,7 +1334,7 @@
                                                                     Letzte Anpassung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PZ2" id="">
+                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PZ2" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
@@ -1433,7 +1433,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="graduation_date_PR" id="">
+                                                            <input class="py-1 form-control " type="date" name="graduation_date_PR" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1482,7 +1482,7 @@
                                                                     Letze Anpassung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PR" id="">
+                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PR" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1536,7 +1536,7 @@
                                                                     Abschlussdatum:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="graduation_date_PV" id="">
+                                                            <input class="py-1 form-control " type="date" name="graduation_date_PV" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1547,7 +1547,7 @@
                                                                     Beginn:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="begin_PV" id="">
+                                                            <input class="py-1 form-control " type="date" name="begin_PV" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
 
                                                     </div>
@@ -1593,9 +1593,9 @@
                                                             </div>
                                                             <input class="py-1 form-control " type="text" name="" id="">
                                                             <label for="from2">From</label>
-                                                            <input class="py-1 form-control " type="date" name="duration_from_PV" id="from2">
+                                                            <input class="py-1 form-control " type="date" name="duration_from_PV" id="from2" min="1900-01-01" max="9999-12-31">
                                                             <label for="to2">To</label>
-                                                            <input class="py-1 form-control " type="date" name="duration_to_PV" id="to2">
+                                                            <input class="py-1 form-control " type="date" name="duration_to_PV" id="to2" min="1900-01-01" max="9999-12-31">
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
@@ -1630,7 +1630,7 @@
                                                                     Letze Anpassung:
                                                                 </span>
                                                             </div>
-                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PV" id="">
+                                                            <input class="py-1 form-control " type="date" name="last_adjustment_PV" id="" min="1900-01-01" max="9999-12-31">
                                                         </div>
                                                     </div>
                                                     <div class="mb-3">
