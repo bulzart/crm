@@ -314,11 +314,11 @@
                             </button>
                             <button class="nav-link col auto-btn" id="nav-profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                                    aria-selected="false">Angaben
+                                    aria-selected="false" onclick="changecnt(1)">Angaben
                             </button>
                             <button class="nav-link col sachen-btn" id="nav-contact-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
-                                    aria-selected="false" onclick="changecnt(1)">Produkte
+                                    aria-selected="false" onclick="changecnt(2)">Produkte
                             </button>
                             <button class="nav-link col vorsorge-btn" id="nav-fourth-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-fourth" type="button" role="tab" aria-controls="nav-fourth"
@@ -348,7 +348,9 @@
                                                             <div class="col">
                                                                <span class="fs-6" id="title-span" style="font-weight: 600;">
                                                             Grundversicherung
-                                                        </span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </button>
                                             </h2>
@@ -887,14 +889,130 @@
                         </div>
                     </div>
 
+{{--                    ANGABEN                                      --}}
+
                     <div class="tab-pane fade auto-content" id="nav-profile" role="tabpanel"
                          aria-labelledby="nav-profile-tab">
                         <div class="row mx-4">
-                            <!-- content here -->
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3">
+                                <div class="angaben-content p-3 mb-3">
+                                    <div class="my-1">
+                                        <label for="">Ursprung:</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="angaben-content p-3">
+                                    <div class="my-1">
+                                        <label for="">Vorname:</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Nachname:</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Geburtstag:</label>
+                                        <input type="date" name="" class="form-control" id="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3">
+
+                                <div class="angaben-content p-3 mb-3">
+                                    <div class="my-1">
+                                        <label for="">Adresse: </label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Postleitzahl, Ort</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Geburtstag:</label>
+                                        <input type="date" name="" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="angaben-content p-3 ">
+                                    <div class="my-1">
+                                        <span class="fw-bold">Zugehörige Personen</span>
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Frau: </label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Kind 1:</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Kind 2:</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Kind 3:</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3">
+                                <div class="angaben-content p-3 ">
+                                    <div class="my-1">
+                                        <span class="fw-bold">Anhänge</span>
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Beratungsprotokoll: </label>
+                                        <input type="text" name="" class="form-control my-1" id="">
+                                        <input type="text" name="" class="form-control my-1" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Vorversicherungspolice</label>
+                                        <input type="text" name="" class="form-control my-1" id="">
+                                        <input type="text" name="" class="form-control my-1" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Kündigung Krankenkasse:</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+                                    <div class="my-1">
+                                        <label for="">Antrag Vorsorge</label>
+                                        <input type="text" name="" class="form-control" id="">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="text-center mt-3 pb-3">
+                                <div class="row">
+                                    <div class="col g-0 text-end my-auto">
+                                        <div class="">
+                                        <span class="pe-2" style="color: #9F9F9F;">
+                                            Uberspringen
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="col g-0 text-start">
+                                        <div class="">
+                                            <button type="button" class="px-5 py-2"
+                                                    style="border: none; border-radius: 9px; background-color:#285F52;" onclick="nextonee()">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
+                                                     viewBox="0 0 58.155 19.159">
+                                                    <g id="Group_453" data-name="Group 453" transform="translate(0.004)">
+                                                        <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                              transform="translate(0 9.287)" fill="none" stroke="#3fd599"
+                                                              stroke-width="2"/>
+                                                        <path id="Polygon_2" data-name="Polygon 2"
+                                                              d="M9.58,0l9.58,11.642H0Z"
+                                                              transform="translate(58.151 0) rotate(90)" fill="#3fd599"/>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-
+                    {{--                    END ANGABEN                                      --}}
                     <div class="tab-pane fade  sachen-content" id="nav-contact" role="tabpanel"
                          aria-labelledby="nav-contact-tab">
                         <div class="row mx-4">
@@ -1605,9 +1723,15 @@
                 cntt++;
             }
             if(cntt == 1){
-                console.log(cntt);
                 $('#nav-home-tab').removeClass('active');
                 $('#nav-home').removeClass('active show');
+                $('#nav-profile-tab').addClass('active');
+                $('#nav-profile').addClass('active show');
+            }
+            if(cntt == 2){
+                console.log(cntt);
+                $('#nav-profile-tab').removeClass('active');
+                $('#nav-profile').removeClass('active show');
                 $('#nav-contact-tab').addClass('active');
                 $('#nav-contact').addClass('active show');
             }
@@ -1960,5 +2084,9 @@
     }
     body{
         overflow-x: hidden;
+    }
+    .angaben-content {
+        background-color: #EFEFEF;
+        border-radius: 10px;
     }
 </style>

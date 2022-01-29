@@ -270,16 +270,37 @@ public function assignpendency(Request $req){
               ->select('family_person.*')
               ->orderBy('family_person.first_name','asc')
               ->get();
-          return view('costumers', compact('data'));
+
+          $cnt = 0;
+          foreach ($data as $dat) {
+              $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+              $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+              $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+              $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+
+
+              $cnt++;
+          }
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
 
       }else{
           $data = family::where('status','Done')->orderBy('first_name','asc')->get();
-          return view('costumers', compact('data'));
+          $cnt = 0;
+          foreach ($data as $dat) {
+              $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+              $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+              $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+              $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+
+
+              $cnt++;
+          }
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+
       }
   }
   public function costumers(Request $request)
   {
-
       $cnt = 0;
       $date1 = date('Y-m-d', strtotime($request->searchdate1));
       $n = date('Y-m-d', strtotime($request->searchdate2));
@@ -313,8 +334,16 @@ public function assignpendency(Request $req){
                 ->get();
 
         }
+        $cnt = 0;
+        foreach ($data as $dat) {
+            $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
 
-        return view('costumers', compact('data'));
+            $cnt++;
+        }
+        return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
 
     }else {
         if (Auth::guard('admins')->check()) {
@@ -329,19 +358,22 @@ public function assignpendency(Request $req){
         if (isset($request->searchdate1) && isset($request->searchdate2)) {
             $data = family::where('status', 'Done')
                 ->whereBetween('created_at', [$date1, $date2])->get();
+
         }
         $contracts = [];
         $datcnt = 0;
-        $cnt = 0;
+
+            $cnt = 0;
         foreach ($data as $dat) {
             $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
-            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
-            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
-            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR', $dat->id)->first();
+            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV', $dat->id)->first();
+            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ', $dat->id)->first();
 
 
             $cnt++;
         }
+
 
         return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
     }
