@@ -40,6 +40,7 @@ use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\LeadDataPlus;
 
 class UserController extends Controller
 {
@@ -292,6 +293,15 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         $lead->number_of_persons = $req->count ? $req->count :  $lead->number_of_people;
         $lead->appointment_date =  filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING);
         $lead->assigned = 1;
+        
+        $cnt = (int) $req->input('countt');
+
+        for($i = 1; $i <= $cnt; $i++){
+            $leaddata = new LeadDataPlus();
+            $leaddata->text = $req->input('anotherone' . $i);
+            $leaddata->lead_id = $id;
+            $leaddata->save();
+        }
         if ($lead->save()) {
             return redirect()->route('leads')->with('success', 'Your action has been done successfuly');
         } else {
@@ -468,8 +478,11 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
      
     $status = (int) $status;
 if($status == 0) $reason = 'Rejected';
-else{
+elseif($status == 1){
     $reason = 'Pending';
+}
+else{
+    $reason = $request->reason;
 }
 
      
