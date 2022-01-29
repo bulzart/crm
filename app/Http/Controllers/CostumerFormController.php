@@ -13,10 +13,62 @@ use App\Models\CostumerStatusVorsorge;
 use App\Models\CostumerStatusZusatzversicherung;
 use App\Models\family;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
 class CostumerFormController extends Controller
 {
+    public function costumer_form($id){
+        $id = Crypt::decrypt($id) / 1244;
+        if(Auth::guard('admins')->user()->hasRole('backoffice') ||Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('fs')){
+            $family = family::where('id',$id)->first();
+            if ($family->kundportfolio == 0 && (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))) {
+                $costumer = family::findOrFail($id);
+                return view('costumer_form')->with(compact('costumer'));
+            }else{
+                if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')) {
+                    $grundversicherung = CostumerStatusGrundversicherung::where('person_idG', $id)->first();
+                    $hausrat = CostumerStatusHausrat::where('person_idH', $id)->first();
+                    $retchsschutz = CostumerStatusRetchsschutz::where('person_idR', $id)->first();
+                    $vorsorge = CostumerStatusVorsorge::where('person_idV', $id)->first();
+                    $zusatzversicherung = CostumerStatusZusatzversicherung::where('person_idZ', $id)->first();
+                    $grundversicherungP = CostumerProduktGrundversicherung::where('person_id_PG', $id)->first();
+                    $retchsschutzP = CostumerProduktRechtsschutz::where('person_id_PR', $id)->first();
+                    $vorsorgeP = CostumerProduktVorsorge::where('person_id_PV', $id)->first();
+                    $zusatzversicherungP = CostumerProduktZusatzversicherung::where('person_id_PZ', $id)->first();
+                    $costumer = family::findOrFail($id);
+                    return view('edit_costumer_form')
+                        ->with(compact('costumer', 'grundversicherung',
+                            'hausrat', 'retchsschutz', 'vorsorge',
+                            'zusatzversicherung', 'grundversicherungP',
+                            'retchsschutzP', 'vorsorgeP', 'zusatzversicherungP'));
+
+                }
+                if(Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('fs')){
+                    $grundversicherung = CostumerStatusGrundversicherung::where('person_idG', $id)->first();
+                    $hausrat = CostumerStatusHausrat::where('person_idH', $id)->first();
+                    $retchsschutz = CostumerStatusRetchsschutz::where('person_idR', $id)->first();
+                    $vorsorge = CostumerStatusVorsorge::where('person_idV', $id)->first();
+                    $zusatzversicherung = CostumerStatusZusatzversicherung::where('person_idZ', $id)->first();
+                    $grundversicherungP = CostumerProduktGrundversicherung::where('person_id_PG', $id)->first();
+                    $retchsschutzP = CostumerProduktRechtsschutz::where('person_id_PR', $id)->first();
+                    $vorsorgeP = CostumerProduktVorsorge::where('person_id_PV', $id)->first();
+                    $zusatzversicherungP = CostumerProduktZusatzversicherung::where('person_id_PZ', $id)->first();
+                    $costumer = family::findOrFail($id);
+
+                    return view('view_costumer_form')
+                        ->with(compact('costumer', 'grundversicherung',
+                            'hausrat', 'retchsschutz', 'vorsorge',
+                            'zusatzversicherung', 'grundversicherungP',
+                            'retchsschutzP', 'vorsorgeP', 'zusatzversicherungP'));
+                }
+            }
+        }else{
+            echo 'You Dont Have Permissions To Access In This Page';
+        }
+    }
+
+
     public function save_costumer_form(Request $request, $id){
         $id = Crypt::decrypt($id) / 1244;
 
@@ -141,9 +193,9 @@ class CostumerFormController extends Controller
         if($grundversicherung->save() && $hausrat->save() && $retchsschutz->save() && $vorsorge->save() &&
             $zusatzversicherung->save() && $grundversicherungP->save() && $retchsschutzP->save() && $vorsorgeP->save() &&$zusatzversicherungP->save()) {
             family::where('id',$id)->update(['kundportfolio'=>1]);
-            return redirect()->route('costumers')->with('success', 'U kry');
+            return redirect()->route('costumers')->with('success', 'Action Successfully Made');
         }else{
-            return redirect()->back()->with('fail', 'SU kry');
+            return redirect()->back()->with('fail', 'Action Not Done');
         }
 
     }
