@@ -740,7 +740,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 });
 </script>
 <script>
-
+var cnttt = 1;
     var Offene_Aufgaben__bool = false;
 
     $(document).ready(function(){
@@ -784,6 +784,18 @@ $(document).ready(function(){
         }
     });
 });
+
+    function addanotherr(){
+         document.getElementById('addanother').innerHTML  += '<label class="text-center">Additional info</label>';
+        document.getElementById('addanother').innerHTML  += "<input type='text' class='form-control mb-2 text-center' placeholder='ex: Sprache or Nationality or Gesundheit etc' name='anotherone'>";
+        var field = document.getElementsByName("anotherone")[0].setAttribute("name", "anotherone" + cnttt);  // using .setAttribute() method
+
+
+
+        document.getElementById('countt').value = cnttt;
+        cnttt++;
+    }
+    
 </script>
 
 
