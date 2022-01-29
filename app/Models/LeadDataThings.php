@@ -17,6 +17,7 @@ class LeadDataThings extends Model
         'nationality',
         'residence_permit',
         'telephone_nr',
+        'email',
         'employment_relationship',
         'job',
         'payment_frequency',

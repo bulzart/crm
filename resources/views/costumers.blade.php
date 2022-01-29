@@ -177,6 +177,7 @@
             </div>
             <div class="mx-3 my-2 ">
                 <div class="scroll-1" style="font-size: 14px;">
+                @if(!$data == [])
                     @for($i = 0; $i < count($data); $i++)
                         @php
                             $leadss = $data[$i]->id * 1244;
@@ -496,6 +497,7 @@
                         </a>
                         <hr>
                     @endfor
+                    @endif
                 </div>
 
             </div>

@@ -374,7 +374,6 @@ public function assignpendency(Request $req){
             $cnt++;
         }
 
-
         return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
     }
   }

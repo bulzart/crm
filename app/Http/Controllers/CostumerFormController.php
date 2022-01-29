@@ -20,7 +20,8 @@ class CostumerFormController extends Controller
 {
     public function costumer_form($id){
         $id = Crypt::decrypt($id) / 1244;
-        if(Auth::guard('admins')->user()->hasRole('backoffice') ||Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('fs')){
+
+        if(Auth::guard('admins')->user()->hasRole('backoffice') ||Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('management')){
             $family = family::where('id',$id)->first();
             if ($family->kundportfolio == 0 && (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))) {
                 $costumer = family::findOrFail($id);
@@ -44,7 +45,7 @@ class CostumerFormController extends Controller
                             'retchsschutzP', 'vorsorgeP', 'zusatzversicherungP'));
 
                 }
-                if(Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('fs')){
+                if(Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('fs')|| Auth::guard('admins')->user()->hasRole('management')){
                     $grundversicherung = CostumerStatusGrundversicherung::where('person_idG', $id)->first();
                     $hausrat = CostumerStatusHausrat::where('person_idH', $id)->first();
                     $retchsschutz = CostumerStatusRetchsschutz::where('person_idR', $id)->first();
@@ -71,7 +72,6 @@ class CostumerFormController extends Controller
 
     public function save_costumer_form(Request $request, $id){
         $id = Crypt::decrypt($id) / 1244;
-
 
         $grundversicherung = new CostumerStatusGrundversicherung();
         $hausrat = new CostumerStatusHausrat();

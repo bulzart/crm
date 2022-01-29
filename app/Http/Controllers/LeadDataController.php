@@ -22,10 +22,10 @@ class LeadDataController extends Controller
     public function acceptdata($id, $accept = false)
     {
         $id = Crypt::decrypt($id) / 1244;
-        
-      
+
+
             if (!$accept) {
-                
+
                 $data = new data();
                 $lead = family::find($id);
                 $data->getdata($id);
@@ -40,10 +40,10 @@ class LeadDataController extends Controller
                     return redirect()->back();
                 }
             }
-        
-       
-            
-    
+
+
+
+
     }
 
     public function createLeadDataKK($leadIdd, $personIdd, Request $request, $pendency = false)
@@ -74,12 +74,14 @@ class LeadDataController extends Controller
             LeadDataFahrzeug::create([
                 'leads_id' => $leadId,
                 'person_id' => $personId,
+                'upload_police' => $request->upload_policeFahrzeug ? $this->storeFile($request->upload_policeFahrzeug, FolderPaths::KK_FILES) : null,
+                'vehicle_id' => $request->vehicle_id,
                 'leasing' => $request->leasing,
                 'leasing_name' => $request->leasing_name,
                 'year_of_purchase' => $request->year_of_purchase,
                 'placing_on_the_market' => $request->placing_on_the_market,
                 'insurance_date' => $request->insurance_date,
-                'redeemed' => $request->redeemed ? $this->storeFile($request->redeemed, FolderPaths::KK_FILES) : null,
+                'redeemed' => $request->redeemed,
                 'km_stood' => $request->km_stood,
                 'issue_date' => $request->issue_date,
                 'nationality' => $request->nationality,
@@ -102,7 +104,7 @@ class LeadDataController extends Controller
                 'nationality' => $request->nationality_sachen,
                 'residence_permit' => $request->residence_permit,
                 'telephone_nr' => $request->telephone_nr,
-                'email' => $request->email_s,
+                'email' => $request->email,
                 'zivilstand' => $request->zivilstand,
                 'employment_relationship' => $request->employment_relationship,
                 'job' => $request->job,
@@ -189,12 +191,14 @@ class LeadDataController extends Controller
         $leadDataFahrzeug = [
             'leads_id' => $leadId,
             'person_id' => $personId,
+            'upload_police' => $request->hasFile('upload_policeFahrzeug') ? $this->storeFile($request->upload_policeFahrzeug, FolderPaths::KK_FILES) : $existingLeadDataFahrzeug->upload_policeFahrzeug,
+            'vehicle_id' => $request->vehicle_id,
             'leasing' => $request->leasing,
             'leasing_name' => $request->leasing_name,
             'year_of_purchase' => $request->year_of_purchase,
             'placing_on_the_market' => $request->placing_on_the_market,
             'insurance_date' => $request->insurance_date,
-            'redeemed' => $request->hasFile('redeemed') ? $this->storeFile($request->redeemed, FolderPaths::KK_FILES) : $existingLeadDataFahrzeug->redeemed,
+            'redeemed' => $request->redeemed,
             'km_stood' => $request->km_stood,
             'issue_date' => $request->issue_date,
             'nationality' => $request->nationality,
@@ -219,9 +223,11 @@ class LeadDataController extends Controller
         $leadDataThings = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'nationality' => $request->nationality,
+            'nationality' => $request->nationality_sachen,
             'residence_permit' => $request->residence_permit,
             'telephone_nr' => $request->telephone_nr,
+            'email' => $request->email,
+            'zivilstand' => $request->zivilstand,
             'employment_relationship' => $request->employment_relationship,
             'job' => $request->job,
             'payment_frequency' => $request->payment_frequency,
