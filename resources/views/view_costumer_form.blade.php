@@ -1191,7 +1191,10 @@
                                                                     <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$grundversicherungP->status_PG}}" readonly>
                                                                 @elseif($grundversicherungP->status_PG == 'Provisionert')
                                                                     <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$grundversicherungP->status_PG}}" readonly>
-                                                               @endif
+                                                                @elseif($grundversicherungP->status_PG == 'notselected')
+                                                                    <input type="text" class="form-control transparent-styling text-secondary fw-bold" value="{{$grundversicherungP->status_PG}}" readonly>
+
+                                                                @endif
                                                             </div>
 
                                                         </div>
@@ -1320,6 +1323,9 @@
                                                                     <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$autoversicherungP->status_PA}}" readonly>
                                                                 @elseif($autoversicherungP->status_PA == 'Provisionert')
                                                                     <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$autoversicherungP->status_PA}}" readonly>
+                                                                @elseif($autoversicherungP->status_PA == 'notselected')
+                                                                    <input type="text" class="form-control transparent-styling text-secondary fw-bold" value="{{$autoversicherungP->status_PA}}" readonly>
+
                                                                 @endif
                                                             </div>
 
@@ -1491,6 +1497,8 @@
                                                                         <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$zusatzversicherungP->status_PZ}}" readonly>
                                                                     @elseif($zusatzversicherungP->status_PZ == 'Provisionert')
                                                                         <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$zusatzversicherungP->status_PZ}}" readonly>
+                                                                    @elseif($zusatzversicherungP->status_PZ == 'notselected')
+                                                                        <input type="text" class="form-control transparent-styling text-secondary fw-bold" value="{{$zusatzversicherungP->status_PZ}}" readonly>
                                                                     @endif
                                                                 </div>
 
@@ -1597,6 +1605,8 @@
                                                                         <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$zusatzversicherungP->status_PZ2}}" readonly>
                                                                     @elseif($zusatzversicherungP->status_PZ2 == 'Provisionert')
                                                                         <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$zusatzversicherungP->status_PZ2}}" readonly>
+                                                                    @elseif($zusatzversicherungP->status_PZ2 == 'notselected')
+                                                                        <input type="text" class="form-control transparent-styling text-secondary fw-bold" value="{{$zusatzversicherungP->status_PZ2}}" readonly>
                                                                     @endif
                                                                 </div>
                                                             </div>
@@ -1741,6 +1751,8 @@
                                                                     <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$hausratP->status_PH}}" readonly>
                                                                 @elseif($hausratP->status_PH == 'Provisionert')
                                                                     <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$hausratP->status_PH}}" readonly>
+                                                                @elseif($hausratP->status_PH == 'notselected')
+                                                                    <input type="text" class="form-control transparent-styling text-secondary fw-bold" value="{{$hausratP->status_PH}}" readonly>
                                                                 @endif
                                                             </div>
 
@@ -1877,6 +1889,9 @@
                                                                     <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$retchsschutzP->status_PR}}" readonly>
                                                                 @elseif($retchsschutzP->status_PR == 'Provisionert')
                                                                     <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$retchsschutzP->status_PR}}" readonly>
+                                                                @elseif($retchsschutzP->status_PR == 'notselected')
+                                                                    <input type="text" class="form-control transparent-styling text-secondary fw-bold" value="{{$retchsschutzP->status_PR}}" readonly>
+
                                                                 @endif
                                                             </div>
 
@@ -2074,6 +2089,8 @@
                                                                     <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$vorsorgeP->status_PV}}" readonly>
                                                                 @elseif($vorsorgeP->status_PV == 'Provisionert')
                                                                     <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$vorsorgeP->status_PV}}" readonly>
+                                                                @elseif($vorsorgeP->status_PV == 'notselected')
+                                                                    <input type="text" class="form-control transparent-styling text-secondary fw-bold" value="{{$vorsorgeP->status_PV}}" readonly>
                                                                 @endif
                                                             </div>
                                                         </div>
