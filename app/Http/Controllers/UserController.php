@@ -48,6 +48,16 @@ class UserController extends Controller
     public function __construct(){
         $this->middleware(confirmedcode::class);
     }
+    public function rleads(){
+        $leads = DB::table('leads_history')
+        ->join('leads','leads_history.leads_id','leads.id')
+        
+        ->select('leads.first_name','leads.id','leads.telephone','leads_history.reason','leads.number_of_persons')
+        ->get();
+        
+        
+        return view('rleads',compact('leads'));
+    }
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
@@ -276,7 +286,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     {
            
         $req->validate([
-            'count' => 'required',
+            'personen' => 'required',
             'apptime' => 'required',
             'appointmentdate' => 'required'
         ]);
@@ -285,23 +295,22 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         $lead = lead::find($id);
         $lead->address = $req->address ? $req->address : $lead->address;
         $lead->assign_to_id = Auth::user()->id;
+        $lead->nationality = $req->nationality ? $req->nationality : $lead->nationality;
         $lead->telephone = $req->telephone ? $req->telephone : $lead->telephone;
-        $lead->campaign_id = campaigns::where('name',$req->source)->firstOrFail() ? campaigns::where('name',$req->source )->firstOrFail()->id : 0;
-        $lead->time = filter_var($req->input('apptime'), FILTER_SANITIZE_STRING);
+        $lead->time = $req->apptime ? filter_var($req->input('apptime'), FILTER_SANITIZE_STRING) : null;
         $lead->postal_code = $req->zip ? $req->zip : $lead->postal_code;
         $lead->first_name = $req->name ? $req->name : $lead->first_name;
-        $lead->number_of_persons = $req->count ? $req->count :  $lead->number_of_people;
-        $lead->appointment_date =  filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING);
+        $lead->last_name = $req->lname ? $req->lname : $lead->last_name;
+        $lead->number_of_persons = $req->personen ? $req->personen :  $lead->number_of_persons;
+        $lead->city = $req->ort ? $req->ort : $lead->city; 
+        $lead->appointment_date =  $req->appointmentdate ? filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING) : null;
         $lead->assigned = 1;
-        
-        $cnt = (int) $req->input('countt');
+        $lead->gesundheit = $req->gesundheit ? $req->gesundheit : $lead->gesundheit;
+        $lead->zufriedenheit = $req->zufriedenheit ? $req->zufriedenheit : $lead->zufriedenheit;
+        $lead->bemerkung = $req->bemerkung ? $req->bemerkung : $lead->bemerkung;
+        $lead->sprache = $req->sprache ? $req->sprache : $lead->sprache;
 
-        for($i = 1; $i <= $cnt; $i++){
-            $leaddata = new LeadDataPlus();
-            $leaddata->text = $req->input('anotherone' . $i);
-            $leaddata->lead_id = $id;
-            $leaddata->save();
-        }
+
         if ($lead->save()) {
             return redirect()->route('leads')->with('success', 'Your action has been done successfuly');
         } else {
@@ -425,7 +434,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         $lead->status_task = "open";
     $lead->save();
 
-        return redirect()->back()->with('success', 'Action was successfull!');
+        return redirect()->route('tasks')->with('success', 'Action was successfull!');
     }
 
     public function filterbydateapp(Request $req)
@@ -470,19 +479,23 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     {
 
         $leads_id = (int) $request->leadsid;
-        lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
+       
 
 
         $user_id = Auth::user()->id;
 
-     
-    $status = (int) $status;
-if($status == 0) $reason = 'Rejected';
-elseif($status == 1){
+     if($status != null){
+    $status = (int) $status;}
+    
+if($status === 0) { $reason = 'Rejected';  lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);}
+elseif($status === 1){
     $reason = 'Pending';
+     lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
+  
 }
 else{
     $reason = $request->reason;
+     lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0,'rejected' => 1]);
 }
 
      

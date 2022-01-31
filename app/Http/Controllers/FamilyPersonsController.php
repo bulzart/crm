@@ -33,7 +33,7 @@ class FamilyPersonsController extends Controller
                 
                         $data = LeadDataKK::where('person_id', '=', $idd)->firstOrFail();
                    
-                        return redirect()->route('acceptdata', [Crypt::encrypt($idd*1244),'accept' => false]);
+                        return redirect()->route('dashboard');
                     }
                     catch (Exception $e) {
                         return view('documentsform', compact('lead'));

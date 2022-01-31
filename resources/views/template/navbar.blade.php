@@ -671,6 +671,8 @@
                 @if(Auth::guard('admins')->user()->hasRole('admin'))<li><a class="dropdown-item" href="{{route('addnewuser')}}">Add New User</a></li>@endif
                 <li><a class="dropdown-item" href="#">Settings</a></li>
                 <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{{route('rleads')}}">Rejected Leads</a></li>
+
                 <li>
                     <hr class="dropdown-divider">
                 </li>

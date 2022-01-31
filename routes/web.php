@@ -35,6 +35,7 @@ use App\Http\Controllers\TeamController;
 use App\Listeners\SendNotificationListener;
 use App\Models\campaigns;
 use App\Models\lead;
+use App\Models\LeadDataPlus;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Session\Session;
 use Musonza\Chat\Chat;
@@ -54,10 +55,12 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    });
    route::get('getleads',function(){
       if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
-         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->orderBy('updated_at','asc')->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
-         $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->paginate(200);
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.first_name','leads.rejected','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
+         $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->where('rejected',0)->paginate(200);
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->select('leads.first_name','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('rejected',0)->select('leads.first_name','leads.rejected','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
+      
+
    }
 
      $leads['admins'] = Admins::role(['fs','digital'])->get();
@@ -120,10 +123,10 @@ route::prefix('')->middleware('confirmcode')->group(function(){
 
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
-
+$leadinfo = LeadDataPlus::where('lead_id',$idd)->get();
         $lead = lead::find($idd);
 
-        return view('acceptappointment',compact('lead'));
+        return view('acceptappointment',compact('lead','leadinfo'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
         $idd = Crypt::decrypt($id);
@@ -281,4 +284,5 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
    return view('pendingreject')->with('pojo',1)->with('leads',lead::find($id));
   }
 });
+route::get('rleads',[UserController::class,'rleads'])->name('rleads');
 

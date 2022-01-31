@@ -5584,7 +5584,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       messages: [],
       pag: 1,
-      url: "https://crm.kutiza.com/",
+      url: "https://crm.kutiza.com/public/",
       cnt: 0,
       admin: null
     };
@@ -5933,6 +5933,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5972,6 +5976,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     arrpush: function arrpush(val) {
       this.array.push(val);
+    }
+  },
+  props: {
+    csrf: {
+      "default": function _default() {
+        return window.data.csrf_token;
+      }
     }
   }
 });
@@ -30159,7 +30170,40 @@ var render = function () {
                           "aria-hidden": "true",
                         },
                       },
-                      [_vm._m(1, true)]
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c(
+                            "form",
+                            {
+                              attrs: {
+                                action: "rejectedleads",
+                                method: "post",
+                              },
+                            },
+                            [
+                              _c("input", {
+                                attrs: { type: "hidden", name: "_token" },
+                                domProps: { value: _vm.csrf },
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-content" }, [
+                                _vm._m(1, true),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "modal-body" }, [
+                                  _c("input", {
+                                    attrs: { type: "hidden", name: "leadsid" },
+                                    domProps: { value: lead.id },
+                                  }),
+                                  _vm._v(" "),
+                                  _vm._m(2, true),
+                                ]),
+                                _vm._v(" "),
+                                _vm._m(3, true),
+                              ]),
+                            ]
+                          ),
+                        ]),
+                      ]
                     ),
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
@@ -30227,7 +30271,16 @@ var render = function () {
                                                       _vm._s(lead.first_name) +
                                                       " " +
                                                       _vm._s(lead.last_name) +
-                                                      "\n                                                            "
+                                                      " "
+                                                  ),
+                                                  _c(
+                                                    "span",
+                                                    {
+                                                      staticStyle: {
+                                                        "font-size": "14px",
+                                                      },
+                                                    },
+                                                    [_vm._v("(Online)")]
                                                   ),
                                                 ]
                                               )
@@ -30290,7 +30343,7 @@ var render = function () {
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(2, true),
+                                  _vm._m(4, true),
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -30487,7 +30540,7 @@ var render = function () {
                                                               ]
                                                             ),
                                                             _vm._v(" "),
-                                                            _vm._m(3, true),
+                                                            _vm._m(5, true),
                                                           ]
                                                         ),
                                                         _vm._v(" "),
@@ -30593,7 +30646,7 @@ var render = function () {
                                                     _vm._v(" "),
                                                     _c("hr"),
                                                     _vm._v(" "),
-                                                    _vm._m(4, true),
+                                                    _vm._m(6, true),
                                                   ]
                                                 ),
                                               ]),
@@ -30751,7 +30804,7 @@ var render = function () {
             [
               _c("div", { staticClass: "modal-dialog" }, [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(5),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
                     _c(
@@ -30788,12 +30841,7 @@ var render = function () {
                       {
                         staticClass: "btn btn-primary",
                         attrs: { type: "button" },
-                        on: {
-                          click: function ($event) {
-                            $event.preventDefault()
-                            return _vm.assign.apply(null, arguments)
-                          },
-                        },
+                        on: { click: _vm.assign },
                       },
                       [_vm._v("Assign")]
                     ),
@@ -30832,87 +30880,81 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-dialog" }, [
-      _c("div", { staticClass: "modal-content" }, [
-        _c("div", { staticClass: "modal-header" }, [
-          _c(
-            "h5",
-            {
-              staticClass: "modal-title",
-              attrs: { id: "staticBackdropLabel" },
-            },
-            [_vm._v("Modal title")]
-          ),
-          _vm._v(" "),
-          _c("button", {
-            staticClass: "btn-close",
-            attrs: {
-              type: "button",
-              "data-bs-dismiss": "modal",
-              "aria-label": "Close",
-            },
-          }),
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "staticBackdropLabel" } },
+        [_vm._v("Modal title")]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "select",
+      { staticClass: "form-control", attrs: { name: "reason" } },
+      [
+        _c("option", { attrs: { value: "Falsche nummer" } }, [
+          _vm._v("Falsche nummer"),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "modal-body" }, [
-          _c("select", { staticClass: "form-control" }, [
-            _c("option", { attrs: { value: "Falsche nummer" } }, [
-              _vm._v("Falsche nummer"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Hat schon gewechselt" } }, [
-              _vm._v("Hat schon gewechselt"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Kein interesse" } }, [
-              _vm._v("Kein interesse"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Krank" } }, [_vm._v("Krank")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Kunde bereits terminiert" } }, [
-              _vm._v("Kunde bereits terminiert"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Nicht Brauchbar" } }, [
-              _vm._v("Nicht Brauchbar"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Nicht erreicht" } }, [
-              _vm._v("Nicht erreicht"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Online Offerte" } }, [
-              _vm._v("Online Offerte"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Spater Anrufen" } }, [
-              _vm._v("Spater Anrufen"),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Terminiert" } }, [
-              _vm._v("Terminiert"),
-            ]),
-          ]),
+        _c("option", { attrs: { value: "Hat schon gewechselt" } }, [
+          _vm._v("Hat schon gewechselt"),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "modal-footer" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-secondary",
-              attrs: { type: "button", "data-bs-dismiss": "modal" },
-            },
-            [_vm._v("Close")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "button" } },
-            [_vm._v("Save")]
-          ),
+        _c("option", { attrs: { value: "Kein interesse" } }, [
+          _vm._v("Kein interesse"),
         ]),
-      ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Krank" } }, [_vm._v("Krank")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Kunde bereits terminiert" } }, [
+          _vm._v("Kunde bereits terminiert"),
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Nicht Brauchbar" } }, [
+          _vm._v("Nicht Brauchbar"),
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Nicht erreicht" } }, [
+          _vm._v("Nicht erreicht"),
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Online Offerte" } }, [
+          _vm._v("Online Offerte"),
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Spater Anrufen" } }, [
+          _vm._v("Spater Anrufen"),
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Terminiert" } }, [
+          _vm._v("Terminiert"),
+        ]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
+      ),
     ])
   },
   function () {
