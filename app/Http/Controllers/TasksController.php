@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
+use App\Models\CostumerProduktAutoversicherung;
 use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktHausrat;
 use App\Models\CostumerProduktRechtsschutz;
 use App\Models\CostumerProduktVorsorge;
 use App\Models\CostumerProduktZusatzversicherung;
@@ -277,11 +279,12 @@ public function assignpendency(Request $req){
               $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
               $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
               $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
-
+              $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+              $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
               $cnt++;
           }
-          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
       }else{
           $data = family::where('status','Done')->orderBy('first_name','asc')->get();
@@ -291,11 +294,12 @@ public function assignpendency(Request $req){
               $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
               $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
               $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
-
+              $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+              $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
               $cnt++;
           }
-          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
       }
   }
@@ -340,10 +344,12 @@ public function assignpendency(Request $req){
             $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
             $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
             $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+            $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+            $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
             $cnt++;
         }
-        return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+        return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
     }else {
         if (Auth::guard('admins')->check()) {
@@ -366,15 +372,16 @@ public function assignpendency(Request $req){
             $cnt = 0;
         foreach ($data as $dat) {
             $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
-            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR', $dat->id)->first();
-            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV', $dat->id)->first();
-            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ', $dat->id)->first();
-
+            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+            $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+            $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
             $cnt++;
         }
 
-        return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+        return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
     }
   }
 

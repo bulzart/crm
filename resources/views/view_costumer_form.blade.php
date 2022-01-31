@@ -1256,7 +1256,106 @@
                                                      data-bs-parent="#accordionFlushExample0044">
                                                     <div class="accordion-body"
                                                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                                        <div class="upload-box p-3">
+                                                            <div class="mb-2">
+                                                                <div
+                                                                    class="input-div1 input-groupp justify-content-between">
+                                                                    <div class="pe-3">
+                                                                            <span class="" >
+                                                                                Gesellschaft:
+                                                                            </span>
+                                                                    </div>
+                                                                    <input
+                                                                        class="py-1 form-control transparent-styling"
+                                                                        value="{{$autoversicherungP->society_PA}}"
+                                                                        readonly type="text"
+                                                                        name="society_PA" id="">
+                                                                </div>
 
+                                                            </div>
+                                                            <div class="mb-2">
+                                                                <div
+                                                                    class="input-div1 input-groupp justify-content-between">
+                                                                    <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Beginn Versicherung:
+                                                                </span>
+                                                                    </div>
+                                                                    <input class="py-1 form-control transparent-styling" type="date"
+                                                                           name="beginning_insurance_PA" id=""
+                                                                           value="{{$autoversicherungP->beginning_insurance_PA}}"
+                                                                           readonly disabled
+                                                                    >
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="mb-2">
+                                                                <div
+                                                                    class="input-div1 input-groupp justify-content-between">
+                                                                    <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Versicherung:
+                                                                </span>
+                                                                    </div>
+                                                                    <input class="py-1 form-control transparent-styling" type="text"
+                                                                           name="insurance_PA" id=""
+                                                                           value="{{$autoversicherungP->insurance_PA}}"
+                                                                           readonly
+                                                                    >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-2">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                        <span class="pt-1" >
+                                                                            Status:
+                                                                        </span>
+                                                                </div>
+                                                                @if($autoversicherungP->status_PA == 'Aufgenomen')
+                                                                    <input type="text" class="form-control transparent-styling colori-green fw-bold" value="{{$autoversicherungP->status_PA}}" readonly>
+                                                                @elseif($autoversicherungP->status_PA == 'Offen')
+                                                                    <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$autoversicherungP->status_PA}}" readonly>
+                                                                @elseif($autoversicherungP->status_PA == 'Provisionert')
+                                                                    <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$autoversicherungP->status_PA}}" readonly>
+                                                                @endif
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="mb-2">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Letze Anpassung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control transparent-styling colori-green" type="date"
+                                                                       name="last_adjustment_PA" id=""
+                                                                       readonly disabled
+                                                                       value="{{$autoversicherungP->last_adjustment_PA}}"
+                                                                >
+                                                            </div>
+
+                                                        </div>
+                                                        <hr class="g-0 m-0 my-1 mt-2"
+                                                            style="height: 2px; color: #000;opacity: 1 !important;">
+                                                        <div class="mb-2">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                        <span class="" >
+                                                                            Gesamtprovision:
+                                                                        </span>
+                                                                </div>
+                                                                <input class="py-1 form-control transparent-styling fs-4 fw-bold colori-green"
+                                                                       value="{{$autoversicherungP->total_commisions_PA}} CHF"
+                                                                       readonly type="text" name="total_commisions_PG"
+                                                                       id="">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1554,12 +1653,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="py-3">
-                                        <div class="accordion accordion-flush" id="accordionFlushExample0010">
+                                    <div  class="py-3">
+                                        <div  class="accordion accordion-flush" id="accordionFlushExample0010">
                                             <div class="accordion-item"
                                                  style="background-color: #EFEFEF !important;border-radius: 15px;">
                                                 <h2 class="accordion-header" id="flush-heading0010">
-                                                    <button class="accordion-button collapsed" type="button"
+                                                    <button  class="accordion-button collapsed" type="button"
                                                             data-bs-toggle="collapse"
                                                             data-bs-target="#flush-collapse0010" aria-expanded="false"
                                                             aria-controls="flush-collapseOne"
@@ -1573,12 +1672,111 @@
                                                         </div>
                                                     </button>
                                                 </h2>
-                                                <div id="flush-collapse0010" class="accordion-collapse collapse"
+                                                <div  id="flush-collapse0010" class="accordion-collapse collapse"
                                                      aria-labelledby="flush-heading0010"
                                                      data-bs-parent="#accordionFlushExample0010">
                                                     <div class="accordion-body"
                                                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                                        <div class="upload-box p-3">
+                                                            <div class="mb-2">
+                                                                <div
+                                                                    class="input-div1 input-groupp justify-content-between">
+                                                                    <div class="pe-3">
+                                                                            <span class="" >
+                                                                                Gesellschaft:
+                                                                            </span>
+                                                                    </div>
+                                                                    <input
+                                                                        class="py-1 form-control transparent-styling"
+                                                                        value="{{$hausratP->society_PH}}"
+                                                                        readonly type="text"
+                                                                        name="society_PA" id="">
+                                                                </div>
 
+                                                            </div>
+                                                            <div class="mb-2">
+                                                                <div
+                                                                    class="input-div1 input-groupp justify-content-between">
+                                                                    <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Beginn Versicherung:
+                                                                </span>
+                                                                    </div>
+                                                                    <input class="py-1 form-control transparent-styling" type="date"
+                                                                           name="beginning_insurance_PA" id=""
+                                                                           value="{{$hausratP->beginning_insurance_PH}}"
+                                                                           readonly disabled
+                                                                    >
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="mb-2">
+                                                                <div
+                                                                    class="input-div1 input-groupp justify-content-between">
+                                                                    <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Versicherung:
+                                                                </span>
+                                                                    </div>
+                                                                    <input class="py-1 form-control transparent-styling" type="text"
+                                                                           name="insurance_PA" id=""
+                                                                           value="{{$hausratP->insurance_PH}}"
+                                                                           readonly
+                                                                    >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-2">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                        <span class="pt-1" >
+                                                                            Status:
+                                                                        </span>
+                                                                </div>
+                                                                @if($hausratP->status_PH == 'Aufgenomen')
+                                                                    <input type="text" class="form-control transparent-styling colori-green fw-bold" value="{{$hausratP->status_PH}}" readonly>
+                                                                @elseif($hausratP->status_PH == 'Offen')
+                                                                    <input type="text" class="form-control transparent-styling text-warning fw-bold" value="{{$hausratP->status_PH}}" readonly>
+                                                                @elseif($hausratP->status_PH == 'Provisionert')
+                                                                    <input type="text" class="form-control transparent-styling text-success fw-bold" value="{{$hausratP->status_PH}}" readonly>
+                                                                @endif
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="mb-2">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Letze Anpassung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control transparent-styling colori-green" type="date"
+                                                                       name="last_adjustment_PA" id=""
+                                                                       readonly disabled
+                                                                       value="{{$hausratP->last_adjustment_PH}}"
+                                                                >
+                                                            </div>
+
+                                                        </div>
+                                                        <hr class="g-0 m-0 my-1 mt-2"
+                                                            style="height: 2px; color: #000;opacity: 1 !important;">
+                                                        <div class="mb-2">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                        <span class="" >
+                                                                            Gesamtprovision:
+                                                                        </span>
+                                                                </div>
+                                                                <input class="py-1 form-control transparent-styling fs-4 fw-bold colori-green"
+                                                                       value="{{$hausratP->total_commisions_PH}} CHF"
+                                                                       readonly type="text" name="total_commisions_PG"
+                                                                       id="">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

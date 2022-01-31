@@ -494,6 +494,150 @@
                                 </div>
 
                             </div>
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+
+                                <div class="col g-0">
+                                    @if(!empty($autoversicherungP[$i]))
+                                        <div class="">
+                                <span class="spn-normal">
+                                    Autoversicherung
+                                </span>
+                                        </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+                                    {{$autoversicherungP[$i]->total_commisions_PA}} CHF
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($autoversicherungP[$i]->status_PA == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                        @if($autoversicherungP[$i]->status_PA == 'Aufgenomen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                        @if($autoversicherungP[$i]->status_PA == 'Offen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                        @if($autoversicherungP[$i]->status_PA == 'Provisionert')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+
+                                <div class="col g-0">
+                                    @if(!empty($hausratP[$i]))
+                                        <div class="">
+                                <span class="spn-normal">
+                                    Hausrat
+                                </span>
+                                        </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+                                    {{$hausratP[$i]->total_commisions_PH}} CHF
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($hausratP[$i]->status_PH == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                        @if($hausratP[$i]->status_PH == 'Aufgenomen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                        @if($hausratP[$i]->status_PH == 'Offen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                        @if($hausratP[$i]->status_PH == 'Provisionert')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
+
+                            </div>
                         </a>
                         <hr>
                     @endfor
