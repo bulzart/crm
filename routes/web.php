@@ -59,7 +59,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
          $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->where('rejected',0)->paginate(200);
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
       $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('rejected',0)->select('leads.first_name','leads.rejected','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
-      
+
 
    }
 
@@ -123,10 +123,9 @@ route::prefix('')->middleware('confirmcode')->group(function(){
 
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
-$leadinfo = LeadDataPlus::where('lead_id',$idd)->get();
         $lead = lead::find($idd);
 
-        return view('acceptappointment',compact('lead','leadinfo'));
+        return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
         $idd = Crypt::decrypt($id);
