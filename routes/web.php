@@ -123,6 +123,7 @@ route::prefix('')->middleware('confirmcode')->group(function(){
 
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
+
         $lead = lead::find($idd);
 
         return view('acceptappointment',compact('lead'));

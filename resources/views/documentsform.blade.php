@@ -1892,6 +1892,19 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+   
+      <div class="modal-body text-center">
+        <h4>Your form has been submited to Backoffice !</h4>
+        <br />
+        <button class="btn" type="submit" style="background: #3CD598;">OK</button>
+      </div>
+    
+    </div>
+  </div>
+</div>
         </form>
     </div>
 </div>
@@ -2150,7 +2163,8 @@
     function changecnt(x) {
         cntt = x;
         if (x == 3) {
-            document.getElementById("submitt").type = "submit";
+            document.getElementById("submitt").setAttribute('data-bs-toggle','modal');
+                document.getElementById("submitt").setAttribute('data-bs-target','#exampleModal');
         }
     }
 
@@ -2173,10 +2187,12 @@
                 $('#nav-contact').removeClass('active show');
                 $('#nav-fourth-tab').addClass('active');
                 $('#nav-contact-tab').removeClass('active');
-                document.getElementById("submitt").type = "submit";
+                document.getElementById("submitt").setAttribute('data-bs-toggle','modal');
+                document.getElementById("submitt").setAttribute('data-bs-target','#exampleModal');
             }
             if (cntt == 3) {
-                document.getElementById("submitt").type = "submit";
+                document.getElementById("submitt").setAttribute('data-bs-toggle','modal');
+                document.getElementById("submitt").setAttribute('data-bs-target','#exampleModal');
             }
             cntt++;
         }
