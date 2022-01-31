@@ -26,14 +26,13 @@ class FamilyPersonsController extends Controller
 
             if (Auth::guard('admins')->user()->hasRole('fs')) {
   
-             
                 if (Auth::guard('admins')->user()->id == $lead->lead->assign_to_id || Pendency::where('family_id',$idd)->first()->admin_id == Auth::user()->id) {
 
                     try {
                 
                         $data = LeadDataKK::where('person_id', '=', $idd)->firstOrFail();
                    
-                        return redirect()->route('dashboard');
+                        return redirect()->route('acceptdata', [Crypt::encrypt($idd*1244),'accept' => false]);
                     }
                     catch (Exception $e) {
                         return view('documentsform', compact('lead'));

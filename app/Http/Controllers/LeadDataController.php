@@ -146,7 +146,7 @@ class LeadDataController extends Controller
                 $pend->done = 1;
                 $pend->save();
             }
-            return redirect()->back()->with('success', 'Successfully submitted and will be waiting for the backoffice!');
+            return redirect()->route('dashboard')->with('success', 'Successfully submitted and will be waiting for the backoffice!');
         } else {
             return redirect()->back();
         }
