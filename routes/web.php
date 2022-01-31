@@ -123,10 +123,10 @@ route::prefix('')->middleware('confirmcode')->group(function(){
 
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
-$leadinfo = LeadDataPlus::where('lead_id',$idd)->get();
+
         $lead = lead::find($idd);
 
-        return view('acceptappointment',compact('lead','leadinfo'));
+        return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
         $idd = Crypt::decrypt($id);
