@@ -241,7 +241,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         }
         elseif(Auth::user()->hasRole('backoffice')){
             return redirect()->back();
-        } 
+        }
         else {
             $asigned = [];
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')) {
@@ -250,8 +250,8 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
                 $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->paginate(25);
             }
-          
-      
+
+
 
             $insta = DB::table('leads')->where('campaign_id', 1)->count();
 
@@ -268,7 +268,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function asignlead(Request $req, $id)
     {
-           
+
         $req->validate([
             'count' => 'required',
             'apptime' => 'required',
@@ -311,7 +311,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     public function alead($id)
     {
         // $id = Crypt::decrypt($id) / 1244;
-    
+
         if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
             return redirect()->back();
         } else {
@@ -408,9 +408,12 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
           $family->save();
         }
         $lead->status_task = "open";
-    $lead->save();
-
-        return redirect()->back()->with('success', 'Action was successfull!');
+        if($lead->save()) {
+            lead::where('id',$idd)->update(['completed' => 1]);
+            return redirect()->back()->with('success', 'Action was successfull!');
+        }else{
+            return redirect()->back()->with('fail', 'Action Failed!');
+        }
     }
 
     public function filterbydateapp(Request $req)
@@ -442,7 +445,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function dealnotclosed($id)
     {
-        
+
         $leads = lead::where('id', $id)->first();
         if ($leads->assign_to_id != null && $leads->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('rejectedleads', compact('leads'));
@@ -551,10 +554,10 @@ $taskcnt = 0;
                     ->where('assign_to_id',Auth::guard('admins')->user()->id)
                     ->where('status_task','Done')
                     ->count();
-                   
-                    
+
+
         }
-     
+
         elseif (Auth::user()->hasRole('admin')){
 
       $pending = DB::table('family_person')

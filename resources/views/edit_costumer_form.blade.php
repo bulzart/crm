@@ -1120,7 +1120,99 @@
                                                      data-bs-parent="#accordionFlushExample0044">
                                                     <div class="accordion-body"
                                                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Gesellschaft:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="text"
+                                                                       name="society_PA" id=""
+                                                                       value="{{$autoversicherungP->society_PA}}"
+                                                                >
+                                                            </div>
 
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Beginn Versicherung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="date"
+                                                                       name="beginning_insurance_PA" id=""
+                                                                       min="1900-01-01" max="9999-12-31"
+                                                                       value="{{$autoversicherungP->beginning_insurance_PA}}"
+                                                                >
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Versicherung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="text"
+                                                                       name="insurance_PA" id=""
+                                                                       value="{{$autoversicherungP->insurance_PA}}"
+                                                                >
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Status:
+                                                                </span>
+                                                                </div>
+                                                                <select class="form-select"
+                                                                        aria-label="Default select example"
+                                                                        name="status_PA">
+                                                                    <option selected value="{{$autoversicherungP->status_PA}}">{{$autoversicherungP->status_PA}}</option>
+                                                                    <option value="Offen">Offen</option>
+                                                                    <option value="Aufgenomen">Aufgenomen</option>
+                                                                    <option value="Provisionert">Provisionert</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Letze Anpassung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="date"
+                                                                       name="last_adjustment_PA" id=""
+                                                                       min="1900-01-01" max="9999-12-31"
+                                                                       value="{{$autoversicherungP->last_adjustment_PA}}"
+                                                                >
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Gesamtprovision:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="text"
+                                                                       name="total_commisions_PA" id=""
+                                                                       value="{{$autoversicherungP->total_commisions_PA}}"
+                                                                >
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1355,7 +1447,93 @@
                                                      data-bs-parent="#accordionFlushExample0010">
                                                     <div class="accordion-body"
                                                          style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Gesellschaft:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="text"
+                                                                       name="society_PH" id="" value="{{$hausratP->society_PH}}">
+                                                            </div>
 
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Beginn Versicherung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="date"
+                                                                       name="beginning_insurance_PH" id=""
+                                                                       value="{{$hausratP->beginning_insurance_PH}}"
+                                                                       min="1900-01-01" max="9999-12-31">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Versicherung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="text"
+                                                                       value="{{$hausratP->insurance_PH}}"
+                                                                       name="insurance_PH" id="">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Status:
+                                                                </span>
+                                                                </div>
+                                                                <select class="form-select"
+                                                                        aria-label="Default select example"
+                                                                        name="status_PH">
+                                                                    <option selected value="{{$hausratP->status_PH}}">{{$hausratP->status_PH}}</option>
+                                                                    <option value="Offen">Offen</option>
+                                                                    <option value="Aufgenomen">Aufgenomen</option>
+                                                                    <option value="Provisionert">Provisionert</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Letze Anpassung:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="date"
+                                                                       name="last_adjustment_PH" id=""
+                                                                       value="{{$hausratP->last_adjustment_PH}}"
+                                                                       min="1900-01-01" max="9999-12-31">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div
+                                                                class="input-div1 input-groupp justify-content-between">
+                                                                <div class="pe-3">
+                                                                <span class="" style="font-size: 15px;">
+                                                                    Gesamtprovision:
+                                                                </span>
+                                                                </div>
+                                                                <input class="py-1 form-control " type="text"
+                                                                       value="{{$hausratP->total_commisions_PH}}"
+                                                                       name="total_commisions_PH" id="">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
