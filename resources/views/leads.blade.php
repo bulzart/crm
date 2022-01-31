@@ -162,12 +162,13 @@
         </div>
     </div>
 </section>
-
+@php $csrf_token = csrf_token();@endphp
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"
+        ></script>
     
-
+    
 @endsection
 <style>
     .statistics-div {
@@ -286,6 +287,7 @@ function getid(x){
       ids[cnt] = x.value;
       cnt++;
 }
+window.data = @json(compact('csrf_token'))
 // function callModalFunct() {
 //             document.getElementById("mod01").style.display = "block";
 //         }

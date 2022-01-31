@@ -28,13 +28,16 @@
                                 <div class="col-6 col-xs-6 col-sm-6 col-md-4 col-lg-6 g-0" v-for="lead in leads">
                                     <div class="modal fade" :id="lead.slug + 'r'" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
+            <form action="rejectedleads" method="post">
+              <input type="hidden" name="_token" :value="csrf">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <select class="form-control">
+          <input type="hidden" :value="lead.id" name="leadsid">
+        <select class="form-control" name="reason">
             <option value="Falsche nummer">Falsche nummer</option>
             <option value="Hat schon gewechselt">Hat schon gewechselt</option>
             <option value="Kein interesse">Kein interesse</option>
@@ -50,10 +53,11 @@
         </select>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
       </div>
+      
     </div>
+            </form>
   </div>
 </div>
                                     <div class="row">
@@ -69,7 +73,7 @@
                                                         class="col-12 col-sm-12 col-md-12 col-lg-12 g-0 py-1 text-center">
                                                         <div class="text-center">
                                                             <span style="color:  #ffc04d;" v-if="lead.wantsonline == 1" class="fw-bold fs-5">
-                                                               {{lead.first_name}} {{lead.last_name}}
+                                                               {{lead.first_name}} {{lead.last_name}} <span style="font-size: 14px;">(Online)</span>
                                                             </span>
                                                              <span v-else class="fw-bold fs-5">
                                                                  {{lead.first_name}} {{lead.last_name}}
@@ -254,7 +258,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" @click.prevent="assign" class="btn btn-primary">Assign</button>
+        <button type="button" @click="assign" class="btn btn-primary">Assign</button>
       </div>
     </div>
   </div>
@@ -316,6 +320,13 @@ export default {
     arrpush(val) {
       this.array.push(val);
     },
+  },
+
+  props: {
+    csrf: {
+      default: () => window.data.csrf_token,
+    },
+ 
   },
 };
 </script>

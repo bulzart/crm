@@ -102,7 +102,7 @@ export default {
     return {
       messages: [],
       pag: 1,
-      url: "https://crm.kutiza.com/",
+      url: "https://crm.kutiza.com/public/",
       cnt: 0,
         admin: null
     };
