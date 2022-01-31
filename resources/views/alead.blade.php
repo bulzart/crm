@@ -7,6 +7,7 @@
 @endif
 <form action="{{route('asignlead',$lead->id)}}" method="post">
     @csrf
+    <input type="hidden" name="countt" id="countt">
 <div class="form-group container text-center pt-4">
   <fieldset>
       <label for="disabledTextInput">Name</label>
@@ -32,10 +33,14 @@
 </br>
 <label>Time</label>
 <input type="time" name="apptime" class="text-center col-12">
-  <label>Asign to:</label>
+
   <div class="justify-content-end d-flex">
   <i class="fas fa-filter" style="cursor: pointer;" title="Filter" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
 </div>
+<div id="addanother">
+
+</div>
+    <button type="button" class="btn btn-info" onclick="addanotherr(); false;">Add another info</button>
 <br>
 
 
@@ -80,4 +85,7 @@
     </div>
   </div>
 </div>
+
+
 @endsection
+

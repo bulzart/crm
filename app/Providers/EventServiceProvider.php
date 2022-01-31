@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\RejectLead;
 use App\Events\SendNotification;
+use App\Listeners\RejectLeadEventListener;
 use App\Listeners\SendNotificationListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         SendNotification::class => [
             SendNotificationListener::class
+        ],
+        RejectLead::class => [
+            RejectLeadEventListener::class
         ]
     ];
 

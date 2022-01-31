@@ -102,7 +102,7 @@ export default {
     return {
       messages: [],
       pag: 1,
-      url: "http://127.0.0.1:8000/",
+      url: "https://crm.kutiza.com/",
       cnt: 0,
         admin: null
     };

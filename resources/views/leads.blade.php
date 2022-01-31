@@ -166,6 +166,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    
 
 @endsection
 <style>
@@ -241,6 +242,35 @@
                                                         border-radius: 21px !important;
                                                         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                                                     }
+    .modal-section-1 {
+        display: none;
+        position: fixed;
+        z-index: 1040;
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        overflow: unset;
+    }
+
+
+
+
+
+    .modal-content {
+        background-color: #fefefe;
+        margin-top: 3%;
+        /* height: 70vh; */
+        /* width: 450px; */
+		z-index: 1050;
+        border: none;
+        border-radius: 25px;
+
+    }
                                                 </style>
 </style>
 
@@ -256,12 +286,12 @@ function getid(x){
       ids[cnt] = x.value;
       cnt++;
 }
-function callModalFunct() {
-            document.getElementById("mod01").style.display = "block";
-        }
-        function callModalFunct1() {
-            document.getElementById("mod02").style.display = "block";
-        }
+// function callModalFunct() {
+//             document.getElementById("mod01").style.display = "block";
+//         }
+//         function callModalFunct1() {
+//             document.getElementById("mod02").style.display = "block";
+//         }
 
 
 </script>
