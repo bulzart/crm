@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CostumerProduktAutoversicherung;
 use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktHausrat;
 use App\Models\CostumerProduktRechtsschutz;
 use App\Models\CostumerProduktVorsorge;
 use App\Models\CostumerProduktZusatzversicherung;
@@ -37,12 +39,14 @@ class CostumerFormController extends Controller
                     $retchsschutzP = CostumerProduktRechtsschutz::where('person_id_PR', $id)->first();
                     $vorsorgeP = CostumerProduktVorsorge::where('person_id_PV', $id)->first();
                     $zusatzversicherungP = CostumerProduktZusatzversicherung::where('person_id_PZ', $id)->first();
+                    $autoversicherungP = CostumerProduktAutoversicherung::where('person_id_PA', $id)->first();
+                    $hausratP = CostumerProduktHausrat::where('person_id_PH', $id)->first();
                     $costumer = family::findOrFail($id);
                     return view('edit_costumer_form')
                         ->with(compact('costumer', 'grundversicherung',
                             'hausrat', 'retchsschutz', 'vorsorge',
                             'zusatzversicherung', 'grundversicherungP',
-                            'retchsschutzP', 'vorsorgeP', 'zusatzversicherungP'));
+                            'retchsschutzP', 'vorsorgeP','hausratP','autoversicherungP','zusatzversicherungP'));
 
                 }
                 if(Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('fs')|| Auth::guard('admins')->user()->hasRole('management')){
@@ -55,13 +59,15 @@ class CostumerFormController extends Controller
                     $retchsschutzP = CostumerProduktRechtsschutz::where('person_id_PR', $id)->first();
                     $vorsorgeP = CostumerProduktVorsorge::where('person_id_PV', $id)->first();
                     $zusatzversicherungP = CostumerProduktZusatzversicherung::where('person_id_PZ', $id)->first();
+                    $autoversicherungP = CostumerProduktAutoversicherung::where('person_id_PA', $id)->first();
+                    $hausratP = CostumerProduktHausrat::where('person_id_PH', $id)->first();
                     $costumer = family::findOrFail($id);
 
                     return view('view_costumer_form')
                         ->with(compact('costumer', 'grundversicherung',
                             'hausrat', 'retchsschutz', 'vorsorge',
                             'zusatzversicherung', 'grundversicherungP',
-                            'retchsschutzP', 'vorsorgeP', 'zusatzversicherungP'));
+                            'retchsschutzP', 'vorsorgeP','hausratP','autoversicherungP', 'zusatzversicherungP'));
                 }
             }
         }else{
@@ -83,7 +89,8 @@ class CostumerFormController extends Controller
         $retchsschutzP = new CostumerProduktRechtsschutz();
         $vorsorgeP = new CostumerProduktVorsorge();
         $zusatzversicherungP = new CostumerProduktZusatzversicherung();
-
+        $autoversicherungP = new CostumerProduktAutoversicherung();
+        $hausratP = new CostumerProduktHausrat();
 
 
             $grundversicherung->person_idG = $id;
@@ -169,6 +176,24 @@ class CostumerFormController extends Controller
 
 
 
+            $autoversicherungP->person_id_PA = $id;
+            $autoversicherungP->society_PA = $request->society_PA;
+            $autoversicherungP->beginning_insurance_PA = $request->beginning_insurance_PA;
+            $autoversicherungP->insurance_PA = $request->insurance_PA;
+            $autoversicherungP->status_PA = $request->status_PA;
+            $autoversicherungP->last_adjustment_PA = $request->last_adjustment_PA;
+            $autoversicherungP->total_commisions_PA = $request->total_commisions_PA;
+
+
+            $hausratP->person_id_PH = $id;
+            $hausratP->society_PH = $request->society_PH;
+            $hausratP->beginning_insurance_PH = $request->beginning_insurance_PH;
+            $hausratP->insurance_PH = $request->insurance_PH;
+            $hausratP->status_PH = $request->status_PH;
+            $hausratP->last_adjustment_PH = $request->last_adjustment_PH;
+            $hausratP->total_commisions_PH = $request->total_commisions_PH;
+
+
 
             $zusatzversicherungP->person_id_PZ = $id;
             $zusatzversicherungP->graduation_date_PZ = $request->graduation_date_PZ;
@@ -191,7 +216,8 @@ class CostumerFormController extends Controller
 
 
         if($grundversicherung->save() && $hausrat->save() && $retchsschutz->save() && $vorsorge->save() &&
-            $zusatzversicherung->save() && $grundversicherungP->save() && $retchsschutzP->save() && $vorsorgeP->save() &&$zusatzversicherungP->save()) {
+            $zusatzversicherung->save() && $grundversicherungP->save() && $retchsschutzP->save() && $vorsorgeP->save() && $autoversicherungP->save()
+            && $hausratP->save() && $zusatzversicherungP->save()) {
             family::where('id',$id)->update(['kundportfolio'=>1]);
             return redirect()->route('costumers')->with('success', 'Action Successfully Made');
         }else{
@@ -276,6 +302,27 @@ class CostumerFormController extends Controller
             'last_adjustment_PV'=> $request->last_adjustment_PV,
             'total_commisions_PV'=> $request->total_commisions_PV,
         ]);
+
+
+        $autoversicherungP = CostumerProduktAutoversicherung::where('person_id_PA',$id)->update([
+            'society_PA'=> $request->society_PA,
+            'beginning_insurance_PA' => $request->beginning_insurance_PA,
+            'insurance_PA'=> $request->insurance_PA,
+            'status_PA'=> $request->status_PA,
+            'last_adjustment_PA'=> $request->last_adjustment_PA,
+            'total_commisions_PA'=> $request->total_commisions_PA,
+        ]);
+
+
+        $hausratP = CostumerProduktHausrat::where('person_id_PH',$id)->update([
+            'society_PH'=> $request->society_PH,
+            'beginning_insurance_PH' => $request->beginning_insurance_PH,
+            'insurance_PH'=> $request->insurance_PH,
+            'status_PH'=> $request->status_PH,
+            'last_adjustment_PH'=> $request->last_adjustment_PH,
+            'total_commisions_PH'=> $request->total_commisions_PH,
+        ]);
+
 
         $zusatzversicherungP = CostumerProduktZusatzversicherung::where('person_id_PZ',$id)->update([
             'graduation_date_PZ'=> $request->graduation_date_PZ,

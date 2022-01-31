@@ -376,7 +376,7 @@
                                 <div class="border-left-div">
                                     <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
 
-                                     
+
                                             <div class="accordion-item my-1">
                                                 <h2 class="accordion-header" id="flush-headingOne">
                                                     <button class="accordion-button collapsed" type="button"
@@ -444,10 +444,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                     
+
                                     </div>
-                              
-                               
+
+
 
                                 </div>
 <div class="text-center">
@@ -474,7 +474,7 @@
             '                                            <button class="accordion-button collapsed d-btnn" type="button"' +
             '                                                data-bs-toggle="collapse" data-bs-target="#flush-collapse' + i + '"' +
             '                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' +
-            '                                                Person' + i + ' erfassen' +
+            '                                                Person ' + i + ' erfassen' +
             '                                            </button>' +
             '                                        </h2>' +
             '                                        <div id="flush-collapse' + i + '"' + 'class="accordion-collapse collapse"' +

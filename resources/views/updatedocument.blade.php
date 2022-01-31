@@ -716,6 +716,7 @@
                             </div>
                             <div class="text-center mt-3 pb-3">
                                 <div class="row mx-4">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
                                     <div class="col text-start">
 
                                         <div class="plus-div  my-1">
@@ -771,9 +772,12 @@
                                                     <label for="Textarea1" class="form-label">Comment</label>
                                                     <textarea class="form-control" id="Textarea1" rows="4"></textarea>
                                                 </div>
-                                                <div class="py-2 text-end">
-                                                    <button class="btn px-5 text-white" onclick="saveContentFunct()"
-                                                            id="save-btn"
+                                                <div class="py-2 input-group ">
+                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct()" id="save-btn"
+                                                            style="background-color: #fff;border:1px solid #000">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct()" id="save-btn"
                                                             style="background-color: #5f5f5f;">
                                                         Submit
                                                     </button>
@@ -781,8 +785,8 @@
                                             </div>
 
                                         </div>
-
                                     </div>
+                                    @endif
                                     <div class="col g-0 text-start">
                                         <div id="buton">
                                             <button class="px-5 py-2" type="button"
@@ -1573,6 +1577,7 @@
                                     </div>
                                 </div>
                                 <div class="row mx-4">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
                                     <div class="col text-start">
 
                                         <div class="plus-div  my-1">
@@ -1628,18 +1633,20 @@
                                                     <label for="Textarea1" class="form-label">Comment</label>
                                                     <textarea class="form-control" id="Textarea1" rows="4"></textarea>
                                                 </div>
-                                                <div class="py-2 text-end">
-                                                    <button class="btn px-5 text-white" onclick="saveContentFunct1()"
-                                                            id="save-btn"
+                                                <div class="py-2 input-group ">
+                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct1()" id="save-btn"
+                                                            style="background-color: #fff;border:1px solid #000">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct1()" id="save-btn"
                                                             style="background-color: #5f5f5f;">
                                                         Submit
                                                     </button>
                                                 </div>
                                             </div>
-
                                         </div>
-
                                     </div>
+                                    @endif
                                     <div class="col">
                                         <div id="buton" class="py-2 text-center">
                                             <button class="px-5 py-2" type="button"
@@ -2128,6 +2135,7 @@
                             </div>
                             <div class="text-center  pb-3">
                                 <div class="row mx-4">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
                                     <div class="col text-start">
 
                                         <div class="plus-div  my-1">
@@ -2183,9 +2191,12 @@
                                                     <label for="Textarea1" class="form-label">Comment</label>
                                                     <textarea class="form-control" id="Textarea1" rows="4"></textarea>
                                                 </div>
-                                                <div class="py-2 text-end">
-                                                    <button class="btn px-5 text-white" onclick="saveContentFunct2()"
-                                                            id="save-btn"
+                                                <div class="py-2 input-group ">
+                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct2()" id="save-btn"
+                                                            style="background-color: #fff;border:1px solid #000">
+                                                        Cancel
+                                                    </button>
+                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct2()" id="save-btn"
                                                             style="background-color: #5f5f5f;">
                                                         Submit
                                                     </button>
@@ -2195,6 +2206,7 @@
                                         </div>
 
                                     </div>
+                                    @endif
                                     <div class="col g-0 text-start">
                                         <div class="">
                                             <button class="px-5 py-2" type="button"
@@ -2644,6 +2656,7 @@
                                 </div>
                                 <div class="text-center mt-3 pb-3">
                                     <div class="row mx-4">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
                                         <div class="col text-start">
 
                                             <div class="plus-div  my-1">
@@ -2701,9 +2714,12 @@
                                                         <textarea class="form-control" id="Textarea1"
                                                                   rows="4"></textarea>
                                                     </div>
-                                                    <div class="py-2 text-end">
-                                                        <button class="btn px-5 text-white"
-                                                                onclick="saveContentFunct3()" id="save-btn"
+                                                    <div class="py-2 input-group ">
+                                                        <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct3()" id="save-btn"
+                                                                style="background-color: #fff;border:1px solid #000">
+                                                            Cancel
+                                                        </button>
+                                                        <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct3()" id="save-btn"
                                                                 style="background-color: #5f5f5f;">
                                                             Submit
                                                         </button>
@@ -2713,6 +2729,7 @@
                                             </div>
 
                                         </div>
+                                        @endif
                                         <div class="col g-0 text-start">
 
 
