@@ -294,7 +294,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
         $lead = lead::find($id);
         $lead->berater = $req->berater ? $req->berater : $lead->berater;
-        $lead->address = $req->address ? $req->address : $lead->address;
+        $lead->address = $req->address ? $req->nr . $req->address : $lead->address;
         $lead->assign_to_id = Auth::user()->id;
         $lead->nationality = $req->nationality ? $req->nationality : $lead->nationality;
         $lead->telephone = $req->telephone ? $req->telephone : $lead->telephone;

@@ -32,8 +32,12 @@
       <input type="text" value="{{$lead->nationality}}" name="nationality" class="form-control text-center">
 </div>
 <div class="col-12 col-md-6">
-      <label>Address</label>
+      <label>Strasse</label>
       <input type="text" value="{{$lead->address}}" name="address" class="form-control text-center">
+</div>
+<div class="col-12 col-md-6">
+      <label>Nr</label>
+      <input type="text" value="" name="nr" class="form-control text-center">
 </div>
 <div class="col-12 col-md-6">
       <label>PLZ</label>
@@ -45,14 +49,13 @@
 </div>
     
 
-  </fieldset>
   <div class="col-12 col-md-6">
-  <label>Appointment date</label>
+  <label>Datum</label>
   <input type="date" class="col-12 text-center" name="appointmentdate">
 
 </div>
 <div class="col-12 col-md-6">
-<label>Time</label>
+<label>Zeit</label>
 <input type="time" name="apptime" class="text-center col-12">
 </div>
 <div class="col-12 col-md-6">
@@ -72,6 +75,7 @@
       <input type="text" value="" name="berater" class="form-control text-center">
 </div>
 </div>
+  </fieldset>
   <div class="justify-content-end d-flex">
   <i class="fas fa-filter" style="cursor: pointer;" title="Filter" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
 </div>
