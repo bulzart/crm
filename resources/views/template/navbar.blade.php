@@ -543,7 +543,7 @@
                 </div>
             @endif
             @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
-                @if(Auth::guard('admins')->user()->hasRole('salesmanager'))
+                @if(Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('fs'))
                 <div class="">
                     <a href="{{route('Appointments')}}" class="nav-link link-dark rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

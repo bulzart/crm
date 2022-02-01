@@ -654,9 +654,12 @@ $taskcnt = 0;
 
             }
                 if(Auth::guard('admins')->user()->hasRole('fs') || Auth::user()->hasRole('digital')) {
-                    if(Auth::guard('admins')->user()->hasRole('fs')) $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-                    else $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 1)->where('assigned', 1)->get()->count();
-                     return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt'));
+                    if (Auth::guard('admins')->user()->hasRole('fs')) {
+                        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+                    } else {
+                        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 1)->where('assigned', 1)->get()->count();
+                    }
+                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt'));
                 }
                 elseif(Auth::guard('admins')->user()->hasRole('backoffice')) {
                     return view('dashboard', compact('pendencies','morethan30'));
