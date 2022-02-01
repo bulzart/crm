@@ -74,7 +74,6 @@ class LeadDataController extends Controller
             LeadDataFahrzeug::create([
                 'leads_id' => $leadId,
                 'person_id' => $personId,
-                'upload_police' => $request->upload_policeFahrzeug ? $this->storeFile($request->upload_policeFahrzeug, FolderPaths::KK_FILES) : null,
                 'vehicle_id' => $request->vehicle_id,
                 'leasing' => $request->leasing,
                 'leasing_name' => $request->leasing_name,
@@ -146,7 +145,7 @@ class LeadDataController extends Controller
                 $pend->done = 1;
                 $pend->save();
             }
-            return redirect()->back()->with('success', 'Successfully submitted and will be waiting for the backoffice!');
+            return redirect()->route('dashboard')->with('success', 'Successfully submitted and will be waiting for the backoffice!');
         } else {
             return redirect()->back();
         }
@@ -191,7 +190,6 @@ class LeadDataController extends Controller
         $leadDataFahrzeug = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'upload_police' => $request->hasFile('upload_policeFahrzeug') ? $this->storeFile($request->upload_policeFahrzeug, FolderPaths::KK_FILES) : $existingLeadDataFahrzeug->upload_policeFahrzeug,
             'vehicle_id' => $request->vehicle_id,
             'leasing' => $request->leasing,
             'leasing_name' => $request->leasing_name,
