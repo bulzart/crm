@@ -360,6 +360,134 @@
                                         </span>
                                         </button>
                                     </div>
+                                    <div class="input-group justify-content-center mt-3">
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                                            Sprache {{$app->sprache}}
+                                        </span>
+                                        </button>
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                                            Ort {{$app->city}}
+                                        </span>
+                                        </button>
+                                    </div>
+                                    <div class="input-group justify-content-center mt-3">
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                               PLZ {{$app->postal_code}}
+                                        </span>
+                                        </button>
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                                           Nationality {{$app->nationality}}
+                                        </span>
+                                        </button>
+                                    </div>
+                                    <div class="input-group justify-content-center mt-3">
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                                            Zufriedenheit: {{$app->zufriedenheit}}
+                                        </span>
+                                        </button>
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                                            Gesundheit: {{$app->gesundheit}}
+                                        </span>
+                                        </button>
+                                    </div>
+                                    <div class="input-group justify-content-center mt-3">
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                                            Berater: {{$app->berater}}
+                                        </span>
+                                        </button>
+                                        <button class="py-2 border-0 static-btn1 m-1">
+                                        <span class="bg-dark py-1 px-3 people-svg-span">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
+                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                                <path fill-rule="evenodd"
+                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                            </svg>
+                                        </span>
+                                            <span class="px-2" style="font-size: 14px;">
+                                            Bemerkung: {{$app->bemerkung}}
+                                        </span>
+                                        </button>
+                                    </div>
                                     <div class="mx-3">
                                         <hr class="hr-style">
                                     </div>
