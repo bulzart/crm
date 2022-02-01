@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
 
 
@@ -119,28 +120,28 @@
     color: #fff;
 }
 .scroll-2 {
-    height: 300px;
+    height: 380px;
     overflow-y: scroll;
     overflow-x: hidden !important;
     padding-left: 3px;
     padding-right: 3px;
 }
 .scroll-2::-webkit-scrollbar {
-    width: 4px !important;
+    width: 6px !important;
 }
 /* Track */
 .scroll-2::-webkit-scrollbar-track {
-    background: transparent !important;
+    background: #E3E3E3 !important;
     border-radius: 10px;
 }
 /* Handle */
 .scroll-2::-webkit-scrollbar-thumb {
-    background: #91dfa1;
+    background: #4EC590;
     border-radius: 10px;
 }
 /* Handle on hover */
 .scroll-2::-webkit-scrollbar-thumb:hover {
-    background: #91dfa1;
+    background: #4EC590;
 }
 .person-box-1 {
     background-color: #fff;
@@ -214,19 +215,19 @@
 
 /* Track */
 .overflow-div3::-webkit-scrollbar-track {
-    background: transparent !important;
+    background: #E3E3E3 !important;
     border-radius: 10px;
 }
 
 /* Handle */
 .overflow-div3::-webkit-scrollbar-thumb {
-    background: #c9cad8;
+    background: #4EC590;
     border-radius: 10px;
 }
 
 /* Handle on hover */
 .overflow-div3::-webkit-scrollbar-thumb:hover {
-    background: #707070;
+    background: #4EC590;
 }
 
 /* ...................................................... */

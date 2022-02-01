@@ -1,26 +1,27 @@
 <template>
     <div class="row my-2">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0 pe-3">
             <div class="to-do-div">
                 <div class="accordion accordion-flush mx-3" id="accordionFlush1">
                     <div class="accordion-item my-1 py-2" style="background-color: #F7F7F7;">
                         <div class="p-3">
-                                <span style="background-color: #F7F7F7;" class="col text-dark fw-bold fs-5">
+                            <span style="background-color: #F7F7F7; font-family: 'Montserrat';" class="col text-dark fw-bold fs-5">
                                 To Do
-                                 </span>
-                            <hr class="text-black">
+                            </span>
                         </div>
+                        <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
+                        <br>
                         <div id="alrt">
                             </div>
 
-                        <div class="mx-3">
+                        <div class="mx-3" style=" font-family: 'Montserrat';">
                             Admin
-                            <select name="admin" class="form-control" @change="onChangeSelect($event)">
+                            <select name="admin" class="form-control mb-3" style="border: transparent !important; font-family: 'Montserrat';" @change="onChangeSelect($event)">
                                 <option v-for="admin in todos.admins" :value="admin.id">{{ admin.name }}</option>
                             </select>
 
                             Costumer
-                            <select name="costumer" class="form-control" @change="onChangeCostumer($event)">
+                            <select name="costumer" class="form-control mb-3" style="border: transparent !important; font-family: 'Montserrat';" @change="onChangeCostumer($event)">
                                 <option v-for="costumer in todos.costumers" :value="costumer.id">{{
                                         costumer.first_name
                                     }}
@@ -28,10 +29,10 @@
                                 </option>
                             </select>
                             Description (Required)
-                            <input type="text" id="desc" placeholder="Description" class="form-control">
+                            <textarea type="text" id="desc" placeholder="Description" class="form-control mb-3" style="border: transparent !important; font-family: 'Montserrat';"></textarea>
                         </div>
                         <div class="py-2 mx-3">
-                            <button @click="assignpendency" class="btn btn-primary  mt-1">Assign pendency</button>
+                            <button @click="assignpendency" class="btn mt-1" style="background-color: #4EC590; color: #fff !important; font-family: 'Montserrat';">Assign pendency</button>
                         </div>
                     </div>
                 </div>
@@ -41,27 +42,26 @@
         </div>
 
 
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0 ps-3">
             <div class="">
-                <div class=" internal-nr-div pb-2">
+                <div class="internal-nr-div pb-2">
                     <div class="accordion accordion-flush mx-3 " id="accordionFlush4">
-                        <div class="accordion-item my-1 py-2 "
+                        <div class="accordion-item my-1 py-2"
                              style="background-color: #F7F7F7;">
                             <div class="p-3">
-                                <span style="background-color: #F7F7F7;" class="col text-dark fw-bold fs-5">
+                                <span style="background-color: #F7F7F7; font-family: 'Montserrat';" class="col text-dark fw-bold fs-5">
                                 Informational Numbers
                                  </span>
-                                <hr class="text-black">
                             </div>
-
-                            <div id="flush-collapse4" class="accordion-collapse collapse show"
+                            <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
+                            <div id="flush-collapse4" class="accordion-collapse collapse show pt-3"
                                  aria-labelledby="flush-heading4" data-bs-parent="#accordionFlush4">
-                                <div class="accordion-body p-0 mx-2 py-2 overflow-div3"
-                                     style="background-color: #F7F7F7; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                                <div class="accordion-body p-0 mx-3 overflow-div3 pe-3"
+                                     style="background-color: #F7F7F7; font-family: 'Montserrat'; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 250px; overflow-y: scroll !important; overflow-x: hidden !important;">
                                     <div class="py-2 my-2 mx-2" v-for="number in numbers"
                                          style="background-color: #fff; border-radius: 15px; color: #000;">
                                         <div class="mx-3 ">
-                                            <div class="row">
+                                            <div class="row ">
                                                 <div class="col">
                                                     <span class="fw-bold fs-5 text-color123">
                                                         {{ number.text }}
@@ -86,10 +86,10 @@
                                 </div>
                                 <div class="mx-3">
                                     <div class="input-group my-3">
-                                        <input style="size: auto" class="form-control" name="todo" id="number"
+                                        <input style="size: auto; font-family: 'Montserrat'" class="form-control" name="todo" id="number"
                                                v-on:keyup.enter="addnumber"
                                                type="text">
-                                        <button @click="addnumber" class="btn btn-primary">Add</button>
+                                        <button @click="addnumber" class="btn" style="background-color: #4EC590; color: #fff !important; font-family: 'Montserrat';">Add</button>
                                     </div>
                                 </div>
                             </div>
@@ -242,5 +242,11 @@ export default {
 }
 
 </script>
+
+<style scoped>
+    .form-control{
+ border: transparent !important; font-family: 'Montserrat';
+    }
+</style>
 
 
