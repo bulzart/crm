@@ -79,6 +79,7 @@ public function assignpendency(Request $req){
         ->whereNotNull('assign_to_id')
         ->orderBy('time','desc')
         ->where('assigned',1)
+        ->where('completed',0)
         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
         ->paginate(15) as $d){
             $data[$cnt] = $d;
@@ -96,6 +97,7 @@ public function assignpendency(Request $req){
                        ->whereNotNull('assign_to_id')
                        ->orderBy('time','desc')
                        ->where('assigned',1)
+                       ->where('completed',0)
               ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->paginate(15) as $d){
@@ -114,6 +116,7 @@ public function assignpendency(Request $req){
                        ->where('appointment_date', $req->date)
                        ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->orderBy('time','desc')
+                       ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->paginate(15) as $d){
               $data[$cnt] = $d;
@@ -131,6 +134,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                          ->paginate(15) as $d){
@@ -147,6 +151,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->paginate(15) as $d){
                 $data[$cnt] = $d;
@@ -165,6 +170,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                          ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
@@ -181,6 +187,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                          ->paginate(15) as $d){
@@ -199,6 +206,7 @@ public function assignpendency(Request $req){
                        ->where('wantsonline', 1)
                        ->whereNotNull('assign_to_id')
                        ->orderBy('time','desc')
+                       ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                        ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
@@ -213,6 +221,7 @@ public function assignpendency(Request $req){
           foreach (DB::table('leads')
                        ->where('wantsonline', 1)
                        ->orderBy('time','desc')
+                       ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->paginate(15) as $d){
@@ -238,10 +247,6 @@ public function assignpendency(Request $req){
     $fullcalendar = [];
     $br = 1;
     $dayofweek = 6;
-
-
-
-
 
     for ($i = 0; $i <= 365; $i++) {
       $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
@@ -305,6 +310,12 @@ public function assignpendency(Request $req){
   }
   public function costumers(Request $request)
   {
+      $grundversicherungP = null;
+       $retchsschutzP = null;
+        $vorsorgeP = null;
+            $zusatzversicherungP = null;
+            $autoversicherungP = null;
+            $hausratP = null;
       $cnt = 0;
       $date1 = date('Y-m-d', strtotime($request->searchdate1));
       $n = date('Y-m-d', strtotime($request->searchdate2));

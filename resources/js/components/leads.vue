@@ -62,7 +62,7 @@
 </div>
                                     <div class="row">
                                         <div class="col-1 pe-0 my-auto text-end">
-                                            <div v-if="role != 'fs'"><input type="checkbox" :value="lead.id" @change="getit($event)"></div>
+                                            <div v-if="role != 'fs'"><input type="checkbox" :value="lead.id" name="jep" @change="getit($event)"></div>
                                         </div>
                                         <div class="col ps-0">
 
@@ -312,7 +312,7 @@ export default {
         .get(
           "assigntofs" + "/" + this.admin + "?array=" + this.array.toString()
         )
-        .then(this.getleads());
+        .then(this.getleads(),this.array = [],this.hiq());
     },
     changeadmin(event) {
       this.admin = parseInt(event.target.value);
@@ -320,6 +320,13 @@ export default {
     arrpush(val) {
       this.array.push(val);
     },
+    hiq(){
+      var checkboxes = document.getElementsByName('jep');
+      for (var checkbox of checkboxes) {
+        checkbox.checked = false;
+    }
+
+    }
   },
 
   props: {

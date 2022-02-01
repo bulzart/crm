@@ -293,6 +293,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
 
         $lead = lead::find($id);
+        $lead->berater = $req->berater ? $req->berater : $lead->berater;
         $lead->address = $req->address ? $req->address : $lead->address;
         $lead->assign_to_id = Auth::user()->id;
         $lead->nationality = $req->nationality ? $req->nationality : $lead->nationality;
@@ -423,6 +424,8 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         $cnt = $lead->number_of_persons;
 
         for ($i = 1; $i <= $cnt; $i++) {
+            if($req->input('fname' . $i) != null && $req->input('birthday' . $i) != null && $req->input('lname' . $i) != null){
+
             $family = new family();
             $family->first_name = filter_var($req->input('fname' . $i));
             $family->birthdate = filter_var($req->input('birthday' . $i));
@@ -431,7 +434,9 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             $family->status = "Open";
           $family->save();
         }
+    }
         $lead->status_task = "open";
+        $lead->completed = 1;
     $lead->save();
 
         return redirect()->route('tasks')->with('success', 'Action was successfull!');

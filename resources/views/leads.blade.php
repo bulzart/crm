@@ -287,6 +287,7 @@ function getid(x){
       ids[cnt] = x.value;
       cnt++;
 }
+
 window.data = @json(compact('csrf_token'))
 // function callModalFunct() {
 //             document.getElementById("mod01").style.display = "block";
