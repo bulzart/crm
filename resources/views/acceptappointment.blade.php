@@ -15,7 +15,7 @@
     <title>Appointments</title>
 </head>
 
-<body>
+<body style="background: #F8F8F8">
     <section class="col my-3">
         <div class="container-fluid">
             <div class="row">
@@ -55,45 +55,60 @@
                             </div>
                         </div>
                         @if($lead->assigned != 0)
-                        <div class="py-3">
-                            <div class="input-group">
-                                <button class="py-2 border-0 static-btn m-2">
-                                        <span class="bg-dark py-1 px-3 people-svg-span">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
-                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                                <path fill-rule="evenodd"
-                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                                            </svg>
-                                        </span>
-
-                                    <span class="px-3">
-                                            {{$lead->number_of_persons}} Personon
-                                        </span>
-                                </button>
-                                <button class="py-2 border-0 static-btn m-2">
-                                        <span class="bg-dark py-1 px-3 people-svg-span">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
-                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                                <path fill-rule="evenodd"
-                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                                            </svg>
-                                        </span>
-
-                                    <span class="px-3">
-                                            Sprache: {{$lead->sprache}}
-                                        </span>
-                                </button>
-                              
-                              
-                               
-                            </div>
-                        </div>
+                       <div class="row">
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Agent: {{Auth::user()->name}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Zelt: {{$lead->time}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Name: {{$lead->first_name}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               PLZ: {{$lead->postal_code}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Berater: {{$lead->berater}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Sprache: {{$lead->sprache}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Vorname: {{$lead->last_name}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Ort: {{$lead->city}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Tag: 
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Personen: {{$lead->number_of_persons}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Strasse: {{$lead->address}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Tel: {{$lead->telephone}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Datum: {{$lead->birthdate}}
+                           </div>
+                           
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Nationalitat: {{$lead->nationality}}
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Nr: 
+                           </div>
+                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
+                               Zufriedenheit: {{$lead->zufriedenheit}}
+                           </div>
+                           <div class="col-md-12 col-12 py-2" style="background:white; border-radius: 20px;">
+                           Bemerkung: {{$lead->bemerkung}}
+                           </div>
+                       </div>
 
                        @php
                        $leadss = $lead->id * 1244;
