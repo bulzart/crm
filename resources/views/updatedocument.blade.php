@@ -717,7 +717,7 @@
                             <div class="text-center mt-3 pb-3">
                                 <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col text-start">
+                                    <div class="col text-start ">
 
                                         <div class="plus-div  my-1">
                                             <div class="svg-div d-flex">
@@ -746,7 +746,7 @@
 
 
                                         <div class="added-content" id="added-content" style="display: none;">
-                                            <div class="to-do-content p-4"
+                                            <div class="to-do-content mb-2 p-4"
                                                  style="background-color: #EFEFEF; border-radius: 13px;">
                                                 <div class="py-2">
                                                     <div class="py-2">
@@ -787,25 +787,32 @@
                                         </div>
                                     </div>
                                     @endif
-                                    <div class="col g-0 text-start">
-                                        <div id="buton">
-                                            <button class="px-5 py-2" type="button"
-                                                    style="border: none; border-radius: 9px; background-color:#285F52;"
-                                                    id="nextonee__" onclick="nextonee()">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
-                                                     height="19.159" viewBox="0 0 58.155 19.159">
-                                                    <g id="Group_453" data-name="Group 453"
-                                                       transform="translate(0.004)">
-                                                        <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
-                                                              transform="translate(0 9.287)" fill="none"
-                                                              stroke="#3fd599" stroke-width="2"/>
-                                                        <path id="Polygon_2" data-name="Polygon 2"
-                                                              d="M9.58,0l9.58,11.642H0Z"
-                                                              transform="translate(58.151 0) rotate(90)"
-                                                              fill="#3fd599"/>
-                                                    </g>
-                                                </svg>
-                                            </button>
+                                    <div class="col d-flex justify-content-end">
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
+
+                                            </div>
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1576,6 +1583,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                                 <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
                                     <div class="col text-start">
@@ -1607,7 +1615,7 @@
 
 
                                         <div class="added-content" id="added-content1" style="display: none;">
-                                            <div class="to-do-content p-4"
+                                            <div class="to-do-content mb-2 p-4"
                                                  style="background-color: #EFEFEF; border-radius: 13px;">
                                                 <div class="py-2">
                                                     <div class="py-2">
@@ -1647,7 +1655,8 @@
                                         </div>
                                     </div>
                                     @endif
-                                    <div class="col">
+
+                                    <div class="col d-flex justify-content-end">
                                         <div id="buton" class="py-2 text-center">
                                             <button class="px-5 py-2" type="button"
                                                     style="border: none; border-radius: 9px; background-color:#285F52;"
@@ -1672,7 +1681,7 @@
                                     </div>
                                 </div>
 
-                            </div>
+
                         </div>
 
 
@@ -2134,9 +2143,9 @@
                                 </div>
                             </div>
                             <div class="text-center  pb-3">
-                                <div class="row mx-4">
+                                <div class="row mx-3">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col text-start">
+                                    <div class="col g-0 text-start">
 
                                         <div class="plus-div  my-1">
                                             <div class="svg-div d-flex">
@@ -2207,7 +2216,7 @@
 
                                     </div>
                                     @endif
-                                    <div class="col g-0 text-start">
+                                    <div class="col g-0 d-flex justify-content-end">
                                         <div class="">
                                             <button class="px-5 py-2" type="button"
                                                     style="border: none; border-radius: 9px; background-color:#285F52;"
@@ -2654,6 +2663,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="text-center mt-3 pb-3">
                                     <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))

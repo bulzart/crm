@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-   
+
     <div class="col-md-5 col-12 mb-3">
         <div style="border-radius: 25px; padding: 5%;">
             <p class="text-center">Costumer birthdays today:</p>
@@ -87,7 +87,7 @@
                             <span>{{$task->description}}
                         </div>
                     </a>
-                    
+
                     <br>
                 @endforeach
                 <div class="mt-4">
@@ -181,7 +181,7 @@
                         $authUserId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
 
                     @endphp
-<a href="{{route('chat',[$taskAdminId,$authUserId])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
+                    <a href="{{route('chat',[$taskAdminId,$authUserId])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
 
                         </div>
 
