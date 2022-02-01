@@ -51,11 +51,11 @@ class UserController extends Controller
     public function rleads(){
         $leads = DB::table('leads_history')
         ->join('leads','leads_history.leads_id','leads.id')
-        
+
         ->select('leads.first_name','leads.id','leads.telephone','leads_history.reason','leads.number_of_persons')
         ->get();
-        
-        
+
+
         return view('rleads',compact('leads'));
     }
     public function closenots()
@@ -257,7 +257,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         }
         elseif(Auth::user()->hasRole('backoffice')){
             return redirect()->back();
-        } 
+        }
         else {
             $asigned = [];
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')) {
@@ -266,8 +266,8 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
                 $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->paginate(25);
             }
-          
-      
+
+
 
             $insta = DB::table('leads')->where('campaign_id', 1)->count();
 
@@ -284,7 +284,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function asignlead(Request $req, $id)
     {
-           
+
         $req->validate([
             'personen' => 'required',
             'apptime' => 'required',
@@ -302,7 +302,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         $lead->first_name = $req->name ? $req->name : $lead->first_name;
         $lead->last_name = $req->lname ? $req->lname : $lead->last_name;
         $lead->number_of_persons = $req->personen ? $req->personen :  $lead->number_of_persons;
-        $lead->city = $req->ort ? $req->ort : $lead->city; 
+        $lead->city = $req->ort ? $req->ort : $lead->city;
         $lead->appointment_date =  $req->appointmentdate ? filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING) : null;
         $lead->assigned = 1;
         $lead->gesundheit = $req->gesundheit ? $req->gesundheit : $lead->gesundheit;
@@ -335,7 +335,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     public function alead($id)
     {
         // $id = Crypt::decrypt($id) / 1244;
-    
+
         if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
             return redirect()->back();
         } else {
@@ -415,7 +415,6 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function completeapp(Request $req, $id)
     {
-
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
         $lead = lead::find($idd);
@@ -432,9 +431,14 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
           $family->save();
         }
         $lead->status_task = "open";
-    $lead->save();
+        if($lead->save()) {
+            return redirect()->route('tasks')->with('success', 'Action was successfull!');
+        }else{
+            return redirect()->route('tasks')->with('fail', 'Action Failed!');
+        }
 
-        return redirect()->route('tasks')->with('success', 'Action was successfull!');
+
+
     }
 
     public function filterbydateapp(Request $req)
@@ -466,7 +470,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function dealnotclosed($id)
     {
-        
+
         $leads = lead::where('id', $id)->first();
         if ($leads->assign_to_id != null && $leads->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('rejectedleads', compact('leads'));
@@ -479,26 +483,26 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     {
 
         $leads_id = (int) $request->leadsid;
-       
+
 
 
         $user_id = Auth::user()->id;
 
      if($status != null){
     $status = (int) $status;}
-    
+
 if($status === 0) { $reason = 'Rejected';  lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);}
 elseif($status === 1){
     $reason = 'Pending';
      lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
-  
+
 }
 else{
     $reason = $request->reason;
      lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0,'rejected' => 1]);
 }
 
-     
+
 
 
           $image = $request->hasFile('image') ? $this->storeFile($req->input('image'),'img') : null;
@@ -517,10 +521,10 @@ else{
             return redirect()->back()->with('success','Action failed');
           }
 
-  
 
 
-       
+
+
     }
 
     public function dashboard(Request $req)
@@ -594,10 +598,10 @@ $taskcnt = 0;
                     ->where('assign_to_id',Auth::guard('admins')->user()->id)
                     ->where('status_task','Done')
                     ->count();
-                   
-                    
+
+
         }
-     
+
         elseif (Auth::user()->hasRole('admin')){
 
       $pending = DB::table('family_person')
