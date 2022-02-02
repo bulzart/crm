@@ -12,7 +12,12 @@
               integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
               crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/style.css">
-
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <style>
+            h5,h6,h1,h2,h3,h4, span, div, p{
+                font-family: 'Montserrat' !important;
+            }
+        </style>
 
         <title>Home</title>
 
@@ -22,7 +27,7 @@
 
     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('digital'))
         <section>
-            <div class="mx-5">
+            <div class="col-md-12 col-11 mx-auto">
                 <div class="py-3">
                     <div class="text-start">
                             <span class="fw-bolder" style="font-family: 'Montserrat'">
@@ -747,21 +752,25 @@
                                 @endforeach
                                 @endif
                             </div>
-
-                            <div class="text-center py-2">
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                            <div class="text-left mx-2 py-2 mt-3">
+                                <button type="button" class="btn" style="background-color: #4ec490; color: white; border: 1px solid #4ec490; width: 30%; border-radius: 8px !important;" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
-                                    +
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30.751" height="29.429" viewBox="0 0 30.751 29.429">
+                                            <g id="Group_42" data-name="Group 42" transform="translate(1.5 1.5)">
+                                                <line id="Line_11" data-name="Line 11" y2="26.429" transform="translate(13.876 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+                                                <line id="Line_12" data-name="Line 12" x1="27.751" transform="translate(0 12.437)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+                                            </g>
+                                        </svg>
                                 </button>
                             </div>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" style="top: 10% !important;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                  aria-hidden="true">
                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Add Personals
-                                                Appointment</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    <div class="modal-content p-3" style="border-radius: 43px !important;">
+                                        <div class="modal-header" style="border-bottom: 0 !important;">
+                                            <h5 class="modal-title mx-2" id="exampleModalLabel" style="font-family: 'Montserrat' !important;"><b>Add Personals
+                                                Appointment</b></h5>
+                                            <button type="button" class="btn-close" style="opacity: 1 !important;" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -769,19 +778,19 @@
                                                 @csrf
                                                 <input type="hidden" name="apporconId" value="1">
                                                 <div class="px-2">
-                                                    <label>Title</label>
-                                                    <input type="text" name="title" class="form-control" required>
-                                                    <label>Time</label>
-                                                    <input type="time" name="time" class="form-control" required>
-                                                    <label>Address</label>
-                                                    <input type="text" name="address" class="form-control" required>
-                                                    <label>Comment</label>
-                                                    <textarea type="text" name="comment" class="form-control"
+                                                    <label style="font-family: 'Montserrat' !important;"><b>Title</b></label>
+                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="title" class="form-control mb-3" required>
+                                                    <label style="font-family: 'Montserrat' !important;"><b>Time</b></label>
+                                                    <input type="time" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="time" class="form-control mb-3" required>
+                                                    <label style="font-family: 'Montserrat' !important;"><b>Address</b></label>
+                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="address" class="form-control mb-3" required>
+                                                    <label style="font-family: 'Montserrat' !important;"><b>Comment</b></label>
+                                                    <textarea type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" rows="3" name="comment" class="form-control mb-3"
                                                               required>
                                                 </textarea>
-                                                    <label>Assign To</label>
+                                                    <label style="font-family: 'Montserrat' !important;"><b>Assign To</b></label>
 
-                                                    <select class="form-control mb-2" name="roleid">
+                                                    <select class="form-select mb-2" style="font-family: 'Montserrat' !important;border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="roleid">
                                                         @if(!Auth::guard('admins')->user()->hasRole('backoffice'))
                                                         @foreach($admins as $admin)
 
@@ -791,13 +800,24 @@
                                                     </select>
 
                                                 </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                    <input type="submit" class="btn btn-success" value="Save">
+                                                <div class="modal-footer px-1" style="border-top: 0 !important; justify-content: flex-start !important;">
+                                                    <div class="row" style="width: 100%;">
+                                                        <div class="col-md-4 col-5 p-0">
+                                                            <div style="padding: 2%;">
+                                                                <input type="submit" style="font-family: 'Montserrat' !important; width: 100%; border: 1px solid #4EC590; font-weight: 600 !important; font-size: 18px !important; background-color: #4EC590; color: #fff; border-radius: 8px;" class="btn py-2" value="Save">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-5 p-0">
+                                                            <div style="padding: 2%;">
+                                                                <button type="button" class="btn py-2"
+                                                                        data-bs-dismiss="modal" style="font-family: 'Montserrat' !important; width: 100%; font-weight: 600 !important; border: 1px solid #6C757D; font-size: 18px !important; background-color: #6C757D; color: #fff; border-radius: 8px;">
+                                                                    Close
+                                                                </button>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                   
                                                 </div>
                                             </form>
                                         </div>
