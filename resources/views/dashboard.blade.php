@@ -41,7 +41,7 @@
                             </span>
                     </div>
                 </div>
-                
+
 
                 <div class="py-3">
                     <div class="row">
@@ -391,7 +391,7 @@
                             <div class="calendar-div">
                                 <calendar></calendar>
                             </div>
-                            <div class="text-center my-4">
+                            <div class="text-center" style="margin-top: -30px">
                                 <a href="{{route('insertappointment')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="37.694" height="37.694"
                                          viewBox="0 0 37.694 37.694">
