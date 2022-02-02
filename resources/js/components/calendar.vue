@@ -25,7 +25,6 @@
                               class="not-this-month  text-center" style="font-family: 'Montserrat'; font-size: 15px;"><b>{{ lista[1].dayn }}</b>
                         </span>
                         <br>
-
                     </div>
                 </div>
                 <div class="g-0 col-md-3 col-3 calendarspan">
@@ -99,7 +98,9 @@
                                         </svg>
                                         {{tod.address}}
                                     </div>
+
                                 </div>
+
                             </div>
 
 
@@ -137,12 +138,13 @@
                             </div>
                         </div>
                     </a>
-                </div> 
+                    <div class="mt-2 text-center p-1" style="background: #DDDADA; border-radius: 20px; cursor: pointer; font-family: 'Montserrat';" @click="loadmore()">
+                        Load more <i class="fas fa-caret-down"></i>
+                    </div>
+                </div>
             </div>
             <br>
-            <div class="mt-1 text-center p-2" style="background: #F8F8F8; border-radius: 20px; cursor: pointer; font-family: 'Montserrat';" @click="loadmore()">
-                Load more <i class="fas fa-caret-down"></i>
-            </div>
+
         </div>
 
     </div>

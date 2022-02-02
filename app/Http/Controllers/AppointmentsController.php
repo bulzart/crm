@@ -10,6 +10,7 @@ use App\Models\Admins;
 
 use App\Models\lead;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 class AppointmentsController extends Controller
@@ -32,8 +33,15 @@ class AppointmentsController extends Controller
 
             $users="";$appointments_events ="";
 			$appointments = lead::select('*')->where('assign_to_id',auth::guard('admins')->user()->id)->whereNotNull('appointment_date')->get();
+            $maps = DB::table('leads')->where('appointment_date',Carbon::now()->format('Y-m-d'))->where('assign_to_id', \Illuminate\Support\Facades\Auth::guard('admins')->user()->id)->select('leads.first_name','leads.last_name','leads.latitude','leads.longitude')->get();
             $personalApp = PersonalAppointment::where('user_id', Auth::guard('admins')->user()->id)->where('AppOrCon', 1)->get();
-			return view('appointment')->with('users',$users)->with('appointments_events',$appointments_events)->with('appointments',$appointments)->with('personalApp',$personalApp);
+
+            return view('appointment')
+                ->with('users',$users)
+                ->with('appointments_events',$appointments_events)
+                ->with('appointments',$appointments)
+                ->with('personalApp',$personalApp)
+                ->with('maps',$maps);
 
 
 

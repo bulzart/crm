@@ -466,104 +466,109 @@
             <h3> Appointments</h1>
                 <hr>
         </div>
-        <div class="row">
-            <div class="col-6" width="90%" style="font-size: 12px;">
-                <div id='calendar'></div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-5 g-0 m-3">
-                {{--        <div class="mapouter container justify-content-center">--}}
-                {{--            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFBE1cuoGyzaiyvog5Zi6-tBvRwyXHiz8"></script>--}}
 
-                {{--            <div class="gmap_canvas d-flex justify-content-center">--}}
+        <div class="col" width="90%" style="font-size: 12px;">
+            <div id='calendar'></div>
+        </div>
 
-                {{--                <div id="map" style="z-index: 0 !important;width: 100% !important; height:70vh !important; border-radius: 15px !important;"></div>--}}
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-5 g-0 m-3">
+            <div class="mapouter container justify-content-center">
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFBE1cuoGyzaiyvog5Zi6-tBvRwyXHiz8"></script>
 
-                {{--            </div>--}}
+                <div class="gmap_canvas d-flex justify-content-center">
 
-                {{--        </div>--}}
-                <div style="width: 90vh">
-                    <iframe width="90%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                    <div id="map" style="z-index: 0 !important;width: 100% !important; height:60vh !important; border-radius: 15px !important;"></div>
+
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 g-0">
-                    <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
-                        <div class="accordion-item my-1 py-2" style="background-color: #ececec;">
-                            <div class="p-3">
-                                <span class="col text-black fw-bold fs-5">
-                                Show Persoal Appointment
-                                 </span>
-                                <hr class="text-black">
-                            </div>
-                            </h2>
-                            <div id="flush-collapse1" class="accordion-collapse collapse show"
-                                 aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush1">
 
-                                <div class="accordion-body p-0 mx-2 py-2 overflow-div1"
-                                     style="background-color: #F7F7F7; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+            </div>
+            <div class="container">
+                <div class="notice-box my-3">
 
-                                        @foreach($personalApp as $perApp)
-                                            <div class="py-2 my-2 mx-2"
-                                                 style="background-color: #fff; border-radius: 15px; color: #000;">
-                                                <div class="mx-3 ">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                    <span class="fw-bold fs-5">
-                                                        {{$perApp->title}}
-                                                    </span>
-                                                        </div>
-                                                        <div class="col-1 text-end">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="5"
-                                                                 height="13"
-                                                                 viewBox="0 0 5 13">
-                                                                <g id="Group_528" data-name="Group 528"
-                                                                   transform="translate(-0.239 0)">
-                                                                    <circle id="Ellipse_6" data-name="Ellipse 6"
-                                                                            cx="2.5"
-                                                                            cy="2.5" r="2.5"
-                                                                            transform="translate(0.239 0)"
-                                                                            fill="#000"/>
-                                                                    <circle id="Ellipse_7" data-name="Ellipse 7"
-                                                                            cx="2.5"
-                                                                            cy="2.5" r="2.5"
-                                                                            transform="translate(0.239 8)"
-                                                                            fill="#000"/>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="">
-                                                                <span>
-                                                                    Address: {{$perApp->address}}
-                                                                </span>
-                                                    </div>
-                                                    <div class="">
-                                                                <span>
-                                                                    Time: {{$perApp->time}}
-                                                                </span>
-                                                    </div>
-                                                    <div class="">
-                                                                <span>
-                                                                    Comment: {{$perApp->comment}}
-                                                                </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                    <div class="mx-4 py-3">
 
+                                <span class="fs-5 fw-600 title-div">
+                                    Important Notices
+                                </span>
+                    </div>
+
+                    <div class="notice-box-content mx-4"
+                         style="height: 28vh; overflow-x: hidden; overflow-y: scroll;">
+                        @foreach($personalApp as $perApp)
+                            <div class="person-box-1 py-2 px-2 my-2">
+                                <div class="mx-3">
+                                    <div class="">
+                                            <span class="name-spnnnn fs-5">
+                                                {{$perApp->title}}
+                                            </span>
+                                    </div>
+                                    <div class="">
+                                            <span class="fw-normal">
+                                               Address: {{$perApp->address}}
+                                            </span>
+                                    </div>
+                                    <div class="">
+                                            <span class="fw-normal">
+                                               Time: {{$perApp->time}}
+                                            </span>
+                                    </div>
+                                    <div class="">
+                                            <span class="fw-normal">
+                                               Comment: {{$perApp->comment}}
+                                            </span>
+                                    </div>
                                 </div>
+                            </div>
+                        @endforeach
+                    </div>
 
-        </div>
-        </div>
+                </div>
 
+            </div>
         </div>
-        </div>
-        </div>
+{{--        <div class="row">--}}
+{{--            <div class="col-6" width="90%" style="font-size: 12px;">--}}
+{{--                <div id='calendar'></div>--}}
+{{--            </div>--}}
+
+
+
+{{--        </div>--}}
+
     @else
 
         You don't have permission // {!! Auth::guard('admins')->user()->hasRole('admin') !!} ---  {!! Auth::guard('admins')->user()->getRoleNames() !!}
 
     @endif
-
+            <script type="text/javascript">
+                var locations = [
+                    <?php
+                    foreach ($maps as $row3) {
+                        echo '["' . $row3->first_name . '", ' . $row3->latitude . ', ' . $row3->longitude . '],';
+                    }
+                    ?>
+                ];
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: new google.maps.LatLng(42.6026, 20.9030),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+                var infowindow = new google.maps.InfoWindow();
+                var marker, i;
+                for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        map: map
+                    });
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            infowindow.setContent(locations[i][0]);
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
+            </script>
 @endsection
 
 <style>
@@ -597,7 +602,7 @@
     }
 
     .notice-box {
-        background-color: #FFEBE5;
+        background-color: #DDDADA;
         border-radius: 35px;
     }
 

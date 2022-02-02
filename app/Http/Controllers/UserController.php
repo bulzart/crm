@@ -565,8 +565,6 @@ $taskcnt = 0;
                     }
 
 
-
-
                     $pendingcnt = DB::table('family_person')
                     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                     ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
