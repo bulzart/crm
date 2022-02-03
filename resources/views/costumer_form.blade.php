@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <title>Costumer Kundenportfolio</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
 
 

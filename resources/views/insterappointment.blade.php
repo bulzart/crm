@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <title>Insert Appointment</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
 <body>
 <section>
