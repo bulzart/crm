@@ -2,7 +2,6 @@
 @section('content')
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -81,7 +80,7 @@
                                Ort: {{$lead->city}}
                            </div>
                            <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Tag: 
+                               Tag:
                            </div>
                            <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
                                Personen: {{$lead->number_of_persons}}
@@ -95,12 +94,12 @@
                            <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
                                Datum: {{$lead->birthdate}}
                            </div>
-                           
+
                            <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
                                Nationalitat: {{$lead->nationality}}
                            </div>
                            <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Nr: 
+                               Nr:
                            </div>
                            <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
                                Zufriedenheit: {{$lead->zufriedenheit}}

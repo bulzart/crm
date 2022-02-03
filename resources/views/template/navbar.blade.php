@@ -447,7 +447,7 @@
 
 @media (max-width: 978px){
     #logo__311{
-        content:url('img/Logo gjys.png');
+        content:url('../img/Logo gjys.png');
         width: 20% !important;
     }
 }
@@ -464,7 +464,7 @@
         <div class="nav-itemsss overflow-div1" style="width:100%; background-color: #0C71C3;">
             <br>
             <div class="mx-auto">
-                <img src="img/Logo.png" id="logo__311" style="width: 100%;" alt="">
+                <img src="../img/Logo.png" id="logo__311" style="width: 100%;" alt="">
             </div>
             <br>
             <div class="">

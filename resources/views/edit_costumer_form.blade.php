@@ -259,9 +259,6 @@
                     <br>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin'))<div><a class="nav-link link-dark  rounded" href="{{route('addnewuser')}}"><span class="ps-1 nav-texttt">Add New User</span></a></div>@endif
-
-
-
                 <div>
                     <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('rleads')}}"><span class="ps-1 nav-texttt">Rejected Leads</span></a>
                 </div>
@@ -270,25 +267,6 @@
                 </div>
             </div>
             <hr>
-        <!-- <div class="dropdown user-drop w-100 py-3 d-flex justify-content-center" style=" background-color: #0C71C3;position: absolute; bottom:0; left:0; border: none; border-top: 1px #c4c4c4 solid;">
-
-            <a href="#" class="d-flex align-items-center link-dark text-decoration-none " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-chevron-up" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-                </svg>
-            </a>
-            <ul class="dropdown-menu dropup text-small shadow" aria-labelledby="dropdownUser2">
-                @if(Auth::guard('admins')->user()->hasRole('admin'))<li><a class="dropdown-item" href="{{route('addnewuser')}}">Add New User</a></li>@endif
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="{{route('rleads')}}">Rejected Leads</a></li>
-
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
-            </ul>
-        </div> -->
         </div>
     </div>
 
