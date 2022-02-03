@@ -701,7 +701,7 @@
                     <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('rleads')}}"><span class="ps-1 nav-texttt">Rejected Leads</span></a>
                 </div>
                 <div class="">
-                    <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('rleads')}}" href="{{route('logout')}}"><span class="ps-1 nav-texttt">Sign out</span></a>
+                    <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('logout')}}"><span class="ps-1 nav-texttt">Sign out</span></a>
                 </div>
         </div>
         <hr>
