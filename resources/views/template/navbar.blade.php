@@ -13,6 +13,9 @@
     <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
 <style>
+    div, button, span, p ,h1, h2, h3, h4, h5, h6, input, a{
+        font-family: 'Montserrat';
+    }
     .nav-itemsss {
         height: 90vh !important;
         overflow-y: scroll !important;
@@ -822,18 +825,33 @@ var cnttt = 1;
     });
     var Pending__bool1 = false;
 
-$(document).ready(function(){
-    $("#Pending__1").click(function(){
-        $("#collapse__").collapse('toggle');
-        if(Pending__bool1 == false){
-            $("#Pending_arrow__1").addClass("bi bi-caret-down-fill bi-caret-up-fill");
-            Pending__bool1 = true;
-        }else{
-            $("#Pending_arrow__1").removeClass("bi bi-caret-up-fill");
-            Pending__bool1 = false;
-        }
+    $(document).ready(function(){
+        $("#Pending__1").click(function(){
+            $("#collapse__").collapse('toggle');
+            if(Pending__bool1 == false){
+                $("#Pending_arrow__1").addClass("bi bi-caret-down-fill bi-caret-up-fill");
+                Pending__bool1 = true;
+            }else{
+                $("#Pending_arrow__1").removeClass("bi bi-caret-up-fill");
+                Pending__bool1 = false;
+            }
+        });
     });
-});
+
+    var Geburstage__bool1 = false;
+
+    $(document).ready(function(){
+        $("#Geburstage__").click(function(){
+            $("#collapse____").collapse('toggle');
+            if(Geburstage__bool1 == false){
+                $("#Geburstage_arrow__").addClass("bi bi-caret-down-fill bi-caret-up-fill");
+                Geburstage__bool1 = true;
+            }else{
+                $("#Geburstage_arrow__").removeClass("bi bi-caret-up-fill");
+                Geburstage__bool1 = false;
+            }
+        });
+    });
 
     function addanotherr(){
          document.getElementById('addanother').innerHTML  += '<label class="text-center">Additional info</label>';
