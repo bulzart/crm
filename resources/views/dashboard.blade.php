@@ -690,9 +690,10 @@
                 <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
                     <div class="accordion-item my-1 py-2" style="background-color: #ececec;">
                         <div class="p-3">
-                                <span class="col text-black fw-bold fs-5" style="font-family: 'Montserrat';">
-                                    Add Persoals Appointment
-                                </span>
+                            <div class="row">
+                                <div class="col"><h5><b>Personal Apponitments</b></h5></div>
+                                <div style="color: #0a53be" class="col-3 text-end pe-4"><h5><b>{{$countpersonalApp}}</b></h5></div>
+                            </div>
                         </div>
                         <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
                         <br>
@@ -815,10 +816,10 @@
                                                                     Close
                                                                 </button>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
-                                                   
+
                                                 </div>
                                             </form>
                                         </div>
@@ -843,16 +844,12 @@
                                 <div class="accordion accordion-flush mx-3 " id="accordionFlush1">
                                     <div class="accordion-item my-1 mb-3 py-2" style="background-color: #F7F7F7;">
                                         <h2 class="accordion-header" id="flush-heading1">
-                                            <button class="accordion-button collapsed d-btnn "
-                                                    style="background-color: #F7F7F7;"
-                                                    type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#flush-collapse1"
-                                                    aria-expanded="false" aria-controls="flush-collapse1">
-                                                <div class="col text-dark" style="font-family: 'Montserrat';">
-                                                    <h5><b>Personal Apponitments</b></h5>
+                                            <div class="p-3">
+                                                <div class="row">
+                                                    <div class="col"><h5><b>Personal Apponitments</b></h5></div>
+                                                    <div style="color: #0a53be" class="col-3 text-end"><h5><b>{{$countpersonalApp}}</b></h5></div>
                                                 </div>
-
-                                            </button>
+                                            </div>
                                         </h2>
                                         <div id="flush-collapse1" class="accordion-collapse collapse show"
                                              aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush1">
@@ -984,15 +981,12 @@
                                         <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
                                             <div class="accordion-item mb-3 my-1 py-2" style="background-color: #F7F7F7;">
                                                 <h2 class="accordion-header" id="flush-heading5">
-                                                    <button class="accordion-button collapsed d-btnn "
-                                                            style="background-color: #F7F7F7;" type="button"
-                                                            data-bs-toggle="collapse"
-                                                            data-bs-target="#flush-collapse5" aria-expanded="false"
-                                                            aria-controls="flush-collapse5">
-                                                        <div class="col text-dark" style="font-family: 'Montserrat';">
-                                                            <h5><b>Consultations</b></h5>
+                                                    <div class="p-3">
+                                                        <div class="row">
+                                                            <div class="col"><h5><b>Consultations</b></h5></div>
+                                                            <div style="color: #0a53be" class="col-3 text-end"><h5><b>{{$countconsultation}}</b></h5></div>
                                                         </div>
-                                                    </button>
+                                                    </div>
                                                 </h2>
                                                 <div id="flush-collapse5" class="accordion-collapse collapse show"
                                                      aria-labelledby="flush-heading5" data-bs-parent="#accordionFlush5">

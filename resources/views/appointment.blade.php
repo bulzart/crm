@@ -473,7 +473,7 @@
 
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-5 g-0 m-3">
-            <div class="mapouter container justify-content-center">
+            <div class="mapouter container justify-content-center ">
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFBE1cuoGyzaiyvog5Zi6-tBvRwyXHiz8"></script>
 
                 <div class="gmap_canvas d-flex justify-content-center">
@@ -484,16 +484,16 @@
 
             </div>
             <div class="container">
-                <div class="notice-box my-3">
+                <div class="notice-box my-3 ">
 
-                    <div class="mx-4 py-3">
 
-                                <span class="fs-5 fw-600 title-div">
-                                    Important Notices
-                                </span>
-                    </div>
-
-                    <div class="notice-box-content mx-4"
+                        <div class="p-3">
+                            <div class="row">
+                                <div class="col"><h5><b>Personal Apponitments</b></h5></div>
+                                <div style="color: #0a53be" class="col-3 text-end pe-4"><h5><b>{{$countpersonalApp}}</b></h5></div>
+                            </div>
+                        </div>
+                    <div class="notice-box-content mx-4 overflow-div1"
                          style="height: 28vh; overflow-x: hidden; overflow-y: scroll;">
                         @foreach($personalApp as $perApp)
                             <div class="person-box-1 py-2 px-2 my-2">
@@ -635,5 +635,26 @@
 
     body {
         overflow-x: hidden !important;
+    }
+    .overflow-div1::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    /* Track */
+    .overflow-div1::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    .overflow-div1::-webkit-scrollbar-thumb {
+        background: #c9cad8;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .overflow-div1::-webkit-scrollbar-thumb:hover {
+        background: #707070;
+        border-radius: 10px;
     }
 </style>
