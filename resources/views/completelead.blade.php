@@ -438,60 +438,62 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 ps-0">
-                        <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
+
+
+                            <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
                             @php
-                                $leadss = $app->id * 1244;
-                                $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                            @endphp
-                            <form action="{{route('completeapp',$appId)}}" method="post">
-                                @csrf
+                                            $leadss = $app->id * 1244;
+                                            $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                                        @endphp
+                                        <form action="{{route('completeapp',$appId)}}" method="post">
+                                            @csrf
+
                                 <div class="border-left-div">
                                     <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
 
 
-                                        <div class="accordion-item my-1">
-                                            <h2 class="accordion-header" id="flush-headingOne">
-                                                <button class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse"
-                                                        data-bs-target="#flush-collapseOne"
-                                                        aria-expanded="false" aria-controls="flush-collapseOne">
-                                                    Person 1 erfassen
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapseOne" class="accordion-collapse collapse show"
-                                                 aria-labelledby="flush-headingOne"
-                                                 data-bs-parent="#accordionFlushExample">
-                                                <div class="accordion-body p-0 mx-2 py-2">
-                                                    <div class="row g-3 align-items-center m-1">
-                                                        <div class="col-4">
-                                                            <label for="inputTxt4"
-                                                                   class="col-form-label">Vorname:</label>
+
+                                            <div class="accordion-item my-1">
+                                                <h2 class="accordion-header" id="flush-headingOne">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#flush-collapseOne"
+                                                            aria-expanded="false" aria-controls="flush-collapseOne">
+                                                        Person 1 erfassen
+                                                    </button>
+                                                </h2>
+                                                <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                                                     aria-labelledby="flush-headingOne"
+                                                     data-bs-parent="#accordionFlushExample">
+                                                    <div class="accordion-body p-0 mx-2 py-2">
+                                                        <div class="row g-3 align-items-center m-1">
+                                                            <div class="col-4">
+                                                                <label for="inputTxt4"
+                                                                       class="col-form-label">Vorname:</label>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="text" id="inputTxt4" class="form-control"
+                                                                       aria-describedby="passwordHelpInline"
+                                                                       name="fname1">
+                                                            </div>
                                                         </div>
-                                                        <div class="col">
-                                                            <input type="text" id="inputTxt4" class="form-control"
-                                                                   aria-describedby="passwordHelpInline"
-                                                                   name="fname1" required>
+                                                        <div class="row g-3 align-items-center m-1">
+                                                            <div class="col-4">
+                                                                <label for="inputTxt5"
+                                                                       class="col-form-label">Nachname:</label>
+                                                            </div>
+                                                            <div class="col">
+                                                                <input type="text" id="inputTxt5" class="form-control"
+                                                                       name="lname1"
+                                                                       aria-describedby="passwordHelpInline">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row g-3 align-items-center m-1">
-                                                        <div class="col-4">
-                                                            <label for="inputTxt5"
-                                                                   class="col-form-label">Nachname:</label>
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="text" id="inputTxt5" class="form-control"
-                                                                   name="lname1"
-                                                                   aria-describedby="passwordHelpInline" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row g-3 align-items-center m-1">
-                                                        <div class="col-4">
-                                                            <label for="inputTxt6"
-                                                                   class="col-form-label">Geburtstag:</label>
-                                                        </div>
+                                                        <div class="row g-3 align-items-center m-1">
+                                                            <div class="col-4">
+                                                                <label for="inputTxt6"
+                                                                       class="col-form-label">Geburtstag:</label>
+                                                            </div>
+  
                                                         <div class="col">
                                                             <input type="date" id="inputTxt6" class="form-control"
                                                                    aria-describedby="passwordHelpInline"
@@ -559,7 +561,7 @@
             '                                                    </div>' +
             '                                                    <div class="col">' +
             '                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +
-            '                                                           aria-describedby="passwordHelpInline" required>' +
+            '                                                           aria-describedby="passwordHelpInline">' +
             '                                                    </div>' +
             '                                                </div>' +
             '                                                <div class="row g-3 align-items-center m-1">' +
@@ -568,7 +570,7 @@
             '                                                    </div>' +
             '                                                    <div class="col">' +
             '                                                        <input type="text" id="inputTxt5" class="form-control"' +
-            '                                                            aria-describedby="passwordHelpInline" required name="lname' + i + '">' +
+            '                                                            aria-describedby="passwordHelpInline" name="lname' + i + '">' +
             '                                                    </div>' +
             '                                                </div>' +
             '                                                <div class="row g-3 align-items-center m-1">' +
@@ -578,7 +580,7 @@
             '                                                    </div>' +
             '                                                    <div class="col">' +
             '                                                        <input type="date" id="inputTxt6" class="form-control" name="birthday' + i + '"' +
-            '                                                            aria-describedby="passwordHelpInline" required>' +
+            '                                                            aria-describedby="passwordHelpInline">' +
             '                                                    </div>' +
             '                                                </div>' +
             '                                                <div class="text-end">' +

@@ -5948,6 +5948,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -30871,15 +30877,49 @@ var render = function () {
                                                       _vm._s(lead.first_name) +
                                                       " " +
                                                       _vm._s(lead.last_name) +
-                                                      "\n                                                            "
+                                                      "\n                                                                 \n                                                            "
                                                   ),
                                                 ]
                                               ),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              "Adresse: " + _vm._s(lead.address)
+                                            ),
+                                          ]),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              "Haushalt: " +
+                                                _vm._s(lead.number_of_persons) +
+                                                " Personen "
+                                            ),
+                                          ]),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              "Grund: " + _vm._s(lead.grund)
+                                            ),
+                                          ]),
+                                          _c("br"),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              "Kampagne: " +
+                                                _vm._s(lead.kampagne) +
+                                                " "
+                                            ),
+                                          ]),
+                                          _c("br"),
                                         ]
                                       ),
                                     ]
                                   ),
                                 ]),
+                                _vm._v(" "),
+                                _vm._m(4, true),
                               ]
                             )
                           : _c(
@@ -30897,31 +30937,54 @@ var render = function () {
                                 },
                               },
                               [
-                                _c("div", { staticClass: "row mx-2" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "col-7 col-sm-12 col-md-12 col-lg-7 g-0 py-1 text-center",
-                                    },
-                                    [
-                                      _c("div", {}, [
-                                        _c(
-                                          "span",
-                                          { staticClass: "fw-bold fs-5" },
-                                          [
-                                            _vm._v(
-                                              "\n                                                               " +
-                                                _vm._s(lead.first_name) +
-                                                "\n                                                            "
-                                            ),
-                                          ]
+                                _c("div", { staticClass: "mx-2" }, [
+                                  _c("div", {}, [
+                                    _c(
+                                      "span",
+                                      { staticClass: "fw-bold fs-5" },
+                                      [
+                                        _vm._v(
+                                          "\n                                                               " +
+                                            _vm._s(lead.first_name) +
+                                            " " +
+                                            _vm._s(lead.last_name) +
+                                            "\n                                                            "
                                         ),
-                                      ]),
-                                    ]
-                                  ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v(
+                                        "Adresse: " + _vm._s(lead.address)
+                                      ),
+                                    ]),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v(
+                                        "Haushalt: " +
+                                          _vm._s(lead.number_of_persons) +
+                                          " Personen "
+                                      ),
+                                    ]),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v("Grund: " + _vm._s(lead.grund)),
+                                    ]),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("span", [
+                                      _vm._v(
+                                        "Kampagne: " +
+                                          _vm._s(lead.kampagne) +
+                                          " "
+                                      ),
+                                    ]),
+                                    _c("br"),
+                                  ]),
                                   _vm._v(" "),
-                                  _vm._m(4, true),
+                                  _vm._m(5, true),
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -30939,23 +31002,36 @@ var render = function () {
                                     _c("div", { staticClass: "modal-dialog" }, [
                                       _c(
                                         "div",
-                                        { staticClass: "modal-content" },
+                                        {
+                                          staticClass: "modal-content",
+                                          staticStyle: {
+                                            background: "#f8f8f8",
+                                          },
+                                        },
                                         [
                                           _c(
                                             "div",
                                             { staticClass: "modal-header" },
                                             [
                                               _c(
-                                                "h5",
-                                                {
-                                                  staticClass: "modal-title",
-                                                  attrs: {
-                                                    id: "exampleModalLabel",
-                                                  },
-                                                },
+                                                "div",
+                                                { staticClass: "mx-3" },
                                                 [
-                                                  _vm._v(
-                                                    _vm._s(lead.first_name)
+                                                  _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "fs-3 fw-bold text-dark",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                           " +
+                                                          _vm._s(
+                                                            lead.first_name
+                                                          ) +
+                                                          "\n                                  \n                                        "
+                                                      ),
+                                                    ]
                                                   ),
                                                 ]
                                               ),
@@ -30975,101 +31051,6 @@ var render = function () {
                                             "div",
                                             { staticClass: "modal-body" },
                                             [
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass: "mb-3 mt-2 mx-2",
-                                                },
-                                                [
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "text-end" },
-                                                    [
-                                                      _c(
-                                                        "button",
-                                                        {
-                                                          staticClass:
-                                                            "bg-white border-0 fs-5 fw-bold",
-                                                          attrs: {
-                                                            type: "button",
-                                                            id: "closeButton",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c(
-                                                            "svg",
-                                                            {
-                                                              attrs: {
-                                                                xmlns:
-                                                                  "http://www.w3.org/2000/svg",
-                                                                width: "21.123",
-                                                                height:
-                                                                  "21.352",
-                                                                viewBox:
-                                                                  "0 0 21.123 21.352",
-                                                              },
-                                                            },
-                                                            [
-                                                              _c(
-                                                                "g",
-                                                                {
-                                                                  attrs: {
-                                                                    id: "Group_500",
-                                                                    "data-name":
-                                                                      "Group 500",
-                                                                    transform:
-                                                                      "translate(-210.779 -966.838)",
-                                                                  },
-                                                                },
-                                                                [
-                                                                  _c("line", {
-                                                                    attrs: {
-                                                                      id: "Line_24",
-                                                                      "data-name":
-                                                                        "Line 24",
-                                                                      y1: "18.295",
-                                                                      x2: "18.295",
-                                                                      transform:
-                                                                        "translate(212.193 968.252)",
-                                                                      fill: "none",
-                                                                      stroke:
-                                                                        "#ff0d13",
-                                                                      "stroke-linecap":
-                                                                        "round",
-                                                                      "stroke-width":
-                                                                        "2",
-                                                                    },
-                                                                  }),
-                                                                  _vm._v(" "),
-                                                                  _c("line", {
-                                                                    attrs: {
-                                                                      id: "Line_25",
-                                                                      "data-name":
-                                                                        "Line 25",
-                                                                      x2: "18.295",
-                                                                      y2: "18.295",
-                                                                      transform:
-                                                                        "translate(212.193 968.481)",
-                                                                      fill: "none",
-                                                                      stroke:
-                                                                        "#ff0d13",
-                                                                      "stroke-linecap":
-                                                                        "round",
-                                                                      "stroke-width":
-                                                                        "2",
-                                                                    },
-                                                                  }),
-                                                                ]
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                    ]
-                                                  ),
-                                                ]
-                                              ),
-                                              _vm._v(" "),
                                               _c("div", {}, [
                                                 _c(
                                                   "div",
@@ -31082,43 +31063,52 @@ var render = function () {
                                                       "div",
                                                       {
                                                         staticClass:
-                                                          "row  mx-4",
+                                                          "text-center row",
                                                       },
                                                       [
                                                         _c(
                                                           "div",
                                                           {
                                                             staticClass:
-                                                              "col-5  py-3 g-0",
+                                                              "col-6 col-md-6 py-3",
                                                           },
                                                           [
                                                             _c(
                                                               "div",
                                                               {
                                                                 staticClass:
-                                                                  "mx-3",
+                                                                  "d-flex justify-content-start",
                                                               },
                                                               [
                                                                 _c(
-                                                                  "span",
+                                                                  "a",
                                                                   {
                                                                     staticClass:
-                                                                      "fs-3 fw-bold text-dark",
+                                                                      "btn fw-bold fs-5 py-3 w-100",
+                                                                    staticStyle:
+                                                                      {
+                                                                        "background-color":
+                                                                          "#E50A10",
+                                                                        color:
+                                                                          "#fff",
+                                                                        "border-radius":
+                                                                          "10px",
+                                                                      },
+                                                                    attrs: {
+                                                                      href:
+                                                                        "pendingreject/" +
+                                                                        lead.id +
+                                                                        "/1",
+                                                                    },
                                                                   },
                                                                   [
                                                                     _vm._v(
-                                                                      "\n                                           " +
-                                                                        _vm._s(
-                                                                          lead.first_name
-                                                                        ) +
-                                                                        "\n                                        "
+                                                                      "\n                                            Reject\n                                        "
                                                                     ),
                                                                   ]
                                                                 ),
                                                               ]
                                                             ),
-                                                            _vm._v(" "),
-                                                            _vm._m(5, true),
                                                           ]
                                                         ),
                                                         _vm._v(" "),
@@ -31126,7 +31116,7 @@ var render = function () {
                                                           "div",
                                                           {
                                                             staticClass:
-                                                              "col py-3",
+                                                              "col-6 col-md-6 py-3 w-50",
                                                           },
                                                           [
                                                             _c(
@@ -31166,65 +31156,157 @@ var render = function () {
                                                             ),
                                                           ]
                                                         ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "div",
-                                                          {
-                                                            staticClass:
-                                                              "col py-3",
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "d-flex justify-content-start",
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "a",
-                                                                  {
-                                                                    attrs: {
-                                                                      href:
-                                                                        "pendingreject/" +
-                                                                        lead.id +
-                                                                        "/1",
-                                                                    },
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "button",
-                                                                      {
-                                                                        staticClass:
-                                                                          "btn fw-bold fs-5 py-3  w-100",
-                                                                        staticStyle:
-                                                                          {
-                                                                            "background-color":
-                                                                              "#E50A10",
-                                                                            color:
-                                                                              "#fff",
-                                                                            "border-radius":
-                                                                              "10px",
-                                                                          },
-                                                                      },
-                                                                      [
-                                                                        _vm._v(
-                                                                          "\n                                            Reject\n                                        "
-                                                                        ),
-                                                                      ]
-                                                                    ),
-                                                                  ]
-                                                                ),
-                                                              ]
-                                                            ),
-                                                          ]
-                                                        ),
                                                       ]
                                                     ),
                                                     _vm._v(" "),
                                                     _c("hr"),
                                                     _vm._v(" "),
-                                                    _vm._m(6, true),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "row mx-4 text-dark text-center",
+                                                        staticStyle: {
+                                                          "border-radius":
+                                                            "15px",
+                                                          background: "white",
+                                                        },
+                                                      },
+                                                      [
+                                                        _c("h5", [
+                                                          _vm._v(
+                                                            "Herkunft vom Lead"
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            " Platform:" +
+                                                              _vm._s(
+                                                                lead.campaign
+                                                              )
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Kampagne: " +
+                                                              _vm._s(
+                                                                lead.kampagne
+                                                              )
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Grund: " +
+                                                              _vm._s(lead.grund)
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Teilnahme: " +
+                                                              _vm._s(
+                                                                lead.teilnahme
+                                                              ) +
+                                                              " "
+                                                          ),
+                                                        ]),
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "row mx-4 text-dark text-center mt-2",
+                                                        staticStyle: {
+                                                          "border-radius":
+                                                            "15px",
+                                                          background: "white",
+                                                        },
+                                                      },
+                                                      [
+                                                        _c("h5", [
+                                                          _vm._v(
+                                                            "Herkunft vom Lead"
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            " Gerburstdatum:" +
+                                                              _vm._s(
+                                                                lead.birthdate
+                                                              )
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Haushalt: " +
+                                                              _vm._s(
+                                                                lead.number_of_persons
+                                                              ) +
+                                                              " "
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Telefon: " +
+                                                              _vm._s(
+                                                                lead.telephone
+                                                              )
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "PLZ,Ort: " +
+                                                              _vm._s(
+                                                                lead.postal_code
+                                                              ) +
+                                                              "," +
+                                                              _vm._s(
+                                                                lead.city
+                                                              ) +
+                                                              " "
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Krankenkasse: " +
+                                                              _vm._s(
+                                                                lead.krankenkasse
+                                                              ) +
+                                                              " "
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Bewertung KK: " +
+                                                              _vm._s(
+                                                                lead.bewertung
+                                                              ) +
+                                                              " "
+                                                          ),
+                                                        ]),
+                                                        _vm._v(" "),
+                                                        _c("span", [
+                                                          _vm._v(
+                                                            "Wichtig: " +
+                                                              _vm._s(
+                                                                lead.wichtig
+                                                              ) +
+                                                              " "
+                                                          ),
+                                                        ]),
+                                                      ]
+                                                    ),
                                                   ]
                                                 ),
                                               ]),
@@ -31332,6 +31414,8 @@ var render = function () {
                                     ]),
                                   ]
                                 ),
+                                _vm._v(" "),
+                                _vm._m(6, true),
                               ]
                             ),
                       ]),
@@ -31539,6 +31623,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "text-center py-2",
+        staticStyle: { background: "#B8B8B8", "border-radius": "15px" },
+      },
+      [_c("span", { staticClass: "text-dark" }, [_vm._v("Lead offnen")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col g-0 my-auto" }, [
       _c("div", {}, [_c("span")]),
     ])
@@ -31547,25 +31644,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mx-3" }, [
-      _c("span", { staticClass: "fs-6 text-dark" }, [
-        _vm._v(
-          "\n                                            Raumweg 23, 3700 Thun\n                                        "
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mx-4" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("div", {}, [
-          _c("div", { staticClass: "d-flex justify-content-center my-2" }),
-        ]),
-      ]),
-    ])
+    return _c(
+      "div",
+      {
+        staticClass: "text-center py-2",
+        staticStyle: { background: "#B8B8B8", "border-radius": "15px" },
+      },
+      [_c("span", { staticClass: "text-dark" }, [_vm._v("Lead offnen")])]
+    )
   },
   function () {
     var _vm = this
@@ -44284,7 +44370,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\Kutiza\\\\crm"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\Kutiza\\\\crm","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 

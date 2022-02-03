@@ -33,6 +33,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
 use App\Models\lead_history;
+use App\Models\lead_info;
 use App\Traits\FileManagerTrait;
 use DB;
 use Faker;
@@ -52,9 +53,8 @@ class UserController extends Controller
         $leads = DB::table('leads_history')
         ->join('leads','leads_history.leads_id','leads.id')
 
-        ->select('leads.first_name','leads.id','leads.telephone','leads_history.reason','leads.number_of_persons')
+        ->select('leads.first_name','leads.id','leads.telephone','leads_history.status','leads.number_of_persons')
         ->get();
-
 
         return view('rleads',compact('leads'));
     }
@@ -66,9 +66,21 @@ class UserController extends Controller
         $lead = new lead();
         $lead->first_name = filter_var($req->name,FILTER_SANITIZE_STRING);
         $lead->last_name = filter_var($req->lname,FILTER_SANITIZE_STRING);
-        $lead->telephone = filter_var($req->phone,FILTER_SANITIZE_STRING);
+        $lead->telephone = filter_var($req->telephone,FILTER_SANITIZE_STRING);
+        $lead->birthdate = $req->geburstdatum;
+        $lead->number_of_persons = (int) $req->haushalt;
         $lead->campaign_id = (int) $req->campaign;
+        $lead->address = $req->plzort;
         $lead->save();
+        $leadi = new lead_info();
+        $leadi->grund = $req->grund;
+        $leadi->kampagne = $req->kampagne;
+        $leadi->lead_id = $lead->id;
+        $leadi->krankenkasse = $req->krankenkasse;
+        $leadi->wichtig = $req->wichtig;
+        $leadi->bewertung = $req->bewertung;
+        $leadi->teilnahme = $req->teilnahme;
+        $leadi->save();
         $lead->slug = 'qwesssewssew-' . uniqid();
         $lead->save();
         return redirect()->back()->with('success','Lead was succesfully inserted');
@@ -435,12 +447,11 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         }
     }
         $lead->status_task = "open";
-        if($lead->save()) {
-            $lead->completed = 1;
-            return redirect()->route('tasks');
-        }else{
-            return redirect()->back();
-        }
+
+
+        $lead->completed = 1;
+    $lead->save();
+return redirect()->route('tasks');
 
 
     }

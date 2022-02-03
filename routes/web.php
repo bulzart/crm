@@ -35,6 +35,7 @@ use App\Http\Controllers\TeamController;
 use App\Listeners\SendNotificationListener;
 use App\Models\campaigns;
 use App\Models\lead;
+use App\Models\lead_info;
 use App\Models\LeadDataPlus;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Session\Session;
@@ -55,13 +56,28 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    });
    route::get('getleads',function(){
       if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
-         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.first_name','leads.rejected','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
          $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->where('rejected',0)->paginate(200);
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('rejected',0)->select('leads.first_name','leads.rejected','leads.last_name','leads.id','leads.wantsonline','leads.slug','leads.telephone','leads.address')->paginate(200);
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+   }
+
+   for($i = 0; $i < count($leads['leads']); $i++){
+$leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
+
+     $leads['leads'][$i]->campaign = lead::find($leads['leads'][$i]->id)->campaign->name;
+     $leads['leads'][$i]->grund = $leadinfo ? $leadinfo->grund : null;
+     $leads['leads'][$i]->krankenkasse = $leadinfo ? $leadinfo->krankenkasse : null;
+     $leads['leads'][$i]->bewertung = $leadinfo ? $leadinfo->bewerung : null;
+     $leads['leads'][$i]->wichtig = $leadinfo ? $leadinfo->wichtig : null;
+     $leads['leads'][$i]->kampagne = $leadinfo ? $leadinfo->kampagne : null;
+     $leads['leads'][$i]->teilnahme = $leadinfo ? $leadinfo->teilnahme : null;
+
 
 
    }
+
+
 
      $leads['admins'] = Admins::role(['fs','digital'])->get();
      $leads['admin'] = Auth::user()->getRoleNames();
