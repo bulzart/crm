@@ -35,13 +35,15 @@ class AppointmentsController extends Controller
 			$appointments = lead::select('*')->where('assign_to_id',auth::guard('admins')->user()->id)->whereNotNull('appointment_date')->get();
             $maps = DB::table('leads')->where('appointment_date',Carbon::now()->format('Y-m-d'))->where('assign_to_id', \Illuminate\Support\Facades\Auth::guard('admins')->user()->id)->select('leads.first_name','leads.last_name','leads.latitude','leads.longitude')->get();
             $personalApp = PersonalAppointment::where('user_id', Auth::guard('admins')->user()->id)->where('AppOrCon', 1)->get();
+            $countpersonalApp = PersonalAppointment::where('user_id', Auth::guard('admins')->user()->id)->where('AppOrCon', 1)->count();
 
             return view('appointment')
                 ->with('users',$users)
                 ->with('appointments_events',$appointments_events)
                 ->with('appointments',$appointments)
                 ->with('personalApp',$personalApp)
-                ->with('maps',$maps);
+                ->with('maps',$maps)
+                ->with('countpersonalApp', $countpersonalApp);
 
 
 

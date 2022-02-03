@@ -2,7 +2,6 @@
 @section('content')
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,31 +11,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Appointments</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
+    <title>Accept Appointments</title>
 </head>
 
-<body style="background: #F8F8F8">
-    <section class="col my-3">
-        <div class="container-fluid">
+<section class="my-5">
+    <div class="container-fluid">
+        <div class="wrapper-div px-4 py-4 mx-3">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 f-flex">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
                     <div class="map-div mx-4">
                         <div class="mapouter">
-                            <div class="gmap_canvas">
-                                <iframe style="height: 500px; width: 100%;" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q='+{{$lead->address}}+'&t=k&z=15&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0"
-                                        marginwidth="0"></iframe>
+                            <div class="gmap_canvas img-fluid">
+                                <iframe width="100%" height="100%" id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q='+{{$lead->address}}+'&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                                </iframe>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col my-3">
-                    <div class="info-div">
-                        <div class="py-3">
+                <div class="col">
+                    <div class="mb-3">
+                        <div class="py-1">
                             <div class="mx-3">
                                     <span class="fs-3 fw-bold text-color-header">
-                                        {{$lead->first_name}}
+                                         {{$lead->first_name}}
                                     </span>
                             </div>
                             <div class="mx-3">
@@ -55,117 +55,138 @@
                             </div>
                         </div>
                         @if($lead->assigned != 0)
-                       <div class="row">
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Agent: {{Auth::user()->name}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Zelt: {{$lead->time}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Name: {{$lead->first_name}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               PLZ: {{$lead->postal_code}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Berater: {{$lead->berater}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Sprache: {{$lead->sprache}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Vorname: {{$lead->last_name}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Ort: {{$lead->city}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Tag: 
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Personen: {{$lead->number_of_persons}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Strasse: {{$lead->address}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Tel: {{$lead->telephone}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Datum: {{$lead->birthdate}}
-                           </div>
-                           
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Nationalitat: {{$lead->nationality}}
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Nr: 
-                           </div>
-                           <div class="col-md-3 col-6 py-2" style="background:white; border-radius: 20px;">
-                               Zufriedenheit: {{$lead->zufriedenheit}}
-                           </div>
-                           <div class="col-md-12 col-12 py-2" style="background:white; border-radius: 20px;">
-                           Bemerkung: {{$lead->bemerkung}}
-                           </div>
-                       </div>
+                        <div class="info-divv px-2 my-3">
+                            <div class="row">
+                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Agent:</span> <span class="fs-6">Agent1</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Berater:</span> <span class="fs-6">{{$lead->berater}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Tag:</span> <span class="fs-6">Sontag</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Datum:</span> <span class="fs-6">{{$lead->appointment_date}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">PLZ:</span> <span class="fs-6">{{$lead->postal_code}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Zufriedenheit:</span> <span class="fs-6">{{$lead->zufriedenheit}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Zeit:</span> <span class="fs-6">{{$lead->time}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Sprache: </span><span class="fs-6">{{$lead->sprache}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Personen:</span> <span class="fs-6">{{$lead->number_of_persons}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Nationalitat:</span> <span
+                                                class="fs-6">{{$lead->nationality}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Ort</span> <span class="fs-6">{{$lead->city}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Name:</span> <span class="fs-6">{{$lead->first_name}} </span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Vorname:</span> <span class="fs-6">{{$lead->last_name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Strasse:</span><span class="fs-6"></span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Nr:</span> <span class="fs-6">{{$lead->telephone}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Tel. Privat</span> <span class="fs-6">{{$lead->telephone}}</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                       @php
-                       $leadss = $lead->id * 1244;
-                       $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                       @endphp
-                        <div class="py-3">
-                            <div class="input-group">
-                                <a href="{{route('dealnotclosed',Crypt::decrypt($leadId) / 1244)}}" style="text-decoration: none;cursor: pointer" class="my-auto decline-btn m-2 my-auto py-2 px-5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25.145" height="25.524"
-                                         viewBox="0 0 33.145 33.524">
-                                        <g id="Group_620" data-name="Group 620"
-                                           transform="translate(-517.079 -959.408)">
-                                            <line id="Line_24" data-name="Line 24" y1="30.316" x2="30.316"
-                                                  transform="translate(518.493 960.822)" fill="none"
-                                                  stroke="currentColor" stroke-linecap="round" stroke-width="3" />
-                                            <line id="Line_25" data-name="Line 25" x2="30.316" y2="30.316"
-                                                  transform="translate(518.493 961.201)" fill="none"
-                                                  stroke="currentColor" stroke-linecap="round" stroke-width="3" />
-                                        </g>
-                                    </svg>
-                                </a>
-                                <a href="{{route('dealclosed',$leadId)}}" style="text-decoration: none;cursor: pointer" class="accept-btn m-2 my-auto py-1 px-5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="33.232" height="33.805"
-                                         viewBox="0 0 46.232 33.805">
-                                        <path id="Path_277" data-name="Path 277"
-                                              d="M8370.12,999.407l15.7,15.954,7.778-8.812,19.931-22.581"
-                                              transform="translate(-8368.706 -982.557)" fill="none"
-                                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                              stroke-width="3" />
-                                    </svg>
-                                </a>
+                            </div>
+                            <div class="white-thingy my-2">
+                                <div class="text-div py-3 ps-2">
+                                    <span class="fw-600 ">Bemerkung:</span> <span class="fs-6">{{$lead->bemerkung}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    @elseif($lead->assigned != 1)
-                        @php
-                            $leadss = $lead->id * 1244;
-                            $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                        @endphp
-                        <div class="input-group">
-                        <a href="{{route('acceptleadinfo',$leadId)}}" style="text-decoration: none;cursor: pointer;" class="accept-btn2 m-2 my-auto py-1 px-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="33.232" height="33.805"
-                                 viewBox="0 0 46.232 33.805">
-                                <path id="Path_277" data-name="Path 277"
-                                      d="M8370.12,999.407l15.7,15.954,7.778-8.812,19.931-22.581"
-                                      transform="translate(-8368.706 -982.557)" fill="none"
-                                      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                      stroke-width="3" />
-                            </svg>
-                        </a>
-                        </div>
+                            @php
+                                $leadss = $lead->id * 1244;
+                                $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                            <div class="button-div d-flex justify-content-center">
+                                <a style="text-decoration: none" href="{{route('dealnotclosed',Crypt::decrypt($leadId) / 1244)}}">
+                                <button class="close-btn py-2 mx-2">
+                                    Close
+                                </button>
+                                </a>
+                                <a style="text-decoration: none" href="{{route('dealclosed',$leadId)}}">
+                                <button class="go-btn py-2 mx-2">
+                                    Go
+                                </button>
+                                </a>
+                            </div>
+                        @elseif($lead->assigned != 1)
+                            @php
+                                $leadss = $lead->id * 1244;
+                                $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                            <a style="text-decoration: none" href="{{route('acceptleadinfo',$leadId)}}">
+                                <button class="go-btn py-2 mx-2">
+                                    Accept
+                                </button>
+                            </a>
                         @endif
+                    </div>
                 </div>
+
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
+
 
 
 @endsection
@@ -174,6 +195,40 @@
 
 
 <style>
+    .close-btn {
+        color: #FF0D13;
+        font-weight: 600;
+        background-color: #fff;
+        border: 1px #FF0D13 solid;
+        border-radius: 13px;
+        width: 100px;
+    }
+    .go-btn {
+        color: #fff;
+        font-weight: 600;
+        background-color: #63D4A4;
+        border: 1px #63D4A4 solid;
+        border-radius: 13px;
+        width: 100px;
+    }
+    .text-div {
+        font-size: 13px;
+    }
+    .white-thingy {
+        background-color: #fff;
+        border-radius: 10px;
+
+    }
+
+    .fw-600 {
+        font-weight: 600;
+    }
+
+    .wrapper-div {
+        background-color: #EFEFEF;
+        border-radius: 25px;
+    }
+
     .decline-btn {
         border: 2px solid #FF0D13;
         border-radius: 13px !important;
@@ -199,18 +254,6 @@
         background-color: #63D4A4;
         color: #fff !important;
     }
-    .accept-btn2 {
-        border: 2px solid #6389d4;
-        border-radius: 13px !important;
-        background-color: #fff;
-        color: #6389d4 !important;
-    }
-
-    .accept-btn2:hover {
-        border: 2px solid #6389d4;
-        background-color: #6389d4;
-        color: #fff !important;
-    }
 
     .text-color-header {
         color: #656565;
@@ -229,41 +272,21 @@
     .people-svg-span {
         border-radius: 8px;
     }
-    .nav-itemsss a:hover {
-        background-color: #c9cad8;
-        color: #000;
-    }
 
-    .nav-itemsss a:focus {
-        background-color: #474747;
-        color: #fff;
-    }
-
-    @media (max-width: 999.98px) {
-        .nav-texttt {
-            display: none;
-        }
-
-        .navvv {
-            width: 80px !important;
-            text-align: center !important;
-        }
-
-    }
      .mapouter {
          position: relative;
          text-align: right;
          width: 100%;
      }
 
-        .gmap_canvas {
-            overflow: hidden;
-            background: none !important;
-            height: auto;
-            width: 100%;
-            border-radius: 21px !important;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        }
+    .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 60vh;
+        width: 100%;
+        border-radius: 21px !important;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

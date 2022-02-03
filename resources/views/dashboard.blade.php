@@ -14,12 +14,13 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
         <style>
-            h5,h6,h1,h2,h3,h4, span, div, p{
+            h5,h6,h1,h2,h3,h4, span, div, p, div, button{
                 font-family: 'Montserrat' !important;
             }
         </style>
 
         <title>Home</title>
+        <link rel="icon" type="image/png" href="img/Favicon.png">
 
     </head>
 
@@ -689,9 +690,10 @@
                 <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
                     <div class="accordion-item my-1 py-2" style="background-color: #ececec;">
                         <div class="p-3">
-                                <span class="col text-black fw-bold fs-5" style="font-family: 'Montserrat';">
-                                    Add Persoals Appointment
-                                </span>
+                            <div class="row">
+                                <div class="col"><h5><b>Personal Apponitments</b></h5></div>
+                                <div style="color: #0a53be" class="col-3 text-end pe-4"><h5><b>{{$countpersonalApp}}</b></h5></div>
+                            </div>
                         </div>
                         <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
                         <br>
@@ -779,15 +781,15 @@
                                                 <input type="hidden" name="apporconId" value="1">
                                                 <div class="px-2">
                                                     <label style="font-family: 'Montserrat' !important;"><b>Title</b></label>
-                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="title" class="form-control mb-3" required>
+                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" name="title" class="form-control mb-3" required>
                                                     <label style="font-family: 'Montserrat' !important;"><b>Time</b></label>
-                                                    <input type="time" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="time" class="form-control mb-3" required>
+                                                    <input type="time" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" name="time" class="form-control mb-3" required>
                                                     <label style="font-family: 'Montserrat' !important;"><b>Address</b></label>
-                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="address" class="form-control mb-3" required>
+                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" name="address" class="form-control mb-3" required>
                                                     <label style="font-family: 'Montserrat' !important;"><b>Comment</b></label>
-                                                    <textarea type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" rows="3" name="comment" class="form-control mb-3"
+                                                    <textarea type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" rows="3" name="comment" class="form-control mb-3"
                                                               required>
-                                                </textarea>
+                                                    </textarea>
                                                     <label style="font-family: 'Montserrat' !important;"><b>Assign To</b></label>
 
                                                     <select class="form-select mb-2" style="font-family: 'Montserrat' !important;border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="roleid">
@@ -814,10 +816,10 @@
                                                                     Close
                                                                 </button>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
-                                                   
+
                                                 </div>
                                             </form>
                                         </div>
@@ -837,34 +839,30 @@
 
                         </div>
 
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 g-0 mb-3">
                             <div class="personal-apponitments-div pb-2">
                                 <div class="accordion accordion-flush mx-3 " id="accordionFlush1">
-                                    <div class="accordion-item my-1 py-2" style="background-color: #F7F7F7;">
+                                    <div class="accordion-item my-1 mb-3 py-2" style="background-color: #F7F7F7;">
                                         <h2 class="accordion-header" id="flush-heading1">
-                                            <button class="accordion-button collapsed d-btnn "
-                                                    style="background-color: #F7F7F7;"
-                                                    type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#flush-collapse1"
-                                                    aria-expanded="false" aria-controls="flush-collapse1">
-                                                <div class="col text-dark">
-                                                    Personal Apponitments
+                                            <div class="p-3">
+                                                <div class="row">
+                                                    <div class="col"><h5><b>Personal Apponitments</b></h5></div>
+                                                    <div style="color: #0a53be" class="col-3 text-end"><h5><b>{{$countpersonalApp}}</b></h5></div>
                                                 </div>
-
-                                            </button>
+                                            </div>
                                         </h2>
                                         <div id="flush-collapse1" class="accordion-collapse collapse show"
                                              aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush1">
 
                                             <div class="accordion-body p-0 mx-2 py-2 overflow-div1"
-                                                 style="background-color: #F7F7F7; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                                                 style="background-color: #F7F7F7; font-family: 'Montserrat'; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
                                                 @foreach($personalApp as $perApp)
                                                     <div class="py-2 my-2 mx-2"
                                                          style="background-color: #fff; border-radius: 15px; color: #000;">
                                                         <div class="mx-3 ">
                                                             <div class="row">
                                                                 <div class="col">
-                                                    <span class="fw-bold fs-5">
+                                                    <span class="fw-bold fs-5" style="font-family: 'Montserrat';">
                                                         {{$perApp->title}}
                                                     </span>
                                                                 </div>
@@ -889,17 +887,17 @@
                                                                 </div>
                                                             </div>
                                                             <div class="">
-                                                                <span>
+                                                                <span style="font-family: 'Montserrat';">
                                                                     Address: {{$perApp->address}}
                                                                 </span>
                                                             </div>
                                                             <div class="">
-                                                                <span>
+                                                                <span style="font-family: 'Montserrat';">
                                                                     Time: {{$perApp->time}}
                                                                 </span>
                                                             </div>
                                                             <div class="">
-                                                                <span>
+                                                                <span style="font-family: 'Montserrat';">
                                                                     Comment: {{$perApp->comment}}
                                                                 </span>
                                                             </div>
@@ -908,19 +906,25 @@
                                                 @endforeach
                                             </div>
 
-                                            <div class="text-center py-2">
+                                            <div class="text-left mx-3 py-2 mt-3">
                                                 <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                                style="background-color: #4ec490; color: white; border: 1px solid #4ec490; width: 30%; border-radius: 8px !important;"
                                                         data-bs-target="#exampleModal">
-                                                    +
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="30.751" height="29.429" viewBox="0 0 30.751 29.429">
+                                                            <g id="Group_42" data-name="Group 42" transform="translate(1.5 1.5)">
+                                                                <line id="Line_11" data-name="Line 11" y2="26.429" transform="translate(13.876 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+                                                                <line id="Line_12" data-name="Line 12" x1="27.751" transform="translate(0 12.437)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+                                                            </g>
+                                                        </svg>
                                                 </button>
                                             </div>
                                             <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true" style="top: 7% !important;">
                                                 <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add Personal
-                                                                Appointment</h5>
+                                                    <div class="modal-content p-3" style="border-radius: 43px !important;">
+                                                        <div class="modal-header" style="border-bottom: 0 !important;">
+                                                            <h5 class="modal-title mx-2" id="exampleModalLabel" style="font-family: 'Montserrat';"><b>Add Personal
+                                                                Appointment</b></h5>
                                                             <button type="button" class="btn-close"
                                                                     data-bs-dismiss="modal"
                                                                     aria-label="Close"></button>
@@ -931,28 +935,38 @@
                                                                 @csrf
                                                                 <input type="hidden" name="apporconId" value="1">
                                                                 <div class="px-2">
-                                                                    <label>Title</label>
-                                                                    <input type="text" name="title" class="form-control"
+                                                                    <label style="font-family: 'Montserrat';"><b>Title</b></label>
+                                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" name="title" class="form-control mb-3"
                                                                            required>
-                                                                    <label>Time</label>
-                                                                    <input type="time" name="time" class="form-control"
+                                                                    <label style="font-family: 'Montserrat';"><b>Time</b></label>
+                                                                    <input type="time" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" name="time" class="form-control mb-3"
                                                                            required>
-                                                                    <label>Address</label>
-                                                                    <input type="text" name="address"
-                                                                           class="form-control"
+                                                                    <label style="font-family: 'Montserrat';"><b>Address</b></label>
+                                                                    <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" name="address"
+                                                                           class="form-control mb-3"
                                                                            required>
-                                                                    <label>Comment</label>
-                                                                    <textarea type="text" name="comment"
-                                                                              class="form-control"
+                                                                    <label style="font-family: 'Montserrat';"><b>Comment</b></label>
+                                                                    <textarea type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important; font-family: 'Montserrat';" name="comment"
+                                                                              class="form-control mb-3"
                                                                               required></textarea>
                                                                 </div>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">Close
-                                                                    </button>
-                                                                    <input type="submit" class="btn btn-success"
-                                                                           value="Save">
+                                                                <div class="modal-footer px-1" style="border-top: 0 !important; justify-content: flex-start !important;">
+                                                                    <div class="row" style="width: 100%;">
+                                                                        <div class="col-md-4 col-5 p-0">
+                                                                            <div style="padding: 2%;">
+                                                                            <input type="submit"  style="font-family: 'Montserrat' !important; width: 100%; border: 1px solid #4EC590; font-weight: 600 !important; font-size: 18px !important; background-color: #4EC590; color: #fff; border-radius: 8px;" class="btn py-2"
+                                                                                 value="Save">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-5 p-0">
+                                                                            <div style="padding: 2%;">
+                                                                                <button type="button" class="btn py-2"
+                                                                                    data-bs-dismiss="modal" style="font-family: 'Montserrat' !important; width: 100%; font-weight: 600 !important; border: 1px solid #6C757D; font-size: 18px !important; background-color: #6C757D; color: #fff; border-radius: 8px;">Close
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -965,29 +979,26 @@
                                 <div class="consultations-div pb-2">
                                     <div class="">
                                         <div class="accordion accordion-flush mx-3 " id="accordionFlush5">
-                                            <div class="accordion-item my-1 py-2" style="background-color: #FFEBE5;">
+                                            <div class="accordion-item mb-3 my-1 py-2" style="background-color: #F7F7F7;">
                                                 <h2 class="accordion-header" id="flush-heading5">
-                                                    <button class="accordion-button collapsed d-btnn "
-                                                            style="background-color: #FFEBE5;" type="button"
-                                                            data-bs-toggle="collapse"
-                                                            data-bs-target="#flush-collapse5" aria-expanded="false"
-                                                            aria-controls="flush-collapse5">
-                                                        <div class="col text-dark">
-                                                            Consultations
+                                                    <div class="p-3">
+                                                        <div class="row">
+                                                            <div class="col"><h5><b>Consultations</b></h5></div>
+                                                            <div style="color: #0a53be" class="col-3 text-end"><h5><b>{{$countconsultation}}</b></h5></div>
                                                         </div>
-                                                    </button>
+                                                    </div>
                                                 </h2>
                                                 <div id="flush-collapse5" class="accordion-collapse collapse show"
                                                      aria-labelledby="flush-heading5" data-bs-parent="#accordionFlush5">
                                                     <div class="accordion-body p-0 mx-2 py-2 overflow-div4"
-                                                         style="background-color: #FFEBE5; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
+                                                         style="background-color: #F7F7F7; font-family: 'Montserrat'; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; height: 170px; overflow-y: scroll !important; overflow-x: hidden !important;">
                                                         @foreach($consultation as $consult)
                                                             <div class="py-2 my-2 mx-2"
-                                                                 style="background-color: #fff; border-radius: 15px; color: #000;">
+                                                                 style="background-color: #fff; font-family: 'Montserrat'; border-radius: 15px; color: #000;">
                                                                 <div class="mx-3 ">
                                                                     <div class="row">
                                                                         <div class="col">
-                                                        <span class="fw-bold fs-5">
+                                                        <span class="fw-bold fs-5" style="font-family: 'Montserrat';">
                                                             {{$consult->title}}
                                                         </span>
                                                                         </div>
@@ -1015,17 +1026,17 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="">
-                                                                <span>
+                                                                <span style="font-family: 'Montserrat';">
                                                                     Address: {{$consult->address}}
                                                                 </span>
                                                                     </div>
                                                                     <div class="">
-                                                                <span>
+                                                                <span style="font-family: 'Montserrat';">
                                                                     Time: {{$consult->time}}
                                                                 </span>
                                                                     </div>
                                                                     <div class="">
-                                                                <span>
+                                                                <span style="font-family: 'Montserrat';">
                                                                     Comment: {{$consult->comment}}
                                                                 </span>
                                                                     </div>
@@ -1033,21 +1044,27 @@
                                                             </div>
                                                         @endforeach
                                                     </div>
-                                                    <div class="text-center py-2">
-                                                        <button type="button" class="btn btn-light"
+                                                    <div class="text-left mx-3 py-2 mt-3">
+                                                        <button type="button" class="btn"
                                                                 data-bs-toggle="modal"
+                                                                style="background-color: #4ec490; color: white; border: 1px solid #4ec490; width: 30%; border-radius: 8px !important;"
                                                                 data-bs-target="#consultmodal">
-                                                            +
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30.751" height="29.429" viewBox="0 0 30.751 29.429">
+                                                                    <g id="Group_42" data-name="Group 42" transform="translate(1.5 1.5)">
+                                                                        <line id="Line_11" data-name="Line 11" y2="26.429" transform="translate(13.876 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+                                                                        <line id="Line_12" data-name="Line 12" x1="27.751" transform="translate(0 12.437)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"/>
+                                                                    </g>
+                                                                </svg>
                                                         </button>
                                                     </div>
                                                     <div class="modal fade" id="consultmodal" tabindex="-1"
-                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                         aria-labelledby="exampleModalLabel" style="top: 7% !important;" aria-hidden="true">
                                                         <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Add
-                                                                        Consultation</h5>
-                                                                    <button type="button" class="btn-close"
+                                                            <div class="modal-content p-3" style="border-radius: 43px !important;">
+                                                                <div class="modal-header" style="border-bottom: 0 !important;">
+                                                                    <h5 class="modal-title mx-2" style="font-family: 'Montserrat' !important;" id="exampleModalLabel"><b>Add
+                                                                        Consultation</b></h5>
+                                                                    <button type="button" style="opacity: 1 !important;" class="btn-close"
                                                                             data-bs-dismiss="modal"
                                                                             aria-label="Close"></button>
                                                                 </div>
@@ -1059,30 +1076,40 @@
                                                                         <input type="hidden" name="apporconId"
                                                                                value="2">
                                                                         <div class="px-2">
-                                                                            <label>Title</label>
-                                                                            <input type="text" name="title"
-                                                                                   class="form-control"
+                                                                            <label style="font-family: 'Montserrat' !important;">Title</label>
+                                                                            <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="title"
+                                                                                   class="form-control mb-3"
                                                                                    required>
-                                                                            <label>Time</label>
-                                                                            <input type="time" name="time"
-                                                                                   class="form-control"
+                                                                            <label style="font-family: 'Montserrat' !important;">Time</label>
+                                                                            <input type="time" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="time"
+                                                                                   class="form-control mb-3"
                                                                                    required>
-                                                                            <label>Address</label>
-                                                                            <input type="text" name="address"
-                                                                                   class="form-control" required>
-                                                                            <label>Comment</label>
+                                                                            <label style="font-family: 'Montserrat' !important;">Address</label>
+                                                                            <input type="text" style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" name="address" class="form-control mb-3" required>
+                                                                            <label style="font-family: 'Montserrat' !important;">Comment</label>
                                                                             <textarea type="text" name="comment"
-                                                                                      class="form-control"
+                                                                            style="border-radius: 8px; background-color: #EFEFEF !important; border: 1px solid #EFEFEF !important;" class="form-control mb-3"
                                                                                       required></textarea>
                                                                         </div>
 
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                    class="btn btn-secondary"
-                                                                                    data-bs-dismiss="modal">Close
-                                                                            </button>
-                                                                            <input type="submit" class="btn btn-success"
-                                                                                   value="Save">
+                                                                        <div class="modal-footer px-1" style="border-top: 0 !important; justify-content: flex-start !important;">
+                                                                            <div class="row" style="width: 100%;">
+                                                                                <div class="col-md-4 col-5 p-0">
+                                                                                    <div style="padding: 2%;">
+                                                                                        <input type="submit" style="font-family: 'Montserrat' !important; width: 100%; border: 1px solid #4EC590; font-weight: 600 !important; font-size: 18px !important; background-color: #4EC590; color: #fff; border-radius: 8px;" class="btn py-2"
+                                                                                        value="Save">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-4 col-5 p-0">
+                                                                                    <div style="padding: 2%;">
+                                                                                        <button type="button"
+                                                                                                class="btn py-2"
+                                                                                                style="font-family: 'Montserrat' !important; width: 100%; font-weight: 600 !important; border: 1px solid #6C757D; font-size: 18px !important; background-color: #6C757D; color: #fff; border-radius: 8px;"
+                                                                                                data-bs-dismiss="modal">Close
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -1119,11 +1146,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             {{$leadscount}}
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             New Leads
                                                                         </span>
                                         </div>
@@ -1140,11 +1167,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
 
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             Open Tasks
                                                                         </span>
                                         </div>
@@ -1162,11 +1189,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                        <span class="fw-bold fs-5 text-white">
+                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                            {{$pendingcnt}}
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             Pendencies
                                                                         </span>
                                         </div>
@@ -1184,11 +1211,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             {{$todayAppointCount}}
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             Today App
                                                                         </span>
                                         </div>
@@ -1206,11 +1233,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             0
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             HR Comm
                                                                         </span>
                                         </div>
@@ -1243,7 +1270,7 @@
 
                                             </div>
                                             <div class="py-1">
-                                                                            <span class="text-muted">
+                                                                            <span class="text-muted" style="font-family: 'Montserrat' !important;">
                                                                                 Add New One
                                                                             </span>
                                             </div>
@@ -1434,22 +1461,22 @@
     }
 
     .accordion-button:not(.collapsed)::after {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23df4759'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
         /* background-color: transparent !important; */
     }
 
     .accordion-button:not(.show)::after {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23df4759'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
         /* background-color: transparent !important; */
     }
 
     .accordion-button.green-acc:not(.collapsed)::after {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
         /* background-color: transparent !important; */
     }
 
     .accordion-button.green-acc:not(.show)::after {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
         /* background-color: transparent !important; */
     }
 

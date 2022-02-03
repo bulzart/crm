@@ -448,9 +448,11 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     }
         $lead->status_task = "open";
 
+
         $lead->completed = 1;
     $lead->save();
 return redirect()->route('tasks');
+
 
     }
 
@@ -494,33 +496,26 @@ return redirect()->route('tasks');
 
     public function rejectedleads(Request $request,$status = null)
     {
-
         $leads_id = (int) $request->leadsid;
-
-
-
         $user_id = Auth::user()->id;
 
-     if($status != null){
-    $status = (int) $status;}
+        if($status != null){
+        $status = (int) $status;
+        }
+        if($status === 0) {
+            $reason = 'Rejected';  lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
+        }elseif($status === 1){
+            $reason = 'Pending';
+            lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
+        }else{
+            $reason = $request->reason;
+            lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0,'rejected' => 1]);
+        }
 
-if($status === 0) { $reason = 'Rejected';  lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);}
-elseif($status === 1){
-    $reason = 'Pending';
-     lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
-
-}
-else{
-    $reason = $request->reason;
-     lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0,'rejected' => 1]);
-}
-
-
-
-
-          $image = $request->hasFile('image') ? $this->storeFile($req->input('image'),'img') : null;
+          $image = $request->hasFile('image') ? $this->storeFile($request->input('image'),'img') : null;
 
           $credss = [];
+
           $rejectedlead = new lead_history();
 
           $rejectedlead->leads_id = $leads_id;
@@ -533,10 +528,6 @@ else{
           else{
             return redirect()->back()->with('success','Action failed');
           }
-
-
-
-
 
     }
 
@@ -679,15 +670,19 @@ $taskcnt = 0;
                     $personalApp = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',1)->get();
                     $consultation = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',2)->get();
 
+                    $countpersonalApp = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',1)->count();
+                    $countconsultation = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',2)->count();
+
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('personalApp','consultation','done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                    return view('dashboard', compact('personalApp','consultation','done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded','countpersonalApp','countconsultation'));
 
                 }
                 elseif(Auth::guard('admins')->user()->hasRole('admin')) {
                     $personalApp = PersonalAppointment::where('AppOrCon',1)->where('assignfrom',Auth::user()->id)->get();
+                    $countpersonalApp = PersonalAppointment::where('AppOrCon',1)->where('assignfrom',Auth::user()->id)->count();
                     $admins = Admins::all();
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('done','admins','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                    return view('dashboard', compact('done','admins','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded','countpersonalApp'));
                 }
 
         }

@@ -4,6 +4,7 @@
         <title>
             Tasks
         </title>
+        <link rel="icon" type="image/png" href="img/Favicon.png">
     </head>
 @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
 <div class="row container">

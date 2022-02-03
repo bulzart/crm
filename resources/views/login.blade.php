@@ -13,6 +13,7 @@
       width: 400px !important;
     }
   </style>
+  <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
 
 <body>
