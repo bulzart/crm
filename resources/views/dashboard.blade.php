@@ -1151,11 +1151,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             {{$leadscount}}
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             New Leads
                                                                         </span>
                                         </div>
@@ -1172,11 +1172,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
 
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             Open Tasks
                                                                         </span>
                                         </div>
@@ -1194,11 +1194,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                        <span class="fw-bold fs-5 text-white">
+                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                            {{$pendingcnt}}
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             Pendencies
                                                                         </span>
                                         </div>
@@ -1216,11 +1216,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             {{$todayAppointCount}}
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             Today App
                                                                         </span>
                                         </div>
@@ -1238,11 +1238,11 @@
                                             </svg>
                                         </div>
                                         <div class="py-2">
-                                                                        <span class="fw-bold fs-5 text-white">
+                                                                        <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             0
                                                                         </span>
                                             <br>
-                                            <span class="fw-bold fs-5 text-white">
+                                            <span class="fw-bold fs-5 text-white" style="font-family: 'Montserrat' !important;">
                                                                             HR Comm
                                                                         </span>
                                         </div>
@@ -1275,7 +1275,7 @@
 
                                             </div>
                                             <div class="py-1">
-                                                                            <span class="text-muted">
+                                                                            <span class="text-muted" style="font-family: 'Montserrat' !important;">
                                                                                 Add New One
                                                                             </span>
                                             </div>
