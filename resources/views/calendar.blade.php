@@ -10,6 +10,7 @@
                 Calendar
             </title>
         @endif
+        <link rel="icon" type="image/png" href="img/Favicon.png">
     </head>
         <div class="col-12 col-sm-12 col-md-12  g-0">
             <calendar class="calendar-divider p-3 my-2 "></calendar>
