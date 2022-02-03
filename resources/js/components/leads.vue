@@ -77,27 +77,44 @@
                                                             </span>
                                                              <span v-else class="fw-bold fs-5">
                                                                  {{lead.first_name}} {{lead.last_name}}
+                                                                 
                                                             </span>
-                                                        </div>
+                                                                <span>Adresse: {{lead.address}}</span><br>
+                                                              <span>Haushalt: {{lead.number_of_persons}} Personen </span><br>
+                                                              <span>Grund: {{lead.grund}}</span><br>
+                                                              <span>Kampagne: {{lead.kampagne}} </span><br>
+                                                         
+                                                         
+                                                              </div>
+                                                     
+                                               
+                                                             
                                                     </div>
                                                 
-                                                </div></div>
+                                                </div>
+                                                <div style="background: #B8B8B8; border-radius: 15px;" class="text-center py-2">
+                          <span class="text-dark">Lead offnen</span>
+                          </div>
+                                                </div>
 
 
 
 
                                              <div class="py-1 my-2 mx-1"
                                                 style="background-color: #4EC590; border-radius: 15px; color: #fff;" data-bs-toggle="modal" :data-bs-target="'#' + lead.slug" v-else>
-                                                <div class="row mx-2">
+                                                <div class="mx-2">
 
-                                                    <div
-                                                        class="col-7 col-sm-12 col-md-12 col-lg-7 g-0 py-1 text-center">
+                                                   
                                                         <div class="">
                                                             <span class="fw-bold fs-5">
-                                                               {{lead.first_name}}
+                                                               {{lead.first_name}} {{lead.last_name}}
                                                             </span>
+                                                                 <span>Adresse: {{lead.address}}</span><br>
+                                                              <span>Haushalt: {{lead.number_of_persons}} Personen </span><br>
+                                                              <span>Grund: {{lead.grund}}</span><br>
+                                                              <span>Kampagne: {{lead.kampagne}} </span><br>
                                                         </div>
-                                                    </div>
+                         
                                                     <div class="col g-0 my-auto">
                                                         <div class="">
                                                             <span>
@@ -108,49 +125,33 @@
                                                 </div>
                                                 <div class="modal fade" :id="lead.slug" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" style="background: #f8f8f8">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{lead.first_name}}</h5>
+          <div class="mx-3">
+                                        <span class="fs-3 fw-bold text-dark">
+                                           {{lead.first_name}}
+                                  
+                                        </span>
+                                    </div>
+   
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
            
-                    <div class="mb-3 mt-2 mx-2">
-                        <div class="text-end">
-                            <button type="button" id="closeButton" class="bg-white border-0 fs-5 fw-bold"
-                              >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="21.123" height="21.352"
-                                    viewBox="0 0 21.123 21.352">
-                                    <g id="Group_500" data-name="Group 500" transform="translate(-210.779 -966.838)">
-                                        <line id="Line_24" data-name="Line 24" y1="18.295" x2="18.295"
-                                            transform="translate(212.193 968.252)" fill="none" stroke="#ff0d13"
-                                            stroke-linecap="round" stroke-width="2" />
-                                        <line id="Line_25" data-name="Line 25" x2="18.295" y2="18.295"
-                                            transform="translate(212.193 968.481)" fill="none" stroke="#ff0d13"
-                                            stroke-linecap="round" stroke-width="2" />
-                                    </g>
-                                </svg>
-
-                            </button>
-                        </div>
-                    </div>
+                 
                     <div class="">
                         <div class="container pb-5">
-                            <div class="row  mx-4">
-                                <div class="col-5  py-3 g-0">
-                                    <div class="mx-3">
-                                        <span class="fs-3 fw-bold text-dark">
-                                           {{lead.first_name}}
-                                        </span>
-                                    </div>
-                                    <div class="mx-3">
-                                        <span class="fs-6 text-dark">
-                                            Raumweg 23, 3700 Thun
-                                        </span>
+                          <div class="text-center row">
+                                                    <div class="col-6 col-md-6 py-3">
+                                    <div class="d-flex justify-content-start">
+                                        <a :href="'pendingreject/' + lead.id + '/1'" class="btn fw-bold fs-5 py-3 w-100"
+                                            style="background-color:#E50A10;color: #fff; border-radius: 10px;">
+                                            Reject
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="col py-3">
+                              <div class="col-6 col-md-6 py-3 w-50">
                                     <div class="d-flex justify-content-center">
                                         <a :href="'tel:' + lead.telephone" class="btn fw-bold fs-5 py-3 w-100"
                                             style="background-color:#4EC590;color: #fff; border-radius: 10px;">
@@ -158,33 +159,35 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col py-3">
-                                    <div class="d-flex justify-content-start">
-                                        <a :href="'pendingreject/' + lead.id + '/1'"><button class="btn fw-bold fs-5 py-3  w-100"
-                                            style="background-color:#E50A10;color: #fff; border-radius: 10px;">
-                                            Reject
-                                        </button>
-                                        </a>
-                                    </div>
+        
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row mx-4">
                        
-                                <div class="col">
-                                    <div class="">
-
-                                        <div class="d-flex justify-content-center my-2">
-                                          
-                                        </div>
-                                    </div>
-                                </div>
+                            <hr>
+                            <div class="row mx-4 text-dark text-center" style="border-radius: 15px; background:white;">
+                              <h5>Herkunft vom Lead</h5>
+                      
+                      <span> Platform:{{lead.campaign}}</span>
+                      <span>Kampagne: {{lead.kampagne}}</span>
+                      <span>Grund: {{lead.grund}}</span>
+                      <span>Teilnahme: {{lead.teilnahme}} </span>
+                      </div>
+                         <div class="row mx-4 text-dark text-center mt-2" style="border-radius: 15px; background:white;">
+                              <h5>Herkunft vom Lead</h5>
+                      
+                      <span> Gerburstdatum:{{lead.birthdate}}</span>
+                      <span>Haushalt: {{lead.number_of_persons}} </span>
+                      <span>Telefon: {{lead.telephone}}</span>
+                      <span>PLZ,Ort: {{lead.postal_code}},{{lead.city}} </span>
+                      <span>Krankenkasse: {{lead.krankenkasse}} </span>
+                      <span>Bewertung KK: {{lead.bewertung}} </span>
+                      <span>Wichtig: {{lead.wichtig}} </span>
+                      </div>
                            
-                            </div>
 
 
 
                         </div>
+                        
                     </div>
             
        
@@ -211,6 +214,9 @@
     </div>
   </div>
 </div>
+<div style="background: #B8B8B8; border-radius: 15px;" class="text-center py-2">
+                          <span class="text-dark">Lead offnen</span>
+                          </div>
                                             </div>
 
                                         </div>

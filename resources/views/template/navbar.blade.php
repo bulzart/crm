@@ -446,7 +446,7 @@
 
 @media (max-width: 978px){
     #logo__311{
-        content:url('img/Logo gjys.png');
+        content:url('imgs/Logo gjys.png');
         width: 20% !important;
     }
 }
@@ -463,7 +463,7 @@
         <div class="nav-itemsss overflow-div1" style="width:100%; background-color: #0C71C3;">
             <br>
             <div class="mx-auto">
-                <img src="img/Logo.png" id="logo__311" style="width: 100%;" alt="">
+                <img src="imgs/Logo.png" id="logo__311" style="width: 100%;" alt="">
             </div>
             <br>
             <div class="">
@@ -701,7 +701,7 @@
                     <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('rleads')}}"><span class="ps-1 nav-texttt">Rejected Leads</span></a>
                 </div>
                 <div class="">
-                    <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('rleads')}}" href="{{route('logout')}}"><span class="ps-1 nav-texttt">Sign out</span></a>
+                    <a class="nav-link link-dark  rounded {{ (request()->is('logout')) ? 'activeClassNav__' : '' }}" href="{{route('logout')}}" href="{{route('logout')}}"><span class="ps-1 nav-texttt">Sign out</span></a>
                 </div>
         </div>
         <hr>

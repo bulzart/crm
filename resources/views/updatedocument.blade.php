@@ -3025,7 +3025,7 @@
     }
 
     function accept() {
-        <? php
+        <?php
 
         echo 'document.getElementById("forma").action ="' . route('acceptdata', [Crypt:: encrypt($lead->id * 1244), 'accept' => true]) . '";';
         echo 'document.getElementById("forma").submit();';

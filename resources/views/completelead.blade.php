@@ -495,7 +495,7 @@
                             </div>
 
                             <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
-                                        @php
+                            @php
                                             $leadss = $app->id * 1244;
                                             $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                                         @endphp
@@ -526,7 +526,7 @@
                                                             <div class="col">
                                                                 <input type="text" id="inputTxt4" class="form-control"
                                                                        aria-describedby="passwordHelpInline"
-                                                                       name="fname1" required>
+                                                                       name="fname1">
                                                             </div>
                                                         </div>
                                                         <div class="row g-3 align-items-center m-1">
@@ -537,7 +537,7 @@
                                                             <div class="col">
                                                                 <input type="text" id="inputTxt5" class="form-control"
                                                                        name="lname1"
-                                                                       aria-describedby="passwordHelpInline" required>
+                                                                       aria-describedby="passwordHelpInline">
                                                             </div>
                                                         </div>
                                                         <div class="row g-3 align-items-center m-1">
@@ -548,7 +548,7 @@
                                                             <div class="col">
                                                                 <input type="date" id="inputTxt6" class="form-control"
                                                                        aria-describedby="passwordHelpInline"
-                                                                       name="birthday1" required>
+                                                                       name="birthday1">
                                                             </div>
                                                         </div>
                                                         <div class="text-end">
@@ -614,7 +614,7 @@
             '                                                    </div>' +
             '                                                    <div class="col">' +
             '                                                        <input type="text" id="inputTxt4" class="form-control" name="fname' + i + '"' +
-            '                                                           aria-describedby="passwordHelpInline" required>' +
+            '                                                           aria-describedby="passwordHelpInline">' +
             '                                                    </div>' +
             '                                                </div>' +
             '                                                <div class="row g-3 align-items-center m-1">' +
@@ -623,7 +623,7 @@
             '                                                    </div>' +
             '                                                    <div class="col">' +
             '                                                        <input type="text" id="inputTxt5" class="form-control"' +
-            '                                                            aria-describedby="passwordHelpInline" required name="lname' + i + '">' +
+            '                                                            aria-describedby="passwordHelpInline" name="lname' + i + '">' +
             '                                                    </div>' +
             '                                                </div>' +
             '                                                <div class="row g-3 align-items-center m-1">' +
@@ -633,7 +633,7 @@
             '                                                    </div>' +
             '                                                    <div class="col">' +
             '                                                        <input type="date" id="inputTxt6" class="form-control" name="birthday' + i + '"' +
-            '                                                            aria-describedby="passwordHelpInline" required>' +
+            '                                                            aria-describedby="passwordHelpInline">' +
             '                                                    </div>' +
             '                                                </div>' +
             '                                                <div class="text-end">' +
