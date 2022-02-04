@@ -692,7 +692,9 @@
                         <div class="p-3">
                             <div class="row">
                                 <div class="col"><h5><b>Personal Apponitments</b></h5></div>
-                                <div style="color: #0a53be" class="col-3 text-end pe-4"><h5><b>{{$countpersonalApp}}</b></h5></div>
+                                @if(Auth::guard('admins')->user()->hasRole('admin'))
+                                    <div style="color: #0a53be" class="col-3 text-end pe-4"><h5><b>{{$countpersonalApp}}</b></h5></div>
+                                @endif
                             </div>
                         </div>
                         <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
