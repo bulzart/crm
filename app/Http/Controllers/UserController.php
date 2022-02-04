@@ -282,7 +282,6 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
 
             $insta = DB::table('leads')->where('campaign_id', 1)->count();
-
             $facebook = DB::table('leads')->where('campaign_id', 3)->count();
             $sana = DB::table('leads')->where('campaign_id', 2)->count();
 
