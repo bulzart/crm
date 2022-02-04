@@ -5954,6 +5954,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -30790,6 +30801,72 @@ var render = function () {
                       ]
                     ),
                     _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: {
+                          id: "asign" + lead.slug,
+                          tabindex: "-1",
+                          "aria-labelledby": "exampleModalLabel",
+                          "aria-hidden": "true",
+                        },
+                      },
+                      [
+                        _c("div", { staticClass: "modal-dialog" }, [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(4, true),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _c(
+                                "select",
+                                {
+                                  staticClass: "form-control",
+                                  on: {
+                                    change: function ($event) {
+                                      return _vm.changeadmin($event)
+                                    },
+                                  },
+                                },
+                                _vm._l(_vm.admins, function (admin) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: admin.id } },
+                                    [_vm._v(_vm._s(admin.name))]
+                                  )
+                                }),
+                                0
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    "data-bs-dismiss": "modal",
+                                  },
+                                },
+                                [_vm._v("Close")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.assign },
+                                },
+                                [_vm._v("Assign")]
+                              ),
+                            ]),
+                          ]),
+                        ]),
+                      ]
+                    ),
+                    _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
                       _c(
                         "div",
@@ -30824,7 +30901,7 @@ var render = function () {
                                 },
                                 attrs: {
                                   "data-bs-toggle": "modal",
-                                  "data-bs-target": "asign",
+                                  "data-bs-target": "asign" + lead.slug,
                                 },
                               },
                               [
@@ -30882,6 +30959,8 @@ var render = function () {
                                                 ]
                                               ),
                                           _vm._v(" "),
+                                          _c("br"),
+                                          _vm._v(" "),
                                           _c("span", [
                                             _vm._v(
                                               "Adresse: " + _vm._s(lead.address)
@@ -30919,7 +30998,25 @@ var render = function () {
                                   ),
                                 ]),
                                 _vm._v(" "),
-                                _vm._m(4, true),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "text-center py-2",
+                                    staticStyle: {
+                                      background: "#B8B8B8",
+                                      "border-radius": "15px",
+                                    },
+                                    attrs: {
+                                      "data-bs-toggle": "modal",
+                                      "data-bs-target": "asign" + lead.slug,
+                                    },
+                                  },
+                                  [
+                                    _c("span", { staticClass: "text-dark" }, [
+                                      _vm._v("Lead offnen"),
+                                    ]),
+                                  ]
+                                ),
                               ]
                             )
                           : _c(
@@ -30952,6 +31049,8 @@ var render = function () {
                                         ),
                                       ]
                                     ),
+                                    _vm._v(" "),
+                                    _c("br"),
                                     _vm._v(" "),
                                     _c("span", [
                                       _vm._v(
@@ -31623,14 +31722,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "text-center py-2",
-        staticStyle: { background: "#B8B8B8", "border-radius": "15px" },
-      },
-      [_c("span", { staticClass: "text-dark" }, [_vm._v("Lead offnen")])]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Modal title")]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
   },
   function () {
     var _vm = this

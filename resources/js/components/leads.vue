@@ -60,14 +60,37 @@
             </form>
   </div>
 </div>
+ <div class="modal fade" :id="'asign' + lead.slug" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+                       
+                           
+                  
+       <select class="form-control" @change="changeadmin($event)">
+         <option v-for="admin in admins"  :value="admin.id">{{admin.name}}</option>
+       </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" @click="assign" class="btn btn-primary">Assign</button>
+      </div>
+    </div>
+  </div>
+</div>
                                     <div class="row">
                                         <div class="col-1 pe-0 my-auto text-end">
                                             <div v-if="role != 'fs'"><input type="checkbox" :value="lead.id" name="jep" @change="getit($event)"></div>
                                         </div>
                                         <div class="col ps-0">
 
-                                            <div class="py-1 my-2 mx-1"
-                                                style="background-color: #4EC590; border-radius: 15px; color: #fff;" data-bs-toggle="modal" data-bs-target="asign" v-if="role != 'fs'">
+                                            <div class="py-1 my-2 mx-1" data-bs-toggle="modal" :data-bs-target="'asign' + lead.slug"
+                                                style="background-color: #4EC590; border-radius: 15px; color: #fff;" v-if="role != 'fs'">
                                                  <div class="row mx-2">
                                                     <div
                                                         class="col-12 col-sm-12 col-md-12 col-lg-12 g-0 py-1 text-center">
@@ -79,6 +102,7 @@
                                                                  {{lead.first_name}} {{lead.last_name}}
                                                                  
                                                             </span>
+                                                            <br>
                                                                 <span>Adresse: {{lead.address}}</span><br>
                                                               <span>Haushalt: {{lead.number_of_persons}} Personen </span><br>
                                                               <span>Grund: {{lead.grund}}</span><br>
@@ -92,7 +116,7 @@
                                                     </div>
                                                 
                                                 </div>
-                                                <div style="background: #B8B8B8; border-radius: 15px;" class="text-center py-2">
+                                                <div style="background: #B8B8B8; border-radius: 15px;" class="text-center py-2" data-bs-toggle="modal" :data-bs-target="'asign' + lead.slug">
                           <span class="text-dark">Lead offnen</span>
                           </div>
                                                 </div>
@@ -109,6 +133,7 @@
                                                             <span class="fw-bold fs-5">
                                                                {{lead.first_name}} {{lead.last_name}}
                                                             </span>
+                                                            <br>
                                                                  <span>Adresse: {{lead.address}}</span><br>
                                                               <span>Haushalt: {{lead.number_of_persons}} Personen </span><br>
                                                               <span>Grund: {{lead.grund}}</span><br>
@@ -221,24 +246,6 @@
 
                                         </div>
                                     </div>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -258,6 +265,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+
+                       
+                           
+                  
        <select class="form-control" @change="changeadmin($event)">
          <option v-for="admin in admins"  :value="admin.id">{{admin.name}}</option>
        </select>

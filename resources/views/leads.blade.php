@@ -8,77 +8,7 @@
             <div class="col my-3">
 
                 <div class="leads-div py-3 px-4">
-                    @if(!Auth::guard('admins')->user()->hasRole('fs'))
-                        <div class="leads-header my-2">
-                            <span class="fs-4 fw-600 header-text">Leads</span>
-                        </div>
-                        <div class="information-div">
-                            <div class="info-header my-2">
-                <span class="fs-5 fw-600 header-text">
-                  Information
-                </span>
-                            </div>
-                            <div class="row my-1 mx-3">
-                                <div class="col-3 g-0">
-                                    <div class="">
-                        <span class="spn-muted">
-                          Name
-                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="col g-0">
-                                    <div class="">
-                        <span class="spn-muted">
-                          Number of People
-                        </span>
-                                    </div>
-                                </div>
-                                <div class="col g-0">
-                                    <div class="">
-                        <span class="spn-muted">
-                          Campaign
-                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr class="m-0">
-
-                            <div class="info-content" style="height: 200px;overflow-y: scroll;overflow-x: hidden">
-                                <div class="tasks-divv py-2 px-1">
-                                    @foreach($asigned as $assign)
-                                        <div class="row my- mx-3">
-                                            <div class="col-3 g-0">
-                                                <div class="">
-                        <span class="spn-normal">
-                          {{$assign->first_name}}
-                        </span>
-                                                </div>
-                                            </div>
-                                            <div class="col g-0">
-                                                <div class="">
-                        <span class="spn-normal">
-                          {{$assign->number_of_persons}}
-                        </span>
-                                                </div>
-                                            </div>
-                                            <div class="col g-0">
-                                                <div class="">
-                        <span class="spn-normal">
-                          {{$assign->campaign->name}}
-                        </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class="m-0">
-                                    @endforeach
-
-                                    <div class="text-end py-3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
+                
 
 
                     <div class="assigned-leads py-3" id="app">
@@ -107,19 +37,7 @@
                 </div>
            
                 
-                <div class="mt-4">
 
-    
-    <div class="d-flex justify-content-center"><nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">
-        @if($leads->currentPage() > 1)
-        <span> <a href="{{route('leads',['page' => $leads->currentPage() -1 ])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"></span>
-            @endif
-                    « Previous
-                </span> <a href="{{route('leads',['page' => $leads->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-                    Next »
-                </a></div> <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"><div><p class="text-sm text-gray-700 leading-5">
-
-                </p></div> <div></div></div></nav></div>
 
 </div>
             </div>
