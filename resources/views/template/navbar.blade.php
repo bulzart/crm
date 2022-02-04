@@ -111,6 +111,38 @@
         border-radius: 10px;
     }
 
+    .collapse2___::-webkit-scrollbar {
+        width: 5pt !important;
+    }
+
+    /* Track */
+    .collapse2___::-webkit-scrollbar-track {
+        background: #E3E3E3 !important;
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    .collapse2___::-webkit-scrollbar-thumb {
+        background: #4EC590;
+        border-radius: 10px;
+    }
+
+    .collapse23___::-webkit-scrollbar {
+        width: 5pt !important;
+    }
+
+    /* Track */
+    .collapse23___::-webkit-scrollbar-track {
+        background: #E3E3E3 !important;
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    .collapse23___::-webkit-scrollbar-thumb {
+        background: #EF696A;
+        border-radius: 10px;
+    }
+
     /* Handle on hover */
     .overflow-div1::-webkit-scrollbar-thumb:hover {
         background: #707070;
@@ -466,7 +498,7 @@
         <div class="nav-itemsss overflow-div1" style="width:100%; background-color: #0C71C3;">
             <br>
             <div class="mx-auto">
-                <img src="../imgs/Logo.png" id="logo__311" style="width: 100%;" alt="">
+                <img src="imgs/Logo.png" id="logo__311" style="width: 100%;" alt="">
             </div>
             <br>
             <div class="">

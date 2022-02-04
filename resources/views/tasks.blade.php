@@ -139,7 +139,7 @@
         <div class="open-task-box px-4 py-2" style="border: none !important; border-radius: 35px !important;">
             <div class="headerrrr d-flex justify-content-between">
                 <h5><b>Offene Aufgaben</b></h5>
-                <span class="fw-600 px-3 pb-1 tab-lookalike" style="background-color: #F7F7F7;">{{$opencnt}}</span>
+                <span class="fw-600 px-5 py-2 tab-lookalike" style="background-color: #F7F7F7; border-top-left-radius: 15px; border-top-right-radius: 15px;">{{$opencnt}}</span>
             </div>
             <div class="header-open-task1" style="background: #f7f7f7; border-bottom-right-radius: 35px !important; border-bottom-left-radius: 35px !important; border-top-left-radius: 35px !important;">
                 <div class="row mx-3 py-3 header-open-task">
@@ -280,7 +280,7 @@
         <div class="open-task-box px-4 py-2" style="border: none !important; border-radius: 35px !important;">
             <div class="headerrrr d-flex justify-content-between">
                 <h5><b>Geburstage / Jubiläen</b></h5>
-                <span class="fw-600 px-3 pb-1 tab-lookalike1" style="background-color: #F7F7F7;">2+</span>
+                <span class="fw-600 px-5 py-2 tab-lookalike1" style="background-color: #F7F7F7; border-top-left-radius: 15px; border-top-right-radius: 15px;">2+</span>
             </div>
             <div class=" header-open-task1" style="background: #f7f7f7; border-bottom-right-radius: 35px !important; border-bottom-left-radius: 35px !important; border-top-left-radius: 35px !important;">
                 <div class="row mx-3 py-3 header-open-task">
@@ -413,13 +413,13 @@
             </div>
         </div>
     </div>
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12 p-0 my-2 ">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 my-2">
         <div class="open-task-box px-4 py-2" style="border: none !important; border-radius: 35px !important;">
             <div class="headerrrr d-flex justify-content-between">
                 <span class="fw-600">
                     <h5><b>Pendenzen / Zur Nachbearbeitung!</b></h5>
                 </span>
-                <span class="fw-600 px-3 pb-1 tab-lookalike2" style="background-color: #ffebe5;">{{count($pending)}}</span>
+                <span class="fw-600 px-4 py-2 tab-lookalike2" style="background-color: #ffebe5; border-top-left-radius: 15px; border-top-right-radius: 15px;">{{count($pending)}}</span>
             </div>
             <div class="header-open-task1-pink" style="background: #ffebe5; border-bottom-right-radius: 35px !important; border-bottom-left-radius: 35px !important; border-top-left-radius: 35px !important;">
                 <div class="row mx-3 py-3 header-open-task-pink">
@@ -583,38 +583,75 @@
         </div>
     </div>
 </div>
-
 @endif
 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-<div class="row me-5 px-2 justify-content-center">
+<div class="row me-5 px-4 justify-content-center">
     <div class="col-md-6 col-12 mb-3">
-        <div style="background: #ffebe5; border-radius: 25px; padding: 5%;">
+        <div style="background: #F7F7F7; border-radius: 25px; padding: 5%;">
             <div class="row">
                 <div class="col-12" style="cursor: pointer;">
-
-                    <form action="{{route('tasks')}}" method="post">
+                    <span style="color: #000; font-size: larger;"><b>Answered Tasks</b><span style="color: #4EC590; padding-left: 10px;"><b>{{count($answered)}}</b></span></span>
+                    <br><br>
+                    <form action="{{route('tasks')}}" style="width: 100%;" method="post">
                         @csrf
-                        <input type="text" name="searchpend" placeholder="Search by name">
-                        <input type="submit" class="btn btn-danger" value="Search">
+                        <div class="input-group mb-3" style="border-radius: 8px !important;">
+                            <input type="text" name="searchpend" style=" font-weight: 500; border: transparent !important;" placeholder="Search by name" class="form-control">
+                            <input type="submit" class="btn" style="background-color: #4EC590; color: #fff; font-weight: 600; padding-left: 8%; padding-right: 8%;" value="Search">
+                        </div>
+                        <!-- <input type="text" name="searchpend" class="form-control" placeholder="Search by name">
+                        <input type="submit" class="btn btn-danger" value="Search"> -->
                     </form>
-                    <span>Answered <span class="text-danger">{{count($answered)}}</span></span>
+                    
                 </div>
 
             </div>
             <br>
+            <script>
+                var intvaluecount = 1;
+                var truefalsee = [];
+
+                var intvaluecount2 = 1;
+                var truefalsee2 = [];
+            </script>
             <div id="collapse__">
-                <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
+                <div class="collapse2___ pe-3" style="height: 350px; overflow: scroll; overflow-x: hidden;">
                     @foreach($answered as $task)
                     @php
                     $leadss = $task->id * 1244;
                     $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
-                    <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;">
-                        <div class="p-1" style="background: white; border-radius: 12px;">
-                            <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
+                    <div style="background: #4EC590; color: #fff; border-radius: 8px; cursor: pointer;">
+                        <a data-bs-toggle="collapse" id="demo23{{$taskId}}" style="text-decoration:none;">
+                            <div class="px-3 py-2">
+                                <h5 class="m-1"><b>{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}} </b><span style="float: right;"><span><span class="px-2" style="font-size: 19px;"><i class="bi bi-chat justify-content-end"></i></span></span><span id="demo23span{{$taskId}}" class="bi bi-chevron-down"></span></span></h5>
+                            </div>
+                        </a>
 
+                        <div id="demo{{$taskId}}" class="collapse px-3 py-2">
+                            <h6 class="m-1"><b>Client:</b> Enis Demolli (emri i klientit)</h6>
+                            <h6 class="m-1"><b>Title:</b> Lorem, ipsum. (titulli)</h6>
+                            <h6 class="m-1"><b>Date & Time:</b> 03.02.2022 13:00 (data)</h6>
+                            <h6 class="m-1"><b>Description:</b> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, blanditiis? (Description)</span></h6>
+                            <button class="btn m-1" onclick="window.location.href='{{route('leadfamilyperson',$taskId)}}'" style="background-color: #fff; color: #4EC590; font-weight: 600; padding-left: 8%; padding-right: 8%;">Open</button>
                         </div>
-                    </a>
+                        <script>
+                            truefalsee["sss" + intvaluecount] = false;
+                            $(document).ready(function(){
+                                $("#demo23{{$taskId}}").click(function(){
+                                    
+                                    $("#demo{{$taskId}}").collapse('toggle');
+                                    if(truefalsee["sss" + intvaluecount] === false){
+                                        $("#demo23span{{$taskId}}").addClass("bi bi-chevron-down bi-chevron-up");
+                                        truefalsee["sss" + intvaluecount] = true;
+                                    }else{
+                                        $("#demo23span{{$taskId}}").removeClass("bi bi-chevron-up");
+                                        truefalsee["sss" + intvaluecount] = false;
+                                    }
+                                });
+                            });
+                            intvaluecount++;
+                        </script>
+                    </div>
                     <br>
                     @endforeach
                 </div>
@@ -624,27 +661,31 @@
     <div class="col-md-6 col-12 mb-3">
         <div style="background: #f8f8f8;border-radius: 25px; padding: 5%;">
             <div class="row">
+                <span style="color: #000; font-size: larger;"><b>Open Tasks</b><span style="color: #EF696A; padding-left: 10px;"><b>{{count($opened)}}</b></span></span>
+                <br><br>
                 <div class="col-12" style="cursor: pointer;" id="Offene_Aufgaben__1">
-                    <form action="{{route('tasks')}}" method="post">
+                    <form action="{{route('tasks')}}" style="width: 100%;" method="post">
                         @csrf
-                        <input type="text" name="searchopen" placeholder="Search by name">
-                        <input type="submit" class="btn btn-danger" value="Search">
+                        <div class="input-group mb-3" style="border-radius: 8px !important;">
+                            <input type="text" name="searchopen" placeholder="Search by name" style=" font-weight: 500; border: transparent !important;" class="form-control">
+                            <input type="submit" class="btn" style="background-color: #EF696A; color: #fff; font-weight: 600; padding-left: 8%; padding-right: 8%;" value="Search">
+                        </div>
                     </form>
-                    <span>Open <span class="text-danger">{{count($opened)}}</span></span>
+                    
                 </div>
 
             </div>
             <br>
             <div id="first_collapse">
-                <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
+                <div class="collapse23___ pe-3" style="height: 350px; overflow: scroll; overflow-x: hidden;">
                     @foreach($opened as $task)
                     @php
                     $leadss = $task->id * 1244;
                     $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
 
-                    <div class="p-1" style="background: red; border-radius: 12px;">
-                        <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;"> <span style="font-size: 18px;" class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</span></a>
+                    <div style="background: #EF696A; color: #fff; border-radius: 8px; cursor: pointer">
+                        
                         @php
                         $leadss = $task->admin_id * 1244;
                         $taskAdminId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
@@ -653,8 +694,48 @@
                         $authUserId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
 
                         @endphp
-                        <a href="{{route('chat',[$taskAdminId,$authUserId])}}"><span style="font-size: 19px;" class="m-3"><i class="bi bi-chat justify-content-end"></i></span></a>
 
+                        <a data-bs-toggle="collapse" id="demo23_2{{$authUserId}}" style="text-decoration:none;">
+                            <div class="px-3 py-2">
+                                <h5 class="m-1">
+                                    <b>{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}} </b>
+                                    <span style="float: right;">
+                                        <span onclick="window.location.href='{{route('chat',[$taskAdminId,$authUserId])}}'">
+                                            <span class="px-2" style="font-size: 19px;">
+                                                <i class="bi bi-chat justify-content-end"></i>
+                                            </span>
+                                        </span>
+                                        <span id="demo23span_2{{$authUserId}}" class="bi bi-chevron-down"></span>
+                                    </span>
+                                </h5>
+                            </div>
+                        </a>
+
+
+                        <div id="demo_2{{$authUserId}}" class="collapse px-3 py-2">
+                            <h6 class="m-1"><b>Client:</b> Enis Demolli (emri i klientit)</h6>
+                            <h6 class="m-1"><b>Title:</b> Lorem, ipsum. (titulli)</h6>
+                            <h6 class="m-1"><b>Date & Time:</b> 03.02.2022 13:00 (data)</h6>
+                            <h6 class="m-1"><b>Description:</b> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, blanditiis? (Description)</span></h6>
+                            <button class="btn m-1" onclick="window.location.href='{{route('leadfamilyperson',$taskId)}}'" style="background-color: #fff; color: #EF696A; font-weight: 600; padding-left: 8%; padding-right: 8%;">Open</button>
+                        </div>
+                        <script>
+                            truefalsee2["sss" + intvaluecount2] = false;
+                            $(document).ready(function(){
+                                $("#demo23_2{{$authUserId}}").click(function(){
+                                    
+                                    $("#demo_2{{$authUserId}}").collapse('toggle');
+                                    if(truefalsee2["sss" + intvaluecount2] === false){
+                                        $("#demo23span_2{{$authUserId}}").addClass("bi bi-chevron-down bi-chevron-up");
+                                        truefalsee2["sss" + intvaluecount2] = true;
+                                    }else{
+                                        $("#demo23span_2{{$authUserId}}").removeClass("bi bi-chevron-up");
+                                        truefalsee2["sss" + intvaluecount2] = false;
+                                    }
+                                });
+                            });
+                            intvaluecount2++;
+                        </script>
                     </div>
 
                     <br>
