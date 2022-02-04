@@ -531,6 +531,18 @@ return redirect()->route('tasks');
 
     }
 
+    public function rejectlead(Request $request,$id){
+        $id = Crypt::decrypt($id) / 1244;
+
+        $rejectlead = new rejectedlead();
+
+        $rejectlead->leads_id = $id;
+        $rejectlead->reason = $request->reason;
+        $rejectlead->image = $request->image;
+
+        $rejectlead->save();
+    }
+
     public function dashboard(Request $req)
     {
     if(!Auth::guard('admins')->check()){
