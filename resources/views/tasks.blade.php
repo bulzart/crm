@@ -135,66 +135,11 @@
 </style>
 @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
 <div class="row me-5 mt-5 mb-5" class="tasks_8211__">
-    <!-- <div class="col-md-6 col-12 mb-3">
-        <div class="row mx-2" style="cursor: pointer;" id="Offene_Aufgaben__">
-            <div class="col-10 my-auto">
-                <h5><b>Offene Aufgaben</b></h5>
-            </div>
-            <div class="col-2" style="float: right; text-align: right;background: #f7f7f7; border-radius: 25px; border-bottom-right-radius: 0 !important; border-bottom-left-radius: 0 !important; padding:2%;">
-                <span class="text-dark">{{$opencnt}}</span> <i id="Geburstage_arrow__" style="color: #000;" class="bi bi-caret-down-fill"></i>
-            </div>
-            <div class="col-12" style="background: #f7f7f7; border-radius: 25px; border-top-right-radius: 0 !important; padding:5%;">
-                <div class="collapse" id="first_collapse">
-
-                    <span>Open pendencies</span>
-                    <div style="height: 350px; overflow: scroll; overflow-x: hidden;">
-                        @foreach($tasks as $task)
-                        @php
-                        $leadss = $task->id * 1244;
-                        $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                        @endphp
-                        <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;">
-                            <div class="p-1" style="background: white; border-radius: 12px;">
-                                <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
-                            </div>
-                        </a>
-                        <br>
-                        @endforeach
-                    </div>
-                    <div class="mt-4">
-                        @if($tasks->count() > 1)
-                        <div class="d-flex justify-content-center">
-                            <div class="d-flex justify-content-center">
-                                <nav role="navigation" aria-label="Pagination Navigation" class="flex items-center justify-between">
-                                    @if($tasks->currentPage() > 1)
-                                    <span> <a href="{{route('tasks',['page' => $tasks->currentPage() -1 ])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"></span>
-                                    @endif
-                                    « Previous
-                                    </span> <a href="{{route('tasks',['page' => $tasks->currentPage() +1])}}" class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
-                                        Next »
-                                    </a>
-                            </div>
-                            <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-                                <div>
-                                    <p class="text-sm text-gray-700 leading-5">
-
-                                    </p>
-                                </div>
-                                <div></div>
-                            </div>
-                            </nav>
-                        </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="col-12 col-sm-12 col-md-12 col-lg p-0 m-2 ">
         <div class="open-task-box px-4 py-2" style="border: none !important; border-radius: 35px !important;">
             <div class="headerrrr d-flex justify-content-between">
                 <h5><b>Offene Aufgaben</b></h5>
-                <span class="fw-600 px-3 pb-1 tab-lookalike" style="background-color: #F7F7F7;">10+</span>
+                <span class="fw-600 px-3 pb-1 tab-lookalike" style="background-color: #F7F7F7;">{{$opencnt}}</span>
             </div>
             <div class="header-open-task1" style="background: #f7f7f7; border-bottom-right-radius: 35px !important; border-bottom-left-radius: 35px !important; border-top-left-radius: 35px !important;">
                 <div class="row mx-3 py-3 header-open-task">
@@ -247,18 +192,13 @@
                         </div>
                     </div>
                 </div>
-                <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
-                <div style="height: 30vh; overflow: auto; overflow-x: hidden;">
+                <hr class="text-black " style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
+                <div class="overflow-divvv" style="height: 30vh; overflow: auto; overflow-x: hidden;">
                     @foreach($tasks as $task)
                     @php
                     $leadss = $task->id * 1244;
                     $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
-                    <!-- <a href="{{route('leadfamilyperson',$taskId)}}" style="text-decoration:none;">
-                        <div class="p-1" style="background: white; border-radius: 12px;">
-                            <h5 class="m-1">{{ucfirst($task->first_name)}} {{ucfirst($task->last_name)}}</h5>
-                        </div>
-                    </a> -->
                     <div onclick="window.location.href='{{route('leadfamilyperson',$taskId)}}'" class="row my-1 mx-3 header-open-task" style="cursor: pointer;">
                         <div class="col-3 g-0">
                             <div class="">
@@ -300,8 +240,10 @@
                     <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
                     @endforeach
                 </div>
+                @if($tasks->count() > 1)
                 <div class="text-end py-3">
-                    <span class="px-2">
+                    @if($tasks->currentPage() > 1)
+                    <span class="px-2" onclick="window.location.href='{{route('tasks',['page' => $tasks->currentPage() -1 ])}}'">
                         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                             <g id="Group_757" data-name="Group 757" transform="translate(0.082)">
                                 <path id="Path_281" data-name="Path 281" d="M0,0,9.679,7.316,0,14.631" transform="translate(20.741 24.316) rotate(180)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -311,9 +253,9 @@
                                 </g>
                             </g>
                         </svg>
-
                     </span>
-                    <span class="px-2">
+                    @endif
+                    <span class="px-2" onclick="window.location.href='{{route('tasks',['page' => $tasks->currentPage() +1])}}'">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="34" viewBox="0 0 34 34">
                             <defs>
 
@@ -328,10 +270,9 @@
                                 </g>
                             </g>
                         </svg>
-
-
                     </span>
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -401,7 +342,7 @@
                             <div class="">
                                 <span class="spn-normal">
                                     {{$birth['birthday']}}
-                                    <!-- Birthday Date duhet mu shfaq -->
+
                                 </span>
                             </div>
                         </div>

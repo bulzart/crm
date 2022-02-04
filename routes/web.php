@@ -133,6 +133,7 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
 
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
     route::post('rejectedleads/{status?}',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::post('rejectlead/{id}',[UserController::class,'rejectlead'])->name('rejectlead');
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){

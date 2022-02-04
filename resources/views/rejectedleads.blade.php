@@ -33,7 +33,7 @@
                     <div class="col py-1">
                         <div class="mx-3">
                                 <span class="fs-3 fw-bold text-white">
-                                    Markus Jurgen
+                                    {{$leads->first_name}}
                                 </span>
                         </div>
                         <div class="mx-3">
@@ -47,7 +47,7 @@
                                                   stroke-width="0.5" />
                                         </svg>
                                     </span>
-                                    Raumweg 23, 3700 Thun
+                                    {{$leads->address}}
                                 </span>
                         </div>
                     </div>
@@ -155,17 +155,14 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 ps-0">
-                    <form method="post" action="{{route('rejectedleads')}}" enctype="multipart/form-data">
+                    @php
+                        $leadss = $leads->id * 1244;
+                        $leadsId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                    @endphp
+                    <form method="post" action="{{route('rejectlead',$leadsId)}}" enctype="multipart/form-data">
                         @csrf
-                        @php
-                            $leadss = $leads->id * 1244;
-                            $leadsId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                        @endphp
-                        <input type="hidden" name="leadsid" value="{{$leadsId}}">
                         <div class="border-left-div">
                             <div class="termin-div mx-3 py-3">
-
-
 
                                 <div class="text-center py-3">
                                         <span class="fs-5 fw-bold text-secondary">
