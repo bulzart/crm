@@ -23,7 +23,7 @@
             <div class="nav-itemsss overflow-div1" style="width:100%; background-color: #0C71C3;">
                 <br>
                 <div class="mx-auto">
-                    <img src="../img/Logo.png" id="logo__311" style="width: 100%;" alt="">
+                    <img src="../imgs/Logo.png" id="logo__311" style="width: 100%;" alt="">
                 </div>
                 <br>
                 <div class="">
@@ -340,7 +340,6 @@
                     </div>
                     <div class="col">
                         <div class="mb-3">
-
                             <div class="info-divv px-2 my-3">
                                 <div class="row">
                                     <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
@@ -438,16 +437,15 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
+                        </div>
+                    </div>
+                            <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 g-0">
                             @php
-                                            $leadss = $app->id * 1244;
-                                            $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                                        @endphp
-                                        <form action="{{route('completeapp',$appId)}}" method="post">
-                                            @csrf
-
+                                $leadss = $app->id * 1244;
+                                $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                                <form action="{{route('completeapp',$appId)}}" method="post">
+                            @csrf
                                 <div class="border-left-div">
                                     <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
 
@@ -493,7 +491,7 @@
                                                                 <label for="inputTxt6"
                                                                        class="col-form-label">Geburtstag:</label>
                                                             </div>
-  
+
                                                         <div class="col">
                                                             <input type="date" id="inputTxt6" class="form-control"
                                                                    aria-describedby="passwordHelpInline"
