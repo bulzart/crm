@@ -304,6 +304,8 @@ route::get('leadhistory',function(){
 
 
 
+
  
    return view('leadshistory',compact('leads'));
 });
+

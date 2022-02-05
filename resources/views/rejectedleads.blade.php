@@ -60,17 +60,12 @@
                                 <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
-                                            <span class="fw-600 ">Agent:</span> <span class="fs-6">Agent1</span>
+                                            <span class="fw-600 ">Agent:</span> <span class="fs-6">{{$leads->agent}}</span>
                                         </div>
                                     </div>
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
                                             <span class="fw-600 ">Berater:</span> <span class="fs-6">{{$leads->berater}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="white-thingy my-2">
-                                        <div class="text-div py-3 ps-2">
-                                            <span class="fw-600 ">Tag:</span> <span class="fs-6">Sontag</span>
                                         </div>
                                     </div>
                                     <div class="white-thingy my-2">
@@ -86,6 +81,11 @@
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
                                             <span class="fw-600 ">Zufriedenheit:</span> <span class="fs-6">{{$leads->zufriedenheit}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Strasse:</span> <span class="fs-6">{{$leads->address}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -130,12 +130,7 @@
                                     </div>
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
-                                            <span class="fw-600 ">Strasse:</span><span class="fs-6"></span>
-                                        </div>
-                                    </div>
-                                    <div class="white-thingy my-2">
-                                        <div class="text-div py-3 ps-2">
-                                            <span class="fw-600 ">Nr:</span> <span class="fs-6">{{$leads->telephone}}</span>
+                                            <span class="fw-600 ">Nr:</span> <span class="fs-6">{{(int)$leads->address}}</span>
                                         </div>
                                     </div>
                                     <div class="white-thingy my-2">
