@@ -306,7 +306,7 @@
                 <div class="row">
                     <div class="row">
                         <div class="col-2 col-md-1 pe-0 my-auto">
-                            <a style="text-decoration: none" href="{{route('tasks')}}">
+                            <a style="text-decoration: none" href="#">
                                 <button class="bg-white w-100 rounded border-0 p-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7DBF9A"
                                          class="bi bi-chevron-left" viewBox="0 0 16 16">

@@ -41,7 +41,6 @@
                                 <label for="" class="mb-1">Teilnahme:</label>
                                 <input type="text" name="teilnahme" class="form-control" required>
                             </div>
-
                         </div>
                     </div>
                     <div class=" col-12 col-md-6 col-lg-6">

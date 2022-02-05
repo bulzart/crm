@@ -2718,10 +2718,10 @@
 
                     </div>
 
-                    <div class="col g-0 text-center">
+                    <div class="col g-0 text-center pb-3">
 
                         <button class="px-5 py-2" id="submitt" type="button"
-                                style="border: none; border-radius: 9px; background-color:#285F52;" title="Overwrite"
+                                style="border: none; border-radius: 9px; background-color:#285F52;" title="Edit"
                                 onclick="edit();">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff"
                                  class="bi bi-capslock-fill" viewBox="0 0 16 16">
@@ -2974,6 +2974,9 @@
     .upload-box {
         background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='9' ry='9' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
         border-radius: 9px;
+    }
+    body{
+        overflow-x: hidden;
     }
 </style>
 <script>

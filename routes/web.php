@@ -302,10 +302,6 @@ route::get('rleads',[UserController::class,'rleads'])->name('rleads');
 route::get('leadhistory',function(){
    $leads = lead::with('info')->with('admin')->paginate(30);
 
-
-
-
- 
    return view('leadshistory',compact('leads'));
 });
 
