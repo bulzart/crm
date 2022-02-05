@@ -82,8 +82,12 @@ class UserController extends Controller
         $leadi->teilnahme = $req->teilnahme;
         $leadi->save();
         $lead->slug = 'qwesssewssew-' . uniqid();
-        $lead->save();
-        return redirect()->back()->with('success','Lead was succesfully inserted');
+        if($lead->save()){
+            return redirect()->route('leads')->with('success','Lead was succesfully inserted');
+        }else{
+            return redirect()->back()->with('fail','Fail To Insert');
+        }
+
     }
 
     public function acceptapp($id)
@@ -321,6 +325,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         $lead->zufriedenheit = $req->zufriedenheit ? $req->zufriedenheit : $lead->zufriedenheit;
         $lead->bemerkung = $req->bemerkung ? $req->bemerkung : $lead->bemerkung;
         $lead->sprache = $req->sprache ? $req->sprache : $lead->sprache;
+        $lead->agent = $req->agent ? $req->agent : $lead->agent;
 
 
         if ($lead->save()) {

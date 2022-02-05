@@ -307,3 +307,8 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
 });
 route::get('rleads',[UserController::class,'rleads'])->name('rleads');
 
+route::get('test',function (){
+   $lead = lead::first();
+   return (int) $lead->address;
+});
+
