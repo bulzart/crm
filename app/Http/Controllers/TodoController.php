@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ToDoRequest;
 use App\Models\Admins;
+use App\Models\Costumer;
 use App\Models\family;
 use Illuminate\Http\Request;
 use App\Models\todo;
@@ -77,5 +78,37 @@ class TodoController extends Controller
             if($todo->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
             $todo->update(['done' => 1]);}
         }
+    }
+
+    public function getDataForTaskByCostumerId($costumerId)
+    {
+        return Costumer::where('id', $costumerId)->first();
+    }
+
+    public function createToDoTasks($id, $pendencyId, Request $request)
+    {
+        $decryptedId = Crypt::decrypt($id);
+        $decryptedPendencyId = Crypt::decrypt($pendencyId);
+
+        $data = [
+            'admin_id' => $decryptedId,
+            'pendency_id' => $decryptedPendencyId,
+            'costumer' => $request->costumer,
+            'text' => $request->text,
+            'comment' => $request->comment,
+            'done' => 'Opened'
+        ];
+
+        return todo::create($data);
+    }
+
+    public function getAllOpenedToDoTasks()
+    { 
+        return todo::where('done', 'Opened')->get();
+    }
+
+    public function getAllAnsweredTasks()
+    {
+        return todo::where('done', 'Answered')->get();
     }
 }

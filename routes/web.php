@@ -191,6 +191,10 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    // Route::group(['middleware' => 'json.response'], function () {
       route::get('addtodo',[TodoController::class,'addtodo']);
    // });
+   route::post('create-task/{id}/{pendencyId}',[TodoController::class,'createToDoTasks'])->name('createToDoTasks');
+   route::get('opened-tasks',[TodoController::class,'getAllOpenedToDoTasks'])->name('getAllOpenedToDoTasks');
+   route::get('answered-tasks',[TodoController::class,'getAllAnsweredTasks'])->name('getAllAnsweredTasks');
+   route::get('costumer',[TodoController::class,'getDataForTaskByCostumerId'])->name('getDataForTaskByCostumerId');
 
     route::get('costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'costumer_form'])->name('costumer_form');
 
