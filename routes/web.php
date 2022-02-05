@@ -308,3 +308,4 @@ route::get('leadhistory',function(Request $request){
    $leads = lead::with('info')->with('admin')->paginate(30);
    return view('leadshistory',compact('leads'));
 })->name('leadshistory');
+
