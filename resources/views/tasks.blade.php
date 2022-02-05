@@ -8,6 +8,9 @@
     <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
 <style>
+    body{
+        overflow-x: hidden;
+    }
     .overflow-divvv::-webkit-scrollbar {
         width: 1px !important;
     }
@@ -601,7 +604,7 @@
                         <!-- <input type="text" name="searchpend" class="form-control" placeholder="Search by name">
                         <input type="submit" class="btn btn-danger" value="Search"> -->
                     </form>
-                    
+
                 </div>
 
             </div>
@@ -638,7 +641,7 @@
                             truefalsee["sss" + intvaluecount] = false;
                             $(document).ready(function(){
                                 $("#demo23{{$taskId}}").click(function(){
-                                    
+
                                     $("#demo{{$taskId}}").collapse('toggle');
                                     if(truefalsee["sss" + intvaluecount] === false){
                                         $("#demo23span{{$taskId}}").addClass("bi bi-chevron-down bi-chevron-up");
@@ -671,7 +674,7 @@
                             <input type="submit" class="btn" style="background-color: #EF696A; color: #fff; font-weight: 600; padding-left: 8%; padding-right: 8%;" value="Search">
                         </div>
                     </form>
-                    
+
                 </div>
 
             </div>
@@ -685,7 +688,7 @@
                     @endphp
 
                     <div style="background: #EF696A; color: #fff; border-radius: 8px; cursor: pointer">
-                        
+
                         @php
                         $leadss = $task->admin_id * 1244;
                         $taskAdminId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
@@ -723,7 +726,7 @@
                             truefalsee2["sss" + intvaluecount2] = false;
                             $(document).ready(function(){
                                 $("#demo23_2{{$authUserId}}").click(function(){
-                                    
+
                                     $("#demo_2{{$authUserId}}").collapse('toggle');
                                     if(truefalsee2["sss" + intvaluecount2] === false){
                                         $("#demo23span_2{{$authUserId}}").addClass("bi bi-chevron-down bi-chevron-up");
@@ -748,3 +751,132 @@
 </div>
 @endif
 @endsection
+<style>
+    body{
+        overflow-x: hidden;
+    }
+    .overflow-divvv::-webkit-scrollbar {
+        width: 1px !important;
+    }
+
+    /* Track */
+    .overflow-divvv::-webkit-scrollbar-track {
+        background: transparent !important;
+        border-radius: 10px !important;
+    }
+
+    /* Handle */
+    .overflow-divvv::-webkit-scrollbar-thumb {
+        background: #c9cad8 !important;
+        border-radius: 10px !important;
+    }
+
+    /* Handle on hover */
+    .overflow-divvv::-webkit-scrollbar-thumb:hover {
+        background: #707070 !important;
+        border-radius: 10px !important;
+    }
+
+    .tab-lookalike2 {
+        background-color: #FFEAE4 !important;
+        color: #434343 !important;
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+        border-top-left-radius: 5px !important;
+        border-top-right-radius: 5px !important;
+    }
+
+    .tab-lookalike1 {
+        background-color: #F7F7F7 !important;
+        color: #434343 !important;
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+        border-top-left-radius: 5px !important;
+        border-top-right-radius: 5px !important;
+    }
+
+    .tab-lookalike {
+        background-color: #F7F7F7 !important;
+        color: #FF4000 !important;
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+        border-top-left-radius: 5px !important;
+        border-top-right-radius: 5px !important;
+    }
+
+    .header-open-task1 {
+        background-color: #F7F7F7 !important;
+        border-bottom-left-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+        border-top-right-radius: 0px !important;
+
+    }
+
+    .header-open-task1-pink {
+        background-color: #FFEAE4 !important;
+        border-bottom-left-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+        border-top-right-radius: 0px;
+
+    }
+
+    .header-open-task {
+        background-color: #F7F7F7 !important;
+    }
+
+    .header-open-task-pink {
+        background-color: #FFEAE4 !important;
+    }
+
+    .priority-spnn {
+        background-color: #ad2b2b !important;
+        border-radius: 35px !important;
+        color: #fff !important;
+    }
+
+    .open-task-box {
+        border-radius: 35px !important;
+        background-color: #fff;
+        border: none !important;
+    }
+
+    .pendzen-box {
+        border-radius: 35px !important;
+        background-color: #EAECF0 !important;
+        border: none !important;
+
+    }
+
+    .third-box {
+        border-radius: 35px !important;
+        background-color: #fff !important;
+        border: #707070 1px solid !important;
+
+    }
+
+    .task-box {
+        background-color: #F7F7F7 !important;
+        border-radius: 12px !important;
+    }
+
+    .name-spnnnn {
+        font-weight: 600 !important;
+    }
+
+    .fw-600 {
+        font-weight: 600 !important;
+    }
+
+    .spn-muted {
+        color: #707070 !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+    }
+
+    .spn-normal {
+        font-weight: 600;
+        font-size: 14px !important;
+    }
+</style>
