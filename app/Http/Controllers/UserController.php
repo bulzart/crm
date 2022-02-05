@@ -518,7 +518,7 @@ return redirect()->route('tasks');
           $rejectedlead = new lead_history();
 
           $rejectedlead->leads_id = $leads_id;
-          $rejectedlead->reason = $reason;
+          $rejectedlead->status = $reason;
           $rejectedlead->image = $image;
           $rejectedlead->admin_id = Auth::user()->id;
           if($rejectedlead->save()){
