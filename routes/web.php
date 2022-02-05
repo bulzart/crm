@@ -300,5 +300,10 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
 });
 route::get('rleads',[UserController::class,'rleads'])->name('rleads');
 route::get('leadhistory',function(){
-   return view('leadshistory');
+   $leads = lead::with('info')->with('admin')->paginate(30);
+
+
+
+ 
+   return view('leadshistory',compact('leads'));
 });

@@ -1,19 +1,21 @@
 @extends('template.navbar')
 @section('content')
-<div class="row">
+@foreach($leads as $lead)
+<div class="p-3 text-center d-flex justify-content-center">
+<div class="row col-10">
         <div class="col-3 pe-0 openLeadsFirstDiv">
 
             <div class="">
                 <div class="whiteee p-3">
                     <div class="namme mb-2">
-                        <span class="fs-4 fw-bold">Markus Jurgen (19.1.1986)</span>
+                        <span class="fs-4 fw-bold">{{$lead->first_name}}</span>
                     </div>
                     <div class="adresse row">
                         <div class="col-4 pe-0">
                             <span class="">Adresse:</span>
                         </div>
                         <div class="col ps-0">
-                            <span class="grayyy1 fw-500 ">Raumweg 23, 3700 Thun</span>
+                            <span class="grayyy1 fw-500 ">{{$lead->address}}</span>
                         </div>
                     </div>
                     <div class="haushalt row">
@@ -21,7 +23,7 @@
                             <span class="">Haushalt:</span>
                         </div>
                         <div class="col ps-0">
-                            <span class="grayyy1 fw-500">4 Personen</span>
+                            <span class="grayyy1 fw-500">{{$lead->number_of_persons}} Personen</span>
                         </div>
                     </div>
                     <div class="grund row">
@@ -29,7 +31,7 @@
                             <span class="">Grund:</span>
                         </div>
                         <div class="col ps-0">
-                            <span class="grayyy1 fw-500">Krankenkasse</span>
+                            <span class="grayyy1 fw-500">@if($lead->info != null) {{$lead->info->grund}} @endif</span>
                         </div>
                     </div>
                     <div class="kampagne row">
@@ -37,7 +39,7 @@
                             <span class="">Kampagne:</span>
                         </div>
                         <div class="col ps-0">
-                            <span class="grayyy1 fw-500">Facebook</span>
+                            <span class="grayyy1 fw-500">@if($lead->info != null) {{$lead->info->kampagne}} @endif</span>
                         </div>
                     </div>
                 </div>
@@ -56,17 +58,8 @@
                 </div>
                 <div class="my-auto h-75">
                     <div class="greyBorderDiv mt-2 my-auto">
-                        <div class="receivedDiv my-auto h-100 bg-dark" style="      vertical-align: middle;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: #fff;
-            font-weight: bold;
-            border-top-right-radius: 59px;
-            border-bottom-right-radius: 59px;
-            padding-right: 2%;">
-Received
+                        <div class="receivedDiv h-100 my-auto ps-4">
+                            Received
                         </div>
                     </div>
                 </div>
@@ -78,11 +71,19 @@ Received
                     <span class="openLeadsSpanText">Assigned to</span>
                 </div>
                 <div class="my-auto h-75">
-                    <div class="orangeBorderDiv  mt-2 my-auto">
-                        <div class="assignedToDiv">
-
+                    @if($lead->admin != null)
+                    <div class="orangeBorderDiv  mt-2 my-auto" style="background-color: #FEC278;">
+                        <div class="assignedToDiv h-100 my-auto ps-4">
+                            {{$lead->admin->name}}
                         </div>
                     </div>
+                    @else
+                    <div class="orangeBorderDiv  mt-2 my-auto">
+                        <div class="assignedToDiv h-100 my-auto ps-4">
+                            
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -92,9 +93,9 @@ Received
                     <span class="openLeadsSpanText">Lost</span>
                 </div>
                 <div class="my-auto h-75">
-                    <div class="redBorderDiv mt-2 my-auto">
-                        <div class="lostDiv">
-
+                    <div class="redBorderDiv mt-2 my-auto h-100">
+                        <div class="lostDiv my-auto h-100 justify-content-center ps-4">
+                            Lost
                         </div>
                     </div>
                 </div>
@@ -107,12 +108,16 @@ Received
                 </div>
                 <div class="my-auto h-75">
                     <div class="greenBorderDiv mt-2 my-auto">
-                        <div class="wonDiv">
-
+                        <div class="wonDiv my-auto h-100 ps-5 ms-5">
+                            <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg" width="59.804" height="43.804" viewBox="0 0 59.804 43.804">
+                                <path id="Path_379" data-name="Path 379" d="M8370.12,1003.732l20.094,20.423,35.472-40.187" transform="translate(-8367.999 -981.851)" fill="none" stroke="#feffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                              </svg>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+    @endforeach
 @endsection

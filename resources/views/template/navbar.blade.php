@@ -562,6 +562,83 @@
             border-top-right-radius: 0px !important;
         }
 
+        .grayyy1 {
+            color: #88889D;
+        }
+
+        .assigned-leads-div {
+            border-radius: 25px;
+        }
+
+        .t {
+            color: #88889D;
+        }
+
+        .fw-600 {
+            font-weight: 600;
+
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .whiteee {
+            background-color: #fff;
+            border-bottom-left-radius: 0px !important;
+            border-bottom-right-radius: 0px !important;
+            border-top-left-radius: 30px !important;
+            border-top-right-radius: 30px !important;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .lead-offnen {
+            background-color: #88889D;
+            color: #fff;
+            border-bottom-left-radius: 30px !important;
+            border-bottom-right-radius: 30px !important;
+            border-top-left-radius: 0px !important;
+            border-top-right-radius: 0px !important;
+        }
+
+        .overflow-divvv::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        /* Track */
+        .overflow-divvv::-webkit-scrollbar-track {
+            background: transparent !important;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        .overflow-divvv::-webkit-scrollbar-thumb {
+            background: #c9cad8;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        .overflow-divvv::-webkit-scrollbar-thumb:hover {
+            background: #707070;
+            border-radius: 10px;
+        }
+
+        .lead-statistics-header {
+            background-color: #F7F7F7;
+            border-bottom-left-radius: 0px !important;
+            border-bottom-right-radius: 0px !important;
+            border-top-left-radius: 30px !important;
+            border-top-right-radius: 30px !important;
+        }
+
+        .lead-statistics {
+            background-color: #F7F7F7;
+            border-bottom-left-radius: 30px !important;
+            border-bottom-right-radius: 30px !important;
+            border-top-left-radius: 0px !important;
+            border-top-right-radius: 0px !important;
+        }
+
         .openLeadsSpanText {
             font-size: 17px;
             font-weight: 500;
@@ -574,6 +651,8 @@
             border-bottom-right-radius: 59px;
             height: 100%;
             vertical-align: middle;
+            background-color: #BDC1CC;
+            z-index: 5;
             
         }
 
@@ -584,6 +663,7 @@
             border-bottom-right-radius: 59px;
             height: 100%;
             vertical-align: middle;
+            background-color: white;
             
         }
 
@@ -594,36 +674,62 @@
             border-bottom-right-radius: 59px;
             height: 100%;
             vertical-align: middle;
+            background-color: white;
             
         }
 
         .greenBorderDiv {
             border: 5px solid #4EC590;
             border-left: none;
-            border-top-right-radius: 50px;
-            border-bottom-right-radius: 50px;
+            border-top-right-radius: 59px;
+            border-bottom-right-radius: 59px;
             height: 100%;
             vertical-align: middle;
+            background-color: white;
             
         }
 
         .receivedDiv {
-      
+            vertical-align: middle;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 17px;
         }
 
         .assignedToDiv {
             vertical-align: middle;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 17px;
         }
 
         .lostDiv {
             vertical-align: middle;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 17px;
         }
 
         .wonDiv {
             vertical-align: middle;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
         }
         .openLeadsFirstDiv {
             z-index: 5;
