@@ -1,22 +1,7 @@
 @extends('template.navbar')
 @section('content')
-    <!doctype html>
-<html lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Costumers</title>
-</head>
-
-<body>
 <section>
     <div class="px-4">
         <div class="row">
@@ -494,6 +479,150 @@
                                 </div>
 
                             </div>
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+
+                                <div class="col g-0">
+                                    @if(!empty($autoversicherungP[$i]))
+                                        <div class="">
+                                <span class="spn-normal">
+                                    Autoversicherung
+                                </span>
+                                        </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+                                    {{$autoversicherungP[$i]->total_commisions_PA}} CHF
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($autoversicherungP[$i]->status_PA == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                        @if($autoversicherungP[$i]->status_PA == 'Aufgenomen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                        @if($autoversicherungP[$i]->status_PA == 'Offen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                        @if($autoversicherungP[$i]->status_PA == 'Provisionert')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                {{strtoupper($autoversicherungP[$i]->status_PA)}}
+                                            </button>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <div class="row my-1 mx-3">
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+
+                                </span>
+                                    </div>
+                                </div>
+
+                                <div class="col g-0">
+                                    @if(!empty($hausratP[$i]))
+                                        <div class="">
+                                <span class="spn-normal">
+                                    Hausrat
+                                </span>
+                                        </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class="">
+                                <span class="spn-normal">
+                                    {{$hausratP[$i]->total_commisions_PH}} CHF
+                                </span>
+                                    </div>
+                                </div>
+                                <div class="col g-0">
+                                    <div class=" ">
+                                        @if($hausratP[$i]->status_PH == 'notselected')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-secondary">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                        @if($hausratP[$i]->status_PH == 'Aufgenomen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                        @if($hausratP[$i]->status_PH == 'Offen')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-warning">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                        @if($hausratP[$i]->status_PH == 'Provisionert')
+                                            <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-success">
+                                                {{strtoupper($hausratP[$i]->status_PH)}}
+                                            </button>
+                                        @endif
+                                    </div>
+                                    @endif
+                                </div>
+
+                            </div>
                         </a>
                         <hr>
                     @endfor
@@ -608,47 +737,3 @@
 </style>
 
 
-
-
-</body>
-
-</html>
-
-
-{{--<html>--}}
-{{--@extends('template.navbar')--}}
-{{--@section('content')--}}
-{{--    <head>--}}
-{{--        <title>Costumers</title>--}}
-{{--    </head>--}}
-{{--<div class="col-12 text-center" style="background: #f7f7f7;">--}}
-
-{{--    <form action="{{route('search')}}">--}}
-{{--        <input class="form-control" type="text" name="searchname" placeholder="Search...">--}}
-{{--        <div class="d-inline">--}}
-{{--        <input type="date" name="searchdate1">--}}
-{{--        <input type="date" name="searchdate2">--}}
-{{--        <input class="btn btn-success" type="submit" value="Save">--}}
-{{--    </form>--}}
-{{--    <a href="{{route('searchword')}}" class="btn btn-info">A/Z</a>--}}
-{{--</div>--}}
-
-{{--    @foreach($data as $dat)--}}
-{{--    <div class="p-4" style="border-radius: 25px;margin-bottom: 10px; background: #fff;">--}}
-{{--        <p style="font-size: 23px;">{{ucfirst($dat->first_name)}} ({{$dat->birthdate}})</p>--}}
-
-{{--      @if($dat->contracts != null)--}}
-{{--            {{$contracts[$dat->id]->con1}}--}}
-{{--            <br>--}}
-{{--            {{$contracts[$dat->id]->con2}}--}}
-{{--        @endif--}}
-
-
-
-
-
-{{--</div>--}}
-{{--    @endforeach--}}
-{{--</div>--}}
-{{--@endsection--}}
-{{--</html>--}}

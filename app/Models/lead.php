@@ -34,4 +34,5 @@ class lead extends Model
     public function family(){
         return $this->hasMany(family::class, 'leads_id');
     }
+    
 }

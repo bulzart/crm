@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
+use App\Models\CostumerProduktAutoversicherung;
 use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktHausrat;
 use App\Models\CostumerProduktRechtsschutz;
 use App\Models\CostumerProduktVorsorge;
 use App\Models\CostumerProduktZusatzversicherung;
@@ -77,6 +79,7 @@ public function assignpendency(Request $req){
         ->whereNotNull('assign_to_id')
         ->orderBy('time','desc')
         ->where('assigned',1)
+        ->where('completed',0)
         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
         ->paginate(15) as $d){
             $data[$cnt] = $d;
@@ -94,6 +97,7 @@ public function assignpendency(Request $req){
                        ->whereNotNull('assign_to_id')
                        ->orderBy('time','desc')
                        ->where('assigned',1)
+                       ->where('completed',0)
               ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->paginate(15) as $d){
@@ -112,6 +116,7 @@ public function assignpendency(Request $req){
                        ->where('appointment_date', $req->date)
                        ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->orderBy('time','desc')
+                       ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->paginate(15) as $d){
               $data[$cnt] = $d;
@@ -129,6 +134,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                          ->paginate(15) as $d){
@@ -145,6 +151,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->paginate(15) as $d){
                 $data[$cnt] = $d;
@@ -163,6 +170,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                          ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
@@ -179,6 +187,7 @@ public function assignpendency(Request $req){
                          ->whereNotNull('assign_to_id')
                          ->orderBy('time','desc')
                          ->where('assigned',1)
+                         ->where('completed',0)
                          ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                          ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                          ->paginate(15) as $d){
@@ -197,6 +206,7 @@ public function assignpendency(Request $req){
                        ->where('wantsonline', 1)
                        ->whereNotNull('assign_to_id')
                        ->orderBy('time','desc')
+                       ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->where('appointment_date', Carbon::now()->addDays()->toDateString())
                        ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
@@ -211,6 +221,7 @@ public function assignpendency(Request $req){
           foreach (DB::table('leads')
                        ->where('wantsonline', 1)
                        ->orderBy('time','desc')
+                       ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->paginate(15) as $d){
@@ -237,16 +248,12 @@ public function assignpendency(Request $req){
     $br = 1;
     $dayofweek = 6;
 
-
-
-
-
     for ($i = 0; $i <= 365; $i++) {
-      $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
-      $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
-      $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
+      $fullcalendar[$i]['date'] =  Carbon::now()->addDays($i)->format('Y-m-d');
+      $fullcalendar[$i]['dayn'] =  Carbon::now()->addDays($i)->format('l');
+      $fullcalendar[$i]['day'] =   Carbon::now()->addDays($i)->format('d');
       $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
-      $fullcalendar[$i]['year'] = Carbon::now()->addDays($i)->format('Y');
+      $fullcalendar[$i]['year'] =  Carbon::now()->addDays($i)->format('Y');
     }
 
     $calendar = [];
@@ -277,11 +284,12 @@ public function assignpendency(Request $req){
               $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
               $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
               $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
-
+              $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+              $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
               $cnt++;
           }
-          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
       }else{
           $data = family::where('status','Done')->orderBy('first_name','asc')->get();
@@ -291,16 +299,23 @@ public function assignpendency(Request $req){
               $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
               $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
               $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
-
+              $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+              $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
               $cnt++;
           }
-          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
       }
   }
   public function costumers(Request $request)
   {
+      $grundversicherungP = null;
+       $retchsschutzP = null;
+        $vorsorgeP = null;
+            $zusatzversicherungP = null;
+            $autoversicherungP = null;
+            $hausratP = null;
       $cnt = 0;
       $date1 = date('Y-m-d', strtotime($request->searchdate1));
       $n = date('Y-m-d', strtotime($request->searchdate2));
@@ -340,10 +355,12 @@ public function assignpendency(Request $req){
             $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
             $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
             $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+            $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+            $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
             $cnt++;
         }
-        return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+        return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
     }else {
         if (Auth::guard('admins')->check()) {
@@ -366,15 +383,16 @@ public function assignpendency(Request $req){
             $cnt = 0;
         foreach ($data as $dat) {
             $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
-            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR', $dat->id)->first();
-            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV', $dat->id)->first();
-            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ', $dat->id)->first();
-
+            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+            $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+            $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
             $cnt++;
         }
 
-        return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','zusatzversicherungP'));
+        return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
     }
   }
 

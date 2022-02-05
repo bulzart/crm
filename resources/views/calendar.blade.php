@@ -1,4 +1,3 @@
-
 @extends('template.navbar')
 @section('content')
     <head>
@@ -11,6 +10,7 @@
                 Calendar
             </title>
         @endif
+        <link rel="icon" type="image/png" href="img/Favicon.png">
     </head>
         <div class="col-12 col-sm-12 col-md-12  g-0">
             <calendar class="calendar-divider p-3 my-2 "></calendar>
@@ -30,57 +30,46 @@
           </div>
           <div class="container">
               <div class="notice-box my-3">
+
                   <div class="mx-4 py-3">
+
                                 <span class="fs-5 fw-600 title-div">
                                     Important Notices
                                 </span>
                   </div>
+
                   <div class="notice-box-content mx-4"
                        style="height: 28vh; overflow-x: hidden; overflow-y: scroll;">
+                      @foreach($personalApp as $perApp)
                       <div class="person-box-1 py-2 px-2 my-2">
                           <div class="mx-3">
                               <div class="">
                                             <span class="name-spnnnn fs-5">
-                                                Markus Jurgen
+                                                {{$perApp->title}}
                                             </span>
                               </div>
                               <div class="">
                                             <span class="fw-normal">
-                                                Kommentar: Ausweise fehlen
-                                            </span>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="person-box-1 py-2 px-2 my-2">
-                          <div class="mx-3">
-                              <div class="">
-                                            <span class="name-spnnnn fs-5">
-                                                Markus Jurgen
+                                               Address: {{$perApp->address}}
                                             </span>
                               </div>
                               <div class="">
                                             <span class="fw-normal">
-                                                Kommentar: Ausweise fehlen
-                                            </span>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="person-box-1 py-2 px-2 my-2">
-                          <div class="mx-3">
-                              <div class="">
-                                            <span class="name-spnnnn fs-5">
-                                                Markus Jurgen
+                                               Time: {{$perApp->time}}
                                             </span>
                               </div>
                               <div class="">
                                             <span class="fw-normal">
-                                                Kommentar: Ausweise fehlen
+                                               Comment: {{$perApp->comment}}
                                             </span>
                               </div>
                           </div>
                       </div>
+                      @endforeach
                   </div>
+
               </div>
+
           </div>
       </div>
         <div id="map">

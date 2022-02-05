@@ -12,18 +12,25 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Appointments</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
 
 <body>
 <div class="row">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
-        <div class="d-flex navvv bg-light" style="height: 100% !important; position: fixed;">
-            <div class="nav-itemsss overflow-div1 bg-light">
+        <div class="d-flex navvv" style="height: 100% !important; position: fixed; background-color: #0C71C3;">
+
+            <div class="nav-itemsss overflow-div1" style="width:100%; background-color: #0C71C3;">
+                <br>
+                <div class="mx-auto">
+                    <img src="../imgs/Logo.png" id="logo__311" style="width: 100%;" alt="">
+                </div>
+                <br>
                 <div class="">
-                    <a href="{{route('dashboard')}}" class="nav-link link-dark rounded" aria-current="page"
-                       style="border-radius: 9px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                             class="bi bi-house"
+                    <a href="{{route('dashboard')}}"
+                       class="nav-link link-dark {{ (request()->is('/')) ? 'activeClassNav__' : '' }}"
+                       aria-current="page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-house"
                              viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                   d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
@@ -35,8 +42,9 @@
                 </div>
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
                     <div class="">
-                        <a href="{{route('tasks')}}" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="{{route('tasks')}}"
+                           class="nav-link link-dark {{ (request()->is('tasks')) ? 'activeClassNav__' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-speedometer2" viewBox="0 0 16 16">
                                 <path
                                     d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
@@ -49,8 +57,9 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
                     <div class="">
-                        <a href="{{route('leads')}}" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="{{route('leads')}}"
+                           class="nav-link link-dark {{ (request()->is('leads')) ? 'activeClassNav__' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-calendar3"
                                  viewBox="0 0 16 16">
                                 <path
@@ -63,9 +72,8 @@
                     </div>
                 @endif
                 <div class="">
-                    <a href="#" class="nav-link link-dark rounded">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-grid"
+                    <a href="#" class="nav-link link-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-grid"
                              viewBox="0 0 16 16">
                             <path
                                 d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
@@ -75,8 +83,9 @@
                 </div>
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
                     <div class="">
-                        <a href="{{route('status')}}" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="{{route('status')}}"
+                           class="nav-link link-dark {{ (request()->is('status')) ? 'activeClassNav__' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-clipboard-data" viewBox="0 0 16 16">
                                 <path
                                     d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
@@ -91,8 +100,9 @@
                 @endif
                 @if(Auth::guard('admins')->check())
                     <div class="">
-                        <a href="{{route('costumers')}}" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="{{route('costumers')}}"
+                           class="nav-link link-dark {{ (request()->is('costumers')) ? 'activeClassNav__' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                                 <path fill-rule="evenodd"
@@ -104,8 +114,8 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
                     <div class="">
-                        <a href="#" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="#" class="nav-link link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-cash-coin"
                                  viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -122,8 +132,8 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
                     <div class="">
-                        <a href="#" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="#" class="nav-link link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-x-square"
                                  viewBox="0 0 16 16">
                                 <path
@@ -136,10 +146,11 @@
                     </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
-                    @if(Auth::guard('admins')->user()->hasRole('salesmanager'))
+                    @if(Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('fs'))
                         <div class="">
-                            <a href="{{route('Appointments')}}" class="nav-link link-dark rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <a href="{{route('Appointments')}}"
+                               class="nav-link link-dark {{ (request()->is('Appointments')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                      class="bi bi-calendar-check" viewBox="0 0 16 16">
                                     <path
                                         d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -151,8 +162,9 @@
                         </div>
                     @else
                         <div class="">
-                            <a href="{{route('calendar')}}" class="nav-link link-dark rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <a href="{{route('calendar')}}"
+                               class="nav-link link-dark {{ (request()->is('calendar')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                      class="bi bi-calendar-check" viewBox="0 0 16 16">
                                     <path
                                         d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -168,8 +180,9 @@
                 @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
                     @if(Auth::guard('admins')->user()->hasRole('salesmanager'))
                         <div class="">
-                            <a href="{{route('calendar')}}" class="nav-link link-dark rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <a href="{{route('calendar')}}"
+                               class="nav-link link-dark {{ (request()->is('calendar')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                      class="bi bi-calendar-date" viewBox="0 0 16 16">
                                     <path
                                         d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
@@ -181,8 +194,9 @@
                         </div>
                     @else
                         <div class="">
-                            <a href="{{route('dates')}}" class="nav-link link-dark rounded">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <a href="{{route('Appointments')}}"
+                               class="nav-link link-dark {{ (request()->is('Appointments')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                      class="bi bi-calendar-date" viewBox="0 0 16 16">
                                     <path
                                         d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
@@ -196,8 +210,8 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
                     <div class="">
-                        <a href="#" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="#" class="nav-link link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-people-fill"
                                  viewBox="0 0 16 16">
                                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -211,8 +225,8 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
                     <div class="">
-                        <a href="#" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="#" class="nav-link link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-percent" viewBox="0 0 16 16">
                                 <path
                                     d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
@@ -223,8 +237,8 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
                     <div class="">
-                        <a href="#" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="#" class="nav-link link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                       d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z"/>
@@ -235,8 +249,8 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
                     <div class="">
-                        <a href="#" class="nav-link link-dark  rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="#" class="nav-link link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
                                 <path
                                     d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
@@ -247,8 +261,8 @@
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
                     <div class="">
-                        <a href="#" class="nav-link link-dark rounded">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        <a href="#" class="nav-link link-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                       d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z"/>
@@ -256,127 +270,187 @@
                             <span class="ps-1 nav-texttt">Trust</span>
                         </a>
                     </div>
+                    <br>
                 @endif
+                @if(Auth::guard('admins')->user()->hasRole('admin'))
+                    <div><a class="nav-link link-dark  rounded" href="{{route('addnewuser')}}"><span
+                                class="ps-1 nav-texttt">Add New User</span></a></div>@endif
+
+
+                <div>
+                    <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}"
+                       href="{{route('rleads')}}"><span class="ps-1 nav-texttt">Rejected Leads</span></a>
+                </div>
+                <div class="">
+                    <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}"
+                       href="{{route('logout')}}"><span class="ps-1 nav-texttt">Sign out</span></a>
+                </div>
             </div>
             <hr>
-            <div class="dropdown user-drop bg-light w-100 py-3 d-flex justify-content-center" style="position: absolute; bottom:0; left:0; border: none; border-top: 1px #c4c4c4 solid;">
-
-                <a href="#" class="d-flex align-items-center link-dark text-decoration-none " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-                    </svg>
-                </a>
-                <ul class="dropdown-menu dropup text-small shadow" aria-labelledby="dropdownUser2">
-                    @if(Auth::guard('admins')->user()->hasRole('admin'))<li><a class="dropdown-item" href="{{route('addnewuser')}}">Add New User</a></li>@endif
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
-                </ul>
-            </div>
         </div>
     </div>
-    <div class="col">
-        <section>
-            @if(\Session::has('success'))
-                <div class="alert alert-success alert-dismissible fade show col-12 container" role="alert">
-                    {!! \Session::get('success') !!}
-                </div>
-            @endif
 
-        </section>
 
-        <div class="row">
-
-            <div class="col py-4">
-                <section>
-
-                    <div class="container">
-
-                        <div class="accepted-section row">
-                            <div class="mt-2">
-                                <a href="{{route('tasks')}}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
+    <div class="my-5 col-10">
+        <div class="col">
+            <section>
+                @if(\Session::has('success'))
+                    <div class="alert alert-success alert-dismissible fade show col-12 container" role="alert">
+                        {!! \Session::get('success') !!}
+                    </div>
+                @endif
+            </section>
+        </div>
+        <div class="container-fluid">
+            <div class="wrapper-div px-4 py-4 mx-3">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-2 col-md-1 pe-0 my-auto">
+                            <a style="text-decoration: none" href="{{route('tasks')}}">
+                                <button class="bg-white w-100 rounded border-0 p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7DBF9A"
                                          class="bi bi-chevron-left" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
                                               d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
                                     </svg>
-                                </a>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col py-1">
+                            <div class="mx-3">
+                                <span class="fs-3 fw-bold text-white">
+                                    {{$app->first_name}}
+                                </span>
                             </div>
-                            <div
-                                class="header-section-name text-center col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 g-0 my-auto">
-                                <div class="py-3 ">
-                                    <div class="mx-3">
-                                    <span class="fs-3 fw-bold text-color-header1">
-                                        {{$app->first_name}}
+                            <div class="mx-3">
+                                <span class="fs-6 text-white">
+                                    <span class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12.587" height="16.243"
+                                             viewBox="0 0 8.587 12.243">
+                                            <path id="Path_170" data-name="Path 170"
+                                                  d="M1507.522,2353.695l.285-.4c.45-.637.916-1.3,1.32-1.908a17.1,17.1,0,0,0,1.607-2.977,3.3,3.3,0,0,0,.287-1.836,3.541,3.541,0,0,0-3.492-2.981,3.5,3.5,0,0,0-2.866,1.494,3.146,3.146,0,0,0-.606,2.37,6.507,6.507,0,0,0,.733,1.932,32.418,32.418,0,0,0,2.511,4.006c.072.1.145.2.22.3m.009-9.063h.024a2.481,2.481,0,0,1-.023,4.963h-.028a2.486,2.486,0,0,1-2.446-2.508,2.475,2.475,0,0,1,2.474-2.455m0,9.964c-.23-.312-.449-.6-.66-.9a32.713,32.713,0,0,1-2.552-4.072,7.013,7.013,0,0,1-.785-2.091,3.7,3.7,0,0,1,.695-2.752,4.05,4.05,0,0,1,7.31,1.7,3.861,3.861,0,0,1-.319,2.12,17.67,17.67,0,0,1-1.656,3.068C1508.941,2352.621,1508.181,2353.663,1507.534,2354.6Zm0-9.438a1.955,1.955,0,0,0-.021,3.91h.023a1.955,1.955,0,0,0,.018-3.91Z"
+                                                  transform="translate(-1503.243 -2342.783)" fill="#fff" stroke="#fff"
+                                                  stroke-width="0.5"/>
+                                        </svg>
                                     </span>
+                                    {{$app->address}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="info-divv px-2 my-3">
+                                <div class="row">
+                                    <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Agent:</span> <span class="fs-6">Agent1</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Berater:</span> <span class="fs-6">{{$app->berater}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Tag:</span> <span class="fs-6">Sontag</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Datum:</span> <span class="fs-6">{{$app->appointment_date}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">PLZ:</span> <span class="fs-6">{{$app->postal_code}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Zufriedenheit:</span> <span class="fs-6">{{$app->zufriedenheit}}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mx-3">
-                                    <span class="fs-6 text-color-header1">
-                                        <span class="">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12.587" height="16.243"
-                                                 viewBox="0 0 8.587 12.243">
-                                                <path id="Path_170" data-name="Path 170"
-                                                      d="M1507.522,2353.695l.285-.4c.45-.637.916-1.3,1.32-1.908a17.1,17.1,0,0,0,1.607-2.977,3.3,3.3,0,0,0,.287-1.836,3.541,3.541,0,0,0-3.492-2.981,3.5,3.5,0,0,0-2.866,1.494,3.146,3.146,0,0,0-.606,2.37,6.507,6.507,0,0,0,.733,1.932,32.418,32.418,0,0,0,2.511,4.006c.072.1.145.2.22.3m.009-9.063h.024a2.481,2.481,0,0,1-.023,4.963h-.028a2.486,2.486,0,0,1-2.446-2.508,2.475,2.475,0,0,1,2.474-2.455m0,9.964c-.23-.312-.449-.6-.66-.9a32.713,32.713,0,0,1-2.552-4.072,7.013,7.013,0,0,1-.785-2.091,3.7,3.7,0,0,1,.695-2.752,4.05,4.05,0,0,1,7.31,1.7,3.861,3.861,0,0,1-.319,2.12,17.67,17.67,0,0,1-1.656,3.068C1508.941,2352.621,1508.181,2353.663,1507.534,2354.6Zm0-9.438a1.955,1.955,0,0,0-.021,3.91h.023a1.955,1.955,0,0,0,.018-3.91Z"
-                                                      transform="translate(-1503.243 -2342.783)" fill="#fff"
-                                                      stroke="#fff"
-                                                      stroke-width="0.5"/>
-                                            </svg>
-                                        </span>
-                                        {{$app->address}}
-                                    </span>
+                                    <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Zeit:</span> <span class="fs-6">{{$app->time}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Sprache: </span><span class="fs-6">{{$app->sprache}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Personen:</span> <span class="fs-6">{{$app->number_of_persons}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Nationalitat:</span> <span
+                                                    class="fs-6">{{$app->nationality}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Ort</span> <span class="fs-6">{{$app->city}}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="input-group justify-content-center mt-3">
-                                        <button class="py-2 border-0 static-btn1 m-1">
-                                        <span class="bg-dark py-1 px-3 people-svg-span">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
-                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                                <path fill-rule="evenodd"
-                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-                                            </svg>
-                                        </span>
-                                            <span class="px-2" style="font-size: 14px;">
-                                            {{$app->number_of_persons}} Persons
-                                        </span>
-                                        </button>
-                                        <button class="py-2 border-0 static-btn1 m-1">
-                                        <span class="bg-dark py-1 px-3 people-svg-span">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
-                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                                <path fill-rule="evenodd"
-                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-                                            </svg>
-                                        </span>
-                                            <span class="px-2" style="font-size: 14px;">
-                                            {{$app->created_at}}
-                                        </span>
-                                        </button>
+                                    <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Name:</span> <span class="fs-6">{{$app->first_name}} </span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Vorname:</span> <span class="fs-6">{{$app->last_name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Strasse:</span><span class="fs-6"></span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Nr:</span> <span class="fs-6">{{$app->telephone}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Tel. Privat</span> <span class="fs-6">{{$app->telephone}}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mx-3">
-                                        <hr class="hr-style">
+
+                                </div>
+                                <div class="white-thingy my-2">
+                                    <div class="text-div py-3 ps-2">
+                                        <span class="fw-600 ">Bemerkung:</span> <span class="fs-6">{{$app->bemerkung}}</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg col-xl g-0">
+                        </div>
+                    </div>
+                            <div class="other-people-accordion  py-4 col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 g-0">
                             @php
-                                            $leadss = $app->id * 1244;
-                                            $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                                        @endphp
-                                        <form action="{{route('completeapp',$appId)}}" method="post">
-                                            @csrf
+                                $leadss = $app->id * 1244;
+                                $appId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                                <form action="{{route('completeapp',$appId)}}" method="post">
+                            @csrf
                                 <div class="border-left-div">
                                     <div class="accordion accordion-flush mx-3 " id="accordionFlushExample">
 
-                                     
+
+
                                             <div class="accordion-item my-1">
                                                 <h2 class="accordion-header" id="flush-headingOne">
                                                     <button class="accordion-button collapsed" type="button"
@@ -417,51 +491,50 @@
                                                                 <label for="inputTxt6"
                                                                        class="col-form-label">Geburtstag:</label>
                                                             </div>
-                                                            <div class="col">
-                                                                <input type="date" id="inputTxt6" class="form-control"
-                                                                       aria-describedby="passwordHelpInline"
-                                                                       name="birthday1">
-                                                            </div>
+
+                                                        <div class="col">
+                                                            <input type="date" id="inputTxt6" class="form-control"
+                                                                   aria-describedby="passwordHelpInline"
+                                                                   name="birthday1" required>
                                                         </div>
-                                                        <div class="text-end">
-                                                            <button class="accept-btn m-2 py-1 px-5 collapsed"
-                                                                    type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapseOne"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="flush-collapseOne">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="23.232"
-                                                                     height="23.805" viewBox="0 0 46.232 33.805">
-                                                                    <path id="Path_277" data-name="Path 277"
-                                                                          d="M8370.12,999.407l15.7,15.954,7.778-8.812,19.931-22.581"
-                                                                          transform="translate(-8368.706 -982.557)"
-                                                                          fill="none"
-                                                                          stroke="currentColor" stroke-linecap="round"
-                                                                          stroke-linejoin="round" stroke-width="3"/>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <button class="accept-btn m-2 py-1 px-5 collapsed"
+                                                                type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#flush-collapseOne"
+                                                                aria-expanded="false"
+                                                                aria-controls="flush-collapseOne">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="23.232"
+                                                                 height="23.805" viewBox="0 0 46.232 33.805">
+                                                                <path id="Path_277" data-name="Path 277"
+                                                                      d="M8370.12,999.407l15.7,15.954,7.778-8.812,19.931-22.581"
+                                                                      transform="translate(-8368.706 -982.557)"
+                                                                      fill="none"
+                                                                      stroke="currentColor" stroke-linecap="round"
+                                                                      stroke-linejoin="round" stroke-width="3"/>
+                                                            </svg>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
-                                     
+                                        </div>
                                     </div>
-                              
-                               
-
                                 </div>
-<div class="text-center">
-    <input type="submit">
-</div>
-</form>
-                            </div>
-
+                                <div class="mx-3">
+                                    <button type="submit" class="w-100 sub-btn bg-white py-2 border-0 ">
+                                        <span class="fw-bold fs-6">Submit</span>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                </section>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -474,7 +547,7 @@
             '                                            <button class="accordion-button collapsed d-btnn" type="button"' +
             '                                                data-bs-toggle="collapse" data-bs-target="#flush-collapse' + i + '"' +
             '                                                aria-expanded="false" aria-controls="flush-collapse' + i + '"' + '>' +
-            '                                                Person' + i + ' erfassen' +
+            '                                                Person ' + i + ' erfassen' +
             '                                            </button>' +
             '                                        </h2>' +
             '                                        <div id="flush-collapse' + i + '"' + 'class="accordion-collapse collapse"' +
@@ -530,69 +603,15 @@
 </body>
 </html>
 <style>
-    /* overflow 1 */
-    .overflow-div1::-webkit-scrollbar {
-        width: 3px !important;
+    .accordion-button:focus {
+        color: #7DBF9A !important;
+        background-color: #fff !important;
+        border: none;
+        outline: none !important;
     }
 
-    /* Track */
-    .overflow-div1::-webkit-scrollbar-track {
-        background: transparent !important;
+    .sub-btn {
         border-radius: 10px;
-    }
-
-    /* Handle */
-    .overflow-div1::-webkit-scrollbar-thumb {
-        background: #c9cad8;
-        border-radius: 10px;
-    }
-
-    /* Handle on hover */
-    .overflow-div1::-webkit-scrollbar-thumb:hover {
-        background: #707070;
-        border-radius: 10px;
-    }
-    .nav-itemsss {
-        height: 92vh !important;
-        overflow-y: scroll !important;
-
-        /* overflow-x: hidden !important; */
-    }
-    .nav-link {
-        padding-right: 1.8rem !important;
-        padding-left: 1.8rem !important;
-    }
-
-    .nav-itemsss a:hover {
-        background-color: #e0e1e6;
-        color: #000;
-    }
-
-    .nav-itemsss a:focus {
-        background-color: #474747;
-        color: #fff;
-    }
-
-    @media (max-width: 999.98px) {
-        .nav-texttt {
-            display: none;
-        }
-
-        .navvv {
-            width: fit-content !important;
-            text-align: center !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-        }
-        /* .user-drop {
-            position: fixed !important;
-            bottom: 0;
-            width: fit-content !important;
-        } */
-
-    }
-    body {
-        overflow-x: hidden;
     }
 
     .collapsed .d-btnn {
@@ -645,9 +664,41 @@
     }
 
 
-    .accepted-section {
-            background-color: #7DBF9A;
-        border-radius: 19px;
+    .close-btn {
+        color: #FF0D13;
+        font-weight: 600;
+        background-color: #fff;
+        border: 1px #FF0D13 solid;
+        border-radius: 13px;
+        width: 100px;
+    }
+
+    .go-btn {
+        color: #fff;
+        font-weight: 600;
+        background-color: #63D4A4;
+        border: 1px #63D4A4 solid;
+        border-radius: 13px;
+        width: 100px;
+    }
+
+    .text-div {
+        font-size: 13px;
+    }
+
+    .white-thingy {
+        background-color: #fff;
+        border-radius: 10px;
+
+    }
+
+    .fw-600 {
+        font-weight: 600;
+    }
+
+    .wrapper-div {
+        background-color: #7DBF9A;
+        border-radius: 25px;
     }
 
     .decline-btn {
@@ -676,8 +727,8 @@
         color: #fff !important;
     }
 
-    .text-color-header1 {
-        color: #fff;
+    .text-color-header {
+        color: #656565;
     }
 
     .people-icon-div {
@@ -685,28 +736,221 @@
         margin: 3px;
     }
 
-    .static-btn1 {
-        background-color: #fff !important;
+    .static-btn {
+        background-color: #F0F0EF !important;
         border-radius: 8px !important;
     }
 
     .people-svg-span {
         border-radius: 8px;
     }
+    body{
+        overflow-x: hidden !important;
+    }
+</style>
+{{--<style>--}}
 
-    .accordion-button:not(.collapsed) {
-        color: #7DBF9A;
+{{--    body {--}}
+{{--        overflow-x: hidden;--}}
+{{--    }--}}
+
+{{--    .collapsed .d-btnn {--}}
+{{--        background-color: #c8ddd1;--}}
+{{--        opacity: 0.4;--}}
+{{--    }--}}
+
+{{--    .d-btnn {--}}
+{{--        opacity: 1;--}}
+{{--    }--}}
+
+{{--    .form-control:focus {--}}
+{{--        border-color: #ced4da;--}}
+{{--        box-shadow: none;--}}
+{{--    }--}}
+
+{{--    .accordion-button {--}}
+{{--        color: #7DBF9A;--}}
+{{--        font-weight: bold;--}}
+{{--        border-radius: 15px !important;--}}
+{{--    }--}}
+
+{{--    .accordion-item {--}}
+{{--        border-radius: 15px !important;--}}
+{{--    }--}}
+
+{{--    .hr-style {--}}
+{{--        color: #fff !important;--}}
+{{--        height: 3px !important;--}}
+{{--        border-radius: 50px;--}}
+{{--        opacity: 1;--}}
+{{--        display: none;--}}
+{{--    }--}}
+
+{{--    .border-left-div {--}}
+{{--        border: none !important;--}}
+{{--        border-left: 3px solid #fff !important;--}}
+
+{{--    }--}}
+
+{{--    @media (max-width: 991.98px) {--}}
+{{--        .hr-style {--}}
+{{--            display: block;--}}
+{{--        }--}}
+
+{{--        .border-left-div {--}}
+{{--            border: none !important;--}}
+{{--            border-left: none !important;--}}
+{{--        }--}}
+{{--    }--}}
+
+
+{{--    .accepted-section {--}}
+{{--            background-color: #7DBF9A;--}}
+{{--        border-radius: 19px;--}}
+{{--    }--}}
+
+{{--    .decline-btn {--}}
+{{--        border: 2px solid #FF0D13;--}}
+{{--        border-radius: 13px !important;--}}
+{{--        background-color: #fff;--}}
+{{--        color: #FF0D13;--}}
+
+{{--    }--}}
+
+{{--    .decline-btn:hover {--}}
+{{--        background-color: #FF0D13;--}}
+{{--        color: #fff !important;--}}
+{{--    }--}}
+
+{{--    .accept-btn {--}}
+{{--        border: 2px solid #63D4A4;--}}
+{{--        border-radius: 13px !important;--}}
+{{--        background-color: #fff;--}}
+{{--        color: #63D4A4 !important;--}}
+{{--    }--}}
+
+{{--    .accept-btn:hover {--}}
+{{--        border: 2px solid #63D4A4;--}}
+{{--        background-color: #63D4A4;--}}
+{{--        color: #fff !important;--}}
+{{--    }--}}
+
+{{--    .text-color-header1 {--}}
+{{--        color: #fff;--}}
+{{--    }--}}
+
+{{--    .people-icon-div {--}}
+{{--        background-color: #525353;--}}
+{{--        margin: 3px;--}}
+{{--    }--}}
+
+{{--    .static-btn1 {--}}
+{{--        background-color: #fff !important;--}}
+{{--        border-radius: 8px !important;--}}
+{{--    }--}}
+
+{{--    .people-svg-span {--}}
+{{--        border-radius: 8px;--}}
+{{--    }--}}
+
+{{--    .accordion-button:not(.collapsed) {--}}
+{{--        color: #7DBF9A;--}}
+{{--        background-color: #fff;--}}
+{{--        box-shadow: none;--}}
+{{--    }--}}
+
+{{--    .accordion-button:not(.collapsed)::after {--}}
+{{--        content: '';--}}
+{{--    }--}}
+
+{{--    .accordion-button:focus {--}}
+{{--        border-color: transparent !important;--}}
+{{--        border: none !important;--}}
+{{--        box-shadow: none !important;--}}
+{{--    }--}}
+{{--</style>--}}
+<style>
+    /*nav ARti*/
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:wght@200;800;900&display=swap');
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .nav-itemsss {
+        height: 90vh !important;
+        overflow-y: scroll !important;
+
+        /* overflow-x: hidden !important; */
+    }
+
+    /* .nav-link {
+        padding-right: 1.8rem !important;
+        padding-left: 1.8rem !important;
+    } */
+
+    .nav-itemsss a:hover {
         background-color: #fff;
-        box-shadow: none;
+        color: #0C71C3;
     }
 
-    .accordion-button:not(.collapsed)::after {
-        content: '';
+    .activeClassNav__, .activeClassNav__ span, .activeClassNav__ svg {
+        background-color: #fff;
+        color: #0C71C3 !important;
+        fill: #0C71C3 !important;
     }
 
-    .accordion-button:focus {
-        border-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
+    .nav-itemsss a:hover span {
+        color: #0C71C3;
     }
+
+    .nav-itemsss a:hover svg {
+        fill: #0C71C3;
+    }
+
+    .nav-itemsss a:focus, .nav-itemsss a:focus svg, .nav-itemsss a:focus span {
+        background-color: #fff;
+        color: #0C71C3;
+        fill: #0C71C3;
+    }
+
+    @media (max-width: 999.98px) {
+        .nav-texttt {
+            display: none;
+        }
+
+        .navvv {
+            width: fit-content !important;
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* .user-drop {
+            position: fixed !important;
+            bottom: 0;
+            width: fit-content !important;
+        } */
+
+    }
+
+    /* overflow 1 */
+    .overflow-div1::-webkit-scrollbar {
+        width: 0px;
+    }
+
+
+    .nav-texttt {
+        font-family: 'Poppins';
+        color: #fff;
+
+    }
+
+    @media (max-width: 978px) {
+        #logo__311 {
+            content: url('../img/Logo gjys.png');
+            width: 20% !important;
+        }
+    }
+
 </style>

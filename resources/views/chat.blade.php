@@ -365,6 +365,7 @@ img{ max-width:100%;}
 
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<link rel="icon" type="image/png" href="img/Favicon.png">
 
 </head>
 <body>

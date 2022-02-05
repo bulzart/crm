@@ -2,7 +2,6 @@
 @section('content')
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,31 +11,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Appointments</title>
+    <link rel="icon" type="image/png" href="../img/Favicon.png">
+    <title>Accept Appointments</title>
 </head>
 
-<body>
-    <section class="col my-3">
-        <div class="container-fluid">
+<section class="my-5">
+    <div class="container-fluid">
+        <div class="wrapper-div px-4 py-4 mx-3">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 f-flex">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
                     <div class="map-div mx-4">
                         <div class="mapouter">
-                            <div class="gmap_canvas">
-                                <iframe style="height: 500px; width: 100%;" id="gmap_canvas"
-                                        src="https://maps.google.com/maps?q='+{{$lead->address}}+'&t=k&z=15&ie=UTF8&iwloc=&output=embed"
-                                        frameborder="0" scrolling="no" marginheight="0"
-                                        marginwidth="0"></iframe>
+                            <div class="gmap_canvas img-fluid">
+                                <iframe width="100%" height="100%" id="gmap_canvas"
+                                    src="https://maps.google.com/maps?q='+{{$lead->address}}+'&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                                </iframe>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col my-3">
-                    <div class="info-div">
-                        <div class="py-3">
+                <div class="col">
+                    <div class="mb-3">
+                        <div class="py-1">
                             <div class="mx-3">
                                     <span class="fs-3 fw-bold text-color-header">
-                                        {{$lead->first_name}}
+                                         {{$lead->first_name}}
                                     </span>
                             </div>
                             <div class="mx-3">
@@ -55,112 +55,138 @@
                             </div>
                         </div>
                         @if($lead->assigned != 0)
-                        <div class="py-3">
-                            <div class="input-group">
-                                <button class="py-2 border-0 static-btn m-2">
-                                        <span class="bg-dark py-1 px-3 people-svg-span">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
-                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                                <path fill-rule="evenodd"
-                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                                            </svg>
-                                        </span>
+                        <div class="info-divv px-2 my-3">
+                            <div class="row">
+                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Agent:</span> <span class="fs-6">Agent1</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Berater:</span> <span class="fs-6">{{$lead->berater}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Tag:</span> <span class="fs-6">Sontag</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Datum:</span> <span class="fs-6">{{$lead->appointment_date}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">PLZ:</span> <span class="fs-6">{{$lead->postal_code}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Zufriedenheit:</span> <span class="fs-6">{{$lead->zufriedenheit}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Zeit:</span> <span class="fs-6">{{$lead->time}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Sprache: </span><span class="fs-6">{{$lead->sprache}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Personen:</span> <span class="fs-6">{{$lead->number_of_persons}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Nationalitat:</span> <span
+                                                class="fs-6">{{$lead->nationality}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Ort</span> <span class="fs-6">{{$lead->city}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Name:</span> <span class="fs-6">{{$lead->first_name}} </span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Vorname:</span> <span class="fs-6">{{$lead->last_name}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Strasse:</span><span class="fs-6"></span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Nr:</span> <span class="fs-6">{{$lead->telephone}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Tel. Privat</span> <span class="fs-6">{{$lead->telephone}}</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <span class="px-3">
-                                            {{$lead->number_of_persons}} Personon
-                                        </span>
-                                </button>
-                                <button class="py-2 border-0 static-btn m-2">
-                                        <span class="bg-dark py-1 px-3 people-svg-span">
-                                        <i class="fas fa-clock" style="color:white; font-size: 19px;"></i>                              </span>
-
-                                        </span>
-                                    <span class="px-3">
-                                            {{$lead->appointment_date}}
-                                        </span>
-                                </button>
-                                @if(count($leadinfo) > 0)
-                                @foreach($leadinfo as $info)
-                                  <button class="py-2 border-0 static-btn m-2">
-                                        <span class="bg-dark py-1 px-3 people-svg-span">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff"
-                                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                                <path fill-rule="evenodd"
-                                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                                            </svg>
-                                        </span>
-
-                                    <span class="px-3">
-                                            {{$info->text}}
-                                        </span>
-                                </button>
-                                @endforeach
-                                @endif
+                            </div>
+                            <div class="white-thingy my-2">
+                                <div class="text-div py-3 ps-2">
+                                    <span class="fw-600 ">Bemerkung:</span> <span class="fs-6">{{$lead->bemerkung}}</span>
+                                </div>
                             </div>
                         </div>
-
-                       @php
-                       $leadss = $lead->id * 1244;
-                       $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                       @endphp
-                        <div class="py-3">
-                            <div class="input-group">
-                                <a href="{{route('dealnotclosed',Crypt::decrypt($leadId) / 1244)}}" style="text-decoration: none;cursor: pointer" class="my-auto decline-btn m-2 my-auto py-2 px-5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25.145" height="25.524"
-                                         viewBox="0 0 33.145 33.524">
-                                        <g id="Group_620" data-name="Group 620"
-                                           transform="translate(-517.079 -959.408)">
-                                            <line id="Line_24" data-name="Line 24" y1="30.316" x2="30.316"
-                                                  transform="translate(518.493 960.822)" fill="none"
-                                                  stroke="currentColor" stroke-linecap="round" stroke-width="3" />
-                                            <line id="Line_25" data-name="Line 25" x2="30.316" y2="30.316"
-                                                  transform="translate(518.493 961.201)" fill="none"
-                                                  stroke="currentColor" stroke-linecap="round" stroke-width="3" />
-                                        </g>
-                                    </svg>
+                            @php
+                                $leadss = $lead->id * 1244;
+                                $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                            <div class="button-div d-flex justify-content-center">
+                                <a style="text-decoration: none" href="{{route('dealnotclosed',Crypt::decrypt($leadId) / 1244)}}">
+                                <button class="close-btn py-2 mx-2">
+                                    Close
+                                </button>
                                 </a>
-                                <a href="{{route('dealclosed',$leadId)}}" style="text-decoration: none;cursor: pointer" class="accept-btn m-2 my-auto py-1 px-5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="33.232" height="33.805"
-                                         viewBox="0 0 46.232 33.805">
-                                        <path id="Path_277" data-name="Path 277"
-                                              d="M8370.12,999.407l15.7,15.954,7.778-8.812,19.931-22.581"
-                                              transform="translate(-8368.706 -982.557)" fill="none"
-                                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                              stroke-width="3" />
-                                    </svg>
+                                <a style="text-decoration: none" href="{{route('dealclosed',$leadId)}}">
+                                <button class="go-btn py-2 mx-2">
+                                    Go
+                                </button>
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                    @elseif($lead->assigned != 1)
-                        @php
-                            $leadss = $lead->id * 1244;
-                            $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
-                        @endphp
-                        <div class="input-group">
-                        <a href="{{route('acceptleadinfo',$leadId)}}" style="text-decoration: none;cursor: pointer;" class="accept-btn2 m-2 my-auto py-1 px-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="33.232" height="33.805"
-                                 viewBox="0 0 46.232 33.805">
-                                <path id="Path_277" data-name="Path 277"
-                                      d="M8370.12,999.407l15.7,15.954,7.778-8.812,19.931-22.581"
-                                      transform="translate(-8368.706 -982.557)" fill="none"
-                                      stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                      stroke-width="3" />
-                            </svg>
-                        </a>
-                        </div>
+                        @elseif($lead->assigned != 1)
+                            @php
+                                $leadss = $lead->id * 1244;
+                                $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                            <a style="text-decoration: none" href="{{route('acceptleadinfo',$leadId)}}">
+                                <button class="go-btn py-2 mx-2">
+                                    Accept
+                                </button>
+                            </a>
                         @endif
+                    </div>
                 </div>
+
             </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
+
 
 
 @endsection
@@ -169,6 +195,40 @@
 
 
 <style>
+    .close-btn {
+        color: #FF0D13;
+        font-weight: 600;
+        background-color: #fff;
+        border: 1px #FF0D13 solid;
+        border-radius: 13px;
+        width: 100px;
+    }
+    .go-btn {
+        color: #fff;
+        font-weight: 600;
+        background-color: #63D4A4;
+        border: 1px #63D4A4 solid;
+        border-radius: 13px;
+        width: 100px;
+    }
+    .text-div {
+        font-size: 13px;
+    }
+    .white-thingy {
+        background-color: #fff;
+        border-radius: 10px;
+
+    }
+
+    .fw-600 {
+        font-weight: 600;
+    }
+
+    .wrapper-div {
+        background-color: #EFEFEF;
+        border-radius: 25px;
+    }
+
     .decline-btn {
         border: 2px solid #FF0D13;
         border-radius: 13px !important;
@@ -194,18 +254,6 @@
         background-color: #63D4A4;
         color: #fff !important;
     }
-    .accept-btn2 {
-        border: 2px solid #6389d4;
-        border-radius: 13px !important;
-        background-color: #fff;
-        color: #6389d4 !important;
-    }
-
-    .accept-btn2:hover {
-        border: 2px solid #6389d4;
-        background-color: #6389d4;
-        color: #fff !important;
-    }
 
     .text-color-header {
         color: #656565;
@@ -224,41 +272,21 @@
     .people-svg-span {
         border-radius: 8px;
     }
-    .nav-itemsss a:hover {
-        background-color: #c9cad8;
-        color: #000;
-    }
 
-    .nav-itemsss a:focus {
-        background-color: #474747;
-        color: #fff;
-    }
-
-    @media (max-width: 999.98px) {
-        .nav-texttt {
-            display: none;
-        }
-
-        .navvv {
-            width: 80px !important;
-            text-align: center !important;
-        }
-
-    }
      .mapouter {
          position: relative;
          text-align: right;
          width: 100%;
      }
 
-        .gmap_canvas {
-            overflow: hidden;
-            background: none !important;
-            height: auto;
-            width: 100%;
-            border-radius: 21px !important;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        }
+    .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 60vh;
+        width: 100%;
+        border-radius: 21px !important;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

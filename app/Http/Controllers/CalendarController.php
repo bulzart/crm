@@ -24,6 +24,7 @@ use Intervention\Image\Facades\Image;
 use Nexmo;
 use Illuminate\Support\Str;
 use DB;
+use App\Models\PersonalAppointment;
 
 class CalendarController extends Controller
 {
@@ -36,6 +37,8 @@ class CalendarController extends Controller
         }else{
             $maps = DB::table('leads')->where('appointment_date',Carbon::now()->format('Y-m-d'))->where('assign_to_id',Auth::guard('admins')->user()->id)->select('leads.first_name','leads.last_name','leads.latitude','leads.longitude')->get();
         }
-        return view('calendar',compact('maps'));
+        $personalApp = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',1)->get();
+
+        return view('calendar',compact('maps','personalApp'));
     }
 }

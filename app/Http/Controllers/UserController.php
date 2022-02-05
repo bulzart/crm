@@ -33,6 +33,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Middleware\confirmedcode;
 use App\Models\lead_history;
+use App\Models\lead_info;
 use App\Traits\FileManagerTrait;
 use DB;
 use Faker;
@@ -48,6 +49,15 @@ class UserController extends Controller
     public function __construct(){
         $this->middleware(confirmedcode::class);
     }
+    public function rleads(){
+        $leads = DB::table('leads_history')
+        ->join('leads','leads_history.leads_id','leads.id')
+
+        ->select('leads.first_name','leads.id','leads.telephone','leads_history.status','leads.number_of_persons')
+        ->get();
+
+        return view('rleads',compact('leads'));
+    }
     public function closenots()
     {
         notification::where('receiver_id', Auth::guard('admins')->user()->id)->update(['done' => 1]);
@@ -56,9 +66,21 @@ class UserController extends Controller
         $lead = new lead();
         $lead->first_name = filter_var($req->name,FILTER_SANITIZE_STRING);
         $lead->last_name = filter_var($req->lname,FILTER_SANITIZE_STRING);
-        $lead->telephone = filter_var($req->phone,FILTER_SANITIZE_STRING);
+        $lead->telephone = filter_var($req->telephone,FILTER_SANITIZE_STRING);
+        $lead->birthdate = $req->geburstdatum;
+        $lead->number_of_persons = (int) $req->haushalt;
         $lead->campaign_id = (int) $req->campaign;
+        $lead->address = $req->plzort;
         $lead->save();
+        $leadi = new lead_info();
+        $leadi->grund = $req->grund;
+        $leadi->kampagne = $req->kampagne;
+        $leadi->lead_id = $lead->id;
+        $leadi->krankenkasse = $req->krankenkasse;
+        $leadi->wichtig = $req->wichtig;
+        $leadi->bewertung = $req->bewertung;
+        $leadi->teilnahme = $req->teilnahme;
+        $leadi->save();
         $lead->slug = 'qwesssewssew-' . uniqid();
         $lead->save();
         return redirect()->back()->with('success','Lead was succesfully inserted');
@@ -247,7 +269,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         }
         elseif(Auth::user()->hasRole('backoffice')){
             return redirect()->back();
-        } 
+        }
         else {
             $asigned = [];
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')) {
@@ -256,11 +278,10 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
                 $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->paginate(25);
             }
-          
-      
+
+
 
             $insta = DB::table('leads')->where('campaign_id', 1)->count();
-
             $facebook = DB::table('leads')->where('campaign_id', 3)->count();
             $sana = DB::table('leads')->where('campaign_id', 2)->count();
 
@@ -274,34 +295,34 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function asignlead(Request $req, $id)
     {
-           
+
         $req->validate([
-            'count' => 'required',
+            'personen' => 'required',
             'apptime' => 'required',
             'appointmentdate' => 'required'
         ]);
 
 
         $lead = lead::find($id);
-        $lead->address = $req->address ? $req->address : $lead->address;
+        $lead->berater = $req->berater ? $req->berater : $lead->berater;
+        $lead->address = $req->address ? $req->nr . $req->address : $lead->address;
         $lead->assign_to_id = Auth::user()->id;
+        $lead->nationality = $req->nationality ? $req->nationality : $lead->nationality;
         $lead->telephone = $req->telephone ? $req->telephone : $lead->telephone;
-        $lead->campaign_id = campaigns::where('name',$req->source)->firstOrFail() ? campaigns::where('name',$req->source )->firstOrFail()->id : 0;
-        $lead->time = filter_var($req->input('apptime'), FILTER_SANITIZE_STRING);
+        $lead->time = $req->apptime ? filter_var($req->input('apptime'), FILTER_SANITIZE_STRING) : null;
         $lead->postal_code = $req->zip ? $req->zip : $lead->postal_code;
         $lead->first_name = $req->name ? $req->name : $lead->first_name;
-        $lead->number_of_persons = $req->count ? $req->count :  $lead->number_of_people;
-        $lead->appointment_date =  filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING);
+        $lead->last_name = $req->lname ? $req->lname : $lead->last_name;
+        $lead->number_of_persons = $req->personen ? $req->personen :  $lead->number_of_persons;
+        $lead->city = $req->ort ? $req->ort : $lead->city;
+        $lead->appointment_date =  $req->appointmentdate ? filter_var($req->input('appointmentdate'), FILTER_SANITIZE_STRING) : null;
         $lead->assigned = 1;
-        
-        $cnt = (int) $req->input('countt');
+        $lead->gesundheit = $req->gesundheit ? $req->gesundheit : $lead->gesundheit;
+        $lead->zufriedenheit = $req->zufriedenheit ? $req->zufriedenheit : $lead->zufriedenheit;
+        $lead->bemerkung = $req->bemerkung ? $req->bemerkung : $lead->bemerkung;
+        $lead->sprache = $req->sprache ? $req->sprache : $lead->sprache;
 
-        for($i = 1; $i <= $cnt; $i++){
-            $leaddata = new LeadDataPlus();
-            $leaddata->text = $req->input('anotherone' . $i);
-            $leaddata->lead_id = $id;
-            $leaddata->save();
-        }
+
         if ($lead->save()) {
             return redirect()->route('leads')->with('success', 'Your action has been done successfuly');
         } else {
@@ -326,7 +347,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     public function alead($id)
     {
         // $id = Crypt::decrypt($id) / 1244;
-    
+
         if (lead::find($id)->assigned == 1 && lead::find($id)->assign_to_id != null) {
             return redirect()->back();
         } else {
@@ -406,7 +427,6 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function completeapp(Request $req, $id)
     {
-
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
         $lead = lead::find($idd);
@@ -414,6 +434,8 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
         $cnt = $lead->number_of_persons;
 
         for ($i = 1; $i <= $cnt; $i++) {
+            if($req->input('fname' . $i) != null && $req->input('birthday' . $i) != null && $req->input('lname' . $i) != null){
+
             $family = new family();
             $family->first_name = filter_var($req->input('fname' . $i));
             $family->birthdate = filter_var($req->input('birthday' . $i));
@@ -422,10 +444,15 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
             $family->status = "Open";
           $family->save();
         }
+    }
         $lead->status_task = "open";
-    $lead->save();
 
-        return redirect()->back()->with('success', 'Action was successfull!');
+
+        $lead->completed = 1;
+    $lead->save();
+return redirect()->route('tasks');
+
+
     }
 
     public function filterbydateapp(Request $req)
@@ -457,7 +484,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function dealnotclosed($id)
     {
-        
+
         $leads = lead::where('id', $id)->first();
         if ($leads->assign_to_id != null && $leads->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
             return view('rejectedleads', compact('leads'));
@@ -468,29 +495,26 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
     public function rejectedleads(Request $request,$status = null)
     {
-
         $leads_id = (int) $request->leadsid;
-        lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
-
-
         $user_id = Auth::user()->id;
 
-     
-    $status = (int) $status;
-if($status == 0) $reason = 'Rejected';
-elseif($status == 1){
-    $reason = 'Pending';
-}
-else{
-    $reason = $request->reason;
-}
+        if($status != null){
+        $status = (int) $status;
+        }
+        if($status === 0) {
+            $reason = 'Rejected';  lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
+        }elseif($status === 1){
+            $reason = 'Pending';
+            lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0]);
+        }else{
+            $reason = $request->reason;
+            lead::where('id', $leads_id)->update(['assign_to_id' => null, 'assigned' => 0,'rejected' => 1]);
+        }
 
-     
-
-
-          $image = $request->hasFile('image') ? $this->storeFile($req->input('image'),'img') : null;
+          $image = $request->hasFile('image') ? $this->storeFile($request->input('image'),'img') : null;
 
           $credss = [];
+
           $rejectedlead = new lead_history();
 
           $rejectedlead->leads_id = $leads_id;
@@ -504,10 +528,18 @@ else{
             return redirect()->back()->with('success','Action failed');
           }
 
-  
+    }
 
+    public function rejectlead(Request $request,$id){
+        $id = Crypt::decrypt($id) / 1244;
 
-       
+        $rejectlead = new rejectedlead();
+
+        $rejectlead->leads_id = $id;
+        $rejectlead->reason = $request->reason;
+        $rejectlead->image = $request->image;
+
+        $rejectlead->save();
     }
 
     public function dashboard(Request $req)
@@ -547,8 +579,6 @@ $taskcnt = 0;
                     }
 
 
-
-
                     $pendingcnt = DB::table('family_person')
                     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                     ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
@@ -581,10 +611,10 @@ $taskcnt = 0;
                     ->where('assign_to_id',Auth::guard('admins')->user()->id)
                     ->where('status_task','Done')
                     ->count();
-                   
-                    
+
+
         }
-     
+
         elseif (Auth::user()->hasRole('admin')){
 
       $pending = DB::table('family_person')
@@ -636,9 +666,12 @@ $taskcnt = 0;
 
             }
                 if(Auth::guard('admins')->user()->hasRole('fs') || Auth::user()->hasRole('digital')) {
-                    if(Auth::guard('admins')->user()->hasRole('fs')) $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
-                    else $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 1)->where('assigned', 1)->get()->count();
-                     return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt'));
+                    if (Auth::guard('admins')->user()->hasRole('fs')) {
+                        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 0)->where('assigned', 1)->get()->count();
+                    } else {
+                        $todayAppointCount = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('appointment_date', Carbon::now()->toDateString())->where('wantsonline', 1)->where('assigned', 1)->get()->count();
+                    }
+                    return view('dashboard', compact('done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt'));
                 }
                 elseif(Auth::guard('admins')->user()->hasRole('backoffice')) {
                     return view('dashboard', compact('pendencies','morethan30'));
@@ -648,15 +681,19 @@ $taskcnt = 0;
                     $personalApp = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',1)->get();
                     $consultation = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',2)->get();
 
+                    $countpersonalApp = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',1)->count();
+                    $countconsultation = PersonalAppointment::where('user_id',Auth::user()->id)->where('AppOrCon',2)->count();
+
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('personalApp','consultation','done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                    return view('dashboard', compact('personalApp','consultation','done','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded','countpersonalApp','countconsultation'));
 
                 }
                 elseif(Auth::guard('admins')->user()->hasRole('admin')) {
                     $personalApp = PersonalAppointment::where('AppOrCon',1)->where('assignfrom',Auth::user()->id)->get();
+                    $countpersonalApp = PersonalAppointment::where('AppOrCon',1)->where('assignfrom',Auth::user()->id)->count();
                     $admins = Admins::all();
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
-                    return view('dashboard', compact('done','admins','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded'));
+                    return view('dashboard', compact('done','admins','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded','countpersonalApp'));
                 }
 
         }
