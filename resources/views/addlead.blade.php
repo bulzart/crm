@@ -63,7 +63,14 @@
 <input type="submit" class="btn btn-primary m-2">
 </div>
       </form>
-    </div>
-  </div>
+
+     <hr>
+<div class="text-center">
+  <h6>Import leads</h6>
+  <form action="{{route('importleads')}}" method="post" enctype="multipart/form-data">
+    @csrf
+    <input type="file" name="file">
+    <input type="submit" class="btn btn-info">
+  </form>
 </div>
 @endsection

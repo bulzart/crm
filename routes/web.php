@@ -32,6 +32,8 @@ use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TeamController;
+use App\Imports\leadinfo;
+use App\Imports\newlead;
 use App\Listeners\SendNotificationListener;
 use App\Models\campaigns;
 use App\Models\lead;
@@ -54,12 +56,19 @@ route::prefix('')->middleware('confirmcode')->group(function(){
       $campaigns = campaigns::all();
       return view('addlead',compact('campaigns'));
    });
+   route::post('importleads',function(Request $req){
+      $file = $req->file('file');
+
+      \Maatwebsite\Excel\Facades\Excel::import(new newlead, $file);
+      \Maatwebsite\Excel\Facades\Excel::import(new leadinfo, $file);
+      return redirect()->back();
+   })->name('importleads');
    route::get('getleads',function(){
       if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
-         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('wantsonline',0)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
          $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->where('rejected',0)->paginate(200);
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('wantsonline',0)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
    }
 
    for($i = 0; $i < count($leads['leads']); $i++){
@@ -274,22 +283,6 @@ route::get('file/{file?}',function($file = null){
 Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')->name('Appointments');
 Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
-route::get('sendcode',function(){
-    \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
-});
-
-
-
-route::get('nr/{nr}',function($nr){
-   $key = 15;
-$val = $key;
-   for($i = 0; $i < 3; $i++){
-$val = $val*$nr;
-$nr++;
-   }
-   echo $val;
-   return Auth::user();
-});
 route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
 route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
 route::get('getadmin',function (){
@@ -306,4 +299,6 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
   }
 });
 route::get('rleads',[UserController::class,'rleads'])->name('rleads');
-
+route::get('leadhistory',function(){
+   return view('leadshistory');
+});

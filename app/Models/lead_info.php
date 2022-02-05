@@ -9,4 +9,12 @@ class lead_info extends Model
 {
     use HasFactory;
     protected $table = 'lead_info';
+    protected $fillable = [
+        'lead_id',
+        'kampagne',
+         'grund',
+         'krankenkasse',
+         'bewertung',
+         'wichtig',
+    ];
 }
