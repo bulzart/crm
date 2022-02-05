@@ -111,6 +111,38 @@
         border-radius: 10px;
     }
 
+    .collapse2___::-webkit-scrollbar {
+        width: 5pt !important;
+    }
+
+    /* Track */
+    .collapse2___::-webkit-scrollbar-track {
+        background: #E3E3E3 !important;
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    .collapse2___::-webkit-scrollbar-thumb {
+        background: #4EC590;
+        border-radius: 10px;
+    }
+
+    .collapse23___::-webkit-scrollbar {
+        width: 5pt !important;
+    }
+
+    /* Track */
+    .collapse23___::-webkit-scrollbar-track {
+        background: #E3E3E3 !important;
+        border-radius: 5px;
+    }
+
+    /* Handle */
+    .collapse23___::-webkit-scrollbar-thumb {
+        background: #EF696A;
+        border-radius: 10px;
+    }
+
     /* Handle on hover */
     .overflow-div1::-webkit-scrollbar-thumb:hover {
         background: #707070;
@@ -448,12 +480,170 @@
 @media (max-width: 978px){
     #logo__311{
 
-        content:url('../imgs/Logo gjys.png');
+        content:url('https://crm.kutiza.com/public/imgs/Logo%20gjys.png');
 
         width: 20% !important;
     }
 }
+.grayyy1 {
+            color: #88889D;
+        }
 
+        .assigned-leads-div {
+            border-radius: 25px;
+        }
+
+        .t {
+            color: #88889D;
+        }
+
+        .fw-600 {
+            font-weight: 600;
+
+        }
+
+        .fw-500 {
+            font-weight: 500;
+        }
+
+        .whiteee {
+            background-color: #fff;
+            border-bottom-left-radius: 0px !important;
+            border-bottom-right-radius: 0px !important;
+            border-top-left-radius: 30px !important;
+            border-top-right-radius: 30px !important;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .lead-offnen {
+            background-color: #88889D;
+            color: #fff;
+            border-bottom-left-radius: 30px !important;
+            border-bottom-right-radius: 30px !important;
+            border-top-left-radius: 0px !important;
+            border-top-right-radius: 0px !important;
+        }
+
+        .overflow-divvv::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        /* Track */
+        .overflow-divvv::-webkit-scrollbar-track {
+            background: transparent !important;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        .overflow-divvv::-webkit-scrollbar-thumb {
+            background: #c9cad8;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        .overflow-divvv::-webkit-scrollbar-thumb:hover {
+            background: #707070;
+            border-radius: 10px;
+        }
+
+        .lead-statistics-header {
+            background-color: #F7F7F7;
+            border-bottom-left-radius: 0px !important;
+            border-bottom-right-radius: 0px !important;
+            border-top-left-radius: 30px !important;
+            border-top-right-radius: 30px !important;
+        }
+
+        .lead-statistics {
+            background-color: #F7F7F7;
+            border-bottom-left-radius: 30px !important;
+            border-bottom-right-radius: 30px !important;
+            border-top-left-radius: 0px !important;
+            border-top-right-radius: 0px !important;
+        }
+
+        .openLeadsSpanText {
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .greyBorderDiv {
+            border: 5px solid #BDC1CC;
+            border-left: none;
+            border-top-right-radius: 59px;
+            border-bottom-right-radius: 59px;
+            height: 100%;
+            vertical-align: middle;
+            
+        }
+
+        .orangeBorderDiv {
+            border: 5px solid #FEC278;
+            border-left: none;
+            border-top-right-radius: 59px;
+            border-bottom-right-radius: 59px;
+            height: 100%;
+            vertical-align: middle;
+            
+        }
+
+        .redBorderDiv {
+            border: 5px solid #FF6262;
+            border-left: none;
+            border-top-right-radius: 59px;
+            border-bottom-right-radius: 59px;
+            height: 100%;
+            vertical-align: middle;
+            
+        }
+
+        .greenBorderDiv {
+            border: 5px solid #4EC590;
+            border-left: none;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            height: 100%;
+            vertical-align: middle;
+            
+        }
+
+        .receivedDiv {
+      
+        }
+
+        .assignedToDiv {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .lostDiv {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .wonDiv {
+            vertical-align: middle;
+            text-align: center;
+        }
+        .openLeadsFirstDiv {
+            z-index: 5;
+        }
+        .receivedCol {
+            z-index: 4;
+            margin-left: -6%;
+        }
+        .assignedToCol {
+            z-index: 3;
+            margin-left: -9%;
+        }
+        .lostCol {
+            z-index: 2;
+            margin-left: -9%;
+        }
+        .wonCol {
+            z-index: 1;
+            margin-left: -12%;
+        } 
 </style>
 <body>
     <?php
@@ -466,7 +656,7 @@
         <div class="nav-itemsss overflow-div1" style="width:100%; background-color: #0C71C3;">
             <br>
             <div class="mx-auto">
-                <img src="../imgs/Logo.png" id="logo__311" style="width: 100%;" alt="">
+                <img src="https://crm.kutiza.com/public/imgs/Logo.png" id="logo__311" style="width: 100%;" alt="">
             </div>
             <br>
             <div class="">

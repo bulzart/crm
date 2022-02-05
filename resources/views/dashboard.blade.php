@@ -691,10 +691,8 @@
                     <div class="accordion-item my-1 py-2" style="background-color: #ececec;">
                         <div class="p-3">
                             <div class="row">
-                                @if(!Auth::user()->hasRole('backoffice'))
                                 <div class="col"><h5><b>Personal Apponitments</b></h5></div>
-                                <div style="color: #0a53be" class="col-3 text-end pe-4"><h5><b>{{$countpersonalApp}}</b></h5></div>
-                                @endif
+                                @if(!Auth::user()->hasRole('backoffice'))<div style="color: #0a53be" class="col-3 text-end pe-4"><h5><b>{{$countpersonalApp}}</b></h5></div>@endif
                             </div>
                         </div>
                         <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">

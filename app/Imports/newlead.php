@@ -26,7 +26,8 @@ class newlead implements ToModel
             'birthdate' => $row[3],
             'number_of_persons' => $row[4],
             'address' => $row[5],
-            'telephone' => $row[6]
+            'telephone' => $row[6],
+            'wantsonline' => $row[12]
                   ]);
     }
 }

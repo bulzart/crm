@@ -65,10 +65,10 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    })->name('importleads');
    route::get('getleads',function(){
       if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
-         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('wantsonline',0)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
          $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->where('rejected',0)->paginate(200);
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('wantsonline',0)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
    }
 
    for($i = 0; $i < count($leads['leads']); $i++){
@@ -142,6 +142,7 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
 
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
     route::post('rejectedleads/{status?}',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::post('rejectlead/{id}',[UserController::class,'rejectlead'])->name('rejectlead');
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
@@ -294,4 +295,6 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
   }
 });
 route::get('rleads',[UserController::class,'rleads'])->name('rleads');
-
+route::get('leadhistory',function(){
+   return view('leadshistory');
+});

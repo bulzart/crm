@@ -275,9 +275,12 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
                 $leads = lead::where('assign_to_id', Auth::guard('admins')->user()->id)->where('assigned', 0)->paginate(25);
             }
 
-$insta = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->where('campaign_id',1)->count();
-$facebook = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->where('campaign_id',2)->count();
-$sana = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->where('campaign_id',3)->count();
+
+
+       
+$insta = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('campaign_id',1)->count();
+$facebook = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('campaign_id',2)->count();
+$sana = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('campaign_id',3)->count();
 
             $total = array('instagram' => $insta, 'facebook' => $facebook, 'sana' => $sana);
             $admins = Admins::role('fs')->get();
@@ -469,7 +472,7 @@ return redirect()->route('tasks');
         $id = Crypt::decrypt($id) / 1244;
 
         $app = lead::where('id', $id)->first();
-        if ($app->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin')) {
+        if ($app->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin') || $app->wantsonline == 1 && Auth::user()->hasRole('digital')) {
             return view('completelead', compact('app'));
         } else {
             return redirect()->back();
@@ -522,6 +525,18 @@ return redirect()->route('tasks');
             return redirect()->back()->with('success','Action failed');
           }
 
+    }
+
+    public function rejectlead(Request $request,$id){
+        $id = Crypt::decrypt($id) / 1244;
+
+        $rejectlead = new rejectedlead();
+
+        $rejectlead->leads_id = $id;
+        $rejectlead->reason = $request->reason;
+        $rejectlead->image = $request->image;
+
+        $rejectlead->save();
     }
 
     public function dashboard(Request $req)
