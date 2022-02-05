@@ -5970,6 +5970,110 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -11501,7 +11605,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.grayyy1 {\n    color: #88889D;\n}\n.assigned-leads-div {\n    border-radius: 25px;\n}\n.t {\n    color: #88889D;\n}\n.fw-600 {\n    font-weight: 600;\n}\n.fw-500 {\n    font-weight: 500;\n}\n.whiteee {\n    background-color: #fff;\n    border-bottom-left-radius: 0px !important;\n    border-bottom-right-radius: 0px !important;\n    border-top-left-radius: 15px !important;\n    border-top-right-radius: 15px !important;\n}\n.lead-offnen {\n    background-color: #88889D;\n    color: #fff;\n    border-bottom-left-radius: 15px !important;\n    border-bottom-right-radius: 15px !important;\n    border-top-left-radius: 0px !important;\n    border-top-right-radius: 0px !important;\n}\n.overflow-divvv::-webkit-scrollbar {\n    width: 0px;\n}\n\n/* Track */\n.overflow-divvv::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-divvv::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-divvv::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n    border-radius: 10px;\n}\n.lead-statistics-header {\n    background-color: #F7F7F7;\n    border-bottom-left-radius: 0px !important;\n    border-bottom-right-radius: 0px !important;\n    border-top-left-radius: 15px !important;\n    border-top-right-radius: 15px !important;\n}\n.lead-statistics {\n    background-color: #F7F7F7;\n    border-bottom-left-radius: 15px !important;\n    border-bottom-right-radius: 15px !important;\n    border-top-left-radius: 0px !important;\n    border-top-right-radius: 0px !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.grayyy1 {\r\n    color: #88889D;\n}\n.assigned-leads-div {\r\n    border-radius: 25px;\n}\n.t {\r\n    color: #88889D;\n}\n.fw-600 {\r\n    font-weight: 600;\n}\n.fw-500 {\r\n    font-weight: 500;\n}\n.whiteee {\r\n    background-color: #fff;\r\n    border-bottom-left-radius: 0px !important;\r\n    border-bottom-right-radius: 0px !important;\r\n    border-top-left-radius: 15px !important;\r\n    border-top-right-radius: 15px !important;\n}\n.lead-offnen {\r\n    background-color: #88889D;\r\n    color: #fff;\r\n    border-bottom-left-radius: 15px !important;\r\n    border-bottom-right-radius: 15px !important;\r\n    border-top-left-radius: 0px !important;\r\n    border-top-right-radius: 0px !important;\n}\n.overflow-divvv::-webkit-scrollbar {\r\n    width: 0px;\n}\r\n\r\n/* Track */\n.overflow-divvv::-webkit-scrollbar-track {\r\n    background: transparent !important;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle */\n.overflow-divvv::-webkit-scrollbar-thumb {\r\n    background: #c9cad8;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n.overflow-divvv::-webkit-scrollbar-thumb:hover {\r\n    background: #707070;\r\n    border-radius: 10px;\n}\n.lead-statistics-header {\r\n    background-color: #F7F7F7;\r\n    border-bottom-left-radius: 0px !important;\r\n    border-bottom-right-radius: 0px !important;\r\n    border-top-left-radius: 15px !important;\r\n    border-top-right-radius: 15px !important;\n}\n.lead-statistics {\r\n    background-color: #F7F7F7;\r\n    border-bottom-left-radius: 15px !important;\r\n    border-bottom-right-radius: 15px !important;\r\n    border-top-left-radius: 0px !important;\r\n    border-top-right-radius: 0px !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11525,7 +11629,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.grayyy1 {\n    color: #88889D;\n}\n.assigned-leads-div {\n    border-radius: 25px;\n}\n.t {\n    color: #88889D;\n}\n.fw-600 {\n    font-weight: 600;\n}\n.fw-500 {\n    font-weight: 500;\n}\n.whiteee {\n    background-color: #fff;\n    border-bottom-left-radius: 0px !important;\n    border-bottom-right-radius: 0px !important;\n    border-top-left-radius: 15px !important;\n    border-top-right-radius: 15px !important;\n}\n.lead-offnen {\n    background-color: #88889D;\n    color: #fff;\n    border-bottom-left-radius: 15px !important;\n    border-bottom-right-radius: 15px !important;\n    border-top-left-radius: 0px !important;\n    border-top-right-radius: 0px !important;\n}\n.overflow-divvv::-webkit-scrollbar {\n    width: 0px;\n}\n\n/* Track */\n.overflow-divvv::-webkit-scrollbar-track {\n    background: transparent !important;\n    border-radius: 10px;\n}\n\n/* Handle */\n.overflow-divvv::-webkit-scrollbar-thumb {\n    background: #c9cad8;\n    border-radius: 10px;\n}\n\n/* Handle on hover */\n.overflow-divvv::-webkit-scrollbar-thumb:hover {\n    background: #707070;\n    border-radius: 10px;\n}\n.lead-statistics-header {\n    background-color: #F7F7F7;\n    border-bottom-left-radius: 0px !important;\n    border-bottom-right-radius: 0px !important;\n    border-top-left-radius: 15px !important;\n    border-top-right-radius: 15px !important;\n}\n.lead-statistics {\n    background-color: #F7F7F7;\n    border-bottom-left-radius: 15px !important;\n    border-bottom-right-radius: 15px !important;\n    border-top-left-radius: 0px !important;\n    border-top-right-radius: 0px !important;\n}\ninput[type=\"checkbox\"i] {\n    margin: 5px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.grayyy1 {\r\n    color: #88889D;\n}\n.assigned-leads-div {\r\n    border-radius: 25px;\n}\n.t {\r\n    color: #88889D;\n}\n.fw-600 {\r\n    font-weight: 600;\n}\n.fw-500 {\r\n    font-weight: 500;\n}\n.whiteee {\r\n    background-color: #fff;\r\n    border-bottom-left-radius: 0px !important;\r\n    border-bottom-right-radius: 0px !important;\r\n    border-top-left-radius: 15px !important;\r\n    border-top-right-radius: 15px !important;\n}\n.lead-offnen {\r\n    background-color: #88889D;\r\n    color: #fff;\r\n    border-bottom-left-radius: 15px !important;\r\n    border-bottom-right-radius: 15px !important;\r\n    border-top-left-radius: 0px !important;\r\n    border-top-right-radius: 0px !important;\n}\n.overflow-divvv::-webkit-scrollbar {\r\n    width: 0px;\n}\r\n\r\n/* Track */\n.overflow-divvv::-webkit-scrollbar-track {\r\n    background: transparent !important;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle */\n.overflow-divvv::-webkit-scrollbar-thumb {\r\n    background: #c9cad8;\r\n    border-radius: 10px;\n}\r\n\r\n/* Handle on hover */\n.overflow-divvv::-webkit-scrollbar-thumb:hover {\r\n    background: #707070;\r\n    border-radius: 10px;\n}\n.lead-statistics-header {\r\n    background-color: #F7F7F7;\r\n    border-bottom-left-radius: 0px !important;\r\n    border-bottom-right-radius: 0px !important;\r\n    border-top-left-radius: 15px !important;\r\n    border-top-right-radius: 15px !important;\n}\n.lead-statistics {\r\n    background-color: #F7F7F7;\r\n    border-bottom-left-radius: 15px !important;\r\n    border-bottom-right-radius: 15px !important;\r\n    border-top-left-radius: 0px !important;\r\n    border-top-right-radius: 0px !important;\n}\ninput[type=\"checkbox\"i] {\r\n    margin: 5px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30868,704 +30972,992 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "appointments-sm-div" }, [
-      _c("div", { staticClass: "appointments-content py-3" }, [
-        _c(
-          "div",
-          {
-            staticClass: "overflow-div1",
-            staticStyle: {
-              "overflow-y": "scroll",
-              "overflow-x": "hidden !important",
-            },
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "row mx-1",
-                staticStyle: { height: "73vh !important" },
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "appointments-sm-div" }, [
+        _c("div", { staticClass: "appointments-content py-3" }, [
+          _c(
+            "div",
+            {
+              staticClass: "overflow-div1",
+              staticStyle: {
+                "overflow-y": "scroll",
+                "overflow-x": "hidden !important",
               },
-              _vm._l(_vm.leads, function (lead) {
-                return _c("div", { staticClass: "col-12 col-md-6 col-lg-6" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "modal fade",
-                        attrs: {
-                          id: lead.slug + "r",
-                          "data-bs-backdrop": "static",
-                          "data-bs-keyboard": "false",
-                          tabindex: "-1",
-                          "aria-labelledby": "staticBackdropLabel",
-                          "aria-hidden": "true",
-                        },
-                      },
-                      [
-                        _c("div", { staticClass: "modal-dialog" }, [
-                          _c(
-                            "form",
-                            {
-                              attrs: {
-                                action: "rejectedleads",
-                                method: "post",
-                              },
-                            },
-                            [
-                              _c("input", {
-                                attrs: { type: "hidden", name: "_token" },
-                                domProps: { value: _vm.csrf },
-                              }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "modal-content" }, [
-                                _vm._m(0, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "modal-body" }, [
-                                  _c("input", {
-                                    attrs: { type: "hidden", name: "leadsid" },
-                                    domProps: { value: lead.id },
-                                  }),
-                                  _vm._v(" "),
-                                  _vm._m(1, true),
-                                ]),
-                                _vm._v(" "),
-                                _vm._m(2, true),
-                              ]),
-                            ]
-                          ),
-                        ]),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-1 pe-0 my-3 text-end" }, [
-                      _vm.role != "fs"
-                        ? _c("div", [
-                            _c("input", {
-                              attrs: { type: "checkbox", name: "jep" },
-                              domProps: { value: lead.id },
-                              on: {
-                                change: function ($event) {
-                                  return _vm.getit($event)
-                                },
-                              },
-                            }),
-                          ])
-                        : _vm._e(),
-                    ]),
-                    _vm._v(" "),
-                    _vm.role != "fs"
-                      ? _c(
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "row mx-1",
+                  staticStyle: { height: "73vh !important" },
+                },
+                _vm._l(_vm.leads, function (lead) {
+                  return _c(
+                    "div",
+                    { staticClass: "col-12 col-md-6 col-lg-6" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
                           "div",
                           {
-                            staticClass: "col my-3",
+                            staticClass: "modal fade",
                             attrs: {
-                              "data-bs-toggle": "modal",
-                              "data-bs-target": "asign",
+                              id: lead.slug + "r",
+                              "data-bs-backdrop": "static",
+                              "data-bs-keyboard": "false",
+                              tabindex: "-1",
+                              "aria-labelledby": "staticBackdropLabel",
+                              "aria-hidden": "true",
                             },
                           },
                           [
-                            _c("div", { staticClass: "whiteee p-3" }, [
-                              _c("div", { staticClass: "namme mb-2" }, [
-                                lead.wantsonline == 1
-                                  ? _c(
-                                      "span",
-                                      { staticClass: "fs-4 fw-bold" },
+                            _c("div", { staticClass: "modal-dialog" }, [
+                              _c(
+                                "form",
+                                {
+                                  attrs: {
+                                    action: "rejectedleads",
+                                    method: "post",
+                                  },
+                                },
+                                [
+                                  _c("input", {
+                                    attrs: { type: "hidden", name: "_token" },
+                                    domProps: { value: _vm.csrf },
+                                  }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(0, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c("input", {
+                                        attrs: {
+                                          type: "hidden",
+                                          name: "leadsid",
+                                        },
+                                        domProps: { value: lead.id },
+                                      }),
+                                      _vm._v(" "),
+                                      _vm._m(1, true),
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(2, true),
+                                  ]),
+                                ]
+                              ),
+                            ]),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "modal fade",
+                            attrs: {
+                              id: lead.slug,
+                              tabindex: "-1",
+                              "aria-labelledby": "exampleModalLabel",
+                              "aria-hidden": "true",
+                            },
+                          },
+                          [
+                            _c("div", { staticClass: "modal-dialog" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "modal-content",
+                                  staticStyle: { background: "#f8f8f8" },
+                                },
+                                [
+                                  _c("div", { staticClass: "modal-header" }, [
+                                    _c("div", { staticClass: "mx-3" }, [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticClass: "fs-3 fw-bold text-dark",
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        " +
+                                              _vm._s(lead.first_name) +
+                                              "\n\n                                     "
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("button", {
+                                      staticClass: "btn-close",
+                                      attrs: {
+                                        type: "button",
+                                        "data-bs-dismiss": "modal",
+                                        "aria-label": "Close",
+                                      },
+                                    }),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "modal-body" }, [
+                                    _c("div", {}, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "container pb-5" },
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "text-center row" },
+                                            [
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "col-6 col-md-6 py-3",
+                                                },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "d-flex justify-content-start",
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "a",
+                                                        {
+                                                          staticClass:
+                                                            "btn fw-bold fs-5 py-3 w-100",
+                                                          staticStyle: {
+                                                            "background-color":
+                                                              "#E50A10",
+                                                            color: "#fff",
+                                                            "border-radius":
+                                                              "10px",
+                                                          },
+                                                          attrs: {
+                                                            href:
+                                                              "pendingreject/" +
+                                                              lead.id +
+                                                              "/1",
+                                                          },
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                                     Reject\n                                                                 "
+                                                          ),
+                                                        ]
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "col-6 col-md-6 py-3 w-50",
+                                                },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "d-flex justify-content-center",
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "a",
+                                                        {
+                                                          staticClass:
+                                                            "btn fw-bold fs-5 py-3 w-100",
+                                                          staticStyle: {
+                                                            "background-color":
+                                                              "#4EC590",
+                                                            color: "#fff",
+                                                            "border-radius":
+                                                              "10px",
+                                                          },
+                                                          attrs: {
+                                                            href:
+                                                              "tel:" +
+                                                              lead.telephone,
+                                                          },
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                                     Call\n                                                                 "
+                                                          ),
+                                                        ]
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("hr"),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "row mx-4 text-dark text-center",
+                                              staticStyle: {
+                                                "border-radius": "15px",
+                                                background: "white",
+                                              },
+                                            },
+                                            [
+                                              _c("h5", [
+                                                _vm._v("Herkunft vom Lead"),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  " Platform:" +
+                                                    _vm._s(lead.campaign)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Kampagne: " +
+                                                    _vm._s(lead.kampagne)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Grund: " + _vm._s(lead.grund)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Teilnahme: " +
+                                                    _vm._s(lead.teilnahme) +
+                                                    " "
+                                                ),
+                                              ]),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "row mx-4 text-dark text-center mt-2",
+                                              staticStyle: {
+                                                "border-radius": "15px",
+                                                background: "white",
+                                              },
+                                            },
+                                            [
+                                              _c("h5", [
+                                                _vm._v("Herkunft vom Lead"),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  " Gerburstdatum:" +
+                                                    _vm._s(lead.birthdate)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Haushalt: " +
+                                                    _vm._s(
+                                                      lead.number_of_persons
+                                                    ) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Telefon: " +
+                                                    _vm._s(lead.telephone)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "PLZ,Ort: " +
+                                                    _vm._s(lead.postal_code) +
+                                                    "," +
+                                                    _vm._s(lead.city) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Krankenkasse: " +
+                                                    _vm._s(lead.krankenkasse) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Bewertung KK: " +
+                                                    _vm._s(lead.bewertung) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Wichtig: " +
+                                                    _vm._s(lead.wichtig) +
+                                                    " "
+                                                ),
+                                              ]),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "modal-footer" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-secondary",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                        },
+                                      },
                                       [
                                         _vm._v(
-                                          _vm._s(lead.first_name) +
-                                            " " +
-                                            _vm._s(lead.last_name) +
-                                            " (Online)"
-                                        ),
-                                      ]
-                                    )
-                                  : _c(
-                                      "span",
-                                      { staticClass: "fs-4 fw-bold" },
-                                      [
-                                        _vm._v(
-                                          _vm._s(lead.first_name) +
-                                            " " +
-                                            _vm._s(lead.last_name)
+                                          "Close\n                                             "
                                         ),
                                       ]
                                     ),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "adresse row" }, [
-                                _vm._m(3, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col ps-0" }, [
-                                  _c(
-                                    "span",
-                                    { staticClass: "grayyy1 fw-500 " },
-                                    [_vm._v(_vm._s(lead.address))]
-                                  ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          href:
+                                            "pendingreject/" + lead.id + "/0",
+                                        },
+                                      },
+                                      [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn fw-bold fs-6",
+                                            staticStyle: {
+                                              "background-color": "#FF860D",
+                                              color: "#fff",
+                                              "border-radius": "10px",
+                                            },
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                     Pending\n                                                 "
+                                            ),
+                                          ]
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn fw-bold fs-6 ",
+                                        staticStyle: {
+                                          "background-color": "#E50A10",
+                                          color: "#fff",
+                                          "border-radius": "10px",
+                                        },
+                                        attrs: {
+                                          "data-bs-toggle": "modal",
+                                          "data-bs-target":
+                                            "#" + lead.slug + "r",
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                 Reject\n                                             "
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "btn fw-bold fs-6  ",
+                                        staticStyle: {
+                                          "background-color": "#4EC590",
+                                          color: "#fff",
+                                          "border-radius": "10px",
+                                        },
+                                        attrs: { href: "alead/" + lead.id },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                 Go\n                                             "
+                                        ),
+                                      ]
+                                    ),
+                                  ]),
+                                ]
+                              ),
+                            ]),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-1 pe-0 my-3 text-end" }, [
+                          _vm.role != "fs"
+                            ? _c("div", [
+                                _c("input", {
+                                  attrs: { type: "checkbox", name: "jep" },
+                                  domProps: { value: lead.id },
+                                  on: {
+                                    change: function ($event) {
+                                      return _vm.getit($event)
+                                    },
+                                  },
+                                }),
+                              ])
+                            : _vm._e(),
+                        ]),
+                        _vm._v(" "),
+                        _vm.role != "fs"
+                          ? _c(
+                              "div",
+                              {
+                                staticClass: "col my-3",
+                                attrs: {
+                                  "data-bs-toggle": "modal",
+                                  "data-bs-target": "asign",
+                                },
+                              },
+                              [
+                                _c("div", { staticClass: "whiteee p-3" }, [
+                                  _c("div", { staticClass: "namme mb-2" }, [
+                                    lead.wantsonline == 1
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "fs-4 fw-bold" },
+                                          [
+                                            _vm._v(
+                                              _vm._s(lead.first_name) +
+                                                " " +
+                                                _vm._s(lead.last_name) +
+                                                " (Online)"
+                                            ),
+                                          ]
+                                        )
+                                      : _c(
+                                          "span",
+                                          { staticClass: "fs-4 fw-bold" },
+                                          [
+                                            _vm._v(
+                                              _vm._s(lead.first_name) +
+                                                " " +
+                                                _vm._s(lead.last_name)
+                                            ),
+                                          ]
+                                        ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "adresse row" }, [
+                                    _vm._m(3, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col ps-0" }, [
+                                      _c(
+                                        "span",
+                                        { staticClass: "grayyy1 fw-500 " },
+                                        [_vm._v(_vm._s(lead.address))]
+                                      ),
+                                    ]),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "haushalt row" }, [
+                                    _vm._m(4, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col ps-0" }, [
+                                      _c(
+                                        "span",
+                                        { staticClass: "grayyy1 fw-500" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(lead.number_of_persons) +
+                                              " Personen"
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "grund row" }, [
+                                    _vm._m(5, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col ps-0" }, [
+                                      _c(
+                                        "span",
+                                        { staticClass: "grayyy1 fw-500" },
+                                        [_vm._v(_vm._s(lead.grund))]
+                                      ),
+                                    ]),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "kampagne row" }, [
+                                    _vm._m(6, true),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col ps-0" }, [
+                                      _c(
+                                        "span",
+                                        { staticClass: "grayyy1 fw-500" },
+                                        [_vm._v(_vm._s(lead.kampagne))]
+                                      ),
+                                    ]),
+                                  ]),
                                 ]),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "haushalt row" }, [
-                                _vm._m(4, true),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "col ps-0" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "grayyy",
+                                    staticStyle: { cursor: "pointer" },
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "lead-offnen text-center py-2",
+                                        attrs: {
+                                          "data-toggle": "modal",
+                                          "data-target": "#" + lead.slug,
+                                        },
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "fs-4 fw-bold" },
+                                          [_vm._v("Lead öffnen")]
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            )
+                          : _c(
+                              "div",
+                              {
+                                staticClass: "py-1 my-2 mx-1",
+                                attrs: {
+                                  "data-bs-toggle": "modal",
+                                  "data-bs-target": "#" + lead.slug,
+                                },
+                              },
+                              [
+                                _c("div", { staticClass: "mx-2" }, [
+                                  _c("div", { staticClass: "whiteee p-3" }, [
+                                    _c("div", { staticClass: "namme mb-2" }, [
+                                      _c(
+                                        "span",
+                                        { staticClass: "fs-4 fw-bold" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(lead.first_name) +
+                                              " " +
+                                              _vm._s(lead.last_name)
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "adresse row" }, [
+                                      _vm._m(7, true),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col ps-0" }, [
+                                        _c(
+                                          "span",
+                                          { staticClass: "grayyy1 fw-500 " },
+                                          [_vm._v(_vm._s(lead.address))]
+                                        ),
+                                      ]),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "haushalt row" }, [
+                                      _vm._m(8, true),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col ps-0" }, [
+                                        _c(
+                                          "span",
+                                          { staticClass: "grayyy1 fw-500" },
+                                          [
+                                            _vm._v(
+                                              _vm._s(lead.number_of_persons) +
+                                                " Personen"
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "grund row" }, [
+                                      _vm._m(9, true),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col ps-0" }, [
+                                        _c(
+                                          "span",
+                                          { staticClass: "grayyy1 fw-500" },
+                                          [_vm._v(_vm._s(lead.grund))]
+                                        ),
+                                      ]),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "kampagne row" }, [
+                                      _vm._m(10, true),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "col ps-0" }, [
+                                        _c(
+                                          "span",
+                                          { staticClass: "grayyy1 fw-500" },
+                                          [_vm._v(_vm._s(lead.kampagne))]
+                                        ),
+                                      ]),
+                                    ]),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "grayyy",
+                                    staticStyle: { cursor: "pointer" },
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "lead-offnen text-center py-2 mx-2",
+                                        attrs: {
+                                          "data-toggle": "modal",
+                                          "data-target": "#" + lead.slug,
+                                        },
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "fs-4 fw-bold" },
+                                          [_vm._v("Lead öffnen")]
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                      ]),
+                    ]
+                  )
+                }),
+                0
+              ),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _vm.role != "fs"
+          ? _c("div", { staticClass: " py-2" }, [
+              _vm._m(11),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: {
+                    id: "asign",
+                    tabindex: "-1",
+                    "aria-labelledby": "exampleModalLabel",
+                    "aria-hidden": "true",
+                  },
+                },
+                [
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _vm._m(12),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c(
+                          "select",
+                          {
+                            staticClass: "form-control",
+                            on: {
+                              change: function ($event) {
+                                return _vm.changeadmin($event)
+                              },
+                            },
+                          },
+                          _vm._l(_vm.admins, function (admin) {
+                            return _c(
+                              "option",
+                              { domProps: { value: admin.id } },
+                              [_vm._v(_vm._s(admin.name))]
+                            )
+                          }),
+                          0
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "modal",
+                            },
+                          },
+                          [_vm._v("Close\n                             ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "button" },
+                            on: { click: _vm.assign },
+                          },
+                          [_vm._v("Assign")]
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                ]
+              ),
+            ])
+          : _vm._e(),
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.leads, function (lead) {
+        return _c("div", [
+          _c(
+            "div",
+            {
+              staticClass: "modal fade",
+              attrs: {
+                id: lead.slug,
+                tabindex: "-1",
+                "aria-labelledby": "exampleModalLabel",
+                "aria-hidden": "true",
+              },
+            },
+            [
+              _c("div", { staticClass: "modal-dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-content",
+                    staticStyle: { background: "#f8f8f8" },
+                  },
+                  [
+                    _c("div", { staticClass: "modal-header" }, [
+                      _c("div", { staticClass: "mx-3" }, [
+                        _c("span", { staticClass: "fs-3 fw-bold text-dark" }, [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(lead.first_name) +
+                              "\n\n                                     "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("button", {
+                        staticClass: "btn-close",
+                        attrs: {
+                          type: "button",
+                          "data-bs-dismiss": "modal",
+                          "aria-label": "Close",
+                        },
+                      }),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", {}, [
+                        _c("div", { staticClass: "container pb-5" }, [
+                          _c("div", { staticClass: "text-center row" }, [
+                            _c("div", { staticClass: "col-6 col-md-6 py-3" }, [
+                              _c(
+                                "div",
+                                { staticClass: "d-flex justify-content-start" },
+                                [
                                   _c(
-                                    "span",
-                                    { staticClass: "grayyy1 fw-500" },
+                                    "a",
+                                    {
+                                      staticClass:
+                                        "btn fw-bold fs-5 py-3 w-100",
+                                      staticStyle: {
+                                        "background-color": "#E50A10",
+                                        color: "#fff",
+                                        "border-radius": "10px",
+                                      },
+                                      attrs: {
+                                        href: "pendingreject/" + lead.id + "/1",
+                                      },
+                                    },
                                     [
                                       _vm._v(
-                                        _vm._s(lead.number_of_persons) +
-                                          " Personen"
+                                        "\n                                                                     Reject\n                                                                 "
                                       ),
                                     ]
                                   ),
-                                ]),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "grund row" }, [
-                                _vm._m(5, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col ps-0" }, [
-                                  _c(
-                                    "span",
-                                    { staticClass: "grayyy1 fw-500" },
-                                    [_vm._v(_vm._s(lead.grund))]
-                                  ),
-                                ]),
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "kampagne row" }, [
-                                _vm._m(6, true),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col ps-0" }, [
-                                  _c(
-                                    "span",
-                                    { staticClass: "grayyy1 fw-500" },
-                                    [_vm._v(_vm._s(lead.kampagne))]
-                                  ),
-                                ]),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(7, true),
-                          ]
-                        )
-                      : _c(
-                          "div",
-                          {
-                            staticClass: "py-1 my-2 mx-1",
-                            attrs: {
-                              "data-bs-toggle": "modal",
-                              "data-bs-target": "#" + lead.slug,
-                            },
-                          },
-                          [
-                            _c("div", { staticClass: "mx-2" }, [
-                              _c("div", { staticClass: "whiteee p-3" }, [
-                                _c("div", { staticClass: "namme mb-2" }, [
-                                  _c("span", { staticClass: "fs-4 fw-bold" }, [
-                                    _vm._v(
-                                      _vm._s(lead.first_name) +
-                                        " " +
-                                        _vm._s(lead.last_name)
-                                    ),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "adresse row" }, [
-                                  _vm._m(8, true),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col ps-0" }, [
-                                    _c(
-                                      "span",
-                                      { staticClass: "grayyy1 fw-500 " },
-                                      [_vm._v(_vm._s(lead.address))]
-                                    ),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "haushalt row" }, [
-                                  _vm._m(9, true),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col ps-0" }, [
-                                    _c(
-                                      "span",
-                                      { staticClass: "grayyy1 fw-500" },
-                                      [
-                                        _vm._v(
-                                          _vm._s(lead.number_of_persons) +
-                                            " Personen"
-                                        ),
-                                      ]
-                                    ),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "grund row" }, [
-                                  _vm._m(10, true),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col ps-0" }, [
-                                    _c(
-                                      "span",
-                                      { staticClass: "grayyy1 fw-500" },
-                                      [_vm._v(_vm._s(lead.grund))]
-                                    ),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "kampagne row" }, [
-                                  _vm._m(11, true),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col ps-0" }, [
-                                    _c(
-                                      "span",
-                                      { staticClass: "grayyy1 fw-500" },
-                                      [_vm._v(_vm._s(lead.kampagne))]
-                                    ),
-                                  ]),
-                                ]),
-                              ]),
+                                ]
+                              ),
                             ]),
                             _vm._v(" "),
                             _c(
                               "div",
-                              {
-                                staticClass: "modal fade",
-                                attrs: {
-                                  id: lead.slug,
-                                  tabindex: "-1",
-                                  "aria-labelledby": "exampleModalLabel",
-                                  "aria-hidden": "true",
-                                },
-                              },
+                              { staticClass: "col-6 col-md-6 py-3 w-50" },
                               [
-                                _c("div", { staticClass: "modal-dialog" }, [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "modal-content",
-                                      staticStyle: { background: "#f8f8f8" },
-                                    },
-                                    [
-                                      _c(
-                                        "div",
-                                        { staticClass: "modal-header" },
-                                        [
-                                          _c("div", { staticClass: "mx-3" }, [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "fs-3 fw-bold text-dark",
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                       " +
-                                                    _vm._s(lead.first_name) +
-                                                    "\n\n                                    "
-                                                ),
-                                              ]
-                                            ),
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("button", {
-                                            staticClass: "btn-close",
-                                            attrs: {
-                                              type: "button",
-                                              "data-bs-dismiss": "modal",
-                                              "aria-label": "Close",
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("div", { staticClass: "modal-body" }, [
-                                        _c("div", {}, [
-                                          _c(
-                                            "div",
-                                            { staticClass: "container pb-5" },
-                                            [
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "text-center row",
-                                                },
-                                                [
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "col-6 col-md-6 py-3",
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "d-flex justify-content-start",
-                                                        },
-                                                        [
-                                                          _c(
-                                                            "a",
-                                                            {
-                                                              staticClass:
-                                                                "btn fw-bold fs-5 py-3 w-100",
-                                                              staticStyle: {
-                                                                "background-color":
-                                                                  "#E50A10",
-                                                                color: "#fff",
-                                                                "border-radius":
-                                                                  "10px",
-                                                              },
-                                                              attrs: {
-                                                                href:
-                                                                  "pendingreject/" +
-                                                                  lead.id +
-                                                                  "/1",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                "\n                                                                    Reject\n                                                                "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "col-6 col-md-6 py-3 w-50",
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "div",
-                                                        {
-                                                          staticClass:
-                                                            "d-flex justify-content-center",
-                                                        },
-                                                        [
-                                                          _c(
-                                                            "a",
-                                                            {
-                                                              staticClass:
-                                                                "btn fw-bold fs-5 py-3 w-100",
-                                                              staticStyle: {
-                                                                "background-color":
-                                                                  "#4EC590",
-                                                                color: "#fff",
-                                                                "border-radius":
-                                                                  "10px",
-                                                              },
-                                                              attrs: {
-                                                                href:
-                                                                  "tel:" +
-                                                                  lead.telephone,
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                "\n                                                                    Call\n                                                                "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                    ]
-                                                  ),
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("hr"),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "row mx-4 text-dark text-center",
-                                                  staticStyle: {
-                                                    "border-radius": "15px",
-                                                    background: "white",
-                                                  },
-                                                },
-                                                [
-                                                  _c("h5", [
-                                                    _vm._v("Herkunft vom Lead"),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      " Platform:" +
-                                                        _vm._s(lead.campaign)
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Kampagne: " +
-                                                        _vm._s(lead.kampagne)
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Grund: " +
-                                                        _vm._s(lead.grund)
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Teilnahme: " +
-                                                        _vm._s(lead.teilnahme) +
-                                                        " "
-                                                    ),
-                                                  ]),
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "row mx-4 text-dark text-center mt-2",
-                                                  staticStyle: {
-                                                    "border-radius": "15px",
-                                                    background: "white",
-                                                  },
-                                                },
-                                                [
-                                                  _c("h5", [
-                                                    _vm._v("Herkunft vom Lead"),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      " Gerburstdatum:" +
-                                                        _vm._s(lead.birthdate)
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Haushalt: " +
-                                                        _vm._s(
-                                                          lead.number_of_persons
-                                                        ) +
-                                                        " "
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Telefon: " +
-                                                        _vm._s(lead.telephone)
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "PLZ,Ort: " +
-                                                        _vm._s(
-                                                          lead.postal_code
-                                                        ) +
-                                                        "," +
-                                                        _vm._s(lead.city) +
-                                                        " "
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Krankenkasse: " +
-                                                        _vm._s(
-                                                          lead.krankenkasse
-                                                        ) +
-                                                        " "
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Bewertung KK: " +
-                                                        _vm._s(lead.bewertung) +
-                                                        " "
-                                                    ),
-                                                  ]),
-                                                  _vm._v(" "),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      "Wichtig: " +
-                                                        _vm._s(lead.wichtig) +
-                                                        " "
-                                                    ),
-                                                  ]),
-                                                ]
-                                              ),
-                                            ]
-                                          ),
-                                        ]),
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "modal-footer" },
-                                        [
-                                          _c(
-                                            "button",
-                                            {
-                                              staticClass: "btn btn-secondary",
-                                              attrs: {
-                                                type: "button",
-                                                "data-bs-dismiss": "modal",
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                "Close\n                                            "
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              attrs: {
-                                                href:
-                                                  "pendingreject/" +
-                                                  lead.id +
-                                                  "/0",
-                                              },
-                                            },
-                                            [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn fw-bold fs-6",
-                                                  staticStyle: {
-                                                    "background-color":
-                                                      "#FF860D",
-                                                    color: "#fff",
-                                                    "border-radius": "10px",
-                                                  },
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                                    Pending\n                                                "
-                                                  ),
-                                                ]
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "button",
-                                            {
-                                              staticClass: "btn fw-bold fs-6 ",
-                                              staticStyle: {
-                                                "background-color": "#E50A10",
-                                                color: "#fff",
-                                                "border-radius": "10px",
-                                              },
-                                              attrs: {
-                                                "data-bs-toggle": "modal",
-                                                "data-bs-target":
-                                                  "#" + lead.slug + "r",
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                Reject\n                                            "
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass: "btn fw-bold fs-6  ",
-                                              staticStyle: {
-                                                "background-color": "#4EC590",
-                                                color: "#fff",
-                                                "border-radius": "10px",
-                                              },
-                                              attrs: {
-                                                href: "alead/" + lead.id,
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                Go\n                                            "
-                                              ),
-                                            ]
-                                          ),
-                                        ]
-                                      ),
-                                    ]
-                                  ),
-                                ]),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "d-flex justify-content-center",
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "btn fw-bold fs-5 py-3 w-100",
+                                        staticStyle: {
+                                          "background-color": "#4EC590",
+                                          color: "#fff",
+                                          "border-radius": "10px",
+                                        },
+                                        attrs: {
+                                          href: "tel:" + lead.telephone,
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                                     Call\n                                                                 "
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
                               ]
                             ),
-                            _vm._v(" "),
-                            _vm._m(12, true),
-                          ]
-                        ),
-                  ]),
-                ])
-              }),
-              0
-            ),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _vm.role != "fs"
-        ? _c("div", { staticClass: " py-2" }, [
-            _vm._m(13),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "modal fade",
-                attrs: {
-                  id: "asign",
-                  tabindex: "-1",
-                  "aria-labelledby": "exampleModalLabel",
-                  "aria-hidden": "true",
-                },
-              },
-              [
-                _c("div", { staticClass: "modal-dialog" }, [
-                  _c("div", { staticClass: "modal-content" }, [
-                    _vm._m(14),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-body" }, [
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control",
-                          on: {
-                            change: function ($event) {
-                              return _vm.changeadmin($event)
+                          ]),
+                          _vm._v(" "),
+                          _c("hr"),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "row mx-4 text-dark text-center",
+                              staticStyle: {
+                                "border-radius": "15px",
+                                background: "white",
+                              },
                             },
-                          },
-                        },
-                        _vm._l(_vm.admins, function (admin) {
-                          return _c(
-                            "option",
-                            { domProps: { value: admin.id } },
-                            [_vm._v(_vm._s(admin.name))]
-                          )
-                        }),
-                        0
-                      ),
+                            [
+                              _c("h5", [_vm._v("Herkunft vom Lead")]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(" Platform:" + _vm._s(lead.campaign)),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v("Kampagne: " + _vm._s(lead.kampagne)),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v("Grund: " + _vm._s(lead.grund)),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "Teilnahme: " + _vm._s(lead.teilnahme) + " "
+                                ),
+                              ]),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "row mx-4 text-dark text-center mt-2",
+                              staticStyle: {
+                                "border-radius": "15px",
+                                background: "white",
+                              },
+                            },
+                            [
+                              _c("h5", [_vm._v("Herkunft vom Lead")]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  " Gerburstdatum:" + _vm._s(lead.birthdate)
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "Haushalt: " +
+                                    _vm._s(lead.number_of_persons) +
+                                    " "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v("Telefon: " + _vm._s(lead.telephone)),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "PLZ,Ort: " +
+                                    _vm._s(lead.postal_code) +
+                                    "," +
+                                    _vm._s(lead.city) +
+                                    " "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "Krankenkasse: " +
+                                    _vm._s(lead.krankenkasse) +
+                                    " "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "Bewertung KK: " +
+                                    _vm._s(lead.bewertung) +
+                                    " "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  "Wichtig: " + _vm._s(lead.wichtig) + " "
+                                ),
+                              ]),
+                            ]
+                          ),
+                        ]),
+                      ]),
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "modal-footer" }, [
@@ -31575,27 +31967,85 @@ var render = function () {
                           staticClass: "btn btn-secondary",
                           attrs: { type: "button", "data-bs-dismiss": "modal" },
                         },
-                        [_vm._v("Close\n                            ")]
+                        [
+                          _vm._v(
+                            "Close\n                                             "
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        { attrs: { href: "pendingreject/" + lead.id + "/0" } },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn fw-bold fs-6",
+                              staticStyle: {
+                                "background-color": "#FF860D",
+                                color: "#fff",
+                                "border-radius": "10px",
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n                                                     Pending\n                                                 "
+                              ),
+                            ]
+                          ),
+                        ]
                       ),
                       _vm._v(" "),
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-primary",
-                          attrs: { type: "button" },
-                          on: { click: _vm.assign },
+                          staticClass: "btn fw-bold fs-6 ",
+                          staticStyle: {
+                            "background-color": "#E50A10",
+                            color: "#fff",
+                            "border-radius": "10px",
+                          },
+                          attrs: {
+                            "data-bs-toggle": "modal",
+                            "data-bs-target": "#" + lead.slug + "r",
+                          },
                         },
-                        [_vm._v("Assign")]
+                        [
+                          _vm._v(
+                            "\n                                                 Reject\n                                             "
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn fw-bold fs-6  ",
+                          staticStyle: {
+                            "background-color": "#4EC590",
+                            color: "#fff",
+                            "border-radius": "10px",
+                          },
+                          attrs: { href: "alead/" + lead.id },
+                        },
+                        [
+                          _vm._v(
+                            "\n                                                 Go\n                                             "
+                          ),
+                        ]
                       ),
                     ]),
-                  ]),
-                ]),
-              ]
-            ),
-          ])
-        : _vm._e(),
-    ]),
-  ])
+                  ]
+                ),
+              ]),
+            ]
+          ),
+        ])
+      }),
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function () {
@@ -31643,7 +32093,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("option", { attrs: { value: "Kunde bereits terminiert" } }, [
           _vm._v(
-            "Kunde bereits terminiert\n                                                "
+            "Kunde bereits terminiert\n                                                 "
           ),
         ]),
         _vm._v(" "),
@@ -31717,20 +32167,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "grayyy", staticStyle: { cursor: "pointer" } },
-      [
-        _c("div", { staticClass: "lead-offnen text-center py-2" }, [
-          _c("span", { staticClass: "fs-4 fw-bold" }, [_vm._v("Lead öffnen")]),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-4 pe-0" }, [
       _c("span", {}, [_vm._v("Adresse:")]),
     ])
@@ -31763,20 +32199,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "grayyy", staticStyle: { cursor: "pointer" } },
-      [
-        _c("div", { staticClass: "lead-offnen text-center py-2 mx-2" }, [
-          _c("span", { staticClass: "fs-4 fw-bold" }, [_vm._v("Lead öffnen")]),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "button-div mx-4 my-2" }, [
       _c(
         "button",
@@ -31793,7 +32215,7 @@ var staticRenderFns = [
             "data-bs-target": "#asign",
           },
         },
-        [_vm._v("\n                    Assign\n                ")]
+        [_vm._v("\n                     Assign\n                 ")]
       ),
     ])
   },
@@ -44514,7 +44936,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","D:\\\\Kutiza\\\\crm"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"D:\\\\Kutiza\\\\crm","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ })
 

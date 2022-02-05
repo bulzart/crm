@@ -54,6 +54,17 @@
                                     <leads></leads>
                                 </div>
                             </div>
+                            @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('salesmanager')) 
+
+                            <div class="text-center">
+  <h5>Import leads</h5>
+  <form action="{{route('importleads')}}" method="post" enctype="multipart/form-data">
+    @csrf
+    <input type="file" name="file" class="form-control">
+    <input type="submit" class="mt-2 btn py-2"  style="background-color: #63D4A4; color: #fff; border-radius: 13px;">
+  </form>
+</div>
+@endif
                         </div>
                     </div>
                     <div class="col-12 col-lg-3">
