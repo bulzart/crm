@@ -6074,6 +6074,104 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6081,7 +6179,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       admin: null,
       admins: null,
       array: [],
-      role: null
+      role: null,
+      facebook: null,
+      instagram: null,
+      sanascout: null
     };
   },
   mounted: function mounted() {
@@ -6096,6 +6197,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.admins = response.data.admins;
         _this.admin = response.data.admins[0].id;
         _this.role = response.data.admin[0];
+        _this.sanascout = response.data.sanascout, _this.facebook = response.data.facebook, _this.instagram = response.data.instagram;
       });
     },
     getit: function getit(event) {
@@ -30993,593 +31095,505 @@ var render = function () {
                   staticClass: "row mx-1",
                   staticStyle: { height: "73vh !important" },
                 },
-                _vm._l(_vm.leads, function (lead) {
-                  return _c(
+                [
+                  _c(
                     "div",
-                    { staticClass: "col-12 col-md-6 col-lg-6" },
-                    [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "modal fade",
-                            attrs: {
-                              id: lead.slug + "r",
-                              "data-bs-backdrop": "static",
-                              "data-bs-keyboard": "false",
-                              tabindex: "-1",
-                              "aria-labelledby": "staticBackdropLabel",
-                              "aria-hidden": "true",
+                    { staticClass: "col-md-9 col-lg-9 col-12" },
+                    _vm._l(_vm.leads, function (lead) {
+                      return _c(
+                        "div",
+                        { staticClass: "col-12 col-md-6 col-lg-6" },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: lead.slug + "r",
+                                "data-bs-backdrop": "static",
+                                "data-bs-keyboard": "false",
+                                tabindex: "-1",
+                                "aria-labelledby": "staticBackdropLabel",
+                                "aria-hidden": "true",
+                              },
                             },
-                          },
-                          [
-                            _c("div", { staticClass: "modal-dialog" }, [
-                              _c(
-                                "form",
-                                {
-                                  attrs: {
-                                    action: "rejectedleads",
-                                    method: "post",
-                                  },
-                                },
-                                [
-                                  _c("input", {
-                                    attrs: { type: "hidden", name: "_token" },
-                                    domProps: { value: _vm.csrf },
-                                  }),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "modal-content" }, [
-                                    _vm._m(0, true),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "modal-body" }, [
-                                      _c("input", {
-                                        attrs: {
-                                          type: "hidden",
-                                          name: "leadsid",
-                                        },
-                                        domProps: { value: lead.id },
-                                      }),
-                                      _vm._v(" "),
-                                      _vm._m(1, true),
-                                    ]),
-                                    _vm._v(" "),
-                                    _vm._m(2, true),
-                                  ]),
-                                ]
-                              ),
-                            ]),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "modal fade",
-                            attrs: {
-                              id: lead.slug,
-                              tabindex: "-1",
-                              "aria-labelledby": "exampleModalLabel",
-                              "aria-hidden": "true",
-                            },
-                          },
-                          [
-                            _c("div", { staticClass: "modal-dialog" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "modal-content",
-                                  staticStyle: { background: "#f8f8f8" },
-                                },
-                                [
-                                  _c("div", { staticClass: "modal-header" }, [
-                                    _c("div", { staticClass: "mx-3" }, [
-                                      _c(
-                                        "span",
-                                        {
-                                          staticClass: "fs-3 fw-bold text-dark",
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        " +
-                                              _vm._s(lead.first_name) +
-                                              "\n\n                                     "
-                                          ),
-                                        ]
-                                      ),
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("button", {
-                                      staticClass: "btn-close",
-                                      attrs: {
-                                        type: "button",
-                                        "data-bs-dismiss": "modal",
-                                        "aria-label": "Close",
-                                      },
-                                    }),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "modal-body" }, [
-                                    _c("div", {}, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "container pb-5" },
-                                        [
-                                          _c(
-                                            "div",
-                                            { staticClass: "text-center row" },
-                                            [
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "col-6 col-md-6 py-3",
-                                                },
-                                                [
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "d-flex justify-content-start",
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "a",
-                                                        {
-                                                          staticClass:
-                                                            "btn fw-bold fs-5 py-3 w-100",
-                                                          staticStyle: {
-                                                            "background-color":
-                                                              "#E50A10",
-                                                            color: "#fff",
-                                                            "border-radius":
-                                                              "10px",
-                                                          },
-                                                          attrs: {
-                                                            href:
-                                                              "pendingreject/" +
-                                                              lead.id +
-                                                              "/1",
-                                                          },
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                                     Reject\n                                                                 "
-                                                          ),
-                                                        ]
-                                                      ),
-                                                    ]
-                                                  ),
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "col-6 col-md-6 py-3 w-50",
-                                                },
-                                                [
-                                                  _c(
-                                                    "div",
-                                                    {
-                                                      staticClass:
-                                                        "d-flex justify-content-center",
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "a",
-                                                        {
-                                                          staticClass:
-                                                            "btn fw-bold fs-5 py-3 w-100",
-                                                          staticStyle: {
-                                                            "background-color":
-                                                              "#4EC590",
-                                                            color: "#fff",
-                                                            "border-radius":
-                                                              "10px",
-                                                          },
-                                                          attrs: {
-                                                            href:
-                                                              "tel:" +
-                                                              lead.telephone,
-                                                          },
-                                                        },
-                                                        [
-                                                          _vm._v(
-                                                            "\n                                                                     Call\n                                                                 "
-                                                          ),
-                                                        ]
-                                                      ),
-                                                    ]
-                                                  ),
-                                                ]
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("hr"),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "row mx-4 text-dark text-center",
-                                              staticStyle: {
-                                                "border-radius": "15px",
-                                                background: "white",
-                                              },
-                                            },
-                                            [
-                                              _c("h5", [
-                                                _vm._v("Herkunft vom Lead"),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  " Platform:" +
-                                                    _vm._s(lead.campaign)
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Kampagne: " +
-                                                    _vm._s(lead.kampagne)
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Grund: " + _vm._s(lead.grund)
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Teilnahme: " +
-                                                    _vm._s(lead.teilnahme) +
-                                                    " "
-                                                ),
-                                              ]),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "row mx-4 text-dark text-center mt-2",
-                                              staticStyle: {
-                                                "border-radius": "15px",
-                                                background: "white",
-                                              },
-                                            },
-                                            [
-                                              _c("h5", [
-                                                _vm._v("Herkunft vom Lead"),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  " Gerburstdatum:" +
-                                                    _vm._s(lead.birthdate)
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Haushalt: " +
-                                                    _vm._s(
-                                                      lead.number_of_persons
-                                                    ) +
-                                                    " "
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Telefon: " +
-                                                    _vm._s(lead.telephone)
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "PLZ,Ort: " +
-                                                    _vm._s(lead.postal_code) +
-                                                    "," +
-                                                    _vm._s(lead.city) +
-                                                    " "
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Krankenkasse: " +
-                                                    _vm._s(lead.krankenkasse) +
-                                                    " "
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Bewertung KK: " +
-                                                    _vm._s(lead.bewertung) +
-                                                    " "
-                                                ),
-                                              ]),
-                                              _vm._v(" "),
-                                              _c("span", [
-                                                _vm._v(
-                                                  "Wichtig: " +
-                                                    _vm._s(lead.wichtig) +
-                                                    " "
-                                                ),
-                                              ]),
-                                            ]
-                                          ),
-                                        ]
-                                      ),
-                                    ]),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "modal-footer" }, [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-secondary",
-                                        attrs: {
-                                          type: "button",
-                                          "data-bs-dismiss": "modal",
-                                        },
-                                      },
-                                      [
-                                        _vm._v(
-                                          "Close\n                                             "
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          href:
-                                            "pendingreject/" + lead.id + "/0",
-                                        },
-                                      },
-                                      [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "btn fw-bold fs-6",
-                                            staticStyle: {
-                                              "background-color": "#FF860D",
-                                              color: "#fff",
-                                              "border-radius": "10px",
-                                            },
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                     Pending\n                                                 "
-                                            ),
-                                          ]
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn fw-bold fs-6 ",
-                                        staticStyle: {
-                                          "background-color": "#E50A10",
-                                          color: "#fff",
-                                          "border-radius": "10px",
-                                        },
-                                        attrs: {
-                                          "data-bs-toggle": "modal",
-                                          "data-bs-target":
-                                            "#" + lead.slug + "r",
-                                        },
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                 Reject\n                                             "
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "btn fw-bold fs-6  ",
-                                        staticStyle: {
-                                          "background-color": "#4EC590",
-                                          color: "#fff",
-                                          "border-radius": "10px",
-                                        },
-                                        attrs: { href: "alead/" + lead.id },
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                 Go\n                                             "
-                                        ),
-                                      ]
-                                    ),
-                                  ]),
-                                ]
-                              ),
-                            ]),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-1 pe-0 my-3 text-end" }, [
-                          _vm.role != "fs"
-                            ? _c("div", [
-                                _c("input", {
-                                  attrs: { type: "checkbox", name: "jep" },
-                                  domProps: { value: lead.id },
-                                  on: {
-                                    change: function ($event) {
-                                      return _vm.getit($event)
+                            [
+                              _c("div", { staticClass: "modal-dialog" }, [
+                                _c(
+                                  "form",
+                                  {
+                                    attrs: {
+                                      action: "rejectedleads",
+                                      method: "post",
                                     },
                                   },
-                                }),
-                              ])
-                            : _vm._e(),
-                        ]),
-                        _vm._v(" "),
-                        _vm.role != "fs"
-                          ? _c(
-                              "div",
-                              {
-                                staticClass: "col my-3",
-                                attrs: {
-                                  "data-bs-toggle": "modal",
-                                  "data-bs-target": "asign",
-                                },
-                              },
-                              [
-                                _c("div", { staticClass: "whiteee p-3" }, [
-                                  _c("div", { staticClass: "namme mb-2" }, [
-                                    lead.wantsonline == 1
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "fs-4 fw-bold" },
-                                          [
-                                            _vm._v(
-                                              _vm._s(lead.first_name) +
-                                                " " +
-                                                _vm._s(lead.last_name) +
-                                                " (Online)"
-                                            ),
-                                          ]
-                                        )
-                                      : _c(
-                                          "span",
-                                          { staticClass: "fs-4 fw-bold" },
-                                          [
-                                            _vm._v(
-                                              _vm._s(lead.first_name) +
-                                                " " +
-                                                _vm._s(lead.last_name)
-                                            ),
-                                          ]
-                                        ),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "adresse row" }, [
-                                    _vm._m(3, true),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col ps-0" }, [
-                                      _c(
-                                        "span",
-                                        { staticClass: "grayyy1 fw-500 " },
-                                        [_vm._v(_vm._s(lead.address))]
-                                      ),
-                                    ]),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "haushalt row" }, [
-                                    _vm._m(4, true),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col ps-0" }, [
-                                      _c(
-                                        "span",
-                                        { staticClass: "grayyy1 fw-500" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(lead.number_of_persons) +
-                                              " Personen"
-                                          ),
-                                        ]
-                                      ),
-                                    ]),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "grund row" }, [
-                                    _vm._m(5, true),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col ps-0" }, [
-                                      _c(
-                                        "span",
-                                        { staticClass: "grayyy1 fw-500" },
-                                        [_vm._v(_vm._s(lead.grund))]
-                                      ),
-                                    ]),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "kampagne row" }, [
-                                    _vm._m(6, true),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "col ps-0" }, [
-                                      _c(
-                                        "span",
-                                        { staticClass: "grayyy1 fw-500" },
-                                        [_vm._v(_vm._s(lead.kampagne))]
-                                      ),
-                                    ]),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "grayyy",
-                                    staticStyle: { cursor: "pointer" },
-                                  },
                                   [
+                                    _c("input", {
+                                      attrs: { type: "hidden", name: "_token" },
+                                      domProps: { value: _vm.csrf },
+                                    }),
+                                    _vm._v(" "),
                                     _c(
                                       "div",
-                                      {
-                                        staticClass:
-                                          "lead-offnen text-center py-2",
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#" + lead.slug,
-                                        },
-                                      },
+                                      { staticClass: "modal-content" },
                                       [
+                                        _vm._m(0, true),
+                                        _vm._v(" "),
                                         _c(
-                                          "span",
-                                          { staticClass: "fs-4 fw-bold" },
-                                          [_vm._v("Lead öffnen")]
+                                          "div",
+                                          { staticClass: "modal-body" },
+                                          [
+                                            _c("input", {
+                                              attrs: {
+                                                type: "hidden",
+                                                name: "leadsid",
+                                              },
+                                              domProps: { value: lead.id },
+                                            }),
+                                            _vm._v(" "),
+                                            _vm._m(1, true),
+                                          ]
                                         ),
+                                        _vm._v(" "),
+                                        _vm._m(2, true),
                                       ]
                                     ),
                                   ]
                                 ),
-                              ]
-                            )
-                          : _c(
-                              "div",
-                              {
-                                staticClass: "py-1 my-2 mx-1",
-                                attrs: {
-                                  "data-bs-toggle": "modal",
-                                  "data-bs-target": "#" + lead.slug,
-                                },
+                              ]),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "modal fade",
+                              attrs: {
+                                id: lead.slug,
+                                tabindex: "-1",
+                                "aria-labelledby": "exampleModalLabel",
+                                "aria-hidden": "true",
                               },
-                              [
-                                _c("div", { staticClass: "mx-2" }, [
-                                  _c("div", { staticClass: "whiteee p-3" }, [
-                                    _c("div", { staticClass: "namme mb-2" }, [
+                            },
+                            [
+                              _c("div", { staticClass: "modal-dialog" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "modal-content",
+                                    staticStyle: { background: "#f8f8f8" },
+                                  },
+                                  [
+                                    _c("div", { staticClass: "modal-header" }, [
+                                      _c("div", { staticClass: "mx-3" }, [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "fs-3 fw-bold text-dark",
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                           " +
+                                                _vm._s(lead.first_name) +
+                                                "\n\n                                        "
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("button", {
+                                        staticClass: "btn-close",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                          "aria-label": "Close",
+                                        },
+                                      }),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c("div", {}, [
+                                        _c(
+                                          "div",
+                                          { staticClass: "container pb-5" },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "text-center row",
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "col-6 col-md-6 py-3",
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "d-flex justify-content-start",
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass:
+                                                              "btn fw-bold fs-5 py-3 w-100",
+                                                            staticStyle: {
+                                                              "background-color":
+                                                                "#E50A10",
+                                                              color: "#fff",
+                                                              "border-radius":
+                                                                "10px",
+                                                            },
+                                                            attrs: {
+                                                              href:
+                                                                "pendingreject/" +
+                                                                lead.id +
+                                                                "/1",
+                                                            },
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                                        Reject\n                                                                    "
+                                                            ),
+                                                          ]
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "col-6 col-md-6 py-3 w-50",
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "d-flex justify-content-center",
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass:
+                                                              "btn fw-bold fs-5 py-3 w-100",
+                                                            staticStyle: {
+                                                              "background-color":
+                                                                "#4EC590",
+                                                              color: "#fff",
+                                                              "border-radius":
+                                                                "10px",
+                                                            },
+                                                            attrs: {
+                                                              href:
+                                                                "tel:" +
+                                                                lead.telephone,
+                                                            },
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                                        Call\n                                                                    "
+                                                            ),
+                                                          ]
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("hr"),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "row mx-4 text-dark text-center",
+                                                staticStyle: {
+                                                  "border-radius": "15px",
+                                                  background: "white",
+                                                },
+                                              },
+                                              [
+                                                _c("h5", [
+                                                  _vm._v("Herkunft vom Lead"),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    " Platform:" +
+                                                      _vm._s(lead.campaign)
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Kampagne: " +
+                                                      _vm._s(lead.kampagne)
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Grund: " +
+                                                      _vm._s(lead.grund)
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Teilnahme: " +
+                                                      _vm._s(lead.teilnahme) +
+                                                      " "
+                                                  ),
+                                                ]),
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "row mx-4 text-dark text-center mt-2",
+                                                staticStyle: {
+                                                  "border-radius": "15px",
+                                                  background: "white",
+                                                },
+                                              },
+                                              [
+                                                _c("h5", [
+                                                  _vm._v("Herkunft vom Lead"),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    " Gerburstdatum:" +
+                                                      _vm._s(lead.birthdate)
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Haushalt: " +
+                                                      _vm._s(
+                                                        lead.number_of_persons
+                                                      ) +
+                                                      " "
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Telefon: " +
+                                                      _vm._s(lead.telephone)
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "PLZ,Ort: " +
+                                                      _vm._s(lead.postal_code) +
+                                                      "," +
+                                                      _vm._s(lead.city) +
+                                                      " "
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Krankenkasse: " +
+                                                      _vm._s(
+                                                        lead.krankenkasse
+                                                      ) +
+                                                      " "
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Bewertung KK: " +
+                                                      _vm._s(lead.bewertung) +
+                                                      " "
+                                                  ),
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("span", [
+                                                  _vm._v(
+                                                    "Wichtig: " +
+                                                      _vm._s(lead.wichtig) +
+                                                      " "
+                                                  ),
+                                                ]),
+                                              ]
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "modal-footer" }, [
                                       _c(
-                                        "span",
-                                        { staticClass: "fs-4 fw-bold" },
+                                        "button",
+                                        {
+                                          staticClass: "btn btn-secondary",
+                                          attrs: {
+                                            type: "button",
+                                            "data-bs-dismiss": "modal",
+                                          },
+                                        },
                                         [
                                           _vm._v(
-                                            _vm._s(lead.first_name) +
-                                              " " +
-                                              _vm._s(lead.last_name)
+                                            "Close\n                                                "
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          attrs: {
+                                            href:
+                                              "pendingreject/" + lead.id + "/0",
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass: "btn fw-bold fs-6",
+                                              staticStyle: {
+                                                "background-color": "#FF860D",
+                                                color: "#fff",
+                                                "border-radius": "10px",
+                                              },
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                        Pending\n                                                    "
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn fw-bold fs-6 ",
+                                          staticStyle: {
+                                            "background-color": "#E50A10",
+                                            color: "#fff",
+                                            "border-radius": "10px",
+                                          },
+                                          attrs: {
+                                            "data-bs-toggle": "modal",
+                                            "data-bs-target":
+                                              "#" + lead.slug + "r",
+                                          },
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Reject\n                                                "
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "btn fw-bold fs-6  ",
+                                          staticStyle: {
+                                            "background-color": "#4EC590",
+                                            color: "#fff",
+                                            "border-radius": "10px",
+                                          },
+                                          attrs: { href: "alead/" + lead.id },
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Go\n                                                "
                                           ),
                                         ]
                                       ),
                                     ]),
+                                  ]
+                                ),
+                              ]),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-1 pe-0 my-3 text-end" },
+                            [
+                              _vm.role != "fs"
+                                ? _c("div", [
+                                    _c("input", {
+                                      attrs: { type: "checkbox", name: "jep" },
+                                      domProps: { value: lead.id },
+                                      on: {
+                                        change: function ($event) {
+                                          return _vm.getit($event)
+                                        },
+                                      },
+                                    }),
+                                  ])
+                                : _vm._e(),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.role != "fs"
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "col my-3",
+                                  attrs: {
+                                    "data-bs-toggle": "modal",
+                                    "data-bs-target": "asign",
+                                  },
+                                },
+                                [
+                                  _c("div", { staticClass: "whiteee p-3" }, [
+                                    _c("div", { staticClass: "namme mb-2" }, [
+                                      lead.wantsonline == 1
+                                        ? _c(
+                                            "span",
+                                            { staticClass: "fs-4 fw-bold" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(lead.first_name) +
+                                                  " " +
+                                                  _vm._s(lead.last_name) +
+                                                  " (Online)"
+                                              ),
+                                            ]
+                                          )
+                                        : _c(
+                                            "span",
+                                            { staticClass: "fs-4 fw-bold" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(lead.first_name) +
+                                                  " " +
+                                                  _vm._s(lead.last_name)
+                                              ),
+                                            ]
+                                          ),
+                                    ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "adresse row" }, [
-                                      _vm._m(7, true),
+                                      _vm._m(3, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -31591,7 +31605,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "haushalt row" }, [
-                                      _vm._m(8, true),
+                                      _vm._m(4, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -31608,7 +31622,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "grund row" }, [
-                                      _vm._m(9, true),
+                                      _vm._m(5, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -31620,7 +31634,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "kampagne row" }, [
-                                      _vm._m(10, true),
+                                      _vm._m(6, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -31631,42 +31645,550 @@ var render = function () {
                                       ]),
                                     ]),
                                   ]),
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "grayyy",
-                                    staticStyle: { cursor: "pointer" },
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "lead-offnen text-center py-2 mx-2",
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#" + lead.slug,
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "grayyy",
+                                      staticStyle: { cursor: "pointer" },
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "lead-offnen text-center py-2",
+                                          attrs: {
+                                            "data-toggle": "modal",
+                                            "data-target": "#" + lead.slug,
+                                          },
                                         },
-                                      },
-                                      [
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "fs-4 fw-bold" },
+                                            [_vm._v("Lead öffnen")]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              )
+                            : _c(
+                                "div",
+                                {
+                                  staticClass: "py-1 my-2 mx-1",
+                                  attrs: {
+                                    "data-bs-toggle": "modal",
+                                    "data-bs-target": "#" + lead.slug,
+                                  },
+                                },
+                                [
+                                  _c("div", { staticClass: "mx-2" }, [
+                                    _c("div", { staticClass: "whiteee p-3" }, [
+                                      _c("div", { staticClass: "namme mb-2" }, [
                                         _c(
                                           "span",
                                           { staticClass: "fs-4 fw-bold" },
-                                          [_vm._v("Lead öffnen")]
+                                          [
+                                            _vm._v(
+                                              _vm._s(lead.first_name) +
+                                                " " +
+                                                _vm._s(lead.last_name)
+                                            ),
+                                          ]
                                         ),
-                                      ]
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "adresse row" },
+                                        [
+                                          _vm._m(7, true),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "col ps-0" },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "grayyy1 fw-500 ",
+                                                },
+                                                [_vm._v(_vm._s(lead.address))]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "haushalt row" },
+                                        [
+                                          _vm._m(8, true),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "col ps-0" },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass: "grayyy1 fw-500",
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      lead.number_of_persons
+                                                    ) + " Personen"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "grund row" }, [
+                                        _vm._m(9, true),
+                                        _vm._v(" "),
+                                        _c("div", { staticClass: "col ps-0" }, [
+                                          _c(
+                                            "span",
+                                            { staticClass: "grayyy1 fw-500" },
+                                            [_vm._v(_vm._s(lead.grund))]
+                                          ),
+                                        ]),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "kampagne row" },
+                                        [
+                                          _vm._m(10, true),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "col ps-0" },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass: "grayyy1 fw-500",
+                                                },
+                                                [_vm._v(_vm._s(lead.kampagne))]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "grayyy",
+                                      staticStyle: { cursor: "pointer" },
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "lead-offnen text-center py-2 mx-2",
+                                          attrs: {
+                                            "data-toggle": "modal",
+                                            "data-target": "#" + lead.slug,
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "span",
+                                            { staticClass: "fs-4 fw-bold" },
+                                            [_vm._v("Lead öffnen")]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]
+                              ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 col-lg-3 col-12" }, [
+                    _c("div", { staticClass: "col-12 col-lg-12 col-md-12" }, [
+                      _vm._m(11),
+                      _vm._v(" "),
+                      _c("hr", {
+                        staticClass: "text-black",
+                        staticStyle: {
+                          color: "#fff !important",
+                          height: "2px",
+                          margin: "0 !important",
+                          opacity: "1",
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "lead-statistics  mx-3" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "content  overflow-divvv",
+                            staticStyle: { height: "80vh", overflow: "auto" },
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "instagram-div my-2 mx-3" },
+                              [
+                                _c("span", [
+                                  _c(
+                                    "svg",
+                                    {
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        "xmlns:xlink":
+                                          "http://www.w3.org/1999/xlink",
+                                        width: "39",
+                                        height: "39",
+                                        viewBox: "0 0 39 39",
+                                      },
+                                    },
+                                    [
+                                      _c("defs", [
+                                        _c(
+                                          "clipPath",
+                                          { attrs: { id: "clip-path" } },
+                                          [
+                                            _c("rect", {
+                                              attrs: {
+                                                id: "Rectangle_435",
+                                                "data-name": "Rectangle 435",
+                                                width: "17.261",
+                                                height: "17.215",
+                                                fill: "#88889d",
+                                              },
+                                            }),
+                                          ]
+                                        ),
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "g",
+                                        {
+                                          attrs: {
+                                            id: "Group_975",
+                                            "data-name": "Group 975",
+                                            transform: "translate(-1519 -216)",
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "g",
+                                            {
+                                              attrs: {
+                                                id: "Ellipse_386",
+                                                "data-name": "Ellipse 386",
+                                                transform:
+                                                  "translate(1519 216)",
+                                                fill: "none",
+                                                stroke: "#88889d",
+                                                "stroke-width": "2",
+                                              },
+                                            },
+                                            [
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "19.5",
+                                                  cy: "19.5",
+                                                  r: "19.5",
+                                                  stroke: "none",
+                                                },
+                                              }),
+                                              _vm._v(" "),
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "19.5",
+                                                  cy: "19.5",
+                                                  r: "18.5",
+                                                  fill: "none",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "g",
+                                            {
+                                              attrs: {
+                                                id: "Group_966",
+                                                "data-name": "Group 966",
+                                                transform:
+                                                  "translate(1530.266 227.459)",
+                                              },
+                                            },
+                                            [
+                                              _c(
+                                                "g",
+                                                {
+                                                  attrs: {
+                                                    id: "Group_644",
+                                                    "data-name": "Group 644",
+                                                    transform: "translate(0 0)",
+                                                    "clip-path":
+                                                      "url(#clip-path)",
+                                                  },
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      id: "Path_1482",
+                                                      "data-name": "Path 1482",
+                                                      d: "M8.692.081a33.358,33.358,0,0,1,4.149.03c2.711.342,4.2,1.807,4.338,4.51a75.707,75.707,0,0,1-.092,8.539,4.156,4.156,0,0,1-3.993,3.95c-2.971.139-5.958.14-8.929,0A4.141,4.141,0,0,1,.158,13.181,69.412,69.412,0,0,1,.124,4.412C.321,1.623,2.181.121,5.005.021,6.233-.022,7.463.014,8.692.014c0,.022,0,.045,0,.067m6.991,8.565h0c0-1.151.017-2.3,0-3.453-.042-2.335-1.265-3.568-3.614-3.6q-3.412-.046-6.825,0c-2.4.028-3.633,1.233-3.674,3.626q-.059,3.412,0,6.827c.041,2.4,1.263,3.608,3.656,3.657,1.751.035,3.5.025,5.256.022a17.393,17.393,0,0,0,2.115-.07,3.174,3.174,0,0,0,3.08-3.4c.035-1.2.006-2.406.006-3.609",
+                                                      transform:
+                                                        "translate(0 0)",
+                                                      fill: "#88889d",
+                                                    },
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("path", {
+                                                    attrs: {
+                                                      id: "Path_1483",
+                                                      "data-name": "Path 1483",
+                                                      d: "M16.078,11.687A4.431,4.431,0,1,1,11.652,16.1a4.378,4.378,0,0,1,4.426-4.414m.037,7.294a2.837,2.837,0,0,0,2.846-2.9,2.88,2.88,0,1,0-5.76.066,2.84,2.84,0,0,0,2.913,2.836",
+                                                      transform:
+                                                        "translate(-7.458 -7.481)",
+                                                      fill: "#88889d",
+                                                    },
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c("path", {
+                                                    attrs: {
+                                                      id: "Path_1484",
+                                                      "data-name": "Path 1484",
+                                                      d: "M33.975,9.188a1.018,1.018,0,0,1,1.158-.9.976.976,0,0,1,.886,1.091,1.029,1.029,0,0,1-1.118.952,1.044,1.044,0,0,1-.927-1.144",
+                                                      transform:
+                                                        "translate(-21.743 -5.298)",
+                                                      fill: "#88889d",
+                                                    },
+                                                  }),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "fs-5 fw-500 ps-2" },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Instagram: " +
+                                        _vm._s(_vm.instagram) +
+                                        "\n                                "
                                     ),
                                   ]
                                 ),
                               ]
                             ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "instagram-div my-2 mx-3" },
+                              [
+                                _c("span", [
+                                  _c(
+                                    "svg",
+                                    {
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "39",
+                                        height: "39",
+                                        viewBox: "0 0 39 39",
+                                      },
+                                    },
+                                    [
+                                      _c(
+                                        "g",
+                                        {
+                                          attrs: {
+                                            id: "Group_976",
+                                            "data-name": "Group 976",
+                                            transform: "translate(-1519 -273)",
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "g",
+                                            {
+                                              attrs: {
+                                                id: "Ellipse_384",
+                                                "data-name": "Ellipse 384",
+                                                transform:
+                                                  "translate(1519 273)",
+                                                fill: "none",
+                                                stroke: "#88889d",
+                                                "stroke-width": "2",
+                                              },
+                                            },
+                                            [
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "19.5",
+                                                  cy: "19.5",
+                                                  r: "19.5",
+                                                  stroke: "none",
+                                                },
+                                              }),
+                                              _vm._v(" "),
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "19.5",
+                                                  cy: "19.5",
+                                                  r: "18.5",
+                                                  fill: "none",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              id: "Path_1922",
+                                              "data-name": "Path 1922",
+                                              d: "M7.032,4.474a1.227,1.227,0,0,1,1.14-1,5.118,5.118,0,0,1,.678-.04c.553-.01,1.1-.005,1.653-.005.06,0,.121-.01.191-.015V.135c-.2-.025-.387-.055-.578-.065C9.207.044,8.3-.031,7.394.014A4.23,4.23,0,0,0,4.219,1.5,4.326,4.326,0,0,0,3.27,3.646a8.592,8.592,0,0,0-.1,1.2c-.015.819-.005,1.637-.005,2.456,0,.211,0,.211-.2.211-.924,0-1.848,0-2.773-.005C.04,7.5,0,7.548,0,7.689Q.008,9.347,0,11c0,.141.045.176.181.176.929-.005,1.858,0,2.793,0h.181v9.162H6.967V11.18h.181c.929,0,1.858-.005,2.788,0,.141,0,.181-.045.2-.176.1-.784.2-1.567.3-2.351.045-.347.09-.688.136-1.035,0-.03-.005-.06-.005-.111h-.2c-1.075,0-2.155-.005-3.23,0-.136,0-.186-.03-.181-.176.005-.743-.005-1.487.005-2.235a3.242,3.242,0,0,1,.07-.623",
+                                              transform:
+                                                "translate(1533.105 282.378)",
+                                              fill: "#88889d",
+                                            },
+                                          }),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "fs-5 fw-500 ps-2" },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Facebook: " +
+                                        _vm._s(_vm.facebook) +
+                                        "\n                                "
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "instagram-div my-2 mx-3" },
+                              [
+                                _c("span", [
+                                  _c(
+                                    "svg",
+                                    {
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "39",
+                                        height: "39",
+                                        viewBox: "0 0 39 39",
+                                      },
+                                    },
+                                    [
+                                      _c(
+                                        "g",
+                                        {
+                                          attrs: {
+                                            id: "Group_977",
+                                            "data-name": "Group 977",
+                                            transform: "translate(-1519 -331)",
+                                          },
+                                        },
+                                        [
+                                          _c(
+                                            "g",
+                                            {
+                                              attrs: {
+                                                id: "Ellipse_385",
+                                                "data-name": "Ellipse 385",
+                                                transform:
+                                                  "translate(1519 331)",
+                                                fill: "none",
+                                                stroke: "#88889d",
+                                                "stroke-width": "2",
+                                              },
+                                            },
+                                            [
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "19.5",
+                                                  cy: "19.5",
+                                                  r: "19.5",
+                                                  stroke: "none",
+                                                },
+                                              }),
+                                              _vm._v(" "),
+                                              _c("circle", {
+                                                attrs: {
+                                                  cx: "19.5",
+                                                  cy: "19.5",
+                                                  r: "18.5",
+                                                  fill: "none",
+                                                },
+                                              }),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("path", {
+                                            attrs: {
+                                              id: "Path_1923",
+                                              "data-name": "Path 1923",
+                                              d: "M0,10.4a10.4,10.4,0,1,1,10.4,10.4A10.4,10.4,0,0,1,0,10.4m9.745-9A4.572,4.572,0,0,0,7.293,3.81,9.923,9.923,0,0,0,6.78,4.943a16.491,16.491,0,0,0,2.965.373ZM5.521,4.6a11.54,11.54,0,0,1,.625-1.4,8.763,8.763,0,0,1,.776-1.212A9.114,9.114,0,0,0,3.964,3.963,10.767,10.767,0,0,0,5.521,4.6ZM4.56,9.745a17.35,17.35,0,0,1,.567-3.909A11.826,11.826,0,0,1,3.093,4.97a9.055,9.055,0,0,0-1.77,4.775H4.56ZM6.379,6.184a16.015,16.015,0,0,0-.52,3.562H9.745V6.615a17.552,17.552,0,0,1-3.367-.431m4.666.43V9.745H14.93a16.09,16.09,0,0,0-.518-3.562,17.655,17.655,0,0,1-3.367.431ZM5.86,11.045a15.924,15.924,0,0,0,.518,3.562,17.7,17.7,0,0,1,3.367-.43V11.045Zm5.185,0v3.13a17.551,17.551,0,0,1,3.367.431,16,16,0,0,0,.52-3.562Zm-4.265,4.8a10.153,10.153,0,0,0,.513,1.133,4.581,4.581,0,0,0,2.452,2.41V15.476a16.491,16.491,0,0,0-2.965.373ZM6.923,18.8a8.652,8.652,0,0,1-.777-1.212,11.551,11.551,0,0,1-.625-1.4,10.87,10.87,0,0,0-1.557.637A9.114,9.114,0,0,0,6.922,18.8Zm-1.8-3.851a17.352,17.352,0,0,1-.568-3.909H1.323a9.044,9.044,0,0,0,1.77,4.775,11.8,11.8,0,0,1,2.034-.867M13.868,18.8a9.1,9.1,0,0,0,2.956-1.976,10.856,10.856,0,0,0-1.555-.637,11.444,11.444,0,0,1-.625,1.4,8.763,8.763,0,0,1-.776,1.212m-2.824-3.33v3.916A4.572,4.572,0,0,0,13.5,16.98a9.923,9.923,0,0,0,.513-1.133,16.38,16.38,0,0,0-2.965-.372Zm4.619-.521a11.8,11.8,0,0,1,2.034.867,9.044,9.044,0,0,0,1.77-4.775H16.232a17.352,17.352,0,0,1-.568,3.909m3.8-5.208A9.044,9.044,0,0,0,17.7,4.97a11.8,11.8,0,0,1-2.034.867,17.412,17.412,0,0,1,.568,3.909ZM14.644,3.2a11.747,11.747,0,0,1,.626,1.4,10.779,10.779,0,0,0,1.554-.637,9.1,9.1,0,0,0-2.956-1.975A8.727,8.727,0,0,1,14.644,3.2M14.01,4.943A10.214,10.214,0,0,0,13.5,3.81,4.577,4.577,0,0,0,11.045,1.4V5.314a16.491,16.491,0,0,0,2.965-.373Z",
+                                              transform:
+                                                "translate(1527.891 340.378)",
+                                              fill: "#88889d",
+                                            },
+                                          }),
+                                        ]
+                                      ),
+                                    ]
+                                  ),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  { staticClass: "fs-5 fw-500 ps-2" },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Sanascout: " +
+                                        _vm._s(_vm.sanascout) +
+                                        "\n                                "
+                                    ),
+                                  ]
+                                ),
+                              ]
+                            ),
+                          ]
+                        ),
                       ]),
-                    ]
-                  )
-                }),
-                0
+                    ]),
+                  ]),
+                ]
               ),
             ]
           ),
@@ -31674,7 +32196,7 @@ var render = function () {
         _vm._v(" "),
         _vm.role != "fs"
           ? _c("div", { staticClass: " py-2" }, [
-              _vm._m(11),
+              _vm._m(12),
               _vm._v(" "),
               _c(
                 "div",
@@ -31690,7 +32212,7 @@ var render = function () {
                 [
                   _c("div", { staticClass: "modal-dialog" }, [
                     _c("div", { staticClass: "modal-content" }, [
-                      _vm._m(12),
+                      _vm._m(13),
                       _vm._v(" "),
                       _c("div", { staticClass: "modal-body" }, [
                         _c(
@@ -31724,7 +32246,7 @@ var render = function () {
                               "data-bs-dismiss": "modal",
                             },
                           },
-                          [_vm._v("Close\n                             ")]
+                          [_vm._v("Close\n                                ")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -31771,9 +32293,9 @@ var render = function () {
                       _c("div", { staticClass: "mx-3" }, [
                         _c("span", { staticClass: "fs-3 fw-bold text-dark" }, [
                           _vm._v(
-                            "\n                                        " +
+                            "\n                                           " +
                               _vm._s(lead.first_name) +
-                              "\n\n                                     "
+                              "\n\n                                        "
                           ),
                         ]),
                       ]),
@@ -31813,7 +32335,7 @@ var render = function () {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                                                     Reject\n                                                                 "
+                                        "\n                                                                        Reject\n                                                                    "
                                       ),
                                     ]
                                   ),
@@ -31848,7 +32370,7 @@ var render = function () {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                                                     Call\n                                                                 "
+                                          "\n                                                                        Call\n                                                                    "
                                         ),
                                       ]
                                     ),
@@ -31969,7 +32491,7 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "Close\n                                             "
+                            "Close\n                                                "
                           ),
                         ]
                       ),
@@ -31990,7 +32512,7 @@ var render = function () {
                             },
                             [
                               _vm._v(
-                                "\n                                                     Pending\n                                                 "
+                                "\n                                                        Pending\n                                                    "
                               ),
                             ]
                           ),
@@ -32013,7 +32535,7 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n                                                 Reject\n                                             "
+                            "\n                                                    Reject\n                                                "
                           ),
                         ]
                       ),
@@ -32031,7 +32553,7 @@ var render = function () {
                         },
                         [
                           _vm._v(
-                            "\n                                                 Go\n                                             "
+                            "\n                                                    Go\n                                                "
                           ),
                         ]
                       ),
@@ -32093,7 +32615,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("option", { attrs: { value: "Kunde bereits terminiert" } }, [
           _vm._v(
-            "Kunde bereits terminiert\n                                                 "
+            "Kunde bereits terminiert\n                                                    "
           ),
         ]),
         _vm._v(" "),
@@ -32199,6 +32721,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "lead-statistics-header mt-2 mx-3 py-3" }, [
+      _c("div", { staticClass: "header mx-4 my-2" }, [
+        _c("span", { staticClass: "fs-4 fw-bold" }, [
+          _vm._v("Lead Statistics"),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "button-div mx-4 my-2" }, [
       _c(
         "button",
@@ -32215,7 +32749,7 @@ var staticRenderFns = [
             "data-bs-target": "#asign",
           },
         },
-        [_vm._v("\n                     Assign\n                 ")]
+        [_vm._v("\n                        Assign\n                    ")]
       ),
     ])
   },
