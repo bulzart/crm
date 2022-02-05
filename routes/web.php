@@ -70,7 +70,9 @@ route::prefix('')->middleware('confirmcode')->group(function(){
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
       $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('wantsonline',0)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
    }
-
+$instagram = 0;
+$sanascout = 0;
+$facebook = 0;
    for($i = 0; $i < count($leads['leads']); $i++){
 $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
 
@@ -81,15 +83,18 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
      $leads['leads'][$i]->wichtig = $leadinfo ? $leadinfo->wichtig : null;
      $leads['leads'][$i]->kampagne = $leadinfo ? $leadinfo->kampagne : null;
      $leads['leads'][$i]->teilnahme = $leadinfo ? $leadinfo->teilnahme : null;
-
-
-
+     if($leads['leads'][$i]->campaign_id == 1) $instagram++;
+     elseif($leads['leads'][$i]->campaign_id == 2) $facebook++;
+     else $sanascout++;
    }
 
 
 
      $leads['admins'] = Admins::role(['fs','digital'])->get();
      $leads['admin'] = Auth::user()->getRoleNames();
+     $leads['sanascout'] = $sanascout;
+     $leads['instagram'] = $instagram;
+     $leads['facebook'] = $facebook;
 
      return $leads;
    });
@@ -299,13 +304,8 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
   }
 });
 route::get('rleads',[UserController::class,'rleads'])->name('rleads');
-route::get('leadhistory',function(){
+route::get('leadhistory',function(Request $request){
    $leads = lead::with('info')->with('admin')->paginate(30);
-
-
-
-
- 
    return view('leadshistory',compact('leads'));
-});
+})->name('leadshistory');
 
