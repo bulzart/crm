@@ -628,10 +628,10 @@
                         </a>
 
                         <div id="demo{{$taskId}}" class="collapse px-3 py-2">
-                            <h6 class="m-1"><b>Client:</b> Enis Demolli (emri i klientit)</h6>
-                            <h6 class="m-1"><b>Title:</b> Lorem, ipsum. (titulli)</h6>
+                            <h6 class="m-1"><b>Client:</b> {{ucfirst($task->first_name)}}</h6>
+                            <h6 class="m-1"><b>Title:</b> {{$task->description}}</h6>
                             <h6 class="m-1"><b>Date & Time:</b> 03.02.2022 13:00 (data)</h6>
-                            <h6 class="m-1"><b>Description:</b> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, blanditiis? (Description)</span></h6>
+                            <h6 class="m-1"><b>Description:</b> <span> {{$task->description }}</span></h6>
                             <button class="btn m-1" onclick="window.location.href='{{route('leadfamilyperson',$taskId)}}'" style="background-color: #fff; color: #4EC590; font-weight: 600; padding-left: 8%; padding-right: 8%;">Open</button>
                         </div>
                         <script>
@@ -713,10 +713,10 @@
 
 
                         <div id="demo_2{{$authUserId}}" class="collapse px-3 py-2">
-                            <h6 class="m-1"><b>Client:</b> Enis Demolli (emri i klientit)</h6>
-                            <h6 class="m-1"><b>Title:</b> Lorem, ipsum. (titulli)</h6>
-                            <h6 class="m-1"><b>Date & Time:</b> 03.02.2022 13:00 (data)</h6>
-                            <h6 class="m-1"><b>Description:</b> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, blanditiis? (Description)</span></h6>
+                            <h6 class="m-1"><b>Client: {{ucfirst($task->first_name)}}</b> </h6>
+                            <h6 class="m-1"><b>Title:</b> {{$task->description}}</h6>
+                            <h6 class="m-1"><b>Date & Time:</b> {{$task->created_at}}</h6>
+                            <h6 class="m-1"><b>Description:</b> <span> {{$task->description}} </span></h6>
                             <button class="btn m-1" onclick="window.location.href='{{route('leadfamilyperson',$taskId)}}'" style="background-color: #fff; color: #EF696A; font-weight: 600; padding-left: 8%; padding-right: 8%;">Open</button>
                         </div>
                         <script>

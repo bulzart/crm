@@ -47,108 +47,7 @@
                                 </div>
                             </div>
 
-
-                            <div class="col-1 pe-0 my-3 text-end">
-                                <div v-if="role != 'fs'">
-                                    <input type="checkbox" :value="lead.id" name="jep" @change="getit($event)">
-                                </div>
-                            </div>
-                            <div class="col my-3"
-                                 data-bs-toggle="modal" data-bs-target="asign" v-if="role != 'fs'">
-                                <div class="whiteee p-3">
-                                    <div class="namme mb-2">
-                                        <span v-if="lead.wantsonline == 1" class="fs-4 fw-bold">{{
-                                                lead.first_name
-                                            }} {{ lead.last_name }} (Online)</span>
-                                        <span v-else class="fs-4 fw-bold">{{ lead.first_name }} {{
-                                                lead.last_name
-                                            }}</span>
-                                    </div>
-                                    <div class="adresse row">
-                                        <div class="col-4 pe-0">
-                                            <span class="">Adresse:</span>
-                                        </div>
-                                        <div class="col ps-0">
-                                            <span class="grayyy1 fw-500 ">{{ lead.address }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="haushalt row">
-                                        <div class="col-4 pe-0">
-                                            <span class="">Haushalt:</span>
-                                        </div>
-                                        <div class="col ps-0">
-                                            <span class="grayyy1 fw-500">{{ lead.number_of_persons }} Personen</span>
-                                        </div>
-                                    </div>
-                                    <div class="grund row">
-                                        <div class="col-4 pe-0">
-                                            <span class="">Grund:</span>
-                                        </div>
-                                        <div class="col ps-0">
-                                            <span class="grayyy1 fw-500">{{ lead.grund }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="kampagne row">
-                                        <div class="col-4 pe-0">
-                                            <span class="">Kampagne:</span>
-                                        </div>
-                                        <div class="col ps-0">
-                                            <span class="grayyy1 fw-500">{{ lead.kampagne }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="grayyy" style="cursor: pointer;">
-                                    <div class="lead-offnen text-center py-2">
-                                        <span class="fs-4 fw-bold">Lead öffnen</span>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="py-1 my-2 mx-1"
-                                 data-bs-toggle="modal" :data-bs-target="'#' + lead.slug" v-else>
-                                <div class="mx-2">
-                                    <div class="whiteee p-3">
-                                        <div class="namme mb-2">
-                                            <span class="fs-4 fw-bold">{{ lead.first_name }} {{ lead.last_name }}</span>
-                                        </div>
-                                        <div class="adresse row">
-                                            <div class="col-4 pe-0">
-                                                <span class="">Adresse:</span>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <span class="grayyy1 fw-500 ">{{ lead.address }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="haushalt row">
-                                            <div class="col-4 pe-0">
-                                                <span class="">Haushalt:</span>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <span class="grayyy1 fw-500">{{
-                                                        lead.number_of_persons
-                                                    }} Personen</span>
-                                            </div>
-                                        </div>
-                                        <div class="grund row">
-                                            <div class="col-4 pe-0">
-                                                <span class="">Grund:</span>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <span class="grayyy1 fw-500">{{ lead.grund }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="kampagne row">
-                                            <div class="col-4 pe-0">
-                                                <span class="">Kampagne:</span>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <span class="grayyy1 fw-500">{{ lead.kampagne }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" :id="lead.slug" tabindex="-1"
+   <div class="modal fade" :id="lead.slug" tabindex="-1"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content" style="background: #f8f8f8">
@@ -246,8 +145,109 @@
                                         </div>
                                     </div>
                                 </div>
+                            <div class="col-1 pe-0 my-3 text-end">
+                                <div v-if="role != 'fs'">
+                                    <input type="checkbox" :value="lead.id" name="jep" @change="getit($event)">
+                                </div>
+                            </div>
+                            <div class="col my-3"
+                                 data-bs-toggle="modal" data-bs-target="asign" v-if="role != 'fs'">
+                                <div class="whiteee p-3">
+                                    <div class="namme mb-2">
+                                        <span v-if="lead.wantsonline == 1" class="fs-4 fw-bold">{{
+                                                lead.first_name
+                                            }} {{ lead.last_name }} (Online)</span>
+                                        <span v-else class="fs-4 fw-bold">{{ lead.first_name }} {{
+                                                lead.last_name
+                                            }}</span>
+                                    </div>
+                                    <div class="adresse row">
+                                        <div class="col-4 pe-0">
+                                            <span class="">Adresse:</span>
+                                        </div>
+                                        <div class="col ps-0">
+                                            <span class="grayyy1 fw-500 ">{{ lead.address }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="haushalt row">
+                                        <div class="col-4 pe-0">
+                                            <span class="">Haushalt:</span>
+                                        </div>
+                                        <div class="col ps-0">
+                                            <span class="grayyy1 fw-500">{{ lead.number_of_persons }} Personen</span>
+                                        </div>
+                                    </div>
+                                    <div class="grund row">
+                                        <div class="col-4 pe-0">
+                                            <span class="">Grund:</span>
+                                        </div>
+                                        <div class="col ps-0">
+                                            <span class="grayyy1 fw-500">{{ lead.grund }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="kampagne row">
+                                        <div class="col-4 pe-0">
+                                            <span class="">Kampagne:</span>
+                                        </div>
+                                        <div class="col ps-0">
+                                            <span class="grayyy1 fw-500">{{ lead.kampagne }}</span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="grayyy" style="cursor: pointer;">
-                                    <div class="lead-offnen text-center py-2 mx-2">
+                                    <div class="lead-offnen text-center py-2"  data-toggle="modal" :data-target="'#' + lead.slug">
+                                        <span class="fs-4 fw-bold">Lead öffnen</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="py-1 my-2 mx-1"
+                                 data-bs-toggle="modal" :data-bs-target="'#' + lead.slug" v-else>
+                                <div class="mx-2">
+                                    <div class="whiteee p-3">
+                                        <div class="namme mb-2">
+                                            <span class="fs-4 fw-bold">{{ lead.first_name }} {{ lead.last_name }}</span>
+                                        </div>
+                                        <div class="adresse row">
+                                            <div class="col-4 pe-0">
+                                                <span class="">Adresse:</span>
+                                            </div>
+                                            <div class="col ps-0">
+                                                <span class="grayyy1 fw-500 ">{{ lead.address }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="haushalt row">
+                                            <div class="col-4 pe-0">
+                                                <span class="">Haushalt:</span>
+                                            </div>
+                                            <div class="col ps-0">
+                                                <span class="grayyy1 fw-500">{{
+                                                        lead.number_of_persons
+                                                    }} Personen</span>
+                                            </div>
+                                        </div>
+                                        <div class="grund row">
+                                            <div class="col-4 pe-0">
+                                                <span class="">Grund:</span>
+                                            </div>
+                                            <div class="col ps-0">
+                                                <span class="grayyy1 fw-500">{{ lead.grund }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="kampagne row">
+                                            <div class="col-4 pe-0">
+                                                <span class="">Kampagne:</span>
+                                            </div>
+                                            <div class="col ps-0">
+                                                <span class="grayyy1 fw-500">{{ lead.kampagne }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             
+                                <div class="grayyy" style="cursor: pointer;">
+                                    <div class="lead-offnen text-center py-2 mx-2" data-toggle="modal" :data-target="'#' + lead.slug">
                                         <span class="fs-4 fw-bold">Lead öffnen</span>
                                     </div>
                                 </div>
@@ -258,6 +258,7 @@
                 </div>
             </div>
             <div v-if="role != 'fs'" class=" py-2">
+                
                 <div class="button-div mx-4 my-2">
                     <button type="submit" class="py-2 px-5 fw-bold border-0 "
                             data-bs-toggle="modal"
@@ -289,10 +290,113 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
+        <div v-for="lead in leads">
+                <div class="modal fade" :id="lead.slug" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content" style="background: #f8f8f8">
+                                            <div class="modal-header">
+                                                <div class="mx-3">
+                                        <span class="fs-3 fw-bold text-dark">
+                                           {{ lead.first_name }}
+
+                                        </span>
+                                                </div>
+
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+
+                                                <div class="">
+                                                    <div class="container pb-5">
+                                                        <div class="text-center row">
+                                                            <div class="col-6 col-md-6 py-3">
+                                                                <div class="d-flex justify-content-start">
+                                                                    <a :href="'pendingreject/' + lead.id + '/1'"
+                                                                       class="btn fw-bold fs-5 py-3 w-100"
+                                                                       style="background-color:#E50A10;color: #fff; border-radius: 10px;">
+                                                                        Reject
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 col-md-6 py-3 w-50">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <a :href="'tel:' + lead.telephone"
+                                                                       class="btn fw-bold fs-5 py-3 w-100"
+                                                                       style="background-color:#4EC590;color: #fff; border-radius: 10px;">
+                                                                        Call
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <hr>
+                                                        <div class="row mx-4 text-dark text-center"
+                                                             style="border-radius: 15px; background:white;">
+                                                            <h5>Herkunft vom Lead</h5>
+
+                                                            <span> Platform:{{ lead.campaign }}</span>
+                                                            <span>Kampagne: {{ lead.kampagne }}</span>
+                                                            <span>Grund: {{ lead.grund }}</span>
+                                                            <span>Teilnahme: {{ lead.teilnahme }} </span>
+                                                        </div>
+                                                        <div class="row mx-4 text-dark text-center mt-2"
+                                                             style="border-radius: 15px; background:white;">
+                                                            <h5>Herkunft vom Lead</h5>
+
+                                                            <span> Gerburstdatum:{{ lead.birthdate }}</span>
+                                                            <span>Haushalt: {{ lead.number_of_persons }} </span>
+                                                            <span>Telefon: {{ lead.telephone }}</span>
+                                                            <span>PLZ,Ort: {{ lead.postal_code }},{{
+                                                                    lead.city
+                                                                }} </span>
+                                                            <span>Krankenkasse: {{ lead.krankenkasse }} </span>
+                                                            <span>Bewertung KK: {{ lead.bewertung }} </span>
+                                                            <span>Wichtig: {{ lead.wichtig }} </span>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close
+                                                </button>
+                                                <a :href="'pendingreject/' + lead.id + '/0'">
+                                                    <button class="btn fw-bold fs-6"
+                                                            style="background-color:#FF860D;color: #fff; border-radius: 10px;">
+                                                        Pending
+                                                    </button>
+                                                </a>
+                                                <button class="btn fw-bold fs-6 " data-bs-toggle="modal"
+                                                        :data-bs-target="'#' + lead.slug + 'r'"
+                                                        style="background-color:#E50A10;color: #fff; border-radius: 10px;">
+                                                    Reject
+                                                </button>
+                                                <a :href="'alead/' + lead.id" class="btn fw-bold fs-6  "
+                                                   style="background-color:#4EC590;color: #fff; border-radius: 10px;">
+                                                    Go
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+        </div>
     </div>
-    </div>
+    
+    
+    
 
 
 </template>
