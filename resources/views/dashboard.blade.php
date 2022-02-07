@@ -47,67 +47,9 @@
                             </span>
                     </div>
                 </div>
-
-
                 <div class="py-3">
                     <div class="row">
-                        <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0 px-3 mb-3" style="font-family: 'Montserrat'">
-                            <!-- <div class="first-box "
-                                 style="background-color: #BDC1CC; border-radius: 25px;  margin-left: 4%;margin-right: 4%; margin-top: 4%;">
-                                <div class="row">
-                                    <div class="col g-0 my-auto">
-                                        <div class=" ps-4">
-                                                <span class="fs-2 fw-bold text-white ">
-                                                  {{$tasks}}
-                                                </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="text-end">
-                                            <svg onclick="window.location.href='{{route('tasks')}}'"
-                                                 style="cursor: pointer;"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                 viewBox="0 0 92.259 71.213">
-                                                <defs>
-                                                    <clipPath id="clip-path">
-                                                        <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                              width="92.259" height="71.213" fill="#88889b"/>
-                                                    </clipPath>
-                                                </defs>
-                                                <g id="Group_620" data-name="Group 620"
-                                                   transform="translate(-558.382 -263.428)">
-                                                    <g id="Group_18" data-name="Group 18"
-                                                       transform="translate(558.382 263.428)"
-                                                       style="isolation: isolate">
-                                                        <g id="Group_9" data-name="Group 9">
-                                                            <g id="Group_8" data-name="Group 8"
-                                                               clip-path="url(#clip-path)">
-                                                                <path id="Path_275" data-name="Path 275"
-                                                                      d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
-                                                                      transform="translate(-102.581)"
-                                                                      fill="#88889b"/>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                    <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 283.64)" fill="#fff"/>
-                                                    <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 292.384)" fill="#fff"/>
-                                                </g>
-                                            </svg>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="py-3 ps-3">
-                                        <span class="text-white fw-bolder" style="font-family: 'Montserrat'">
-                                        Anträge offen
-                                     </span>
-                                </div>
-                            </div> -->
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0 px-3 mb-3 " style="font-family: 'Montserrat'">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 303.571 190.391">
                                 <defs>
                                     <clipPath id="clip-path">
@@ -132,67 +74,10 @@
                                     <ellipse id="Ellipse_9" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 9" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(659.672 182.506)" fill="#fff"/>
                                 </g>
                                 <text id="_74_" data-name="74%" transform="translate(31.871 94.343)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$tasks}}</tspan></text>
-                                <text id="Abschlussquote" transform="translate(31.871 144.225)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Abschlussquote</tspan></text>
+                                <text id="Abschlussquote" transform="translate(31.871 144.225)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Privisionert</tspan></text>
                             </svg>
-
                         </div>
                         <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0 px-3 mb-3" style="font-family: 'Montserrat'">
-                            <!-- <div class="second-box"
-                                 style="background-color: #4CC590; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                <div class="row">
-                                    <div class="col g-0 my-auto">
-                                        <div class=" ps-4 ">
-                                                <span class="fs-2 fw-bold text-white">
-                                                {{$done}}
-                                                </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="text-end">
-                                            <svg onclick="window.location.href='{{route('tasks')}}'"
-                                                 style="cursor: pointer;"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                 viewBox="0 0 92.259 71.213">
-                                                <defs>
-                                                    <clipPath id="clip-path">
-                                                        <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                              width="92.259" height="71.213" fill="#49B178"/>
-                                                    </clipPath>
-                                                </defs>
-                                                <g id="Group_620" data-name="Group 620"
-                                                   transform="translate(-558.382 -263.428)">
-                                                    <g id="Group_18" data-name="Group 18"
-                                                       transform="translate(558.382 263.428)"
-                                                       style="isolation: isolate">
-                                                        <g id="Group_9" data-name="Group 9">
-                                                            <g id="Group_8" data-name="Group 8"
-                                                               clip-path="url(#clip-path)">
-                                                                <path id="Path_275" data-name="Path 275"
-                                                                      d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
-                                                                      transform="translate(-102.581)"
-                                                                      fill="#49B178"/>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                    <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 283.64)" fill="#fff"/>
-                                                    <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 292.384)" fill="#fff"/>
-                                                </g>
-                                            </svg>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="py-3  ps-3">
-                                        <span class="text-white fw-bolder" style="font-family: 'Montserrat'">
-                                            Aufgenommen
-                                        </span>
-                                </div>
-                            </div> -->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 303.571 190.391">
                                 <defs>
                                     <clipPath id="clip-path">
@@ -221,62 +106,6 @@
                             </svg>
                         </div>
                         <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0 px-3 mb-3" style="font-family: 'Montserrat'">
-                            <!-- <div class="second-box"
-                                 style="background-color: #f8ce79; border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                <div class="row">
-                                    <div class="col g-0 my-auto">
-                                        <div class=" ps-4 ">
-                                                <span class="fs-2 fw-bold text-white">
-                                                    {{$pending}}
-                                                </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="text-end">
-                                            <svg onclick="window.location.href='{{route('tasks')}}'"
-                                                 style="cursor: pointer;"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                 viewBox="0 0 92.259 71.213">
-                                                <defs>
-                                                    <clipPath id="clip-path">
-                                                        <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                              width="92.259" height="71.213" fill="#EDAE60"/>
-                                                    </clipPath>
-                                                </defs>
-                                                <g id="Group_620" data-name="Group 620"
-                                                   transform="translate(-558.382 -263.428)">
-                                                    <g id="Group_18" data-name="Group 18"
-                                                       transform="translate(558.382 263.428)"
-                                                       style="isolation: isolate">
-                                                        <g id="Group_9" data-name="Group 9">
-                                                            <g id="Group_8" data-name="Group 8"
-                                                               clip-path="url(#clip-path)">
-                                                                <path id="Path_275" data-name="Path 275"
-                                                                      d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
-                                                                      transform="translate(-102.581)"
-                                                                      fill="#EDAE60"/>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                    <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 283.64)" fill="#fff"/>
-                                                    <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 292.384)" fill="#fff"/>
-                                                </g>
-                                            </svg>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="py-3  ps-3">
-                                        <span class="text-white fw-bolder" style="font-family: 'Montserrat'">
-                                            Ausstehend
-                                        </span>
-                                </div>
-                            </div> -->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 303.571 190.391">
                                 <defs>
                                     <clipPath id="clip-path">
@@ -301,67 +130,8 @@
                                     <ellipse id="Ellipse_57" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 57" cx="2.711" cy="2.582" rx="2.711" ry="2.582" transform="translate(1365.642 183.097)" fill="#fff"/>
                                 </g>
                             </svg>
-
-
                         </div>
-
-
                         <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-3 col-xl g-0 px-3 mb-3" style="font-family: 'Montserrat'">
-                            <!-- <div class="fourth-box"
-                                 style="background-color: #FF6262;  border-radius: 25px; margin-left: 4%;margin-right: 4%; margin-bottom: 4%; margin-top: 4%;">
-                                <div class="row">
-                                    <div class="col g-0 my-auto">
-                                        <div class=" ps-4 ">
-                                                <span class="fs-2 fw-bold text-white">
-                                                    {{round($percnt,2)}}%
-                                                </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="text-end">
-                                            <svg style="cursor: pointer;"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                 viewBox="0 0 92.259 71.213">
-                                                <defs>
-                                                    <clipPath id="clip-path">
-                                                        <rect id="Rectangle_5" data-name="Rectangle 5"
-                                                              width="92.259" height="71.213" fill="#FD2F2F"/>
-                                                    </clipPath>
-                                                </defs>
-                                                <g id="Group_620" data-name="Group 620"
-                                                   transform="translate(-558.382 -263.428)">
-                                                    <g id="Group_18" data-name="Group 18"
-                                                       transform="translate(558.382 263.428)"
-                                                       style="isolation: isolate">
-                                                        <g id="Group_9" data-name="Group 9">
-                                                            <g id="Group_8" data-name="Group 8"
-                                                               clip-path="url(#clip-path)">
-                                                                <path id="Path_275" data-name="Path 275"
-                                                                      d="M194.84,17.664v48.96c-76.146,18.951-86.384-26.255-86.428-36.46C108.283,0,102.581,0,102.581,0h74.595A17.665,17.665,0,0,1,194.84,17.664"
-                                                                      transform="translate(-102.581)"
-                                                                      fill="#FD2F2F"/>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                    <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 283.64)" fill="#fff"/>
-                                                    <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.42"
-                                                             cy="2.42" rx="2.42" ry="2.42"
-                                                             transform="translate(617.762 292.384)" fill="#fff"/>
-                                                </g>
-                                            </svg>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="py-3  ps-3">
-                                        <span class="text-white fw-bolder" style="font-family: 'Montserrat'">
-                                            Abschlussquote
-                                        </span>
-                                </div>
-                            </div> -->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 303.571 190.391">
                                 <defs>
                                     <clipPath id="clip-path">

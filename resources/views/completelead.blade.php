@@ -358,7 +358,20 @@
                                                 <span class="fw-600 ">Datum:</span> <span class="fs-6">{{$app->appointment_date}}</span>
                                             </div>
                                         </div>
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Tag:</span> <span class="fs-6">{{\Carbon\Carbon::parse($app->appointment_date)->format('l')}}</span>
+                                            </div>
+                                        </div>
 
+
+                                        <div class="white-thingy my-2">
+                                            <div class="text-div py-3 ps-2">
+                                                <span class="fw-600 ">Strasse:</span> <span class="fs-6">{{$app->address}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                         <div class="white-thingy my-2">
                                             <div class="text-div py-3 ps-2">
                                                 <span class="fw-600 ">PLZ:</span> <span class="fs-6">{{$app->postal_code}}</span>
@@ -369,13 +382,6 @@
                                                 <span class="fw-600 ">Zufriedenheit:</span> <span class="fs-6">{{$app->zufriedenheit}}</span>
                                             </div>
                                         </div>
-                                        <div class="white-thingy my-2">
-                                            <div class="text-div py-3 ps-2">
-                                                <span class="fw-600 ">Strasse:</span> <span class="fs-6">{{$app->address}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                         <div class="white-thingy my-2">
                                             <div class="text-div py-3 ps-2">
                                                 <span class="fw-600 ">Zeit:</span> <span class="fs-6">{{$app->time}}</span>
@@ -397,13 +403,14 @@
                                                     class="fs-6">{{$app->nationality}}</span>
                                             </div>
                                         </div>
+
+                                    </div>
+                                    <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                         <div class="white-thingy my-2">
                                             <div class="text-div py-3 ps-2">
                                                 <span class="fw-600 ">Ort</span> <span class="fs-6">{{$app->city}}</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                         <div class="white-thingy my-2">
                                             <div class="text-div py-3 ps-2">
                                                 <span class="fw-600 ">Name:</span> <span class="fs-6">{{$app->first_name}} </span>
