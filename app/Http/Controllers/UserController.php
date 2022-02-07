@@ -147,8 +147,11 @@ class UserController extends Controller
             'count' => 'min:1',
             'appdate' => 'required',
             'apptime' => 'required',
-            'admin' => 'required|exists:admins,id',
-            'appbirthdate' => 'required'
+            'admin' => 'exists:admins,id',
+            'nr'=> 'required',
+            'zufriedenheit' => 'required',
+            'bemerkung' => 'required',
+            'sprache' => 'required'
         ]);
 
         $lead = new lead();
@@ -157,17 +160,20 @@ class UserController extends Controller
         $lead->telephone = filter_var($req->input('phone'), FILTER_SANITIZE_STRING);
         $lead->address = filter_var($req->input('address'), FILTER_SANITIZE_STRING);
         $lead->postal_code = filter_var($req->input('postal'), FILTER_SANITIZE_STRING);
-        $lead->city = filter_var($req->input('location'), FILTER_SANITIZE_STRING);
+        $lead->city = filter_var($req->input('nr').$req->input('location'), FILTER_SANITIZE_STRING);
         $lead->nationality = filter_var($req->input('country'), FILTER_SANITIZE_STRING);
         $lead->appointment_date = filter_var($req->input('appdate'), FILTER_SANITIZE_STRING);
         $lead->time = filter_var($req->input('apptime'), FILTER_SANITIZE_STRING);
-        $lead->birthdate = filter_var($req->input('appbirthdate'), FILTER_SANITIZE_STRING);
+       // $lead->birthdate = filter_var($req->input('appbirthdate'), FILTER_SANITIZE_STRING);
+        $lead->sprache = filter_var($req->input('sprache'), FILTER_SANITIZE_STRING);
+        $lead->zufriedenheit = filter_var($req->input('zufriedenheit'), FILTER_SANITIZE_STRING);
+        $lead->bemerkung = filter_var($req->input('bemerkung'), FILTER_SANITIZE_STRING);
         $lead->number_of_persons = (int)$req->input('count');
         $lead->campaign_id = (int)$req->input('campaign');
+        $lead->assigned = 1;
         $campaign = campaigns::where('id', $req->input('campaign'))->get();
         if ($req->input('online') == 'yes') {
             $lead->wantsonline = 1;
-            $lead->assigned = 1;
         } else {
             $lead->wantsonline = 0;
             if (Auth::guard('admins')->user()->hasRole('fs')){
@@ -268,9 +274,9 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
     public function leads(Request $req)
     {
 
-   
-     
-     
+
+
+
             $asigned = [];
             if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager')) {
                 $leads = lead::where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->paginate(200);
@@ -281,7 +287,7 @@ if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->use
 
 
 
-       
+
 $insta = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('campaign_id',1)->count();
 $facebook = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('campaign_id',2)->count();
 $sana = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('campaign_id',3)->count();
@@ -291,7 +297,7 @@ $sana = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where
 
             return view('leads', compact('leads', 'total', 'asigned','admins'));
 
-      
+
     }
 
     public function asignlead(Request $req, $id)
@@ -539,9 +545,15 @@ return redirect()->route('tasks');
 
         $rejectlead->leads_id = $id;
         $rejectlead->reason = $request->reason;
-        $rejectlead->image = $request->image;
+        $file = $request->file('image');
+        $rejectlead->image = $this->storeFile($file,'img');
 
-        $rejectlead->save();
+        if($rejectlead->save()){
+            return redirect()->route('dashboard')->with('success', 'Action Made Successfuly');
+        }else{
+            return redirect()->route('dashboard')->with('fail', 'Action Fail');
+
+        }
     }
 
     public function dashboard(Request $req)

@@ -459,7 +459,7 @@
                                                     </span>
                                                 <br>
                                                 <span class="fw-bold fs-5 text-white">
-                                                        New Leads
+                                                        Neue Leads
                                                     </span>
                                             </div>
                                         </div>
@@ -480,7 +480,7 @@
                                                     </span>
                                                 <br>
                                                 <span class="fw-bold fs-5 text-white">
-                                                        Open Tasks
+                                                        Offene Aufgaben
                                                     </span>
                                             </div>
                                         </div>
@@ -502,7 +502,7 @@
                                                     </span>
                                                 <br>
                                                 <span class="fw-bold fs-5 text-white">
-                                                        Pendencies
+                                                        Steht Aus
                                                     </span>
                                             </div>
                                         </div>
@@ -524,7 +524,7 @@
                                                     </span>
                                                 <br>
                                                 <span class="fw-bold fs-5 text-white">
-                                                        Today App
+                                                        Heute Termin
                                                     </span>
                                             </div>
                                         </div>
