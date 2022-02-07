@@ -340,7 +340,7 @@
                 <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
                 <div style="height: 30vh; overflow: auto; overflow-x: hidden;">
                     @foreach($birthdays as $birth)
-                    <div onclick="window.location.href='{{route('leadfamilyperson',$taskId)}}'" class="row my-1 mx-3 header-open-task" style="cursor: pointer;">
+                    <div  class="row my-1 mx-3 header-open-task" style="cursor: pointer;">
                         <div class="col-3 g-0">
                             <div class="">
                                 <span class="spn-normal">
