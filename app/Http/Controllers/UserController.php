@@ -164,10 +164,10 @@ class UserController extends Controller
         $lead->birthdate = filter_var($req->input('appbirthdate'), FILTER_SANITIZE_STRING);
         $lead->number_of_persons = (int)$req->input('count');
         $lead->campaign_id = (int)$req->input('campaign');
+        $lead->assigned = 1;
         $campaign = campaigns::where('id', $req->input('campaign'))->get();
         if ($req->input('online') == 'yes') {
             $lead->wantsonline = 1;
-            $lead->assigned = 1;
         } else {
             $lead->wantsonline = 0;
             if (Auth::guard('admins')->user()->hasRole('fs')){
@@ -175,7 +175,6 @@ class UserController extends Controller
             }else{
                 $lead->assign_to_id = $req->input('admin');
             }
-
         }
         $address = [];
 

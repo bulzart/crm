@@ -39,7 +39,7 @@
                             </div>
                             <div class="mb-2">
                                 <label for="" class="mb-1">Teilnahme:</label>
-                                <input type="text" name="teilnahme" class="form-control" required>
+                                <input type="date" name="teilnahme" class="form-control" required>
                             </div>
                         </div>
                     </div>

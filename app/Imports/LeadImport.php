@@ -57,6 +57,7 @@ class LeadImport implements ToModel
             'campaign_id' => $this->camp[0]->id,
             'assign_to_id' => $this->admin[0]->id,
             'time' => $row[12],
+            'assigned' => 1
 
         ]);
     }

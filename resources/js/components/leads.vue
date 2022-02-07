@@ -1,13 +1,14 @@
 <template>
     <!doctype html>
-    <div>
-        <div class="appointments-sm-div">
+    <div class="row">
+     
+        <div class="appointments-sm-div col-md-8 col-lg-8 col-12">
             <div class="appointments-content py-3">
                 <div class="overflow-div1"
                      style="overflow-y: scroll; overflow-x: hidden !important;">
                     <div class="row mx-1" style="height: 73vh !important; ">
-<div class="col-md-9 col-lg-9 col-12">
                         <div class="col-12 col-md-6 col-lg-6" v-for="lead in leads">
+                            <div class="row">
                             <div class="modal fade" :id="lead.slug + 'r'" data-bs-backdrop="static"
                                  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                  aria-hidden="true">
@@ -252,12 +253,50 @@
                                     </div>
                                 </div>
                             </div>
-                         
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="role != 'fs'" class=" py-2">
+                
+                <div class="button-div mx-4 my-2">
+                    <button type="submit" class="py-2 px-5 fw-bold border-0 "
+                            data-bs-toggle="modal"
+                            data-bs-target="#asign"
+                            style="background-color: #63D4A4; color: #fff; border-radius: 13px;">
+                        Assign
+                    </button>
+
+                </div>
+                <div class="modal fade" id="asign" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <select class="form-control" @change="changeadmin($event)">
+                                    <option v-for="admin in admins" :value="admin.id">{{ admin.name }}</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                </button>
+                                <button type="button" @click="assign" class="btn btn-primary">Assign</button>
+                            </div>
                         </div>
-   <div class="col-md-3 col-lg-3 col-12">
-                              <div class="col-12 col-lg-12 col-md-12">
-                        <div class="lead-statistics-header mt-2 mx-3 py-3">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+  
+            <div class="col-md-4 col-lg-4 col-12">
+              <div class="lead-statistics-header mt-2 mx-3 py-3">
                             <div class="header mx-4 my-2">
                                 <span class="fs-4 fw-bold">Lead Statistics</span>
                             </div>
@@ -345,152 +384,32 @@
                                     Sanascout: {{sanascout}}
                                 </span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                            </div>
-
-                    </div>
-                </div>
-            </div>
-            <div v-if="role != 'fs'" class=" py-2">
-                
-                <div class="button-div mx-4 my-2">
-                    <button type="submit" class="py-2 px-5 fw-bold border-0 "
-                            data-bs-toggle="modal"
-                            data-bs-target="#asign"
-                            style="background-color: #63D4A4; color: #fff; border-radius: 13px;">
-                        Assign
-                    </button>
-
-                </div>
-                <div class="modal fade" id="asign" tabindex="-1" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <select class="form-control" @change="changeadmin($event)">
-                                    <option v-for="admin in admins" :value="admin.id">{{ admin.name }}</option>
-                                </select>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                </button>
-                                <button type="button" @click="assign" class="btn btn-primary">Assign</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-     
-        <div v-for="lead in leads">
-                <div class="modal fade" :id="lead.slug" tabindex="-1"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content" style="background: #f8f8f8">
-                                            <div class="modal-header">
-                                                <div class="mx-3">
-                                        <span class="fs-3 fw-bold text-dark">
-                                           {{ lead.first_name }}
-
-                                        </span>
-                                                </div>
-
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
+                                <a href="leadhistory" style="text-decoration: none; color: black;">
+                                   <div class="instagram-div my-2 mx-3">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39">
+                                        <g id="Group_977" data-name="Group 977" transform="translate(-1519 -331)">
+                                            <g id="Ellipse_385" data-name="Ellipse 385" transform="translate(1519 331)"
+                                               fill="none" stroke="#88889d" stroke-width="2">
+                                                <circle cx="19.5" cy="19.5" r="19.5" stroke="none"/>
+                                                <circle cx="19.5" cy="19.5" r="18.5" fill="none"/>
+                                            </g>
+                                            <path id="Path_1923" data-name="Path 1923"
+                                                  d="M0,10.4a10.4,10.4,0,1,1,10.4,10.4A10.4,10.4,0,0,1,0,10.4m9.745-9A4.572,4.572,0,0,0,7.293,3.81,9.923,9.923,0,0,0,6.78,4.943a16.491,16.491,0,0,0,2.965.373ZM5.521,4.6a11.54,11.54,0,0,1,.625-1.4,8.763,8.763,0,0,1,.776-1.212A9.114,9.114,0,0,0,3.964,3.963,10.767,10.767,0,0,0,5.521,4.6ZM4.56,9.745a17.35,17.35,0,0,1,.567-3.909A11.826,11.826,0,0,1,3.093,4.97a9.055,9.055,0,0,0-1.77,4.775H4.56ZM6.379,6.184a16.015,16.015,0,0,0-.52,3.562H9.745V6.615a17.552,17.552,0,0,1-3.367-.431m4.666.43V9.745H14.93a16.09,16.09,0,0,0-.518-3.562,17.655,17.655,0,0,1-3.367.431ZM5.86,11.045a15.924,15.924,0,0,0,.518,3.562,17.7,17.7,0,0,1,3.367-.43V11.045Zm5.185,0v3.13a17.551,17.551,0,0,1,3.367.431,16,16,0,0,0,.52-3.562Zm-4.265,4.8a10.153,10.153,0,0,0,.513,1.133,4.581,4.581,0,0,0,2.452,2.41V15.476a16.491,16.491,0,0,0-2.965.373ZM6.923,18.8a8.652,8.652,0,0,1-.777-1.212,11.551,11.551,0,0,1-.625-1.4,10.87,10.87,0,0,0-1.557.637A9.114,9.114,0,0,0,6.922,18.8Zm-1.8-3.851a17.352,17.352,0,0,1-.568-3.909H1.323a9.044,9.044,0,0,0,1.77,4.775,11.8,11.8,0,0,1,2.034-.867M13.868,18.8a9.1,9.1,0,0,0,2.956-1.976,10.856,10.856,0,0,0-1.555-.637,11.444,11.444,0,0,1-.625,1.4,8.763,8.763,0,0,1-.776,1.212m-2.824-3.33v3.916A4.572,4.572,0,0,0,13.5,16.98a9.923,9.923,0,0,0,.513-1.133,16.38,16.38,0,0,0-2.965-.372Zm4.619-.521a11.8,11.8,0,0,1,2.034.867,9.044,9.044,0,0,0,1.77-4.775H16.232a17.352,17.352,0,0,1-.568,3.909m3.8-5.208A9.044,9.044,0,0,0,17.7,4.97a11.8,11.8,0,0,1-2.034.867,17.412,17.412,0,0,1,.568,3.909ZM14.644,3.2a11.747,11.747,0,0,1,.626,1.4,10.779,10.779,0,0,0,1.554-.637,9.1,9.1,0,0,0-2.956-1.975A8.727,8.727,0,0,1,14.644,3.2M14.01,4.943A10.214,10.214,0,0,0,13.5,3.81,4.577,4.577,0,0,0,11.045,1.4V5.314a16.491,16.491,0,0,0,2.965-.373Z"
+                                                  transform="translate(1527.891 340.378)" fill="#88889d"/>
+                                        </g>
+                                    </svg>
 
 
-                                                <div class="">
-                                                    <div class="container pb-5">
-                                                        <div class="text-center row">
-                                                            <div class="col-6 col-md-6 py-3">
-                                                                <div class="d-flex justify-content-start">
-                                                                    <a :href="'pendingreject/' + lead.id + '/1'"
-                                                                       class="btn fw-bold fs-5 py-3 w-100"
-                                                                       style="background-color:#E50A10;color: #fff; border-radius: 10px;">
-                                                                        Reject
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 col-md-6 py-3 w-50">
-                                                                <div class="d-flex justify-content-center">
-                                                                    <a :href="'tel:' + lead.telephone"
-                                                                       class="btn fw-bold fs-5 py-3 w-100"
-                                                                       style="background-color:#4EC590;color: #fff; border-radius: 10px;">
-                                                                        Call
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <hr>
-                                                        <div class="row mx-4 text-dark text-center"
-                                                             style="border-radius: 15px; background:white;">
-                                                            <h5>Herkunft vom Lead</h5>
-
-                                                            <span> Platform:{{ lead.campaign }}</span>
-                                                            <span>Kampagne: {{ lead.kampagne }}</span>
-                                                            <span>Grund: {{ lead.grund }}</span>
-                                                            <span>Teilnahme: {{ lead.teilnahme }} </span>
-                                                        </div>
-                                                        <div class="row mx-4 text-dark text-center mt-2"
-                                                             style="border-radius: 15px; background:white;">
-                                                            <h5>Herkunft vom Lead</h5>
-
-                                                            <span> Gerburstdatum:{{ lead.birthdate }}</span>
-                                                            <span>Haushalt: {{ lead.number_of_persons }} </span>
-                                                            <span>Telefon: {{ lead.telephone }}</span>
-                                                            <span>PLZ,Ort: {{ lead.postal_code }},{{
-                                                                    lead.city
-                                                                }} </span>
-                                                            <span>Krankenkasse: {{ lead.krankenkasse }} </span>
-                                                            <span>Bewertung KK: {{ lead.bewertung }} </span>
-                                                            <span>Wichtig: {{ lead.wichtig }} </span>
-                                                        </div>
-
-
-                                                    </div>
-
-                                                </div>
-
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close
-                                                </button>
-                                                <a :href="'pendingreject/' + lead.id + '/0'">
-                                                    <button class="btn fw-bold fs-6"
-                                                            style="background-color:#FF860D;color: #fff; border-radius: 10px;">
-                                                        Pending
-                                                    </button>
-                                                </a>
-                                                <button class="btn fw-bold fs-6 " data-bs-toggle="modal"
-                                                        :data-bs-target="'#' + lead.slug + 'r'"
-                                                        style="background-color:#E50A10;color: #fff; border-radius: 10px;">
-                                                    Reject
-                                                </button>
-                                                <a :href="'alead/' + lead.id" class="btn fw-bold fs-6  "
-                                                   style="background-color:#4EC590;color: #fff; border-radius: 10px;">
-                                                    Go
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
+                                </span> <span class="fs-5 fw-500 ps-2">
+                                  History of leads
+                                </span>
                                 </div>
-        </div>
-          
+                                </a>
+                            </div>
+                        </div>
+                </div>
+    
     </div>
     
     
@@ -510,8 +429,8 @@ export default {
             admins: null,
             array: [],
             role: null,
-            facebook: null,
             instagram: null,
+            facebook: null,
             sanascout: null
         };
     },
@@ -525,9 +444,9 @@ export default {
                 this.admins = response.data.admins;
                 this.admin = response.data.admins[0].id;
                 this.role = response.data.admin[0];
-                this.sanascout = response.data.sanascout,
-                this.facebook = response.data.facebook,
-                this.instagram = response.data.instagram
+                this.instagram = response.data.instagram;
+                this.facebook = response.data.facebook;
+                this.sanascout = response.data.sanascout;
             });
         },
         getit: function (event) {
@@ -567,161 +486,4 @@ export default {
     },
 };
 </script>
-<style>
-.grayyy1 {
-    color: #88889D;
-}
 
-.assigned-leads-div {
-    border-radius: 25px;
-}
-
-.t {
-    color: #88889D;
-}
-
-.fw-600 {
-    font-weight: 600;
-
-}
-
-.fw-500 {
-    font-weight: 500;
-}
-
-.whiteee {
-    background-color: #fff;
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
-}
-
-.lead-offnen {
-    background-color: #88889D;
-    color: #fff;
-    border-bottom-left-radius: 15px !important;
-    border-bottom-right-radius: 15px !important;
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-}
-
-.overflow-divvv::-webkit-scrollbar {
-    width: 0px;
-}
-
-/* Track */
-.overflow-divvv::-webkit-scrollbar-track {
-    background: transparent !important;
-    border-radius: 10px;
-}
-
-/* Handle */
-.overflow-divvv::-webkit-scrollbar-thumb {
-    background: #c9cad8;
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-.overflow-divvv::-webkit-scrollbar-thumb:hover {
-    background: #707070;
-    border-radius: 10px;
-}
-
-.lead-statistics-header {
-    background-color: #F7F7F7;
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
-}
-
-.lead-statistics {
-    background-color: #F7F7F7;
-    border-bottom-left-radius: 15px !important;
-    border-bottom-right-radius: 15px !important;
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-}
-</style>
-<style>
-.grayyy1 {
-    color: #88889D;
-}
-
-.assigned-leads-div {
-    border-radius: 25px;
-}
-
-.t {
-    color: #88889D;
-}
-
-.fw-600 {
-    font-weight: 600;
-
-}
-
-.fw-500 {
-    font-weight: 500;
-}
-
-.whiteee {
-    background-color: #fff;
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
-}
-
-.lead-offnen {
-    background-color: #88889D;
-    color: #fff;
-    border-bottom-left-radius: 15px !important;
-    border-bottom-right-radius: 15px !important;
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-}
-
-.overflow-divvv::-webkit-scrollbar {
-    width: 0px;
-}
-
-/* Track */
-.overflow-divvv::-webkit-scrollbar-track {
-    background: transparent !important;
-    border-radius: 10px;
-}
-
-/* Handle */
-.overflow-divvv::-webkit-scrollbar-thumb {
-    background: #c9cad8;
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-.overflow-divvv::-webkit-scrollbar-thumb:hover {
-    background: #707070;
-    border-radius: 10px;
-}
-
-.lead-statistics-header {
-    background-color: #F7F7F7;
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
-}
-
-.lead-statistics {
-    background-color: #F7F7F7;
-    border-bottom-left-radius: 15px !important;
-    border-bottom-right-radius: 15px !important;
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-}
-
-input[type="checkbox"i] {
-    margin: 5px;
-}
-</style>

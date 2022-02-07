@@ -299,14 +299,15 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
    return view('pendingreject')->with('pojo',0)->with('leads',lead::find($id));
   }
   else{
-
    return view('pendingreject')->with('pojo',1)->with('leads',lead::find($id));
   }
 });
 route::get('rleads',[UserController::class,'rleads'])->name('rleads');
 route::get('leadhistory',function(Request $request){
-   $leads = lead::with('info')->with('admin')->paginate(30);
-
+   $leads = lead::with('info')->with('admin')->orderBy('created_at','desc')->paginate(40);
    return view('leadshistory',compact('leads'));
 })->name('leadshistory');
 
+route::any('tryevent',function(){
+
+});

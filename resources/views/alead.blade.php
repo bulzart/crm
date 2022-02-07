@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="mb-2">
                                     <label for="" class="mb-1">Personen</label>
-                                    <input type="text" class="form-control" value="{{$lead->number_of_persons}}" name="personen">
+                                    <input type="number" class="form-control" value="{{$lead->number_of_persons}}" name="personen">
                                 </div>
                                 <div class="mb-2">
                                     <label for="" class="mb-1">Nationalitat:</label>

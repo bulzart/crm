@@ -27,7 +27,7 @@ class lead extends Model
             'assign_to_id',
             'time',
             'wantsonline',
-            'slug'
+            'slug',
         ];
 
     public function campaign(){

@@ -162,8 +162,164 @@
         border-top-left-radius: 0px !important;
         border-top-right-radius: 0px !important;
     }
+    .grayyy1 {
+    color: #88889D;
+}
+
+.assigned-leads-div {
+    border-radius: 25px;
+}
+
+.t {
+    color: #88889D;
+}
+
+.fw-600 {
+    font-weight: 600;
+
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.whiteee {
+    background-color: #fff;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+.lead-offnen {
+    background-color: #88889D;
+    color: #fff;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+.overflow-divvv::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+.overflow-divvv::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+
+/* Handle */
+.overflow-divvv::-webkit-scrollbar-thumb {
+    background: #c9cad8;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.overflow-divvv::-webkit-scrollbar-thumb:hover {
+    background: #707070;
+    border-radius: 10px;
+}
+
+.lead-statistics-header {
+    background-color: #F7F7F7;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+.lead-statistics {
+    background-color: #F7F7F7;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
 </style>
-{{--<style>--}}
+<style>
+.grayyy1 {
+    color: #88889D;
+}
+
+.assigned-leads-div {
+    border-radius: 25px;
+}
+
+.t {
+    color: #88889D;
+}
+
+.fw-600 {
+    font-weight: 600;
+
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.whiteee {
+    background-color: #fff;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+.lead-offnen {
+    background-color: #88889D;
+    color: #fff;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+.overflow-divvv::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+.overflow-divvv::-webkit-scrollbar-track {
+    background: transparent !important;
+    border-radius: 10px;
+}
+
+/* Handle */
+.overflow-divvv::-webkit-scrollbar-thumb {
+    background: #c9cad8;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.overflow-divvv::-webkit-scrollbar-thumb:hover {
+    background: #707070;
+    border-radius: 10px;
+}
+
+.lead-statistics-header {
+    background-color: #F7F7F7;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+.lead-statistics {
+    background-color: #F7F7F7;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+input[type="checkbox"i] {
+    margin: 5px;
+}
+</style>
+<style>
 {{--    .statistics-div {--}}
 {{--        background-color: #EFEFEF;--}}
 {{--        border-radius: 35px;--}}
@@ -263,7 +419,7 @@
 
 {{--    }--}}
 {{--                                                </style>--}}
-{{--</style>--}}
+</style>
 
 
 <script>
