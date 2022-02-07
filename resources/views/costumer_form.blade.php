@@ -1497,7 +1497,7 @@
                                                                         name="status_PZ">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Angenommen</option>
+                                                                  <option value="Angenommen">Angenommen</option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt</option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>

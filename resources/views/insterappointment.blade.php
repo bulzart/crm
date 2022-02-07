@@ -78,11 +78,12 @@
                                 <label for="admin" class="">Zuweisen</label>
                                 <br>
                                 <select name="admin" class="form-control">
-                                <option value=""></option>
+                              
                                     @if(Auth::guard('admins')->user()->hasRole('fs'))
                                         <option value="{{$admins->id}}">{{$admins->name}}</option>
                                     @else
                                         @foreach($admins as $admin)
+                                        <option value=""></option>
                                             <option value="{{$admin->id}}">{{$admin->name}}</option>
                                         @endforeach
                                     @endif

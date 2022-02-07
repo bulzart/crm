@@ -58,7 +58,6 @@ route::prefix('')->middleware('confirmcode')->group(function(){
    });
    route::post('importleads',function(Request $req){
       $file = $req->file('file');
-
       \Maatwebsite\Excel\Facades\Excel::import(new newlead, $file);
       \Maatwebsite\Excel\Facades\Excel::import(new leadinfo, $file);
       return redirect()->back();
