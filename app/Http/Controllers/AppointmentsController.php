@@ -38,10 +38,10 @@ class AppointmentsController extends Controller
 			
 			//$langues = DB::table('leads')->select('sprache')->where('assign_to_id',0)->distinct()->orderBy('sprache', 'asc')->get();
 			
-			$appointments_events = lead::select('*')->where('assign_to_id',0)->where('appointment_date',Carbon::now()->format('Y-m-d'))->where('completed',0)->orderBy('time', $trie)->where($regionQ,$regionI)->where($rejectedQ,$rejectedI)->where($spracheQ,$spracheI)->get();
-			$appointments = lead::select('*','leads.id as id')->join('model_has_roles', 'model_has_roles.model_id', '=', 'leads.assign_to_id')
-			->where('model_has_roles.role_id',7)->where('leads.assign_to_id','<>',0)->where('leads.assigned',1)->whereNotNull('leads.appointment_date')->get(); 
-			
+			$appointments_events = lead::select('*')->whereNull('assign_to_id')->orderBy('time', $trie)->where($regionQ,$regionI)->where($rejectedQ,$rejectedI)->where($spracheQ,$spracheI)->get();
+			$appointments = lead::whereNotNull('leads.appointment_date')->where('completed',0)->get(); 
+
+	
 			return view('appointment')->with('users',$users)->with('appointments_events',$appointments_events)->with('appointments',$appointments)->with('regions',$regions)->with('langues',$langues)->with('regionO',$regionO)->with('rejectedO',$rejectedO)->with('spracheO',$spracheO)->with('trie',$trie);
 		}else{
 			$users="";$appointments_events = "";

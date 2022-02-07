@@ -147,7 +147,6 @@ class UserController extends Controller
             'count' => 'min:1',
             'appdate' => 'required',
             'apptime' => 'required',
-            'admin' => 'exists:admins,id',
             'nr'=> 'required',
             'zufriedenheit' => 'required',
             'bemerkung' => 'required',
@@ -178,8 +177,15 @@ class UserController extends Controller
             $lead->wantsonline = 0;
             if (Auth::guard('admins')->user()->hasRole('fs')){
                 $lead->assign_to_id = Auth::guard('admins')->user()->id;
-            }else{
-                $lead->assign_to_id = $req->input('admin');
+            }
+            else{
+                if($req->input('admin') != ''){
+                    Admins::findorFail($req->input('admin'));
+                $lead->assign_to_id = (int) $req->input('admin');              
+                }
+                else{
+                    $lead->assigned = 0;
+                }
             }
         }
         $address = [];
@@ -201,8 +207,7 @@ class UserController extends Controller
 
 
         if ($lead->save()) {
-            $lead->slug = Str::slug($req->input('first_name')) . '-' . $lead->id;
-
+            $lead->slug = Str::slug($req->input('fname')) . '-' . $lead->id;
             $lead->save();
             return redirect()->back()->with('success', 'You joined successfully, our team will try to contact you as soon as possible!');
         } else {

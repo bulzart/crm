@@ -136,7 +136,6 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
    //  Route::group(['middleware' => 'json.response'], function () {
       route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
    // });
-
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
     Route::get('changeTS', 'App\Http\Controllers\AppointmentsController@changeTS')->name('changeTS');

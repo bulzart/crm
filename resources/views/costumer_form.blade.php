@@ -419,9 +419,11 @@
                                                                         name="statusG">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
+                                                                    <option value="Angenommen">Angenommen</option>
                                                                     <option value="Offen">Offen</option>
+                                                                    <option value="Abgelehnt">Abgelehnt</option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
                                                                     <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
                                                                 </select>
                                                             </div>
 
@@ -540,9 +542,11 @@
                                                                         name="statusV">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
+                                                                    <option value="Angenommen">Angenommen</option>
                                                                     <option value="Offen">Offen</option>
+                                                                    <option value="Abgelehnt">Abgelehnt</option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
                                                                     <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
                                                                 </select>
                                                             </div>
 
@@ -905,9 +909,11 @@
                                                                         name="statusR">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
+                                                                    <option value="Angenommen">Angenommen</option>
                                                                     <option value="Offen">Offen</option>
+                                                                    <option value="Abgelehnt">Abgelehnt</option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
                                                                     <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
                                                                 </select>
                                                             </div>
 
@@ -1214,9 +1220,11 @@
                                                                         name="status_PG">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
+                                                                    <option value="Angenommen">Angenommen</option>
                                                                     <option value="Offen">Offen</option>
+                                                                    <option value="Abgelehnt">Abgelehnt</option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
                                                                     <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
                                                                 </select>
                                                             </div>
 
@@ -1334,9 +1342,11 @@
                                                                         name="status_PA">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
+                                                                    <option value="Angenommen">Angenommen</option>
                                                                     <option value="Offen">Offen</option>
+                                                                    <option value="Abgelehnt">Abgelehnt</option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
                                                                     <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1487,9 +1497,11 @@
                                                                         name="status_PZ">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
+                                                                    <option value="Angenommen">Angenommen</option>
                                                                     <option value="Offen">Offen</option>
+                                                                    <option value="Abgelehnt">Abgelehnt</option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
                                                                     <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
                                                                 </select>
                                                             </div>
 

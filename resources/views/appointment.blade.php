@@ -71,7 +71,6 @@
       eventData: function(eventEl) {
         return {
           title: eventEl.innerText.trim(),
-		  
         }
       }
     });
@@ -457,7 +456,6 @@
 
 </script>
 <!-- Button trigger modal
-{{trim(preg_replace("/\s\s+/", " ", $appointmentAGG["address"])) }} {{trim(preg_replace("/\s\s+/", " ", $appointmentAGG["city"])) }}, {{ $appointmentAGG["postal_code"] }}
 
 
  -->
