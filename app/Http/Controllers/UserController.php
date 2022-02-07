@@ -7,6 +7,7 @@ use App\Imports\LeadImport;
 use App\Imports\LeadsImport;
 use App\Imports\TestImport;
 use App\Models\Admins;
+use App\Models\CostumerProduktAutoversicherung;
 use App\Models\Deletedlead;
 use App\Models\PersonalAppointment;
 use App\Models\rejectedlead;
@@ -707,6 +708,8 @@ $taskcnt = 0;
                     $countpersonalApp = PersonalAppointment::where('AppOrCon',1)->where('assignfrom',Auth::user()->id)->count();
                     $admins = Admins::all();
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
+
+
                     return view('dashboard', compact('done','admins','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded','countpersonalApp'));
                 }
 

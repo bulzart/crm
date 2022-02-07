@@ -46,8 +46,12 @@ class TodoController extends Controller
       $todo = new todo();
       $todo->text = filter_var($req->todo,FILTER_SANITIZE_STRING);
       $todo->admin_id = Auth::guard('admins')->user()->id;
-      $todo->save();
-      return redirect()->route('dashboard');
+      if($todo->save()){
+          return redirect()->route('dashboard')->with('success', 'Successfuly Inserted');
+      }else{
+          return redirect()->route('dashboard')->with('fail','Fail To Insert');
+      }
+
     }
     public function todos(){
         if(Auth::guard('admins')->check()){
@@ -76,7 +80,8 @@ class TodoController extends Controller
             $id = (int) $req->id;
             $todo = todo::where('id',$id)->get();
             if($todo->assign_to_id == Auth::guard('admins')->user()->id || Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice')){
-            $todo->update(['done' => 1]);}
+            $todo->update(['done' => 1]);
+            }
         }
     }
 
@@ -103,7 +108,7 @@ class TodoController extends Controller
     }
 
     public function getAllOpenedToDoTasks()
-    { 
+    {
         return todo::where('done', 'Opened')->get();
     }
 

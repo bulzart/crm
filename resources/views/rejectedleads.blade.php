@@ -54,7 +54,6 @@
                 </div>
                 <div class="col">
                     <div class="mb-3">
-
                         <div class="info-divv px-2 my-3">
                             <div class="row">
                                 <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
@@ -75,12 +74,7 @@
                                     </div>
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
-                                            <span class="fw-600 ">PLZ:</span> <span class="fs-6">{{$leads->postal_code}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="white-thingy my-2">
-                                        <div class="text-div py-3 ps-2">
-                                            <span class="fw-600 ">Zufriedenheit:</span> <span class="fs-6">{{$leads->zufriedenheit}}</span>
+                                            <span class="fw-600 ">Tag:</span> <span class="fs-6">{{\Carbon\Carbon::parse($leads->appointment_date)->format('l')}}</span>
                                         </div>
                                     </div>
                                     <div class="white-thingy my-2">
@@ -90,6 +84,16 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">PLZ:</span> <span class="fs-6">{{$leads->postal_code}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-thingy my-2">
+                                        <div class="text-div py-3 ps-2">
+                                            <span class="fw-600 ">Zufriedenheit:</span> <span class="fs-6">{{$leads->zufriedenheit}}</span>
+                                        </div>
+                                    </div>
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
                                             <span class="fw-600 ">Zeit:</span> <span class="fs-6">{{$leads->time}}</span>
@@ -107,17 +111,16 @@
                                     </div>
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
-                                            <span class="fw-600 ">Nationalitat:</span> <span
-                                                class="fs-6">{{$leads->nationality}}</span>
+                                            <span class="fw-600 ">Nationalitat:</span> <span class="fs-6">{{$leads->nationality}}</span>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
                                             <span class="fw-600 ">Ort</span> <span class="fs-6">{{$leads->city}}</span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                                     <div class="white-thingy my-2">
                                         <div class="text-div py-3 ps-2">
                                             <span class="fw-600 ">Name:</span> <span class="fs-6">{{$leads->first_name}} </span>
