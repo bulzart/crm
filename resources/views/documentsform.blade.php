@@ -588,7 +588,7 @@
                                                     <div class="">
                                                             <span class="fw-bold" style=" font-size: 12px;">
                                                                 Vollmacht
-                                                            </span>
+                                                                </span>
                                                     </div>
                                                 </div>
                                                 <!-- <div class="col g-0 d-flex justify-content-end">
@@ -782,7 +782,7 @@
                                                                 <label for="exampleFormControlTextarea1"
                                                                        class="form-label"
                                                                        style="font-size: 13px;">Kommentar</label>
-                                                                <textarea name="comment" class="form-control"
+                                                                <textarea name="commentFahrenzug" class="form-control"
                                                                           id="exampleFormControlTextarea1"
                                                                           rows="3"></textarea>
                                                             </div>
@@ -876,7 +876,8 @@
                                                                                 <input type="text"
                                                                                        class="form-control text-center"
                                                                                        id="file-input-5c" disabled
-                                                                                       style="background:transparent; border:none;">
+                                                                                       style="background:transparent; border:none;"
+                                                                                       name="vehicle_id">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1594,7 +1595,8 @@
                                                                     <input type="text"
                                                                            class="form-control text-center"
                                                                            id="file-input-6c" disabled
-                                                                           style="background:transparent;border:none;">
+                                                                           style="background:transparent;border:none;"
+                                                                           name="upload_police__">
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -859,25 +859,26 @@
                                                                         </svg>
                                                                     </label>
                                                                     @if(isset($data->fahrzeug->upload_police))
-                                                                        <input type="file" id="file-input-4"
+                                                                        <input type="file" id="file-input-4" name="upload_policeFahrzeug"
                                                                                class="svg-div w-100 border-0  g-0"
                                                                                onchange="upload(this);"
                                                                                value="{{$data->fahrzeug->upload_police}}"
-                                                                               name="upload_policeFahrzeug">
+                                                                               >
                                                                         <a style="text-decoration: none" href="{{route('showfile',$data->fahrzeug->upload_police)}}">
                                                                             <input type="text"
                                                                                    class="form-control text-center"
-                                                                                   id="file-input-4a" disabled
+                                                                                   id="file-input-4c" disabled
                                                                                    style="background:transparent; border:none;"
-                                                                                   value="{{$data->fahrzeug->upload_police}}"></a>
+                                                                                   value="{{$data->fahrzeug->upload_police}}"
+                                                                            >
+                                                                        </a>
                                                                     @else
-                                                                        <input type="file" id="file-input-4a"
+                                                                        <input type="file" id="file-input-4" name="upload_policeFahrzeug"
                                                                                class="svg-div w-100 border-0  g-0"
-                                                                               onchange="upload(this);"
-                                                                               name="upload_policeFahrzeug">
+                                                                               onchange="upload(this);">
                                                                         <input type="text"
                                                                                class="form-control text-center"
-                                                                               id="file-input-4a" disabled
+                                                                               id="file-input-4c" disabled
                                                                                style="background:transparent; border:none;">
                                                                     @endif
                                                                 </div>
@@ -920,11 +921,11 @@
                                                                        class="form-label"
                                                                        style="font-size: 13px;">Kommentar</label>
                                                                 @if(isset($data->fahrzeug->comment))
-                                                                    <textarea name="comment" class="form-control"
+                                                                    <textarea name="commentFahrenzug" class="form-control"
                                                                               id="exampleFormControlTextarea1"
                                                                               rows="3">{{$data->fahrzeug->comment}}</textarea>
                                                                 @else
-                                                                    <textarea name="comment" class="form-control"
+                                                                    <textarea name="commentFahrenzug" class="form-control"
                                                                               id="exampleFormControlTextarea1"
                                                                               rows="3"></textarea>
                                                                 @endif
@@ -1018,13 +1019,14 @@
                                                                                            class="svg-div w-100 border-0  g-0"
                                                                                            onchange="upload(this);"
                                                                                            value="{{$data->fahrzeug->vehicle_id}}"
-                                                                                           name="upload_police">
+                                                                                           name="vehicle_id">
                                                                                     <a style="text-decoration: none" href="{{route('showfile',$data->fahrzeug->vehicle_id)}}">
                                                                                         <input type="text"
                                                                                                class="form-control text-center"
                                                                                                id="file-input-5c" disabled
                                                                                                style="background:transparent; border:none;"
-                                                                                               value="{{$data->fahrzeug->vehicle_id}}"></a>
+                                                                                               value="{{$data->fahrzeug->vehicle_id}}"
+                                                                                               name="vehicle_id"></a>
                                                                                 @else
                                                                                     <input type="file" id="file-input-5"
                                                                                            class="svg-div w-100 border-0  g-0"
@@ -1033,7 +1035,8 @@
                                                                                     <input type="text"
                                                                                            class="form-control text-center"
                                                                                            id="file-input-5c" disabled
-                                                                                           style="background:transparent; border:none;">
+                                                                                           style="background:transparent; border:none;"
+                                                                                           name="vehicle_id">
                                                                                 @endif
 
 
@@ -2295,7 +2298,8 @@
                                                                                    class="form-control text-center"
                                                                                    id="file-input-6c" disabled
                                                                                    style="background:transparent;border:none;"
-                                                                                   value="{{$data->prevention->upload_police}}">
+                                                                                   value="{{$data->prevention->upload_police}}"
+                                                                                   name="upload_police__">
                                                                             @else
                                                                                 <input type="file" id="file-input-6"
                                                                                        class="svg-div w-100 border-0  g-0"
@@ -2304,7 +2308,8 @@
                                                                                 <input type="text"
                                                                                        class="form-control text-center"
                                                                                        id="file-input-6c" disabled
-                                                                                       style="background:transparent;border:none;">
+                                                                                       style="background:transparent;border:none;"
+                                                                                       name="upload_police__">
                                                                     @endif
                                                                 </div>
                                                             </div>
