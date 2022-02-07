@@ -8,6 +8,11 @@
     <body>
     <section>
         <div class="container">
+        @if($errors->any())
+        <div class="text-center">
+            {!! implode('<br />', $errors->all(':message')) !!}
+        </div>
+    @endif
             <div class="form-div my-4 py-4 col-10 mx-auto" style="background-color: #EFEFEF; border-radius: 20px;">
                 <form action="{{route('addappointment')}}" method="post">
                     @csrf
@@ -73,6 +78,7 @@
                                 <label for="admin" class="">Zuweisen</label>
                                 <br>
                                 <select name="admin" class="form-control">
+                                <option value=""></option>
                                     @if(Auth::guard('admins')->user()->hasRole('fs'))
                                         <option value="{{$admins->id}}">{{$admins->name}}</option>
                                     @else
