@@ -73,7 +73,7 @@
                                     <ellipse id="Ellipse_8" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 8" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(659.672 173.599)" fill="#fff"/>
                                     <ellipse id="Ellipse_9" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 9" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(659.672 182.506)" fill="#fff"/>
                                 </g>
-                                <text id="_74_" data-name="74%" transform="translate(31.871 94.343)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$tasks}}</tspan></text>
+                                <text id="_74_" data-name="74%" transform="translate(31.871 94.343)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$counterat['provisionertCount']}}</tspan></text>
                                 <text id="Abschlussquote" transform="translate(31.871 144.225)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Privisionert</tspan></text>
                             </svg>
                         </div>
@@ -100,7 +100,7 @@
                                     </g>
                                     <ellipse id="Ellipse_6" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 6" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(1011.763 173.599)" fill="#fff"/>
                                     <ellipse id="Ellipse_7" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 7" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(1011.763 182.506)" fill="#fff"/>
-                                    <text id="_23" data-name="23" transform="translate(780.002 239.881)" fill="#fff" font-size="51" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$done}}</tspan></text>
+                                    <text id="_23" data-name="23" transform="translate(780.002 239.881)" fill="#fff" font-size="51" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$counterat['aufgenomenCount']}}</tspan></text>
                                     <text id="Aufgenommen" transform="translate(780.002 287.762)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Aufgenommen</tspan></text>
                                 </g>
                             </svg>
@@ -125,7 +125,7 @@
                                     </g>
                                     </g>
                                     <ellipse id="Ellipse_4" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 4" cx="2.711" cy="2.582" rx="2.711" ry="2.582" transform="translate(1365.642 174.097)" fill="#fff"/>
-                                    <text id="_32" data-name="32" transform="translate(1137.893 237.881)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$pending}}</tspan></text>
+                                    <text id="_32" data-name="32" transform="translate(1137.893 237.881)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$counterat['offenCount']}}</tspan></text>
                                     <text id="Aufgenommen" transform="translate(1137.893 287.762)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Ausstehend</tspan></text>
                                     <ellipse id="Ellipse_57" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 57" cx="2.711" cy="2.582" rx="2.711" ry="2.582" transform="translate(1365.642 183.097)" fill="#fff"/>
                                 </g>
@@ -153,7 +153,7 @@
                                 </g>
                                 <ellipse id="Ellipse_11" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 11" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(262.653 30.062)" fill="#fff"/>
                                 <ellipse id="Ellipse_10" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 10" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(262.653 38.969)" fill="#fff"/>
-                                <text id="_74_" data-name="74%" transform="translate(31.565 94.876)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{round($percnt,2)}}%</tspan></text>
+                                <text id="_74_" data-name="74%" transform="translate(31.565 94.876)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{round($counterat['familyCount'],2)}}%</tspan></text>
                                 <text id="Abschlussquote" transform="translate(31.565 144.474)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Abschlussquote</tspan></text>
                             </svg>
 

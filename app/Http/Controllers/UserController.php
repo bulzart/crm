@@ -8,6 +8,11 @@ use App\Imports\LeadsImport;
 use App\Imports\TestImport;
 use App\Models\Admins;
 use App\Models\CostumerProduktAutoversicherung;
+use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktHausrat;
+use App\Models\CostumerProduktRechtsschutz;
+use App\Models\CostumerProduktVorsorge;
+use App\Models\CostumerProduktZusatzversicherung;
 use App\Models\Deletedlead;
 use App\Models\PersonalAppointment;
 use App\Models\rejectedlead;
@@ -182,7 +187,7 @@ class UserController extends Controller
             else{
                 if($req->input('admin') != ''){
                     Admins::findorFail($req->input('admin'));
-                $lead->assign_to_id = (int) $req->input('admin');              
+                $lead->assign_to_id = (int) $req->input('admin');
                 }
                 else{
                     $lead->assigned = 0;
@@ -714,7 +719,46 @@ $taskcnt = 0;
                     $todayAppointCount = lead::where('appointment_date', Carbon::now()->toDateString())->where('assigned', 1)->count();
 
 
-                    return view('dashboard', compact('done','admins','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded','countpersonalApp'));
+                    //codi per me marr countin per status tcostumerav
+                    $grundversicherungP = CostumerProduktGrundversicherung::where('status_PG', 'Provisionert')->count();
+                    $retchsschutzP = CostumerProduktRechtsschutz::where('status_PR', 'Provisionert')->count();
+                    $vorsorgeP = CostumerProduktVorsorge::where('status_PV', 'Provisionert')->count();
+                    $zusatzversicherungP = CostumerProduktZusatzversicherung::where('status_PZ', 'Provisionert')->count();
+                    $autoversicherungP = CostumerProduktAutoversicherung::where('status_PA', 'Provisionert')->count();
+                    $hausratP = CostumerProduktHausrat::where('status_PH', 'Provisionert')->count();
+
+                    $provisionertCount = $grundversicherungP + $retchsschutzP + $vorsorgeP + $zusatzversicherungP + $autoversicherungP + $hausratP;
+
+                    $grundversicherungP = CostumerProduktGrundversicherung::where('status_PG', 'Offen')->count();
+                    $retchsschutzP = CostumerProduktRechtsschutz::where('status_PR', 'Offen')->count();
+                    $vorsorgeP = CostumerProduktVorsorge::where('status_PV', 'Offen')->count();
+                    $zusatzversicherungP = CostumerProduktZusatzversicherung::where('status_PZ', 'Offen')->count();
+                    $autoversicherungP = CostumerProduktAutoversicherung::where('status_PA', 'Offen')->count();
+                    $hausratP = CostumerProduktHausrat::where('status_PH', 'Offen')->count();
+
+                    $offenCount = $grundversicherungP + $retchsschutzP + $vorsorgeP + $zusatzversicherungP + $autoversicherungP + $hausratP;
+
+                    $grundversicherungP = CostumerProduktGrundversicherung::where('status_PG', 'Aufgenomen')->count();
+                    $retchsschutzP = CostumerProduktRechtsschutz::where('status_PR', 'Aufgenomen')->count();
+                    $vorsorgeP = CostumerProduktVorsorge::where('status_PV', 'Aufgenomen')->count();
+                    $zusatzversicherungP = CostumerProduktZusatzversicherung::where('status_PZ', 'Aufgenomen')->count();
+                    $autoversicherungP = CostumerProduktAutoversicherung::where('status_PA', 'Aufgenomen')->count();
+                    $hausratP = CostumerProduktHausrat::where('status_PH', 'Aufgenomen')->count();
+
+                    $aufgenomenCount = $grundversicherungP + $retchsschutzP + $vorsorgeP + $zusatzversicherungP + $autoversicherungP + $hausratP;
+                    $familyCount = (100 / family::count()) * ($provisionertCount);
+                    $counterat = [
+                        'provisionertCount' => $provisionertCount,
+                        'offenCount' => $offenCount,
+                        'aufgenomenCount' => $aufgenomenCount,
+                        'familyCount' => $familyCount
+                    ];
+
+
+
+
+
+                    return view('dashboard', compact('done','admins','counterat','personalApp','tasks','pending','leadscount', 'todayAppointCount', 'percnt','pendencies','pendingcnt','morethan30','recorded','countpersonalApp'));
                 }
 
         }
