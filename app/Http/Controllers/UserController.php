@@ -181,7 +181,6 @@ class UserController extends Controller
             }else{
                 $lead->assign_to_id = $req->input('admin');
             }
-
         }
         $address = [];
 
