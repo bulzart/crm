@@ -384,9 +384,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusG">
                                                                     <option value="{{$grundversicherung->statusG}}" selected>{{$grundversicherung->statusG}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -484,9 +486,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusV">
                                                                     <option selected value="{{$vorsorge->statusV}}">{{$vorsorge->statusV}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -586,9 +590,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusZ">
                                                                     <option selected value="{{$zusatzversicherung->statusZ}}">{{$zusatzversicherung->statusZ}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -686,9 +692,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusH">
                                                                     <option selected value="{{$hausrat->statusH}}">{{$hausrat->statusH}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -786,9 +794,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusR">
                                                                     <option selected value="{{$retchsschutz->statusR}}">{{$retchsschutz->statusR}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1059,9 +1069,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PG">
                                                                     <option selected value="{{$grundversicherungP->status_PG}}">{{$grundversicherungP->status_PG}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1173,9 +1185,11 @@
                                                                         aria-label="Default select example"
                                                                         name="status_PA">
                                                                     <option selected value="{{$autoversicherungP->status_PA}}">{{$autoversicherungP->status_PA}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1306,9 +1320,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PZ">
                                                                     <option selected value="{{$zusatzversicherungP->status_PZ}}">{{$zusatzversicherungP->status_PZ}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1378,9 +1394,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PZ2">
                                                                     <option selected value="{{$zusatzversicherungP->status_PZ2}}">{{$zusatzversicherungP->status_PZ2}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1496,9 +1514,11 @@
                                                                         aria-label="Default select example"
                                                                         name="status_PH">
                                                                     <option selected value="{{$hausratP->status_PH}}">{{$hausratP->status_PH}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1603,9 +1623,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PR">
                                                                     <option selected value="{{$retchsschutzP->status_PR}}">{{$retchsschutzP->status_PR}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1746,9 +1768,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PV">
                                                                     <option selected value="{{$vorsorgeP->status_PV}}">{{$vorsorgeP->status_PV}}</option>
+                                                                    <option value="Angenommen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
-                                                                    <option value="Aufgenomen">Aufgenomen</option>
-                                                                    <option value="Provisionert">Provisionert</option>
+                                                                    <option value="Abgelehnt">Abgelehnt </option>
+                                                                    <option value="Zuruckgezogen">Zuruckgezogen</option>
+                                                                    <option value="Aufgenomen">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>

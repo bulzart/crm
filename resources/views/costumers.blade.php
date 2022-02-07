@@ -257,6 +257,16 @@
                                                     {{strtoupper($grundversicherungP[$i]->status_PG)}}
                                                 </button>
                                         @endif
+                                            @if($grundversicherungP[$i]->status_PG == 'Zuruckgezogen')
+                                                <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-info">
+                                                    {{strtoupper($grundversicherungP[$i]->status_PG)}}
+                                                </button>
+                                            @endif
+                                            @if($grundversicherungP[$i]->status_PG == 'Abgelehnt')
+                                                <button type="button" class="w-100 priority-spnn-1 border-0 fw-600 bg-danger">
+                                                    {{strtoupper($grundversicherungP[$i]->status_PG)}}
+                                                </button>
+                                            @endif
                                     </div>
                                     @endif
                                 </div>
