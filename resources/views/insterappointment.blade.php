@@ -6,101 +6,108 @@
         <link rel="icon" type="image/png" href="img/Favicon.png">
     </head>
     <body>
-
-
     <section>
         <div class="container">
             <div class="form-div my-4 py-4 col-10 mx-auto" style="background-color: #EFEFEF; border-radius: 20px;">
-                <div class="mb-4 mx-5">
-                    <span class="fs-5 fw-600">Insert Appointment</span>
-                </div>
                 <form action="{{route('addappointment')}}" method="post">
                     @csrf
-                    <div class="row mx-4">
-                        <div class="col col-md-12 col-lg-6">
-                            <div class="mx-2">
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Vorname</label>
-                                    <input type="text" name="fname" class="form-control" required="required">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Nachname</label>
-                                    <input type="text" name="lname" class="form-control" required="required">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Telefon</label>
-                                    <input type="text" name="phone" class="form-control" required="required">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Address</label>
-                                    <input type="text" name="address" class="form-control" required="required">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">PLZ</label>
-                                    <input type="number" name="postal" class="form-control" required="required">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Ort</label>
-                                    <input type="text" name="location" class="form-control" required="required">
-                                </div>
-
+                <div class="row mx-4">
+                    <div class="col">
+                        <div class="mx-2">
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Vorname</label>
+                                <input type="text" name="fname" class="form-control" required>
                             </div>
-                        </div>
-                        <div class="col  col-md-12 col-lg-6">
-                            <div class="mx-2">
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Geburtstag</label>
-                                    <input type="date" name="appbirthdate" class="form-control">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Land</label>
-                                    <input type="text" name="country" class="form-control" required="required">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Personen</label>
-                                    <input type="number" name="count" class="form-control" required="required">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Besprechungsformular</label>
-                                    <select onchange="hideadmin()" name="online" id="selecti" class="form-control">
-                                         <option value="yes">Online</option>
-                                         <option value="no">Physically</option>
-                                    </select>
-                                </div>
-                                <div class="mb-2">
-                                <div class="input mb-2" id="admin" style="display: none">
-                                     <label for="admin" class="">Zuweisen</label>
-                                     <br>
-                                     <select name="admin" class="form-control">
-                                     @if(Auth::guard('admins')->user()->hasRole('fs'))
-                                        <option value="{{$admins->id}}">{{$admins->name}}</option>
-                                     @else
-                                     @foreach($admins as $admin)
-                                        <option value="{{$admin->id}}">{{$admin->name}}</option>
-                                     @endforeach
-                                     @endif
-                                     </select>
-                                </div>
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Termin Datum</label>
-                                    <input type="date" class="form-control" name="appdate">
-                                </div>
-                                <div class="mb-2">
-                                    <label for="" class="mb-1">Termin Zeit</label>
-                                    <input type="time" class="form-control" name="apptime">
-                                </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Nachname</label>
+                                <input type="text" name="lname" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Datum</label>
+                                <input type="date" class="form-control" name="appdate" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Zeit</label>
+                                <input type="time" class="form-control" name="apptime" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Sprache</label>
+                                <input type="text" name="sprache" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Personen</label>
+                                <input type="number" name="count" class="form-control" required="required">
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Nationalitat:</label>
+                                <input type="text" name="country" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Strasse</label>
+                                <input type="text" name="address" class="form-control" required>
                             </div>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="mx-2">
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Nr</label>
+                                <input type="text" name="nr" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">PLZ</label>
+                                <input type="number" name="postal" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Ort</label>
+                                <input type="text" name="location" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Besprechungsformular</label>
+                                <select onchange="hideadmin()" name="online" id="selecti" class="form-control">
+                                    <option value="yes">Online</option>
+                                    <option value="no">Physically</option>
+                                </select>
+                            </div>
+                            <div class="input mb-2" id="admin" style="display: none">
+                                <label for="admin" class="">Zuweisen</label>
+                                <br>
+                                <select name="admin" class="form-control">
+                                    @if(Auth::guard('admins')->user()->hasRole('fs'))
+                                        <option value="{{$admins->id}}">{{$admins->name}}</option>
+                                    @else
+                                        @foreach($admins as $admin)
+                                            <option value="{{$admin->id}}">{{$admin->name}}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Tel. Privat</label>
+                                <input type="text" name="phone" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="mb-1">Zufriedenheit</label>
+                                <input type="text" name="zufriedenheit" class="form-control" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="exampleFormControlTextarea1" class="form-label">Bemerkung:</label>
+                                <textarea class="form-control" name="bemerkung" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <div class="my-4">
-                        <button type="submit" class="py-2 px-5 mx-5 border-0 fw-bold"
-                                style="background-color: #63D4A4; color: #fff; border-radius: 8px;">Accept
-                        </button>
+                        <button class="py-2 px-5 mx-5 border-0 fw-bold"
+                                style="background-color: #63D4A4; color: #fff; border-radius: 8px;">Accept</button>
                     </div>
                 </form>
             </div>
         </div>
+    </section>
+
+
+
         <section>
             <div class="container">
                 <div class="form-div my-4 py-4 col-10 mx-auto" style="background-color: #EFEFEF; border-radius: 20px;">
@@ -132,7 +139,7 @@
                 </div>
             </div>
         </section>
-    </section>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -341,3 +348,8 @@
 {{--        overflow-x: hidden !important;--}}
 {{--    }--}}
 {{--</style>--}}
+<style>
+    body {
+        overflow-x: hidden;
+    }
+</style>
