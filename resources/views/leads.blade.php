@@ -1,6 +1,6 @@
 @extends('template.navbar')
 @section('content')
-<<<<<<< HEAD
+
 <section>
     <div class="my-3 ">
         <div class="leads-div py-3 px-4">
@@ -26,7 +26,7 @@
                                 <span class="px-2" onclick="window.location.href='{{route('leads',['page' => $leads->currentPage() +1])}}'">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="34" viewBox="0 0 34 34">
                                         <defs>
-=======
+
     <section>
         <div class="my-3 ">
             <div class="leads-div py-3 px-4">
@@ -57,7 +57,7 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34"
                                                      height="34" viewBox="0 0 34 34">
                                                     <defs>
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
+
 
                                         </defs>
                                         <g id="Group_758" data-name="Group 758" transform="translate(34.082 34) rotate(180)">
@@ -73,8 +73,7 @@
                                 </span>
                                 @endif
                             </div>
-<<<<<<< HEAD
-=======
+
                             <div class="content overflow-divvv" style="overflow: auto;">
                                 <div class="row mx-3 my-2">
                                     <leads></leads>
@@ -99,7 +98,6 @@
                                 </div>
 </div>
 @endif
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
                         </div>
                         <div class="content overflow-divvv" style="overflow: auto;">
                             <div class="row mx-3 my-2">
@@ -118,12 +116,7 @@
                         </div>
                         @endif
                     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
                 </div>
-
             </div>
         </div>
 </section>
