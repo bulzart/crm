@@ -419,11 +419,11 @@
                                                                         name="statusG">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -542,11 +542,11 @@
                                                                         name="statusV">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -667,11 +667,11 @@
                                                                         name="statusZ">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -790,11 +790,11 @@
                                                                         name="statusH">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -913,11 +913,11 @@
                                                                         name="statusR">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1224,11 +1224,11 @@
                                                                         name="status_PG">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1255,7 +1255,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " type="text"
+                                                                <input class="py-1 form-control " type="number"
                                                                        name="total_commisions_PG" id="">
                                                             </div>
                                                         </div>
@@ -1346,11 +1346,11 @@
                                                                         name="status_PA">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1375,7 +1375,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                     </div>
-                                                                    <input class="py-1 form-control " type="text"
+                                                                    <input class="py-1 form-control " type="number"
                                                                            name="total_commisions_PA" id="">
                                                                 </div>
                                                             </div>
@@ -1501,11 +1501,11 @@
                                                                         name="status_PZ">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1593,11 +1593,11 @@
                                                                         name="status_PZ2">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1634,7 +1634,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " type="text"
+                                                                <input class="py-1 form-control " type="number"
                                                                        name="total_commisions_PZ" id="">
                                                             </div>
                                                         </div>
@@ -1725,11 +1725,11 @@
                                                                         name="status_PH">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1754,7 +1754,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " type="text"
+                                                                <input class="py-1 form-control " type="number"
                                                                        name="total_commisions_PH" id="">
                                                             </div>
                                                         </div>
@@ -1849,11 +1849,11 @@
                                                                         name="status_PR">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1880,7 +1880,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " type="text"
+                                                                <input class="py-1 form-control " type="number"
                                                                        name="total_commisions_PR" id="">
                                                             </div>
                                                         </div>
@@ -2031,11 +2031,11 @@
                                                                         name="status_PV">
                                                                     <option selected value="notselected">Not Selected
                                                                     </option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -2060,7 +2060,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " type="text"
+                                                                <input class="py-1 form-control " type="number"
                                                                        name="total_commisions_PV" id="">
                                                             </div>
                                                         </div>

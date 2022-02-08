@@ -340,7 +340,7 @@
                 <hr class="text-black" style="color: #fff !important; height: 2px; margin: 0 !important; opacity: 1;">
                 <div style="height: 30vh; overflow: auto; overflow-x: hidden;">
                     @foreach($birthdays as $birth)
-                    <div  class="row my-1 mx-3 header-open-task" style="cursor: pointer;">
+                    <div onclick="window.location.href='{{route('leadfamilyperson',$taskId)}}'" class="row my-1 mx-3 header-open-task" style="cursor: pointer;">
                         <div class="col-3 g-0">
                             <div class="">
                                 <span class="spn-normal">
@@ -620,7 +620,7 @@
                 <div class="collapse2___ pe-3" style="height: 350px; overflow: scroll; overflow-x: hidden;">
                     @foreach($answered as $task)
                     @php
-                    $leadss = $task->id * 1244;
+                    $leadss = $task->family_id * 1244;
                     $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
                     <div style="background: #4EC590; color: #fff; border-radius: 8px; cursor: pointer;">
@@ -683,7 +683,7 @@
                 <div class="collapse23___ pe-3" style="height: 350px; overflow: scroll; overflow-x: hidden;">
                     @foreach($opened as $task)
                     @php
-                    $leadss = $task->id * 1244;
+                    $leadss = $task->family_id * 1244;
                     $taskId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
                     @endphp
 
