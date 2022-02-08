@@ -653,7 +653,7 @@
             vertical-align: middle;
             background-color: #BDC1CC;
             z-index: 5;
-            
+
         }
 
         .orangeBorderDiv {
@@ -664,7 +664,7 @@
             height: 100%;
             vertical-align: middle;
             background-color: white;
-            
+
         }
 
         .redBorderDiv {
@@ -675,7 +675,7 @@
             height: 100%;
             vertical-align: middle;
             background-color: white;
-            
+
         }
 
         .greenBorderDiv {
@@ -686,7 +686,7 @@
             height: 100%;
             vertical-align: middle;
             background-color: white;
-            
+
         }
 
         .receivedDiv {
@@ -749,7 +749,7 @@
         .wonCol {
             z-index: 1;
             margin-left: -12%;
-        } 
+        }
 </style>
 <body>
     <?php
@@ -1029,7 +1029,7 @@
 </div>
 
 
-    <div class="container-fluid col " id="app">
+    <div class="container-fluid col-10 " id="app">
     @if(\Session::has('success'))
             <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
                 <strong>{!! \Session::get('success') !!}</strong>
