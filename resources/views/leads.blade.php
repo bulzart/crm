@@ -1,35 +1,30 @@
 @extends('template.navbar')
 @section('content')
-    <section>
-        <div class="my-3 ">
-            <div class="leads-div py-3 px-4">
-                <div class="row g-0">
-                    <div class="col">
-                        <div class="assigned-leads-div mt-2 mx-3 py-3" style="background-color: #F7F7F7;">
-                            <div class="header mx-4 my-2 d-flex justify-content-between">
-
-                                <div class="text-end py-3">
-                                    @if(!Auth::guard('admins')->user()->hasRole('fs'))
-                                    @if($leads->currentPage() > 1)
-                                        <span class="px-2" onclick="window.location.href='{{route('leads',['page' => $leads->currentPage() -1 ])}}'">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
-                                                <g id="Group_757" data-name="Group 757" transform="translate(0.082)">
-                                                    <path id="Path_281" data-name="Path 281" d="M0,0,9.679,7.316,0,14.631"
-                                                          transform="translate(20.741 24.316) rotate(180)" fill="none" stroke="#ccc"
-                                                          stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                                    <g id="Ellipse_55" data-name="Ellipse 55" transform="translate(-0.082)" fill="none"
-                                                       stroke="#ccc" stroke-width="2">
-                                                        <circle cx="17" cy="17" r="17" stroke="none"/>
-                                                        <circle cx="17" cy="17" r="16" fill="none"/>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </span>
-                                    @endif
-                                        <span class="px-2" onclick="window.location.href='{{route('leads',['page' => $leads->currentPage() +1])}}'">
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34"
-                                                     height="34" viewBox="0 0 34 34">
-                                                    <defs>
+<section>
+    <div class="my-3 ">
+        <div class="leads-div py-3 px-4">
+            <div class="row g-0">
+                <div class="col">
+                    <div class="assigned-leads-div mt-2 mx-3 py-3">
+                        <div class="header mx-4 my-2 d-flex justify-content-between">
+                            <div class="text-end py-3">
+                                @if(!Auth::guard('admins')->user()->hasRole('fs'))
+                                @if($leads->currentPage() > 1)
+                                <span class="px-2" onclick="window.location.href='{{route('leads',['page' => $leads->currentPage() -1 ])}}'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
+                                        <g id="Group_757" data-name="Group 757" transform="translate(0.082)">
+                                            <path id="Path_281" data-name="Path 281" d="M0,0,9.679,7.316,0,14.631" transform="translate(20.741 24.316) rotate(180)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                            <g id="Ellipse_55" data-name="Ellipse 55" transform="translate(-0.082)" fill="none" stroke="#ccc" stroke-width="2">
+                                                <circle cx="17" cy="17" r="17" stroke="none" />
+                                                <circle cx="17" cy="17" r="16" fill="none" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </span>
+                                @endif
+                                <span class="px-2" onclick="window.location.href='{{route('leads',['page' => $leads->currentPage() +1])}}'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34" height="34" viewBox="0 0 34 34">
+                                        <defs>
 
                                         </defs>
                                         <g id="Group_758" data-name="Group 758" transform="translate(34.082 34) rotate(180)">
@@ -45,30 +40,6 @@
                                 </span>
                                 @endif
                             </div>
-                            <div class="content overflow-divvv" style="overflow: auto;">
-                                <div class="row mx-3 my-2">
-                                    <leads></leads>
-                                </div>
-                            </div>
-                            @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('salesmanager'))
-
-                            <div class="text-center">
-                                <div class="">
-                                    <h5>Import leads</h5>
-                                </div>
-                                <div class="col-11 mx-auto">
-                                    <div class="mx-3">
-                                        <form action="{{route('importleads')}}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <input type="file" name="file" class="form-control">
-                                            <div class="mt-3">
-                                                <input type="submit" class="mt-2 btn fw-bold py-2 px-5 my-3" value="Submit" style="background-color: #63D4A4; color: #fff; border-radius: 13px;">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-</div>
-@endif
                         </div>
                         <div class="content overflow-divvv" style="overflow: auto;">
                             <div class="row mx-3 my-2">
