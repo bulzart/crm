@@ -6600,8 +6600,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   methods: {
     closeFunc: function closeFunc(id) {
-      // $('.modal-backdrop').remove();
-      $('#' + id).modal('hide');
+      $('.modal-backdrop').remove();
     },
     getleads: function getleads() {
       var _this = this;
@@ -12110,17 +12109,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n@media (max-width: 978px) {\n.monthh
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-=======
-/***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12133,7 +12125,6 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-<<<<<<< HEAD
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n@media (min-width: 576px){\n.modal-dialog[data-v-c010fc48] {\r\n    max-width: 900px !important;\n}\n.modaldialogg[data-v-c010fc48]{\r\n    max-width: 500px !important;\r\n    top: 10%;\n}\n}\r\n\r\n", ""]);
 // Exports
@@ -12158,8 +12149,6 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-=======
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control[data-v-5289e811]{\nborder: transparent !important; font-family: 'Montserrat';\n}\n", ""]);
 // Exports
@@ -29693,17 +29682,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-<<<<<<< HEAD
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-=======
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css&":
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css& ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -29713,11 +29695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-<<<<<<< HEAD
 /* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&");
-=======
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_id_5289e811_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css&");
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
 
             
 
@@ -29726,7 +29704,6 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-<<<<<<< HEAD
 var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
@@ -29761,12 +29738,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 
-=======
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_id_5289e811_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_id_5289e811_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
@@ -30576,7 +30547,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_calendar_vue_vue_type_style_index_0_id_094224ee_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./calendar.vue?vue&type=style&index=0&id=094224ee&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/calendar.vue?vue&type=style&index=0&id=094224ee&scoped=true&lang=css&");
-<<<<<<< HEAD
 
 
 /***/ }),
@@ -30590,8 +30560,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&");
-=======
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
 
 
 /***/ }),
@@ -30605,8 +30573,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_todo_vue_vue_type_style_index_0_id_5289e811_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css&");
-<<<<<<< HEAD
-=======
 
 
 /***/ }),
@@ -30675,7 +30641,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addtask4_vue_vue_type_template_id_cdd4acce___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addtask4_vue_vue_type_template_id_cdd4acce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./addtask4.vue?vue&type=template&id=cdd4acce& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/addtask4.vue?vue&type=template&id=cdd4acce&");
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
 
 
 /***/ }),
@@ -33494,7 +33459,6 @@ var render = function () {
                                         display: "block",
                                       },
                                     },
-<<<<<<< HEAD
                                     [
                                       _c(
                                         "div",
@@ -33729,191 +33693,6 @@ var render = function () {
                                           "data-target": "#" + lead.slug,
                                         },
                                       },
-=======
-                                    attrs: {
-                                      "data-bs-toggle": "modal",
-                                      "data-bs-target": "#" + lead.slug + "r",
-                                    },
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                 Reject\n                                             "
-                                    ),
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "btn fw-bold fs-6  ",
-                                    staticStyle: {
-                                      "background-color": "#4EC590",
-                                      color: "#fff",
-                                      "border-radius": "10px",
-                                    },
-                                    attrs: { href: "alead/" + lead.id },
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                 Go\n                                             "
-                                    ),
-                                  ]
-                                ),
-                              ]),
-                            ]
-                          ),
-                        ]),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-1 pe-0 my-3 text-end" }, [
-                      _vm.role != "fs"
-                        ? _c("div", [
-                            _c("input", {
-                              attrs: { type: "checkbox", name: "jep" },
-                              domProps: { value: lead.id },
-                              on: {
-                                change: function ($event) {
-                                  return _vm.getit($event)
-                                },
-                              },
-                            }),
-                          ])
-                        : _vm._e(),
-                    ]),
-                    _vm._v(" "),
-                    _vm.role != "fs"
-                      ? _c("div", { staticClass: "col my-3" }, [
-                          _c("div", { staticClass: "whiteee p-3" }, [
-                            _c("div", { staticClass: "namme mb-2" }, [
-                              lead.wantsonline == 1
-                                ? _c("span", { staticClass: "fs-4 fw-bold" }, [
-                                    _vm._v(
-                                      _vm._s(lead.first_name) +
-                                        " " +
-                                        _vm._s(lead.last_name) +
-                                        " (Online)"
-                                    ),
-                                  ])
-                                : _c("span", { staticClass: "fs-4 fw-bold" }, [
-                                    _vm._v(
-                                      _vm._s(lead.first_name) +
-                                        " " +
-                                        _vm._s(lead.last_name)
-                                    ),
-                                  ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "adresse row" }, [
-                              _vm._m(3, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col ps-0" }, [
-                                _c("span", { staticClass: "grayyy1 fw-500 " }, [
-                                  _vm._v(_vm._s(lead.address)),
-                                ]),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "haushalt row" }, [
-                              _vm._m(4, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col ps-0" }, [
-                                _c("span", { staticClass: "grayyy1 fw-500" }, [
-                                  _vm._v(
-                                    _vm._s(lead.number_of_persons) + " Personen"
-                                  ),
-                                ]),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "grund row" }, [
-                              _vm._m(5, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col ps-0" }, [
-                                _c("span", { staticClass: "grayyy1 fw-500" }, [
-                                  _vm._v(_vm._s(lead.grund)),
-                                ]),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "kampagne row" }, [
-                              _vm._m(6, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col ps-0" }, [
-                                _c("span", { staticClass: "grayyy1 fw-500" }, [
-                                  _vm._v(_vm._s(lead.kampagne)),
-                                ]),
-                              ]),
-                            ]),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "grayyy",
-                              staticStyle: { cursor: "pointer" },
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "lead-offnen text-center py-2",
-                                  attrs: {
-                                    "data-bs-toggle": "modal",
-                                    "data-bs-target": "#" + lead.slug,
-                                  },
-                                },
-                                [
-                                  _c("span", { staticClass: "fs-4 fw-bold" }, [
-                                    _vm._v("Lead öffnen"),
-                                  ]),
-                                ]
-                              ),
-                            ]
-                          ),
-                        ])
-                      : _c(
-                          "div",
-                          {
-                            staticClass: "py-1 my-2 mx-1",
-                            attrs: {
-                              "data-bs-toggle": "modal",
-                              "data-bs-target": "#" + lead.slug,
-                            },
-                          },
-                          [
-                            _c("div", { staticClass: "mx-2" }, [
-                              _c("div", { staticClass: "whiteee p-3" }, [
-                                _c("div", { staticClass: "namme mb-2" }, [
-                                  _c("span", { staticClass: "fs-4 fw-bold" }, [
-                                    _vm._v(
-                                      _vm._s(lead.first_name) +
-                                        " " +
-                                        _vm._s(lead.last_name)
-                                    ),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "adresse row" }, [
-                                  _vm._m(7, true),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col ps-0" }, [
-                                    _c(
-                                      "span",
-                                      { staticClass: "grayyy1 fw-500 " },
-                                      [_vm._v(_vm._s(lead.address))]
-                                    ),
-                                  ]),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "haushalt row" }, [
-                                  _vm._m(8, true),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col ps-0" }, [
-                                    _c(
-                                      "span",
-                                      { staticClass: "grayyy1 fw-500" },
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
                                       [
                                         _c(
                                           "span",
@@ -34744,7 +34523,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-4 pe-0" }, [
-      _c("span", {}, [_vm._v("Kampagne: ")]),
+      _c("span", {}, [_vm._v("Kampagne:")]),
     ])
   },
   function () {
@@ -34783,7 +34562,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "button-div mx-5 my-2" }, [
+    return _c("div", { staticClass: "button-div mx-4 my-2" }, [
       _c(
         "button",
         {

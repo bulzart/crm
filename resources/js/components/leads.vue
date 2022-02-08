@@ -1,13 +1,8 @@
 <template>
     <!doctype html>
     <div class="row">
-<<<<<<< HEAD
      
         <div class="appointments-sm-div col-md-8 col-lg-8 col-12 h-100" style="background-color: #F7F7F7; border-radius: 30px !important;">
-=======
-
-        <div class="appointments-sm-div col-md-8 col-lg-8 col-12">
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
             <div class="appointments-content py-3">
                 <div class="overflow-div1"
                      style="overflow-y: scroll; overflow-x: hidden !important;">
@@ -181,17 +176,16 @@
                                     <input type="checkbox" :value="lead.id" name="jep" @change="getit($event)">
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <div class="col my-3"
                                  data-bs-toggle="modal" data-bs-target="asign" v-if="role != 'fs'">
                                 <div class="whiteee p-3 h-100">
-=======
-                            <div class="col my-3"  v-if="role != 'fs'">
-                                <div class="whiteee p-3">
->>>>>>> b9c72e731c9e547a2aeb8e611a4f9aa2dbc6acd4
                                     <div class="namme mb-2">
-                                        <span v-if="lead.wantsonline == 1" class="fs-4 fw-bold">{{lead.first_name }} {{ lead.last_name }} (Online)</span>
-                                        <span v-else class="fs-4 fw-bold">{{ lead.first_name }} {{lead.last_name }}</span>
+                                        <span v-if="lead.wantsonline == 1" class="fs-4 fw-bold">{{
+                                                lead.first_name
+                                            }} {{ lead.last_name }} (Online)</span>
+                                        <span v-else class="fs-4 fw-bold">{{ lead.first_name }} {{
+                                                lead.last_name
+                                            }}</span>
                                     </div>
                                     <div class="adresse row">
                                         <div class="col-4 pe-0">
@@ -219,7 +213,7 @@
                                     </div>
                                     <div class="kampagne row">
                                         <div class="col-4 pe-0">
-                                            <span class="">Kampagne: </span>
+                                            <span class="">Kampagne:</span>
                                         </div>
                                         <div class="col ps-0">
                                             <span class="grayyy1 fw-500">{{ lead.kampagne }}</span>
@@ -227,18 +221,11 @@
                                     </div>
                                 </div>
                                 <div class="grayyy" style="cursor: pointer;">
-                                    <div class="lead-offnen text-center py-2"  data-bs-toggle="modal" :data-bs-target="'#' + lead.slug">
+                                    <div class="lead-offnen text-center py-2"  data-toggle="modal" :data-target="'#' + lead.slug">
                                         <span class="fs-4 fw-bold">Lead öffnen</span>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
 
 
                             <div class="py-1 my-2 mx-1"
@@ -284,6 +271,7 @@
                                         </div>
                                     </div>
                                 </div>
+                             
                                 <div class="grayyy" style="cursor: pointer;">
                                     <div class="lead-offnen text-center py-2 mx-2" data-toggle="modal" :data-target="'#' + lead.slug">
                                         <span class="fs-4 fw-bold">Lead öffnen</span>
@@ -296,13 +284,15 @@
                 </div>
             </div>
             <div v-if="role != 'fs'" class=" py-2">
-                <div class="button-div mx-5 my-2">
+                
+                <div class="button-div mx-4 my-2">
                     <button type="submit" class="py-2 px-5 fw-bold border-0 "
                             data-bs-toggle="modal"
                             data-bs-target="#asign"
                             style="background-color: #63D4A4; color: #fff; border-radius: 13px;">
                         Assign
                     </button>
+
                 </div>
                 <div class="modal fade" id="asign" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
@@ -327,7 +317,7 @@
                         </div>
                     </div>
                 </div>
-
+                
             </div>
         </div>
         <div class="col-md-4 col-lg-4 col-12">
@@ -420,9 +410,9 @@
           </div>
         </div>
     </div>
-
-
-
+    
+    
+    
 
 
 </template>
