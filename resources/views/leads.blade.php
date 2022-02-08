@@ -1,5 +1,6 @@
 @extends('template.navbar')
 @section('content')
+<<<<<<< HEAD
     <section>
         <div class="my-3 ">
             <div class="leads-div py-3 px-4">
@@ -11,6 +12,7 @@
                                     @if(!Auth::guard('admins')->user()->hasRole('fs'))
                                         @if($leads->currentPage() > 1)
                                             <span class="px-2" onclick="window.location.href='{{route('leads',['page' => $leads->currentPage() -1 ])}}'">
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34">
                                         <g id="Group_757" data-name="Group 757" transform="translate(0.082)">
                                             <path id="Path_281" data-name="Path 281" d="M0,0,9.679,7.316,0,14.631" transform="translate(20.741 24.316) rotate(180)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -57,9 +59,9 @@
                                     </form>
                                 </div>
                             @endif
+
                         </div>
                     </div>
-
                 </div>
             </div>
     </section>
@@ -304,6 +306,7 @@
         margin: 5px;
     }
 </style>
+<<<<<<< HEAD
 <style>
     {{-- .statistics-div {--}}
     {{-- background-color: #EFEFEF;--}}
@@ -405,6 +408,8 @@
     {{-- }--}}
     {{-- </style>--}}
 </style>
+=======
+>>>>>>> b3b285bfd10e7df875bf8d91f9364c0b7c276ebb
 
 
 <script>
