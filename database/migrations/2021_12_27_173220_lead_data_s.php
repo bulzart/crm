@@ -35,6 +35,7 @@ class LeadDataS extends Migration
             $table->string('smoker')->nullable();
             $table->string('desired')->nullable();
             $table->timestamp('created_at')->useCurrent();
+            $table->string('nationality_sachen')->nullable();
             $table->timestamp('updated_at')->useCurrent();
         });
     }

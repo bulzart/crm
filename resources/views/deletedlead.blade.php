@@ -13,6 +13,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Appointments</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
                 <div class="pull-right text-end">
                     <button class="border-0 px-2 pt-1 pb-2 me-2"
                             style="background-color: #C4C6D2; border-radius: 12px;">
-                        <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg" 
+                        <svg id="Group_1" data-name="Group 1" xmlns="http://www.w3.org/2000/svg"
                              height="22px" viewBox="0 0 32.504 28.358">
                             <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(0)" fill="none"
                                stroke="#fff" stroke-linecap="round" stroke-width="2">
@@ -121,7 +122,11 @@
                     </div>
                     <div class="declined-items py-3 col-12 col-sm-12 col-md-12 col-lg col-xl g-0 ">
                         <div class="border-left-div">
-                            <form method="POST" action="{{route('deletedlead',$leads->id)}}">
+                            @php
+                                $leadss = $leads->id * 1244;
+                                $leadId = \Illuminate\Support\Facades\Crypt::encrypt($leadss);
+                            @endphp
+                            <form method="POST" action="{{route('deletedlead',$leadId)}}">
                                 @csrf
                             <div class="termin-div mx-3 py-3">
                                 <div class="text-center py-3">

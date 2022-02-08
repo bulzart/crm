@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Admins;
 use App\Models\appointment;
+use App\Models\CostumerProduktAutoversicherung;
+use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktHausrat;
+use App\Models\CostumerProduktRechtsschutz;
+use App\Models\CostumerProduktVorsorge;
+use App\Models\CostumerProduktZusatzversicherung;
 use App\Models\family;
 use App\Models\lead;
 use App\Models\notification;
@@ -12,24 +18,39 @@ use App\Models\Pendency;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Name\FullyQualified;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
+use Livewire\Component;
 
 class TasksController extends Controller
 {
-public function assignpendency($admin,$id,$desc = null){
-$retor = Pendency::where('family_id',$id)->get();
-  if($retor != null){
+public function assignpendency(Request $req){
+  $id = (int) $req->id;
+$title = $req->title ? $req->title : "";
+  $pendency = Pendency::where('family_id',(int)$req->id)->first();
+  if(!$pendency){
     $pendency = new Pendency();
-  $pendency->admin_id = (int) $admin;
-  $pendency->family_id = (int) $id;
-  $pendency->description = filter_var($desc,FILTER_SANITIZE_STRING);
-  $family = DB::table('family_person')->where('id','=',$id)->update(['status' => 'Open']);
+    $pendency->title = $title;
+  $pendency->admin_id = (int) $req->admin;
+  $pendency->family_id = (int) $req->id;
+  $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
   $pendency->save();
-}
+  }
+  else{
+    $pendency->admin_id = (int) $req->admin;
+    $pendency->done = 0;
+    $pendency->title = $title;
+    $pendency->completed = 0;
+    $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
+    $pendency->save();
+
+  }
+  $family = DB::table('family_person')->where('id','=',$id)->update(['status' => 'Open']);
+
 }
   public function accepttask($id)
   {
@@ -49,58 +70,167 @@ $retor = Pendency::where('family_id',$id)->get();
 
     $admin = Auth::guard('admins')->user();
     $today = Carbon::now()->format("Y-m-d");
+    $data = null;
+    $cnt = 0;
     if ($req->date != null) {
-      if ($admin->hasRole('admin')) {
-        $data = DB::table('leads')
+      if ($admin->hasRole('admin') || Auth::user()->hasRole('salesmanager')) {
+        foreach (DB::table('leads')
         ->where('wantsonline', 0)
         ->where('appointment_date', $req->date)
         ->whereNotNull('assign_to_id')
-        ->select('leads.first_name','leads.last_name','leads.address')
-        ->paginate(15);
+        ->orderBy('time','desc')
+        ->where('assigned',1)
+        ->where('completed',0)
+        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+        ->paginate(15) as $d){
+            $data[$cnt] = $d;
+            $val = (int) $d->id;
+            $data[$cnt]->id = Crypt::encrypt($val * 1244);
+            $cnt++;
+
+        }
+
+
       } elseif ($admin->hasRole('fs')) {
-        $data = DB::table('leads')
-        ->where('assign_to_id', Auth::guard('admins')->user()->id)
-        ->where('wantsonline', 0)
-        ->where('appointment_date', $req->date)
-        ->select('leads.first_name','leads.last_name','leads.address')
-        ->paginate(15);
+          foreach (DB::table('leads')
+                       ->where('wantsonline', 0)
+                       ->where('appointment_date', $req->date)
+                       ->whereNotNull('assign_to_id')
+                       ->orderBy('time','desc')
+                       ->where('assigned',1)
+                       ->where('completed',0)
+              ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->paginate(15) as $d){
+              $data[$cnt] = $d;
+              $val = (int) $d->id;
+              $data[$cnt]->id = Crypt::encrypt($val * 1244);
+              $cnt++;
+
+          }
+
+
+      }
+      elseif(Auth::user()->hasRole('digital')) {
+        foreach (DB::table('leads')
+                       ->where('wantsonline', 1)
+                       ->where('appointment_date', $req->date)
+                       ->orderBy('time','desc')
+                       ->where('completed',0)
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->paginate(15) as $d){
+              $data[$cnt] = $d;
+              $val = (int) $d->id;
+              $data[$cnt]->id = Crypt::encrypt($val * 1244);
+              $cnt++;
+
+          }
       }
     } else {
-      if ($admin->hasRole('admin')) {
+      if ($admin->hasRole('admin') || Auth::user()->hasRole('salesmanager')) {
         if ($now > 2300) {
-          $data = DB::table('leads')
-          ->where('wantsonline', 0)
-          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
-          ->whereNotNull('assign_to_id')
-          ->select('leads.first_name','leads.last_name','leads.address')
-          ->paginate(15);
+            foreach (DB::table('leads')
+                         ->where('wantsonline', 0)
+                         ->whereNotNull('assign_to_id')
+                         ->orderBy('time','desc')
+                         ->where('assigned',1)
+                         ->where('completed',0)
+                         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                         ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+                         ->paginate(15) as $d){
+                $data[$cnt] = $d;
+                $val = (int) $d->id;
+                $data[$cnt]->id = Crypt::encrypt($val * 1244);
+                $cnt++;
+
+            }
         } else {
 
-          $data = DB::table('leads')
-          ->where('wantsonline', 0)
-          ->where('appointment_date', Carbon::now()->toDateString())
-          ->whereNotNull('assign_to_id')
-          ->select('leads.first_name','leads.last_name','leads.address')
-          ->paginate(15);
+            foreach (DB::table('leads')
+                         ->where('wantsonline', 0)
+                         ->whereNotNull('assign_to_id')
+                         ->orderBy('time','desc')
+                         ->where('assigned',1)
+                         ->where('completed',0)
+                         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                         ->paginate(15) as $d){
+                $data[$cnt] = $d;
+                $val = (int) $d->id;
+                $data[$cnt]->id = Crypt::encrypt($val * 1244);
+                $cnt++;
+
+            }
         }
       }
       if ($admin->hasRole('fs')) {
 
         if ($now > 2300) {
-          $data = DB::table('leads')
-          ->where('assign_to_id', $admin->id)
-          ->where('wantsonline', 0)
-          ->where('appointment_date', Carbon::now()->addDays()->toDateString())
-          ->select('leads.first_name','leads.last_name','leads.address')
-          ->paginate(15);
+            foreach (DB::table('leads')
+                         ->where('wantsonline', 0)
+                         ->whereNotNull('assign_to_id')
+                         ->orderBy('time','desc')
+                         ->where('assigned',1)
+                         ->where('completed',0)
+                         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                         ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+                         ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                         ->paginate(15) as $d){
+                $data[$cnt] = $d;
+                $val = (int) $d->id;
+                $data[$cnt]->id = Crypt::encrypt($val * 1244);
+                $cnt++;
+
+            }
         } else {
-          $data = DB::table('leads')
-          ->where('assign_to_id', $admin->id)
-          ->where('wantsonline', 0)
-          ->where('appointment_date', Carbon::now()->toDateString())
-          ->select('leads.first_name','leads.last_name','leads.address')
-          ->paginate(15);
+            foreach (DB::table('leads')
+                         ->where('wantsonline', 0)
+                         ->whereNotNull('assign_to_id')
+                         ->orderBy('time','desc')
+                         ->where('assigned',1)
+                         ->where('completed',0)
+                         ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                         ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+                         ->paginate(15) as $d){
+                $data[$cnt] = $d;
+                $val = (int) $d->id;
+                $data[$cnt]->id = Crypt::encrypt($val * 1244);
+                $cnt++;
+
+            }
         }
+      }
+      elseif(Auth::user()->hasRole('digital')){
+
+        if ($now > 2300) {
+          foreach (DB::table('leads')
+                       ->where('wantsonline', 1)
+                       ->whereNotNull('assign_to_id')
+                       ->orderBy('time','desc')
+                       ->where('completed',0)
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->where('appointment_date', Carbon::now()->addDays()->toDateString())
+                       ->paginate(15) as $d){
+              $data[$cnt] = $d;
+              $val = (int) $d->id;
+              $data[$cnt]->id = Crypt::encrypt($val * 1244);
+              $cnt++;
+
+          }
+      } else {
+          foreach (DB::table('leads')
+                       ->where('wantsonline', 1)
+                       ->orderBy('time','desc')
+                       ->where('completed',0)
+                       ->select('leads.first_name','leads.last_name','leads.address','leads.id')
+                       ->paginate(15) as $d){
+              $data[$cnt] = $d;
+              $val = (int) $d->id;
+              $data[$cnt]->id = Crypt::encrypt($val * 1244);
+              $cnt++;
+
+          }
+
+      }
       }
     }
     return $data;
@@ -116,16 +246,12 @@ $retor = Pendency::where('family_id',$id)->get();
     $br = 1;
     $dayofweek = 6;
 
-
-
-
-
     for ($i = 0; $i <= 365; $i++) {
-      $fullcalendar[$i]['date'] = Carbon::now()->addDays($i)->format('Y-m-d');
-      $fullcalendar[$i]['dayn'] = Carbon::now()->addDays($i)->format('l');
-      $fullcalendar[$i]['day'] = Carbon::now()->addDays($i)->format('d');
+      $fullcalendar[$i]['date'] =  Carbon::now()->addDays($i)->format('Y-m-d');
+      $fullcalendar[$i]['dayn'] =  Carbon::now()->addDays($i)->format('l');
+      $fullcalendar[$i]['day'] =   Carbon::now()->addDays($i)->format('d');
       $fullcalendar[$i]['month'] = Carbon::now()->addDays($i)->format('M');
-      $fullcalendar[$i]['year'] = Carbon::now()->addDays($i)->format('Y');
+      $fullcalendar[$i]['year'] =  Carbon::now()->addDays($i)->format('Y');
     }
 
     $calendar = [];
@@ -141,32 +267,63 @@ $retor = Pendency::where('family_id',$id)->get();
 
   public function searchword()
   {
-      if(Auth::guard('admins')->user()->hasRole('fs')){
+      if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('fs')){
           $data = DB::table('family_person')
               ->join('leads','family_person.leads_id','=','leads.id')
               ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+              ->where('family_person.status','Done')
               ->select('family_person.*')
               ->orderBy('family_person.first_name','asc')
               ->get();
-          return view('costumers', compact('data'));
+
+          $cnt = 0;
+          foreach ($data as $dat) {
+              $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+              $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+              $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+              $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+              $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+              $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
+
+              $cnt++;
+          }
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
       }else{
-          $data = family::orderBy('first_name','asc')->get();
-          return view('costumers', compact('data'));
+          $data = family::where('status','Done')->orderBy('first_name','asc')->get();
+          $cnt = 0;
+          foreach ($data as $dat) {
+              $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+              $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+              $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+              $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+              $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+              $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
+
+              $cnt++;
+          }
+          return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
+
       }
   }
   public function costumers(Request $request)
   {
-    
+      $grundversicherungP = null;
+       $retchsschutzP = null;
+        $vorsorgeP = null;
+            $zusatzversicherungP = null;
+            $autoversicherungP = null;
+            $hausratP = null;
       $cnt = 0;
       $date1 = date('Y-m-d', strtotime($request->searchdate1));
       $n = date('Y-m-d', strtotime($request->searchdate2));
       $date2 = date('Y-m-d', strtotime($n . "+1 days"));
       $searchname = $request->searchname;
-    if(Auth::guard('admins')->user()->hasRole('fs')){
+    if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('digital')){
         $data = DB::table('family_person')
             ->join('leads','family_person.leads_id','=','leads.id')
             ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+            ->where('family_person.status','Done')
             ->select('family_person.*')
             ->get();
         if ($searchname != ''){
@@ -175,6 +332,7 @@ $retor = Pendency::where('family_id',$id)->get();
                 ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
                 ->where('family_person.first_name','like','%'.$searchname.'%')
                 ->orWhere('family_person.last_name','like','%'.$searchname.'%')
+                ->where('family_person.status','Done')
                 ->select('family_person.*')
                 ->get();
 
@@ -183,41 +341,56 @@ $retor = Pendency::where('family_id',$id)->get();
             $data = DB::table('family_person')
                 ->join('leads','family_person.leads_id','=','leads.id')
                 ->where('leads.assign_to_id','=',Auth::guard('admins')->user()->id)
+                ->where('family_person.status','Done')
                 ->whereBetween('family_person.created_at', [$date1, $date2])
                 ->select('family_person.*')
                 ->get();
 
         }
+        $cnt = 0;
+        foreach ($data as $dat) {
+            $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+            $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+            $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
-        return view('costumers', compact('data'));
+            $cnt++;
+        }
+        return view('costumers', compact('data', 'grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
 
     }else {
-        if (Auth::guard('admins')->check()){
-            $data = family::all();
+        if (Auth::guard('admins')->check()) {
+            $data = family::where('status', 'Done')->get();
         }
         if ($searchname != null) {
             $data = family::where('last_name', 'like', '%' . $searchname . '%')
-                ->orWhere('first_name', 'like', '%' . $searchname . '%')->get();
+                ->orWhere('first_name', 'like', '%' . $searchname . '%')
+                ->where('status', 'Done')
+                ->get();
         }
         if (isset($request->searchdate1) && isset($request->searchdate2)) {
-            $data = family::whereBetween('created_at', [$date1, $date2])->get();
+            $data = family::where('status', 'Done')
+                ->whereBetween('created_at', [$date1, $date2])->get();
+
         }
         $contracts = [];
         $datcnt = 0;
+
+            $cnt = 0;
         foreach ($data as $dat) {
+            $grundversicherungP[$cnt] = CostumerProduktGrundversicherung::where('person_id_PG', $dat->id)->first();
+            $retchsschutzP[$cnt] = CostumerProduktRechtsschutz::where('person_id_PR',$dat->id)->first();
+            $vorsorgeP[$cnt] = CostumerProduktVorsorge::where('person_id_PV',$dat->id)->first();
+            $zusatzversicherungP[$cnt] = CostumerProduktZusatzversicherung::where('person_id_PZ',$dat->id)->first();
+            $autoversicherungP[$cnt] = CostumerProduktAutoversicherung::where('person_id_PA', $dat->id)->first();
+            $hausratP[$cnt] = CostumerProduktHausrat::where('person_id_PH', $dat->id)->first();
 
-            if (Auth::guard('admins')->user()->hasRole('fs') && $dat->assign_to_id != Auth::guard('admins')->user()->id) {
-                unset($data[$datcnt]);
-                $datcnt++;
-            }
-
-
-            if ($dat->contracts != null) {
-                $contracts[$dat->id] = json_decode($dat->contracts);
-            }
+            $cnt++;
         }
 
-        return view('costumers', compact('data', 'contracts'));
+        return view('costumers', compact('data', 'contracts','grundversicherungP','retchsschutzP','vorsorgeP','autoversicherungP','hausratP','zusatzversicherungP'));
     }
   }
 
@@ -258,8 +431,9 @@ $retor = Pendency::where('family_id',$id)->get();
         if (isset($req->searchpend)) {
             $pend = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name','pendencies.admin_id', 'pendencies.family_id','pendencies.*','family_person.id', 'family_person.last_name')
                 ->where('pendencies.done', '=', 1)
+                ->where('pendencies.completed',0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchpend . '%')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
@@ -268,7 +442,8 @@ $retor = Pendency::where('family_id',$id)->get();
             $pend = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 1)
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->where('pendencies.completed',0)
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id','pendencies.*','family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         }
@@ -277,14 +452,14 @@ $retor = Pendency::where('family_id',$id)->get();
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchopen . '%')
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name','pendencies.*')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         } else {
             $open = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 0)
-                ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name','pendencies.*')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         }
@@ -293,20 +468,18 @@ $retor = Pendency::where('family_id',$id)->get();
         $opened = [];
 
         $answered = $pend;
- 
-   
+
+
             $opened = $open;
     }
     if (Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin')) {
 if(Auth::guard('admins')->user()->hasRole('admin')){
-      $tasks = DB::table('leads')
-      ->where('completed','=','0')
-      ->where('status_contract','!=','Done')
-      ->orWhereNull('status_contract')
-      ->where('status_task','!=','Done')
-      ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
+      $tasks = DB::table('family_person')
+      ->join('leads','family_person.leads_id','=','leads.id')
+      ->where('status','!=','Done')
+      ->select('family_person.*')
       ->paginate(20);
-       
+
 
 
       $cntt = 0;
@@ -317,25 +490,24 @@ if(Auth::guard('admins')->user()->hasRole('admin')){
       $pendingcnt = 0;
 
 
-     
+
           $opencnt = $tasks->total();
-        
+
       $pending = DB::table('family_person')
       ->join('pendencies','family_person.id','=','pendencies.family_id')
       ->where('pendencies.done','=',0)
       ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
       ->paginate(20);
-      
+
     }
     else{
-      $tasks = DB::table('leads')
-      ->where('completed','=','0')
-      ->where('status_contract','!=','Done')
-      ->orWhereNull('status_contract')
-      ->where('status_task','!=','Done')
-      ->where('assign_to_id',Auth::guard('admins')->user()->id)
-      ->select('leads.first_name','leads.last_name','leads.status_task','leads.id')
-      ->paginate(20);    
+      $tasks = DB::table('family_person')
+      ->join('leads','family_person.leads_id','=','leads.id')
+      ->where('status','!=','Done')
+      ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
+      ->select('family_person.*')
+      ->paginate(20);
+
        $tasks2 = [];
       $cntt = 0;
 
@@ -344,17 +516,17 @@ if(Auth::guard('admins')->user()->hasRole('admin')){
       $opencnt = 0;
       $pendingcnt = 0;
 
-  
- 
+
+
        $opencnt = $tasks->total();
-      
+
       $pending = DB::table('family_person')
       ->join('pendencies','family_person.id','=','pendencies.family_id')
       ->where('pendencies.done','=',0)
       ->where('pendencies.admin_id','=',Auth::guard('admins')->user()->id)
       ->select('family_person.first_name as first_name','family_person.last_name as last_name','pendencies.*','family_person.id as id')
       ->paginate(20);
-      
+
     }
     $cnt = 0;
     $costumers = family::all();
@@ -381,23 +553,6 @@ if(Auth::guard('admins')->user()->hasRole('admin')) return view('tasks', compact
 
   }
 
-
-
-
-  public function documentform(Request $req, $id)
-  {
-
-  }
-
-
-  public function isdone($object): bool
-  {
-
-    if ($object['job'] != null && $object['email'] != null && $object['lenker'] != null && $object['lenker'] != '' && $object['comment'] != null && $object['comment'] != '' && $object['kmstand'] != null && $object['kmstand'] != "" && $object['society'] != null && $object['socity'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['noticeby'] != null && $object['noticeby'] != '' && $object['insurance'] != null && $object['insurance'] != '' && $object['carcomment'] != null && $object['carcomment'] != '' && $object['preinsurer'] != null && $object['preinsurer'] != '' && $object['idnecessary'] != null && $object['idnecessary'] != '' && $object['leasingname'] != null && $object['leasingname'] != '' && $object['nationality'] != null && $object['nationality'] != '' && $object['nationality'] != '' && $object['nationality'] != null && $object['uploadpolice'] != null && $object['uploadpolice'] != '' && $object['yearpurchase'] != null && $object['yearpurchase'] != '' && $object['thingscarried'] != null && $object['thingscarried'] != '' && $object['startinsurance'] != null && $object['startinsurance'] != '' && $object['commentatpolice'] != null && $object['commentatpolice'] != '' && $object['powerofattorney'] != null && $object['powerofattorney'] != '' && $object['insuranceamount'] != null && $object['insuranceamount'] != '' && $object['residencepermit'] != null && $object['residencepermit'] != '' && $object['uploadvehicleid'] != null && $object['uploadvehicleid'] != '' && $object['contractstartdate'] != null && $object['contractstartdate'] != '' && $object['firstcommissioning'] != null && $object['firstcommissioning'] != '' &&  $object['nationalityfinance'] != null && $object['nationalityfinance'] != '' && $object['wishedadditionalthings'] != null && $object['wishedadditionalthings'] != '' && $object['dateofissueofdriverslicense'] != null && $object['dateofissueofdriverslicense'] != '' && $object['whichcompaniesshouldmakeanoffer'] != null && $object['whichcompaniesshouldmakeanoffer'] != '') {
-      return true;
-    }
-    return false;
-  }
   public function confirmsms(Request $request)
   {
     $user_id = Auth::guard('admins')->user()->id;

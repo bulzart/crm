@@ -1,4 +1,15 @@
 <?php
+
+use App\Events\SendNotification;
+use App\Models\CostumerProduktGrundversicherung;
+use App\Models\CostumerProduktRechtsschutz;
+use App\Models\CostumerProduktVorsorge;
+use App\Models\CostumerProduktZusatzversicherung;
+use App\Models\CostumerStatusGrundversicherung;
+use App\Models\CostumerStatusHausrat;
+use App\Models\CostumerStatusRetchsschutz;
+use App\Models\CostumerStatusVorsorge;
+use App\Models\CostumerStatusZusatzversicherung;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\UserController;
@@ -21,82 +32,162 @@ use App\Http\Controllers\FamilyPersonsController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TeamController;
+use App\Imports\leadinfo;
+use App\Imports\newlead;
+use App\Listeners\SendNotificationListener;
+use App\Models\campaigns;
 use App\Models\lead;
+use App\Models\lead_info;
+use App\Models\LeadDataPlus;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Session\Session;
 use Musonza\Chat\Chat;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Arr;
+
+use function Clue\StreamFilter\fun;
+
+route::prefix('')->middleware('confirmcode')->group(function(){
+   route::get('addlead',function(){
+      $campaigns = campaigns::all();
+      return view('addlead',compact('campaigns'));
+   });
+
+   route::post('importleads',function(Request $req){
+      $file = $req->file('file');
+      \Maatwebsite\Excel\Facades\Excel::import(new newlead, $file);
+      \Maatwebsite\Excel\Facades\Excel::import(new leadinfo, $file);
+      return redirect()->back();
+   })->name('importleads');
+   route::get('getleads',function(){
+      if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('wantsonline',0)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+         $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->where('rejected',0)->paginate(200);
+     } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('wantsonline',0)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+   }
+$instagram = 0;
+$sanascout = 0;
+$facebook = 0;
+   for($i = 0; $i < count($leads['leads']); $i++){
+$leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
+
+     $leads['leads'][$i]->campaign = lead::find($leads['leads'][$i]->id)->campaign->name;
+     $leads['leads'][$i]->grund = $leadinfo ? $leadinfo->grund : null;
+     $leads['leads'][$i]->krankenkasse = $leadinfo ? $leadinfo->krankenkasse : null;
+     $leads['leads'][$i]->bewertung = $leadinfo ? $leadinfo->bewerung : null;
+     $leads['leads'][$i]->wichtig = $leadinfo ? $leadinfo->wichtig : null;
+     $leads['leads'][$i]->kampagne = $leadinfo ? $leadinfo->kampagne : null;
+     $leads['leads'][$i]->teilnahme = $leadinfo ? $leadinfo->teilnahme : null;
+     if($leads['leads'][$i]->campaign_id == 1) $instagram++;
+     elseif($leads['leads'][$i]->campaign_id == 2) $facebook++;
+     else $sanascout++;
+   }
 
 
 
+     $leads['admins'] = Admins::role(['fs','digital'])->get();
+     $leads['admin'] = Auth::user()->getRoleNames();
+     $leads['sanascout'] = $sanascout;
+     $leads['instagram'] = $instagram;
+     $leads['facebook'] = $facebook;
 
-
-route::prefix('')->group(function(){
-
+     return $leads;
+   });
+   route::post('addslead',[UserController::class,'addslead'])->name('addslead');
+   route::get('assigntofs/{admin}',function($admin = null,Request $req){
+      $array = $req->array;
+      $array = explode(",",$array);
+      if(Admins::find($admin)->hasRole('fs')){
+        foreach($array as $arr){
+       lead::find($arr)->update(['assign_to_id' => $admin,'updated_at' => Carbon::now()->format('Y-m-d')]);
+        }
+      }
+      else{
+         foreach($array as $arr){
+            lead::find($arr)->update(['assign_to_id' => $admin,'updated_at' => Carbon::now()->format('Y-m-d'),'assigned' => 1]);
+             }
+      }
+   })->name('assigntofs');
+   route::get('assignpendency',[TasksController::class,'assignpendency']);
 // =====================================
    route::get('hyr',function(){
-      Auth::guard('admins')->loginUsingId(2);
+      Auth::guard('admins')->loginUsingId(1);
+   })->withoutMiddleware(confirmcode::class);
+   route::get('clear',function(){
+      \Artisan::call('optimize');
+     \Artisan::call('route:clear');
    });
 //==========================================
-   route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
+    route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
     route::get('closenots',[UserController::class,'closenots']);
     route::get('notifications',[UserController::class,'notifications']);
     route::get('insterappointment',[UserController::class,'insertappointment'])->name('insertappointment');
     route::get('/',[UserController::class,'dashboard'])->name('dashboard');
-    route::get('leads',[UserController::class,'leads'])->name('leads');
+    route::get('leads',[UserController::class,'leads'])->name('leads')->middleware('role:admin|fs|salesmanager,admins');
     route::post('asignlead/{id}',[UserController::class,'asignlead'])->name('asignlead');
     route::get('alead/{id}',[UserController::class,'alead'])->name('alead');
-    route::post('joined',[UserController::class,'joined'])->name('joined');
     route::get('dlead/{id}',[UserController::class,'dlead'])->name('dlead');
 
-    Route::group(['middleware' => 'json.response'], function () {
+   //  Route::group(['middleware' => 'json.response'], function () {
       route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
-   });
-
-    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment'); //Krijo appointment
-    route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
+   // });
+    route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
+    Route::get('changeTS', 'App\Http\Controllers\AppointmentsController@changeTS')->name('changeTS');
 
-    Route::group(['middleware' => 'json.response'], function () {
+   //  Route::group(['middleware' => 'json.response'], function () {
       route::post('completeapp/{id}',[UserController::class,'completeapp'])->name('completeapp');
-   });
+   // });
 
     route::get('dealnotclosed/{id}',[UserController::class,'dealnotclosed'])->name('dealnotclosed');
-    route::post('rejectedleads',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::post('rejectedleads/{status?}',[UserController::class,'rejectedleads'])->name('rejectedleads');
+    route::post('rejectlead/{id}',[UserController::class,'rejectlead'])->name('rejectlead');
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
-        $lead = lead::find($id);
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+        $lead = lead::find($idd);
+
         return view('acceptappointment',compact('lead'));
     })->name('acceptappointment');
     route::get('acceptleadinfo/{id}',function ($id){
-        $app = lead::find($id)->update(['assigned' => 1]);
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+        $app = lead::find($idd)->update(['assigned' => 1]);
         return redirect()->back();
     })->name('acceptleadinfo');
 
     //----------------------------------------------------------------//
     route::get('leadfamily/{id}',function ($id){
-      try
-      {$data = family::where('leads_id',$id)->get();
-                     if(!empty($data[0])){
 
+        $idd = Crypt::decrypt($id);
+        $idd /= 1244;
+
+        try {
+
+          $data = family::where('leads_id',$idd)->get();
+                     if(!empty($data[0])){
                         if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice') || $data[0]->lead->assign_to_id == Auth::guard('admins')->user()->id) {return view('leadfamily',compact('data'));}
                      }
                      else{
-                        return redirect()->route('dealclosed',$id);
+                        return redirect()->route('dealclosed',Crypt::encrypt($idd * 1244));
                      }
-                     
+
                   }
       catch(Throwable $e){
           return redirect()->back();
       }
-    
+
    })->name('leadfamily');
    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
     route::post('updateleadfamilyperson/{id}',[FamilyPersonsController::class,'updateleadfamilyperson'])->name('updateleadfamilyperson');
     route::get('allFamilyPersons/{id}',[FamilyPersonsController::class,'getAllFamilyPersonsOfLead'])->name('allFamilyPersonOfLead');
     route::post('updateFamilyPerson/{id}',[FamilyPersonsController::class,'updateFamilyPerson'])->name('updateFamilyPerson');
     route::post('deleteFamilyPerson/{id}/{leadId}',[FamilyPersonsController::class,'deleteFamilyPerson'])->name('deleteFamilyPerson');
-    route::post('createLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'createLeadDataKK'])->name('createLeadDataKK');
+    route::post('createLeadDataKK/{leadIdd}/{personIdd}',[LeadDataController::class,'createLeadDataKK'])->name('createLeadDataKK');
     route::post('updateLeadDataKK/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataKK'])->name('updateLeadDataKK');
     route::post('updateleadDataACounteroffered/{leadId}/{personId}',[LeadDataController::class,'updateleadDataACounteroffered'])->name('updateleadDataACounteroffered');
     route::post('updateLeadDataFahrzeug/{leadId}/{personId}',[LeadDataController::class,'updateLeadDataFahrzeug'])->name('updateLeadDataFahrzeug');
@@ -111,9 +202,9 @@ route::prefix('')->group(function(){
     route::post('deleteTeam/{teamId}',[TeamController::class,'deleteTeam'])->name('deleteTeam');
     route::get('showTeamById/{teamId}',[TeamController::class,'showTeamById'])->name('showTeamById');
     route::get('updateTeam/{teamId}',[TeamController::class,'updateTeam'])->name('updateTeam');
-    Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
+   //  Route::group(['prefix' => 'team', 'middleware' => 'json.response'], function () {
       route::post('create',[TeamController::class,'createTeam'])->name('createTeam');
-  });
+//   });
    route::post('documentform/{id}',[TasksController::class,'documentform'])->name('documentform');
    route::any('tasks',[TasksController::class,'tasks'])->name('tasks');
    route::get('searchword',[TasksController::class,'searchword'])->name('searchword');
@@ -122,12 +213,22 @@ route::prefix('')->group(function(){
    route::get('ispending',[TasksController::class,'itis']);
    route::get('todayappointments',[TasksController::class,'today']);
    route::get('vuedate',[TasksController::class,'vuedate']);
-   route::get('chat',[ChatController::class,'chat']);
-    route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
-
-   Route::group(['middleware' => 'json.response'], function () {
+   route::get('chat/{u1}/{u2}',[ChatController::class,'chat'])->name('chat');
+   route::get('leadfamilyperson/{id}',[FamilyPersonsController::class,'family_persons'])->name('leadfamilyperson');
+   route::any('addappointmentfile',[UserController::class,'addappointmentfile'])->name('addappointmentfile');
+   // Route::group(['middleware' => 'json.response'], function () {
       route::get('addtodo',[TodoController::class,'addtodo']);
-   });
+   // });
+   route::post('create-task/{id}/{pendencyId}',[TodoController::class,'createToDoTasks'])->name('createToDoTasks');
+   route::get('opened-tasks',[TodoController::class,'getAllOpenedToDoTasks'])->name('getAllOpenedToDoTasks');
+   route::get('answered-tasks',[TodoController::class,'getAllAnsweredTasks'])->name('getAllAnsweredTasks');
+   route::get('costumer/{costumerId}',[TodoController::class,'getDataForTaskByCostumerId'])->name('getDataForTaskByCostumerId');
+
+    route::get('costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'costumer_form'])->name('costumer_form');
+
+    route::post('save_costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'save_costumer_form'])->name('save_costumer_form');
+    route::post('edit_costumer_kundportfolio/{id}',[\App\Http\Controllers\CostumerFormController::class,'edit_costumer_kundportfolio'])->name('edit_costumer_kundportfolio')->middleware('role:admin|backoffice,admins');
+
 
    route::get('todos',[TodoController::class,'todos']);
    route::get('deletetodo',[TodoController::class,'deletetodo']);
@@ -139,7 +240,7 @@ route::prefix('')->group(function(){
    route::get('accepttask/{id}',[TasksController::class,'accepttask'])->name('accepttask');
    route::get('dates',[TasksController::class,'dates'])->name('dates');
 
-route::get('assignpendency/{admin}/{id}/{desc}',[TasksController::class,'assignpendency']);
+   route::post('addPersonalAppointment',[\App\Http\Controllers\PersonalAppointmentController::class,'addPersonalAppointment'])->name('addPersonalAppointment');
 
    route::post('confirmsms',[TasksController::class,'confirmsms'])->name('confirmsms');
    route::get('add',[TasksController::class,'adddata']);
@@ -159,12 +260,45 @@ route::get('smsconfirm',function (){
 })->name('smsconfirm')->withoutMiddleware([confirmedcode::class]);
 route::post('confirmcode',[UserController::class,'confirmcode'])->name('confirmcode')->withoutMiddleware([confirmedcode::class]);
 route::get('logout',[UserController::class,'logout'])->name('logout')->withoutMiddleware([confirmedcode::class]);
+route::get('status',[StatusController::class,'status'])->name('status');
+route::get('editclientdata/{id}',[StatusController::class,'editclientdata'])->name('editclientdata');
+route::post('editclientform/{id}',[StatusController::class,'editclientform'])->name('editclientform');
+route::get('file/{file?}',function($file = null){
+        if(Storage::disk('img')->exists($file)){
+           $file = Storage::disk('img')->get($file);
+           $response = Response::make($file, 200);
+         $response->header('Content-Type', 'file');
+           return $response;
+        }
+        else{
+           return redirect()->back();
+        }
+})->middleware('role:admin|backoffice|salesmanager|management,admins')->name('showfile');
 });
 
-route::get('status',[StatusController::class,'status']);
+// Route::get('Appointments', array('as' => 'route.index', 'Appointments' => 'App\Http\Controllers\AppointmentsController@index'));
+// route::get('Appointments',[AppointmentsController::class,'Appointments']);
 
+Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')->name('Appointments');
+Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
-
-
-
-
+route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
+route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
+route::get('getadmin',function (){
+   return Auth::guard('admins')->user()->id;
+});
+route::get('pendingreject/{id}/{where}',function($id,$where){
+   $leads = lead::find($id);
+  if($where == 0){
+   return view('pendingreject')->with('pojo',0)->with('leads',lead::find($id));
+  }
+  else{
+   return view('pendingreject')->with('pojo',1)->with('leads',lead::find($id));
+  }
+});
+route::get('rleads',[UserController::class,'rleads'])->name('rleads');
+route::get('leadhistory',function(Request $request){
+   $leads = lead::with('info')->with('admin')->orderBy('created_at','desc')->paginate(40);
+   return view('leadshistory',compact('leads'));
+})->name('leadshistory');
+route::get('fsadmins',[TodoController::class,'fsadmins']);

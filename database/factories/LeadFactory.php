@@ -32,7 +32,6 @@ $status = "Done";
         elseif($num % 2 == 0) $aa = 1;
         elseif($num % 2 == 1) $aa = 0;
         return $aa;
-
     }
     public function definition()
     {
@@ -52,9 +51,12 @@ $status = "Done";
             'completed' => random_int(0,1),
             'campaign_id' => random_int(1,3),
             'appointment_date' => Carbon::now()->addDay(random_int(0,14))->format('Y-m-d'),
-            'assign_to_id' => random_int(0,10),
+            'assign_to_id' => random_int(5,9),
             'status_task' => $this->randomm(),
-            'assigned' => random_int(0,1)
+            'assigned' => random_int(0,1),
+            'time' => $this->faker->time('H:i'),
+            'wantsonline' => random_int(0,1),
+            'rejected' => random_int(0,1)
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Imports\leadinfo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,7 +25,9 @@ class lead extends Model
             'appointment_date',
             'campaign_id',
             'assign_to_id',
-            'time'
+            'time',
+            'wantsonline',
+            'slug',
         ];
 
     public function campaign(){
@@ -34,4 +37,11 @@ class lead extends Model
     public function family(){
         return $this->hasMany(family::class, 'leads_id');
     }
+    public function info(){
+        return $this->belongsTo(lead_info::class,'id','lead_id');
+    }
+    public function admin(){
+        return $this->belongsTo(Admins::class,'assign_to_id','id');
+    }
+    
 }

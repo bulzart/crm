@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+          <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,22 +17,48 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css" rel="stylesheet"/>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Document</title>
+    <link rel="icon" type="image/png" href="img/Favicon.png">
 </head>
-
-<body>
-
-
-
 <style>
+    /*nav ARti*/
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:wght@200;800;900&display=swap');
+    body {font-family: 'Montserrat', sans-serif;}
+    .nav-itemsss {
+        height: 90vh !important;
+        overflow-y: scroll !important;
+
+        /* overflow-x: hidden !important; */
+    }
+    /* .nav-link {
+        padding-right: 1.8rem !important;
+        padding-left: 1.8rem !important;
+    } */
+
     .nav-itemsss a:hover {
-        background-color: #c9cad8;
-        color: #000;
+        background-color: #fff;
+        color: #0C71C3 ;
     }
 
-    .nav-itemsss a:focus {
-        background-color: #474747;
-        color: #fff;
+    .activeClassNav__, .activeClassNav__ span, .activeClassNav__ svg{
+        background-color: #fff;
+        color: #0C71C3 !important;
+        fill: #0C71C3 !important;
+    }
+
+    .nav-itemsss a:hover span{
+        color: #0C71C3 ;
+    }
+
+    .nav-itemsss a:hover svg{
+        fill: #0C71C3 ;
+    }
+
+    .nav-itemsss a:focus, .nav-itemsss a:focus svg, .nav-itemsss a:focus span {
+        background-color: #fff;
+        color: #0C71C3;
+        fill: #0C71C3 ;
     }
 
     @media (max-width: 999.98px) {
@@ -40,236 +67,306 @@
         }
 
         .navvv {
-            width: 80px !important;
+            width: fit-content !important;
             text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
+        /* .user-drop {
+            position: fixed !important;
+            bottom: 0;
+            width: fit-content !important;
+        } */
+
+    }
+    /* overflow 1 */
+    .overflow-div1::-webkit-scrollbar {
+        width: 0px;
+    }
+
+
+    .nav-texttt{
+        font-family: 'Poppins';
+        color: #fff;
 
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:wght@200;800;900&display=swap');
-    body {
-        font-family: 'Montserrat', sans-serif;
+    @media (max-width: 978px){
+        #logo__311{
+            content:url('../img/Logo gjys.png');
+            width: 20% !important;
+        }
     }
+
 </style>
-<form method="post" enctype="multipart/form-data" id="forma">
-    @csrf
-    <div class="row" disabled>
-        <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
-            <ul class="nav nav-pills flex-column mb-auto  nav-itemsss">
-                <li class="nav-item">
-                    <a href="{{route('dashboard')}}" class="nav-link link-dark lh-1" aria-current="page">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                             class="bi bi-house" viewBox="0 0 16 16">
+
+<body>
+
+<div class="row" id="app">
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
+        <div class="d-flex navvv" style="height: 100% !important; position: fixed; background-color: #0C71C3;">
+
+            <div class="nav-itemsss overflow-div1" style="width:100%; background-color: #0C71C3;">
+                <br>
+                <div class="mx-auto">
+                    <img src="../img/Logo.png" id="logo__311" style="width: 100%;" alt="">
+                </div>
+                <br>
+                <div class="">
+                    <a href="{{route('dashboard')}}" class="nav-link link-dark {{ (request()->is('/')) ? 'activeClassNav__' : '' }}" aria-current="page">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="bi bi-house"
+                             viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
-                                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                                  d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
                             <path fill-rule="evenodd"
-                                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                                  d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Home</span>
+                        <span class="ps-1 nav-texttt">Home</span>
                     </a>
-                </li>
+                </div>
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('admin'))
-                    <li>
-                        <a href="{{route('tasks')}}" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <div class="">
+                        <a href="{{route('tasks')}}" class="nav-link link-dark {{ (request()->is('tasks')) ? 'activeClassNav__' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-speedometer2" viewBox="0 0 16 16">
                                 <path
-                                    d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+                                    d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z" />
                                 <path fill-rule="evenodd"
-                                      d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+                                      d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Tasks</span>
+                            <span class="ps-1 nav-texttt">Tasks</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment'))
-                    <li>
-                        <a href="{{route('leads')}}" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-calendar3" viewBox="0 0 16 16">
+                    <div class="">
+                        <a href="{{route('leads')}}" class="nav-link link-dark {{ (request()->is('leads')) ? 'activeClassNav__' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-calendar3"
+                                 viewBox="0 0 16 16">
                                 <path
-                                    d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                                    d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
                                 <path
-                                    d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                    d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Leads</span>
+                            <span class="ps-1 nav-texttt">Leads</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
-                <li>
+                <div class="">
                     <a href="#" class="nav-link link-dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-grid" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-grid"
+                             viewBox="0 0 16 16">
                             <path
-                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
                         </svg>
-                        <span class="ps-2 nav-texttt">Finance</span>
+                        <span class="ps-1 nav-texttt">Finance</span>
                     </a>
-                </li>
+                </div>
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <div class="">
+                        <a href="{{route('status')}}" class="nav-link link-dark {{ (request()->is('status')) ? 'activeClassNav__' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-clipboard-data" viewBox="0 0 16 16">
                                 <path
-                                    d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+                                    d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
                                 <path
-                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
                                 <path
-                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Status</span>
+                            <span class="ps-1 nav-texttt">Status</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->check())
-                    <li>
-                        <a href="{{route('costumers')}}" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <div class="">
+                        <a href="{{route('costumers')}}" class="nav-link link-dark {{ (request()->is('costumers')) ? 'activeClassNav__' : '' }}" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-person-circle" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                 <path fill-rule="evenodd"
-                                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Costumers</span>
+                            <span class="ps-1 nav-texttt">Costumers</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-                    <li>
+                    <div class="">
                         <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-cash-coin" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-cash-coin"
+                                 viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z" />
                                 <path
-                                    d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                                    d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z" />
                                 <path
-                                    d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
-                                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                                    d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z" />
+                                <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Deposit</span>
+                            <span class="ps-1 nav-texttt">Deposit</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin'))
-                    <li>
+                    <div class="">
                         <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-x-square" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-x-square"
+                                 viewBox="0 0 16 16">
                                 <path
-                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                                 <path
-                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Cancelations</span>
+                            <span class="ps-1 nav-texttt">Cancelations</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('fs') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
-                    <li>
-                        <a href="{{route('calendar')}}" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-calendar-check" viewBox="0 0 16 16">
-                                <path
-                                    d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                                <path
-                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                            </svg>
-                            <span class="ps-2 nav-texttt">Calendar</span>
-                        </a>
-                    </li>
+                    @if(Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('fs'))
+                        <div class="">
+                            <a href="{{route('Appointments')}}" class="nav-link link-dark {{ (request()->is('Appointments')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-calendar-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                </svg>
+                                <span class="ps-1 nav-texttt">Calendar</span>
+                            </a>
+                        </div>
+                    @else
+                        <div class="">
+                            <a href="{{route('calendar')}}" class="nav-link link-dark {{ (request()->is('calendar')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-calendar-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                </svg>
+                                <span class="ps-1 nav-texttt">Calendar</span>
+                            </a>
+                        </div>
+                    @endif
+
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('salesmanager') ||Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('admin'))
-                    <li>
-                        <a href="{{route('dates')}}" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-calendar-date" viewBox="0 0 16 16">
-                                <path
-                                    d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z"/>
-                                <path
-                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                            </svg>
-                            <span class="ps-2 nav-texttt">Dates</span>
-                        </a>
-                    </li>
+                    @if(Auth::guard('admins')->user()->hasRole('salesmanager'))
+                        <div class="">
+                            <a href="{{route('calendar')}}" class="nav-link link-dark {{ (request()->is('calendar')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-calendar-date" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z" />
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                </svg>
+                                <span class="ps-1 nav-texttt">Dates</span>
+                            </a>
+                        </div>
+                    @else
+                        <div class="">
+                            <a href="{{route('Appointments')}}" class="nav-link link-dark {{ (request()->is('Appointments')) ? 'activeClassNav__' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-calendar-date" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z" />
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                                </svg>
+                                <span class="ps-1 nav-texttt">Dates</span>
+                            </a>
+                        </div>
+                    @endif
                 @endif
-                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment'))
-                    <li>
+                @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
+                    <div class="">
                         <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-people-fill"
+                                 viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                 <path fill-rule="evenodd"
-                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Employees</span>
+                            <span class="ps-1 nav-texttt">Employees</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('finance') || Auth::guard('admins')->user()->hasRole('admin'))
-                    <li>
-                        <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-people-fill" viewBox="0 0 16 16">
-                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                <path fill-rule="evenodd"
-                                      d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
-                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                    <div class="">
+                        <a href="#" class="nav-link link-dark" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-percent" viewBox="0 0 16 16">
+                                <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
                             </svg>
-                            <span class="ps-2 nav-texttt">Commisions</span>
+                            <span class="ps-1 nav-texttt">Commisions</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
-                    <li class="">
+                    <div class="">
                         <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
                                  class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
-                                      d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z"/>
+                                      d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Prov.system</span>
+                            <span class="ps-1 nav-texttt">Prov.system</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('salesmanager'))
-                    <li class="">
+                    <div class="">
                         <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-bar-chart" viewBox="0 0 16 16">
-                                <path
-                                    d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                                <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
                             </svg>
-                            <span class="ps-2 nav-texttt">Statistics</span>
+                            <span class="ps-1 nav-texttt">Statistics</span>
                         </a>
-                    </li>
+                    </div>
                 @endif
                 @if(Auth::guard('admins')->user()->hasRole('menagment') || Auth::guard('admins')->user()->hasRole('finance') ||Auth::guard('admins')->user()->hasRole('admin') )
-                    <li class="">
+                    <div class="">
                         <a href="#" class="nav-link link-dark">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-wallet2" viewBox="0 0 16 16">
-                                <path
-                                    d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                 class="bi bi-diagram-2-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-3 8A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5v-1z" />
                             </svg>
-                            <span class="ps-2 nav-texttt">Trust</span>
+                            <span class="ps-1 nav-texttt">Trust</span>
                         </a>
-                    </li>
+                    </div>
+                    <br>
                 @endif
-            </ul>
+                @if(Auth::guard('admins')->user()->hasRole('admin'))<div><a class="nav-link link-dark  rounded" href="{{route('addnewuser')}}"><span class="ps-1 nav-texttt">Add New User</span></a></div>@endif
+
+
+
+                <div>
+                    <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('rleads')}}"><span class="ps-1 nav-texttt">Rejected Leads</span></a>
+                </div>
+                <div class="">
+                    <a class="nav-link link-dark  rounded {{ (request()->is('rleads')) ? 'activeClassNav__' : '' }}" href="{{route('logout')}}"><span class="ps-1 nav-texttt">Sign out</span></a>
+                </div>
+            </div>
+            <hr>
         </div>
-        <div class="col">
+    </div>
+    <div class="col">
+        <form method="post" enctype="multipart/form-data" id="forma">
+            @csrf
+
+
             <div class="my-5 mx-4">
                 <div class="" style="background-color: #EFEFEF;border-radius: 22px;">
                     <div class="py-4 px-3">
-              <span class="fs-4">
-               {{$lead->first_name}}</a>
-              </span><br>
+                            <span class="fs-4">
+                                {{$lead->first_name}}</a>
+                            </span><br>
                         <span class="fs-6 text-muted">
-                {{$lead->address}}
-              </span>
+                                {{$lead->address}}
+                            </span>
                     </div>
                     <div class="row mx-4">
                         <nav class="g-0">
@@ -295,8 +392,8 @@
                         </nav>
                     </div>
                     <div class="tab-content mx-4 pb-3" id="nav-tabContent">
-                        <div class="tab-pane fade show active krankenkasse-content mb-3" id="nav-home" role="tabpanel"
-                             aria-labelledby="nav-home-tab">
+                        <div class="tab-pane fade show active krankenkasse-content mb-3" id="nav-home"
+                             role="tabpanel" aria-labelledby="nav-home-tab">
                             <div class="row mx-4">
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mt-4">
                                     <div class="" style="background-color: #EFEFEF; border-radius: 13px;">
@@ -304,30 +401,30 @@
                                             <div class="row mx-2">
                                                 <div class="col-7 d-flex g-0">
                                                     <div class="">
-                              <span class="fw-bold" style=" font-size: 12px;">
-                                Vorversicherer
-                              </span>
+                                                            <span class="fw-bold" style=" font-size: 12px;">
+                                                                Vorversicherer
+                                                            </span>
                                                     </div>
                                                 </div>
                                                 <!-- <div class="col g-0 d-flex justify-content-end">
-                                                <div class="select-div text-end">
-                                                  <select name="pre_insurer" class="fw-bold" id=""  style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                    <option selected>Select</option>
-                                                    <option value="1">Ja</option>
-                                                    <option value="2">Nein</option>
-                                                  </select>
-                                                </div>
-                                              </div> -->
+                                            <div class="select-div text-end">
+                                              <select name="pre_insurer" class="fw-bold" id=""  style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                                                <option selected>Select</option>
+                                                <option value="1">Ja</option>
+                                                <option value="2">Nein</option>
+                                              </select>
+                                            </div>
+                                          </div> -->
                                             </div>
                                             <div class="upload-box mx-1 my-2">
                                                 <div class="mx-1 my-2 p-4 text-center">
                                                     <label for="file-input-0">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53"
-                                                             viewBox="0 0 53 53">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53"
+                                                             height="53" viewBox="0 0 53 53">
                                                             <g id="Group_621" data-name="Group 621"
                                                                transform="translate(-78.283 -14.777)">
-                                                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5"
-                                                                        cy="26.5" r="26.5"
+                                                                <circle id="Ellipse_31" data-name="Ellipse 31"
+                                                                        cx="26.5" cy="26.5" r="26.5"
                                                                         transform="translate(78.283 14.777)"
                                                                         fill="#5f5f5f"/>
                                                                 <g id="Group_326" data-name="Group 326"
@@ -345,16 +442,16 @@
                                                         </svg>
                                                     </label>
 
-                                                    @if(isset($data->datakk[0]->pre_insurer))
+                                                    @if(isset($data->datakk->pre_insurer))
                                                         <input type="file" name="pre_insurer"
-                                                               value="{{$data->datakk[0]->pre_insurer}}"
-                                                               id="file-input-0" class="svg-div w-100 border-0  g-0"
+                                                               value="{{$data->datakk->pre_insurer}}" id="file-input-0"
+                                                               class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this)">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->pre_insurer)}}"><input
+                                                        <a style="text-decoration: none" href="{{route('showfile',$data->datakk->pre_insurer)}}"><input
                                                                 type="text" class="form-control text-center"
                                                                 id="file-input-0c" disabled
                                                                 style="background:none; border:none;"
-                                                                value="{{$data->datakk[0]->pre_insurer}}"></a>
+                                                                value="{{$data->datakk->pre_insurer}}"></a>
                                                     @else
                                                         <input type="file" name="pre_insurer" id="file-input-0"
                                                                class="svg-div w-100 border-0  g-0"
@@ -374,31 +471,31 @@
                                             <div class="row mx-2">
                                                 <div class="col-7 d-flex g-0">
                                                     <div class="">
-                              <span class="fw-bold" style="font-size: 12px;">
-                                ID Notwending
-                              </span>
+                                                            <span class="fw-bold" style="font-size: 12px;">
+                                                                ID Notwending
+                                                            </span>
                                                     </div>
                                                 </div>
                                                 <!-- <div class="col g-0 d-flex justify-content-end">
-                                                <div class="select-div text-end">
-                                                  <select name="id_required" class="fw-bold" id=""
-                                                    style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                    <option selected>Select</option>
-                                                    <option value="1">Ja</option>
-                                                    <option value="2">Nein</option>
-                                                  </select>
-                                                </div>
-                                              </div> -->
+                                            <div class="select-div text-end">
+                                              <select name="id_required" class="fw-bold" id=""
+                                                style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                                                <option selected>Select</option>
+                                                <option value="1">Ja</option>
+                                                <option value="2">Nein</option>
+                                              </select>
+                                            </div>
+                                          </div> -->
                                             </div>
                                             <div class="upload-box mx-1 my-2">
                                                 <div class="mx-1 my-2 p-4 text-center">
                                                     <label for="file-input-1">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53"
-                                                             viewBox="0 0 53 53">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53"
+                                                             height="53" viewBox="0 0 53 53">
                                                             <g id="Group_621" data-name="Group 621"
                                                                transform="translate(-78.283 -14.777)">
-                                                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5"
-                                                                        cy="26.5" r="26.5"
+                                                                <circle id="Ellipse_31" data-name="Ellipse 31"
+                                                                        cx="26.5" cy="26.5" r="26.5"
                                                                         transform="translate(78.283 14.777)"
                                                                         fill="#5f5f5f"/>
                                                                 <g id="Group_326" data-name="Group 326"
@@ -416,21 +513,22 @@
                                                         </svg>
                                                     </label>
 
-                                                    @if(isset($data->datakk[0]->id_required))
+                                                    @if(isset($data->datakk->id_required))
                                                         <input type="file" id="file-input-1"
                                                                class="svg-div w-100 border-0  g-0"
                                                                onchange="upload(this);"
-                                                               value="{{$data->datakk[0]->id_required}}"
+                                                               value="{{$data->datakk->id_required}}"
                                                                name="id_required">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->id_required)}}">
+                                                        <a style="text-decoration: none" href="{{route('showfile',$data->datakk->id_required)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-1c" disabled
                                                                    style="background:none; border:none;"
-                                                                   value="{{$data->datakk[0]->id_required}}"></a>
+                                                                   value="{{$data->datakk->id_required}}"></a>
                                                     @else
                                                         <input type="file" id="file-input-1"
                                                                class="svg-div w-100 border-0  g-0"
-                                                               onchange="upload(this);" name="id_required">
+                                                               onchange="upload(this);"
+                                                               name="id_required">
                                                         <input type="text" class="form-control text-center"
                                                                id="file-input-1c" disabled
                                                                style="background:none; border:none;">
@@ -446,31 +544,31 @@
                                             <div class="row mx-2">
                                                 <div class="col-8 g-0 d-flex">
                                                     <div class="text-nowrap">
-                              <span class="fw-bold" style=" font-size: 12px;">
-                                Kundingung durch
-                              </span>
+                                                            <span class="fw-bold" style=" font-size: 12px;">
+                                                                Kundingung durch
+                                                            </span>
                                                     </div>
                                                 </div>
                                                 <!-- <div class="col g-0 d-flex justify-content-end">
-                                                <div class="select-div text-end">
-                                                  <select name="noname" class="fw-bold" id=""
-                                                    style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                    <option selected>Select</option>
-                                                    <option value="1">Ja</option>
-                                                    <option value="2">Nein</option>
-                                                  </select>
-                                                </div>
-                                              </div> -->
+                                            <div class="select-div text-end">
+                                              <select name="noname" class="fw-bold" id=""
+                                                style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                                                <option selected>Select</option>
+                                                <option value="1">Ja</option>
+                                                <option value="2">Nein</option>
+                                              </select>
+                                            </div>
+                                          </div> -->
                                             </div>
                                             <div class="upload-box mx-1 my-2">
                                                 <div class="mx-1 my-2 p-4 text-center">
                                                     <label for="file-input-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53"
-                                                             viewBox="0 0 53 53">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53"
+                                                             height="53" viewBox="0 0 53 53">
                                                             <g id="Group_621" data-name="Group 621"
                                                                transform="translate(-78.283 -14.777)">
-                                                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5"
-                                                                        cy="26.5" r="26.5"
+                                                                <circle id="Ellipse_31" data-name="Ellipse 31"
+                                                                        cx="26.5" cy="26.5" r="26.5"
                                                                         transform="translate(78.283 14.777)"
                                                                         fill="#5f5f5f"/>
                                                                 <g id="Group_326" data-name="Group 326"
@@ -487,20 +585,21 @@
                                                             </g>
                                                         </svg>
                                                     </label>
-                                                    @if(isset($data->datakk[0]->notice_by))
+                                                    @if(isset($data->datakk->notice_by))
                                                         <input type="file" id="file-input-2"
                                                                class="svg-div w-100 border-0  g-0"
-                                                               onchange="upload(this);" name="notice_by"
-                                                               value="{{$data->datakk[0]->notice_by}}">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->notice_by)}}">
+                                                               onchange="upload(this);"
+                                                               name="notice_by" value="{{$data->datakk->notice_by}}">
+                                                        <a style="text-decoration: none" href="{{route('showfile',$data->datakk->notice_by)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-2c" disabled
                                                                    style="background:transparent; border:none;"
-                                                                   value="{{$data->datakk[0]->notice_by}}"></a>
+                                                                   value="{{$data->datakk->notice_by}}"></a>
                                                     @else
                                                         <input type="file" id="file-input-2"
                                                                class="svg-div w-100 border-0  g-0"
-                                                               onchange="upload(this);" name="notice_by">
+                                                               onchange="upload(this);"
+                                                               name="notice_by">
                                                         <input type="text" class="form-control text-center"
                                                                id="file-input-2c" disabled
                                                                style="background:transparent; border:none;">
@@ -516,31 +615,31 @@
                                             <div class="row mx-2">
                                                 <div class="col-7 d-flex g-0">
                                                     <div class="">
-                              <span class="fw-bold" style=" font-size: 12px;">
-                                Vollmacht
-                              </span>
+                                                            <span class="fw-bold" style=" font-size: 12px;">
+                                                                Vollmacht
+                                                            </span>
                                                     </div>
                                                 </div>
                                                 <!-- <div class="col g-0 d-flex justify-content-end">
-                                                <div class="select-div text-end ">
-                                                  <select name="power_of_attorney" class="fw-bold" id=""
-                                                    style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                    <option selected>Select</option>
-                                                    <option value="1">Ja</option>
-                                                    <option value="2">Nein</option>
-                                                  </select>
-                                                </div>
-                                              </div> -->
+                                            <div class="select-div text-end ">
+                                              <select name="power_of_attorney" class="fw-bold" id=""
+                                                style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
+                                                <option selected>Select</option>
+                                                <option value="1">Ja</option>
+                                                <option value="2">Nein</option>
+                                              </select>
+                                            </div>
+                                          </div> -->
                                             </div>
                                             <div class="upload-box mx-1 my-2">
                                                 <div class="mx-1 my-2 p-4 text-center">
                                                     <label for="file-input-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53" height="53"
-                                                             viewBox="0 0 53 53">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="53"
+                                                             height="53" viewBox="0 0 53 53">
                                                             <g id="Group_621" data-name="Group 621"
                                                                transform="translate(-78.283 -14.777)">
-                                                                <circle id="Ellipse_31" data-name="Ellipse 31" cx="26.5"
-                                                                        cy="26.5" r="26.5"
+                                                                <circle id="Ellipse_31" data-name="Ellipse 31"
+                                                                        cx="26.5" cy="26.5" r="26.5"
                                                                         transform="translate(78.283 14.777)"
                                                                         fill="#5f5f5f"/>
                                                                 <g id="Group_326" data-name="Group 326"
@@ -557,20 +656,22 @@
                                                             </g>
                                                         </svg>
                                                     </label>
-                                                    @if(isset($data->datakk[0]->power_of_attorney))
+                                                    @if(isset($data->datakk->power_of_attorney))
                                                         <input type="file" id="file-input-3"
                                                                class="svg-div w-100 border-0  g-0"
-                                                               onchange="upload(this);" name="power_of_attorney"
-                                                               value="{{$data->datakk[0]->power_of_attorney}}">
-                                                        <a href="{{Storage::disk('img')->url($data->datakk[0]->power_of_attorney)}}">
+                                                               onchange="upload(this);"
+                                                               name="power_of_attorney"
+                                                               value="{{$data->datakk->power_of_attorney}}">
+                                                        <a style="text-decoration: none" href="{{route('showfile',$data->datakk->power_of_attorney)}}">
                                                             <input type="text" class="form-control text-center"
                                                                    id="file-input-3c" disabled
                                                                    style="background:transparent; border:none;"
-                                                                   value="{{$data->datakk[0]->power_of_attorney}}"></a>
+                                                                   value="{{$data->datakk->power_of_attorney}}"></a>
                                                     @else
                                                         <input type="file" id="file-input-3"
                                                                class="svg-div w-100 border-0  g-0"
-                                                               onchange="upload(this);" name="power_of_attorney">
+                                                               onchange="upload(this);"
+                                                               name="power_of_attorney">
                                                         <input type="text" class="form-control text-center"
                                                                id="file-input-3c" disabled
                                                                style="background:transparent; border:none;">
@@ -582,33 +683,36 @@
                                 </div>
                             </div>
                             <div class="text-center mt-3 pb-3">
-                                <div class="row">
-                                    <div class="col g-0 text-end my-auto">
-                                        <div class="">
-                        <span class="pe-2" style="color: #9F9F9F;">
+                                <div class="row mx-4">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
+                              <addtask2 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask2>
+                                    @endif
+                                    <div class="col d-flex justify-content-end">
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
 
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0 text-start">
-                                        <div id="buton">
-                                            <button class="px-5 py-2" type="button"
-                                                    style="border: none; border-radius: 9px; background-color:#285F52;"
-                                                    id="nextonee__" onclick="nextonee()">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
-                                                     viewBox="0 0 58.155 19.159">
-                                                    <g id="Group_453" data-name="Group 453"
-                                                       transform="translate(0.004)">
-                                                        <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
-                                                              transform="translate(0 9.287)" fill="none"
-                                                              stroke="#3fd599" stroke-width="2"/>
-                                                        <path id="Polygon_2" data-name="Polygon 2"
-                                                              d="M9.58,0l9.58,11.642H0Z"
-                                                              transform="translate(58.151 0) rotate(90)"
-                                                              fill="#3fd599"/>
-                                                    </g>
-                                                </svg>
-                                            </button>
+                                            </div>
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -622,22 +726,23 @@
                                     <div class="accordion accordion-flush" id="accordionFlushExample1">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-headingOne">
-                                                <button id="button1" class="accordion-button collapsed" type="button"
-                                                        data-bs-toggle="collapse" onclick="hideSpan();"
+                                                <button id="button1" class="accordion-button collapsed"
+                                                        type="button" data-bs-toggle="collapse" onclick="hideSpan();"
                                                         data-bs-target="#flush-collapseOne" aria-expanded="false"
                                                         aria-controls="flush-collapseOne"
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
                                                     <div class="d-block">
                                                         <div class="">
-                                <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                  Gegenofferte?
-                                </span>
+                                                                <span class="fs-6" id="title-span"
+                                                                      style="font-weight: 600;">
+                                                                    Gegenofferte?
+                                                                </span>
                                                         </div>
                                                         <div class="lh-1 " id="bastelle-span">
-                                <span class="" style="font-size: 13px;">
-                                  Bestelle eine Gegenofferte
-                                  für eine bestehende Autoversicherung
-                                </span>
+                                                                <span class="" style="font-size: 13px;">
+                                                                    Bestelle eine Gegenofferte
+                                                                    für eine bestehende Autoversicherung
+                                                                </span>
                                                         </div>
                                                     </div>
                                                 </button>
@@ -649,16 +754,17 @@
                                                      style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                                                     <div class="">
                                                         <div class="">
-                                <span class="" style="font-size: 13px;">
-                                  Police Hochladen:
-                                </span>
+                                                                <span class="" style="font-size: 13px;">
+                                                                    Police Hochladen:
+                                                                </span>
                                                         </div>
                                                         <div class="">
                                                             <div class="upload-box mx-1 my-2">
                                                                 <div class="mx-1 my-2 p-4 text-center">
                                                                     <label for="file-input-4">
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="53" height="53" viewBox="0 0 53 53">
+                                                                             width="53" height="53"
+                                                                             viewBox="0 0 53 53">
                                                                             <g id="Group_621" data-name="Group 621"
                                                                                transform="translate(-78.283 -14.777)">
                                                                                 <circle id="Ellipse_31"
@@ -666,7 +772,8 @@
                                                                                         cy="26.5" r="26.5"
                                                                                         transform="translate(78.283 14.777)"
                                                                                         fill="#5f5f5f"/>
-                                                                                <g id="Group_326" data-name="Group 326"
+                                                                                <g id="Group_326"
+                                                                                   data-name="Group 326"
                                                                                    transform="translate(95.656 31.893)">
                                                                                     <path id="Path_234"
                                                                                           data-name="Path 234"
@@ -684,26 +791,27 @@
                                                                             </g>
                                                                         </svg>
                                                                     </label>
-                                                                    @if(isset($data->prevention[0]->upload_police))
-                                                                        <input type="file" id="file-input-4"
+                                                                    @if(isset($data->fahrzeug->upload_police))
+                                                                        <input type="file" id="file-input-4" name="upload_policeFahrzeug"
                                                                                class="svg-div w-100 border-0  g-0"
                                                                                onchange="upload(this);"
-                                                                               value="{{$data->prevention[0]->upload_police}}"
-                                                                               name="upload_police">
-                                                                        <a href="{{Storage::disk('img')->url($data->prevention[0]->upload_police)}}">
+                                                                               value="{{$data->fahrzeug->upload_police}}"
+                                                                               >
+                                                                        <a style="text-decoration: none" href="{{route('showfile',$data->fahrzeug->upload_police)}}">
                                                                             <input type="text"
                                                                                    class="form-control text-center"
-                                                                                   id="file-input-4a" disabled
+                                                                                   id="file-input-4c" disabled
                                                                                    style="background:transparent; border:none;"
-                                                                                   value="{{$data->prevention[0]->upload_police}}"></a>
+                                                                                   value="{{$data->fahrzeug->upload_police}}"
+                                                                            >
+                                                                        </a>
                                                                     @else
-                                                                        <input type="file" id="file-input-4a"
+                                                                        <input type="file" id="file-input-4" name="upload_policeFahrzeug"
                                                                                class="svg-div w-100 border-0  g-0"
-                                                                               onchange="upload(this);"
-                                                                               name="upload_police">
+                                                                               onchange="upload(this);">
                                                                         <input type="text"
                                                                                class="form-control text-center"
-                                                                               id="file-input-4a" disabled
+                                                                               id="file-input-4c" disabled
                                                                                style="background:transparent; border:none;">
                                                                     @endif
                                                                 </div>
@@ -713,20 +821,23 @@
                                                             <div class="row mx-2">
                                                                 <div class="col-5 d-flex g-0">
                                                                     <div class="text-nowrap">
-                                      <span class="fw-bold" style=" font-size: 12px;">
-                                        Vergleichsart:
-                                      </span>
+                                                                            <span class="fw-bold"
+                                                                                  style=" font-size: 12px;">
+                                                                                Vergleichsart:
+                                                                            </span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col g-0 d-flex justify-content-end">
                                                                     <div class="select-div text-end ">
-                                                                        <select name="comparison_type" class="fw-bold"
-                                                                                id=""
+                                                                        <select name="comparison_type"
+                                                                                class="fw-bold" id=""
                                                                                 style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                                            @if(isset($data->counter[0]->comparison_type))
+                                                                            @if(isset($data->fahrzeug->comparison_type))
                                                                                 <option
-                                                                                    value="{{$data->counter[0]->comparison_type}}"
-                                                                                    selected>{{$data->counter[0]->comparison_type}}</option>
+                                                                                    value="{{$data->fahrzeug->comparison_type}}"
+                                                                                    selected>
+                                                                                    {{$data->fahrzeug->comparison_type}}
+                                                                                </option>
                                                                             @else
                                                                                 <option selected>Select</option>
                                                                                 <option value="1">1:1 Deckung</option>
@@ -740,13 +851,14 @@
                                                         <div class="">
                                                             <div class="mb-3 mt-3">
                                                                 <label for="exampleFormControlTextarea1"
-                                                                       class="form-label" style="font-size: 13px;">Kommentar</label>
-                                                                @if(isset($data->counter[0]->comment))
-                                                                    <textarea name="comment" class="form-control"
+                                                                       class="form-label"
+                                                                       style="font-size: 13px;">Kommentar</label>
+                                                                @if(isset($data->fahrzeug->comment))
+                                                                    <textarea name="commentFahrenzug" class="form-control"
                                                                               id="exampleFormControlTextarea1"
-                                                                              rows="3">{{$data->counter[0]->comment}}</textarea>
+                                                                              rows="3">{{$data->fahrzeug->comment}}</textarea>
                                                                 @else
-                                                                    <textarea name="comment" class="form-control"
+                                                                    <textarea name="commentFahrenzug" class="form-control"
                                                                               id="exampleFormControlTextarea1"
                                                                               rows="3"></textarea>
                                                                 @endif
@@ -768,14 +880,16 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
                                                     <div class="d-block">
                                                         <div class="">
-                                <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                  Neues Fahrzeug
-                                </span>
+                                                                <span class="fs-6" id="title-span"
+                                                                      style="font-weight: 600;">
+                                                                    Neues Fahrzeug
+                                                                </span>
                                                         </div>
                                                         <div class="lh-1 " id="bastelle-span">
-                                <span class="" style="font-size: 13px;">
-                                  Bestelle eine Offerte für ein neu einzulösendes Fahrzeug.
-                                </span>
+                                                                <span class="" style="font-size: 13px;">
+                                                                    Bestelle eine Offerte für ein neu einzulösendes
+                                                                    Fahrzeug.
+                                                                </span>
                                                         </div>
                                                     </div>
                                                 </button>
@@ -787,13 +901,14 @@
                                                      style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                                                     <div class="">
                                                         <div class="row">
-                                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div
+                                                                class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="my-3">
                                                                     <div class="">
                                                                         <div class="">
-                                        <span class="">
-                                          Fahrzeugausweis hochladen
-                                        </span>
+                                                                                <span class="">
+                                                                                    Fahrzeugausweis hochladen
+                                                                                </span>
                                                                         </div>
                                                                         <div class="upload-box mx-1 my-2">
                                                                             <div class="mx-1 my-2 p-4 text-center">
@@ -832,14 +947,32 @@
                                                                                         </g>
                                                                                     </svg>
                                                                                 </label>
-                                                                                <input type="file" id="file-input-5"
-                                                                                       class="svg-div w-100 border-0  g-0"
-                                                                                       onchange="upload(this);"
-                                                                                       name="vehicle_id">
-                                                                                <input type="text"
-                                                                                       class="form-control text-center"
-                                                                                       id="file-input-5c" disabled
-                                                                                       style="background:transparent; border:none;">
+                                                                                @if(isset($data->fahrzeug->vehicle_id))
+                                                                                    <input type="file" id="file-input-5"
+                                                                                           class="svg-div w-100 border-0  g-0"
+                                                                                           onchange="upload(this);"
+                                                                                           value="{{$data->fahrzeug->vehicle_id}}"
+                                                                                           name="vehicle_id">
+                                                                                    <a style="text-decoration: none" href="{{route('showfile',$data->fahrzeug->vehicle_id)}}">
+                                                                                        <input type="text"
+                                                                                               class="form-control text-center"
+                                                                                               id="file-input-5c" disabled
+                                                                                               style="background:transparent; border:none;"
+                                                                                               value="{{$data->fahrzeug->vehicle_id}}"
+                                                                                               name="vehicle_id"></a>
+                                                                                @else
+                                                                                    <input type="file" id="file-input-5"
+                                                                                           class="svg-div w-100 border-0  g-0"
+                                                                                           onchange="upload(this);"
+                                                                                           name="vehicle_id">
+                                                                                    <input type="text"
+                                                                                           class="form-control text-center"
+                                                                                           id="file-input-5c" disabled
+                                                                                           style="background:transparent; border:none;"
+                                                                                           name="vehicle_id">
+                                                                                @endif
+
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -850,16 +983,18 @@
                                                                     <div class="row">
                                                                         <div class="col">
                                                                             <div class="">
-                                          <span>
-                                            Leasing:
-                                          </span>
+                                                                                    <span>
+                                                                                        Leasing:
+                                                                                    </span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col">
-                                                                            <div class="btn-group w-100" role="group"
+                                                                            <div class="btn-group w-100"
+                                                                                 role="group"
                                                                                  aria-label="Basic radio toggle button group">
-                                                                                @if(isset($data->fahrzeug[0]->comparison_type))
-                                                                                    @if($data->fahrzeug[0]->comparison_type == 'Ja')
+                                                                                @if(isset($data->fahrzeug->comparison_type))
+                                                                                    @if($data->fahrzeug->comparison_type
+                                                                                    == 'Ja')
                                                                                         <input type="radio"
                                                                                                class="btn-check"
                                                                                                value="Ja"
@@ -869,7 +1004,8 @@
                                                                                                checked>
                                                                                         <label
                                                                                             class="btn btn-outline-secondary w-100 g-0"
-                                                                                            value="Ja" for="btnradio1">Ja</label>
+                                                                                            value="Ja"
+                                                                                            for="btnradio1">Ja</label>
                                                                                         <input type="radio"
                                                                                                class="btn-check"
                                                                                                value="Nein"
@@ -883,12 +1019,14 @@
                                                                                     @else
                                                                                         <input type="radio"
                                                                                                class="btn-check"
-                                                                                               value="Ja" name="leasing"
+                                                                                               value="Ja"
+                                                                                               name="leasing"
                                                                                                id="btnradio1"
                                                                                                autocomplete="off">
                                                                                         <label
                                                                                             class="btn btn-outline-secondary w-100 g-0"
-                                                                                            value="Ja" for="btnradio1">Ja</label>
+                                                                                            value="Ja"
+                                                                                            for="btnradio1">Ja</label>
                                                                                         <input type="radio"
                                                                                                class="btn-check"
                                                                                                value="Nein"
@@ -912,8 +1050,8 @@
                                                                                         for="btnradio1">Ja</label>
                                                                                     <input type="radio"
                                                                                            class="btn-check"
-                                                                                           name="leasing" value="Nein"
-                                                                                           id="btnradio2"
+                                                                                           name="leasing"
+                                                                                           value="Nein" id="btnradio2"
                                                                                            autocomplete="off">
                                                                                     <label
                                                                                         class="btn btn-outline-secondary w-100 g-0 "
@@ -923,9 +1061,11 @@
                                                                             <div class="">
                                                                                 <select name="leasing_name"
                                                                                         class="w-100 slct1" id="">
-                                                                                    @if(isset($data->fahrzeug[0]->leasing_name))
+                                                                                    @if(isset($data->fahrzeug->leasing_name))
                                                                                         <option
-                                                                                            value="{{$data->fahrzeug[0]->leasing_name}}">{{$data->fahrzeug[0]->leasing_name}}</option>
+                                                                                            value="{{$data->fahrzeug->leasing_name}}">
+                                                                                            {{$data->fahrzeug->leasing_name}}
+                                                                                        </option>
                                                                                     @else
                                                                                         <option value="Gesellschaft">
                                                                                             Gesellschaft
@@ -943,42 +1083,50 @@
                                                                 <div class="col">
                                                                     <div class="">
                                                                         <div class="">
-                                        <span class="fw-bold">
-                                          Fahrzeuginformationen
-                                        </span>
+                                                                                <span class="fw-bold">
+                                                                                    Fahrzeuginformationen
+                                                                                </span>
                                                                         </div>
-                                                                        <div class="select-div text-end d-flex my-2">
+                                                                        <div
+                                                                            class="select-div text-end d-flex my-2">
                                                                             <div class="text-nowrap">
-                                          <span class="fw-normal">
-                                            Kaufjahr
-                                          </span>
+                                                                                    <span class="fw-normal">
+                                                                                        Kaufjahr
+                                                                                    </span>
                                                                             </div>
-                                                                            <select name="year_of_purchase"
-                                                                                    class="fw-normal" id=""
-                                                                                    style="background-color: #EFEFEF;">
-                                                                                @if(isset($data->fahrzeug[0]->year_of_purchase))
+
+                                                                                @if(isset($data->fahrzeug->year_of_purchase))
+                                                                                <select name="year_of_purchase"
+                                                                                        class="fw-normal" id=""
+                                                                                        style="background-color: #EFEFEF;">
                                                                                     <option
-                                                                                        value="{{$data->fahrzeug[0]->year_of_purchase}}"
-                                                                                        selected>{{$data->fahrzeug[0]->year_of_purchase}}</option>
-                                                                                @else
-                                                                                    <option value="2021" selected>2021
+                                                                                        value="{{$data->fahrzeug->year_of_purchase}}"
+                                                                                        selected>
+                                                                                        {{$data->fahrzeug->year_of_purchase}}
                                                                                     </option>
                                                                                     <option value="2020">2020</option>
                                                                                     <option value="2019">2019</option>
+                                                                                </select>
+                                                                                @else
+                                                                                <select name="year_of_purchase" class="fw-normal" id="" style="background-color: #EFEFEF;">
+                                                                                    <option value="2021" selected>2021</option>
+                                                                                    <option value="2020">2020</option>
+                                                                                    <option value="2019">2019</option>
+                                                                                </select>
                                                                                 @endif
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="date-input-div mb-2">
                                                                         <div class="">
-                                        <span>
-                                          Este inverkehrssetzung:
-                                        </span>
+                                                                                <span>
+                                                                                    Este inverkehrssetzung:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->year_of_purchase))
+                                                                        @if(isset($data->fahrzeug->placing_on_the_market))
                                                                             <input name="placing_on_the_market"
                                                                                    type="date"
-                                                                                   value="{{$data->fahrzeug[0]->year_of_purchase}}"
+                                                                                   value="{{$data->fahrzeug->placing_on_the_market}}"
                                                                                    class="py-1 border-0">
                                                                         @else
                                                                             <input name="placing_on_the_market"
@@ -987,14 +1135,14 @@
                                                                     </div>
                                                                     <div class="date-input-div mb-2">
                                                                         <div class="">
-                                        <span>
-                                          Beginn Versicherung:
-                                        </span>
+                                                                                <span>
+                                                                                    Beginn Versicherung:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->insurance_date))
+                                                                        @if(isset($data->fahrzeug->insurance_date))
                                                                             <input name="insurance_date" type="date"
                                                                                    class="py-1 border-0"
-                                                                                   value="{{$data->fahrzeug[0]->insurance_date}}">
+                                                                                   value="{{$data->fahrzeug->insurance_date}}">
                                                                         @else
                                                                             <input name="insurance_date" type="date"
                                                                                    class="py-1 border-0">
@@ -1002,28 +1150,41 @@
                                                                     </div>
                                                                     <div class="input-select-div mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          Eingelöster Kanton:
-                                        </span>
+                                                                                <span class="">
+                                                                                    Eingelöster Kanton:
+                                                                                </span>
                                                                         </div>
-                                                                        <select name="noname" class="form-select w-75"
-                                                                                aria-label="Default select example">
-                                                                            <option selected></option>
-                                                                            <option value="1">One</option>
-                                                                            <option value="2">Two</option>
-                                                                            <option value="3">Three</option>
-                                                                        </select>
+                                                                        @if(isset($data->fahrzeug->redeemed))
+                                                                            <select name="redeemed"
+                                                                                    class="form-select w-75"
+                                                                                    aria-label="Default select example">
+                                                                                <option
+                                                                                    selected>{{$data->fahrzeug->redeemed}}</option>
+                                                                                <option value="1">One</option>
+                                                                                <option value="2">Two</option>
+                                                                                <option value="3">Three</option>
+                                                                            </select>
+                                                                        @else
+                                                                            <select name="redeemed"
+                                                                                    class="form-select w-75"
+                                                                                    aria-label="Default select example">
+                                                                                <option selected></option>
+                                                                                <option value="1">One</option>
+                                                                                <option value="2">Two</option>
+                                                                                <option value="3">Three</option>
+                                                                            </select>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="input-div1 mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          KM - Stand:
-                                        </span>
+                                                                                <span class="">
+                                                                                    KM - Stand:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->km_stood))
+                                                                        @if(isset($data->fahrzeug->km_stood))
                                                                             <input name="km_stood" class="py-1"
                                                                                    type="text"
-                                                                                   value="{{$data->fahrzeug[0]->km_stood}}">
+                                                                                   value="{{$data->fahrzeug->km_stood}}">
                                                                         @else
                                                                             <input name="km_stood" class="py-1"
                                                                                    type="text" id="">
@@ -1033,21 +1194,21 @@
                                                                 <div class="col">
                                                                     <div class="">
                                                                         <div class="">
-                                        <span class="fw-bold">
-                                          Lenkerinformation
-                                        </span>
+                                                                                <span class="fw-bold">
+                                                                                    Lenkerinformation
+                                                                                </span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="date-input-div mb-2">
                                                                         <div class="">
-                                        <span>
-                                          Erste inverkehrssetzung:
-                                        </span>
+                                                                                <span>
+                                                                                    Erste inverkehrssetzung:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->placing_on_the_market))
+                                                                        @if(isset($data->fahrzeug->placing_on_the_market))
                                                                             <input name="placing_on_the_market"
                                                                                    type="date" class="py-1 border-0"
-                                                                                   value="{{$data->fahrzeug[0]->placing_on_the_market}}">
+                                                                                   value="{{$data->fahrzeug->placing_on_the_market}}">
                                                                         @else
                                                                             <input name="placing_on_the_market"
                                                                                    type="date" class="py-1 border-0">
@@ -1055,16 +1216,18 @@
                                                                     </div>
                                                                     <div class="input-select-div mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          Nationalitat:
-                                        </span>
+                                                                                <span class="">
+                                                                                    Nationalitat:
+                                                                                </span>
                                                                         </div>
                                                                         <select name="nationality"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->nationality))
+                                                                            @if(isset($data->fahrzeug->nationality))
                                                                                 <option selected
-                                                                                        value="{{$data->fahrzeug[0]->nationality}}">{{$data->fahrzeug[0]->nationality}}</option>
+                                                                                        value="{{$data->fahrzeug->nationality}}">
+                                                                                    {{$data->fahrzeug->nationality}}
+                                                                                </option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1075,17 +1238,19 @@
                                                                     </div>
                                                                     <div class="input-select-div mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          Häufigster Lenker?
-                                        </span>
+                                                                                <span class="">
+                                                                                    Häufigster Lenker?
+                                                                                </span>
                                                                         </div>
                                                                         <select name="most_common"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->most_common))
+                                                                            @if(isset($data->fahrzeug->most_common))
                                                                                 <option
-                                                                                    value="{{$data->fahrzeug[0]->most_common}}"
-                                                                                    selected>{{$data->fahrzeug[0]->most_common}}</option>
+                                                                                    value="{{$data->fahrzeug->most_common}}"
+                                                                                    selected>
+                                                                                    {{$data->fahrzeug->most_common}}
+                                                                                </option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1101,23 +1266,24 @@
                                                             <div class="row">
                                                                 <div class="col">
                                                                     <div class="">
-                                      <span class="fw-normal fs-5">
-                                        Gewünschte Deckung
-                                      </span>
+                                                                            <span class="fw-normal fs-5">
+                                                                                Gewünschte Deckung
+                                                                            </span>
                                                                     </div>
                                                                     <div class="input-select-div mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          Versischerung:
-                                        </span>
+                                                                                <span class="">
+                                                                                    Versischerung:
+                                                                                </span>
                                                                         </div>
 
                                                                         <select name="insurance"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->insurance))
-                                                                                <option
-                                                                                    selected>{{$data->fahrzeug[0]->insurance}}</option>
+                                                                            @if(isset($data->fahrzeug->insurance))
+                                                                                <option selected>
+                                                                                    {{$data->fahrzeug->insurance}}
+                                                                                </option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1128,36 +1294,48 @@
                                                                     </div>
                                                                     <div class="input-select-div mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          Selbstbehalt Teilkasko:
-                                        </span>
+                                                                                <span class="">
+                                                                                    Selbstbehalt Teilkasko:
+                                                                                </span>
                                                                         </div>
-                                                                        <select name="deductible"
+
+                                                                        @if(isset($data->fahrzeug->deductible))
+                                                                            <select name="deductible"
+                                                                                    class="form-select w-75"
+                                                                                    aria-label="Default select example">
+                                                                                <option selected
+                                                                                        value="{{$data->fahrzeug->deductible}}">{{$data->fahrzeug->deductible}}</option>
+                                                                                <option value="1">One</option>
+                                                                                <option value="2">Two</option>
+                                                                                <option value="3">Three</option>
+                                                                            </select>
+                                                                        @else
+                                                                            <select name="deductible"
+                                                                                    class="form-select w-75"
+                                                                                    aria-label="Default select example">
+                                                                                <option selected></option>
+                                                                                <option value="1">One</option>
+                                                                                <option value="2">Two</option>
+                                                                                <option value="3">Three</option>
+                                                                            </select>
+                                                                        @endif
+
+                                                                    </div>
+                                                                    <div class="input-select-div mb-2">
+                                                                        <div class="">
+                                                                                <span class="">
+                                                                                    Mitgeführte Sachen:
+                                                                                </span>
+                                                                        </div>
+                                                                        <select name="carried"
                                                                                 class="form-select w-75"
                                                                                 aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->deductible))
-                                                                                <option selected
-                                                                                        value="{{$data->fahrzeug[0]->deductible}}"></option>
-                                                                            @else
-                                                                                <option selected></option>
-                                                                                <option value="1">One</option>
-                                                                                <option value="2">Two</option>
-                                                                                <option value="3">Three</option>
-                                                                            @endif
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="input-select-div mb-2">
-                                                                        <div class="">
-                                        <span class="">
-                                          Mitgeführte Sachen:
-                                        </span>
-                                                                        </div>
-                                                                        <select name="carried" class="form-select w-75"
-                                                                                aria-label="Default select example">
-                                                                            @if(isset($data->fahrzeug[0]->carried))
+                                                                            @if(isset($data->fahrzeug->carried))
                                                                                 <option
-                                                                                    value="{{$data->fahrzeug[0]->carried}}"
-                                                                                    selected>{{$data->fahrzeug[0]->carried}}</option>
+                                                                                    value="{{$data->fahrzeug->carried}}"
+                                                                                    selected>
+                                                                                    {{$data->fahrzeug->carried}}
+                                                                                </option>
                                                                             @else
                                                                                 <option selected></option>
                                                                                 <option value="1">One</option>
@@ -1167,35 +1345,27 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="">
-                                      <span>
-                                        Reparaturwerkstatt:
-                                      </span>
+                                                                            <span>
+                                                                                Reparaturwerkstatt:
+                                                                            </span>
                                                                         <!-- <div class="input-group mb-2">
-                                                                        <input name="noname" type="text" placeholder="Partnergarage" class="form-control" aria-label=""
-                                                                          aria-describedby="basic-addon1">
-                                                                        <input name="noname" type="text" placeholder="Freie Wahl" class="form-control" aria-label=""
-                                                                          aria-describedby="basic-addon1">
-                                                                      </div> -->
+                                                                    <input name="noname" type="text" placeholder="Partnergarage" class="form-control" aria-label=""
+                                                                      aria-describedby="basic-addon1">
+                                                                    <input name="noname" type="text" placeholder="Freie Wahl" class="form-control" aria-label=""
+                                                                      aria-describedby="basic-addon1">
+                                                                  </div> -->
                                                                         <div class="btn-group w-100" role="group"
                                                                              aria-label="Basic radio toggle button group">
-                                                                            @if(isset($data->fahrzeug[0]->repair_shop))
+                                                                            @if(isset($data->fahrzeug->repair_shop))
                                                                                 <input type="radio" class="btn-check "
                                                                                        name="repair_shop"
                                                                                        id="btnradio1_"
-                                                                                       value="{{$data->fahrzeug[0]->repair_shop}}"
+                                                                                       value="{{$data->fahrzeug->repair_shop}}"
                                                                                        checked>
                                                                                 <label
                                                                                     class="btn btn-outline-secondary w-100 g-0"
-                                                                                    for="btnradio1_">{{$data->fahrzeug[0]->repair_shop}}</label>
+                                                                                    for="btnradio1_">{{$data->fahrzeug->repair_shop}}</label>
                                                                             @else
-                                                                                <input type="radio" class="btn-check "
-                                                                                       name="repair_shop"
-                                                                                       id="btnradio1_"
-                                                                                       value="{{$data->fahrzeug[0]->repair_shop}}"
-                                                                                       checked>
-                                                                                <label
-                                                                                    class="btn btn-outline-secondary w-100 g-0"
-                                                                                    for="btnradio1_">{{$data->fahrzeug[0]->repair_shop}}</label>
                                                                                 <input type="radio" class="btn-check"
                                                                                        name="repair_shop"
                                                                                        value="Freie Wahl"
@@ -1208,13 +1378,15 @@
                                                                     </div>
                                                                     <div class="input-div1 mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          + Unfalldeckung:
-                                        </span>
+                                                                                <span class="">
+                                                                                    + Unfalldeckung:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->accident_coverage))
-                                                                        <input value="{{$data->fahrzeug[0]->accident_coverage}}" name="accident_coverage" class="py-1"
-                                                                               type="text" id="">
+                                                                        @if(isset($data->fahrzeug->accident_coverage))
+                                                                            <input
+                                                                                value="{{$data->fahrzeug->accident_coverage}}"
+                                                                                name="accident_coverage" class="py-1"
+                                                                                type="text" id="">
                                                                         @else
                                                                             <input name="accident_coverage" class="py-1"
                                                                                    type="text" id="">
@@ -1224,74 +1396,86 @@
                                                                 <div class="col">
                                                                     <div class="input-div1 mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          + Verkehrsrechtsschutz:
-                                        </span>
+                                                                                <span class="">
+                                                                                    + Verkehrsrechtsschutz:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->traffic_legal_protection))
-                                                                            <input value="{{$data->fahrzeug[0]->traffic_legal_protection}}" name="traffic_legal_protection"
-                                                                                   class="py-1" type="text" id="">
-                                                                            @else
+                                                                        @if(isset($data->fahrzeug->traffic_legal_protection))
+                                                                            <input
+                                                                                value="{{$data->fahrzeug->traffic_legal_protection}}"
+                                                                                name="traffic_legal_protection"
+                                                                                class="py-1" type="text" id="">
+                                                                        @else
                                                                             <input name="traffic_legal_protection"
                                                                                    class="py-1" type="text" id="">
-                                                                            @endif
+                                                                        @endif
                                                                     </div>
                                                                     <div class="input-div1 mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          + Grobfahrlässigkeitschutz:
-                                        </span>
+                                                                                <span class="">
+                                                                                    + Grobfahrlässigkeitschutz:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->grossly))
-                                                                            <input value="{{$data->fahrzeug[0]->grossly}}" name="grossly" class="py-1" type="text"
+                                                                        @if(isset($data->fahrzeug->grossly))
+                                                                            <input value="{{$data->fahrzeug->grossly}}"
+                                                                                   name="grossly" class="py-1"
+                                                                                   type="text"
                                                                                    id="">
-                                                                            @else
-                                                                            <input name="grossly" class="py-1" type="text"
-                                                                                    id="">
-                                                                            @endif
+                                                                        @else
+                                                                            <input name="grossly" class="py-1"
+                                                                                   type="text" id="">
+                                                                        @endif
                                                                     </div>
                                                                     <div class="input-div1 mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          + Glasschutz:
-                                        </span>
+                                                                                <span class="">
+                                                                                    + Glasschutz:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->glass_protection))
-                                                                            <input value="{{$data->fahrzeug[0]->glass_protection}}" name="glass_protection" class="py-1"
-                                                                                   type="text" id="">
-                                                                            @else
+                                                                        @if(isset($data->fahrzeug->glass_protection))
+                                                                            <input
+                                                                                value="{{$data->fahrzeug->glass_protection}}"
+                                                                                name="glass_protection" class="py-1"
+                                                                                type="text" id="">
+                                                                        @else
                                                                             <input name="glass_protection" class="py-1"
                                                                                    type="text" id="">
-                                                                            @endif
+                                                                        @endif
 
                                                                     </div>
                                                                     <div class="input-div1 mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          + Parkschaden:
-                                        </span>
+                                                                                <span class="">
+                                                                                    + Parkschaden:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->parking_damage))
-                                                                            <input value="{{$data->fahrzeug[0]->parking_damag}}" name="parking_damage" class="py-1"
-                                                                                   type="text" id="">
-                                                                            @else
+                                                                        @if(isset($data->fahrzeug->parking_damage))
+                                                                            <input
+                                                                                name="parking_damage"
+                                                                                class="py-1"
+                                                                                type="text" id=""
+                                                                                value="{{$data->fahrzeug->parking_damage}}"
+                                                                            >
+                                                                        @else
                                                                             <input name="parking_damage" class="py-1"
                                                                                    type="text" id="">
-                                                                            @endif
+                                                                        @endif
                                                                     </div>
                                                                     <div class="input-div1 mb-2">
                                                                         <div class="">
-                                        <span class="">
-                                          + 24h Pannenhilfe:
-                                        </span>
+                                                                                <span class="">
+                                                                                    + 24h Pannenhilfe:
+                                                                                </span>
                                                                         </div>
-                                                                        @if(isset($data->fahrzeug[0]->hour_breakdown_assistance))
-                                                                            <input value="{{$data->fahrzeug[0]->hour_breakdown_assistance}}" name="hour_breakdown_assistance"
-                                                                                   class="py-1" type="text" id="">
-                                                                            @else
+                                                                        @if(isset($data->fahrzeug->hour_breakdown_assistance))
+                                                                            <input
+                                                                                value="{{$data->fahrzeug->hour_breakdown_assistance}}"
+                                                                                name="hour_breakdown_assistance"
+                                                                                class="py-1" type="text" id="">
+                                                                        @else
                                                                             <input name="hour_breakdown_assistance"
                                                                                    class="py-1" type="text" id="">
-                                                                            @endif
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1302,22 +1486,40 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="buton" class="py-2 text-center">
-                                    <button class="px-5 py-2" type="button"
-                                            style="border: none; border-radius: 9px; background-color:#285F52;"
-                                            id="nextonee__" onclick="nextonee()">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
-                                             viewBox="0 0 58.155 19.159">
-                                            <g id="Group_453" data-name="Group 453" transform="translate(0.004)">
-                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
-                                                      transform="translate(0 9.287)" fill="none" stroke="#3fd599"
-                                                      stroke-width="2"/>
-                                                <path id="Polygon_2" data-name="Polygon 2" d="M9.58,0l9.58,11.642H0Z"
-                                                      transform="translate(58.151 0) rotate(90)" fill="#3fd599"/>
-                                            </g>
-                                        </svg>
-                                    </button>
+                            </div>
+                            <div class="text-center mt-3 pb-3">
+                                <div class="row mx-4">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
+                                    <addtask3 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask3>
+                                    @endif
+                                    <div class="col d-flex justify-content-end">
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
 
+                                            </div>
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1331,52 +1533,62 @@
                                          style="color:#434343; background-color: #EFEFEF; border-radius: 13px;">
                                         <div class="mx-3 py-3">
                                             <div class=" my-2">
-                          <span class="fs-5 fw-bold">
-                            3a/3b Anfragen
-                          </span>
+                                                    <span class="fs-5 fw-bold">
+                                                        3a/3b Anfragen
+                                                    </span>
                                             </div>
                                             <div class="row ">
                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xd-4">
                                                     <div class="">
                                                         <div class="input-div1 mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Nationalitat:
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Nationalitat:
+                                                                    </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->nationality_sachen))
-                                                                <input value="{{$data->things[0]->nationality_sachen}}" name="nationality_sachen" class="py-1" type="text"
-                                                                       id="">
-                                                                @else
-                                                                <input name="nationality_sachen" class="py-1" type="text"
-                                                                       id="">
-                                                                @endif
+                                                            @if(isset($data->things->nationality))
+                                                                <input name="nationality_sachen" class="py-1"
+                                                                       type="text"
+                                                                       id=""
+                                                                       value="{{$data->things->nationality}}">
+                                                            @else
+                                                                <input name="nationality_sachen" class="py-1"
+                                                                       type="text" id="">
+                                                            @endif
                                                         </div>
                                                         <div class="input-select-div mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Aufenthaltsgenehmigung
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Aufenthaltsgenehmigung
+                                                                    </span>
                                                             </div>
-                                                            <select name="residence_permit" class="form-select w-75"
-                                                                    aria-label="Default select example">
-                                                                @if(isset($data->things[0]->residence_permit))
-                                                                    <option
-                                                                        value="{{$data->things[0]->carried}}"
-                                                                        selected>{{$data->things[0]->carried}}</option>
-                                                                @else
+
+                                                            @if(isset($data->things->residence_permit))
+                                                                <select name="residence_permit" class="form-select w-75"
+                                                                        aria-label="Default select example">
+                                                                    <option value="{{$data->things->residence_permit}}"
+                                                                            selected>{{$data->things->residence_permit}}</option>
+                                                                    <option value="1">One</option>
+                                                                    <option value="2">Two</option>
+                                                                    <option value="3">Three</option>
+                                                                </select>
+                                                            @else
+                                                                <select name="residence_permit" class="form-select w-75"
+                                                                        aria-label="Default select example">
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
                                                                     <option value="2">Two</option>
                                                                     <option value="3">Three</option>
+                                                                </select>
                                                                 @endif
-                                                            </select>
+                                                                </select>
                                                         </div>
                                                         <div class=" mb-2">
                                                             <label for="telephone_nr">Telefonnumer </label> <br>
                                                             <div class="input-group">
-                                                                @if(isset($data->things[0]->telephone_nr))
-                                                                    <input value="{{$data->things[0]->telephone_nr}}" name="telephone_nr" id="int-tel" type="tel"
+                                                                @if(isset($data->things->telephone_nr))
+                                                                    <input value="{{$data->things->telephone_nr}}"
+                                                                           name="telephone_nr" id="int-tel" type="tel"
                                                                            class="form-control">
                                                                 @else
                                                                     <input name="telephone_nr" id="int-tel" type="tel"
@@ -1386,49 +1598,58 @@
                                                         </div>
                                                         <div class="input-div1 mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Email
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Email
+                                                                    </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->email))
-                                                                <input value="{{$data->things[0]->email}}" name="email" class="py-1" type="email" id="">
+                                                            @if(isset($data->things->email))
+                                                                <input value="{{$data->things->email}}" name="email"
+                                                                       class="py-1" type="email" id="">
                                                             @else
                                                                 <input name="email" class="py-1" type="email" id="">
                                                             @endif
                                                         </div>
                                                         <div class="input-select-div mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Zivilstand
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Zivilstand
+                                                                    </span>
                                                             </div>
-                                                            <select name="zivilstand" class="form-select w-75"
-                                                                    aria-label="Default select example">
-                                                                @if(isset($data->things[0]->zivilstand))
-                                                                    <option
-                                                                        value="{{$data->things[0]->zivilstand}}"
-                                                                        selected>{{$data->things[0]->zivilstand}}</option>
-                                                                @else
-                                                                    <option selected></option>
+
+                                                            @if(isset($data->things->zivilstand))
+                                                                <select name="zivilstand" class="form-select w-75"
+                                                                        aria-label="Default select example">
+                                                                    <option value="{{$data->things->zivilstand}}"
+                                                                            selected>{{$data->things->zivilstand}}</option>
                                                                     <option value="1">One</option>
                                                                     <option value="2">Two</option>
                                                                     <option value="3">Three</option>
+                                                                </select>
+                                                            @else
+                                                                <select name="zivilstand" class="form-select w-75"
+                                                                        aria-label="Default select example">
+                                                                    <option value="1">One</option>
+                                                                    <option value="2">Two</option>
+                                                                    <option value="3">Three</option>
+                                                                </select>
                                                                 @endif
-                                                            </select>
+                                                                </select>
                                                         </div>
                                                         <div class="input-select-div mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Arbeitsverhältnis
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Arbeitsverhältnis
+                                                                    </span>
                                                             </div>
                                                             <select name="employment_relationship"
                                                                     class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->employment_relationship))
+                                                                @if(isset($data->things->employment_relationship))
                                                                     <option
-                                                                        value="{{$data->things[0]->employment_relationship}}"
-                                                                        selected>{{$data->things[0]->employment_relationship}}</option>
+                                                                        value="{{$data->things->employment_relationship}}"
+                                                                        selected>
+                                                                        {{$data->things->employment_relationship}}
+                                                                    </option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1443,28 +1664,30 @@
                                                     <div class="">
                                                         <div class="input-div1 mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Beruf:
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Beruf:
+                                                                    </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->job))
-                                                                <input value="{{$data->things[0]->job}}" name="job" class="py-1" type="text" id="">
+                                                            @if(isset($data->things->job))
+                                                                <input value="{{$data->things->job}}" name="job"
+                                                                       class="py-1" type="text" id="">
                                                             @else
                                                                 <input name="job" class="py-1" type="text" id="">
                                                             @endif
                                                         </div>
                                                         <div class="input-select-div mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Zahlungsrythmus:
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Zahlungsrythmus:
+                                                                    </span>
                                                             </div>
-                                                            <select name="payment_frequency" class="form-select w-75"
+                                                            <select name="payment_frequency"
+                                                                    class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->payment_frequency))
-                                                                    <option
-                                                                        value="{{$data->things[0]->payment_frequency}}"
-                                                                        selected>{{$data->things[0]->payment_frequency}}</option>
+                                                                @if(isset($data->things->payment_frequency))
+                                                                    <option value="{{$data->things->payment_frequency}}"
+                                                                            selected>{{$data->things->payment_frequency}}
+                                                                    </option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1473,33 +1696,33 @@
                                                                 @endif
                                                             </select>
                                                         </div>
-                                                        <!-- input groupd here asap -->
                                                         <div class="input-div1 mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Betrag pro Monat:
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Betrag pro Monat:
+                                                                    </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->email))
-                                                                <input value="{{$data->things[0]->email}}" name="amount_per_month" class="py-1" type="email"
+                                                            @if(isset($data->things->amount_per_month))
+                                                                <input value="{{$data->things->amount_per_month}}"
+                                                                       name="amount_per_month" class="py-1" type="text"
                                                                        id="">
-                                                                @else
-                                                                <input name="amount_per_month" class="py-1" type="email"
+                                                            @else
+                                                                <input name="amount_per_month" class="py-1" type="text"
                                                                        id="">
-                                                                @endif
+                                                            @endif
                                                         </div>
                                                         <div class="input-select-div mb-2">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Anteli Garantie/Fond:
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Anteli Garantie/Fond:
+                                                                    </span>
                                                             </div>
                                                             <select name="share_guarantee" class="form-select w-75"
                                                                     aria-label="Default select example">
-                                                                @if(isset($data->things[0]->share_guarantee))
-                                                                    <option
-                                                                        value="{{$data->things[0]->share_guarantee}}"
-                                                                        selected>{{$data->things[0]->share_guarantee}}</option>
+                                                                @if(isset($data->things->share_guarantee))
+                                                                    <option value="{{$data->things->share_guarantee}}"
+                                                                            selected>{{$data->things->share_guarantee}}
+                                                                    </option>
                                                                 @else
                                                                     <option selected></option>
                                                                     <option value="1">One</option>
@@ -1510,75 +1733,63 @@
                                                         </div>
                                                         <div class="date-input-div mb-2">
                                                             <div class="">
-                                  <span style="font-size: 15px;">
-                                    Vertragsbeginn ab:
-                                  </span>
+                                                                    <span style="font-size: 15px;">
+                                                                        Vertragsbeginn ab:
+                                                                    </span>
                                                             </div>
-                                                            @if(isset($data->things[0]->start_of_contract))
-                                                                <input value="{{$data->things[0]->start_of_contract}}" name="start_of_contract" type="date"
+                                                            @if(isset($data->things->start_of_contract))
+                                                                <input value="{{$data->things->start_of_contract}}"
+                                                                       name="start_of_contract" type="date"
                                                                        class="py-1 border-0">
-                                                                @else
+                                                            @else
                                                                 <input name="start_of_contract" type="date"
                                                                        class="py-1 border-0">
-                                                                @endif
+                                                            @endif
                                                         </div>
                                                         <div class="group-button-div mb-2">
                                                             <div class="">
-                                  <span style="font-size: 15px;">
-                                    Pramienbefreiung:
-                                  </span>
+                                                                    <span style="font-size: 15px;">
+                                                                        Pramienbefreiung:
+                                                                    </span>
                                                             </div>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->premium_exemption))
-                                                                    @if($data->things[0]->premium_exemption == 'Ja')
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="premium_exemption"
-                                                                           value="Ja"
-                                                                           id="btnradio3"
-                                                                           autocomplete="off"
-                                                                           checked>
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio3">Ja</label>
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="premium_exemption"
-                                                                           value="Nein"
-                                                                           id="btnradio4"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio4">Nein</label>
-                                                                @else
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="premium_exemption"
-                                                                           value="Ja"
-                                                                           id="btnradio3"
-                                                                           autocomplete="off"
-                                                                           >
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio3">Ja</label>
+                                                                @if(isset($data->things->premium_exemption))
+                                                                    @if($data->things->premium_exemption == 'Ja')
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="premium_exemption" value="Ja"
+                                                                               id="btnradio3" autocomplete="off"
+                                                                               checked>
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio3">Ja</label>
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="premium_exemption" value="Nein"
+                                                                               id="btnradio4" autocomplete="off">
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio4">Nein</label>
+                                                                    @else
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="premium_exemption" value="Ja"
+                                                                               id="btnradio3" autocomplete="off">
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio3">Ja</label>
 
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="premium_exemption"
-                                                                           value="Nein"
-                                                                           id="btnradio4"
-                                                                           autocomplete="off"
-                                                                           checked>
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio4">Nein</label>
-                                                                @endif
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="premium_exemption" value="Nein"
+                                                                               id="btnradio4" autocomplete="off"
+                                                                               checked>
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio4">Nein</label>
+                                                                    @endif
                                                                 @else
                                                                     <input type="radio" class="btn-check"
-                                                                           name="premium_exemption"
-                                                                           value="Ja"
-                                                                           id="btnradio3"
-                                                                           autocomplete="off">
+                                                                           name="premium_exemption" value="Ja"
+                                                                           id="btnradio3" autocomplete="off">
                                                                     <label class="btn btn-outline-secondary"
                                                                            for="btnradio3">Ja</label>
                                                                     <input type="radio" class="btn-check"
-                                                                           name="premium_exemption"
-                                                                           value="Nein"
-                                                                           id="btnradio4"
-                                                                           autocomplete="off">
+                                                                           name="premium_exemption" value="Nein"
+                                                                           id="btnradio4" autocomplete="off">
                                                                     <label class="btn btn-outline-secondary"
                                                                            for="btnradio4">Nein</label>
                                                                 @endif
@@ -1590,194 +1801,160 @@
                                                     <div class="">
                                                         <div class="group-button-div mb-2">
                                                             <div class="">
-                                  <span style="font-size: 15px;">
-                                    EU - Rente:
-                                  </span>
+                                                                    <span style="font-size: 15px;">
+                                                                        EU - Rente:
+                                                                    </span>
                                                             </div>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->eu_pension))
-                                                                    @if($data->things[0]->eu_pension == 'Ja')
-                                                                <input type="radio" class="btn-check"
-                                                                       name="eu_pension"
-                                                                       value="Ja"
-                                                                       id="btnradio5"
-                                                                       autocomplete="off"
-                                                                       checked>
-                                                                <label class="btn btn-outline-secondary"
-                                                                       for="btnradio5">Ja</label>
+                                                                @if(isset($data->things->eu_pension))
+                                                                    @if($data->things->eu_pension == 'Ja')
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="eu_pension" value="Ja"
+                                                                               id="btnradio5"
+                                                                               autocomplete="off" checked>
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio5">Ja</label>
 
-                                                                <input type="radio" class="btn-check"
-                                                                       name="eu_pension"
-                                                                       value="Nein"
-                                                                       id="btnradio6"
-                                                                       autocomplete="off">
-                                                                <label class="btn btn-outline-secondary"
-                                                                       for="btnradio6">Nein</label>
-                                                                @else
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="eu_pension"
-                                                                           value="Ja"
-                                                                           id="btnradio5"
-                                                                           autocomplete="off"
-                                                                           >
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio5">Ja</label>
-
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="eu_pension"
-                                                                           value="Nein"
-                                                                           id="btnradio6"
-                                                                           autocomplete="off"
-                                                                           checked>
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio6">Nein</label>
-                                                                @endif
-                                                                @else
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="eu_pension"
-                                                                           value="Ja"
-                                                                           id="btnradio5"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio5">Ja</label>
-
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="eu_pension"
-                                                                           value="Nein"
-                                                                           id="btnradio6"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio6">Nein</label>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="group-button-div mb-2">
-                                                            <div class="">
-                                  <span style="font-size: 15px;">
-                                    Todesfalkapital:
-                                  </span>
-                                                            </div>
-                                                            <div class="btn-group" role="group"
-                                                                 aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->death_benefit))
-                                                                    @if($data->things[0]->death_benefit == 'Ja')
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="death_benefit"
-                                                                           value="Ja"
-                                                                           id="btnradio7"
-                                                                           autocomplete="off"
-                                                                           checked>
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio7">Ja</label>
-
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="death_benefit"
-                                                                           value="Nein"
-                                                                           id="btnradio8"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio8">Nein</label>
-                                                                @else
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="death_benefit"
-                                                                           value="Ja}"
-                                                                           id="btnradio7"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio7">Ja</label>
-
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="death_benefit"
-                                                                           value="Nein"
-                                                                           id="btnradio8"
-                                                                           autocomplete="off"
-                                                                           checked>
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio8">Nein</label>
-                                                                @endif
-                                                                @else
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="death_benefit"
-                                                                           value="Ja}"
-                                                                           id="btnradio7"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio7">Ja</label>
-
-                                                                    <input type="radio" class="btn-check"
-                                                                           name="death_benefit"
-                                                                           value="Nein"
-                                                                           id="btnradio8"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio8">Nein</label>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="group-button-div mb-2">
-                                                            <div class="">
-                                  <span style="font-size: 15px;">
-                                    Raucher:
-                                  </span>
-                                                            </div>
-                                                            <div class="btn-group" role="group"
-                                                                 aria-label="Basic radio toggle button group">
-                                                                @if(isset($data->things[0]->smoker))
-                                                                    @if($data->things[0]->smoker == 'Ja')
-                                                                    <input type="radio"
-                                                                           class="btn-check"
-                                                                           name="smoker"
-                                                                           value="Ja"
-                                                                           id="btnradio9"
-                                                                           autocomplete="off"
-                                                                           checked>
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio9">Ja</label>
-
-                                                                    <input type="radio"
-                                                                           class="btn-check"
-                                                                           name="smoker"
-                                                                           value="Nein"
-                                                                           id="btnradio10"
-                                                                           autocomplete="off">
-                                                                    <label class="btn btn-outline-secondary"
-                                                                           for="btnradio10">Nein</label>
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="eu_pension" value="Nein"
+                                                                               id="btnradio6"
+                                                                               autocomplete="off">
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio6">Nein</label>
                                                                     @else
-                                                                        <input type="radio"
-                                                                               class="btn-check"
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="eu_pension" value="Ja"
+                                                                               id="btnradio5"
+                                                                               autocomplete="off">
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio5">Ja</label>
+
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="eu_pension" value="Nein"
+                                                                               id="btnradio6"
+                                                                               autocomplete="off" checked>
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio6">Nein</label>
+                                                                    @endif
+                                                                @else
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="eu_pension" value="Ja" id="btnradio5"
+                                                                           autocomplete="off">
+                                                                    <label class="btn btn-outline-secondary"
+                                                                           for="btnradio5">Ja</label>
+
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="eu_pension" value="Nein" id="btnradio6"
+                                                                           autocomplete="off">
+                                                                    <label class="btn btn-outline-secondary"
+                                                                           for="btnradio6">Nein</label>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="group-button-div mb-2">
+                                                            <div class="">
+                                                                    <span style="font-size: 15px;">
+                                                                        Todesfalkapital:
+                                                                    </span>
+                                                            </div>
+                                                            <div class="btn-group" role="group"
+                                                                 aria-label="Basic radio toggle button group">
+                                                                @if(isset($data->things->death_benefit))
+                                                                    @if($data->things->death_benefit == 'Ja')
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="death_benefit" value="Ja"
+                                                                               id="btnradio7"
+                                                                               autocomplete="off" checked>
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio7">Ja</label>
+
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="death_benefit" value="Nein"
+                                                                               id="btnradio8"
+                                                                               autocomplete="off">
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio8">Nein</label>
+                                                                    @else
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="death_benefit" value="Ja}"
+                                                                               id="btnradio7"
+                                                                               autocomplete="off">
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio7">Ja</label>
+
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="death_benefit" value="Nein"
+                                                                               id="btnradio8"
+                                                                               autocomplete="off" checked>
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio8">Nein</label>
+                                                                    @endif
+                                                                @else
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="death_benefit" value="Ja}"
+                                                                           id="btnradio7"
+                                                                           autocomplete="off">
+                                                                    <label class="btn btn-outline-secondary"
+                                                                           for="btnradio7">Ja</label>
+
+                                                                    <input type="radio" class="btn-check"
+                                                                           name="death_benefit" value="Nein"
+                                                                           id="btnradio8"
+                                                                           autocomplete="off">
+                                                                    <label class="btn btn-outline-secondary"
+                                                                           for="btnradio8">Nein</label>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        <div class="group-button-div mb-2">
+                                                            <div class="">
+                                                                    <span style="font-size: 15px;">
+                                                                        Raucher:
+                                                                    </span>
+                                                            </div>
+                                                            <div class="btn-group" role="group"
+                                                                 aria-label="Basic radio toggle button group">
+                                                                @if(isset($data->things->smoker))
+                                                                    @if($data->things->smoker == 'Ja')
+                                                                        <input type="radio" class="btn-check"
                                                                                name="smoker"
-                                                                               value="Ja"
-                                                                               id="btnradio9"
+                                                                               value="Ja" id="btnradio9"
+                                                                               autocomplete="off"
+                                                                               checked>
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio9">Ja</label>
+
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="smoker"
+                                                                               value="Nein" id="btnradio10"
+                                                                               autocomplete="off">
+                                                                        <label class="btn btn-outline-secondary"
+                                                                               for="btnradio10">Nein</label>
+                                                                    @else
+                                                                        <input type="radio" class="btn-check"
+                                                                               name="smoker"
+                                                                               value="Ja" id="btnradio9"
                                                                                autocomplete="off">
                                                                         <label class="btn btn-outline-secondary"
                                                                                for="btnradio9">Ja</label>
 
-                                                                        <input type="radio"
-                                                                               class="btn-check"
+                                                                        <input type="radio" class="btn-check"
                                                                                name="smoker"
-                                                                               value="Nein"
-                                                                               id="btnradio10"
+                                                                               value="Nein" id="btnradio10"
                                                                                autocomplete="off"
                                                                                checked>
                                                                         <label class="btn btn-outline-secondary"
                                                                                for="btnradio10">Nein</label>
                                                                     @endif
                                                                 @else
-                                                                    <input type="radio"
-                                                                           class="btn-check"
-                                                                           name="smoker"
-                                                                           value="Ja"
-                                                                           id="btnradio9"
-                                                                           autocomplete="off">
+                                                                    <input type="radio" class="btn-check" name="smoker"
+                                                                           value="Ja" id="btnradio9" autocomplete="off">
                                                                     <label class="btn btn-outline-secondary"
                                                                            for="btnradio9">Ja</label>
 
-                                                                    <input type="radio"
-                                                                           class="btn-check"
-                                                                           name="smoker"
-                                                                           value="Nein"
-                                                                           id="btnradio10"
+                                                                    <input type="radio" class="btn-check" name="smoker"
+                                                                           value="Nein" id="btnradio10"
                                                                            autocomplete="off">
                                                                     <label class="btn btn-outline-secondary"
                                                                            for="btnradio10">Nein</label>
@@ -1785,17 +1962,18 @@
                                                             </div>
                                                         </div>
                                                         <div class="mb-2">
-                                                            <label for="exampleFormControlTextarea2" class="form-label">Gewünschte
+                                                            <label for="exampleFormControlTextarea2"
+                                                                   class="form-label">Gewünschte
                                                                 Gesellschaften:</label>
-                                                            @if(isset($data->things[0]->desired))
+                                                            @if(isset($data->things->desired))
                                                                 <textarea name="desired" class="form-control"
                                                                           id="exampleFormControlTextarea2"
-                                                                          rows="3">{{$data->things[0]->desired}}</textarea>
-                                                                @else
+                                                                          rows="3">{{$data->things->desired}}</textarea>
+                                                            @else
                                                                 <textarea name="desired" class="form-control"
                                                                           id="exampleFormControlTextarea2"
                                                                           rows="3"></textarea>
-                                                                @endif
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1805,21 +1983,17 @@
                                 </div>
                             </div>
                             <div class="text-center  pb-3">
-                                <div class="row">
-                                    <div class="col g-0 text-end my-auto">
-                                        <div class="">
-                        <span class="pe-2" style="color: #9F9F9F;">
-
-                        </span>
-                                        </div>
-                                    </div>
-                                    <div class="col g-0 text-start">
+                                <div class="row mx-3">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
+                                    <addtask4 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask4>
+                                    @endif
+                                    <div class="col g-0 d-flex justify-content-end">
                                         <div class="">
                                             <button class="px-5 py-2" type="button"
                                                     style="border: none; border-radius: 9px; background-color:#285F52;"
                                                     onclick="nextonee()">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
-                                                     viewBox="0 0 58.155 19.159">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                     height="19.159" viewBox="0 0 58.155 19.159">
                                                     <g id="Group_453" data-name="Group 453"
                                                        transform="translate(0.004)">
                                                         <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
@@ -1843,9 +2017,9 @@
                             <div class="row mx-4">
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3 ">
                                     <div class="mb-2">
-                      <span class="fw-bold fs-6">
-                        Hausrat- & Privathaftpflicht
-                      </span>
+                                            <span class="fw-bold fs-6">
+                                                Hausrat- & Privathaftpflicht
+                                            </span>
                                     </div>
                                     <div class="accordion accordion-flush" id="accordionFlushExample3">
                                         <div class="accordion-item">
@@ -1856,14 +2030,16 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
                                                     <div class="d-block">
                                                         <div class="">
-                                <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                  Gegenofferte?
-                                </span>
+                                                                <span class="fs-6" id="title-span"
+                                                                      style="font-weight: 600;">
+                                                                    Gegenofferte?
+                                                                </span>
                                                         </div>
                                                         <div class="lh-1 " id="bastelle-span">
-                                <span class="" style="font-size: 13px;">
-                                  Bestelle eine Gegenofferte für eine bestehende Hausrat- / Prifathaftlichtversicherung.
-                                </span>
+                                                                <span class="" style="font-size: 13px;">
+                                                                    Bestelle eine Gegenofferte für eine bestehende
+                                                                    Hausrat- / Prifathaftlichtversicherung.
+                                                                </span>
                                                         </div>
                                                     </div>
                                                 </button>
@@ -1875,16 +2051,17 @@
                                                      style="background-color: #EFEFEF !important; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
                                                     <div class="">
                                                         <div class="">
-                                <span class="" style="font-size: 13px;">
-                                  Police Hochladen:
-                                </span>
+                                                                <span class="" style="font-size: 13px;">
+                                                                    Police Hochladen:
+                                                                </span>
                                                         </div>
                                                         <div class="">
                                                             <div class="upload-box mx-1 my-2">
                                                                 <div class="mx-1 my-2 p-4 text-center">
                                                                     <label for="file-input-6">
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                                             width="53" height="53" viewBox="0 0 53 53">
+                                                                             width="53" height="53"
+                                                                             viewBox="0 0 53 53">
                                                                             <g id="Group_621" data-name="Group 621"
                                                                                transform="translate(-78.283 -14.777)">
                                                                                 <circle id="Ellipse_31"
@@ -1892,7 +2069,8 @@
                                                                                         cy="26.5" r="26.5"
                                                                                         transform="translate(78.283 14.777)"
                                                                                         fill="#5f5f5f"/>
-                                                                                <g id="Group_326" data-name="Group 326"
+                                                                                <g id="Group_326"
+                                                                                   data-name="Group 326"
                                                                                    transform="translate(95.656 31.893)">
                                                                                     <path id="Path_234"
                                                                                           data-name="Path 234"
@@ -1910,25 +2088,29 @@
                                                                             </g>
                                                                         </svg>
                                                                     </label>
-                                                                    @if(isset($data->prevention[0]->upload_police__))
-                                                                    <input type="file" id="file-input-6"
-                                                                           class="svg-div w-100 border-0  g-0"
-                                                                           onchange="upload(this);"
-                                                                           name="upload_police__"
-                                                                           value="{{$data->prevention[0]->upload_police__}}">
-                                                                        <a href="{{Storage::disk('img')->url($data->prevention[0]->upload_police__)}}">
-                                                                    <input type="text" class="form-control text-center"
-                                                                           id="file-input-6c" disabled
-                                                                           style="background:transparent;border:none;"
-                                                                           value="{{$data->prevention[0]->upload_police__}}">
-                                                                    @else
-                                                                    <input type="file" id="file-input-6"
-                                                                           class="svg-div w-100 border-0  g-0"
-                                                                           onchange="upload(this);"
-                                                                           name="upload_police__">
-                                                                    <input type="text" class="form-control text-center"
-                                                                           id="file-input-6c" disabled
-                                                                           style="background:transparent;border:none;">
+                                                                    @if(isset($data->prevention->upload_police))
+                                                                        <input type="file" id="file-input-6"
+                                                                               class="svg-div w-100 border-0  g-0"
+                                                                               onchange="upload(this);"
+                                                                               name="upload_police__"
+                                                                               value="{{$data->prevention->upload_police}}">
+                                                                        <a style="text-decoration: none" href="{{route('showfile',$data->prevention->upload_police)}}" ></a>
+                                                                            <input type="text"
+                                                                                   class="form-control text-center"
+                                                                                   id="file-input-6c" disabled
+                                                                                   style="background:transparent;border:none;"
+                                                                                   value="{{$data->prevention->upload_police}}"
+                                                                                   name="upload_police__">
+                                                                            @else
+                                                                                <input type="file" id="file-input-6"
+                                                                                       class="svg-div w-100 border-0  g-0"
+                                                                                       onchange="upload(this);"
+                                                                                       name="upload_police__">
+                                                                                <input type="text"
+                                                                                       class="form-control text-center"
+                                                                                       id="file-input-6c" disabled
+                                                                                       style="background:transparent;border:none;"
+                                                                                       name="upload_police__">
                                                                     @endif
                                                                 </div>
                                                             </div>
@@ -1937,20 +2119,23 @@
                                                             <div class="row mx-2">
                                                                 <div class="col-5 d-flex g-0">
                                                                     <div class="text-nowrap">
-                                      <span class="fw-bold" style=" font-size: 12px;">
-                                        Vergleichsart:
-                                      </span>
+                                                                            <span class="fw-bold"
+                                                                                  style=" font-size: 12px;">
+                                                                                Vergleichsart:
+                                                                            </span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col g-0 d-flex justify-content-end">
                                                                     <div class="select-div text-end ">
-                                                                        <select name="comparison_type" class="fw-bold"
-                                                                                id=""
+                                                                        <select name="comparison_type"
+                                                                                class="fw-bold" id=""
                                                                                 style="background-color: #EFEFEF; font-size: 12px;color:#9F9F9F;">
-                                                                            @if(isset($data->prevention[0]->comparison_type))
+                                                                            @if(isset($data->prevention->comparison_type))
                                                                                 <option
-                                                                                    value="{{$data->prevention[0]->comparison_type}}"
-                                                                                    selected>{{$data->prevention[0]->comparison_type}}</option>
+                                                                                    value="{{$data->prevention->comparison_type}}"
+                                                                                    selected>
+                                                                                    {{$data->prevention->comparison_type}}
+                                                                                </option>
                                                                             @else
                                                                                 <option selected>Select</option>
                                                                                 <option value="1">1:1 Deckung</option>
@@ -1964,10 +2149,18 @@
                                                         <div class="">
                                                             <div class="mb-3 mt-3">
                                                                 <label for="exampleFormControlTextarea2"
-                                                                       class="form-label" style="font-size: 13px;">Kommentar</label>
+                                                                       class="form-label"
+                                                                       style="font-size: 13px;">Kommentar
+                                                                </label>
+                                                                @if(isset($data->prevention->comment))
                                                                 <textarea name="comment__" class="form-control"
                                                                           id="exampleFormControlTextarea2"
-                                                                          rows="3"></textarea>
+                                                                          rows="3">{{$data->prevention->comment}}</textarea>
+                                                                @else
+                                                                    <textarea name="comment__" class="form-control"
+                                                                              id="exampleFormControlTextarea2"
+                                                                              rows="3"></textarea>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1978,9 +2171,9 @@
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3 ">
                                     <div class="mb-2">
-                      <span class="fw-bold fs-6">
-                        Hausrat- & Privathaftpflicht
-                      </span>
+                                            <span class="fw-bold fs-6">
+                                                Hausrat- & Privathaftpflicht
+                                            </span>
                                     </div>
                                     <div class="accordion accordion-flush" id="accordionFlushExample4">
                                         <div class="accordion-item">
@@ -1991,14 +2184,16 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
                                                     <div class="d-block">
                                                         <div class="">
-                                <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                  Neue Sachversicherung
-                                </span>
+                                                                <span class="fs-6" id="title-span"
+                                                                      style="font-weight: 600;">
+                                                                    Neue Sachversicherung
+                                                                </span>
                                                         </div>
                                                         <div class="lh-1 " id="bastelle-span">
-                                <span class="" style="font-size: 13px;">
-                                  Bestelle eine Offerte für eine neue Hausrat- / Haftpflichtversicherung.
-                                </span>
+                                                                <span class="" style="font-size: 13px;">
+                                                                    Bestelle eine Offerte für eine neue Hausrat- /
+                                                                    Haftpflichtversicherung.
+                                                                </span>
                                                         </div>
                                                     </div>
                                                 </button>
@@ -2012,13 +2207,14 @@
                                                         <div class="row mx-2">
                                                             <div class="col-5 d-flex g-0">
                                                                 <div class="text-nowrap">
-                                    <span class="fw-bold" style=" font-size: 15px;">
-                                      Neue Anfarge
-                                    </span>
+                                                                        <span class="fw-bold" style=" font-size: 15px;">
+                                                                            Neue Anfarge
+                                                                        </span>
                                                                 </div>
                                                             </div>
                                                             <div class="col g-0 d-flex justify-content-end">
                                                                 <div class="select-div text-end ">
+
                                                                     <select name="noname" class="fw-bold" id=""
                                                                             style="background-color: #EFEFEF; font-size: 15px;color:#9F9F9F;">
                                                                         <option selected>Select</option>
@@ -2031,16 +2227,19 @@
                                                         <div class="my-2">
                                                             <div class="input-select-div">
                                                                 <div class="">
-                                    <span class="" style="font-size: 15px;">
-                                      Anzahl Personen
-                                    </span>
+                                                                        <span class="" style="font-size: 15px;">
+                                                                            Anzahl Personen
+                                                                        </span>
                                                                 </div>
-                                                                <select name="number_of_people" class="form-select w-50"
+                                                                <select name="number_of_people"
+                                                                        class="form-select w-50"
                                                                         aria-label="Default select example">
-                                                                    @if(isset($data->prevention[0]->number_of_people))
+                                                                    @if(isset($data->prevention->number_of_people))
                                                                         <option
-                                                                            value="{{$data->prevention[0]->number_of_people}}"
-                                                                            selected>{{$data->prevention[0]->number_of_people}}</option>
+                                                                            value="{{$data->prevention->number_of_people}}"
+                                                                            selected>
+                                                                            {{$data->prevention->number_of_people}}
+                                                                        </option>
                                                                     @else
                                                                         <option selected></option>
                                                                         <option value="1">One</option>
@@ -2051,16 +2250,19 @@
                                                             </div>
                                                             <div class="input-select-div">
                                                                 <div class="">
-                                    <span class="" style="font-size: 15px;">
-                                      Anzahl Zimmer
-                                    </span>
+                                                                        <span class="" style="font-size: 15px;">
+                                                                            Anzahl Zimmer
+                                                                        </span>
                                                                 </div>
-                                                                <select name="number_of_rooms" class="form-select w-50"
+                                                                <select name="number_of_rooms"
+                                                                        class="form-select w-50"
                                                                         aria-label="Default select example">
-                                                                    @if(isset($data->prevention[0]->number_of_rooms))
+                                                                    @if(isset($data->prevention->number_of_rooms))
                                                                         <option
-                                                                            value="{{$data->prevention[0]->number_of_rooms}}"
-                                                                            selected>{{$data->prevention[0]->number_of_rooms}}</option>
+                                                                            value="{{$data->prevention->number_of_rooms}}"
+                                                                            selected>
+                                                                            {{$data->prevention->number_of_rooms}}
+                                                                        </option>
                                                                     @else
                                                                         <option selected></option>
                                                                         <option value="1">One</option>
@@ -2071,47 +2273,56 @@
                                                             </div>
                                                             <div class="input-div1">
                                                                 <div class="">
-                                    <span class="" style="font-size: 15px;">
-                                      Versicherungsumme
-                                    </span>
+                                                                        <span class="" style="font-size: 15px;">
+                                                                            Versicherungsumme
+                                                                        </span>
                                                                 </div>
-                                                                @if(isset($data->prevention[0]->sum_insured))
-                                                                    <input value="{{$data->prevention[0]->sum_insured}}" name="sum_insured" class="py-1" type="text"
+                                                                @if(isset($data->prevention->sum_insured))
+                                                                    <input value="{{$data->prevention->sum_insured}}"
+                                                                           name="sum_insured" class="py-1" type="text"
                                                                            id="">
-                                                                    @else
+                                                                @else
                                                                     <input name="sum_insured" class="py-1" type="text"
                                                                            id="">
-                                                                    @endif
+                                                                @endif
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlTextarea4"
-                                                                       class="form-label" style="font-size: 15px;">Gewünschte
-                                                                    Zusatzdeckung:</label>
-                                                                @if(isset($data->prevention[0]->desired_additional_coverag))
-                                                                    <textarea name="desired_additional_coverag"
+                                                                       class="form-label"
+                                                                       style="font-size: 15px;">
+                                                                    Gewünschte Zusatzdeckung:
+                                                                </label>
+                                                                @if(isset($data->prevention->desired_additional_coverage))
+                                                                    <textarea name="desired_additional_coverage"
                                                                               class="form-control"
                                                                               id="exampleFormControlTextarea4"
-                                                                              rows="3">{{$data->prevention[0]->desired_additional_coverag}}</textarea>
-                                                                    @else
-                                                                    <textarea name="desired_additional_coverag"
+                                                                              rows="3">
+                                                                        {{$data->prevention->desired_additional_coverage}}
+                                                                    </textarea>
+                                                                @else
+                                                                    <textarea name="desired_additional_coverage"
                                                                               class="form-control"
                                                                               id="exampleFormControlTextarea4"
-                                                                              rows="3"></textarea>
-                                                                    @endif
+                                                                              rows="3">
+
+                                                                    </textarea>
+                                                                @endif
                                                             </div>
                                                             <div class="input-select-div">
                                                                 <div class="">
-                                    <span class="" style="font-size: 15px;">
-                                      Pricathaftpflicht?
-                                    </span>
+                                                                        <span class="" style="font-size: 15px;">
+                                                                            Pricathaftpflicht?
+                                                                        </span>
                                                                 </div>
                                                                 <select name="personal_liability"
                                                                         class="form-select w-50"
                                                                         aria-label="Default select example">
-                                                                    @if(isset($data->prevention[0]->personal_liability))
+                                                                    @if(isset($data->prevention->personal_liability))
                                                                         <option
-                                                                            value="{{$data->prevention[0]->personal_liability}}"
-                                                                            selected>{{$data->prevention[0]->personal_liability}}</option>
+                                                                            value="{{$data->prevention->personal_liability}}"
+                                                                            selected>
+                                                                            {{$data->prevention->personal_liability}}
+                                                                        </option>
                                                                     @else
                                                                         <option selected></option>
                                                                         <option value="1">One</option>
@@ -2130,9 +2341,9 @@
                                 </div>
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 my-3">
                                     <div class="mb-2">
-                      <span class="fw-bold fs-6">
-                        Rechtsschutzversicherung
-                      </span>
+                                            <span class="fw-bold fs-6">
+                                                Rechtsschutzversicherung
+                                            </span>
                                     </div>
                                     <div class="accordion accordion-flush" id="accordionFlushExample5">
                                         <div class="accordion-item">
@@ -2143,14 +2354,16 @@
                                                         style="background-color: #EFEFEF !important; border-radius: 10px;">
                                                     <div class="d-block">
                                                         <div class="">
-                                <span class="fs-6" id="title-span" style="font-weight: 600;">
-                                  Gesellschaft wählen?
-                                </span>
+                                                                <span class="fs-6" id="title-span"
+                                                                      style="font-weight: 600;">
+                                                                    Gesellschaft wählen?
+                                                                </span>
                                                         </div>
                                                         <div class="lh-1 " id="bastelle-span">
-                                <span class="" style="font-size: 13px;">
-                                  Bestelle eine Offerte für eine neue Hausrat- / Haftpflichtversicherung.
-                                </span>
+                                                                <span class="" style="font-size: 13px;">
+                                                                    Bestelle eine Offerte für eine neue Hausrat- /
+                                                                    Haftpflichtversicherung.
+                                                                </span>
                                                         </div>
                                                     </div>
                                                 </button>
@@ -2164,9 +2377,9 @@
                                                         <div class="row mx-2">
                                                             <div class="col-5 d-flex g-0">
                                                                 <div class="text-nowrap">
-                                    <span class="fw-bold" style=" font-size: 15px;">
-                                      Neue Anfarge
-                                    </span>
+                                                                        <span class="fw-bold" style=" font-size: 15px;">
+                                                                            Neue Anfarge
+                                                                        </span>
                                                                 </div>
                                                             </div>
                                                             <div class="col g-0 d-flex justify-content-end">
@@ -2182,29 +2395,40 @@
                                                         </div>
                                                         <div class="input-div1">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Gesellschaft
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Gesellschaft
+                                                                    </span>
                                                             </div>
-                                                            @if(isset($data->prevention[0]->society))
-                                                                <input value="{{$data->prevention[0]->society}}" name="society" class="py-1" type="text" id="">
-                                                                @else
+                                                            @if(isset($data->prevention->society))
+                                                                <input value="{{$data->prevention->society}}"
+                                                                       name="society" class="py-1" type="text" id="">
+                                                            @else
                                                                 <input name="society" class="py-1" type="text" id="">
-                                                                @endif
+                                                            @endif
                                                         </div>
                                                         <div class="input-select-div">
                                                             <div class="">
-                                  <span class="" style="font-size: 15px;">
-                                    Anzahl Personen
-                                  </span>
+                                                                    <span class="" style="font-size: 15px;">
+                                                                        Anzahl Personen
+                                                                    </span>
                                                             </div>
-                                                            <select name="noname" class="form-select w-50"
+                                                            @if(isset($data->prevention->n_of_p_legal_protection))
+                                                            <select name="n_of_p_legal_protection" class="form-select w-50"
                                                                     aria-label="Default select example">
-                                                                <option selected></option>
+                                                                <option selected value="{{$data->prevention->n_of_p_legal_protection}}">{{$data->prevention->n_of_p_legal_protection}}</option>
                                                                 <option value="1">One</option>
                                                                 <option value="2">Two</option>
                                                                 <option value="3">Three</option>
                                                             </select>
+                                                            @else
+                                                                <select name="n_of_p_legal_protection" class="form-select w-50"
+                                                                        aria-label="Default select example">
+                                                                    <option selected></option>
+                                                                    <option value="1">One</option>
+                                                                    <option value="2">Two</option>
+                                                                    <option value="3">Three</option>
+                                                                </select>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2212,53 +2436,77 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center mt-3 pb-3">
-                                    <div class="row">
-                                        <div class="col g-0 text-end my-auto">
-                                            <div class="">
-                          <span class="pe-2" style="color: #9F9F9F;">
 
-                          </span>
+                              <div class="text-center mt-3 pb-3">
+                                <div class="row mx-4">
+                                    @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
+                              <addtask :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask>
+                                    @endif
+                                    <div class="col d-flex justify-content-end">
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
+
                                             </div>
-                                        </div>
-                                        <div class="col g-0 text-start">
-
-                                   
-    
- 
-
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </div>
                         </div>
 
-                      </div>
-                      <div class="col g-0 text-center">
-                     
-                          <button class="px-5 py-2" id="submitt" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" title="Overwrite" onclick="edit();">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-capslock-fill" viewBox="0 0 16 16">
-  <path d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1z"/>
-</svg>
-                          </button>
-           @if($lead->pendency->done == 1)
-          
-                          <button class="px-5 py-2" id="submitt1" type="button" style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept" onclick="accept();">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" class="bi bi-check-circle" viewBox="0 0 16 16">
-                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                              <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                            </svg>
-                          </button>
-                          @endif
-                        
-                      </div>
+                    </div>
 
+                    <div class="col g-0 text-center pb-3">
+
+                        <button class="px-5 py-2" id="submitt" type="button"
+                                style="border: none; border-radius: 9px; background-color:#285F52;" title="Edit"
+                                onclick="edit();">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff"
+                                 class="bi bi-capslock-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1z"/>
+                            </svg>
+                        </button>
+                        @if($lead->status != 'Done' && Auth::user()->hasRole('backoffice'))
+                            <button class="px-5 py-2" id="submitt1" type="button"
+                                    style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept"
+                                    onclick="accept();">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff"
+                                     class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path
+                                        d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                </svg>
+                            </button>
+                        @endif
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-</form>
+</div>
+
 <style>
     .btn-group label {
         box-shadow: none !important;
@@ -2486,6 +2734,9 @@
         background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='9' ry='9' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
         border-radius: 9px;
     }
+    body{
+        overflow-x: hidden;
+    }
 </style>
 <script>
     var cntt = 0;
@@ -2497,16 +2748,15 @@
     ];
 
     function edit() {
-        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [$lead->lead->id, $lead->id])?>";
+        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [\Illuminate\Support\Facades\Crypt::encrypt($lead->lead->id * 1244), Crypt::encrypt($lead->id * 1244)]) ?>";
         document.getElementById('forma').submit();
     }
 
-      function accept(){
-          <?php if($lead->pendency->done == 0) 
-          {
-           echo 'document.getElemenyById("forma").action ="' . route('acceptdata',$lead->id,true) .";";   
-           echo 'document.getElementById("forma").submit();';
-          }?>
+    function accept() {
+        <?php
+        echo 'document.getElementById("forma").action ="' . route('acceptdata', [\Illuminate\Support\Facades\Crypt::encrypt($lead->id * 1244), 'accept' => true]) . '";';
+        echo 'document.getElementById("forma").submit();';
+        ?>
 
     }
 
@@ -2569,6 +2819,63 @@
             document.getElementById("button1").style.setProperty("border-bottom-right-radius", "0px", "important");
         }
     }
+
+
+</script>
+
+<script>
+
+    function addContentFunct() {
+        $("#added-content").slideToggle();
+        $("#add-btn").slideToggle();
+    }
+
+    function saveContentFunct() {
+
+        $("#add-btn").slideToggle();
+        $("#added-content").slideToggle();
+    }
+
+
+    function addContentFunct1() {
+
+        $("#added-content1").slideToggle();
+        $("#add-btn1").slideToggle();
+    }
+
+    function saveContentFunct1() {
+
+        $("#add-btn1").slideToggle();
+        $("#added-content1").slideToggle();
+    }
+
+
+    function addContentFunct2() {
+
+        $("#added-content2").slideToggle();
+        $("#add-btn2").slideToggle();
+    }
+
+    function saveContentFunct2() {
+
+        $("#add-btn2").slideToggle();
+        $("#added-content2").slideToggle();
+    }
+
+
+    function addContentFunct3() {
+
+        $("#added-content3").slideToggle();
+        $("#add-btn3").slideToggle();
+    }
+
+    function saveContentFunct3() {
+
+        $("#add-btn3").slideToggle();
+        $("#added-content3").slideToggle();
+    }
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -10,6 +10,14 @@ Vue.component('notifications', require('./components/notifications.vue').default
 Vue.component('calendar', require('./components/calendar.vue').default);
 Vue.component('chat', require('./components/chat.vue').default);
 Vue.component('todo', require('./components/todo.vue').default);
+Vue.component('leads', require('./components/leads.vue').default);
+Vue.component('addtask', require('./components/addtask.vue').default);
+Vue.component('addtask2', require('./components/addtask2.vue').default);
+Vue.component('addtask3', require('./components/addtask3.vue').default);
+Vue.component('addtask4', require('./components/addtask4.vue').default);
+
+
+
 
 require('./bootstrap');
 import Vue from 'vue'
@@ -21,7 +29,3 @@ window.Vue = require('vue').default;
 const app = new Vue({
     el: '#app',
 });
-
-export default{
-
-}
