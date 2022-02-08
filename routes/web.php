@@ -46,16 +46,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Arr;
 
-
-
-
-
+use function Clue\StreamFilter\fun;
 
 route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('addlead',function(){
       $campaigns = campaigns::all();
       return view('addlead',compact('campaigns'));
    });
+
    route::post('importleads',function(Request $req){
       $file = $req->file('file');
       \Maatwebsite\Excel\Facades\Excel::import(new newlead, $file);
@@ -119,7 +117,7 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
    })->withoutMiddleware(confirmcode::class);
    route::get('clear',function(){
       \Artisan::call('optimize');
-      return \Artisan::call('route:clear');
+     \Artisan::call('route:clear');
    });
 //==========================================
     route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
@@ -149,10 +147,8 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
-
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
-
         $lead = lead::find($idd);
 
         return view('acceptappointment',compact('lead'));
@@ -226,7 +222,7 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
    route::post('create-task/{id}/{pendencyId}',[TodoController::class,'createToDoTasks'])->name('createToDoTasks');
    route::get('opened-tasks',[TodoController::class,'getAllOpenedToDoTasks'])->name('getAllOpenedToDoTasks');
    route::get('answered-tasks',[TodoController::class,'getAllAnsweredTasks'])->name('getAllAnsweredTasks');
-   route::get('costumer',[TodoController::class,'getDataForTaskByCostumerId'])->name('getDataForTaskByCostumerId');
+   route::get('costumer/{costumerId}',[TodoController::class,'getDataForTaskByCostumerId'])->name('getDataForTaskByCostumerId');
 
     route::get('costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'costumer_form'])->name('costumer_form');
 
@@ -305,7 +301,4 @@ route::get('leadhistory',function(Request $request){
    $leads = lead::with('info')->with('admin')->orderBy('created_at','desc')->paginate(40);
    return view('leadshistory',compact('leads'));
 })->name('leadshistory');
-
-route::any('tryevent',function(){
-
-});
+route::get('fsadmins',[TodoController::class,'fsadmins']);

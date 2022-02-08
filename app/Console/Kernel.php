@@ -17,9 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function(){
-            lead::latest('created_at')->first()->update(['assign_to_id' => random_int(3,10)]);
-        })->everyMinute();
+        $schedule->command('hardrefresh')->everyMinute();
     }
 
     /**

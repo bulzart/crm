@@ -82,8 +82,8 @@
                                     @if(Auth::guard('admins')->user()->hasRole('fs'))
                                         <option value="{{$admins->id}}">{{$admins->name}}</option>
                                     @else
+                                    <option value=""></option>
                                         @foreach($admins as $admin)
-                                        <option value=""></option>
                                             <option value="{{$admin->id}}">{{$admin->name}}</option>
                                         @endforeach
                                     @endif
