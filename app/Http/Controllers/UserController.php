@@ -573,7 +573,7 @@ return redirect()->route('tasks');
     }
             $getmonth = isset($req->getmonth) ? $req->getmonth : "";
 
-$taskcnt = 0;
+            $taskcnt = 0;
 
             date_default_timezone_set('Europe/Berlin');
 
@@ -590,8 +590,8 @@ $taskcnt = 0;
                 $tasks = null;
 
                 if (Auth::guard('admins')->user()->hasRole('backoffice') || Auth::guard('admins')->user()->hasRole('admin')) {
-             $pcnt = 0;
-             $mcnt = 0;
+                    $pcnt = 0;
+                    $mcnt = 0;
                     foreach(DB::table('family_person')
                     ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                     ->select('family_person.first_name', 'pendencies.family_id', 'family_person.id', 'family_person.last_name','pendencies.created_at','pendencies.done','pendencies.completed')

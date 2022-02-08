@@ -384,11 +384,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusG">
                                                                     <option value="{{$grundversicherung->statusG}}" selected>{{$grundversicherung->statusG}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -486,11 +486,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusV">
                                                                     <option selected value="{{$vorsorge->statusV}}">{{$vorsorge->statusV}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -590,11 +590,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusZ">
                                                                     <option selected value="{{$zusatzversicherung->statusZ}}">{{$zusatzversicherung->statusZ}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -692,11 +692,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusH">
                                                                     <option selected value="{{$hausrat->statusH}}">{{$hausrat->statusH}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -794,11 +794,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="statusR">
                                                                     <option selected value="{{$retchsschutz->statusR}}">{{$retchsschutz->statusR}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1069,11 +1069,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PG">
                                                                     <option selected value="{{$grundversicherungP->status_PG}}">{{$grundversicherungP->status_PG}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1096,7 +1096,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$grundversicherungP->total_commisions_PG}}" type="text" name="total_commisions_PG" id="">
+                                                                <input class="py-1 form-control " value="{{$grundversicherungP->total_commisions_PG}}" type="number" name="total_commisions_PG" id="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1185,11 +1185,11 @@
                                                                         aria-label="Default select example"
                                                                         name="status_PA">
                                                                     <option selected value="{{$autoversicherungP->status_PA}}">{{$autoversicherungP->status_PA}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1216,7 +1216,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " type="text"
+                                                                <input class="py-1 form-control " type="number"
                                                                        name="total_commisions_PA" id=""
                                                                        value="{{$autoversicherungP->total_commisions_PA}}"
                                                                 >
@@ -1320,11 +1320,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PZ">
                                                                     <option selected value="{{$zusatzversicherungP->status_PZ}}">{{$zusatzversicherungP->status_PZ}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1394,11 +1394,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PZ2">
                                                                     <option selected value="{{$zusatzversicherungP->status_PZ2}}">{{$zusatzversicherungP->status_PZ2}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1429,7 +1429,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->total_commisions_PZ}}" type="text" name="total_commisions_PZ" id="">
+                                                                <input class="py-1 form-control " value="{{$zusatzversicherungP->total_commisions_PZ}}" type="number" name="total_commisions_PZ" id="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1514,11 +1514,11 @@
                                                                         aria-label="Default select example"
                                                                         name="status_PH">
                                                                     <option selected value="{{$hausratP->status_PH}}">{{$hausratP->status_PH}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1544,7 +1544,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " type="text"
+                                                                <input class="py-1 form-control " type="number"
                                                                        value="{{$hausratP->total_commisions_PH}}"
                                                                        name="total_commisions_PH" id="">
                                                             </div>
@@ -1623,11 +1623,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PR">
                                                                     <option selected value="{{$retchsschutzP->status_PR}}">{{$retchsschutzP->status_PR}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
 
@@ -1650,7 +1650,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$retchsschutzP->total_commisions_PR}}" type="text" name="total_commisions_PR" id="">
+                                                                <input class="py-1 form-control " value="{{$retchsschutzP->total_commisions_PR}}" type="number" name="total_commisions_PR" id="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1768,11 +1768,11 @@
                                                                 </div>
                                                                 <select class="form-select" aria-label="Default select example" name="status_PV">
                                                                     <option selected value="{{$vorsorgeP->status_PV}}">{{$vorsorgeP->status_PV}}</option>
-                                                                    <option value="Angenommen">Aufgenomen </option>
+                                                                    <option value="Aufgenomen">Aufgenomen </option>
                                                                     <option value="Offen">Offen</option>
                                                                     <option value="Abgelehnt">Abgelehnt </option>
                                                                     <option value="Zuruckgezogen">Zuruckgezogen</option>
-                                                                    <option value="Aufgenomen">Provisionert </option>
+                                                                    <option value="Provisionert">Provisionert </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1793,7 +1793,7 @@
                                                                     Gesamtprovision:
                                                                 </span>
                                                                 </div>
-                                                                <input class="py-1 form-control " value="{{$vorsorgeP->total_commisions_PV}}" type="text" name="total_commisions_PV" id="">
+                                                                <input class="py-1 form-control " value="{{$vorsorgeP->total_commisions_PV}}" type="number" name="total_commisions_PV" id="">
                                                             </div>
                                                         </div>
                                                     </div>

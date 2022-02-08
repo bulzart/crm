@@ -67,11 +67,11 @@
                                 <g id="Group_778" data-name="Group 778" transform="translate(-397.019 -143.537)">
                                     <g id="Group_9" data-name="Group 9" transform="translate(589.161 143.537)">
                                     <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path-2)">
-                                        <path id="Path_275" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#88889b"/>
+                                        <path id="Path_275" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#88889b"/>
                                     </g>
                                     </g>
-                                    <ellipse id="Ellipse_8" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 8" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(659.672 173.599)" fill="#fff"/>
-                                    <ellipse id="Ellipse_9" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 9" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(659.672 182.506)" fill="#fff"/>
+                                    <ellipse id="Ellipse_8" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 8" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(659.672 173.599)" fill="#fff"/>
+                                    <ellipse id="Ellipse_9" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 9" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(659.672 182.506)" fill="#fff"/>
                                 </g>
                                 <text id="_74_" data-name="74%" transform="translate(31.871 94.343)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$counterat['provisionertCount']}}</tspan></text>
                                 <text id="Abschlussquote" transform="translate(31.871 144.225)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Privisionert</tspan></text>
@@ -95,11 +95,11 @@
                                     </g>
                                     <g id="Group_9" data-name="Group 9" transform="translate(941.253 143.537)">
                                     <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path-2)">
-                                        <path id="Path_275" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#49b178"/>
+                                        <path id="Path_275" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#49b178"/>
                                     </g>
                                     </g>
-                                    <ellipse id="Ellipse_6" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 6" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(1011.763 173.599)" fill="#fff"/>
-                                    <ellipse id="Ellipse_7" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 7" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(1011.763 182.506)" fill="#fff"/>
+                                    <ellipse id="Ellipse_6" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 6" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(1011.763 173.599)" fill="#fff"/>
+                                    <ellipse id="Ellipse_7" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 7" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(1011.763 182.506)" fill="#fff"/>
                                     <text id="_23" data-name="23" transform="translate(780.002 239.881)" fill="#fff" font-size="51" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$counterat['aufgenomenCount']}}</tspan></text>
                                     <text id="Aufgenommen" transform="translate(780.002 287.762)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Aufgenommen</tspan></text>
                                 </g>
@@ -121,13 +121,13 @@
                                     </g>
                                     <g id="Group_9" data-name="Group 9" transform="translate(1293.349 143.537)">
                                     <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path-2)">
-                                        <path id="Path_275" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#edae60"/>
+                                        <path id="Path_275" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#edae60"/>
                                     </g>
                                     </g>
-                                    <ellipse id="Ellipse_4" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 4" cx="2.711" cy="2.582" rx="2.711" ry="2.582" transform="translate(1365.642 174.097)" fill="#fff"/>
+                                    <ellipse id="Ellipse_4" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 4" cx="2.711" cy="2.582" rx="2.711" ry="2.582" transform="translate(1365.642 174.097)" fill="#fff"/>
                                     <text id="_32" data-name="32" transform="translate(1137.893 237.881)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{$counterat['offenCount']}}</tspan></text>
                                     <text id="Aufgenommen" transform="translate(1137.893 287.762)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Ausstehend</tspan></text>
-                                    <ellipse id="Ellipse_57" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 57" cx="2.711" cy="2.582" rx="2.711" ry="2.582" transform="translate(1365.642 183.097)" fill="#fff"/>
+                                    <ellipse id="Ellipse_57" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 57" cx="2.711" cy="2.582" rx="2.711" ry="2.582" transform="translate(1365.642 183.097)" fill="#fff"/>
                                 </g>
                             </svg>
                         </div>
@@ -148,11 +148,11 @@
                                 </g>
                                 <g id="Group_9" data-name="Group 9" transform="translate(192.142)">
                                     <g id="Group_8" data-name="Group 8" clip-path="url(#clip-path-2)">
-                                    <path id="Path_275" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#fd2f2f"/>
+                                    <path id="Path_275" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Path 275" d="M214.01,20.318V76.634c-91.968,21.8-104.334-30.2-104.386-41.938C109.468,0,102.581,0,102.581,0h90.095c11.782,0,21.334,9.1,21.334,20.318" transform="translate(-102.581)" fill="#fd2f2f"/>
                                     </g>
                                 </g>
-                                <ellipse id="Ellipse_11" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 11" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(262.653 30.062)" fill="#fff"/>
-                                <ellipse id="Ellipse_10" onclick="window.location.href='{{route('tasks')}}'" style="cursor: pointer;" data-name="Ellipse 10" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(262.653 38.969)" fill="#fff"/>
+                                <ellipse id="Ellipse_11" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 11" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(262.653 30.062)" fill="#fff"/>
+                                <ellipse id="Ellipse_10" onclick="window.location.href='{{route('costumers')}}'" style="cursor: pointer;" data-name="Ellipse 10" cx="2.923" cy="2.783" rx="2.923" ry="2.783" transform="translate(262.653 38.969)" fill="#fff"/>
                                 <text id="_74_" data-name="74%" transform="translate(31.565 94.876)" fill="#fff" font-size="49" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">{{round($counterat['familyCount'],2)}}%</tspan></text>
                                 <text id="Abschlussquote" transform="translate(31.565 144.474)" fill="#fff" font-size="23" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="0" y="0">Abschlussquote</tspan></text>
                             </svg>

@@ -7,7 +7,7 @@
                     <div class="col">
                         <div class="assigned-leads-div mt-2 mx-3 py-3" style="background-color: #F7F7F7;">
                             <div class="header mx-4 my-2 d-flex justify-content-between">
-                        
+
                                 <div class="text-end py-3">
                                     @if(!Auth::guard('admins')->user()->hasRole('fs'))
                                     @if($leads->currentPage() > 1)
@@ -54,20 +54,28 @@
                                     <leads></leads>
                                 </div>
                             </div>
-                            @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('salesmanager')) 
+                            @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('salesmanager'))
 
                             <div class="text-center">
-  <h5>Import leads</h5>
-  <form action="{{route('importleads')}}" method="post" enctype="multipart/form-data">
-    @csrf
-    <input type="file" name="file" class="form-control">
-    <input type="submit" class="mt-2 btn py-2"  style="background-color: #63D4A4; color: #fff; border-radius: 13px;">
-  </form>
+                                <div class="">
+                                    <h5>Import leads</h5>
+                                </div>
+                                <div class="col-11 mx-auto">
+                                    <div class="mx-3">
+                                        <form action="{{route('importleads')}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="file" name="file" class="form-control">
+                                            <div class="mt-3">
+                                                <input type="submit" class="mt-2 btn fw-bold py-2 px-5 my-3" value="Submit" style="background-color: #63D4A4; color: #fff; border-radius: 13px;">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
 </div>
 @endif
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
     </section>
