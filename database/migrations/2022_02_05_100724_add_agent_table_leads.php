@@ -26,7 +26,7 @@ class AddAgentTableLeads extends Migration
     public function down()
     {
         Schema::table('leads', function (Blueprint $table) {
-            //
+            
         });
     }
 }

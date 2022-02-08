@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+          <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -101,7 +102,7 @@
 
 <body>
 
-<div class="row">
+<div class="row" id="app">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
         <div class="d-flex navvv" style="height: 100% !important; position: fixed; background-color: #0C71C3;">
 
@@ -684,75 +685,7 @@
                             <div class="text-center mt-3 pb-3">
                                 <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col text-start ">
-
-                                        <div class="plus-div  my-1">
-                                            <div class="svg-div d-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct()"
-                                                     id="add-btn" width="35"
-                                                     class="img-fluid" viewBox="0 0 35 35"
-                                                     style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                    <g id="Group_757" data-name="Group 757"
-                                                       transform="translate(-458 -858)">
-                                                        <line id="Line_43" data-name="Line 43" y2="34"
-                                                              transform="translate(475.5 858.5)" fill="none"
-                                                              stroke="#707070" stroke-linecap="round" stroke-width="2"/>
-                                                        <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                              transform="translate(458.5 875.5)"
-                                                              fill="none" stroke="#707070" stroke-linecap="round"
-                                                              stroke-width="2"/>
-                                                    </g>
-                                                </svg>
-                                                <div class="mx-3 my-auto">
-                                                  <span>
-                                                    Add something here !
-                                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="added-content" id="added-content" style="display: none;">
-                                            <div class="to-do-content mb-2 p-4"
-                                                 style="background-color: #EFEFEF; border-radius: 13px;">
-                                                <div class="py-2">
-                                                    <div class="py-2">
-                                                        <label for="">Costumer</label>
-                                                        <input type="text" class="form-control"
-                                                               value="Marcus Jurgen (example)" readonly>
-                                                    </div>
-                                                    <label for="">Field Service:</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Person 1</option>
-                                                        <option value="1">Person 2</option>
-                                                        <option value="2">Person 3</option>
-                                                        <option value="3">Person 4</option>
-                                                        <option value="3">Person 5</option>
-                                                        <option value="3">idk, etc...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="">Title</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="Textarea1" class="form-label">Comment</label>
-                                                    <textarea class="form-control" id="Textarea1" rows="4"></textarea>
-                                                </div>
-                                                <div class="py-2 input-group ">
-                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct()" id="save-btn"
-                                                            style="background-color: #fff;border:1px solid #000">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct()" id="save-btn"
-                                                            style="background-color: #5f5f5f;">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                              <addtask2 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask2>
                                     @endif
                                     <div class="col d-flex justify-content-end">
                                         <div class="row">
@@ -1554,104 +1487,41 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-center mt-3 pb-3">
                                 <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col text-start">
-
-                                        <div class="plus-div  my-1">
-                                            <div class="svg-div d-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct1()"
-                                                     id="add-btn1" width="35"
-                                                     class="img-fluid" viewBox="0 0 35 35"
-                                                     style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                    <g id="Group_757" data-name="Group 757"
-                                                       transform="translate(-458 -858)">
-                                                        <line id="Line_43" data-name="Line 43" y2="34"
-                                                              transform="translate(475.5 858.5)" fill="none"
-                                                              stroke="#707070" stroke-linecap="round" stroke-width="2"/>
-                                                        <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                              transform="translate(458.5 875.5)"
-                                                              fill="none" stroke="#707070" stroke-linecap="round"
-                                                              stroke-width="2"/>
-                                                    </g>
-                                                </svg>
-                                                <div class="mx-3 my-auto">
-                                                  <span>
-                                                    Add something here !
-                                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="added-content" id="added-content1" style="display: none;">
-                                            <div class="to-do-content mb-2 p-4"
-                                                 style="background-color: #EFEFEF; border-radius: 13px;">
-                                                <div class="py-2">
-                                                    <div class="py-2">
-                                                        <label for="">Costumer</label>
-                                                        <input type="text" class="form-control"
-                                                               value="Marcus Jurgen (example)" readonly>
-                                                    </div>
-                                                    <label for="">Field Service:</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Person 1</option>
-                                                        <option value="1">Person 2</option>
-                                                        <option value="2">Person 3</option>
-                                                        <option value="3">Person 4</option>
-                                                        <option value="3">Person 5</option>
-                                                        <option value="3">idk, etc...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="">Title</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="Textarea1" class="form-label">Comment</label>
-                                                    <textarea class="form-control" id="Textarea1" rows="4"></textarea>
-                                                </div>
-                                                <div class="py-2 input-group ">
-                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct1()" id="save-btn"
-                                                            style="background-color: #fff;border:1px solid #000">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct1()" id="save-btn"
-                                                            style="background-color: #5f5f5f;">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <addtask3 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask3>
                                     @endif
-
                                     <div class="col d-flex justify-content-end">
-                                        <div id="buton" class="py-2 text-center">
-                                            <button class="px-5 py-2" type="button"
-                                                    style="border: none; border-radius: 9px; background-color:#285F52;"
-                                                    id="nextonee__" onclick="nextonee()">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
-                                                     viewBox="0 0 58.155 19.159">
-                                                    <g id="Group_453" data-name="Group 453"
-                                                       transform="translate(0.004)">
-                                                        <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
-                                                              transform="translate(0 9.287)" fill="none"
-                                                              stroke="#3fd599"
-                                                              stroke-width="2"/>
-                                                        <path id="Polygon_2" data-name="Polygon 2"
-                                                              d="M9.58,0l9.58,11.642H0Z"
-                                                              transform="translate(58.151 0) rotate(90)"
-                                                              fill="#3fd599"/>
-                                                    </g>
-                                                </svg>
-                                            </button>
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
 
+                                            </div>
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                            </div>
                         </div>
 
 
@@ -2115,76 +1985,7 @@
                             <div class="text-center  pb-3">
                                 <div class="row mx-3">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col g-0 text-start">
-
-                                        <div class="plus-div  my-1">
-                                            <div class="svg-div d-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct2()"
-                                                     id="add-btn2" width="35"
-                                                     class="img-fluid" viewBox="0 0 35 35"
-                                                     style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                    <g id="Group_757" data-name="Group 757"
-                                                       transform="translate(-458 -858)">
-                                                        <line id="Line_43" data-name="Line 43" y2="34"
-                                                              transform="translate(475.5 858.5)" fill="none"
-                                                              stroke="#707070" stroke-linecap="round" stroke-width="2"/>
-                                                        <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                              transform="translate(458.5 875.5)"
-                                                              fill="none" stroke="#707070" stroke-linecap="round"
-                                                              stroke-width="2"/>
-                                                    </g>
-                                                </svg>
-                                                <div class="mx-3 my-auto">
-                                                  <span>
-                                                    Add something here !
-                                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="added-content" id="added-content2" style="display: none;">
-                                            <div class="to-do-content p-4"
-                                                 style="background-color: #EFEFEF; border-radius: 13px;">
-                                                <div class="py-2">
-                                                    <div class="py-2">
-                                                        <label for="">Costumer</label>
-                                                        <input type="text" class="form-control"
-                                                               value="Marcus Jurgen (example)" readonly>
-                                                    </div>
-                                                    <label for="">Field Service:</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Person 1</option>
-                                                        <option value="1">Person 2</option>
-                                                        <option value="2">Person 3</option>
-                                                        <option value="3">Person 4</option>
-                                                        <option value="3">Person 5</option>
-                                                        <option value="3">idk, etc...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="">Title</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="Textarea1" class="form-label">Comment</label>
-                                                    <textarea class="form-control" id="Textarea1" rows="4"></textarea>
-                                                </div>
-                                                <div class="py-2 input-group ">
-                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct2()" id="save-btn"
-                                                            style="background-color: #fff;border:1px solid #000">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct2()" id="save-btn"
-                                                            style="background-color: #5f5f5f;">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
+                                    <addtask4 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask4>
                                     @endif
                                     <div class="col g-0 d-flex justify-content-end">
                                         <div class="">
@@ -2636,88 +2437,41 @@
                                     </div>
                                 </div>
 
-                                <div class="text-center mt-3 pb-3">
-                                    <div class="row mx-4">
+                              <div class="text-center mt-3 pb-3">
+                                <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                        <div class="col text-start">
-
-                                            <div class="plus-div  my-1">
-                                                <div class="svg-div d-flex">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct3()"
-                                                         id="add-btn3" width="35"
-                                                         class="img-fluid" viewBox="0 0 35 35"
-                                                         style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                        <g id="Group_757" data-name="Group 757"
-                                                           transform="translate(-458 -858)">
-                                                            <line id="Line_43" data-name="Line 43" y2="34"
-                                                                  transform="translate(475.5 858.5)" fill="none"
-                                                                  stroke="#707070" stroke-linecap="round"
-                                                                  stroke-width="2"/>
-                                                            <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                                  transform="translate(458.5 875.5)"
-                                                                  fill="none" stroke="#707070" stroke-linecap="round"
-                                                                  stroke-width="2"/>
-                                                        </g>
-                                                    </svg>
-                                                    <div class="mx-3 my-auto">
-                        <span>
-                          Add something here !
-                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="added-content" id="added-content3" style="display: none;">
-                                                <div class="to-do-content p-4"
-                                                     style="background-color: #EFEFEF; border-radius: 13px;">
-                                                    <div class="py-2">
-                                                        <div class="py-2">
-                                                            <label for="">Costumer</label>
-                                                            <input type="text" class="form-control"
-                                                                   value="Marcus Jurgen (example)" readonly>
-                                                        </div>
-                                                        <label for="">Field Service:</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Person 1</option>
-                                                            <option value="1">Person 2</option>
-                                                            <option value="2">Person 3</option>
-                                                            <option value="3">Person 4</option>
-                                                            <option value="3">Person 5</option>
-                                                            <option value="3">idk, etc...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="py-2">
-                                                        <label for="">Title</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                    <div class="py-2">
-                                                        <label for="Textarea1" class="form-label">Comment</label>
-                                                        <textarea class="form-control" id="Textarea1"
-                                                                  rows="4"></textarea>
-                                                    </div>
-                                                    <div class="py-2 input-group ">
-                                                        <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct3()" id="save-btn"
-                                                                style="background-color: #fff;border:1px solid #000">
-                                                            Cancel
-                                                        </button>
-                                                        <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct3()" id="save-btn"
-                                                                style="background-color: #5f5f5f;">
-                                                            Submit
-                                                        </button>
-                                                    </div>
-                                                </div>
+                              <addtask :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask>
+                                    @endif
+                                    <div class="col d-flex justify-content-end">
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
 
                                             </div>
-
-                                        </div>
-                                        @endif
-                                        <div class="col g-0 text-start">
-
-
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
 
@@ -2994,7 +2748,7 @@
     ];
 
     function edit() {
-        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [\Illuminate\Support\Facades\Crypt::encrypt($lead->lead->id * 1244), Crypt::encrypt($lead->id * 1244)])?>";
+        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [\Illuminate\Support\Facades\Crypt::encrypt($lead->lead->id * 1244), Crypt::encrypt($lead->id * 1244)]) ?>";
         document.getElementById('forma').submit();
     }
 
@@ -3072,7 +2826,6 @@
 <script>
 
     function addContentFunct() {
-
         $("#added-content").slideToggle();
         $("#add-btn").slideToggle();
     }

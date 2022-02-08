@@ -20,6 +20,7 @@ class AddPendenciesTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('done')->default(0);
             $table->boolean('completed')->default(0);
+            $table->string('title')->nullable();
             $table->timestamps();
         });
     }

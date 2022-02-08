@@ -30,19 +30,20 @@ class TasksController extends Controller
 {
 public function assignpendency(Request $req){
   $id = (int) $req->id;
-
+$title = $req->title ? $req->title : "";
   $pendency = Pendency::where('family_id',(int)$req->id)->first();
   if(!$pendency){
     $pendency = new Pendency();
+    $pendency->title = $title;
   $pendency->admin_id = (int) $req->admin;
   $pendency->family_id = (int) $req->id;
   $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
-
   $pendency->save();
   }
   else{
     $pendency->admin_id = (int) $req->admin;
     $pendency->done = 0;
+    $pendency->title = $title;
     $pendency->completed = 0;
     $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
     $pendency->save();

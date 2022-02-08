@@ -29,6 +29,9 @@ class TodoController extends Controller
         $todo->save();
       }
     }
+    public function fsadmins(){
+        return Admins::role(['fs'])->get();
+    }
 
       public function deletenumber(Request $req){
         if(Auth::guard('admins')->check()){
@@ -87,7 +90,7 @@ class TodoController extends Controller
 
     public function getDataForTaskByCostumerId($costumerId)
     {
-        return Costumer::where('id', $costumerId)->first();
+        return family::where('id', $costumerId)->first();
     }
 
     public function createToDoTasks($id, $pendencyId, Request $request)
