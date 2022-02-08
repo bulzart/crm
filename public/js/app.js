@@ -33658,7 +33658,7 @@ var render = function () {
                   _vm._v(" "),
                   _c("span", { staticClass: "fs-5 fw-500 ps-2" }, [
                     _vm._v(
-                      "\n                               History of leads\n                             "
+                      "\n                               History of leads!\n                             "
                     ),
                   ]),
                 ]),

@@ -393,7 +393,7 @@
 {{-- }--}}
 
 
-{{-- .modal-content {--}}
+
 {{-- background-color: #fefefe;--}}
 {{-- margin-top: 3%;--}}
 {{-- /* height: 70vh; */--}}

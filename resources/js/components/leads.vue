@@ -401,7 +401,7 @@
 
 
                                 </span> <span class="fs-5 fw-500 ps-2">
-                                  History of leads
+                                  History of leads!
                                 </span>
                                 </div>
                                 </a>
