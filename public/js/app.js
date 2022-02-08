@@ -6572,16 +6572,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6599,9 +6589,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     this.getleads();
   },
   methods: {
-    closeFunc: function closeFunc(id) {
-      $('.modal-backdrop').remove();
-    },
     getleads: function getleads() {
       var _this = this;
 
@@ -12103,30 +12090,6 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n@media (max-width: 978px) {\n.monthh[data-v-094224ee]{\n        font-size: 12px !important;\n}\n.not-this-month[data-v-094224ee]{\n        font-size: 12px !important;\n        display: inline-block;\n        white-space: nowrap;\n        width: 25px;\n        overflow: hidden;\n        text-overflow: hidden;\n}\n.dateee[data-v-094224ee]{\n        /* overflow: hidden !important;\n        white-space: nowrap !important; */\n}\n}\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/laravel-mix/node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n@media (min-width: 576px){\n.modal-dialog[data-v-c010fc48] {\r\n    max-width: 900px !important;\n}\n.modaldialogg[data-v-c010fc48]{\r\n    max-width: 500px !important;\r\n    top: 10%;\n}\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29682,36 +29645,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& */ "./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css& ***!
@@ -30284,25 +30217,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _leads_vue_vue_type_template_id_c010fc48_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./leads.vue?vue&type=template&id=c010fc48&scoped=true& */ "./resources/js/components/leads.vue?vue&type=template&id=c010fc48&scoped=true&");
+/* harmony import */ var _leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./leads.vue?vue&type=template&id=c010fc48& */ "./resources/js/components/leads.vue?vue&type=template&id=c010fc48&");
 /* harmony import */ var _leads_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leads.vue?vue&type=script&lang=js& */ "./resources/js/components/leads.vue?vue&type=script&lang=js&");
-/* harmony import */ var _leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& */ "./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
-;
 
 
 /* normalize component */
-
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _leads_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _leads_vue_vue_type_template_id_c010fc48_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
-  _leads_vue_vue_type_template_id_c010fc48_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.render,
+  _leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
-  "c010fc48",
+  null,
   null
   
 )
@@ -30551,19 +30482,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& ***!
-  \****************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_laravel_mix_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_style_index_0_id_c010fc48_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/laravel-mix/node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=style&index=0&id=c010fc48&scoped=true&lang=css&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css&":
 /*!***************************************************************************************************!*\
   !*** ./resources/js/components/todo.vue?vue&type=style&index=0&id=5289e811&scoped=true&lang=css& ***!
@@ -30679,19 +30597,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/leads.vue?vue&type=template&id=c010fc48&scoped=true&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/leads.vue?vue&type=template&id=c010fc48&scoped=true& ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/leads.vue?vue&type=template&id=c010fc48&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/leads.vue?vue&type=template&id=c010fc48& ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=template&id=c010fc48&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_leads_vue_vue_type_template_id_c010fc48___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./leads.vue?vue&type=template&id=c010fc48& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48&");
 
 
 /***/ }),
@@ -32620,10 +32538,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48&scoped=true&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48&scoped=true& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/leads.vue?vue&type=template&id=c010fc48& ***!
+  \*****************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32684,102 +32602,41 @@ var render = function () {
                             },
                           },
                           [
-                            _c(
-                              "div",
-                              { staticClass: "modal-dialog modaldialogg" },
-                              [
-                                _c(
-                                  "form",
-                                  {
-                                    attrs: {
-                                      action: "rejectedleads",
-                                      method: "post",
-                                    },
+                            _c("div", { staticClass: "modal-dialog" }, [
+                              _c(
+                                "form",
+                                {
+                                  attrs: {
+                                    action: "rejectedleads",
+                                    method: "post",
                                   },
-                                  [
-                                    _c("input", {
-                                      attrs: { type: "hidden", name: "_token" },
-                                      domProps: { value: _vm.csrf },
-                                    }),
+                                },
+                                [
+                                  _c("input", {
+                                    attrs: { type: "hidden", name: "_token" },
+                                    domProps: { value: _vm.csrf },
+                                  }),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "modal-content" }, [
+                                    _vm._m(0, true),
                                     _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "modal-content",
-                                        staticStyle: {
-                                          "border-radius": "24px !important",
+                                    _c("div", { staticClass: "modal-body" }, [
+                                      _c("input", {
+                                        attrs: {
+                                          type: "hidden",
+                                          name: "leadsid",
                                         },
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "modal-header mx-4 pt-4",
-                                            staticStyle: {
-                                              "border-bottom":
-                                                "none !important",
-                                            },
-                                          },
-                                          [
-                                            _c("button", {
-                                              staticClass: "btn-close",
-                                              staticStyle: {
-                                                opacity: "1 !important",
-                                              },
-                                              attrs: {
-                                                type: "button",
-                                                id: lead.slug + "r.123",
-                                                "data-bs-dismiss": "modal",
-                                                "aria-label": "Close",
-                                              },
-                                              on: {
-                                                click: function ($event) {
-                                                  return _vm.closeFunc(this)
-                                                },
-                                              },
-                                            }),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "modal-body mx-5" },
-                                          [
-                                            _vm._m(0, true),
-                                            _vm._v(" "),
-                                            _c("div", { staticClass: "row" }, [
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "col-md-12 col-12",
-                                                },
-                                                [
-                                                  _c("input", {
-                                                    attrs: {
-                                                      type: "hidden",
-                                                      name: "leadsid",
-                                                    },
-                                                    domProps: {
-                                                      value: lead.id,
-                                                    },
-                                                  }),
-                                                  _vm._v(" "),
-                                                  _vm._m(1, true),
-                                                ]
-                                              ),
-                                            ]),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _vm._m(2, true),
-                                      ]
-                                    ),
-                                  ]
-                                ),
-                              ]
-                            ),
+                                        domProps: { value: lead.id },
+                                      }),
+                                      _vm._v(" "),
+                                      _vm._m(1, true),
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._m(2, true),
+                                  ]),
+                                ]
+                              ),
+                            ]),
                           ]
                         ),
                         _vm._v(" "),
@@ -32800,324 +32657,179 @@ var render = function () {
                                 "div",
                                 {
                                   staticClass: "modal-content",
-                                  staticStyle: {
-                                    background: "#f8f8f8",
-                                    "border-radius": "43px",
-                                  },
+                                  staticStyle: { background: "#f8f8f8" },
                                 },
                                 [
-                                  _vm._m(3, true),
+                                  _c("div", { staticClass: "modal-header" }, [
+                                    _c("div", { staticClass: "mx-3" }, [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticClass: "fs-3 fw-bold text-dark",
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        " +
+                                              _vm._s(lead.first_name) +
+                                              "\n\n                                     "
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("button", {
+                                      staticClass: "btn-close",
+                                      attrs: {
+                                        type: "button",
+                                        "data-bs-dismiss": "modal",
+                                        "aria-label": "Close",
+                                      },
+                                    }),
+                                  ]),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "modal-body p-3" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "row mx-3 my-auto" },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-12 col-md-4 my-auto",
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              {
-                                                staticClass:
-                                                  "fs-4 fw-bold text-dark",
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                  " +
-                                                    _vm._s(lead.first_name) +
-                                                    "\n                                                "
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-6 col-md-4 py-3 my-auto",
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-content-center",
-                                              },
-                                              [
-                                                _c(
-                                                  "a",
-                                                  {
-                                                    staticClass:
-                                                      "btn fw-bold fs-5 py-2 w-100",
-                                                    staticStyle: {
-                                                      "background-color":
-                                                        "#4EC590",
-                                                      color: "#fff",
-                                                      "border-radius": "8px",
-                                                    },
-                                                    attrs: {
-                                                      href:
-                                                        "tel:" + lead.telephone,
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                      Call\n                                                  "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "col-6 col-md-4 py-3 my-auto",
-                                          },
-                                          [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "d-flex justify-content-start",
-                                              },
-                                              [
-                                                _c(
-                                                  "a",
-                                                  {
-                                                    staticClass:
-                                                      "btn fw-bold fs-5 py-2 w-100",
-                                                    staticStyle: {
-                                                      "background-color":
-                                                        "#E50A10",
-                                                      color: "#fff",
-                                                      "border-radius": "8px",
-                                                    },
-                                                    attrs: {
-                                                      href:
-                                                        "pendingreject/" +
-                                                        lead.id +
-                                                        "/1",
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                    Reject\n                                                  "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        ),
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _vm._m(4, true),
-                                    _vm._v(" "),
-                                    _c("br"),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "mt-3" }, [
+                                  _c("div", { staticClass: "modal-body" }, [
+                                    _c("div", {}, [
                                       _c(
                                         "div",
-                                        { staticClass: "mx-3 pb-3 row" },
+                                        { staticClass: "container pb-5" },
                                         [
                                           _c(
                                             "div",
-                                            { staticClass: "col-md-6 col-12" },
+                                            { staticClass: "text-center row" },
                                             [
                                               _c(
                                                 "div",
                                                 {
                                                   staticClass:
-                                                    "text-dark text-left p-3 h-100",
-                                                  staticStyle: {
-                                                    "border-radius": "15px",
-                                                    background: "white",
-                                                  },
+                                                    "col-6 col-md-6 py-3",
                                                 },
                                                 [
-                                                  _vm._m(5, true),
-                                                  _vm._v(" "),
                                                   _c(
                                                     "div",
-                                                    { staticClass: "py-1" },
+                                                    {
+                                                      staticClass:
+                                                        "d-flex justify-content-start",
+                                                    },
                                                     [
                                                       _c(
-                                                        "span",
+                                                        "a",
                                                         {
+                                                          staticClass:
+                                                            "btn fw-bold fs-5 py-3 w-100",
                                                           staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
+                                                            "background-color":
+                                                              "#E50A10",
+                                                            color: "#fff",
+                                                            "border-radius":
+                                                              "10px",
+                                                          },
+                                                          attrs: {
+                                                            href:
+                                                              "pendingreject/" +
+                                                              lead.id +
+                                                              "/1",
                                                           },
                                                         },
                                                         [
-                                                          _c("b", [
-                                                            _vm._v("Platform:"),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.campaign
-                                                                  )
-                                                              ),
-                                                            ]
+                                                          _vm._v(
+                                                            "\n                                                                     Reject\n                                                                 "
                                                           ),
                                                         ]
                                                       ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v("Kampagne:"),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.kampagne
-                                                                  )
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v("Grund:"),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.grund
-                                                                  )
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v(
-                                                              "Teilnahme:"
-                                                            ),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.teilnahme
-                                                                  )
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
                                                     ]
                                                   ),
                                                 ]
                                               ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                {
+                                                  staticClass:
+                                                    "col-6 col-md-6 py-3 w-50",
+                                                },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "d-flex justify-content-center",
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "a",
+                                                        {
+                                                          staticClass:
+                                                            "btn fw-bold fs-5 py-3 w-100",
+                                                          staticStyle: {
+                                                            "background-color":
+                                                              "#4EC590",
+                                                            color: "#fff",
+                                                            "border-radius":
+                                                              "10px",
+                                                          },
+                                                          attrs: {
+                                                            href:
+                                                              "tel:" +
+                                                              lead.telephone,
+                                                          },
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                                     Call\n                                                                 "
+                                                          ),
+                                                        ]
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("hr"),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "row mx-4 text-dark text-center",
+                                              staticStyle: {
+                                                "border-radius": "15px",
+                                                background: "white",
+                                              },
+                                            },
+                                            [
+                                              _c("h5", [
+                                                _vm._v("Herkunft vom Lead"),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  " Platform:" +
+                                                    _vm._s(lead.campaign)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Kampagne: " +
+                                                    _vm._s(lead.kampagne)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Grund: " + _vm._s(lead.grund)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Teilnahme: " +
+                                                    _vm._s(lead.teilnahme) +
+                                                    " "
+                                                ),
+                                              ]),
                                             ]
                                           ),
                                           _vm._v(" "),
@@ -33125,324 +32837,74 @@ var render = function () {
                                             "div",
                                             {
                                               staticClass:
-                                                "col-md-6 col-12 px-2",
+                                                "row mx-4 text-dark text-center mt-2",
+                                              staticStyle: {
+                                                "border-radius": "15px",
+                                                background: "white",
+                                              },
                                             },
                                             [
-                                              _c(
-                                                "div",
-                                                {
-                                                  staticClass:
-                                                    "text-dark text-left p-3",
-                                                  staticStyle: {
-                                                    "border-radius": "15px",
-                                                    background: "white",
-                                                  },
-                                                },
-                                                [
-                                                  _vm._m(6, true),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v(
-                                                              "Gerburstdatum:"
-                                                            ),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.birthdate
-                                                                  )
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v("Haushalt:"),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.number_of_persons
-                                                                  )
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v("Telefon:"),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.telephone
-                                                                  )
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v("PLZ, Ort:"),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.postal_code
-                                                                  ) +
-                                                                  ", " +
-                                                                  _vm._s(
-                                                                    lead.city
-                                                                  ) +
-                                                                  " "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v(
-                                                              "Krankenkasse:"
-                                                            ),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.krankenkasse
-                                                                  ) +
-                                                                  " "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v(
-                                                              "Bewertung KK:"
-                                                            ),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.bewertung
-                                                                  ) +
-                                                                  " "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "div",
-                                                    { staticClass: "py-1" },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          staticStyle: {
-                                                            color: "#000",
-                                                            "font-weight":
-                                                              "500",
-                                                          },
-                                                        },
-                                                        [
-                                                          _c("b", [
-                                                            _vm._v("Wichtig:"),
-                                                          ]),
-                                                          _vm._v(" "),
-                                                          _c(
-                                                            "span",
-                                                            {
-                                                              staticStyle: {
-                                                                color:
-                                                                  "#88889D",
-                                                              },
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                " " +
-                                                                  _vm._s(
-                                                                    lead.wichtig
-                                                                  ) +
-                                                                  " "
-                                                              ),
-                                                            ]
-                                                          ),
-                                                        ]
-                                                      ),
-                                                      _c("br"),
-                                                    ]
-                                                  ),
-                                                ]
-                                              ),
+                                              _c("h5", [
+                                                _vm._v("Herkunft vom Lead"),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  " Gerburstdatum:" +
+                                                    _vm._s(lead.birthdate)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Haushalt: " +
+                                                    _vm._s(
+                                                      lead.number_of_persons
+                                                    ) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Telefon: " +
+                                                    _vm._s(lead.telephone)
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "PLZ,Ort: " +
+                                                    _vm._s(lead.postal_code) +
+                                                    "," +
+                                                    _vm._s(lead.city) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Krankenkasse: " +
+                                                    _vm._s(lead.krankenkasse) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Bewertung KK: " +
+                                                    _vm._s(lead.bewertung) +
+                                                    " "
+                                                ),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("span", [
+                                                _vm._v(
+                                                  "Wichtig: " +
+                                                    _vm._s(lead.wichtig) +
+                                                    " "
+                                                ),
+                                              ]),
                                             ]
                                           ),
                                         ]
@@ -33450,113 +32912,91 @@ var render = function () {
                                     ]),
                                   ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "modal-footer",
-                                      staticStyle: {
-                                        "border-top": "none !important",
-                                        display: "block",
+                                  _c("div", { staticClass: "modal-footer" }, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-secondary",
+                                        attrs: {
+                                          type: "button",
+                                          "data-bs-dismiss": "modal",
+                                        },
                                       },
-                                    },
-                                    [
-                                      _c(
-                                        "div",
-                                        { staticClass: "row mx-4 pb-4" },
-                                        [
-                                          _vm._m(7, true),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "col-3" }, [
-                                            _c(
-                                              "a",
-                                              {
-                                                attrs: {
-                                                  href:
-                                                    "pendingreject/" +
-                                                    lead.id +
-                                                    "/0",
-                                                },
-                                              },
-                                              [
-                                                _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn fw-bold fs-6 w-100",
-                                                    staticStyle: {
-                                                      "background-color":
-                                                        "#FF860D !important",
-                                                      color: "#fff !important",
-                                                      "border-radius":
-                                                        "8px !important",
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                                      Pending\n                                                  "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
+                                      [
+                                        _vm._v(
+                                          "Close\n                                             "
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          href:
+                                            "pendingreject/" + lead.id + "/0",
+                                        },
+                                      },
+                                      [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn fw-bold fs-6",
+                                            staticStyle: {
+                                              "background-color": "#FF860D",
+                                              color: "#fff",
+                                              "border-radius": "10px",
+                                            },
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                     Pending\n                                                 "
                                             ),
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "col-3" }, [
-                                            _c(
-                                              "button",
-                                              {
-                                                staticClass:
-                                                  "btn fw-bold fs-6 w-100",
-                                                staticStyle: {
-                                                  "background-color":
-                                                    "#E50A10 !important",
-                                                  color: "#fff !important",
-                                                  "border-radius":
-                                                    "8px !important",
-                                                },
-                                                attrs: {
-                                                  "data-bs-dismiss": "modal",
-                                                  "data-bs-toggle": "modal",
-                                                  "data-bs-target":
-                                                    "#" + lead.slug + "r",
-                                                },
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                  Reject\n                                                "
-                                                ),
-                                              ]
-                                            ),
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "col-3" }, [
-                                            _c(
-                                              "a",
-                                              {
-                                                staticClass:
-                                                  "btn fw-bold fs-6  w-100",
-                                                staticStyle: {
-                                                  "background-color":
-                                                    "#4EC590 !important",
-                                                  color: "#fff !important",
-                                                  "border-radius":
-                                                    "8px !important",
-                                                },
-                                                attrs: {
-                                                  href: "alead/" + lead.id,
-                                                },
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                  Go\n                                                "
-                                                ),
-                                              ]
-                                            ),
-                                          ]),
-                                        ]
-                                      ),
-                                    ]
-                                  ),
+                                          ]
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn fw-bold fs-6 ",
+                                        staticStyle: {
+                                          "background-color": "#E50A10",
+                                          color: "#fff",
+                                          "border-radius": "10px",
+                                        },
+                                        attrs: {
+                                          "data-bs-toggle": "modal",
+                                          "data-bs-target":
+                                            "#" + lead.slug + "r",
+                                        },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                 Reject\n                                             "
+                                        ),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "btn fw-bold fs-6  ",
+                                        staticStyle: {
+                                          "background-color": "#4EC590",
+                                          color: "#fff",
+                                          "border-radius": "10px",
+                                        },
+                                        attrs: { href: "alead/" + lead.id },
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                 Go\n                                             "
+                                        ),
+                                      ]
+                                    ),
+                                  ]),
                                 ]
                               ),
                             ]),
@@ -33622,7 +33062,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "adresse row" }, [
-                                      _vm._m(8, true),
+                                      _vm._m(3, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33634,7 +33074,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "haushalt row" }, [
-                                      _vm._m(9, true),
+                                      _vm._m(4, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33651,7 +33091,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "grund row" }, [
-                                      _vm._m(10, true),
+                                      _vm._m(5, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33663,7 +33103,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "kampagne row" }, [
-                                      _vm._m(11, true),
+                                      _vm._m(6, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33732,7 +33172,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "adresse row" }, [
-                                      _vm._m(12, true),
+                                      _vm._m(7, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33744,7 +33184,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "haushalt row" }, [
-                                      _vm._m(13, true),
+                                      _vm._m(8, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33761,7 +33201,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "grund row" }, [
-                                      _vm._m(14, true),
+                                      _vm._m(9, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33773,7 +33213,7 @@ var render = function () {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", { staticClass: "kampagne row" }, [
-                                      _vm._m(15, true),
+                                      _vm._m(10, true),
                                       _vm._v(" "),
                                       _c("div", { staticClass: "col ps-0" }, [
                                         _c(
@@ -33827,7 +33267,7 @@ var render = function () {
         _vm._v(" "),
         _vm.role != "fs"
           ? _c("div", { staticClass: " py-2" }, [
-              _vm._m(16),
+              _vm._m(11),
               _vm._v(" "),
               _c(
                 "div",
@@ -33842,80 +33282,55 @@ var render = function () {
                 },
                 [
                   _c("div", { staticClass: "modal-dialog" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "modal-content p-3",
-                        staticStyle: { "border-radius": "23px !important" },
-                      },
-                      [
-                        _vm._m(17),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "modal-body" }, [
-                          _c(
-                            "label",
-                            {
-                              staticStyle: { "font-weight": "500 !important" },
-                              attrs: { for: "" },
-                            },
-                            [_vm._v("Field service")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              staticClass: "form-select",
-                              staticStyle: {
-                                border: "none !important",
-                                "background-color": "#EFEFEF",
-                              },
-                              on: {
-                                change: function ($event) {
-                                  return _vm.changeadmin($event)
-                                },
-                              },
-                            },
-                            _vm._l(_vm.admins, function (admin) {
-                              return _c(
-                                "option",
-                                { domProps: { value: admin.id } },
-                                [_vm._v(_vm._s(admin.name))]
-                              )
-                            }),
-                            0
-                          ),
-                        ]),
-                        _vm._v(" "),
+                    _c("div", { staticClass: "modal-content" }, [
+                      _vm._m(12),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
                         _c(
-                          "div",
+                          "select",
                           {
-                            staticClass: "modal-footer",
-                            staticStyle: {
-                              display: "block !important",
-                              "border-top": "none !important",
+                            staticClass: "form-control",
+                            on: {
+                              change: function ($event) {
+                                return _vm.changeadmin($event)
+                              },
                             },
                           },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn",
-                                staticStyle: {
-                                  "background-color": "#4EC590 !important",
-                                  color: "#fff !important",
-                                  "border-radius": "8px !important",
-                                },
-                                attrs: { type: "button" },
-                                on: { click: _vm.assign },
-                              },
-                              [_c("b", [_vm._v("Assign")])]
-                            ),
-                            _vm._v(" "),
-                            _vm._m(18),
-                          ]
+                          _vm._l(_vm.admins, function (admin) {
+                            return _c(
+                              "option",
+                              { domProps: { value: admin.id } },
+                              [_vm._v(_vm._s(admin.name))]
+                            )
+                          }),
+                          0
                         ),
-                      ]
-                    ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-secondary",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "modal",
+                            },
+                          },
+                          [_vm._v("Close\n                             ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            attrs: { type: "button" },
+                            on: { click: _vm.assign },
+                          },
+                          [_vm._v("Assign")]
+                        ),
+                      ]),
+                    ]),
                   ]),
                 ]
               ),
@@ -33925,19 +33340,19 @@ var render = function () {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "col-md-4 col-lg-4 col-12" }, [
-      _vm._m(19),
+      _vm._m(13),
       _vm._v(" "),
       _c("hr", {
         staticClass: "text-black",
         staticStyle: {
           color: "#fff !important",
-          height: "4px",
+          height: "2px",
           margin: "0 !important",
           opacity: "1",
         },
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "lead-statistics  mx-3 pt-3" }, [
+      _c("div", { staticClass: "lead-statistics  mx-3" }, [
         _c(
           "div",
           {
@@ -34077,7 +33492,11 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "fs-5 fw-500 ps-2" }, [
-                _c("b", [_vm._v("Instagram: " + _vm._s(_vm.instagram))]),
+                _vm._v(
+                  "\n                                 Instagram: " +
+                    _vm._s(_vm.instagram) +
+                    "\n                             "
+                ),
               ]),
             ]),
             _vm._v(" "),
@@ -34153,7 +33572,11 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "fs-5 fw-500 ps-2" }, [
-                _c("b", [_vm._v("Facebook: " + _vm._s(_vm.facebook))]),
+                _vm._v(
+                  "\n                                 Facebook: " +
+                    _vm._s(_vm.facebook) +
+                    "\n                             "
+                ),
               ]),
             ]),
             _vm._v(" "),
@@ -34229,7 +33652,11 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("span", { staticClass: "fs-5 fw-500 ps-2" }, [
-                _c("b", [_vm._v("Sanascout: " + _vm._s(_vm.sanascout))]),
+                _vm._v(
+                  "\n                                 Sanascout: " +
+                    _vm._s(_vm.sanascout) +
+                    "\n                             "
+                ),
               ]),
             ]),
             _vm._v(" "),
@@ -34311,7 +33738,11 @@ var render = function () {
                     ),
                   ]),
                   _vm._v(" "),
-                  _vm._m(20),
+                  _c("span", { staticClass: "fs-5 fw-500 ps-2" }, [
+                    _vm._v(
+                      "\n                               History of leads!\n                             "
+                    ),
+                  ]),
                 ]),
               ]
             ),
@@ -34326,12 +33757,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mb-3" }, [
+    return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "staticBackdropLabel" } },
-        [_c("b", [_vm._v("Reject Lead")])]
+        [_vm._v("Modal title")]
       ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
     ])
   },
   function () {
@@ -34340,14 +33780,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "select",
-      {
-        staticClass: "form-select",
-        staticStyle: {
-          "background-color": "#EFEFEF !important",
-          border: "none !important",
-        },
-        attrs: { name: "reason" },
-      },
+      { staticClass: "form-control", attrs: { name: "reason" } },
       [
         _c("option", { attrs: { value: "Falsche nummer" } }, [
           _vm._v("Falsche nummer"),
@@ -34364,7 +33797,9 @@ var staticRenderFns = [
         _c("option", { attrs: { value: "Krank" } }, [_vm._v("Krank")]),
         _vm._v(" "),
         _c("option", { attrs: { value: "Kunde bereits terminiert" } }, [
-          _vm._v("Kunde bereits terminiert"),
+          _vm._v(
+            "Kunde bereits terminiert\n                                                 "
+          ),
         ]),
         _vm._v(" "),
         _c("option", { attrs: { value: "Nicht Brauchbar" } }, [
@@ -34393,104 +33828,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal-footer row mx-5 mb-4",
-        staticStyle: {
-          "border-top": "none !important",
-          display: "block",
-          "padding-top": "0 !important",
-        },
-      },
-      [
-        _c(
-          "button",
-          {
-            staticClass: "btn w-25",
-            staticStyle: {
-              "background-color": "#4EC590",
-              color: "#fff !important",
-            },
-            attrs: { type: "submit" },
-          },
-          [_c("b", [_vm._v("Save")])]
-        ),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal-header mx-3 pt-4",
-        staticStyle: { "border-bottom": "none !important" },
-      },
-      [
-        _c("button", {
-          staticClass: "btn-close",
-          staticStyle: { opacity: "1 !important" },
-          attrs: {
-            type: "button",
-            "data-bs-dismiss": "modal",
-            "aria-label": "Close",
-          },
-        }),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mx-4" }, [
-      _c("hr", {
-        staticClass: "text-black mx-3",
-        staticStyle: {
-          color: "#707070 !important",
-          height: "2px",
-          margin: "0 !important",
-          opacity: "0.8",
-        },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "py-2" }, [
-      _c("h5", [_c("b", [_vm._v("Herkunft vom Lead")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "py-1" }, [
-      _c("h5", [_c("b", [_vm._v("Angaben")])]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3" }, [
+    return _c("div", { staticClass: "modal-footer" }, [
       _c(
         "button",
-        {
-          staticClass: "btn w-100",
-          staticStyle: {
-            color: "#ffffff !important",
-            "background-color": "#6C757D !important",
-            "border-radius": "8px !important",
-          },
-          attrs: { type: "button", "data-bs-dismiss": "modal" },
-        },
-        [_c("b", [_vm._v("Close")])]
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save")]
       ),
     ])
   },
@@ -34578,7 +33920,7 @@ var staticRenderFns = [
             "data-bs-target": "#asign",
           },
         },
-        [_vm._v("\n                    Assign\n                ")]
+        [_vm._v("\n                     Assign\n                 ")]
       ),
     ])
   },
@@ -34586,74 +33928,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal-header",
-        staticStyle: { "border-bottom": "none !important" },
-      },
-      [
-        _c(
-          "h5",
-          { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-          [_vm._v("Assign Leads")]
-        ),
-        _vm._v(" "),
-        _c("button", {
-          staticClass: "btn-close",
-          staticStyle: { opacity: "1 !important" },
-          attrs: {
-            type: "button",
-            "data-bs-dismiss": "modal",
-            "aria-label": "Close",
-          },
-        }),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn",
-        staticStyle: {
-          "background-color": "#6C757D !important",
-          color: "#fff !important",
-          "border-radius": "8px !important",
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Modal title")]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
         },
-        attrs: { type: "button", "data-bs-dismiss": "modal" },
-      },
-      [_c("b", [_vm._v("Close")])]
-    )
+      }),
+    ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "lead-statistics-header mt-2 mx-3 py-3",
-        staticStyle: { "margin-top": "0 !important" },
-      },
-      [
-        _c("div", { staticClass: "header mx-4 my-2" }, [
-          _c("span", { staticClass: "fs-4 fw-bold" }, [
-            _vm._v("Lead Statistics"),
-          ]),
+    return _c("div", { staticClass: "lead-statistics-header mt-2 mx-3 py-3" }, [
+      _c("div", { staticClass: "header mx-4 my-2" }, [
+        _c("span", { staticClass: "fs-4 fw-bold" }, [
+          _vm._v("Lead Statistics"),
         ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "fs-5 fw-500 ps-2" }, [
-      _c("b", [_vm._v("History of leads")]),
+      ]),
     ])
   },
 ]
