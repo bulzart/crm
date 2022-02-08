@@ -142,7 +142,7 @@
         <div class="open-task-box px-4 py-2" style="border: none !important; border-radius: 35px !important;">
             <div class="headerrrr d-flex justify-content-between">
                 <h5><b>Offene Aufgaben</b></h5>
-                <span class="fw-600 px-5 py-2 tab-lookalike" style="background-color: #F7F7F7; border-top-left-radius: 15px; border-top-right-radius: 15px;">{{$opencnt}}</span>
+                <span class="fw-600 px-5 py-2 tab-lookalike" style="background-color: #F7F7F7; border-top-left-radius: 15px !important; border-top-right-radius: 15px !important;">{{$opencnt}}</span>
             </div>
             <div class="header-open-task1" style="background: #f7f7f7; border-bottom-right-radius: 35px !important; border-bottom-left-radius: 35px !important; border-top-left-radius: 35px !important;">
                 <div class="row mx-3 py-3 header-open-task">
@@ -283,7 +283,7 @@
         <div class="open-task-box px-4 py-2" style="border: none !important; border-radius: 35px !important;">
             <div class="headerrrr d-flex justify-content-between">
                 <h5><b>Geburstage / Jubiläen</b></h5>
-                <span class="fw-600 px-5 py-2 tab-lookalike1" style="background-color: #F7F7F7; border-top-left-radius: 15px; border-top-right-radius: 15px;"></span>
+                <span class="fw-600 px-5 py-2 tab-lookalike1" style="background-color: #F7F7F7; border-top-left-radius: 15px !important; border-top-right-radius: 15px !important;"></span>
             </div>
             <div class=" header-open-task1" style="background: #f7f7f7; border-bottom-right-radius: 35px !important; border-bottom-left-radius: 35px !important; border-top-left-radius: 35px !important;">
                 <div class="row mx-3 py-3 header-open-task">
@@ -422,7 +422,7 @@
                 <span class="fw-600">
                     <h5><b>Pendenzen / Zur Nachbearbeitung!</b></h5>
                 </span>
-                <span class="fw-600 px-4 py-2 tab-lookalike2" style="background-color: #ffebe5; border-top-left-radius: 15px; border-top-right-radius: 15px;">{{count($pending)}}</span>
+                <span class="fw-600 px-4 py-2 tab-lookalike2" style="background-color: #ffebe5;  border-top-left-radius: 15px !important; border-top-right-radius: 15px !important;">{{count($pending)}}</span>
             </div>
             <div class="header-open-task1-pink" style="background: #ffebe5; border-bottom-right-radius: 35px !important; border-bottom-left-radius: 35px !important; border-top-left-radius: 35px !important;">
                 <div class="row mx-3 py-3 header-open-task-pink">
