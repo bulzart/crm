@@ -30,19 +30,20 @@ class TasksController extends Controller
 {
 public function assignpendency(Request $req){
   $id = (int) $req->id;
-
+$title = $req->title ? $req->title : "";
   $pendency = Pendency::where('family_id',(int)$req->id)->first();
   if(!$pendency){
     $pendency = new Pendency();
+    $pendency->title = $title;
   $pendency->admin_id = (int) $req->admin;
   $pendency->family_id = (int) $req->id;
   $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
-
   $pendency->save();
   }
   else{
     $pendency->admin_id = (int) $req->admin;
     $pendency->done = 0;
+    $pendency->title = $title;
     $pendency->completed = 0;
     $pendency->description = filter_var($req->desc,FILTER_SANITIZE_STRING);
     $pendency->save();
@@ -114,7 +115,6 @@ public function assignpendency(Request $req){
         foreach (DB::table('leads')
                        ->where('wantsonline', 1)
                        ->where('appointment_date', $req->date)
-                       ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->orderBy('time','desc')
                        ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
@@ -209,7 +209,6 @@ public function assignpendency(Request $req){
                        ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
                        ->where('appointment_date', Carbon::now()->addDays()->toDateString())
-                       ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->paginate(15) as $d){
               $data[$cnt] = $d;
               $val = (int) $d->id;
@@ -223,7 +222,6 @@ public function assignpendency(Request $req){
                        ->orderBy('time','desc')
                        ->where('completed',0)
                        ->select('leads.first_name','leads.last_name','leads.address','leads.id')
-                       ->where('leads.assign_to_id',Auth::guard('admins')->user()->id)
                        ->paginate(15) as $d){
               $data[$cnt] = $d;
               $val = (int) $d->id;
@@ -433,7 +431,7 @@ public function assignpendency(Request $req){
         if (isset($req->searchpend)) {
             $pend = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
-                ->select('family_person.first_name','pendencies.admin_id', 'pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name','pendencies.admin_id', 'pendencies.family_id','pendencies.*','family_person.id', 'family_person.last_name')
                 ->where('pendencies.done', '=', 1)
                 ->where('pendencies.completed',0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchpend . '%')
@@ -445,7 +443,7 @@ public function assignpendency(Request $req){
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 1)
                 ->where('pendencies.completed',0)
-                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id','pendencies.*','family_person.id', 'family_person.last_name')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         }
@@ -454,14 +452,14 @@ public function assignpendency(Request $req){
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 0)
                 ->where('family_person.first_name', 'like', '%' . $req->searchopen . '%')
-                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name','pendencies.*')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         } else {
             $open = DB::table('family_person')
                 ->join('pendencies', 'family_person.id', '=', 'pendencies.family_id')
                 ->where('pendencies.done', '=', 0)
-                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name')
+                ->select('family_person.first_name', 'pendencies.admin_id','pendencies.family_id', 'family_person.id', 'family_person.last_name','pendencies.*')
                 ->orderBy('family_person.first_name', 'asc')
                 ->paginate(20);
         }

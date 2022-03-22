@@ -10,68 +10,67 @@
                 Calendar
             </title>
         @endif
-        <link rel="icon" type="image/png" href="img/Favicon.png">
     </head>
         <div class="col-12 col-sm-12 col-md-12  g-0">
             <calendar class="calendar-divider p-3 my-2 "></calendar>
         </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-5 g-0 m-3">
+        <div class="mapouter container justify-content-center">
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFBE1cuoGyzaiyvog5Zi6-tBvRwyXHiz8"></script>
 
-    </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-5 g-0 m-3">
-          <div class="mapouter container justify-content-center">
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFBE1cuoGyzaiyvog5Zi6-tBvRwyXHiz8"></script>
+            <div class="gmap_canvas d-flex justify-content-center">
 
-              <div class="gmap_canvas d-flex justify-content-center">
+                <div id="map" style="z-index: 0 !important;width: 100% !important; height:70vh !important; border-radius: 15px !important;"></div>
 
-                  <div id="map" style="z-index: 0 !important;width: 100% !important; height:70vh !important; border-radius: 15px !important;"></div>
+            </div>
 
-              </div>
+        </div>
+        <div class="container">
+            <div class="notice-box my-3">
 
-          </div>
-          <div class="container">
-              <div class="notice-box my-3">
-
-                  <div class="mx-4 py-3">
+                <div class="mx-4 py-3">
 
                                 <span class="fs-5 fw-600 title-div">
                                     Important Notices
                                 </span>
-                  </div>
+                </div>
 
-                  <div class="notice-box-content mx-4"
-                       style="height: 28vh; overflow-x: hidden; overflow-y: scroll;">
-                      @foreach($personalApp as $perApp)
-                      <div class="person-box-1 py-2 px-2 my-2">
-                          <div class="mx-3">
-                              <div class="">
+                <div class="notice-box-content mx-4"
+                     style="height: 28vh; overflow-x: hidden; overflow-y: scroll;">
+                    @foreach($personalApp as $perApp)
+                        <div class="person-box-1 py-2 px-2 my-2">
+                            <div class="mx-3">
+                                <div class="">
                                             <span class="name-spnnnn fs-5">
                                                 {{$perApp->title}}
                                             </span>
-                              </div>
-                              <div class="">
+                                </div>
+                                <div class="">
                                             <span class="fw-normal">
                                                Address: {{$perApp->address}}
                                             </span>
-                              </div>
-                              <div class="">
+                                </div>
+                                <div class="">
                                             <span class="fw-normal">
                                                Time: {{$perApp->time}}
                                             </span>
-                              </div>
-                              <div class="">
+                                </div>
+                                <div class="">
                                             <span class="fw-normal">
                                                Comment: {{$perApp->comment}}
                                             </span>
-                              </div>
-                          </div>
-                      </div>
-                      @endforeach
-                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
 
-              </div>
+            </div>
 
-          </div>
-      </div>
+        </div>
+    </div>
+    </div>
+
         <div id="map">
 
         </div>

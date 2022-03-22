@@ -17,6 +17,7 @@ class LeadInfo extends Migration
             $table->id();
             $table->integer('lead_id');
             $table->string('krankenkasse');
+            $table->string('teilnahme');
             $table->string('wichtig');
             $table->string('bewertung');
             $table->string('grund');

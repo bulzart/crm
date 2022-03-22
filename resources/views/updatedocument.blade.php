@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+          <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -101,7 +102,7 @@
 
 <body>
 
-<div class="row">
+<div class="row" id="app">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2 d-flex">
         <div class="d-flex navvv" style="height: 100% !important; position: fixed; background-color: #0C71C3;">
 
@@ -684,75 +685,7 @@
                             <div class="text-center mt-3 pb-3">
                                 <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col text-start ">
-
-                                        <div class="plus-div  my-1">
-                                            <div class="svg-div d-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct()"
-                                                     id="add-btn" width="35"
-                                                     class="img-fluid" viewBox="0 0 35 35"
-                                                     style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                    <g id="Group_757" data-name="Group 757"
-                                                       transform="translate(-458 -858)">
-                                                        <line id="Line_43" data-name="Line 43" y2="34"
-                                                              transform="translate(475.5 858.5)" fill="none"
-                                                              stroke="#707070" stroke-linecap="round" stroke-width="2"/>
-                                                        <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                              transform="translate(458.5 875.5)"
-                                                              fill="none" stroke="#707070" stroke-linecap="round"
-                                                              stroke-width="2"/>
-                                                    </g>
-                                                </svg>
-                                                <div class="mx-3 my-auto">
-                                                  <span>
-                                                    Add something here !
-                                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="added-content" id="added-content" style="display: none;">
-                                            <div class="to-do-content mb-2 p-4"
-                                                 style="background-color: #EFEFEF; border-radius: 13px;">
-                                                <div class="py-2">
-                                                    <div class="py-2">
-                                                        <label for="">Costumer</label>
-                                                        <input type="text" class="form-control"
-                                                               value="Marcus Jurgen (example)" readonly>
-                                                    </div>
-                                                    <label for="">Field Service:</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Person 1</option>
-                                                        <option value="1">Person 2</option>
-                                                        <option value="2">Person 3</option>
-                                                        <option value="3">Person 4</option>
-                                                        <option value="3">Person 5</option>
-                                                        <option value="3">idk, etc...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="">Title</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="Textarea1" class="form-label">Comment</label>
-                                                    <textarea class="form-control" id="Textarea1" rows="4"></textarea>
-                                                </div>
-                                                <div class="py-2 input-group ">
-                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct()" id="save-btn"
-                                                            style="background-color: #fff;border:1px solid #000">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct()" id="save-btn"
-                                                            style="background-color: #5f5f5f;">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                              <addtask2 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask2>
                                     @endif
                                     <div class="col d-flex justify-content-end">
                                         <div class="row">
@@ -859,25 +792,26 @@
                                                                         </svg>
                                                                     </label>
                                                                     @if(isset($data->fahrzeug->upload_police))
-                                                                        <input type="file" id="file-input-4"
+                                                                        <input type="file" id="file-input-4" name="upload_policeFahrzeug"
                                                                                class="svg-div w-100 border-0  g-0"
                                                                                onchange="upload(this);"
                                                                                value="{{$data->fahrzeug->upload_police}}"
-                                                                               name="upload_policeFahrzeug">
+                                                                               >
                                                                         <a style="text-decoration: none" href="{{route('showfile',$data->fahrzeug->upload_police)}}">
                                                                             <input type="text"
                                                                                    class="form-control text-center"
-                                                                                   id="file-input-4a" disabled
+                                                                                   id="file-input-4c" disabled
                                                                                    style="background:transparent; border:none;"
-                                                                                   value="{{$data->fahrzeug->upload_police}}"></a>
+                                                                                   value="{{$data->fahrzeug->upload_police}}"
+                                                                            >
+                                                                        </a>
                                                                     @else
-                                                                        <input type="file" id="file-input-4a"
+                                                                        <input type="file" id="file-input-4" name="upload_policeFahrzeug"
                                                                                class="svg-div w-100 border-0  g-0"
-                                                                               onchange="upload(this);"
-                                                                               name="upload_policeFahrzeug">
+                                                                               onchange="upload(this);">
                                                                         <input type="text"
                                                                                class="form-control text-center"
-                                                                               id="file-input-4a" disabled
+                                                                               id="file-input-4c" disabled
                                                                                style="background:transparent; border:none;">
                                                                     @endif
                                                                 </div>
@@ -920,11 +854,11 @@
                                                                        class="form-label"
                                                                        style="font-size: 13px;">Kommentar</label>
                                                                 @if(isset($data->fahrzeug->comment))
-                                                                    <textarea name="comment" class="form-control"
+                                                                    <textarea name="commentFahrenzug" class="form-control"
                                                                               id="exampleFormControlTextarea1"
                                                                               rows="3">{{$data->fahrzeug->comment}}</textarea>
                                                                 @else
-                                                                    <textarea name="comment" class="form-control"
+                                                                    <textarea name="commentFahrenzug" class="form-control"
                                                                               id="exampleFormControlTextarea1"
                                                                               rows="3"></textarea>
                                                                 @endif
@@ -1018,13 +952,14 @@
                                                                                            class="svg-div w-100 border-0  g-0"
                                                                                            onchange="upload(this);"
                                                                                            value="{{$data->fahrzeug->vehicle_id}}"
-                                                                                           name="upload_police">
+                                                                                           name="vehicle_id">
                                                                                     <a style="text-decoration: none" href="{{route('showfile',$data->fahrzeug->vehicle_id)}}">
                                                                                         <input type="text"
                                                                                                class="form-control text-center"
                                                                                                id="file-input-5c" disabled
                                                                                                style="background:transparent; border:none;"
-                                                                                               value="{{$data->fahrzeug->vehicle_id}}"></a>
+                                                                                               value="{{$data->fahrzeug->vehicle_id}}"
+                                                                                               name="vehicle_id"></a>
                                                                                 @else
                                                                                     <input type="file" id="file-input-5"
                                                                                            class="svg-div w-100 border-0  g-0"
@@ -1033,7 +968,8 @@
                                                                                     <input type="text"
                                                                                            class="form-control text-center"
                                                                                            id="file-input-5c" disabled
-                                                                                           style="background:transparent; border:none;">
+                                                                                           style="background:transparent; border:none;"
+                                                                                           name="vehicle_id">
                                                                                 @endif
 
 
@@ -1551,104 +1487,41 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="text-center mt-3 pb-3">
                                 <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col text-start">
-
-                                        <div class="plus-div  my-1">
-                                            <div class="svg-div d-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct1()"
-                                                     id="add-btn1" width="35"
-                                                     class="img-fluid" viewBox="0 0 35 35"
-                                                     style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                    <g id="Group_757" data-name="Group 757"
-                                                       transform="translate(-458 -858)">
-                                                        <line id="Line_43" data-name="Line 43" y2="34"
-                                                              transform="translate(475.5 858.5)" fill="none"
-                                                              stroke="#707070" stroke-linecap="round" stroke-width="2"/>
-                                                        <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                              transform="translate(458.5 875.5)"
-                                                              fill="none" stroke="#707070" stroke-linecap="round"
-                                                              stroke-width="2"/>
-                                                    </g>
-                                                </svg>
-                                                <div class="mx-3 my-auto">
-                                                  <span>
-                                                    Add something here !
-                                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="added-content" id="added-content1" style="display: none;">
-                                            <div class="to-do-content mb-2 p-4"
-                                                 style="background-color: #EFEFEF; border-radius: 13px;">
-                                                <div class="py-2">
-                                                    <div class="py-2">
-                                                        <label for="">Costumer</label>
-                                                        <input type="text" class="form-control"
-                                                               value="Marcus Jurgen (example)" readonly>
-                                                    </div>
-                                                    <label for="">Field Service:</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Person 1</option>
-                                                        <option value="1">Person 2</option>
-                                                        <option value="2">Person 3</option>
-                                                        <option value="3">Person 4</option>
-                                                        <option value="3">Person 5</option>
-                                                        <option value="3">idk, etc...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="">Title</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="Textarea1" class="form-label">Comment</label>
-                                                    <textarea class="form-control" id="Textarea1" rows="4"></textarea>
-                                                </div>
-                                                <div class="py-2 input-group ">
-                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct1()" id="save-btn"
-                                                            style="background-color: #fff;border:1px solid #000">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct1()" id="save-btn"
-                                                            style="background-color: #5f5f5f;">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <addtask3 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask3>
                                     @endif
-
                                     <div class="col d-flex justify-content-end">
-                                        <div id="buton" class="py-2 text-center">
-                                            <button class="px-5 py-2" type="button"
-                                                    style="border: none; border-radius: 9px; background-color:#285F52;"
-                                                    id="nextonee__" onclick="nextonee()">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="58.155" height="19.159"
-                                                     viewBox="0 0 58.155 19.159">
-                                                    <g id="Group_453" data-name="Group 453"
-                                                       transform="translate(0.004)">
-                                                        <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
-                                                              transform="translate(0 9.287)" fill="none"
-                                                              stroke="#3fd599"
-                                                              stroke-width="2"/>
-                                                        <path id="Polygon_2" data-name="Polygon 2"
-                                                              d="M9.58,0l9.58,11.642H0Z"
-                                                              transform="translate(58.151 0) rotate(90)"
-                                                              fill="#3fd599"/>
-                                                    </g>
-                                                </svg>
-                                            </button>
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
 
+                                            </div>
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                            </div>
                         </div>
 
 
@@ -2112,76 +1985,7 @@
                             <div class="text-center  pb-3">
                                 <div class="row mx-3">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                    <div class="col g-0 text-start">
-
-                                        <div class="plus-div  my-1">
-                                            <div class="svg-div d-flex">
-                                                <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct2()"
-                                                     id="add-btn2" width="35"
-                                                     class="img-fluid" viewBox="0 0 35 35"
-                                                     style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                    <g id="Group_757" data-name="Group 757"
-                                                       transform="translate(-458 -858)">
-                                                        <line id="Line_43" data-name="Line 43" y2="34"
-                                                              transform="translate(475.5 858.5)" fill="none"
-                                                              stroke="#707070" stroke-linecap="round" stroke-width="2"/>
-                                                        <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                              transform="translate(458.5 875.5)"
-                                                              fill="none" stroke="#707070" stroke-linecap="round"
-                                                              stroke-width="2"/>
-                                                    </g>
-                                                </svg>
-                                                <div class="mx-3 my-auto">
-                                                  <span>
-                                                    Add something here !
-                                                  </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="added-content" id="added-content2" style="display: none;">
-                                            <div class="to-do-content p-4"
-                                                 style="background-color: #EFEFEF; border-radius: 13px;">
-                                                <div class="py-2">
-                                                    <div class="py-2">
-                                                        <label for="">Costumer</label>
-                                                        <input type="text" class="form-control"
-                                                               value="Marcus Jurgen (example)" readonly>
-                                                    </div>
-                                                    <label for="">Field Service:</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option selected>Person 1</option>
-                                                        <option value="1">Person 2</option>
-                                                        <option value="2">Person 3</option>
-                                                        <option value="3">Person 4</option>
-                                                        <option value="3">Person 5</option>
-                                                        <option value="3">idk, etc...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="">Title</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="py-2">
-                                                    <label for="Textarea1" class="form-label">Comment</label>
-                                                    <textarea class="form-control" id="Textarea1" rows="4"></textarea>
-                                                </div>
-                                                <div class="py-2 input-group ">
-                                                    <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct2()" id="save-btn"
-                                                            style="background-color: #fff;border:1px solid #000">
-                                                        Cancel
-                                                    </button>
-                                                    <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct2()" id="save-btn"
-                                                            style="background-color: #5f5f5f;">
-                                                        Submit
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
+                                    <addtask4 :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask4>
                                     @endif
                                     <div class="col g-0 d-flex justify-content-end">
                                         <div class="">
@@ -2295,7 +2099,8 @@
                                                                                    class="form-control text-center"
                                                                                    id="file-input-6c" disabled
                                                                                    style="background:transparent;border:none;"
-                                                                                   value="{{$data->prevention->upload_police}}">
+                                                                                   value="{{$data->prevention->upload_police}}"
+                                                                                   name="upload_police__">
                                                                             @else
                                                                                 <input type="file" id="file-input-6"
                                                                                        class="svg-div w-100 border-0  g-0"
@@ -2304,7 +2109,8 @@
                                                                                 <input type="text"
                                                                                        class="form-control text-center"
                                                                                        id="file-input-6c" disabled
-                                                                                       style="background:transparent;border:none;">
+                                                                                       style="background:transparent;border:none;"
+                                                                                       name="upload_police__">
                                                                     @endif
                                                                 </div>
                                                             </div>
@@ -2631,97 +2437,50 @@
                                     </div>
                                 </div>
 
-                                <div class="text-center mt-3 pb-3">
-                                    <div class="row mx-4">
+                              <div class="text-center mt-3 pb-3">
+                                <div class="row mx-4">
                                     @if(Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('backoffice'))
-                                        <div class="col text-start">
-
-                                            <div class="plus-div  my-1">
-                                                <div class="svg-div d-flex">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" onclick="addContentFunct3()"
-                                                         id="add-btn3" width="35"
-                                                         class="img-fluid" viewBox="0 0 35 35"
-                                                         style="cursor: pointer;background-color: #EFEFEF; border: 1.2px solid #707070; border-radius: 10px; padding:4px;">
-                                                        <g id="Group_757" data-name="Group 757"
-                                                           transform="translate(-458 -858)">
-                                                            <line id="Line_43" data-name="Line 43" y2="34"
-                                                                  transform="translate(475.5 858.5)" fill="none"
-                                                                  stroke="#707070" stroke-linecap="round"
-                                                                  stroke-width="2"/>
-                                                            <path id="Path_345" data-name="Path 345" d="M34,0H0"
-                                                                  transform="translate(458.5 875.5)"
-                                                                  fill="none" stroke="#707070" stroke-linecap="round"
-                                                                  stroke-width="2"/>
-                                                        </g>
-                                                    </svg>
-                                                    <div class="mx-3 my-auto">
-                        <span>
-                          Add something here !
-                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="added-content" id="added-content3" style="display: none;">
-                                                <div class="to-do-content p-4"
-                                                     style="background-color: #EFEFEF; border-radius: 13px;">
-                                                    <div class="py-2">
-                                                        <div class="py-2">
-                                                            <label for="">Costumer</label>
-                                                            <input type="text" class="form-control"
-                                                                   value="Marcus Jurgen (example)" readonly>
-                                                        </div>
-                                                        <label for="">Field Service:</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Person 1</option>
-                                                            <option value="1">Person 2</option>
-                                                            <option value="2">Person 3</option>
-                                                            <option value="3">Person 4</option>
-                                                            <option value="3">Person 5</option>
-                                                            <option value="3">idk, etc...</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="py-2">
-                                                        <label for="">Title</label>
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                    <div class="py-2">
-                                                        <label for="Textarea1" class="form-label">Comment</label>
-                                                        <textarea class="form-control" id="Textarea1"
-                                                                  rows="4"></textarea>
-                                                    </div>
-                                                    <div class="py-2 input-group ">
-                                                        <button type="button" class="btn px-5 text-dark mx-1 rounded" onclick="saveContentFunct3()" id="save-btn"
-                                                                style="background-color: #fff;border:1px solid #000">
-                                                            Cancel
-                                                        </button>
-                                                        <button type="submit" class="btn px-5 text-white mx-1 rounded" onclick="saveContentFunct3()" id="save-btn"
-                                                                style="background-color: #5f5f5f;">
-                                                            Submit
-                                                        </button>
-                                                    </div>
-                                                </div>
+                              <addtask :client_id="{{$lead->id}}" :lead_id="{{$lead->lead->id}}"></addtask>
+                                    @endif
+                                    <div class="col d-flex justify-content-end">
+                                        <div class="row">
+                                            <div class="col text-end my-auto">
 
                                             </div>
-
-                                        </div>
-                                        @endif
-                                        <div class="col g-0 text-start">
-
-
+                                            <div class="col text-start">
+                                                <div id="buton">
+                                                    <button class="px-5 py-2" type="button"
+                                                            style="border: none; border-radius: 9px; background-color:#285F52;"
+                                                            id="nextonee__" onclick="nextonee()">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="58.155"
+                                                             height="19.159" viewBox="0 0 58.155 19.159">
+                                                            <g id="Group_453" data-name="Group 453"
+                                                               transform="translate(0.004)">
+                                                                <line id="Line_16" data-name="Line 16" x2="51.954" y2="0.2"
+                                                                      transform="translate(0 9.287)" fill="none"
+                                                                      stroke="#3fd599" stroke-width="2"/>
+                                                                <path id="Polygon_2" data-name="Polygon 2"
+                                                                      d="M9.58,0l9.58,11.642H0Z"
+                                                                      transform="translate(58.151 0) rotate(90)"
+                                                                      fill="#3fd599"/>
+                                                            </g>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="col g-0 text-center">
+                    <div class="col g-0 text-center pb-3">
 
                         <button class="px-5 py-2" id="submitt" type="button"
-                                style="border: none; border-radius: 9px; background-color:#285F52;" title="Overwrite"
+                                style="border: none; border-radius: 9px; background-color:#285F52;" title="Edit"
                                 onclick="edit();">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff"
                                  class="bi bi-capslock-fill" viewBox="0 0 16 16">
@@ -2729,8 +2488,7 @@
                                     d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM4.5 13.5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1z"/>
                             </svg>
                         </button>
-                        @if($lead->status != 'Done' && Auth::user()->hasRole('admin') ||
-                        Auth::user()->hasRole('backoffice'))
+                        @if($lead->status != 'Done' && Auth::user()->hasRole('backoffice'))
                             <button class="px-5 py-2" id="submitt1" type="button"
                                     style="border: none; border-radius: 9px; background-color:#285F52;" title="Accept"
                                     onclick="accept();">
@@ -2976,6 +2734,9 @@
         background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='9' ry='9' stroke='%23333' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
         border-radius: 9px;
     }
+    body{
+        overflow-x: hidden;
+    }
 </style>
 <script>
     var cntt = 0;
@@ -2987,14 +2748,13 @@
     ];
 
     function edit() {
-        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [Crypt::encrypt($lead->lead->id * 1244), Crypt::encrypt($lead->id * 1244)])?>";
+        document.getElementById('forma').action = "<?php echo route('updateLeadDataKK', [\Illuminate\Support\Facades\Crypt::encrypt($lead->lead->id * 1244), Crypt::encrypt($lead->id * 1244)]) ?>";
         document.getElementById('forma').submit();
     }
 
     function accept() {
         <?php
-
-        echo 'document.getElementById("forma").action ="' . route('acceptdata', [Crypt:: encrypt($lead->id * 1244), 'accept' => true]) . '";';
+        echo 'document.getElementById("forma").action ="' . route('acceptdata', [\Illuminate\Support\Facades\Crypt::encrypt($lead->id * 1244), 'accept' => true]) . '";';
         echo 'document.getElementById("forma").submit();';
         ?>
 
@@ -3066,7 +2826,6 @@
 <script>
 
     function addContentFunct() {
-
         $("#added-content").slideToggle();
         $("#add-btn").slideToggle();
     }

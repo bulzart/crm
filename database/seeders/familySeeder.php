@@ -15,5 +15,7 @@ class familySeeder extends Seeder
      */
     public function run()
     {
+        family::factory()->count(100)->create();
+
     }
 }

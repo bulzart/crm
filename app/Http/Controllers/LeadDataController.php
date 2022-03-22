@@ -74,6 +74,7 @@ class LeadDataController extends Controller
             LeadDataFahrzeug::create([
                 'leads_id' => $leadId,
                 'person_id' => $personId,
+                'upload_police' => $request->upload_policeFahrzeug ? $this->storeFile($request->upload_policeFahrzeug, FolderPaths::KK_FILES) : null,
                 'vehicle_id' => $request->vehicle_id,
                 'leasing' => $request->leasing,
                 'leasing_name' => $request->leasing_name,
@@ -95,7 +96,7 @@ class LeadDataController extends Controller
                 'glass_protection' => $request->glass_protection,
                 'parking_damage' => $request->parking_damage,
                 'hour_breakdown_assistance' => $request->hour_breakdown_assistance,
-                'comment' => $request->comment
+                'comment' => $request->commentFahrenzug
             ]);
             LeadDataThings::create([
                 'leads_id' => $leadId,
@@ -122,7 +123,7 @@ class LeadDataController extends Controller
                 'person_id' => $personId,
                 'upload_police' => $request->upload_police__ ? $this->storeFile($request->upload_police__, FolderPaths::KK_FILES) : null,
                 'comparison_type' => $request->comparison_type,
-                'comment' => $request->comment,
+                'comment' => $request->comment__,
                 'number_of_people' => $request->number_of_people,
                 'number_of_rooms' => $request->number_of_rooms,
                 'sum_insured' => $request->sum_insured,
@@ -187,10 +188,12 @@ class LeadDataController extends Controller
         }
 
         $existingLeadDataFahrzeug = LeadDataFahrzeug::where('leads_id', $leadId)->where('person_id', $personId)->latest()->first();
+
         $leadDataFahrzeug = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'vehicle_id' => $request->vehicle_id,
+            'upload_police' => $request->hasFile('upload_policeFahrzeug') ? $this->storeFile($request->upload_policeFahrzeug, FolderPaths::KK_FILES) : $existingLeadDataFahrzeug->upload_police,
+            'vehicle_id' => $request->hasFile('vehicle_id') ? $this->storeFile($request->vehicle_id, FolderPaths::KK_FILES) : $existingLeadDataFahrzeug->vehicle_id,
             'leasing' => $request->leasing,
             'leasing_name' => $request->leasing_name,
             'year_of_purchase' => $request->year_of_purchase,
@@ -211,7 +214,7 @@ class LeadDataController extends Controller
             'glass_protection' => $request->glass_protection,
             'parking_damage' => $request->parking_damage,
             'hour_breakdown_assistance' => $request->hour_breakdown_assistance,
-            'comment' => $request->comment
+            'comment' => $request->commentFahrenzug
         ];
 
         if ($existingLeadDataFahrzeug) {
@@ -249,7 +252,7 @@ class LeadDataController extends Controller
         $leadDataPrevention = [
             'leads_id' => $leadId,
             'person_id' => $personId,
-            'upload_police' => $request->hasFile('upload_police__') ? $this->storeFile($request->upload_police__, FolderPaths::KK_FILES) : $existingLeadDataPrevention->upload_police__,
+            'upload_police' => $request->hasFile('upload_police__') ? $this->storeFile($request->upload_police__, FolderPaths::KK_FILES) : $existingLeadDataPrevention->upload_police,
             'comparison_type' => $request->comparison_type,
             'comment' => $request->comment__,
             'number_of_people' => $request->number_of_people,

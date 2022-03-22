@@ -33,6 +33,8 @@ use App\Http\Controllers\HumanResourcesController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TeamController;
+use App\Imports\leadinfo;
+use App\Imports\newlead;
 use App\Listeners\SendNotificationListener;
 use App\Models\campaigns;
 use App\Models\lead;
@@ -45,24 +47,30 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Arr;
 
-
-
-
-
+use function Clue\StreamFilter\fun;
 
 route::prefix('')->middleware('confirmcode')->group(function(){
    route::get('addlead',function(){
       $campaigns = campaigns::all();
       return view('addlead',compact('campaigns'));
    });
+
+   route::post('importleads',function(Request $req){
+      $file = $req->file('file');
+      \Maatwebsite\Excel\Facades\Excel::import(new newlead, $file);
+      \Maatwebsite\Excel\Facades\Excel::import(new leadinfo, $file);
+      return redirect()->back();
+   })->name('importleads');
    route::get('getleads',function(){
       if (Auth::guard('admins')->user()->hasRole('admin') || Auth::guard('admins')->user()->hasRole('salesmanager') || Auth::guard('admins')->user()->hasRole('backoffice')) {
-         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+         $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->where('assign_to_id', null)->where('wantsonline',0)->where('rejected',0)->orderBy('updated_at','asc')->select('leads.*','leads.campaign_id as campaign')->paginate(200);
          $asigned = lead::where('completed', '0')->where('assigned', 0)->whereNotNull('assign_to_id')->where('rejected',0)->paginate(200);
      } elseif (Auth::guard('admins')->user()->hasRole('fs')) {
-      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
+      $leads['leads'] = DB::table('leads')->where('completed', '0')->where('assigned', 0)->orderBy('updated_at','asc')->where('leads.assign_to_id',Auth::user()->id)->where('wantsonline',0)->where('rejected',0)->select('leads.*','leads.campaign_id as campaign')->paginate(200);
    }
-
+$instagram = 0;
+$sanascout = 0;
+$facebook = 0;
    for($i = 0; $i < count($leads['leads']); $i++){
 $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
 
@@ -73,15 +81,18 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
      $leads['leads'][$i]->wichtig = $leadinfo ? $leadinfo->wichtig : null;
      $leads['leads'][$i]->kampagne = $leadinfo ? $leadinfo->kampagne : null;
      $leads['leads'][$i]->teilnahme = $leadinfo ? $leadinfo->teilnahme : null;
-
-
-
+     if($leads['leads'][$i]->campaign_id == 1) $instagram++;
+     elseif($leads['leads'][$i]->campaign_id == 2) $facebook++;
+     else $sanascout++;
    }
 
 
 
      $leads['admins'] = Admins::role(['fs','digital'])->get();
      $leads['admin'] = Auth::user()->getRoleNames();
+     $leads['sanascout'] = $sanascout;
+     $leads['instagram'] = $instagram;
+     $leads['facebook'] = $facebook;
 
      return $leads;
    });
@@ -107,7 +118,7 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
    })->withoutMiddleware(confirmcode::class);
    route::get('clear',function(){
       \Artisan::call('optimize');
-      return \Artisan::call('route:clear');
+     \Artisan::call('route:clear');
    });
 //==========================================
     route::get('acceptapp/{id}',[UserController::class,'acceptapp']);
@@ -123,7 +134,6 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
    //  Route::group(['middleware' => 'json.response'], function () {
       route::post('deletedlead/{id}',[UserController::class,'deletedlead'])->name('deletedlead');
    // });
-
     route::post('addappointment',[UserController::class,'addappointment'])->name('addappointment');
     route::get('dealclosed/{id}',[UserController::class,'dealclosed'])->name('dealclosed');
     Route::get('changeTS', 'App\Http\Controllers\AppointmentsController@changeTS')->name('changeTS');
@@ -138,10 +148,8 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
     route::get('addnewuser',[UserController::class,'addnewuser'])->name('addnewuser');
     route::post('registernewuser',[UserController::class,'registernewuser'])->name('registernewuser');
     route::get('acceptappointment/{id}',function ($id){
-
         $idd = Crypt::decrypt($id);
         $idd /= 1244;
-
         $lead = lead::find($idd);
 
         return view('acceptappointment',compact('lead'));
@@ -215,7 +223,7 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
    route::post('create-task/{id}/{pendencyId}',[TodoController::class,'createToDoTasks'])->name('createToDoTasks');
    route::get('opened-tasks',[TodoController::class,'getAllOpenedToDoTasks'])->name('getAllOpenedToDoTasks');
    route::get('answered-tasks',[TodoController::class,'getAllAnsweredTasks'])->name('getAllAnsweredTasks');
-   route::get('costumer',[TodoController::class,'getDataForTaskByCostumerId'])->name('getDataForTaskByCostumerId');
+   route::get('costumer/{costumerId}',[TodoController::class,'getDataForTaskByCostumerId'])->name('getDataForTaskByCostumerId');
 
 
    route::post('createAbsence',[HumanResourcesController::class,'createAbsence'])->name('createAbsence');
@@ -289,22 +297,6 @@ route::get('file/{file?}',function($file = null){
 Route::get('Appointments', 'App\Http\Controllers\AppointmentsController@index')->name('Appointments');
 Route::get('Dropajax', 'App\Http\Controllers\AppointmentsController@Dropajax')->name('Dropajax');
 
-route::get('sendcode',function(){
-    \Mail::to('bulzart@outlook.com')->send(new \App\Mail\confirmcode(random_int(1000,9000)));
-});
-
-
-
-route::get('nr/{nr}',function($nr){
-   $key = 15;
-$val = $key;
-   for($i = 0; $i < 3; $i++){
-$val = $val*$nr;
-$nr++;
-   }
-   echo $val;
-   return Auth::user();
-});
 route::get('getchat/{u1}/{u2}',[ChatController::class,'getchat']);
 route::any('sendmessage/{u1}/{u2}',[ChatController::class,'sendmessage']);
 route::get('getadmin',function (){
@@ -316,9 +308,12 @@ route::get('pendingreject/{id}/{where}',function($id,$where){
    return view('pendingreject')->with('pojo',0)->with('leads',lead::find($id));
   }
   else{
-
    return view('pendingreject')->with('pojo',1)->with('leads',lead::find($id));
   }
 });
 route::get('rleads',[UserController::class,'rleads'])->name('rleads');
-
+route::get('leadhistory',function(Request $request){
+   $leads = lead::with('info')->with('admin')->orderBy('created_at','desc')->paginate(40);
+   return view('leadshistory',compact('leads'));
+})->name('leadshistory');
+route::get('fsadmins',[TodoController::class,'fsadmins']);
