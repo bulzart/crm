@@ -29,6 +29,7 @@ use App\Models\family;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\FamilyPersonsController;
+use App\Http\Controllers\HumanResourcesController;
 use App\Http\Controllers\LeadDataController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TeamController;
@@ -215,6 +216,20 @@ $leadinfo = lead_info::where('lead_id',$leads['leads'][$i]->id)->first();
    route::get('opened-tasks',[TodoController::class,'getAllOpenedToDoTasks'])->name('getAllOpenedToDoTasks');
    route::get('answered-tasks',[TodoController::class,'getAllAnsweredTasks'])->name('getAllAnsweredTasks');
    route::get('costumer',[TodoController::class,'getDataForTaskByCostumerId'])->name('getDataForTaskByCostumerId');
+
+
+   route::post('createAbsence',[HumanResourcesController::class,'createAbsence'])->name('createAbsence');
+   route::post('updateAbsence',[HumanResourcesController::class,'updateAbsenceById'])->name('updateAbsenceById');
+   route::get('getAllEmployeeAbsences',[HumanResourcesController::class,'getAllEmployeeAbsences'])->name('getAllEmployeeAbsences');
+   route::post('removeAbsence',[HumanResourcesController::class,'removeAbsence'])->name('removeAbsence');
+   route::post('addBankInformationData',[HumanResourcesController::class,'addBankInformationData'])->name('addBankInformationData');
+   route::post('updateBankInformation',[HumanResourcesController::class,'updateBankInformation'])->name('updateBankInformation');
+   route::get('getEmployeeBankInformation',[HumanResourcesController::class,'getEmployeeBankInformation'])->name('getEmployeeBankInformation');
+   route::post('createPersonalData',[HumanResourcesController::class,'createPersonalData'])->name('createPersonalData');
+   route::get('getEmployeePersonalDataById',[HumanResourcesController::class,'getEmployeePersonalDataById'])->name('getEmployeePersonalDataById');
+   route::get('getAllEmployees',[HumanResourcesController::class,'getAllEmployees'])->name('getAllEmployees');
+   route::post('updatePersonalData',[HumanResourcesController::class,'updatePersonalData'])->name('updatePersonalData');
+   route::post('removePersonalData',[HumanResourcesController::class,'removePersonalData'])->name('removePersonalData');
 
     route::get('costumer_form/{id}',[\App\Http\Controllers\CostumerFormController::class,'costumer_form'])->name('costumer_form');
 
